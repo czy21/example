@@ -26,6 +26,7 @@ public class BaseServiceImpl<TEntity> implements BaseService<TEntity> {
      */
     private Class<TEntity> modelClass;
 
+    @SuppressWarnings("unchecked")
     public BaseServiceImpl() {
         ParameterizedType pt = (ParameterizedType) this.getClass().getGenericSuperclass();
         modelClass = (Class<TEntity>) pt.getActualTypeArguments()[0];
@@ -55,7 +56,6 @@ public class BaseServiceImpl<TEntity> implements BaseService<TEntity> {
     @Override
     public TEntity SelectById(Long id) {
         return baseDao.selectById(id);
-
     }
 
     @Override
