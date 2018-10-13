@@ -40,6 +40,7 @@ public class BaseEntity<TEntity extends Model> extends Model<TEntity> {
     public void setId(Long id) {
         Id = id;
     }
+
     @Override
     protected Serializable pkVal() {
         return this.Id;

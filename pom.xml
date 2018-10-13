@@ -40,7 +40,7 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.0-gamma</version>
+            <version>3.0.5</version>
         </dependency>
         <!-- 模板引擎 -->
         <dependency>
@@ -63,6 +63,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>
