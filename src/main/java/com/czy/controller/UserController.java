@@ -1,12 +1,13 @@
 package com.czy.controller;
 
 
+import com.czy.core.mvc.Pocket;
+import com.czy.entity.po.Menu;
+import com.czy.entity.po.User;
 import com.czy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import org.springframework.web.bind.annotation.RestController;
-import com.czy.entity.po.User;
 
 import java.util.List;
 
@@ -16,12 +17,14 @@ import java.util.List;
  * @Date 2018-09-24
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/User")
 public class UserController {
+
     @Autowired
     private UserService userService;
 
-    @RequestMapping("getUsers")
+    @RequestMapping("GetUsers")
+    @Pocket(entity = {User.class, Menu.class})
     public List<User> GetUsers() {
         return userService.SelectList();
     }
