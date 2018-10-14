@@ -3,17 +3,8 @@ package com.czy;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
-import com.baomidou.mybatisplus.generator.InjectionConfig;
 import com.baomidou.mybatisplus.generator.config.*;
-import com.baomidou.mybatisplus.generator.config.converts.MySqlTypeConvert;
-import com.baomidou.mybatisplus.generator.config.po.TableInfo;
-import com.baomidou.mybatisplus.generator.config.rules.DbColumnType;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public class MybatisPlusCodeGenerator {
     public static void main(String[] args) {
@@ -46,10 +37,10 @@ public class MybatisPlusCodeGenerator {
 
         //策略配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setTablePrefix(new String[]{"oa_"});// 此处可以修改为您的表前缀
+        strategy.setTablePrefix("oa_");// 此处可以修改为您的表前缀
         strategy.setNaming(NamingStrategy.underline_to_camel);// 表名生成策略
         strategy.setSuperEntityClass("com.czy.core.universal.BaseEntity");//设置实体基类
-        strategy.setSuperEntityColumns(new String[]{"Id","AddedTime","ModifiedTime"});
+        strategy.setSuperEntityColumns("Id","AddedTime","ModifiedTime");
         strategy.setSuperMapperClass("com.czy.core.universal.BaseDao");
         strategy.setSuperServiceClass("com.czy.core.universal.BaseService");
         strategy.setSuperServiceImplClass("com.czy.core.universal.BaseServiceImpl");

@@ -2,6 +2,7 @@ package com.czy.entity.po;
 
 import com.czy.core.universal.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
+import org.springframework.stereotype.Component;
 
 /**
  * @Description User 实体
