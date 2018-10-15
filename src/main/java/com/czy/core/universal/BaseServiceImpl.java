@@ -2,7 +2,7 @@ package com.czy.core.universal;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.czy.core.ret.ServiceException;
+import com.czy.core.exception.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.lang.reflect.Field;
@@ -43,18 +43,17 @@ public class BaseServiceImpl<TEntity> implements BaseService<TEntity> {
     }
 
     @Override
-    public Integer DeleteById(Long id) {
+    public Integer DeleteById(String id) {
         return baseDao.deleteById(id);
     }
 
     @Override
-    public Integer DeleteByIds(Long[] ids) {
-        Collection<Long> idList = Arrays.asList(ids);
-        return baseDao.deleteBatchIds(idList);
+    public Integer DeleteByIds(List<String> ids) {
+        return baseDao.deleteBatchIds(ids);
     }
 
     @Override
-    public TEntity SelectById(Long id) {
+    public TEntity SelectById(String id) {
         return baseDao.selectById(id);
     }
 

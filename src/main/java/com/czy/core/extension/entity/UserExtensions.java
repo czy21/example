@@ -1,6 +1,6 @@
-package com.czy.core.extensions.entity;
+package com.czy.core.extension.entity;
 
-import com.czy.core.extensions.SimpleItemModel;
+import com.czy.core.model.SimpleItemModel;
 import com.czy.dao.UserDao;
 import org.springframework.stereotype.Component;
 

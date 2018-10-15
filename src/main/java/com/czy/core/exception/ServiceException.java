@@ -1,4 +1,4 @@
-package com.czy.core.ret;
+package com.czy.core.exception;
 
 import java.io.Serializable;
 

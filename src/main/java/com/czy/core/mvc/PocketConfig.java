@@ -1,8 +1,8 @@
 package com.czy.core.mvc;
 
 
-import com.czy.core.extensions.entity.MenuExtensions;
-import com.czy.core.extensions.entity.UserExtensions;
+import com.czy.core.extension.entity.MenuExtensions;
+import com.czy.core.extension.entity.UserExtensions;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
 public class PocketConfig {
 
     public static HashMap<String, Object> InjectData(List<Class> clazz) {
-        HashMap hash = new HashMap<String, Object>();
+        HashMap<String, Object> hash = new HashMap<>();
         clazz.forEach((t) -> {
             switch (t.getSimpleName()) {
                 case "User":

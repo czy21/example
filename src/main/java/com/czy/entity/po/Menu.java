@@ -2,12 +2,12 @@ package com.czy.entity.po;
 
 import com.czy.core.universal.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
-import org.springframework.stereotype.Component;
+import com.baomidou.mybatisplus.annotation.TableField;
 
 /**
  * @Description Menu 实体
  * @Author 陈昭宇
- * @Date 2018-09-24
+ * @Date 2018-10-15
  */
 public class Menu extends BaseEntity<Menu> {
 
