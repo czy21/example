@@ -2,8 +2,13 @@ package com.czy.controller;
 
 
 import com.czy.core.mvc.Pocket;
+import com.czy.dao.RoleMenuDao;
+import com.czy.dao.UserDao;
+import com.czy.dao.UserRoleDao;
 import com.czy.entity.po.Menu;
+import com.czy.entity.po.Role;
 import com.czy.entity.po.User;
+import com.czy.entity.po.UserRole;
 import com.czy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,12 +26,12 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    private RoleMenuDao dao;
 
     @RequestMapping("GetUsers")
     @Pocket(entity = {User.class, Menu.class})
-    public List<User> GetUsers() {
-        return userService.SelectList();
+    public List<String> GetUsers() {
+        return dao.getPermissionsByUserId("1e6b2317-cee7-11e8-8984-1cb72c963248");
     }
 
 

@@ -1,7 +1,10 @@
 package com.czy.dao;
 
+import com.czy.entity.po.Role;
 import com.czy.entity.po.UserRole;
 import com.czy.core.universal.BaseDao;
+
+import java.util.List;
 
 /**
  * @Description UserRole 数据访问层
@@ -10,4 +13,5 @@ import com.czy.core.universal.BaseDao;
  */
 public interface UserRoleDao extends BaseDao<UserRole> {
 
+    List<String> getRolesByUserId(String userId);
 }
