@@ -32,7 +32,7 @@ public class MybatisPlusCodeGenerator {
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("sasa");
-        dsc.setUrl("jdbc:mysql://127.0.0.1:3306/czy_oa?characterEncoding=utf8&useSSL=false");
+        dsc.setUrl("jdbc:mysql://localhost:3306/czy_oa?&serverTimezone=UTC&characterEncoding=utf-8&useSSL=false&useUnicode=true");
         mpg.setDataSource(dsc);
 
         //策略配置

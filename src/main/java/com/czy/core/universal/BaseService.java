@@ -1,7 +1,9 @@
 package com.czy.core.universal;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.extension.service.IService;
 import org.apache.ibatis.exceptions.TooManyResultsException;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
