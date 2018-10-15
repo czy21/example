@@ -1,4 +1,4 @@
-package com.czy.core.extensions;
+package com.czy.core.model;
 
 public class SimpleItemModel {
 

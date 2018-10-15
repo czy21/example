@@ -8,10 +8,6 @@ import ${superMapperClassPackage};
  * @Author 陈昭宇
  * @Date $date
  */
-#if(${kotlin})
-interface ${table.mapperName} : ${superMapperClass}<${entity}>
-#else
 public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
 
 }
-#end

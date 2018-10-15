@@ -1,9 +1,7 @@
 package com.czy.core.universal;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
-import com.baomidou.mybatisplus.extension.service.IService;
 import org.apache.ibatis.exceptions.TooManyResultsException;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -39,7 +37,7 @@ public interface BaseService<TEntity> {
      * @Param [id]
      * @Return java.lang.Integer
      */
-    Integer DeleteById(Long id);
+    Integer DeleteById(String id);
 
     /*
      * @Author 陈昭宇
@@ -48,7 +46,7 @@ public interface BaseService<TEntity> {
      * @Param [ids]
      * @Return java.lang.Integer
      */
-    Integer DeleteByIds(Long[] ids);
+    Integer DeleteByIds(List<String> ids);
 
     /*
      * @Author 陈昭宇
@@ -57,7 +55,7 @@ public interface BaseService<TEntity> {
      * @Param [id]
      * @Return TEntity
      */
-    TEntity SelectById(Long id);
+    TEntity SelectById(String id);
 
     /*
      * @Author 陈昭宇
