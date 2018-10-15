@@ -9,7 +9,9 @@ mybatis-plus:
     map-underscore-to-camel-case: false
   mapper-locations: classpath:/mapper/*.xml
   type-aliases-package: com.czy.entity.po
+  type-aliases-super-type: com.czy.core.universal.BaseEntity
   global-config:
+    refresh: true
     db-config:
       id-type: uuid
       table-prefix: oa_
