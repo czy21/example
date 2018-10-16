@@ -35,7 +35,7 @@ public class MybatisPlusCodeGenerator {
         strategy.setTablePrefix("oa_");
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setSuperEntityClass("com.czy.core.universal.BaseEntity");
-        strategy.setSuperEntityColumns("Id","AddedTime","ModifiedTime");
+        strategy.setSuperEntityColumns("AddedTime","ModifiedTime","AddedUser","ModifiedUser");
         strategy.setSuperMapperClass("com.czy.core.universal.BaseDao");
         strategy.setSuperServiceClass("com.czy.core.universal.BaseService");
         strategy.setSuperServiceImplClass("com.czy.core.universal.BaseServiceImpl");
