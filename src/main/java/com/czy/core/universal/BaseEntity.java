@@ -2,7 +2,6 @@ package com.czy.core.universal;
 
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /**
@@ -12,17 +11,10 @@ import java.time.LocalDateTime;
  */
 public class BaseEntity<TEntity extends Model> extends Model<TEntity> {
 
-    private String Id;
     private LocalDateTime AddedTime;
     private LocalDateTime ModifiedTime;
-
-    public String getId() {
-        return Id;
-    }
-
-    public void setId(String id) {
-        Id = id;
-    }
+    private String AddedUser;
+    private String ModifiedUser;
 
     public LocalDateTime getAddedTime() {
         return AddedTime;
@@ -40,8 +32,19 @@ public class BaseEntity<TEntity extends Model> extends Model<TEntity> {
         ModifiedTime = modifiedTime;
     }
 
-    @Override
-    protected Serializable pkVal() {
-        return this.Id;
+    public String getAddedUser() {
+        return AddedUser;
+    }
+
+    public void setAddedUser(String addedUser) {
+        AddedUser = addedUser;
+    }
+
+    public String getModifiedUser() {
+        return ModifiedUser;
+    }
+
+    public void setModifiedUser(String modifiedUser) {
+        ModifiedUser = modifiedUser;
     }
 }

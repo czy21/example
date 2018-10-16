@@ -1,8 +1,9 @@
 package com.czy.entity.po;
 
 import com.czy.core.universal.BaseEntity;
-import com.baomidou.mybatisplus.annotation.TableName;
-import com.baomidou.mybatisplus.annotation.TableField;
+import javax.persistence.Transient;
+
+import java.util.Set;
 
 /**
  * @Description User 实体
@@ -20,6 +21,33 @@ public class User extends BaseEntity<User> {
     private Boolean IsHeader;
     private String DepartmentId;
 
+    /**
+     * 用户所有角色值，用于shiro做角色权限的判断
+     */
+    @Transient
+    private Set<String> roles;
+
+    /**
+     * 用户所有权限值，用于shiro做资源权限的判断
+     */
+    @Transient
+    private Set<String> perms;
+
+    public Set<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
+    }
+
+    public Set<String> getPerms() {
+        return perms;
+    }
+
+    public void setPerms(Set<String> perms) {
+        this.perms = perms;
+    }
 
     public Boolean getEnabled() {
         return Enabled;
