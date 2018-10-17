@@ -1,23 +1,19 @@
-
-SET NAMES utf8mb4;
-SET FOREIGN_KEY_CHECKS = 0;
-
 -- ----------------------------
 -- Table structure for oa_company
 -- ----------------------------
 DROP TABLE IF EXISTS `oa_company`;
 CREATE TABLE `oa_company`  (
-  `CompanyId` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `CompanyId` varchar(36)  NOT NULL,
   `AddedTime` datetime(0) NULL DEFAULT NULL,
   `ModifiedTime` datetime(0) NULL DEFAULT NULL,
   `Enabled` bit(1) NOT NULL DEFAULT b'1',
-  `Name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `ContactPerson` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `Location` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `Phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `Fax` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `Postcode` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `Comment` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `Name` varchar(50)  NULL DEFAULT NULL,
+  `ContactPerson` varchar(20)  NULL DEFAULT NULL,
+  `Location` varchar(100)  NULL DEFAULT NULL,
+  `Phone` varchar(20)  NULL DEFAULT NULL,
+  `Fax` varchar(20)  NULL DEFAULT NULL,
+  `Postcode` varchar(20)  NULL DEFAULT NULL,
+  `Comment` varchar(100)  NULL DEFAULT NULL,
   PRIMARY KEY (`CompanyId`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
@@ -31,15 +27,15 @@ INSERT INTO `oa_company` VALUES ('1a245e4d-cee6-11e8-8984-1cb72c963248', '2018-1
 -- ----------------------------
 DROP TABLE IF EXISTS `oa_department`;
 CREATE TABLE `oa_department`  (
-  `DepartmentId` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `DepartmentId` varchar(36)  NOT NULL,
   `AddedTime` datetime(0) NULL DEFAULT NULL,
   `ModifiedTime` datetime(0) NULL DEFAULT NULL,
   `Enabled` bit(1) NOT NULL DEFAULT b'1',
-  `Name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `ParentId` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `Phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `Comment` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `CompanyId` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `Name` varchar(50)  NULL DEFAULT NULL,
+  `ParentId` varchar(36)  NOT NULL,
+  `Phone` varchar(20)  NULL DEFAULT NULL,
+  `Comment` varchar(100)  NULL DEFAULT NULL,
+  `CompanyId` varchar(36)  NOT NULL,
   PRIMARY KEY (`DepartmentId`) USING BTREE,
   INDEX `fk_Department_Company`(`CompanyId`) USING BTREE,
   CONSTRAINT `fk_Department_Company` FOREIGN KEY (`CompanyId`) REFERENCES `oa_company` (`CompanyId`) ON DELETE NO ACTION ON UPDATE RESTRICT
@@ -55,17 +51,17 @@ INSERT INTO `oa_department` VALUES ('d760b860-cee6-11e8-8984-1cb72c963248', '201
 -- ----------------------------
 DROP TABLE IF EXISTS `oa_menu`;
 CREATE TABLE `oa_menu`  (
-  `MenuId` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `MenuId` varchar(36)  NOT NULL,
   `AddedTime` datetime(0) NULL DEFAULT NULL,
   `ModifiedTime` datetime(0) NULL DEFAULT NULL,
   `Enabled` bit(1) NOT NULL DEFAULT b'1',
-  `ParentId` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `Name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `Icon` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `ParentId` varchar(36)  NOT NULL,
+  `Name` varchar(50)  NULL DEFAULT NULL,
+  `Icon` varchar(100)  NULL DEFAULT NULL,
   `Sort` int(11) NOT NULL DEFAULT 0,
-  `Url` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `Url` varchar(50)  NULL DEFAULT NULL,
   `IsMenu` bit(1) NOT NULL DEFAULT b'0',
-  `Comment` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `Comment` varchar(100)  NULL DEFAULT NULL,
   PRIMARY KEY (`MenuId`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
@@ -79,12 +75,12 @@ INSERT INTO `oa_menu` VALUES ('a25c2553-cfab-11e8-b266-1cb72c963248', '2018-10-1
 -- ----------------------------
 DROP TABLE IF EXISTS `oa_role`;
 CREATE TABLE `oa_role`  (
-  `RoleId` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `RoleId` varchar(36)  NOT NULL,
   `AddedTime` datetime(0) NULL DEFAULT NULL,
   `ModifiedTime` datetime(0) NULL DEFAULT NULL,
   `Enabled` bit(1) NOT NULL DEFAULT b'1',
-  `Name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `Comment` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `Name` varchar(50)  NULL DEFAULT NULL,
+  `Comment` varchar(100)  NULL DEFAULT NULL,
   PRIMARY KEY (`RoleId`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
@@ -98,11 +94,11 @@ INSERT INTO `oa_role` VALUES ('b7118e52-d082-11e8-958a-1cb72c963248', '2018-10-1
 -- ----------------------------
 DROP TABLE IF EXISTS `oa_role_menu`;
 CREATE TABLE `oa_role_menu`  (
-  `RoleMenuId` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `RoleMenuId` varchar(36)  NOT NULL,
   `AddedTime` datetime(0) NULL DEFAULT NULL,
   `ModifiedTime` datetime(0) NULL DEFAULT NULL,
-  `RoleId` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `MenuId` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `RoleId` varchar(36)  NOT NULL,
+  `MenuId` varchar(36)  NOT NULL,
   PRIMARY KEY (`RoleMenuId`) USING BTREE,
   INDEX `fk_RoleMenu_Menu`(`MenuId`) USING BTREE,
   INDEX `fk_RoleMenu_Role`(`RoleId`) USING BTREE,
@@ -120,17 +116,17 @@ INSERT INTO `oa_role_menu` VALUES ('c65fe99b-d08e-11e8-958a-1cb72c963248', '2018
 -- ----------------------------
 DROP TABLE IF EXISTS `oa_user`;
 CREATE TABLE `oa_user`  (
-  `UserId` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `UserId` varchar(36)  NOT NULL,
   `AddedTime` datetime(0) NULL DEFAULT NULL,
   `ModifiedTime` datetime(0) NULL DEFAULT NULL,
   `Enabled` bit(1) NOT NULL DEFAULT b'1',
-  `LoginName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `Password` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `UserName` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `Email` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `Phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `LoginName` varchar(50)  NOT NULL,
+  `Password` varchar(100)  NULL DEFAULT NULL,
+  `UserName` varchar(50)  NOT NULL,
+  `Email` varchar(50)  NULL DEFAULT NULL,
+  `Phone` varchar(20)  NULL DEFAULT NULL,
   `IsHeader` bit(1) NOT NULL DEFAULT b'0',
-  `DepartmentId` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `DepartmentId` varchar(36)  NOT NULL,
   PRIMARY KEY (`UserId`) USING BTREE,
   INDEX `fk_User_Department`(`DepartmentId`) USING BTREE,
   CONSTRAINT `fk_User_Department` FOREIGN KEY (`DepartmentId`) REFERENCES `oa_department` (`DepartmentId`) ON DELETE NO ACTION ON UPDATE RESTRICT
@@ -146,11 +142,11 @@ INSERT INTO `oa_user` VALUES ('1e6b2317-cee7-11e8-8984-1cb72c963248', '2018-10-1
 -- ----------------------------
 DROP TABLE IF EXISTS `oa_user_role`;
 CREATE TABLE `oa_user_role`  (
-  `UserRoleId` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `UserRoleId` varchar(36)  NOT NULL,
   `AddedTime` datetime(0) NULL DEFAULT NULL,
   `ModifiedTime` datetime(0) NULL DEFAULT NULL,
-  `UserId` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `RoleId` varchar(36) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `UserId` varchar(36)  NOT NULL,
+  `RoleId` varchar(36)  NOT NULL,
   PRIMARY KEY (`UserRoleId`) USING BTREE,
   INDEX `fk_UserRole_Role`(`RoleId`) USING BTREE,
   INDEX `fk_UserRole_User`(`UserId`) USING BTREE,
