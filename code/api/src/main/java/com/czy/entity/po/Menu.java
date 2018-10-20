@@ -2,31 +2,35 @@ package com.czy.entity.po;
 
 import com.czy.core.universal.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 
 /**
- * @Description Menu 实体
- * @Author 陈昭宇
- * @Date 2018-10-15
+ * 菜单权限表
+ *
+ * @author 陈昭宇
+ * @since 2018-10-20
  */
 public class Menu extends BaseEntity<Menu> {
 
-    private Boolean Enabled;
+    @TableId
+    private String MenuId;
     private String ParentId;
-    private String Name;
+    private String MenuName;
     private String Icon;
     private Integer Sort;
     private String Url;
     private Boolean IsMenu;
     private String Comment;
+    private Boolean Enabled;
 
 
-    public Boolean getEnabled() {
-        return Enabled;
+    public String getMenuId() {
+        return MenuId;
     }
 
-    public void setEnabled(Boolean Enabled) {
-        this.Enabled = Enabled;
+    public void setMenuId(String MenuId) {
+        this.MenuId = MenuId;
     }
 
     public String getParentId() {
@@ -37,12 +41,12 @@ public class Menu extends BaseEntity<Menu> {
         this.ParentId = ParentId;
     }
 
-    public String getName() {
-        return Name;
+    public String getMenuName() {
+        return MenuName;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setMenuName(String MenuName) {
+        this.MenuName = MenuName;
     }
 
     public String getIcon() {
@@ -85,17 +89,26 @@ public class Menu extends BaseEntity<Menu> {
         this.Comment = Comment;
     }
 
+    public Boolean getEnabled() {
+        return Enabled;
+    }
+
+    public void setEnabled(Boolean Enabled) {
+        this.Enabled = Enabled;
+    }
+
     @Override
     public String toString() {
         return "Menu{" +
-        ", Enabled=" + Enabled +
-        ", ParentId=" + ParentId +
-        ", Name=" + Name +
-        ", Icon=" + Icon +
-        ", Sort=" + Sort +
-        ", Url=" + Url +
-        ", IsMenu=" + IsMenu +
-        ", Comment=" + Comment +
-        "}";
+                ", MenuId=" + MenuId +
+                ", ParentId=" + ParentId +
+                ", MenuName=" + MenuName +
+                ", Icon=" + Icon +
+                ", Sort=" + Sort +
+                ", Url=" + Url +
+                ", IsMenu=" + IsMenu +
+                ", Comment=" + Comment +
+                ", Enabled=" + Enabled +
+                "}";
     }
 }

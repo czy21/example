@@ -1,10 +1,11 @@
-DROP TABLE IF EXISTS `oa_user_role`;
 CREATE TABLE `oa_user_role`  (
   `UserRoleId` varchar(36)  NOT NULL,
-  `AddedTime` datetime(0) NULL DEFAULT NULL,
-  `ModifiedTime` datetime(0) NULL DEFAULT NULL,
   `UserId` varchar(36)  NOT NULL,
   `RoleId` varchar(36)  NOT NULL,
+  `AddedTime` datetime(0) DEFAULT NULL,
+  `ModifiedTime` datetime(0) DEFAULT NULL,
+  `AddedUser` varchar(36) DEFAULT NULL,
+  `ModifiedUser` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`UserRoleId`) ,
   INDEX `fk_UserRole_Role`(`RoleId`) ,
   INDEX `fk_UserRole_User`(`UserId`) ,

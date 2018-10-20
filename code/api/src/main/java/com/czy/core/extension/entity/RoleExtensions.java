@@ -20,8 +20,8 @@ public class RoleExtensions {
         ArrayList simples = new ArrayList();
         _dao.selectList(null).forEach((t) -> {
             SimpleItemModel temp = new SimpleItemModel();
-            temp.setValue(t.getId());
-            temp.setValue(t.getName());
+            temp.setValue(t.getRoleId());
+            temp.setValue(t.getRoleName());
             simples.add(temp);
         });
 

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
  * @Author 陈昭宇
  * @Date 2018/7/26
  */
-public class BaseEntity<TEntity extends Model> extends Model<TEntity> {
+public class BaseEntity<TEntity> {
 
     private LocalDateTime AddedTime;
     private LocalDateTime ModifiedTime;

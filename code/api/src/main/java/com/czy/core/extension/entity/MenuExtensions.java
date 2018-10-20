@@ -22,8 +22,8 @@ public class MenuExtensions {
         ArrayList simples = new ArrayList();
         _dao.selectList(null).forEach((t) -> {
             SimpleItemModel temp = new SimpleItemModel();
-            temp.setValue(t.getId());
-            temp.setLabel(t.getName());
+            temp.setValue(t.getMenuId());
+            temp.setLabel(t.getMenuName());
             simples.add(temp);
         });
         return simples;

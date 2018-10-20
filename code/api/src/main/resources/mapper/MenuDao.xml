@@ -3,31 +3,35 @@
 <mapper namespace="com.czy.dao.MenuDao">
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.czy.entity.po.Menu">
-        <result column="Id" property="Id" />
+        <id column="MenuId" property="MenuId" />
         <result column="AddedTime" property="AddedTime" />
         <result column="ModifiedTime" property="ModifiedTime" />
-        <result column="Enabled" property="Enabled" />
+        <result column="AddedUser" property="AddedUser" />
+        <result column="ModifiedUser" property="ModifiedUser" />
         <result column="ParentId" property="ParentId" />
-        <result column="Name" property="Name" />
+        <result column="MenuName" property="MenuName" />
         <result column="Icon" property="Icon" />
         <result column="Sort" property="Sort" />
         <result column="Url" property="Url" />
         <result column="IsMenu" property="IsMenu" />
         <result column="Comment" property="Comment" />
+        <result column="Enabled" property="Enabled" />
     </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        Id,
         AddedTime,
         ModifiedTime,
-        Enabled
+        AddedUser,
+        ModifiedUser,
+        MenuId
         ParentId
-        Name
+        MenuName
         Icon
         Sort
         Url
         IsMenu
         Comment
+        Enabled
     </sql>
 
 </mapper>

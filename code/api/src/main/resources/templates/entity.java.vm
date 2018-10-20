@@ -5,14 +5,15 @@ import ${pkg};
 #end
 
 /**
- * @Description ${entity} 实体
- * @Author 陈昭宇
- * @Date $date
+ * $!{table.comment}
+ *
+ * @author ${author}
+ * @since ${date}
  */
 #if(${superEntityClass})
 public class ${entity} extends ${superEntityClass}<${entity}> {
 #else
-public class ${entity} implements Serializable {
+public class ${entity} extends Serializable {
 #end
 
 ## ----------  BEGIN 字段循环遍历  ----------
@@ -22,9 +23,14 @@ public class ${entity} implements Serializable {
      * ${field.comment}
      */
 #end
+#if(${field.keyFlag})
+## 主键
+#if(${field.convert})
+    @TableId
+#end
+#end
     private ${field.propertyType} ${field.propertyName};
 #end
-## ----------  END 字段循环遍历  ----------
 
 #foreach($field in ${table.fields})
 
@@ -37,12 +43,13 @@ public class ${entity} implements Serializable {
     }
 #end
 
+## ----------  END 字段循环遍历  ----------
     @Override
     public String toString() {
         return "${entity}{" +
-#foreach($field in ${table.fields})
-        ", ${field.propertyName}=" + ${field.propertyName} +
-#end
-        "}";
+    #foreach($field in ${table.fields})
+                ", ${field.propertyName}=" + ${field.propertyName} +
+    #end
+                "}";
     }
 }

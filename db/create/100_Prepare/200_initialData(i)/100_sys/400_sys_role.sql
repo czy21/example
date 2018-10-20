@@ -1,1 +1,2 @@
-INSERT INTO `oa_role` VALUES ('b7118e52-d082-11e8-958a-1cb72c963248', '2018-10-15 22:00:45', '2018-10-15 22:00:45', b'1', '测试角色', NULL);
+insert into oa_role (RoleId,RoleName,Comment,AddedTime,ModifiedTime,AddedUser,ModifiedUser,Enabled)
+values(UUID(),'管理员',NULL,NOW(),NOW(),NULL,NULL,1);

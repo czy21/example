@@ -2,34 +2,38 @@ package com.czy.entity.po;
 
 import com.czy.core.universal.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 
 /**
- * @Description Role 实体
- * @Author 陈昭宇
- * @Date 2018-10-15
+ * 角色表
+ *
+ * @author 陈昭宇
+ * @since 2018-10-20
  */
 public class Role extends BaseEntity<Role> {
 
-    private Boolean Enabled;
-    private String Name;
+    @TableId
+    private String RoleId;
+    private String RoleName;
     private String Comment;
+    private Boolean Enabled;
 
 
-    public Boolean getEnabled() {
-        return Enabled;
+    public String getRoleId() {
+        return RoleId;
     }
 
-    public void setEnabled(Boolean Enabled) {
-        this.Enabled = Enabled;
+    public void setRoleId(String RoleId) {
+        this.RoleId = RoleId;
     }
 
-    public String getName() {
-        return Name;
+    public String getRoleName() {
+        return RoleName;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setRoleName(String RoleName) {
+        this.RoleName = RoleName;
     }
 
     public String getComment() {
@@ -40,12 +44,21 @@ public class Role extends BaseEntity<Role> {
         this.Comment = Comment;
     }
 
+    public Boolean getEnabled() {
+        return Enabled;
+    }
+
+    public void setEnabled(Boolean Enabled) {
+        this.Enabled = Enabled;
+    }
+
     @Override
     public String toString() {
         return "Role{" +
-        ", Enabled=" + Enabled +
-        ", Name=" + Name +
-        ", Comment=" + Comment +
-        "}";
+                ", RoleId=" + RoleId +
+                ", RoleName=" + RoleName +
+                ", Comment=" + Comment +
+                ", Enabled=" + Enabled +
+                "}";
     }
 }

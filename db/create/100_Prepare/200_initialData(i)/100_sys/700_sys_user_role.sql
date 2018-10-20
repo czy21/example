@@ -1,2 +1,4 @@
-INSERT INTO `oa_user_role` VALUES ('e8f66a9c-d082-11e8-958a-1cb72c963248', '2018-10-15 22:02:08', '2018-10-15 22:02:08', '1e6b2317-cee7-11e8-8984-1cb72c963248', 'b7118e52-d082-11e8-958a-1cb72c963248');
-
+set @UserId = (select UserId from oa_user where LoginName='admin');
+set @RoleId = (select RoleId from oa_role where RoleName='管理员');
+insert into oa_user_role(UserRoleId,UserId,RoleId,AddedTime,ModifiedTime,AddedUser,ModifiedUser)
+values(UUID(),@UserId,@RoleId,NOW(),NOW(),NULL,NULL);

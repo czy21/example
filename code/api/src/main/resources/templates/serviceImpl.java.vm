@@ -6,9 +6,9 @@ import ${superServiceImplClassPackage};
 import org.springframework.stereotype.Service;
 
 /**
- * @Description ${entity} 服务实现类
- * @Author 陈昭宇
- * @Date $date
+ * @description ${entity} 服务实现类
+ * @author ${author}
+ * @since ${date}
  */
 @Service
 public class ${table.serviceImplName} extends ${superServiceImplClass}<${entity}> implements ${table.serviceName} {

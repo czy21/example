@@ -3,6 +3,8 @@ package com.czy.service;
 import com.czy.entity.po.UserRole;
 import com.czy.core.universal.BaseService;
 
+import java.util.List;
+
 /**
  * @Description UserRole 服务类
  * @Author 陈昭宇
@@ -10,5 +12,6 @@ import com.czy.core.universal.BaseService;
  */
 public interface UserRoleService extends BaseService<UserRole> {
 
+    List<String> getRolesByUserId(String userId);
 
 }

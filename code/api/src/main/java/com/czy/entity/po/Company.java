@@ -2,39 +2,43 @@ package com.czy.entity.po;
 
 import com.czy.core.universal.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 
 /**
- * @Description Company 实体
- * @Author 陈昭宇
- * @Date 2018-10-15
+ * 公司表
+ *
+ * @author 陈昭宇
+ * @since 2018-10-20
  */
 public class Company extends BaseEntity<Company> {
 
-    private Boolean Enabled;
-    private String Name;
+    @TableId
+    private String CompanyId;
+    private String CompanyName;
     private String ContactPerson;
     private String Location;
     private String Phone;
     private String Fax;
     private String Postcode;
     private String Comment;
+    private Boolean Enabled;
 
 
-    public Boolean getEnabled() {
-        return Enabled;
+    public String getCompanyId() {
+        return CompanyId;
     }
 
-    public void setEnabled(Boolean Enabled) {
-        this.Enabled = Enabled;
+    public void setCompanyId(String CompanyId) {
+        this.CompanyId = CompanyId;
     }
 
-    public String getName() {
-        return Name;
+    public String getCompanyName() {
+        return CompanyName;
     }
 
-    public void setName(String Name) {
-        this.Name = Name;
+    public void setCompanyName(String CompanyName) {
+        this.CompanyName = CompanyName;
     }
 
     public String getContactPerson() {
@@ -85,17 +89,26 @@ public class Company extends BaseEntity<Company> {
         this.Comment = Comment;
     }
 
+    public Boolean getEnabled() {
+        return Enabled;
+    }
+
+    public void setEnabled(Boolean Enabled) {
+        this.Enabled = Enabled;
+    }
+
     @Override
     public String toString() {
         return "Company{" +
-        ", Enabled=" + Enabled +
-        ", Name=" + Name +
-        ", ContactPerson=" + ContactPerson +
-        ", Location=" + Location +
-        ", Phone=" + Phone +
-        ", Fax=" + Fax +
-        ", Postcode=" + Postcode +
-        ", Comment=" + Comment +
-        "}";
+                ", CompanyId=" + CompanyId +
+                ", CompanyName=" + CompanyName +
+                ", ContactPerson=" + ContactPerson +
+                ", Location=" + Location +
+                ", Phone=" + Phone +
+                ", Fax=" + Fax +
+                ", Postcode=" + Postcode +
+                ", Comment=" + Comment +
+                ", Enabled=" + Enabled +
+                "}";
     }
 }
