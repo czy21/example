@@ -1,3 +1,4 @@
-target/
-_temp/
-backup/
+/target/
+/_temp/
+/backup/
+/script/.idea/
