@@ -2,15 +2,11 @@ package com.czy.controller;
 
 
 import com.czy.core.mvc.Pocket;
-import com.czy.dao.RoleMenuDao;
-import com.czy.dao.UserDao;
-import com.czy.dao.UserRoleDao;
 import com.czy.entity.po.Menu;
-import com.czy.entity.po.Role;
 import com.czy.entity.po.User;
-import com.czy.entity.po.UserRole;
 import com.czy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,14 +22,28 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private RoleMenuDao dao;
+    private UserService service;
 
     @RequestMapping("GetUsers")
     @Pocket(entity = {User.class, Menu.class})
-    public List<String> GetUsers() {
-        return dao.getPermissionsByUserId("1e6b2317-cee7-11e8-8984-1cb72c963248");
+    public List<User> GetUsers() {
+        return service.SelectList();
     }
 
-
+    @PostMapping("/login")
+    public User Login(String loginName, String password) {
+//        Subject currentUser = SecurityUtils.getSubject();
+//        UsernamePasswordToken token = new UsernamePasswordToken(loginName, password);
+//        //登录
+//        try {
+//            currentUser.login(token);
+//
+//        } catch (IncorrectCredentialsException i) {
+//            token.clear();
+//            throw new ServiceException("密码输入错误");
+//        }
+//        User user = (User) currentUser.getPrincipal();
+        return null;
+    }
 }
 

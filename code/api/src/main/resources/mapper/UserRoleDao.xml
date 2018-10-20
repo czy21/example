@@ -3,25 +3,29 @@
 <mapper namespace="com.czy.dao.UserRoleDao">
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.czy.entity.po.UserRole">
-        <result column="Id" property="Id"/>
-        <result column="AddedTime" property="AddedTime"/>
-        <result column="ModifiedTime" property="ModifiedTime"/>
-        <result column="UserId" property="UserId"/>
-        <result column="RoleId" property="RoleId"/>
+        <id column="UserRoleId" property="UserRoleId" />
+        <result column="AddedTime" property="AddedTime" />
+        <result column="ModifiedTime" property="ModifiedTime" />
+        <result column="AddedUser" property="AddedUser" />
+        <result column="ModifiedUser" property="ModifiedUser" />
+        <result column="UserId" property="UserId" />
+        <result column="RoleId" property="RoleId" />
     </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        Id,
         AddedTime,
         ModifiedTime,
+        AddedUser,
+        ModifiedUser,
+        UserRoleId
         UserId
         RoleId
     </sql>
     <!--根据用户id查询该用户所有角色-->
     <select id="getRolesByUserId" resultType="java.lang.String" parameterType="java.lang.String">
-        select r.Id
+        select r.RoleId
         from oa_user_role ur
-        left join oa_role r on ur.RoleId=r.Id
+        left join oa_role r on ur.RoleId=r.RoleId
         where ur.UserId=#{userId}
     </select>
 </mapper>

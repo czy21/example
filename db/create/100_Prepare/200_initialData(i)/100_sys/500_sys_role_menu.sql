@@ -1,1 +1,4 @@
-INSERT INTO `oa_role_menu` VALUES ('c65fe99b-d08e-11e8-958a-1cb72c963248', '2018-10-15 23:27:04', '2018-10-15 23:27:04', 'b7118e52-d082-11e8-958a-1cb72c963248', 'a25c2553-cfab-11e8-b266-1cb72c963248');
+set @RoleId=(select RoleId from oa_role where RoleName='管理员');
+set @MenuId=(select MenuId from oa_menu where MenuName='系统管理');
+insert into oa_role_menu(RoleMenuId,RoleId,MenuId,AddedTime,ModifiedTime,AddedUser,ModifiedUser)
+values(UUID(),@RoleId,@MenuId,NOW(),NOW(),NULL,NULL);

@@ -4,9 +4,9 @@ import ${package.Entity}.${entity};
 import ${superServiceClassPackage};
 
 /**
- * @Description ${entity} 服务类
- * @Author 陈昭宇
- * @Date $date
+ * @description ${entity} 服务类
+ * @author ${author}
+ * @since ${date}
  */
 public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
 

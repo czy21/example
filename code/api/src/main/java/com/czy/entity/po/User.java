@@ -1,18 +1,23 @@
 package com.czy.entity.po;
 
 import com.czy.core.universal.BaseEntity;
-import javax.persistence.Transient;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableField;
 
+import javax.persistence.Transient;
 import java.util.Set;
 
 /**
- * @Description User 实体
- * @Author 陈昭宇
- * @Date 2018-10-15
+ * 用户表
+ *
+ * @author 陈昭宇
+ * @since 2018-10-20
  */
 public class User extends BaseEntity<User> {
 
-    private Boolean Enabled;
+    @TableId
+    private String UserId;
     private String LoginName;
     private String Password;
     private String UserName;
@@ -20,18 +25,24 @@ public class User extends BaseEntity<User> {
     private String Phone;
     private Boolean IsHeader;
     private String DepartmentId;
+    private Boolean Enabled;
 
-    /**
-     * 用户所有角色值，用于shiro做角色权限的判断
-     */
+    private String Salt;
+
+    public String getSalt() {
+        return Salt;
+    }
+
+    public void setSalt(String salt) {
+        Salt = salt;
+    }
+
     @Transient
+    @TableField(exist = false)
     private Set<String> roles;
-
-    /**
-     * 用户所有权限值，用于shiro做资源权限的判断
-     */
     @Transient
-    private Set<String> perms;
+    @TableField(exist = false)
+    private Set<String> permissions;
 
     public Set<String> getRoles() {
         return roles;
@@ -41,20 +52,20 @@ public class User extends BaseEntity<User> {
         this.roles = roles;
     }
 
-    public Set<String> getPerms() {
-        return perms;
+    public Set<String> getPermissions() {
+        return permissions;
     }
 
-    public void setPerms(Set<String> perms) {
-        this.perms = perms;
+    public void setPermissions(Set<String> permissions) {
+        this.permissions = permissions;
     }
 
-    public Boolean getEnabled() {
-        return Enabled;
+    public String getUserId() {
+        return UserId;
     }
 
-    public void setEnabled(Boolean Enabled) {
-        this.Enabled = Enabled;
+    public void setUserId(String UserId) {
+        this.UserId = UserId;
     }
 
     public String getLoginName() {
@@ -113,17 +124,26 @@ public class User extends BaseEntity<User> {
         this.DepartmentId = DepartmentId;
     }
 
+    public Boolean getEnabled() {
+        return Enabled;
+    }
+
+    public void setEnabled(Boolean Enabled) {
+        this.Enabled = Enabled;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-        ", Enabled=" + Enabled +
-        ", LoginName=" + LoginName +
-        ", Password=" + Password +
-        ", UserName=" + UserName +
-        ", Email=" + Email +
-        ", Phone=" + Phone +
-        ", IsHeader=" + IsHeader +
-        ", DepartmentId=" + DepartmentId +
-        "}";
+                ", UserId=" + UserId +
+                ", LoginName=" + LoginName +
+                ", Password=" + Password +
+                ", UserName=" + UserName +
+                ", Email=" + Email +
+                ", Phone=" + Phone +
+                ", IsHeader=" + IsHeader +
+                ", DepartmentId=" + DepartmentId +
+                ", Enabled=" + Enabled +
+                "}";
     }
 }

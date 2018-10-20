@@ -1,1 +1,3 @@
-INSERT INTO `oa_user` VALUES ('1e6b2317-cee7-11e8-8984-1cb72c963248', '2018-10-13 20:54:22', '2018-10-13 20:54:22', b'1', 'admin', 'admin', '陈昭宇', '805899926@qq.com', NULL, b'0', 'd760b860-cee6-11e8-8984-1cb72c963248');
+set @DepartmentId = (select DepartmentId from oa_department where DepartmentName='研发部');
+insert into oa_user (UserId,LoginName,Password,UserName,Email,Phone,IsHeader,DepartmentId,AddedTime,ModifiedTime,AddedUser,ModifiedUser,Enabled)
+values(UUID(),'admin', 'admin', '管理员', '805899926@qq.com', NULL, 0, @DepartmentId,NOW(),NOW(),NULL,NULL,1);

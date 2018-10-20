@@ -3,10 +3,11 @@
 <mapper namespace="com.czy.dao.UserDao">
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.czy.entity.po.User">
-        <result column="Id" property="Id" />
+        <id column="UserId" property="UserId" />
         <result column="AddedTime" property="AddedTime" />
         <result column="ModifiedTime" property="ModifiedTime" />
-        <result column="Enabled" property="Enabled" />
+        <result column="AddedUser" property="AddedUser" />
+        <result column="ModifiedUser" property="ModifiedUser" />
         <result column="LoginName" property="LoginName" />
         <result column="Password" property="Password" />
         <result column="UserName" property="UserName" />
@@ -14,13 +15,16 @@
         <result column="Phone" property="Phone" />
         <result column="IsHeader" property="IsHeader" />
         <result column="DepartmentId" property="DepartmentId" />
+        <result column="Enabled" property="Enabled" />
+        <result column="Salt" property="Salt" />
     </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        Id,
         AddedTime,
         ModifiedTime,
-        Enabled
+        AddedUser,
+        ModifiedUser,
+        UserId
         LoginName
         Password
         UserName
@@ -28,6 +32,8 @@
         Phone
         IsHeader
         DepartmentId
+        Enabled
+        Salt
     </sql>
 
 </mapper>

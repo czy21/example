@@ -2,18 +2,30 @@ package com.czy.entity.po;
 
 import com.czy.core.universal.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 
 /**
- * @Description UserRole 实体
- * @Author 陈昭宇
- * @Date 2018-10-15
+ * 用户角色表
+ *
+ * @author 陈昭宇
+ * @since 2018-10-20
  */
 public class UserRole extends BaseEntity<UserRole> {
 
+    @TableId
+    private String UserRoleId;
     private String UserId;
     private String RoleId;
 
+
+    public String getUserRoleId() {
+        return UserRoleId;
+    }
+
+    public void setUserRoleId(String UserRoleId) {
+        this.UserRoleId = UserRoleId;
+    }
 
     public String getUserId() {
         return UserId;
@@ -34,8 +46,9 @@ public class UserRole extends BaseEntity<UserRole> {
     @Override
     public String toString() {
         return "UserRole{" +
-        ", UserId=" + UserId +
-        ", RoleId=" + RoleId +
-        "}";
+                ", UserRoleId=" + UserRoleId +
+                ", UserId=" + UserId +
+                ", RoleId=" + RoleId +
+                "}";
     }
 }

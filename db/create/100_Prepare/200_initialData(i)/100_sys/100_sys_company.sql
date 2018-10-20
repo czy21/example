@@ -1,1 +1,3 @@
-INSERT INTO `oa_company` VALUES ('1a245e4d-cee6-11e8-8984-1cb72c963248', '2018-10-13 20:47:06', '2018-10-13 20:47:06', b'1', '思梦科技', NULL, NULL, NULL, NULL, NULL, NULL);
+insert into oa_company (CompanyId,CompanyName,ContactPerson,Location,Phone,Fax,Postcode,Comment,AddedTime,ModifiedTime,AddedUser,ModifiedUser,Enabled) 
+values (UUID(),'Demo公司',NULL,NULL,NULL,NULL,NULL,NULL,NOW(),NOW(),NULL,NULL,1);
+

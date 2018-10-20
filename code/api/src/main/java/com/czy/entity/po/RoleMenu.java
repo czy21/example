@@ -2,18 +2,30 @@ package com.czy.entity.po;
 
 import com.czy.core.universal.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
 
 /**
- * @Description RoleMenu 实体
- * @Author 陈昭宇
- * @Date 2018-10-15
+ * 角色菜单表
+ *
+ * @author 陈昭宇
+ * @since 2018-10-20
  */
 public class RoleMenu extends BaseEntity<RoleMenu> {
 
+    @TableId
+    private String RoleMenuId;
     private String RoleId;
     private String MenuId;
 
+
+    public String getRoleMenuId() {
+        return RoleMenuId;
+    }
+
+    public void setRoleMenuId(String RoleMenuId) {
+        this.RoleMenuId = RoleMenuId;
+    }
 
     public String getRoleId() {
         return RoleId;
@@ -34,8 +46,9 @@ public class RoleMenu extends BaseEntity<RoleMenu> {
     @Override
     public String toString() {
         return "RoleMenu{" +
-        ", RoleId=" + RoleId +
-        ", MenuId=" + MenuId +
-        "}";
+                ", RoleMenuId=" + RoleMenuId +
+                ", RoleId=" + RoleId +
+                ", MenuId=" + MenuId +
+                "}";
     }
 }

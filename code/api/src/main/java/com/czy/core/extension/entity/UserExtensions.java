@@ -22,7 +22,7 @@ public class UserExtensions {
         HashMap<String, Object> hash = new HashMap<>();
         _dao.selectList(null).forEach((t) -> {
             SimpleItemModel temp = new SimpleItemModel();
-            temp.setValue(t.getId());
+            temp.setValue(t.getUserId());
             temp.setLabel(t.getUserName());
             simples.add(temp);
         });
