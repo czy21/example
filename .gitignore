@@ -1,4 +1,4 @@
 target/
 /_temp/
-/backup/
+backup/
 /script/.idea/
