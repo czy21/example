@@ -36,11 +36,8 @@ public class User extends BaseEntity<User> {
     public void setSalt(String salt) {
         Salt = salt;
     }
-
-    @Transient
     @TableField(exist = false)
     private Set<String> roles;
-    @Transient
     @TableField(exist = false)
     private Set<String> permissions;
 
