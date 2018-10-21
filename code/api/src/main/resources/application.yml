@@ -18,7 +18,4 @@ mybatis-plus:
       id-type: uuid
       table-prefix: oa_
       db-type: mysql
-#shiro:
-#  loginUrl: /shrioutils/noLigin
-#  unauthorizedUrl: /shiroUtils/noAuthorize
 
