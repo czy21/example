@@ -36,5 +36,6 @@ for r, s, fs in os.walk(prepare_path):
                 initdata_sql.close()
 temp_sql.seek(0)
 temp_sql.close()
-upgradecmd = "mysql " + db_name + " -u " + db_user + " -p" + db_pass + " < " + temp_sql.name
+upgradecmd = "mysql" + " -h" + db_host + " -D" + db_name + " -u" + db_user + " -p" + db_pass + " < " + temp_sql.name
+print(upgradecmd)
 os.system(upgradecmd)
