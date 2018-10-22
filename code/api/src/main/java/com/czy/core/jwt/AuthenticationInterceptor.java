@@ -1,6 +1,7 @@
 package com.czy.core.jwt;
 
 import com.alibaba.fastjson.JSONObject;
+import com.czy.core.exception.ResultMap;
 import com.czy.entity.po.User;
 import com.czy.service.RoleMenuService;
 import com.czy.service.UserService;
@@ -27,7 +28,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json; charset=utf-8");
-        PrintWriter out = null;
 
         String token = request.getHeader("Authorization");// 从 http 请求头中取出 token
         if (token != null) {
@@ -47,16 +47,12 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 }
             }
             try {
-                out = response.getWriter();
-                JSONObject json = new JSONObject();
-                json.put("status", "401");
-                json.put("message", "未授权");
-                out.append(json.toString());
-                return false;
+                return ResultMap.ResponseException(response.getWriter(), 401, "未授权");
             } catch (IOException e) {
                 e.printStackTrace();
                 return false;
             }
+
         } else {
             return request.getRequestURI().equals("/user/login");
         }
