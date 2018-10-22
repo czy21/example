@@ -1,4 +1,4 @@
-package com.czy.core.jwt;
+package com.czy.core.shiro;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -24,10 +24,11 @@ public class JwtUtil {
      */
     public static String GenerateToken(String loginName, String password) {
         try {
-//            Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
+            Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
             Algorithm algorithm = Algorithm.HMAC256(password);
             // 附带username信息
-            return JWT.create().withAudience(loginName)
+            return JWT.create().withClaim("loginName", loginName)
+                    .withExpiresAt(date)
                     .sign(algorithm);
         } catch (UnsupportedEncodingException e) {
             return null;
@@ -41,7 +42,7 @@ public class JwtUtil {
      * @param loginName 用户名
      * @return 是否正确
      */
-    public static boolean Verify(String token, String loginName) {
+    public static boolean Verify(String token, String loginName, String password) {
         try {
             Algorithm algorithm = Algorithm.HMAC256(SECRET);
             //在token中附带了username信息
