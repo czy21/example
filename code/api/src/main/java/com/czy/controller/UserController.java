@@ -2,15 +2,12 @@ package com.czy.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.czy.core.shiro.JwtUtil;
+import com.czy.core.jwt.JwtUtil;
 import com.czy.core.mvc.Pocket;
 import com.czy.entity.po.Menu;
 import com.czy.entity.po.User;
 import com.czy.service.UserRoleService;
 import com.czy.service.UserService;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.authz.annotation.RequiresAuthentication;
-import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,15 +29,7 @@ public class UserController {
 
     @RequestMapping("GetUsers")
     @Pocket(entity = {User.class, Menu.class})
-    @RequiresAuthentication
     public Object GetUsers() {
-//        List<String> roleList = service.getRolesByUserId("d22e7db4-d449-11e8-958a-1cb72c963248");
-//        Set<String> roles = new HashSet<>(roleList);
-//        User user = userService.SelectById("d22e7db4-d449-11e8-958a-1cb72c963248");
-//
-//        user.setRoles(roles);
-        Subject subject = SecurityUtils.getSubject();
-        subject.isAuthenticated();
         return userService.SelectList();
 
     }
