@@ -27,15 +27,6 @@ public class User extends BaseEntity<User> {
     private String DepartmentId;
     private Boolean Enabled;
 
-    private String Salt;
-
-    public String getSalt() {
-        return Salt;
-    }
-
-    public void setSalt(String salt) {
-        Salt = salt;
-    }
     @TableField(exist = false)
     private Set<String> roles;
     @TableField(exist = false)
