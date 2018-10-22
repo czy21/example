@@ -3,13 +3,11 @@ package com.czy.core.mvc;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import com.czy.core.jwt.AuthenticationInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.util.AntPathMatcher;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
@@ -20,16 +18,16 @@ import java.util.List;
 @Configuration
 public class MyWebMvcConfigurer extends WebMvcConfigurationSupport {
 
-    @Override
-    protected void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(authenticationInterceptor())
-                .addPathPatterns("/**");
-    }
-
-    @Bean
-    public AuthenticationInterceptor authenticationInterceptor() {
-        return new AuthenticationInterceptor();
-    }
+//    @Override
+//    protected void addInterceptors(InterceptorRegistry registry) {
+//        registry.addInterceptor(authenticationInterceptor())
+//                .addPathPatterns("/**");
+//    }
+//
+//    @Bean
+//    public AuthenticationInterceptor authenticationInterceptor() {
+//        return new AuthenticationInterceptor();
+//    }
 
     @Override
     protected PathMatchConfigurer getPathMatchConfigurer() {
