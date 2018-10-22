@@ -1,4 +1,4 @@
-package com.czy.core.jwt;
+package com.czy.core.shiro;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.JWTVerifier;
@@ -25,7 +25,6 @@ public class JwtUtil {
         try {
             Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
             Algorithm algorithm = Algorithm.HMAC256(password);
-            // 附带username信息
             return JWT.create()
                     .withClaim("loginName", loginName)
                     .withExpiresAt(date)
