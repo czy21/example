@@ -13,21 +13,22 @@ public class JwtUtil {
 
     // 过期时间 24 小时
     private static final long EXPIRE_TIME = 60 * 24 * 60 * 1000;
-    // 密钥
-    private static final String SECRET = "SHIRO+JWT";
 
     /**
-     * 生成 token, 5min后过期
+     * 生成 token
      *
      * @param loginName 用户名
+     * @param password  密码
      * @return 加密的token
      */
     public static String GenerateToken(String loginName, String password) {
         try {
-//            Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
+            Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
             Algorithm algorithm = Algorithm.HMAC256(password);
             // 附带username信息
-            return JWT.create().withAudience(loginName)
+            return JWT.create()
+                    .withClaim("loginName", loginName)
+                    .withExpiresAt(date)
                     .sign(algorithm);
         } catch (UnsupportedEncodingException e) {
             return null;
@@ -39,11 +40,12 @@ public class JwtUtil {
      *
      * @param token     密钥
      * @param loginName 用户名
+     * @param password  密码
      * @return 是否正确
      */
-    public static boolean Verify(String token, String loginName) {
+    public static boolean Verify(String token, String loginName, String password) {
         try {
-            Algorithm algorithm = Algorithm.HMAC256(SECRET);
+            Algorithm algorithm = Algorithm.HMAC256(password);
             //在token中附带了username信息
             JWTVerifier verifier = JWT.require(algorithm)
                     .withClaim("loginName", loginName)

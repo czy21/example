@@ -22,10 +22,10 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         if (request.getRequestURI().equals("/user/login")) {
             return true;
         }
-        if (token == null) {
+
 //            throw new RuntimeException("无token，请重新登录");
-//            String loginName = JwtUtil.GetLoginName(token);
-        }
+//        String loginName = JwtUtil.GetLoginName(token);
+        boolean temp = JwtUtil.Verify(token, "admin", "123456");
 
 
         return true;

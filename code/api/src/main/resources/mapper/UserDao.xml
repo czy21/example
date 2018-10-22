@@ -16,7 +16,6 @@
         <result column="IsHeader" property="IsHeader" />
         <result column="DepartmentId" property="DepartmentId" />
         <result column="Enabled" property="Enabled" />
-        <result column="Salt" property="Salt" />
     </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
@@ -33,7 +32,6 @@
         IsHeader
         DepartmentId
         Enabled
-        Salt
     </sql>
 
 </mapper>
