@@ -26,8 +26,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 //            throw new RuntimeException("无token，请重新登录");
 //        String loginName = JwtUtil.GetLoginName(token);
         boolean temp = JwtUtil.Verify(token, "admin", "123456");
-
-
+        
         return true;
     }
 
