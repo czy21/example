@@ -35,6 +35,16 @@ public class JwtUtil {
         }
     }
 
+//    public static String UpdateToken(String token){
+//
+//
+//        JWT.re
+//
+//
+//
+//
+//    }
+
     /**
      * 校验 token 是否正确
      *

@@ -1,18 +1,16 @@
 package com.czy.core.jwt;
 
-import com.alibaba.fastjson.JSONObject;
 import com.czy.core.exception.ResultMap;
+import com.czy.core.extension.StringExtension;
 import com.czy.entity.po.User;
 import com.czy.service.RoleMenuService;
 import com.czy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 
 public class AuthenticationInterceptor implements HandlerInterceptor {
@@ -25,10 +23,6 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-
-        response.setCharacterEncoding("UTF-8");
-        response.setContentType("application/json; charset=utf-8");
-
         String token = request.getHeader("Authorization");// 从 http 请求头中取出 token
         if (token != null) {
             String loginName = JwtUtil.GetLoginName(token);
@@ -40,21 +34,20 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                         if (user.getLoginName().equals("admin")) {
                             return true;
                         }
-                        if (apis.contains(request.getRequestURI())) {
+                        if (StringExtension.ConvertAllToLower(apis).contains((request.getRequestURI()))) {
                             return true;
                         }
                     }
                 }
             }
-            try {
-                return ResultMap.ResponseException(response.getWriter(), 401, "未授权");
-            } catch (IOException e) {
-                e.printStackTrace();
-                return false;
-            }
-
-        } else {
-            return request.getRequestURI().equals("/user/login");
+        }
+        try {
+            response.setCharacterEncoding("UTF-8");
+            response.setContentType("application/json; charset=utf-8");
+            return ResultMap.ResponseException(response.getWriter(), 401, "未授权");
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 
