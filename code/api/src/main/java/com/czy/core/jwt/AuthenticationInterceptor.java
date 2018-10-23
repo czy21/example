@@ -1,6 +1,7 @@
 package com.czy.core.jwt;
 
-import com.czy.core.exception.ResultMap;
+import com.czy.core.exception.ErrorCode;
+import com.czy.core.exception.WebException;
 import com.czy.core.extension.StringExtension;
 import com.czy.entity.po.User;
 import com.czy.service.RoleMenuService;
@@ -8,9 +9,9 @@ import com.czy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
 public class AuthenticationInterceptor implements HandlerInterceptor {
@@ -38,17 +39,11 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                             return true;
                         }
                     }
+                    throw new WebException(ErrorCode.NO_AUTH, "未授权");
                 }
             }
         }
-        try {
-            response.setCharacterEncoding("UTF-8");
-            response.setContentType("application/json; charset=utf-8");
-            return ResultMap.ResponseException(response.getWriter(), 401, "未授权");
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
+        throw new WebException(ErrorCode.NO_TOKEN, "Token为空");
     }
 
     @Override

@@ -61,12 +61,11 @@ public class BaseServiceImpl<TEntity> implements BaseService<TEntity> {
     public TEntity SelectBy(String fieldName, String value) {
 
         try {
-            TEntity model = modelClass.newInstance();
             Field field = modelClass.getDeclaredField(fieldName);
             field.setAccessible(true);
-            QueryWrapper<TEntity> wra = new QueryWrapper<TEntity>();
+            QueryWrapper<TEntity> wra = new QueryWrapper<>();
             wra.eq(field.getName(), value);
-            return baseDao.selectOne(wra);
+            return baseDao.selectList(wra).get(0);
         } catch (ReflectiveOperationException e) {
             throw new ServiceException(e.getMessage(), e);
         }
@@ -79,6 +78,6 @@ public class BaseServiceImpl<TEntity> implements BaseService<TEntity> {
 
     @Override
     public List<TEntity> SelectListBy(Wrapper<TEntity> wrapper) {
-        return null;
+        return baseDao.selectList(wrapper);
     }
 }

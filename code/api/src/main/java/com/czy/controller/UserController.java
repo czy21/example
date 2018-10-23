@@ -30,7 +30,7 @@ public class UserController {
     @RequestMapping("GetUsers")
     @Pocket(entity = {User.class, Menu.class})
     public Object GetUsers() {
-        return userService.SelectList();
+        return userService.SelectBy("LoginName", "admin");
 
     }
 
