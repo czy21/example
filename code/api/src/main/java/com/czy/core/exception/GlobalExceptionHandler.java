@@ -11,8 +11,8 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(WebException.class)
     public Object handleException(WebException e) {
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("error", e.getStatus());
-        jsonObject.put("message", e.getMessage());
+        jsonObject.put("ErrorCode", e.getErrorCode());
+        jsonObject.put("Message", e.getMessage());
         return jsonObject;
     }
 }
