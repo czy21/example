@@ -2,28 +2,18 @@ package com.czy.core.exception;
 
 public class WebException extends RuntimeException {
 
-    private String status;
-    private String message;
+    private String ErrorCode;
 
-    public String getStatus() {
-        return status;
+    public String getErrorCode() {
+        return ErrorCode;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setErrorCode(String errorCode) {
+        ErrorCode = errorCode;
     }
 
-    @Override
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public WebException(String _status, String _message) {
-        status = _status;
-        message = _message;
+    public WebException(String _errorCode, String _message) {
+        super(_message);
+        ErrorCode = _errorCode;
     }
 }
