@@ -3,13 +3,13 @@
 <mapper namespace="com.czy.dao.RoleMenuDao">
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.czy.entity.po.RoleMenu">
-        <id column="RoleMenuId" property="RoleMenuId" />
-        <result column="AddedTime" property="AddedTime" />
-        <result column="ModifiedTime" property="ModifiedTime" />
-        <result column="AddedUser" property="AddedUser" />
-        <result column="ModifiedUser" property="ModifiedUser" />
-        <result column="RoleId" property="RoleId" />
-        <result column="MenuId" property="MenuId" />
+        <id column="RoleMenuId" property="RoleMenuId"/>
+        <result column="AddedTime" property="AddedTime"/>
+        <result column="ModifiedTime" property="ModifiedTime"/>
+        <result column="AddedUser" property="AddedUser"/>
+        <result column="ModifiedUser" property="ModifiedUser"/>
+        <result column="RoleId" property="RoleId"/>
+        <result column="MenuId" property="MenuId"/>
     </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
@@ -30,6 +30,7 @@
         oa_user_role ur
         where
         m.MenuId=rm.MenuId
+        and m.IsMenu=false
         and ur.RoleId=rm.RoleId
         and ur.UserId=#{userId}
     </select>

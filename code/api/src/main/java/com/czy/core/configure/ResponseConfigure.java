@@ -1,6 +1,7 @@
-package com.czy.core.mvc;
+package com.czy.core.configure;
 
 
+import com.czy.core.mvc.Pocket;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 
 
 @ControllerAdvice
-public class ResponseConfig implements ResponseBodyAdvice {
+public class ResponseConfigure implements ResponseBodyAdvice {
 
     @Override
     public boolean supports(MethodParameter returnType, Class converterType) {
@@ -26,7 +27,7 @@ public class ResponseConfig implements ResponseBodyAdvice {
         if (returnType.hasMethodAnnotation(Pocket.class)) {
             Pocket pocket = returnType.getMethodAnnotation(Pocket.class);
             if (pocket != null) {
-                res.put("pocket", PocketConfig.InjectData(Arrays.asList(pocket.entity())));
+                res.put("pocket", PocketConfigure.InjectData(Arrays.asList(pocket.entity())));
             }
         }
         res.put("data", body);

@@ -1,4 +1,4 @@
-package com.czy.core.mvc;
+package com.czy.core.configure;
 
 
 import com.czy.core.extension.entity.MenuExtensions;
@@ -7,7 +7,7 @@ import com.czy.core.extension.entity.UserExtensions;
 import java.util.HashMap;
 import java.util.List;
 
-public class PocketConfig {
+public class PocketConfigure {
 
     public static HashMap<String, Object> InjectData(List<Class> clazz) {
         HashMap<String, Object> hash = new HashMap<>();

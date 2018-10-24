@@ -4,16 +4,20 @@ package com.czy.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.czy.core.exception.ErrorCode;
 import com.czy.core.exception.WebException;
-import com.czy.core.jwt.JwtUtil;
+import com.czy.core.util.JwtUtil;
 import com.czy.core.mvc.Pocket;
+import com.czy.entity.map.UserMap;
 import com.czy.entity.po.Menu;
 import com.czy.entity.po.User;
+import com.czy.entity.vo.UserDto;
 import com.czy.service.UserRoleService;
 import com.czy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @Description User 前端控制器
@@ -29,11 +33,13 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private UserMap userMap;
+
     @RequestMapping("GetUsers")
     @Pocket(entity = {User.class, Menu.class})
-    public Object GetUsers() {
-        return userService.SelectBy("LoginName", "admin");
-
+    public List<UserDto> GetUsers() {
+        return userMap.toUserDtos(userService.SelectList());
     }
 
     @PostMapping("/login")
@@ -46,8 +52,8 @@ public class UserController {
         if (!user.getPassword().equals(password)) {
             throw new WebException(ErrorCode.PASSWORD_ERROR, "密码错误");
         }
-        String token = JwtUtil.GenerateToken(user.getLoginName(), user.getPassword());
-        json.put("token", token);
+        json.put("token", JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));
+        json.put("userInfo", userMap.toLoginDto(user));
         return json;
     }
 }

@@ -1,9 +1,9 @@
-package com.czy.core.mvc;
+package com.czy.core.configure;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
-import com.czy.core.jwt.AuthenticationInterceptor;
+import com.czy.core.mvc.AuthenticationInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
-public class MyWebMvcConfigurer extends WebMvcConfigurationSupport {
+public class WebMvcConfigure extends WebMvcConfigurationSupport {
 
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
