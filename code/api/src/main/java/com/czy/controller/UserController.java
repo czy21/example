@@ -2,6 +2,8 @@ package com.czy.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.czy.core.exception.ErrorCode;
+import com.czy.core.exception.WebException;
 import com.czy.core.jwt.JwtUtil;
 import com.czy.core.mvc.Pocket;
 import com.czy.entity.po.Menu;
@@ -36,23 +38,17 @@ public class UserController {
 
     @PostMapping("/login")
     public Object Login(String loginName, String password) {
-
         JSONObject json = new JSONObject();
         User user = userService.SelectBy("LoginName", loginName);
         if (user == null) {
-            json.put("message", "登录失败,用户不存在");
-            return json;
-        } else {
-            if (!user.getPassword().equals(password)) {
-                json.put("message", "登录失败,密码错误");
-                return json;
-            } else {
-                String token = JwtUtil.GenerateToken(user.getLoginName(), user.getPassword());
-                json.put("token", token);
-                json.put("user", user);
-                return json;
-            }
+            throw new WebException(ErrorCode.NO_USER, "用户不存在");
         }
+        if (!user.getPassword().equals(password)) {
+            throw new WebException(ErrorCode.PASSWORD_ERROR, "密码错误");
+        }
+        String token = JwtUtil.GenerateToken(user.getLoginName(), user.getPassword());
+        json.put("token", token);
+        return json;
     }
 }
 

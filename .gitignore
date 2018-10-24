@@ -2,3 +2,4 @@ target/
 /_temp/
 backup/
 /script/.idea/
+/script/__pycache__

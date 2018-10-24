@@ -19,7 +19,7 @@ public class MenuExtensions {
 
     public static List<SimpleItemModel> ConvertToSimple() {
 
-        ArrayList simples = new ArrayList();
+        List<SimpleItemModel> simples = new ArrayList<>();
         _dao.selectList(null).forEach((t) -> {
             SimpleItemModel temp = new SimpleItemModel();
             temp.setValue(t.getMenuId());

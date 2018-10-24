@@ -8,10 +8,6 @@ public class WebException extends RuntimeException {
         return ErrorCode;
     }
 
-    public void setErrorCode(String errorCode) {
-        ErrorCode = errorCode;
-    }
-
     public WebException(String _errorCode, String _message) {
         super(_message);
         ErrorCode = _errorCode;
