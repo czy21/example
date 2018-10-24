@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -21,9 +19,6 @@ public class BaseServiceImpl<TEntity> implements BaseService<TEntity> {
     @Autowired
     private BaseDao<TEntity> baseDao;
 
-    /**
-     * 当前泛型真实类型的Class
-     */
     private Class<TEntity> modelClass;
 
     @SuppressWarnings("unchecked")

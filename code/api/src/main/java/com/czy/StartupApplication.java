@@ -1,7 +1,6 @@
 package com.czy;
 
 
-import com.czy.core.util.SpringContextProvider;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

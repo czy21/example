@@ -1,8 +1,9 @@
-package com.czy.core.jwt;
+package com.czy.core.mvc;
 
 import com.czy.core.exception.ErrorCode;
 import com.czy.core.exception.WebException;
 import com.czy.core.extension.StringExtension;
+import com.czy.core.util.JwtUtil;
 import com.czy.entity.po.User;
 import com.czy.service.RoleMenuService;
 import com.czy.service.UserService;
@@ -31,11 +32,11 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 User user = userService.SelectBy("LoginName", loginName);
                 if (user != null) {
                     if (JwtUtil.Verify(token, user.getLoginName(), user.getPassword())) {
-                        List<String> apis = roleMenuService.getPermissionsByUserId(user.getUserId());
                         if (user.getLoginName().equals("admin")) {
                             return true;
                         }
-                        if (StringExtension.ConvertAllToLower(apis).contains((request.getRequestURI()))) {
+                        List<String> apis = roleMenuService.getPermissionsByUserId(user.getUserId());
+                        if (StringExtension.ConvertAllToLower(apis).contains((request.getRequestURI().toLowerCase()))) {
                             return true;
                         }
                     }

@@ -1,5 +1,6 @@
 package com.czy.core.exception;
 
+
 public class WebException extends RuntimeException {
 
     private String ErrorCode;

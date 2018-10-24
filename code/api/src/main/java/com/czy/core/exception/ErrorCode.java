@@ -8,5 +8,4 @@ public class ErrorCode {
     public static final String PASSWORD_ERROR = "PASSWORD_ERROR";
     public static final String NAME_EXIST = "NAME_EXIST";
 
-
 }

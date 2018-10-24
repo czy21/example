@@ -1,6 +1,5 @@
 package com.czy.core.universal;
 
-import com.baomidou.mybatisplus.extension.activerecord.Model;
 import lombok.Data;
 
 import java.time.LocalDateTime;
