@@ -24,7 +24,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
-        String token = request.getHeader("Authorization");// 从 http 请求头中取出 token
+        String token = request.getHeader("Authorization");
         if (token != null) {
             String loginName = JwtUtil.GetLoginName(token);
             if (loginName != null) {
@@ -43,7 +43,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                 }
             }
         }
-        throw new WebException(ErrorCode.NO_TOKEN, "Token为空");
+        throw new WebException(ErrorCode.TOKEN_ERROR, "令牌为空或输入有误");
     }
 
     @Override
