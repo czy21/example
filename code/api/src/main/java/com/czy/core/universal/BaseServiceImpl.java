@@ -60,7 +60,7 @@ public class BaseServiceImpl<TEntity> implements BaseService<TEntity> {
             field.setAccessible(true);
             QueryWrapper<TEntity> wra = new QueryWrapper<>();
             wra.eq(field.getName(), value);
-            return baseDao.selectList(wra).get(0);
+            return baseDao.selectOne(wra.last("limit 1"));
         } catch (ReflectiveOperationException e) {
             throw new ServiceException(e.getMessage(), e);
         }

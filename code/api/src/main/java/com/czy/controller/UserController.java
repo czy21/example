@@ -38,8 +38,8 @@ public class UserController {
 
     @RequestMapping("GetUsers")
     @Pocket(entity = {User.class, Menu.class})
-    public List<UserDto> GetUsers() {
-        return userMap.toUserDtos(userService.SelectList());
+    public UserDto GetUsers() {
+        return userMap.toUserDto(userService.SelectBy("LoginName", "admin"));
     }
 
     @PostMapping("/login")
