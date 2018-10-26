@@ -2,14 +2,14 @@ server:
   port: 8075
 spring:
   datasource:
-    url: jdbc:mysql://47.106.191.56:3306/czy_oa?&serverTimezone=UTC&characterEncoding=utf-8&useSSL=false&useUnicode=true
+    url: jdbc:mysql://localhost:30572/czy_oa?&serverTimezone=UTC&characterEncoding=utf-8&useSSL=false&useUnicode=true
     username: root
     password: czy101048
     driver-class-name: com.mysql.cj.jdbc.Driver
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: false
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath:/mapper/*.xml
   type-aliases-package: com.czy.entity.po
   type-aliases-super-type: com.czy.core.universal.BaseEntity
@@ -19,4 +19,6 @@ mybatis-plus:
       id-type: uuid
       table-prefix: oa_
       db-type: mysql
-
+#logging:
+#  level: debug
+#  file: log\myspringboot.log
