@@ -4,7 +4,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
-      url: jdbc:mysql://localhost:30572/czy_oa?&serverTimezone=UTC&characterEncoding=utf-8&useSSL=false&useUnicode=true
+      url: jdbc:mysql://localhost:30572/czy_oa?&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true
       username: root
       password: czy101048
       driver-class-name: com.mysql.cj.jdbc.Driver

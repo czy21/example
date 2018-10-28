@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
+import com.czy.entity.po.User;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
@@ -13,6 +14,16 @@ public class JwtUtil {
 
     // 过期时间 24 小时
     private static final long EXPIRE_TIME = 60 * 24 * 60 * 1000;
+
+    private static User currentUser;
+
+    public static User getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(User currentUser) {
+        JwtUtil.currentUser = currentUser;
+    }
 
     /**
      * 生成 token

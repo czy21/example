@@ -31,6 +31,10 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
             if (loginName != null) {
                 User user = userService.SelectBy("LoginName", loginName);
                 if (user != null) {
+                    User currentUser = JwtUtil.getCurrentUser();
+                    if (currentUser == null || !currentUser.getLoginName().equals(user.getLoginName())) {
+                        JwtUtil.setCurrentUser(user);
+                    }
                     if (JwtUtil.Verify(token, user.getLoginName(), user.getPassword())) {
                         if (user.getLoginName().equals("admin")) {
                             return true;

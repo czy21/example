@@ -6,7 +6,7 @@ CREATE TABLE `oa_log`  (
   `RequestIp` varchar(30) DEFAULT NULL COMMENT '请求的ip',
   `ExceptionCode` varchar(50) DEFAULT NULL COMMENT '异常错误码',
   `ExceptionDetail` varchar(255) DEFAULT NULL COMMENT '异常详情',
-  `UserId` varchar(32) DEFAULT NULL COMMENT '请求的用户id',
+  `UserId` varchar(36) DEFAULT NULL COMMENT '请求的用户id',
   `AddedTime` datetime(0) DEFAULT NULL,
   PRIMARY KEY (`LogId`) 
 ) COMMENT='系统日志表';
