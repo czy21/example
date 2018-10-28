@@ -3,15 +3,15 @@
 <mapper namespace="com.czy.dao.LogDao">
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.czy.entity.po.Log">
-        <id column="LogId" property="LogId" />
-        <result column="AddedTime" property="AddedTime" />
-        <result column="Description" property="Description" />
-        <result column="Method" property="Method" />
-        <result column="LogType" property="LogType" />
-        <result column="RequestIp" property="RequestIp" />
-        <result column="ExceptionCode" property="ExceptionCode" />
-        <result column="ExceptionDetail" property="ExceptionDetail" />
-        <result column="UserId" property="UserId" />
+        <id column="LogId" property="LogId"/>
+        <result column="AddedTime" property="AddedTime"/>
+        <result column="Description" property="Description"/>
+        <result column="Method" property="Method"/>
+        <result column="LogType" property="LogType"/>
+        <result column="RequestIp" property="RequestIp"/>
+        <result column="ExceptionCode" property="ExceptionCode"/>
+        <result column="ExceptionDetail" property="ExceptionDetail"/>
+        <result column="UserId" property="UserId"/>
     </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
@@ -25,5 +25,23 @@
         ExceptionDetail
         UserId
     </sql>
+    <insert id="insertByBatch" parameterType="java.util.List">
+        insert into oa_log(LogId,Description, Method,LogType,RequestIp,ExceptionCode,ExceptionDetail, UserId,AddedTime)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{item.LogId,jdbcType=VARCHAR},
+            #{item.Description,jdbcType=VARCHAR},
+            #{item.Method,jdbcType=VARCHAR},
+            #{item.LogType,jdbcType=BOOLEAN},
+            #{item.RequestIp,jdbcType=VARCHAR},
+            #{item.ExceptionCode,jdbcType=VARCHAR},
+            #{item.ExceptionDetail,jdbcType=VARCHAR},
+            #{item.UserId,jdbcType=VARCHAR},
+            #{item.AddedTime,jdbcType=TIMESTAMP}
+            )
+        </foreach>
+
+    </insert>
 
 </mapper>

@@ -1,14 +1,9 @@
 package com.czy.core.aop;
 
-import com.alibaba.fastjson.JSON;
 import com.czy.core.exception.ServiceException;
 import com.czy.core.util.DateTimeUtil;
+import com.czy.core.util.JwtUtil;
 import com.czy.entity.po.Log;
-import com.czy.service.LogService;
-import org.apache.ibatis.javassist.*;
-import org.apache.ibatis.javassist.bytecode.CodeAttribute;
-import org.apache.ibatis.javassist.bytecode.LocalVariableAttribute;
-import org.apache.ibatis.javassist.bytecode.MethodInfo;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
@@ -19,14 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.lang.reflect.Method;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 @Aspect
 @Component
@@ -35,7 +23,7 @@ public class AspectLog {
     private static Logger logger = LoggerFactory.getLogger(AspectLog.class);
 
     @Resource
-    private LogService logService;
+    private LogQueue logQueue;
 
     /*
     定义切点
@@ -47,11 +35,9 @@ public class AspectLog {
 
     @Before("methodCachePointcut()")
     public void doBefore(JoinPoint point) throws Exception {
-
         Log log = getSystemLogInit(point);
         log.setLogType(Log.LogInfo);
-        logService.Insert(log);
-
+        logQueue.add(log);
     }
 
     /**
@@ -69,7 +55,7 @@ public class AspectLog {
                 log.setLogType(Log.LogError);
                 log.setExceptionCode(e.getClass().getName());
                 log.setExceptionDetail(e.getMessage());
-                logService.Insert(log);
+                logQueue.add(log);
             } catch (Exception ex) {
                 logger.error("==异常通知异常==");
                 logger.error("异常信息:{}", ex.getMessage());
@@ -81,18 +67,14 @@ public class AspectLog {
         Log log = new Log();
         try {
             //类名
-            String targetClass = p.getTarget().getClass().toString();
+            String targetClass = p.getTarget().getClass().getSimpleName();
             //请求的方法名
             String tartgetMethod = p.getSignature().getName();
-            //获取类名  UserController
-            String classType = p.getTarget().getClass().getName();
-            Class<?> clazz = Class.forName(classType);
-            String clazzName = clazz.getName();
             log.setDescription(getMthodRemark(p));
-            log.setMethod(targetClass + "." + tartgetMethod);
+            log.setMethod(targetClass + "->" + tartgetMethod);
             //大家可自行百度获取ip的方法
-            log.setRequestIp("192.168.1.104");
-//            log.setUserId(getUserId());
+            log.setRequestIp("127.0.0.1");
+            log.setUserId(JwtUtil.getCurrentUser().getUserId());
             log.setAddedTime(DateTimeUtil.getCurrentDateTime());
         } catch (Exception ex) {
             logger.error("==异常通知异常==");
@@ -114,29 +96,19 @@ public class AspectLog {
         Object[] arguments = joinPoint.getArgs();
         Class targetClass = Class.forName(targetName);
         Method[] method = targetClass.getMethods();
-        String methode = "";
+        String methodRemark = "";
         for (Method m : method) {
             if (m.getName().equals(methodName)) {
                 Class[] tmpCs = m.getParameterTypes();
                 if (tmpCs.length == arguments.length) {
                     AnnotationLog methodCache = m.getAnnotation(AnnotationLog.class);
                     if (methodCache != null) {
-                        methode = methodCache.remark();
+                        methodRemark = methodCache.remark();
                     }
                     break;
                 }
             }
         }
-        return methode;
+        return methodRemark;
     }
-
-//    private static String getUserId() {
-//        String userId = "";
-//        UserInfo userInfo = (UserInfo) SecurityUtils.getSubject().getPrincipal();
-//        if (userInfo != null) {
-//            userId = userInfo.getId();
-//        }
-//        return userId;
-//    }
-
 }
