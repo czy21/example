@@ -2,6 +2,7 @@ package com.czy.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
+import com.czy.core.aop.AnnotationLog;
 import com.czy.core.exception.ErrorCode;
 import com.czy.core.exception.WebException;
 import com.czy.core.util.JwtUtil;
@@ -37,7 +38,8 @@ public class UserController {
     private UserMap userMap;
 
     @RequestMapping("GetUsers")
-    @Pocket(entity = {User.class, Menu.class})
+    @AnnotationLog(remark = "查询用户列表")
+//    @Pocket(entity = {User.class, Menu.class})
     public UserDto GetUsers() {
         return userMap.toUserDto(userService.SelectBy("LoginName", "admin"));
     }
