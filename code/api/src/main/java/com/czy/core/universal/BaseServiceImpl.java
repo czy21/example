@@ -75,4 +75,17 @@ public class BaseServiceImpl<TEntity> implements BaseService<TEntity> {
     public List<TEntity> SelectListBy(Wrapper<TEntity> wrapper) {
         return baseDao.selectList(wrapper);
     }
+
+    @Override
+    public List<TEntity> SelectListBy(String fieldName, String value) {
+        try {
+            Field field = modelClass.getDeclaredField(fieldName);
+            field.setAccessible(true);
+            QueryWrapper<TEntity> wra = new QueryWrapper<>();
+            wra.eq(field.getName(), value);
+            return baseDao.selectList(wra);
+        } catch (ReflectiveOperationException e) {
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
 }

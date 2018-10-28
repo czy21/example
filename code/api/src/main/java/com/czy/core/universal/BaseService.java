@@ -84,4 +84,13 @@ public interface BaseService<TEntity> {
      */
     List<TEntity> SelectListBy(Wrapper<TEntity> wrapper);
 
+    /*
+     * @Author 陈昭宇
+     * @Description 根据字段获取实体集合
+     * @Date 2018/7/26
+     * @Param [fieldName, value]
+     * @Return java.util.List<TEntity>
+     */
+    List<TEntity> SelectListBy(String fieldName, String value);
+
 }
