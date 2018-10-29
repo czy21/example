@@ -4,6 +4,7 @@ import com.czy.core.exception.ServiceException;
 import com.czy.core.util.DateTimeUtil;
 import com.czy.core.util.JwtUtil;
 import com.czy.entity.po.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;

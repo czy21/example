@@ -1,7 +1,7 @@
 # !/usr/bin/env python
 import os
 import tempfile
-from common import prepare_path, _temp_db_path, db_host, db_name, db_user, db_pass
+from common import prepare_path, _temp_db_path, db_host, db_name, db_user, db_pass, db_port
 
 temp_sql = tempfile.NamedTemporaryFile('w+', suffix=".sql", dir=_temp_db_path, delete=False, encoding="utf-8")
 for r, s, fs in os.walk(prepare_path):
@@ -21,5 +21,5 @@ for r, s, fs in os.walk(prepare_path):
                 initdata_sql.close()
 temp_sql.seek(0)
 temp_sql.close()
-upgradecmd = "mysql" + " -h" + db_host + " -D" + db_name + " -u" + db_user + " -p" + db_pass + " < " + temp_sql.name
+upgradecmd = "mysql" + " -h" + db_host + " -P" + db_port + " -D" + db_name + " -u" + db_user + " -p" + db_pass + " < " + temp_sql.name
 os.system(upgradecmd)
