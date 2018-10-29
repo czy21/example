@@ -16,11 +16,9 @@ public class DruidMonitorConfigure {
         ServletRegistrationBean<StatViewServlet> bean = new ServletRegistrationBean<>(new StatViewServlet(), "/druid/*");
         bean.addInitParameter("allow", "127.0.0.1");//多个ip逗号隔开
         bean.addInitParameter("loginUsername", "admin");
-        bean.addInitParameter("loginPassword", "123456");
+        bean.addInitParameter("loginPassword", "admin");
         bean.addInitParameter("resetEnable", "false");
         return bean;
-
-
     }
 
     @Bean

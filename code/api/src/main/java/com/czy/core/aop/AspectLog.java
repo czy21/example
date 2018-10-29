@@ -4,7 +4,6 @@ import com.czy.core.exception.ServiceException;
 import com.czy.core.util.DateTimeUtil;
 import com.czy.core.util.JwtUtil;
 import com.czy.entity.po.Log;
-import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
@@ -16,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.lang.reflect.Method;
+import java.net.InetAddress;
 
 @Aspect
 @Component
@@ -67,14 +67,11 @@ public class AspectLog {
     private Log getSystemLogInit(JoinPoint p) {
         Log log = new Log();
         try {
-            //类名
             String targetClass = p.getTarget().getClass().getSimpleName();
-            //请求的方法名
             String tartgetMethod = p.getSignature().getName();
             log.setDescription(getMthodRemark(p));
             log.setMethod(targetClass + "->" + tartgetMethod);
-            //大家可自行百度获取ip的方法
-            log.setRequestIp("127.0.0.1");
+            log.setRequestIp(InetAddress.getLocalHost().getHostAddress());
             log.setUserId(JwtUtil.getCurrentUser().getUserId());
             log.setAddedTime(DateTimeUtil.getCurrentDateTime());
         } catch (Exception ex) {
