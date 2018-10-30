@@ -4,25 +4,21 @@ import com.czy.core.exception.ServiceException;
 import com.czy.core.util.DateTimeUtil;
 import com.czy.core.util.JwtUtil;
 import com.czy.entity.po.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
-
 import javax.annotation.Resource;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 
 @Aspect
 @Component
+@Slf4j
 public class AspectLog {
-
-    private static Logger logger = LoggerFactory.getLogger(AspectLog.class);
-
     @Resource
     private LogQueue logQueue;
 
@@ -36,9 +32,9 @@ public class AspectLog {
 
     @Before("methodCachePointcut()")
     public void doBefore(JoinPoint point) throws Exception {
-        Log log = getSystemLogInit(point);
-        log.setLogType(Log.LogInfo);
-        logQueue.add(log);
+        Log sysLog = getSystemLogInit(point);
+        sysLog.setLogType(Log.LogInfo);
+        logQueue.add(sysLog);
     }
 
     /**
@@ -52,33 +48,33 @@ public class AspectLog {
         //业务异常不用记录
         if (!(e instanceof ServiceException)) {
             try {
-                Log log = getSystemLogInit(p);
-                log.setLogType(Log.LogError);
-                log.setExceptionCode(e.getClass().getName());
-                log.setExceptionDetail(e.getMessage());
-                logQueue.add(log);
+                Log sysLog = getSystemLogInit(p);
+                sysLog.setLogType(Log.LogError);
+                sysLog.setExceptionCode(e.getClass().getName());
+                sysLog.setExceptionDetail(e.getMessage());
+                logQueue.add(sysLog);
             } catch (Exception ex) {
-                logger.error("==异常通知异常==");
-                logger.error("异常信息:{}", ex.getMessage());
+                log.error("==异常通知异常==");
+                log.error("异常信息:{}", ex.getMessage());
             }
         }
     }
 
     private Log getSystemLogInit(JoinPoint p) {
-        Log log = new Log();
+        Log sysLog = new Log();
         try {
             String targetClass = p.getTarget().getClass().getSimpleName();
             String tartgetMethod = p.getSignature().getName();
-            log.setDescription(getMthodRemark(p));
-            log.setMethod(targetClass + "->" + tartgetMethod);
-            log.setRequestIp(InetAddress.getLocalHost().getHostAddress());
-            log.setUserId(JwtUtil.getCurrentUser().getUserId());
-            log.setAddedTime(DateTimeUtil.getCurrentDateTime());
+            sysLog.setDescription(getMthodRemark(p));
+            sysLog.setMethod(targetClass + "->" + tartgetMethod);
+            sysLog.setRequestIp(InetAddress.getLocalHost().getHostAddress());
+            sysLog.setUserId(JwtUtil.getCurrentUser().getUserId());
+            sysLog.setAddedTime(DateTimeUtil.getCurrentDateTime());
         } catch (Exception ex) {
-            logger.error("==异常通知异常==");
-            logger.error("异常信息:{}", ex.getMessage());
+            log.error("==异常通知异常==");
+            log.error("异常信息:{}", ex.getMessage());
         }
-        return log;
+        return sysLog;
     }
 
     /**
