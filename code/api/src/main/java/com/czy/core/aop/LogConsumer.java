@@ -2,6 +2,7 @@ package com.czy.core.aop;
 
 import com.czy.entity.po.Log;
 import com.czy.service.LogService;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -14,8 +15,8 @@ import java.util.List;
 
 
 @Component
+@Slf4j
 public class LogConsumer implements Runnable {
-    private static Logger logger = LoggerFactory.getLogger(LogConsumer.class);
 
     @Resource
     private LogQueue auditLogQueue;
@@ -65,13 +66,13 @@ public class LogConsumer implements Runnable {
                 size++;
             }
         } catch (Exception ex) {
-            logger.info(ex.getMessage(), ex);
+            log.info(ex.getMessage(), ex);
         }
         if (!logs.isEmpty()) {
             try {
                 logService.insertByBatch(logs);
             } catch (Exception e) {
-                logger.error("异常信息:{}", e.getMessage());
+                log.error("异常信息:{}", e.getMessage());
             }
         }
 
