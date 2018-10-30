@@ -93,4 +93,13 @@ public interface BaseService<TEntity> {
      */
     List<TEntity> SelectListBy(String fieldName, String value);
 
+    /*
+     * @Author 陈昭宇
+     * @Description 分页查询
+     * @Date 2018/7/26
+     * @Param [pageIndex, pageSize]
+     * @Return PageModel<TEntity>
+     */
+    PageModel<TEntity> SelectPageList(Integer pageIndex, Integer pageSize);
+
 }

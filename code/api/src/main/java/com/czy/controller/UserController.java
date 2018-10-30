@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.czy.core.aop.AnnotationLog;
 import com.czy.core.exception.ErrorCode;
 import com.czy.core.exception.WebException;
+import com.czy.core.universal.PageModel;
 import com.czy.core.util.JwtUtil;
 import com.czy.core.mvc.Pocket;
 import com.czy.entity.map.UserMap;
@@ -29,8 +30,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @Autowired
-    private UserRoleService service;
-    @Autowired
     private UserService userService;
 
     @Autowired
@@ -41,6 +40,11 @@ public class UserController {
 //    @Pocket(entity = {User.class, Menu.class})
     public UserDto GetUsers() {
         return userMap.toUserDto(userService.SelectBy("LoginName", "admin"));
+    }
+
+    @RequestMapping("GetUserPageList")
+    public PageModel GetUserPageList() {
+        return userService.SelectPageList(1, 10);
     }
 
     @PostMapping("/login")

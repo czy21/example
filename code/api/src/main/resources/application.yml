@@ -41,3 +41,9 @@ mybatis-plus:
       id-type: uuid
       table-prefix: oa_
       db-type: mysql
+pagehelper:
+  auto-dialect: mysql # 指定数据库，不指定的话会默认自动检测数据库类型
+  reasonable: true    # 如果pageIndex<0是,查询第一页,如果pageIndex>pageSizes查询最后一页
+  support-methods-arguments: true
+  params: count=countSql
+  page-size-zero: true  #pageSize为0时,不执行分页,返回全部结果

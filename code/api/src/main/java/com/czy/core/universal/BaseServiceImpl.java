@@ -2,11 +2,15 @@ package com.czy.core.universal;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.czy.core.exception.ServiceException;
+import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
+import java.time.temporal.Temporal;
 import java.util.List;
 
 /**
@@ -87,5 +91,11 @@ public class BaseServiceImpl<TEntity> implements BaseService<TEntity> {
         } catch (ReflectiveOperationException e) {
             throw new ServiceException(e.getMessage(), e);
         }
+    }
+
+    @Override
+    public PageModel<TEntity> SelectPageList(Integer pageIndex, Integer pageSize) {
+        PageHelper.startPage(pageIndex, pageSize);
+        return new PageModel<>(baseDao.selectList(null));
     }
 }
