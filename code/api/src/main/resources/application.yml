@@ -33,8 +33,8 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: false
   mapper-locations: classpath:/mapper/*.xml
-  type-aliases-package: com.czy.entity.po
-  type-aliases-super-type: com.czy.core.universal.BaseEntity
+  type-aliases-package: com.team.entity.po
+  type-aliases-super-type: com.team.core.universal.BaseEntity
   global-config:
     refresh: true
     db-config:

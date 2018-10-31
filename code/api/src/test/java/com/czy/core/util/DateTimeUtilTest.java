@@ -1,6 +1,6 @@
 package com.czy.core.util;
 
-import static org.junit.Assert.*;
+import com.team.core.util.DateTimeUtil;
 
 public class DateTimeUtilTest {
     public static void main(String[] args) {

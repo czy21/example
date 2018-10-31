@@ -1,0 +1,22 @@
+package com.team.entity.po;
+
+import com.team.core.universal.BaseEntity;
+import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+
+/**
+ * 角色菜单表
+ *
+ * @author 陈昭宇
+ * @since 2018-10-24
+ */
+@Data
+@EqualsAndHashCode(callSuper = true)
+public class RoleMenu extends BaseEntity<RoleMenu> {
+    @TableId
+    private String RoleMenuId;
+    private String RoleId;
+    private String MenuId;
+}
