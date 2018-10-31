@@ -34,11 +34,11 @@ public class MybatisPlusCodeGenerator {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setTablePrefix("oa_");
         strategy.setNaming(NamingStrategy.underline_to_camel);
-        strategy.setSuperEntityClass("com.czy.core.universal.BaseEntity");
+        strategy.setSuperEntityClass("BaseEntity");
         strategy.setSuperEntityColumns("AddedTime","ModifiedTime","AddedUser","ModifiedUser");
-        strategy.setSuperMapperClass("com.czy.core.universal.BaseDao");
-        strategy.setSuperServiceClass("com.czy.core.universal.BaseService");
-        strategy.setSuperServiceImplClass("com.czy.core.universal.BaseServiceImpl");
+        strategy.setSuperMapperClass("BaseDao");
+        strategy.setSuperServiceClass("BaseService");
+        strategy.setSuperServiceImplClass("BaseServiceImpl");
         mpg.setStrategy(strategy);
 
         //自定义模板配置
@@ -53,7 +53,7 @@ public class MybatisPlusCodeGenerator {
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setParent("com.czy");
+        pc.setParent("com.team");
         pc.setMapper("dao");
         pc.setEntity("entity.po");
         pc.setXml("mapper");
