@@ -3,3 +3,4 @@ target/
 backup/
 /script/.idea/
 /script/__pycache__
+node_modules/
