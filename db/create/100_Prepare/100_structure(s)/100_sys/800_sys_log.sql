@@ -1,4 +1,4 @@
-CREATE TABLE `oa_log`  (
+CREATE TABLE `sys_log`  (
   `LogId` varchar(36)  NOT NULL,
   `Description` varchar(50) DEFAULT NULL COMMENT '日志信息描述',
   `Method` varchar(255) DEFAULT NULL COMMENT '方法名称',

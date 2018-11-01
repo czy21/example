@@ -10,6 +10,7 @@ db_path = root_path + '\\db'
 script_path = root_path + "\\script"
 config_path = script_path + '\\config'
 prepare_path = db_path + '\\create\\100_Prepare'
+version_path = db_path + '\\create\\200_ByVersion'
 
 cf = configparser.ConfigParser()
 cf.read(config_path + "\\mysql.conf")
