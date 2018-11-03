@@ -25,9 +25,9 @@
     <select id="getPermissionsByUserId" resultType="string" parameterType="string">
         select distinct
         m.Url
-        from oa_menu m,
-        oa_role_menu rm,
-        oa_user_role ur
+        from sys_menu m,
+        sys_role_menu rm,
+        sys_user_role ur
         where
         m.MenuId=rm.MenuId
         and m.IsMenu=false

@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
+import com.baomidou.mybatisplus.generator.engine.VelocityTemplateEngine;
 
 public class MybatisPlusCodeGenerator {
     public static void main(String[] args) {
@@ -27,22 +28,23 @@ public class MybatisPlusCodeGenerator {
         dsc.setDriverName("com.mysql.cj.jdbc.Driver");
         dsc.setUsername("root");
         dsc.setPassword("sasa");
-        dsc.setUrl("jdbc:mysql://localhost:3306/czy_oa?&serverTimezone=UTC&characterEncoding=utf-8&useSSL=false&useUnicode=true");
+        dsc.setUrl("jdbc:mysql://localhost:3306/erp?&serverTimezone=UTC&characterEncoding=utf-8&useSSL=false&useUnicode=true");
         mpg.setDataSource(dsc);
 
         //策略配置
         StrategyConfig strategy = new StrategyConfig();
-        strategy.setTablePrefix("oa_");
+        strategy.setTablePrefix("sys_");
         strategy.setNaming(NamingStrategy.underline_to_camel);
-        strategy.setSuperEntityClass("BaseEntity");
-        strategy.setSuperEntityColumns("AddedTime","ModifiedTime","AddedUser","ModifiedUser");
-        strategy.setSuperMapperClass("BaseDao");
-        strategy.setSuperServiceClass("BaseService");
-        strategy.setSuperServiceImplClass("BaseServiceImpl");
+        strategy.setSuperEntityClass("com.team.core.universal.BaseEntity");
+        strategy.setSuperEntityColumns("AddedTime", "ModifiedTime", "AddedUser", "ModifiedUser");
+        strategy.setSuperMapperClass("com.team.core.universal.BaseEntity.BaseDao");
+        strategy.setSuperServiceClass("com.team.core.universal.BaseEntity.BaseService");
+        strategy.setSuperServiceImplClass("com.team.core.universal.BaseEntity.BaseServiceImpl");
         mpg.setStrategy(strategy);
 
         //自定义模板配置
         TemplateConfig tc = new TemplateConfig();
+
         tc.setController("/templates/controller.java.vm");
         tc.setEntity("/templates/entity.java.vm");
         tc.setMapper("/templates/dao.java.vm");

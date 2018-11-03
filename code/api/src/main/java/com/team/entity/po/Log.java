@@ -1,20 +1,21 @@
 package com.team.entity.po;
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.team.core.universal.BaseEntity;
 import lombok.Data;
-
-import java.time.LocalDateTime;
+import lombok.EqualsAndHashCode;
 
 
 /**
  * 系统日志表
  *
  * @author 陈昭宇
- * @since 2018-10-28
+ * @since 2018-11-03
  */
 @Data
-public class Log {
+@EqualsAndHashCode(callSuper = true)
+public class Log extends BaseEntity<Log> {
     @TableId
     private String LogId;
     /**
@@ -45,9 +46,6 @@ public class Log {
      * 请求的用户id
      */
     private String UserId;
-
-    private LocalDateTime AddedTime;
-
     /**
      * 日志类型为正常
      */

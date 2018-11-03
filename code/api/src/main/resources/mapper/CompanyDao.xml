@@ -14,7 +14,7 @@
         <result column="Phone" property="Phone" />
         <result column="Fax" property="Fax" />
         <result column="Postcode" property="Postcode" />
-        <result column="Comment" property="Comment" />
+        <result column="Remark" property="Remark" />
         <result column="Enabled" property="Enabled" />
     </resultMap>
     <!-- 通用查询结果列 -->
@@ -30,7 +30,7 @@
         Phone
         Fax
         Postcode
-        Comment
+        Remark
         Enabled
     </sql>
 

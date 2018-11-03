@@ -14,7 +14,7 @@
         <result column="Sort" property="Sort" />
         <result column="Url" property="Url" />
         <result column="IsMenu" property="IsMenu" />
-        <result column="Comment" property="Comment" />
+        <result column="Remark" property="Remark" />
         <result column="Enabled" property="Enabled" />
     </resultMap>
     <!-- 通用查询结果列 -->
@@ -30,7 +30,7 @@
         Sort
         Url
         IsMenu
-        Comment
+        Remark
         Enabled
     </sql>
 
