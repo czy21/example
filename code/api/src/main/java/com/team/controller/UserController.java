@@ -5,9 +5,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.team.core.aop.AnnotationLog;
 import com.team.core.exception.ErrorCode;
 import com.team.core.exception.WebException;
+import com.team.core.mvc.Pocket;
 import com.team.core.universal.PageModel;
 import com.team.core.util.JwtUtil;
 import com.team.entity.map.UserMap;
+import com.team.entity.po.Menu;
 import com.team.entity.po.User;
 import com.team.entity.vo.UserDto;
 import com.team.service.UserService;
@@ -34,7 +36,7 @@ public class UserController {
 
     @RequestMapping("GetUsers")
     @AnnotationLog(remark = "查询用户列表")
-//    @Pocket(entity = {User.class, Menu.class})
+    @Pocket(entity = {User.class, Menu.class})
     public UserDto GetUsers() {
         return userMap.toUserDto(userService.SelectBy("LoginName", "admin"));
     }

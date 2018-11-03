@@ -9,7 +9,7 @@
         <result column="AddedUser" property="AddedUser" />
         <result column="ModifiedUser" property="ModifiedUser" />
         <result column="RoleName" property="RoleName" />
-        <result column="Comment" property="Comment" />
+        <result column="Remark" property="Remark" />
         <result column="Enabled" property="Enabled" />
     </resultMap>
     <!-- 通用查询结果列 -->
@@ -20,7 +20,7 @@
         ModifiedUser,
         RoleId
         RoleName
-        Comment
+        Remark
         Enabled
     </sql>
 

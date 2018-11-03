@@ -11,7 +11,7 @@
         <result column="ParentId" property="ParentId" />
         <result column="DepartmentName" property="DepartmentName" />
         <result column="Phone" property="Phone" />
-        <result column="Comment" property="Comment" />
+        <result column="Remark" property="Remark" />
         <result column="CompanyId" property="CompanyId" />
         <result column="Enabled" property="Enabled" />
     </resultMap>
@@ -25,7 +25,7 @@
         ParentId
         DepartmentName
         Phone
-        Comment
+        Remark
         CompanyId
         Enabled
     </sql>
