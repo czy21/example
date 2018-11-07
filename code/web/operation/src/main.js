@@ -1,30 +1,15 @@
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import ElementUI from 'element-ui'
-import echarts from 'echarts'
-import store from './store';
-import api from './api'
-import helper from './compoments/helper'
-import 'element-ui/lib/theme-chalk/index.css';
-import './assets/icon/iconfont.css';
-// import './permission'
 
-Vue.use(ElementUI, {size: 'mini'});
-Object.defineProperties(Vue.prototype, {
-  '$api': {
-    value: api
-  },
-  '$echarts': {
-    value: echarts
-  },
-  '$helper': {
-    value: helper
-  }
-})
+Vue.config.productionTip = false
 
+/* eslint-disable no-new */
 new Vue({
+  el: '#app',
   router,
-  store,
-  render: h => h(App)
-}).$mount('#app');
+  components: {App},
+  template: '<App/>'
+})

@@ -1,6 +1,8 @@
+_temp/
 target/
-/_temp/
 backup/
+node_modules/
+dist/
 /script/.idea/
 /script/__pycache__
-node_modules/
+
