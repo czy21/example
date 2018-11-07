@@ -8,6 +8,19 @@ module.exports = function (config) {
   const utils = require('./utils')(config)
   const vueLoaderConfig = require('./vue-loader.conf')(config)
 
+  config.settings.modulesRequiresBabel.push('webpack-dev-server/client')
+  require('babel-register')({
+    ignore: function (filename) {
+      return !_.some(config.settings.modulesRequiresBabel, v => {
+        const ret = filename.endsWith('/node_modules/' + v) || filename.indexOf('/node_modules/' + v + '/') >= 0
+        if (ret) {
+          console.log(`processing babel in node_modules: ${filename}, under: ${v}`)
+        }
+        return ret
+      })
+    }
+  })
+
   function resolve(dir) {
     return path.join(config.settings.projectRoot, dir)
   }
@@ -16,7 +29,7 @@ module.exports = function (config) {
     return _.map(config.settings.rootPaths, p => path.join(p, dir))
   }
 
-  const modulePaths = [..._.map(_.union(config.settings.referencedRoots, [config.settings.projectRoot]), v => path.resolve(v, 'node_modules')), 'node_modules']
+  const modulePaths = [..._.map(_.union([config.settings.projectRoot]), v => path.resolve(v, 'node_modules')), 'node_modules']
   module.paths.unshift(...modulePaths)
 
   let result = {
@@ -36,7 +49,8 @@ module.exports = function (config) {
       alias: {
         'vue$': 'vue/dist/vue.esm.js',
         '@': resolve('src'),
-      }
+      },
+      modules: modulePaths
     },
     module: {
       rules: [
