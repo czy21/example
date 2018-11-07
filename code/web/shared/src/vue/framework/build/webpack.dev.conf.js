@@ -93,7 +93,7 @@ module.exports = function (cfg) {
         }))
         console.log('devWebpackConfig:', devWebpackConfig)
         console.log('rules:', devWebpackConfig.module.rules)
-        console.log('devWebpackConfig(all):', JSON.stringify(devWebpackConfig))
+        // console.log('devWebpackConfig(all):', JSON.stringify(devWebpackConfig))
         resolve(devWebpackConfig)
       }
     })
