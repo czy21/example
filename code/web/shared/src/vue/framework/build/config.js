@@ -8,7 +8,7 @@ module.exports = function ({settings, override = {}}) {
 
   const config = merge({
     settings: merge({
-      rootPaths: settings.projectRoot,
+      rootPaths: [settings.projectRoot],
       frameworkRoot,
       frameworkRuntimeRoot,
       extraSourceRoots: [frameworkRuntimeRoot],
