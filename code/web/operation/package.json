@@ -5,9 +5,9 @@
   "author": "Fighter <805899926@qq.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --inline --progress --config script/dev.js",
     "start": "npm run dev",
-    "build": "node build/build.js"
+    "build": "node script/build.js"
   },
   "dependencies": {
     "axios": "^0.18.0",
