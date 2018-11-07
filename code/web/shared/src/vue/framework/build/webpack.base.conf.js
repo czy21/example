@@ -1,41 +1,23 @@
 'use strict'
 const path = require('path')
 const _ = require('lodash')
-const merge = require('webpack-merge')
-
 
 module.exports = function (config) {
   const utils = require('./utils')(config)
   const vueLoaderConfig = require('./vue-loader.conf')(config)
 
-  config.settings.modulesRequiresBabel.push('webpack-dev-server/client')
-  require('babel-register')({
-    ignore: function (filename) {
-      return !_.some(config.settings.modulesRequiresBabel, v => {
-        const ret = filename.endsWith('/node_modules/' + v) || filename.indexOf('/node_modules/' + v + '/') >= 0
-        if (ret) {
-          console.log(`processing babel in node_modules: ${filename}, under: ${v}`)
-        }
-        return ret
-      })
-    }
-  })
 
   function resolve(dir) {
     return path.join(config.settings.projectRoot, dir)
   }
 
-  function resolves(dir) {
-    return _.map(config.settings.rootPaths, p => path.join(p, dir))
-  }
-
-  const modulePaths = [..._.map(_.union([config.settings.projectRoot]), v => path.resolve(v, 'node_modules')), 'node_modules']
+  const modulePaths = [..._.map(_.union([config.settings.sharedRoot], [config.settings.projectRoot]), v => path.resolve(v, 'node_modules')), 'node_modules']
   module.paths.unshift(...modulePaths)
 
   let result = {
     context: config.settings.projectRoot,
     entry: {
-      app: [resolve('src/main.js')]
+      app: resolve('src/main.js')
     },
     output: {
       path: config.build.assetsRoot,
@@ -61,7 +43,7 @@ module.exports = function (config) {
         },
         {
           test: /\.js$/,
-          include: [...resolves('src'), ...resolves('test'), ...config.settings.extraSourceRoots],
+          include: [resolve('src'), resolve('test'), config.settings.frameworkRuntimeRoot],
           loader: 'babel-loader'
         },
         {
@@ -102,11 +84,6 @@ module.exports = function (config) {
       tls: 'empty',
       child_process: 'empty'
     }
-  }
-
-  result = merge(result, config.webpack)
-  if (_.isFunction(config.decorate)) {
-    result = config.decorate(result)
   }
 
   return result

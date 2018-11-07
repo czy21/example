@@ -3,16 +3,15 @@ const merge = require('webpack-merge')
 
 
 module.exports = function ({settings, override = {}}) {
+  const sharedRoot = path.resolve(__dirname, '../../../.././')
   const frameworkRoot = path.resolve(__dirname, '..')
   const frameworkRuntimeRoot = path.resolve(frameworkRoot, 'runtime')
-
   const config = merge({
     settings: merge({
-      rootPaths: [settings.projectRoot],
+      rootPaths: settings.projectRoot,
+      sharedRoot,
       frameworkRoot,
       frameworkRuntimeRoot,
-      extraSourceRoots: [frameworkRuntimeRoot],
-      modulesRequiresBabel: []
     }, settings),
     dev: {
       // Paths
