@@ -140,6 +140,5 @@ module.exports = function (config) {
   }
   console.log('webpackConfig:', webpackConfig)
   console.log('rules:', webpackConfig.module.rules)
-  console.log('devWebpackConfig(all):', JSON.stringify(webpackConfig))
   return webpackConfig;
 }
