@@ -1,28 +1,23 @@
 'use strict'
 const path = require('path')
 const _ = require('lodash')
-const merge = require('webpack-merge')
-
 
 module.exports = function (config) {
   const utils = require('./utils')(config)
   const vueLoaderConfig = require('./vue-loader.conf')(config)
 
+
   function resolve(dir) {
     return path.join(config.settings.projectRoot, dir)
   }
 
-  function resolves(dir) {
-    return _.map(config.settings.rootPaths, p => path.join(p, dir))
-  }
-
-  const modulePaths = [..._.map(_.union(config.settings.referencedRoots, [config.settings.projectRoot]), v => path.resolve(v, 'node_modules')), 'node_modules']
+  const modulePaths = [..._.map(_.union([config.settings.sharedRoot], [config.settings.projectRoot]), v => path.resolve(v, 'node_modules')), 'node_modules']
   module.paths.unshift(...modulePaths)
 
   let result = {
     context: config.settings.projectRoot,
     entry: {
-      app: [resolve('src/main.js')]
+      app: resolve('src/main.js')
     },
     output: {
       path: config.build.assetsRoot,
@@ -36,7 +31,8 @@ module.exports = function (config) {
       alias: {
         'vue$': 'vue/dist/vue.esm.js',
         '@': resolve('src'),
-      }
+      },
+      modules: modulePaths
     },
     module: {
       rules: [
@@ -47,7 +43,7 @@ module.exports = function (config) {
         },
         {
           test: /\.js$/,
-          include: [...resolves('src'), ...resolves('test'), ...config.settings.extraSourceRoots],
+          include: [resolve('src'), config.settings.frameworkRuntimeRoot],
           loader: 'babel-loader'
         },
         {
@@ -88,11 +84,6 @@ module.exports = function (config) {
       tls: 'empty',
       child_process: 'empty'
     }
-  }
-
-  result = merge(result, config.webpack)
-  if (_.isFunction(config.decorate)) {
-    result = config.decorate(result)
   }
 
   return result

@@ -6,7 +6,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
-
+const OpenBrowserPlugin = require('open-browser-webpack-plugin')
 
 module.exports = function (cfg) {
   const config = require('./config')(cfg)
@@ -48,6 +48,7 @@ module.exports = function (cfg) {
       }
     },
     plugins: [
+      new OpenBrowserPlugin({url: config.dev.url}),
       new webpack.DefinePlugin({
         'process.env': config.dev.env
       }),
@@ -93,7 +94,6 @@ module.exports = function (cfg) {
         }))
         console.log('devWebpackConfig:', devWebpackConfig)
         console.log('rules:', devWebpackConfig.module.rules)
-        console.log('devWebpackConfig(all):', JSON.stringify(devWebpackConfig))
         resolve(devWebpackConfig)
       }
     })
