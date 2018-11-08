@@ -27,7 +27,6 @@ module.exports = function ({settings, override = {}}) {
       notifyOnErrors: true,
       poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-
       /**
        * Source Maps
        */
