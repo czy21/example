@@ -8,7 +8,6 @@ module.exports = function ({settings, override = {}}) {
   const frameworkRuntimeRoot = path.resolve(frameworkRoot, 'runtime')
   const config = merge({
     settings: merge({
-      rootPaths: settings.projectRoot,
       sharedRoot,
       frameworkRoot,
       frameworkRuntimeRoot,
