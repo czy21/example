@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "echarts": "^4.2.0-rc.2",
-    "element-ui": "^2.4.9"
+    "element-ui": "^2.4.9",
+    "vue": "^2.5.17"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
