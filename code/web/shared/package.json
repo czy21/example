@@ -5,9 +5,14 @@
   "author": "Fighter <805899926@qq.com>",
   "dependencies": {
     "axios": "^0.18.0",
+    "d3-format": "^1.3.2",
+    "deepmerge": "^2.2.1",
     "linq": "^3.1.1",
     "lodash": "^4.17.11",
+    "moment": "^2.22.2",
     "qs": "^6.5.2",
+    "url-parse": "^1.4.4",
+    "utility": "^1.15.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1"

@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config script/dev.js",
-    "start": "npm run dev",
+    "start": "node script/app.js",
     "build": "node script/build.js"
   },
   "dependencies": {
