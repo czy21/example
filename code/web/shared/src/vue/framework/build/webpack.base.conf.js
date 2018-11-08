@@ -43,7 +43,7 @@ module.exports = function (config) {
         },
         {
           test: /\.js$/,
-          include: [resolve('src'), resolve('test'), config.settings.frameworkRuntimeRoot],
+          include: [resolve('src'), config.settings.frameworkRuntimeRoot],
           loader: 'babel-loader'
         },
         {
