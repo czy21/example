@@ -1,6 +1,15 @@
 import _ from 'lodash'
 import * as logger from './logger'
 
+
+export function callIfExists(fn, resultForNonFunction, ...args) {
+  if (_.isFunction(fn)) {
+    return fn.apply(args)
+  }
+  return resultForNonFunction
+}
+
+
 export function processComponents(components = [], stub = {}, decorators = {}, target = stub) {
   _(components)
     .forEach(c => {
@@ -11,6 +20,11 @@ export function processComponents(components = [], stub = {}, decorators = {}, t
   return target
 }
 
+/**
+ * Vue批量注入插件
+ * @params 插件集合
+ * @params vue实例
+ */
 export function usePlugins(plugins, Vue) {
   _.forEach(plugins, p => Vue.use(p))
 }
