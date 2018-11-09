@@ -1,5 +1,6 @@
 import * as ref from './ref'
 import router from './router'
+import store from './store'
 import launch from './launch'
 
 let stub = {ref}
@@ -16,10 +17,12 @@ const start = ({decorators = {}} = {}) => {
     decorators,
     components: [
       router,
+      store,
       launch,
     ]
   })
+  console.log(stub)
   return stub
 }
 
-export {stub, start}
+export {stub, start,register}

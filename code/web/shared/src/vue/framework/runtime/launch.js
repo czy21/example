@@ -6,10 +6,9 @@ export default {
     return new stub.ref.vue(Object.assign({
       el: '#app',
       router: stub.router,
+      store: stub.store,
       template: '<app/>',
-      components: {
-        app
-      }
+      components: {app}
     }, deco.rootVueComponent))
   }
 }
