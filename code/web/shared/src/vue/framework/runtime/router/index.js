@@ -1,0 +1,8 @@
+export default {
+  key: 'router',
+  build(stub, deco = {}) {
+    return new stub.ref.vueRouter({
+      routes: deco.routes
+    })
+  }
+}
