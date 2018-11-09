@@ -31,6 +31,12 @@ module.exports = function (config) {
       alias: {
         'vue$': 'vue/dist/vue.esm.js',
         '@': resolve('src'),
+        '@c': resolve('src/components'),
+        '@init': resolve('src/components/init'),
+        '@a': resolve('src/assets'),
+        '@v': resolve('src/views'),
+        'fr$': path.resolve(config.settings.frameworkRoot, 'runtime'),
+        'fref$': path.resolve(config.settings.frameworkRoot, 'runtime/ref'),
       },
       modules: modulePaths
     },
