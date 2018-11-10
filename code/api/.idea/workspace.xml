@@ -2,164 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b1c8e52-ef87-4df1-b033-ea6a2e11bcfd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/api/admin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/api/category.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/api/company.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/api/department.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/api/depot.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/api/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/api/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/api/material.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/api/menu.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/api/request.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/api/role.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/api/user.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/icon/demo.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/icon/demo_fontclass.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/icon/demo_symbol.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/icon/demo_unicode.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/icon/iconfont.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/icon/iconfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/icon/iconfont.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/icon/iconfont.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/icon/iconfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/icon/iconfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/alert.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/aside.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/autocomplete.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/badge.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/base.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/breadcrumb.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/button-group.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/button.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/card.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/carousel-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/carousel.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/cascader.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/checkbox-button.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/checkbox-group.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/checkbox.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/col.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/collapse-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/collapse.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/color-picker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/container.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/date-picker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/dialog.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/display.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/dropdown-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/dropdown-menu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/dropdown.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/fonts/element-icons.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/fonts/element-icons.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/footer.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/form-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/form.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/header.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/icon.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/input-number.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/input.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/loading.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/menu-item-group.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/menu-item.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/menu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/message-box.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/message.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/notification.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/option-group.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/option.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/pagination.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/popover.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/popper.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/progress.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/radio-button.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/radio-group.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/radio.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/rate.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/reset.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/row.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/scrollbar.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/select-dropdown.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/select.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/slider.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/spinner.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/step.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/steps.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/submenu.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/switch.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/tab-pane.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/table-column.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/table.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/tabs.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/tag.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/time-picker.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/time-select.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/tooltip.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/transfer.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/tree.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/upload.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/compoments/ui/eui.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/compoments/ui/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/permission.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/store/getters.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/store/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/store/modules/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/store/modules/pocket.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/store/modules/user.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/utils/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/utils/findParent.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/utils/transCartesian.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/utils/transData.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/utils/transJson.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/utils/treeTable.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/common/Content.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/common/Header.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/common/Home.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/common/NavMenu.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/common/Sidebar.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/common/TagsView.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/Login.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/category/CategoryAdd.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/category/CategoryEdit.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/category/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/company/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/department/DepartmentAdd.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/department/DepartmentEdit.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/department/TreeDepartment.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/department/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/depot/DepotAdd.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/depot/DepotEdit.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/depot/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/material/MaterialAdd.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/material/MaterialAnalysis.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/material/MaterialDepot.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/material/MaterialEdit.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/material/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/menu/ActionAdd.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/menu/MenuAdd.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/menu/MenuEdit.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/menu/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/role/RoleAction.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/role/RoleAdd.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/role/RoleMenu.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/role/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/user/UserAdd.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/user/UserEdit.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/user/UserRole.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/src/views/page/manage/user/index.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/static/css/app.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/static/css/custom.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../web/operation/static/img/img.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/operation/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/operation/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/operation/src/components/HelloWorld.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/operation/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/operation/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/operation/static/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/assets/theme-blue/breadcrumb-item.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/operation/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/yarn.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/team/core/configure/CorsConfigure.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../web/operation/src/components/store/modules/user.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../web/shared/src/vue/framework/runtime/api/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../web/shared/src/vue/framework/runtime/js/utility/auth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/core/configure/WebMvcConfigure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/core/configure/WebMvcConfigure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/entity/vo/LoginDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/entity/vo/LoginDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/operation/src/components/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/components/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/operation/src/views/HelloWorld.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/views/HelloWorld.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/shared/src/vue/framework/runtime/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/shared/src/vue/framework/runtime/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/shared/src/vue/framework/runtime/js/utility/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/shared/src/vue/framework/runtime/js/utility/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -173,14 +26,16 @@
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="2" />
+          <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.4" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="3" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="50" />
+          <entry key="class" value="2" />
+          <entry key="java" value="64" />
           <entry key="vm" value="6" />
           <entry key="xml" value="22" />
           <entry key="yml" value="2" />
@@ -188,7 +43,8 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="50" />
+          <entry key="CLASS" value="2" />
+          <entry key="JAVA" value="64" />
           <entry key="VTL" value="6" />
           <entry key="XML" value="22" />
           <entry key="YAML" value="2" />
@@ -196,14 +52,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="99" />
+          <entry key="java" value="544" />
           <entry key="xml" value="3" />
           <entry key="yml" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="99" />
+          <entry key="JAVA" value="544" />
           <entry key="XML" value="3" />
           <entry key="YAML" value="18" />
         </counts>
@@ -212,25 +68,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/controller/CompanyController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/team/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="38" column="21" lean-forward="true" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+            <state relative-caret-position="479">
+              <caret line="62" column="21" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -264,6 +118,10 @@
         <option value="$PROJECT_DIR$/src/main/resources/mapper/LogDao.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/RoleMenuDao.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/UserRoleDao.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/core/configure/WebMvcConfigure.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/core/configure/CorsConfigure.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/core/mvc/AuthenticationInterceptor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/entity/vo/LoginDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/controller/UserController.java" />
       </list>
     </option>
@@ -283,11 +141,11 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="266" />
-    <option name="y" value="64" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="709" />
+    <option name="y" value="42" />
     <option name="width" value="1162" />
-    <option name="height" value="787" />
+    <option name="height" value="936" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -297,8 +155,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -328,6 +184,33 @@
               <item name="erp" type="b2602c69:ProjectViewProjectNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="team" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="team" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -349,6 +232,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -358,7 +243,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541256927829" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1541823242373" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -429,16 +314,18 @@
       <updated>1541002935521</updated>
       <workItem from="1541002939644" duration="514000" />
       <workItem from="1541241237636" duration="2773000" />
+      <workItem from="1541817795215" duration="3568000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3287000" />
+    <option name="totallyTimeSpent" value="6855000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="266" y="64" width="1162" height="787" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30852994" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1945629" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -448,14 +335,14 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.47320062" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7969083" visible="true" weight="0.31236443" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Spring" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.20309168" side_tool="true" visible="true" weight="0.31236443" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.329718" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
@@ -493,27 +380,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="62" selection-start-line="11" selection-start-column="62" selection-end-line="11" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/entity/map/UserMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/aop/AnnotationLog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/aop/LogConsumer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-336">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
@@ -621,13 +487,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/dao.java.vm">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/aop/AspectLog.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="35" column="37" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/com/czy/MybatisPlusCodeGenerator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -639,9 +498,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-33">
           <caret line="3" column="7" lean-forward="true" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -666,9 +522,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -676,9 +529,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -686,9 +536,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -706,9 +553,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -773,10 +617,97 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/aop/AspectLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1323">
+          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/aop/AnnotationLog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/aop/LogConsumer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="751">
+          <caret line="70" column="47" lean-forward="true" selection-start-line="70" selection-start-column="47" selection-end-line="70" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/5.0.10.RELEASE/spring-web-5.0.10.RELEASE.jar!/org/springframework/web/cors/UrlBasedCorsConfigurationSource.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="61" column="16" selection-start-line="61" selection-start-column="16" selection-end-line="61" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/configure/CorsConfigure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/configure/WebMvcConfigure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="59" column="5" selection-start-line="59" selection-start-column="5" selection-end-line="59" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/mvc/AuthenticationInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="43" column="40" lean-forward="true" selection-start-line="43" selection-start-column="40" selection-end-line="43" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/util/JwtUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="34" column="25" selection-start-line="34" selection-start-column="25" selection-end-line="34" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/entity/map/UserMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="10" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.50/fastjson-1.2.50.jar!/com/alibaba/fastjson/JSONObject.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="235" column="18" selection-start-line="235" selection-start-column="18" selection-end-line="235" selection-end-column="18" />
+          <folding>
+            <element signature="e#6910#6911#0" expanded="true" />
+            <element signature="e#6957#6958#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/entity/vo/LoginDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/team/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="38" column="21" lean-forward="true" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+        <state relative-caret-position="479">
+          <caret line="62" column="21" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
         </state>
       </provider>
     </entry>

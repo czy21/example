@@ -1,7 +1,8 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
-    <el-button type="primary" @click="test">主要按钮</el-button>
+    <el-button type="primary" @click="login">登录</el-button>
+    <el-button type="primary" @click="getData">查询</el-button>
   </div>
 </template>
 
@@ -19,8 +20,14 @@
       }
     },
     methods: {
-      test() {
-        this.$helper.eui.inform("你好")
+      login() {
+        // this.$helper.eui.inform("你好")
+        this.$store.dispatch("CheckLogin", {loginName: "admin", password: "admin"})
+      },
+      getData() {
+        this.$api.get("user/getusers").then((data) => {
+          console.log(data)
+        })
       }
     }
   }

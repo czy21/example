@@ -11,6 +11,7 @@ import com.team.core.util.JwtUtil;
 import com.team.entity.map.UserMap;
 import com.team.entity.po.Menu;
 import com.team.entity.po.User;
+import com.team.entity.vo.LoginDto;
 import com.team.entity.vo.UserDto;
 import com.team.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class UserController {
     private UserMap userMap;
 
     @RequestMapping("GetUsers")
-    @AnnotationLog(remark = "查询用户列表")
+//    @AnnotationLog(remark = "查询用户列表")
     @Pocket(entity = {User.class, Menu.class})
     public UserDto GetUsers() {
         return userMap.toUserDto(userService.SelectBy("LoginName", "admin"));
@@ -56,8 +57,9 @@ public class UserController {
         if (!user.getPassword().equals(password)) {
             throw new WebException(ErrorCode.PASSWORD_ERROR, "密码错误");
         }
-        json.put("token", JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));
-        json.put("userInfo", userMap.toLoginDto(user));
+        LoginDto dto = userMap.toLoginDto(user);
+        dto.setValue(JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));
+        json.put("token", dto);
         return json;
     }
 }
