@@ -3,6 +3,7 @@ import router from './router'
 import store from './store'
 import launch from './launch'
 import helper from './helper'
+import api from './api'
 
 let stub = {ref}
 
@@ -17,6 +18,7 @@ const prepare = ({decorators = {}} = {}) => {
     decorators,
     components: [
       store,
+      api,
       helper,
     ]
   })
