@@ -8,5 +8,35 @@ export default function (stub) {
       stub.ref.jsUtil.basic.callIfExists(callback)
     }, true)
   }
-  return {inform}
+  const warn = function (text, callback) {
+    this.$alert(text, '警告', {
+      type: 'warning',
+      dangerouslyUseHTMLString: true,
+      showClose: false
+    }).finally(() => {
+      stub.ref.jsUtil.basic.callIfExists(callback)
+    }, true)
+  }
+
+  const validateForm = function (target) {
+    if (stub.ref.lodash.isString(target)) {
+      target = this.$refs[target]
+    }
+    let res = false
+    target.validate(valid => {
+      res = valid
+    })
+    return res
+  }
+
+  const actWithValidation = function (targets, callback) {
+    if (!stub.ref.lodash.isArray(targets)) {
+      targets = [targets]
+    }
+    let valid = stub.ref.lodash.every(targets, v => {
+      return validateForm.apply(this, [v])
+    })
+    valid ? stub.ref.jsUtil.basic.callIfExists(callback) : warn.apply(this, ['请检查输入的参数再执行操作'])
+  }
+  return {inform, actWithValidation}
 }

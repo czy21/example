@@ -1,9 +1,10 @@
+import * as auth from '@fr/api/auth'
 import {stub} from 'fr'
 
 const user = {
   state: {
     // 前端显示用户实体
-    userInfo: stub.ref.jsUtil.auth.getToken() ? stub.ref.jsUtil.auth.getToken().user : {},
+    userInfo: auth.getToken() ? auth.getToken().user : {},
   },
   mutations: {
     // 设置当前用户信息
@@ -11,7 +12,8 @@ const user = {
       state.userInfo = data;
     },
     REMOVE_TOKEN: () => {
-      removeToken();
+      auth.removeToken();
+      stub.router.push("/login")
     }
   },
   actions: {
@@ -19,7 +21,8 @@ const user = {
       stub.api.post("user/login", data).then(
         res => {
           commit("SET_USER_INFO", res.data.token.user);
-          stub.ref.jsUtil.auth.setToken(res.data.token);
+          auth.setToken(res.data.token);
+          stub.router.push("/home")
         }
       );
     },

@@ -1,10 +1,17 @@
-import HelloWorld from '@v/HelloWorld'
-
 export default [
   {
     path: '/',
-    name: 'HelloWorld',
-    component: HelloWorld
-  }
+    redirect: '/login'
+  },
+  {
+    path: '/login',
+    component: () => import('@/views/Login'),
+  },
+  {
+    path: '/home',
+    component: () => import('@/views/common/Home'),
+    meta: {title: "系统首页"},
+    children: []
+  },
 ]
 
