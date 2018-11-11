@@ -1,6 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
-import jsUtils from '../js/utility'
+import * as auth from '../api/auth'
 
 export default {
   key: 'api',
@@ -16,7 +16,7 @@ export default {
     service.interceptors.request.use(config => {
         config.data = qs.stringify(config.data);
         config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
-        jsUtils.auth.getToken() && (config.headers['Authorization'] = jsUtils.auth.getToken().value)
+        auth.getToken() && (config.headers['Authorization'] = auth.getToken().value)
         return config;
       },
       error => {
@@ -41,7 +41,7 @@ export default {
           data: method === 'POST' || method === 'PUT' ? params : null,
           params: method === 'GET' || method === 'DELETE' ? params : null
         }).then(res => {
-          resolve(res.data);
+          res.data.data.hasOwnProperty("ErrorCode") ? stub.store.commit("SUBMIT_ERROR", res.data.data.Message) : resolve(res.data);
         }, error => {
           reject(error);
         }).catch(error => {

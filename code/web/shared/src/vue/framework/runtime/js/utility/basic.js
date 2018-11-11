@@ -26,6 +26,8 @@ export function processComponents(components = [], stub = {}, decorators = {}, t
  * @params vue实例
  */
 export function usePlugins(plugins, Vue) {
-  _.forEach(plugins, p => Vue.use(p))
+  _.forEach(plugins, p => {
+    p.hasOwnProperty("plugin") || p.hasOwnProperty("params") ? Vue.use(p.plugin, p.params) : Vue.use(p)
+  })
 }
 

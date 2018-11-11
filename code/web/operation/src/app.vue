@@ -9,3 +9,7 @@
     name: 'app'
   }
 </script>
+<style lang="scss">
+  @import "../static/css/app";
+  @import "../static/css/custom";
+</style>

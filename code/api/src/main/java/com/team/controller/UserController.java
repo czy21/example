@@ -12,6 +12,7 @@ import com.team.entity.map.UserMap;
 import com.team.entity.po.Menu;
 import com.team.entity.po.User;
 import com.team.entity.vo.LoginDto;
+import com.team.entity.vo.TokenDto;
 import com.team.entity.vo.UserDto;
 import com.team.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public Object Login(String loginName, String password) {
+    public JSONObject Login(String loginName, String password) {
         JSONObject json = new JSONObject();
         User user = userService.SelectBy("LoginName", loginName);
         if (user == null) {
@@ -57,9 +58,7 @@ public class UserController {
         if (!user.getPassword().equals(password)) {
             throw new WebException(ErrorCode.PASSWORD_ERROR, "密码错误");
         }
-        LoginDto dto = userMap.toLoginDto(user);
-        dto.setValue(JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));
-        json.put("token", dto);
+        json.put("token",new TokenDto(userMap.toLoginDto(user), JwtUtil.GenerateToken(user.getLoginName(), user.getPassword())));
         return json;
     }
 }
