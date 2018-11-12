@@ -3,7 +3,10 @@ import routes from '@c/routes'
 import app from '@/app.vue'
 
 const decorators = {
-  router: {routes},
+  router: {
+    mode: 'history',
+    routes: routes
+  },
   launch: {
     rootVueComponent: {
       el: '#app',
