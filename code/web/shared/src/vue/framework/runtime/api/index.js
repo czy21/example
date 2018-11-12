@@ -1,6 +1,5 @@
 import axios from 'axios'
 import qs from 'qs'
-import * as auth from '../api/auth'
 
 export default {
   key: 'api',
@@ -16,7 +15,7 @@ export default {
     service.interceptors.request.use(config => {
         config.data = qs.stringify(config.data);
         config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
-        auth.getToken() && (config.headers['Authorization'] = auth.getToken().value)
+        stub.ref.jsUtil.auth.getToken() && (config.headers['Authorization'] = stub.ref.jsUtil.auth.getToken().value)
         return config;
       },
       error => {
