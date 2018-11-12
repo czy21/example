@@ -1,3 +1,6 @@
+import Home from '@/views/common/Home'
+import Login from '@/views/Login'
+
 export default [
   {
     path: '/',
@@ -5,11 +8,11 @@ export default [
   },
   {
     path: '/login',
-    component: () => import('@/views/Login'),
+    component: Login,
   },
   {
     path: '/home',
-    component: () => import('@/views/common/Home'),
+    component: Home,
     meta: {title: "系统首页"},
     children: []
   },
