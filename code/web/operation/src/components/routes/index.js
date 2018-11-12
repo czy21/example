@@ -1,5 +1,6 @@
-import Home from '@/views/common/Home'
 import Login from '@/views/Login'
+import Home from '@/views/common/Home'
+import system from './system'
 
 export default [
   {
@@ -14,7 +15,9 @@ export default [
     path: '/home',
     component: Home,
     meta: {title: "系统首页"},
-    children: []
+    children: [
+      ...system
+    ]
   },
 ]
 
