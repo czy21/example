@@ -35,7 +35,6 @@ module.exports = function (config) {
         '@c': resolve('src/components'),
         '@v': resolve('src/views'),
         '@init': resolve('src/components/init'),
-        '@fr': path.resolve(config.settings.frameworkRoot, 'runtime'),
         'fr$': path.resolve(config.settings.frameworkRoot, 'runtime'),
         'fref$': path.resolve(config.settings.frameworkRoot, 'runtime/ref'),
       },
