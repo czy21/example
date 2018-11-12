@@ -77,7 +77,6 @@
   import MenuAdd from "./MenuAdd";
   import ActionAdd from "./ActionAdd";
   import MenuEdit from "./MenuEdit";
-  // import transJson from '@/utils/transJson';
 
   export default {
     inject: ['reload'],

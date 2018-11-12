@@ -14,7 +14,7 @@
     </div>
     <div class="container">
       <!-- 列表 -->
-      <el-table :data="userList" border fit highlight-current-row>
+      <el-table :data="list" border fit highlight-current-row>
         <el-table-column type="selection" prop="id" label="用户Id" width="55"></el-table-column>
         <el-table-column prop="userName" label="用户姓名">
           <template slot-scope="scope">
@@ -24,6 +24,7 @@
         <el-table-column prop="loginName" label="登录名称"></el-table-column>
         <el-table-column prop="email" label="邮箱"></el-table-column>
         <el-table-column prop="phone" label="电话"></el-table-column>
+        <el-table-column prop="isHeader" label="部门经理"></el-table-column>
         <el-table-column label="操作" width="250">
           <template slot-scope="scope">
             <el-button @click="handleEdit(scope.row)">编辑</el-button>
@@ -40,7 +41,7 @@
                        :page-size="pageModel.pageSize"
                        :page-sizes="[15,30,50,100]"
                        layout="total ,sizes, prev, pager, next, jumper"
-                       :total=pageModel.totalCount>
+                       :total=pageModel.total>
         </el-pagination>
       </div>
     </div>
@@ -81,13 +82,13 @@
         //显示删除提示框
         delVisible: false,
         //列表数据
-        userList: [],
+        list: [],
         // 根据前端id删除该行
         userId: null,
         // 分页实体
         pageModel: {
           //分页的总行数
-          totalCount: 0,
+          total: 0,
           //当前页值
           pageIndex: 1,
           // 当前页的行数
@@ -161,8 +162,8 @@
       },
       // 获取用户数据
       getData() {
-        this.$api.user.getPageUsers(this.pageModel.pageIndex, this.pageModel.pageSize).then(res => {
-          this.userList = res.data.list;
+        this.$api.get("user/load", this.pageModel).then(res => {
+          this.list = res.data.list;
           this.pageModel = res.data.page;
         })
       },
@@ -171,7 +172,7 @@
       }
     },
     mounted() {
-      // this.getData();
+      this.getData();
     }
   };
 </script>
