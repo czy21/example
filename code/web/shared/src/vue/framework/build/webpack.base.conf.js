@@ -50,7 +50,7 @@ module.exports = function (config) {
         },
         {
           test: /\.js$/,
-          include: [resolve('src'), config.settings.frameworkRuntimeRoot],
+          include: [resolve('src'), config.settings.frameworkRuntimeRoot, resolve('node_modules/webpack-dev-server/client')],
           loader: 'babel-loader'
         },
         {
