@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../shared/src/vue/framework/build/webpack.base.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/../shared/src/vue/framework/build/webpack.base.conf.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -33,7 +30,7 @@
           <entry key="babelrc" value="10" />
           <entry key="editorconfig" value="1" />
           <entry key="html" value="1" />
-          <entry key="js" value="506" />
+          <entry key="js" value="507" />
           <entry key="json" value="44" />
           <entry key="lock" value="1" />
           <entry key="scss" value="2" />
@@ -44,7 +41,7 @@
         <counts>
           <entry key="HTML" value="1" />
           <entry key="JSON" value="54" />
-          <entry key="JavaScript" value="506" />
+          <entry key="JavaScript" value="507" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="SCSS" value="2" />
           <entry key="Vue.js" value="31" />
@@ -53,7 +50,7 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="js" value="5756" />
+          <entry key="js" value="5759" />
           <entry key="json" value="32" />
           <entry key="vue" value="522" />
         </counts>
@@ -61,14 +58,24 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="32" />
-          <entry key="JavaScript" value="5756" />
+          <entry key="JavaScript" value="5759" />
           <entry key="Vue.js" value="522" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/build/webpack.base.conf.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="33" column="36" lean-forward="true" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -144,9 +151,9 @@
         <option value="$PROJECT_DIR$/src/components/store/modules/user.js" />
         <option value="$PROJECT_DIR$/../shared/.babelrc" />
         <option value="$PROJECT_DIR$/.babelrc" />
-        <option value="$PROJECT_DIR$/../shared/src/vue/framework/build/webpack.base.conf.js" />
         <option value="$PROJECT_DIR$/src/views/Login.vue" />
         <option value="$PROJECT_DIR$/src/components/routes/index.js" />
+        <option value="$PROJECT_DIR$/../shared/src/vue/framework/build/webpack.base.conf.js" />
       </list>
     </option>
   </component>
@@ -174,11 +181,11 @@
       <path value="$PROJECT_DIR$/../shared/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-64" />
-    <option name="y" value="172" />
-    <option name="width" value="1140" />
-    <option name="height" value="807" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="747" />
+    <option name="y" value="104" />
+    <option name="width" value="1115" />
+    <option name="height" value="895" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -210,6 +217,36 @@
               <item name="operation" type="b2602c69:ProjectViewProjectNode" />
               <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
               <item name="shared" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="vue" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="vue" type="462c0819:PsiDirectoryNode" />
+              <item name="framework" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="vue" type="462c0819:PsiDirectoryNode" />
+              <item name="framework" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -321,23 +358,24 @@
       <workItem from="1541746136867" duration="240000" />
       <workItem from="1541816550270" duration="6654000" />
       <workItem from="1541909757992" duration="14183000" />
-      <workItem from="1541999743113" duration="1967000" />
+      <workItem from="1541999743113" duration="2583000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67011000" />
+    <option name="totallyTimeSpent" value="67627000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="753" y="109" width="1115" height="895" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17913593" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31569174" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30151844" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" visible="true" weight="0.2570499" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" visible="true" weight="0.33508542" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -697,8 +735,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/build/webpack.base.conf.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="884">
-          <caret line="52" column="124" lean-forward="true" selection-start-line="52" selection-start-column="124" selection-end-line="52" selection-end-column="124" />
+        <state relative-caret-position="204">
+          <caret line="33" column="36" lean-forward="true" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
         </state>
       </provider>
     </entry>
