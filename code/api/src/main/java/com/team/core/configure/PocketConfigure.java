@@ -1,6 +1,7 @@
 package com.team.core.configure;
 
 
+import com.team.core.extension.entity.DepartmentExtensions;
 import com.team.core.extension.entity.MenuExtensions;
 import com.team.core.extension.entity.UserExtensions;
 
@@ -19,6 +20,10 @@ public class PocketConfigure {
                 case "Menu":
                     hash.put(t.getSimpleName().toLowerCase() + "s", MenuExtensions.ConvertToSimple());
                     break;
+                case "Department":
+                    hash.put(t.getSimpleName().toLowerCase() + "s", DepartmentExtensions.ConvertToSimple());
+                    break;
+
                 default:
                     break;
             }
