@@ -24,9 +24,7 @@ export default {
       });
 
     service.interceptors.response.use(
-      response => {
-        return response;
-      },
+      response => response,
       error => {
         console.log('res' + error);
         Promise.reject(error)

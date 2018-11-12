@@ -19,11 +19,8 @@ export default function (stub) {
   }
 
   const validateForm = function (target) {
-    if (stub.ref.lodash.isString(target)) {
-      target = this.$refs[target]
-    }
     let res = false
-    target.validate(valid => {
+    this.$refs[target].validate(valid => {
       res = valid
     })
     return res
