@@ -27,7 +27,7 @@
     name: "Header",
     data() {
       return {
-        sysName: "ERP管理系统",
+        sysName: "管理系统",
       };
     },
     computed: {
