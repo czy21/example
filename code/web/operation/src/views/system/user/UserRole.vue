@@ -37,7 +37,7 @@
     computed: {
       // 角色数据集合
       roleList() {
-        return this.$store.getters.pocketData.roles;
+        return [];
       },
       // 选中的用户行数据
       formData() {

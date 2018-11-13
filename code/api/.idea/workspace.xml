@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b1c8e52-ef87-4df1-b033-ea6a2e11bcfd" name="Default Changelist" comment="" />
+    <list default="true" id="7b1c8e52-ef87-4df1-b033-ea6a2e11bcfd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../web/shared/src/vue/framework/runtime/store/data.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/operation/src/components/mixins/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/components/mixins/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/operation/src/components/store/getters.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/components/store/getters.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/operation/src/components/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/components/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/operation/src/components/store/modules/pocket.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/operation/src/views/system/user/UserAdd.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/views/system/user/UserAdd.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/operation/src/views/system/user/UserEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/views/system/user/UserEdit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/operation/src/views/system/user/UserRole.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/views/system/user/UserRole.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/operation/src/views/system/user/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/views/system/user/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/shared/src/vue/framework/runtime/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/shared/src/vue/framework/runtime/api/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/shared/src/vue/framework/runtime/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/shared/src/vue/framework/runtime/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../db/create/100_Prepare/200_initialData(i)/100_sys/300_sys_menu.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../db/create/100_Prepare/200_initialData(i)/100_sys/300_sys_menu.sql" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,13 +34,14 @@
           <entry key="project.open.time.25" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.6" value="1" />
-          <entry key="project.opened" value="7" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="25" />
-          <entry key="java" value="110" />
+          <entry key="java" value="111" />
           <entry key="vm" value="6" />
           <entry key="xml" value="22" />
           <entry key="yml" value="2" />
@@ -36,7 +50,7 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="25" />
-          <entry key="JAVA" value="110" />
+          <entry key="JAVA" value="111" />
           <entry key="VTL" value="6" />
           <entry key="XML" value="22" />
           <entry key="YAML" value="2" />
@@ -61,7 +75,17 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/controller/UserController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="249">
+              <caret line="45" column="52" lean-forward="true" selection-start-line="45" selection-start-column="52" selection-end-line="45" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -136,7 +160,7 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="211" />
     <option name="y" value="170" />
     <option name="width" value="1162" />
@@ -164,6 +188,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -210,16 +236,6 @@
               <item name="erp" type="b2602c69:ProjectViewProjectNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="team" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -250,8 +266,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -338,16 +352,17 @@
       <workItem from="1542007402482" duration="651000" />
       <workItem from="1542028314397" duration="4864000" />
       <workItem from="1542086296732" duration="630000" />
+      <workItem from="1542113321351" duration="1818000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20627000" />
+    <option name="totallyTimeSpent" value="22445000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="211" y="170" width="1162" height="796" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20842217" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32940108" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -357,7 +372,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7963753" visible="true" weight="0.2559653" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7963753" visible="true" weight="0.41993958" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -654,9 +669,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -716,9 +728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="24" column="47" selection-start-line="24" selection-start-column="47" selection-end-line="24" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -731,8 +740,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/team/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="50" column="38" selection-start-line="50" selection-start-column="38" selection-end-line="50" selection-end-column="38" />
+        <state relative-caret-position="249">
+          <caret line="45" column="52" lean-forward="true" selection-start-line="45" selection-start-column="52" selection-end-line="45" selection-end-column="52" />
         </state>
       </provider>
     </entry>

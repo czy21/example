@@ -2,7 +2,7 @@
   <div class="combine-table">
     <div class="handle-box">
       <div class="operate-box">
-        <el-button type="primary" icon="el-icon-edit" @click="handleAdd">添加用户</el-button>
+        <el-button type="primary" icon="el-icon-edit" @click="add">添加用户</el-button>
         <el-button type="primary">批量修改</el-button>
         <el-button type="primary">导出</el-button>
         <el-button type="primary">重置密码</el-button>
@@ -27,7 +27,7 @@
         <el-table-column prop="isHeader" label="部门经理"></el-table-column>
         <el-table-column label="操作" width="250">
           <template slot-scope="scope">
-            <el-button @click="handleEdit(scope.row)">编辑</el-button>
+            <el-button @click="edit(scope.row)">编辑</el-button>
             <el-button @click="handleAssignRole(scope.row)">分配角色</el-button>
             <!--<el-button type="danger" @click="handleDelete(scope.row)">删除</el-button>-->
           </template>
@@ -45,6 +45,55 @@
         </el-pagination>
       </div>
     </div>
+
+    <el-dialog title="添加用户" :visible.sync="userAddShow" width="20%">
+      <el-form ref="userAddForm" :rules="validationRules" :model="userAddForm" label-width="80px">
+        <el-form-item label="用户名称" prop="userName">
+          <el-input v-model="userAddForm.userName"></el-input>
+        </el-form-item>
+        <el-form-item label="登录名称" prop="loginName">
+          <el-input v-model="userAddForm.loginName"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱" prop="email">
+          <el-input v-model="userAddForm.email"></el-input>
+        </el-form-item>
+        <el-form-item label="电话号码" prop="phone">
+          <el-input v-model="userAddForm.phone"></el-input>
+        </el-form-item>
+        <el-form-item label="所在部门" prop="departmentId">
+          <el-select v-model="userAddForm.departmentId" placeholder="请选择部门">
+            <el-option v-for="item in $pocket.departments" :key="item.value" :label="item.label" :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="addUser">确 定</el-button>
+      </div>
+    </el-dialog>
+
+    <el-dialog title="修改用户" :visible.sync="userEditShow" width="20%">
+      <el-form ref="userEditForm" :rules="validationRules" :model="userEditForm" label-width="80px">
+        <el-form-item label="用户名称" prop="userName">
+          <el-input v-model="userEditForm.userName"></el-input>
+        </el-form-item>
+        <el-form-item label="邮箱" prop="email">
+          <el-input v-model="userEditForm.email"></el-input>
+        </el-form-item>
+        <el-form-item label="电话号码" prop="phone">
+          <el-input v-model="userEditForm.phone"></el-input>
+        </el-form-item>
+        <el-form-item label="所在部门" prop="departmentId">
+          <el-select v-model="userEditForm.departmentId" placeholder="请选择部门">
+            <el-option v-for="item in $pocket.departments" :key="item.value" :label="item.label" :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="editUser">确 定</el-button>
+      </div>
+    </el-dialog>
     <!-- 删除提示框 -->
     <!--<el-dialog title="提示" :visible.sync="delVisible" width="300px" center>-->
     <!--<div class="del-dialog-cnt">删除不可恢复，是否确定删除？</div>-->
@@ -53,76 +102,53 @@
     <!--<el-button type="primary" @click="deleteRow">确 定</el-button>-->
     <!--</span>-->
     <!--</el-dialog>-->
-    <user-add :show="addShow" @submitAdd="submitAdd" @close="close"></user-add>
-    <user-edit :show="editShow" @submitEdit="submitEdit" @close="close" :rowData="rowData"></user-edit>
-    <user-role :show="userRoleShow" @submitAssign="submitAssign" @close="close" :rowData="rowData"></user-role>
   </div>
 </template>
 
 <script>
   import c from '@c'
-  import UserAdd from "./UserAdd";
-  import UserEdit from "./UserEdit";
-  import UserRole from "./UserRole";
 
   export default {
     mixins: [c.mixins.list],
     name: "UserList",
-    components: {
-      UserAdd,
-      UserEdit,
-      UserRole
-    },
     data() {
       return {
-        //默认不显示新增界面
-        addShow: false,
-        // 默认不显示编辑界面
-        editShow: false,
-        //默认不显示分配角色界面
+        userAddShow: false,
+        userDelShow: false,
+        userEditShow: false,
         userRoleShow: false,
-        //显示删除提示框
-        delVisible: false,
-        // 根据前端id删除该行
-        userId: null,
-        // 用户行数据
-        rowData: {}
+        userAddForm: {},
+        userEditForm: {}
       };
     },
+    computed: {
+      validationRules() {
+        return {
+          loginName: [
+            {required: true, message: "请输入账号", trigger: "blur"}
+          ],
+          departmentId: [
+            {required: true, message: "请选择部门", trigger: "blur"}
+          ]
+        };
+      },
+    },
     methods: {
-      // 添加界面
-      handleAdd() {
-        this.addShow = true;
+      add() {
+        this.userAddShow = true
       },
-      //提交新增
-      submitAdd() {
-        this.close();
-        this.getData();
+      addUser() {
+        this.userAddShow = false
+        console.log(this.userAddForm)
       },
-      //显示编辑界面
-      handleEdit(row) {
-        this.editShow = true
-        this.rowData = row;
+      edit(row) {
+        this.userEditShow = true
+        this.userEditForm = row
+        console.log(this.userEditForm)
       },
-      //提交修改
-      submitEdit() {
-        this.close();
-        this.getData();
-      },
-      // 显示分配角色界面
-      handleAssignRole(row) {
-        this.userRoleShow = true;
-        this.rowData = row
-      },
-      //关闭所有Dialog
-      close() {
-        this.addShow = false;
-        this.editShow = false;
-        this.userRoleShow = false;
-      },
-      // 提交分配角色
-      submitAssign() {
-        this.close();
+      editUser() {
+        this.userEditShow = false
+        this.reload()
       },
       search() {
         return this.$api.post("user/load", this.searchModel)
