@@ -29,30 +29,30 @@
           <template slot-scope="scope">
             <el-button @click="handleEdit(scope.row)">编辑</el-button>
             <el-button @click="handleAssignRole(scope.row)">分配角色</el-button>
-            <el-button type="danger" @click="handleDelete(scope.row)">删除</el-button>
+            <!--<el-button type="danger" @click="handleDelete(scope.row)">删除</el-button>-->
           </template>
         </el-table-column>
       </el-table>
       <!-- 工具条 -->
       <div class="pagination">
         <el-button type="danger" icon="el-icon-delete">批量删除</el-button>
-        <el-pagination background @current-change="handleCurrentChange" @size-change="handleSizeChange"
-                       :current-page="pageModel.pageIndex"
-                       :page-size="pageModel.pageSize"
+        <el-pagination background @current-change="handleIndexChange" @size-change="handleSizeChange"
+                       :current-page="searchModel && searchModel.pageIndex"
+                       :page-size="searchModel && searchModel.pageSize"
                        :page-sizes="[15,30,50,100]"
                        layout="total ,sizes, prev, pager, next, jumper"
-                       :total=pageModel.total>
+                       :total="searchModel && searchModel.total">
         </el-pagination>
       </div>
     </div>
     <!-- 删除提示框 -->
-    <el-dialog title="提示" :visible.sync="delVisible" width="300px" center>
-      <div class="del-dialog-cnt">删除不可恢复，是否确定删除？</div>
-      <span slot="footer" class="dialog-footer">
-                <el-button @click="delVisible = false">取 消</el-button>
-                <el-button type="primary" @click="deleteRow">确 定</el-button>
-            </span>
-    </el-dialog>
+    <!--<el-dialog title="提示" :visible.sync="delVisible" width="300px" center>-->
+    <!--<div class="del-dialog-cnt">删除不可恢复，是否确定删除？</div>-->
+    <!--<span slot="footer" class="dialog-footer">-->
+    <!--<el-button @click="delVisible = false">取 消</el-button>-->
+    <!--<el-button type="primary" @click="deleteRow">确 定</el-button>-->
+    <!--</span>-->
+    <!--</el-dialog>-->
     <user-add :show="addShow" @submitAdd="submitAdd" @close="close"></user-add>
     <user-edit :show="editShow" @submitEdit="submitEdit" @close="close" :rowData="rowData"></user-edit>
     <user-role :show="userRoleShow" @submitAssign="submitAssign" @close="close" :rowData="rowData"></user-role>
@@ -60,11 +60,13 @@
 </template>
 
 <script>
+  import c from '@c'
   import UserAdd from "./UserAdd";
   import UserEdit from "./UserEdit";
   import UserRole from "./UserRole";
 
   export default {
+    mixins: [c.mixins.list],
     name: "UserList",
     components: {
       UserAdd,
@@ -81,27 +83,13 @@
         userRoleShow: false,
         //显示删除提示框
         delVisible: false,
-        //列表数据
-        list: [],
         // 根据前端id删除该行
         userId: null,
-        // 分页实体
-        pageModel: {
-          //分页的总行数
-          total: 0,
-          //当前页值
-          pageIndex: 1,
-          // 当前页的行数
-          pageSize: 15,
-        },
         // 用户行数据
         rowData: {}
       };
     },
     methods: {
-      search() {
-        this.$helper.eui.inform("你好");
-      },
       // 添加界面
       handleAdd() {
         this.addShow = true;
@@ -132,47 +120,16 @@
         this.editShow = false;
         this.userRoleShow = false;
       },
-      //获取当前行记录数据库中的id并显示删除提示框
-      handleDelete(row) {
-        this.delVisible = true;
-        this.userId = row.id;
-      },
-      // 提交删除
-      deleteRow() {
-        this.$api.user.del(this.userId).then(res => {
-          this.delVisible = false;
-          this.$notify({
-            message: "删除成功",
-            type: "success",
-          });
-          this.getData();
-        });
-      },
       // 提交分配角色
       submitAssign() {
         this.close();
       },
-      //获取当前页值
-      handleCurrentChange(val) {
-        this.pageModel.pageIndex = val;
+      search() {
+        return this.$api.post("user/load", this.searchModel)
       },
-      // 当前页显示的行数
-      handleSizeChange(val) {
-        this.pageModel.pageSize = val;
-      },
-      // 获取用户数据
-      getData() {
-        this.$api.get("user/load", this.pageModel).then(res => {
-          this.list = res.data.list;
-          this.pageModel = res.data.page;
-        })
-      },
-      refresh() {
-        this.reload()
-      }
     },
     mounted() {
-      this.getData();
+      this.load("user/load")
     }
   };
 </script>

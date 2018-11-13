@@ -17,7 +17,6 @@ const prepare = ({decorators = {}, extraComponents = []} = {}) => {
   stub = register({
     decorators,
     components: [
-      router,
       store,
       api,
       helper,
@@ -28,7 +27,7 @@ const prepare = ({decorators = {}, extraComponents = []} = {}) => {
 }
 
 const start = ({decorators = {}} = {}) => {
-  return register({decorators, components: [launch]})
+  return register({decorators, components: [router, launch]})
 }
 
 export {stub, start, prepare}
