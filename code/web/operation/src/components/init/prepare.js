@@ -1,7 +1,18 @@
 import {prepare} from 'fr'
 import store from '@c/store'
+import routes from '@c/routes'
+import mixins from '@c/mixins'
+import ui from '@c/ui'
 
 const decorators = {
-  store
+  router: {
+    mode: 'history',
+    routes: routes
+  },
+  store,
 }
-prepare({decorators})
+const extraComponents = [
+  ui,
+  mixins
+]
+prepare({decorators, extraComponents})

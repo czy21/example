@@ -13,27 +13,22 @@ const register = ({decorators = {}, components = []} = {}) => {
   return ref.jsUtil.basic.processComponents(components, stub, decorators)
 }
 
-const prepare = ({decorators = {}} = {}) => {
+const prepare = ({decorators = {}, extraComponents = []} = {}) => {
   stub = register({
     decorators,
     components: [
+      router,
       store,
       api,
       helper,
+      ...extraComponents
     ]
   })
   return stub
 }
 
 const start = ({decorators = {}} = {}) => {
-  stub = register({
-    decorators,
-    components: [
-      router,
-      launch,
-    ]
-  })
-  return stub
+  return register({decorators, components: [launch]})
 }
 
-export {stub, start, register, prepare}
+export {stub, start, prepare}

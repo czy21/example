@@ -7,5 +7,6 @@ export default {
   build(stub) {
     stub.helper.eui = euiHelpers(stub)
     stub.ref.jsUtil.basic.usePlugins([{plugin: ElementUI, params: {size: 'mini'}}], stub.ref.vue)
+    return ElementUI
   }
 }
