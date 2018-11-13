@@ -39,7 +39,7 @@ export default {
           params: method === 'GET' || method === 'DELETE' ? params : null
         }).then(res => {
           if (!res.data.data.hasOwnProperty("ErrorCode")) {
-            res.data.pocket && stub.store.commit('SET_POCKET_DATA', res.data.pocket)
+            res.data.pocket && stub.store.commit('SET_POCKET', res.data.pocket)
             resolve(res.data)
             return
           }

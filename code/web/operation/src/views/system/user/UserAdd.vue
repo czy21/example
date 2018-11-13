@@ -17,7 +17,7 @@
       </el-form-item>
       <el-form-item label="所在部门" prop="departmentId">
         <el-select v-model="addForm.departmentId" placeholder="请选择部门">
-          <el-option v-for="item in depOptions" :key="item.value" :label="item.label" :value="item.value">
+          <el-option v-for="item in $pocket.departments" :key="item.value" :label="item.label" :value="item.value">
           </el-option>
         </el-select>
       </el-form-item>
@@ -64,7 +64,7 @@
         };
       },
       depOptions() {
-        return this.$store.getters.pocketData.departments;
+        return []
       }
     },
     methods: {

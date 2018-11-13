@@ -8,8 +8,12 @@ const app = {
       // 侧边栏用户树形菜单列表
       userMenuTree: []
     },
+    isRouterAlive: true
   },
   mutations: {
+    RELOAD_ROUTE: (state, data) => {
+      state.isRouterAlive = data
+    },
     // 设置收缩状态
     TOGGLE_SIDEBAR: state => {
       state.sidebar.opened = !state.sidebar.opened;

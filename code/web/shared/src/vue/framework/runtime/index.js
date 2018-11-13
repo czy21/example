@@ -31,3 +31,4 @@ const start = ({decorators = {}} = {}) => {
 }
 
 export {stub, start, prepare}
+console.log(stub)
