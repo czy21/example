@@ -6,7 +6,7 @@ const app = {
       // 是否收缩菜单状态
       opened: false,
       // 侧边栏用户树形菜单列表
-      userMenuTree: stub.ref.jsUtil.auth.getToken() ? stub.ref.jsUtil.forTree.transChild(stub.ref.jsUtil.auth.getToken().menus) : []
+      userMenuTree: stub.ref.jsUtil.auth.getToken() ? stub.ref.jsUtil.auth.getToken().menus : []
     },
     isRouterAlive: true
   },
