@@ -11,4 +11,5 @@ public class UserDto {
     private String Phone;
     private Boolean IsHeader;
     private String DepartmentId;
+    private Boolean Enabled;
 }

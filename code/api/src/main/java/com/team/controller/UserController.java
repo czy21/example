@@ -47,16 +47,26 @@ public class UserController {
     @Autowired
     private MenuMap menuMap;
 
-    @RequestMapping("load")
     @AnnotationLog(remark = "查询用户列表")
     @Pocket(entity = {Role.class, Department.class})
-    public PageDto<UserDto> load(int pageIndex, int pageSize) {
+    @RequestMapping("load")
+    public PageDto<UserDto> Load(int pageIndex, int pageSize) {
         return userMap.toPageDto(userService.SelectPageList(pageIndex, pageSize));
     }
 
-    @RequestMapping("GetUserPageList")
-    public PageModel GetUserPageList() {
-        return userService.SelectPageList(1, 10);
+    @PostMapping("search")
+    public PageDto<UserDto> Search(int pageIndex, int pageSize) {
+        return userMap.toPageDto(userService.SelectPageList(pageIndex, pageSize));
+    }
+
+    @PostMapping("add")
+    public UserDto Add(UserDto dto) {
+        return userMap.toUserDto(userService.InsertDefaultPwd(userMap.toUser(dto)));
+    }
+
+    @PostMapping("edit")
+    public UserDto Edit(UserDto dto) {
+        return dto;
     }
 
     @PostMapping("/login")

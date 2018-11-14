@@ -1,7 +1,7 @@
 import CompanyList from '@/views/system/company'
-import UserList from '@/views/system/user'
+import UserList from '@/views/system/UserList'
 import MenuList from '@/views/system/menu'
-import RoleList from '@/views/system/role'
+import RoleList from '@/views/system/RoleList'
 
 export default [
   // {
@@ -16,12 +16,12 @@ export default [
     component: UserList,
     meta: {title: "用户管理"}
   },
-  // {
-  //   name: "RoleList",
-  //   path: '/system/role',
-  //   component: RoleList,
-  //   meta: {title: "角色管理"}
-  // },
+  {
+    name: "RoleList",
+    path: '/system/role',
+    component: RoleList,
+    meta: {title: "角色管理"}
+  },
   // {
   //   name: "MenuList",
   //   path: '/system/menu',

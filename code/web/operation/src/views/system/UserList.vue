@@ -15,12 +15,8 @@
     <div class="container">
       <!-- 列表 -->
       <el-table :data="list" border fit highlight-current-row>
-        <el-table-column type="selection" prop="id" label="用户Id" width="55"></el-table-column>
-        <el-table-column prop="userName" label="用户姓名">
-          <template slot-scope="scope">
-            {{scope.row.userName}}
-          </template>
-        </el-table-column>
+        <el-table-column type="selection" prop="userId" width="55"></el-table-column>
+        <el-table-column prop="userName" label="用户姓名"></el-table-column>
         <el-table-column prop="loginName" label="登录名称"></el-table-column>
         <el-table-column prop="email" label="邮箱"></el-table-column>
         <el-table-column prop="phone" label="电话"></el-table-column>
@@ -94,14 +90,6 @@
         <el-button type="primary" @click="editUser">确 定</el-button>
       </div>
     </el-dialog>
-    <!-- 删除提示框 -->
-    <!--<el-dialog title="提示" :visible.sync="delVisible" width="300px" center>-->
-    <!--<div class="del-dialog-cnt">删除不可恢复，是否确定删除？</div>-->
-    <!--<span slot="footer" class="dialog-footer">-->
-    <!--<el-button @click="delVisible = false">取 消</el-button>-->
-    <!--<el-button type="primary" @click="deleteRow">确 定</el-button>-->
-    <!--</span>-->
-    <!--</el-dialog>-->
   </div>
 </template>
 
@@ -139,7 +127,9 @@
       },
       addUser() {
         this.userAddShow = false
-        console.log(this.userAddForm)
+        this.create("user/add", this.userAddForm).then(res => {
+          this.$refs['userAddForm'].resetFields();
+        })
       },
       edit(row) {
         this.userEditShow = true
@@ -151,7 +141,10 @@
         this.reload()
       },
       search() {
-        return this.$api.post("user/load", this.searchModel)
+        this.$api.post("user/search", this.searchModel).then(v => {
+          v.data.page && Object.assign(this.searchModel, v.data.page)
+          this.list = v.data.list
+        });
       },
     },
     mounted() {

@@ -6,4 +6,5 @@ import lombok.Data;
 public class SimpleItemModel {
     private String Value;
     private String Label;
+    private String ParentId;
 }

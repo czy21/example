@@ -1,6 +1,14 @@
 package com.team.controller;
 
 
+import com.team.core.aop.AnnotationLog;
+import com.team.core.mvc.Pocket;
+import com.team.entity.map.RoleMap;
+import com.team.entity.po.Menu;
+import com.team.entity.vo.PageDto;
+import com.team.entity.vo.RoleDto;
+import com.team.service.RoleService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -12,6 +20,22 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/role")
 public class RoleController {
+
+
+    @Autowired
+    private RoleService roleService;
+    @Autowired
+    private RoleMap roleMap;
+
+    @RequestMapping("load")
+    @AnnotationLog(remark = "查询角色列表")
+    @Pocket(entity = {Menu.class})
+    public PageDto<RoleDto> load(int pageIndex, int pageSize) {
+        return roleMap.toPageDto(roleService.SelectPageList(pageIndex, pageSize));
+    }
+
+
+
 
 
 }

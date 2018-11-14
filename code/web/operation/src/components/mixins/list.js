@@ -15,21 +15,19 @@ export default {
         this.list = res.data.list
       })
     },
+    create(url, form) {
+      return this.$api.post(url, form).then(res => {
+        this.list.unshift(res.data)
+        return res
+      })
+    },
     handleIndexChange(val) {
       this.searchModel.pageIndex = val;
-      this.verifySearch(this.search())
+      this.search()
     },
     handleSizeChange(val) {
       this.searchModel.pageSize = val;
-      this.verifySearch(this.search())
+      this.search()
     },
-    verifySearch(val) {
-      if (val instanceof Promise) {
-        val.then(v => {
-          v.data.page && Object.assign(this.searchModel, v.data.page)
-          this.list = v.data.list
-        });
-      }
-    },
-  }
+  },
 }

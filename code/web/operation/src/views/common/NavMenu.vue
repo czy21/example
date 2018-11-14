@@ -1,7 +1,7 @@
 <template>
   <div class="navMenu">
     <template v-for="model in menuTree">
-      <el-submenu v-if="model.children&&model.children.length!=0"
+      <el-submenu v-if="model.children.length!=0"
                   :key="model.menuId"
                   :data="model"
                   :index="model.menuName">
@@ -11,7 +11,7 @@
         </template>
         <NavMenu :menuTree="model.children" :iconSize="iconSize"></NavMenu>
       </el-submenu>
-      <el-menu-item v-if="!model.children||model.children.length==0"
+      <el-menu-item v-if="model.children.length==0"
                     :key="model.menuId"
                     :data="model"
                     :index="model.url"

@@ -4,6 +4,7 @@ package com.team.core.util;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.team.core.extension.StringExtension;
 import lombok.Data;
+import org.mapstruct.Mapper;
 
 import java.util.*;
 

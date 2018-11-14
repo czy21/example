@@ -1,8 +1,9 @@
+const _ = require('lodash')
 /**
  * 转换数组为树形列表(有children空对象)
  * @params list     代转化数组列表
  */
-export function transChild(list) {
+export default function transData(list) {
   let parentId = '00000000-0000-0000-0000-000000000000';
   let items = {};
   // 获取每个节点的直属子节点，*记住是直属，不是所有子节点
@@ -27,7 +28,7 @@ function formatTree(items, parentId) {
     return result;
   }
   for (let t of items[parentId]) {
-    t.children = formatTree(items, t.menuId)
+    t.children = formatTree(items, t.id)
     result.push(t);
   }
   return result;
@@ -43,17 +44,19 @@ function formatTree(items, parentId) {
 export function transNoChild(list, idStr, pIdStr, chindrenStr) {
   const temp = [], hash = {}, id = idStr, pId = pIdStr, children = chindrenStr;
   let i = 0, j = 0;
-  const len = list.length;
-  for (; i < len; i++) {
-    hash[list[i][id]] = list[i];
-  }
-  for (; j < len; j++) {
-    const aVal = list[j], hashVP = hash[aVal[pId]];
-    if (hashVP) {
-      !hashVP[children] && (hashVP[children] = []);
-      hashVP[children].push(aVal);
-    } else {
-      temp.push(aVal);
+  if (!_.isEmpty(list)) {
+    const len = list.length;
+    for (; i < len; i++) {
+      hash[list[i][id]] = list[i];
+    }
+    for (; j < len; j++) {
+      const aVal = list[j], hashVP = hash[aVal[pId]];
+      if (hashVP) {
+        !hashVP[children] && (hashVP[children] = []);
+        hashVP[children].push(aVal);
+      } else {
+        temp.push(aVal);
+      }
     }
   }
   return temp;
@@ -66,15 +69,18 @@ export function transNoChild(list, idStr, pIdStr, chindrenStr) {
  */
 export function findParents(list, id) {
   let result = []
-  for (let i in list) {
-    if (list[i].value === id) {
-      result.push(list[i].parentId)
-      result.push(list[i].value)
-      return result;
-    }
-    else if (list[i].children && list[i].children.length > 0) {
-      let res = findParents(list[i].children, id);
-      return res.concat(list[i].parentId)
+  if (!_.isEmpty(list)) {
+    for (let i in list) {
+      if (list[i].value === id) {
+        result.push(list[i].parentId)
+        result.push(list[i].value)
+        return result;
+      }
+      else if (list[i].children && list[i].children.length > 0) {
+        let res = findParents(list[i].children, id);
+        return res.concat(list[i].parentId)
+      }
     }
   }
+  return result
 }

@@ -13,4 +13,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl extends BaseServiceImpl<User> implements UserService {
 
+
+    @Override
+    public User InsertDefaultPwd(User user) {
+        user.setPassword("123456");
+        return super.InsertAndGetEntity(user);
+    }
 }
