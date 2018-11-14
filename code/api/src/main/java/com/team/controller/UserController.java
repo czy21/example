@@ -70,9 +70,9 @@ public class UserController {
         }
         JSONObject json = new JSONObject();
         TokenDto token = new TokenDto();
-        TreeUtil tree=new TreeUtil(menuMap.toMenuTree(roleMenuService.getMenusByUserId(user.getUserId())));
+
         token.setUser(userMap.toLoginDto(user));
-        token.setMenus(tree.buildTree());
+        token.setMenus(TreeUtil.createTreeMenus(menuMap.toMenuTree(roleMenuService.getMenusByUserId(user.getUserId()))));
         token.setValue(JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));
         json.put("token", token);
         return json;

@@ -1,11 +1,11 @@
 package com.team.core.util;
 
 
-import com.team.entity.vo.MenuDto;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.team.core.extension.StringExtension;
 import lombok.Data;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class TreeUtil {
 
@@ -16,107 +16,25 @@ public class TreeUtil {
         private String MenuName;
         private String Icon;
         private String Url;
-        private List<Node> children;
+        private List<Node> children = new ArrayList<>();
     }
 
-    List<TreeUtil.Node> nodes;
-
-    public TreeUtil(List<Node> nodes) {
-        this.nodes = nodes;
-    }
-    /**
-     * 构建树形结构
-     *
-     * @return
-     */
-
-    public List<Node> buildTree() {
-        List<Node> treeNodes = new ArrayList<>();
-        List<Node> rootNodes = getRootNodes();
-        for (Node rootNode : rootNodes) {
-            buildChildNodes(rootNode);
-            treeNodes.add(rootNode);
+    public static List<Node> createTreeMenus(List<Node> menus) {
+        Node root = new Node();
+        root.setParentId(StringExtension.GuidEmpty);
+        Map<String, Node> dataMap = new HashMap<>();
+        for (Node menu : menus) {
+            dataMap.put(menu.getMenuId(), menu);
         }
-        return treeNodes;
-    }
-
-    /**
-     * 递归子节点
-     *
-     * @param node
-     */
-
-    public void buildChildNodes(Node node) {
-
-        List<Node> children = getChildNodes(node);
-
-        if (!children.isEmpty()) {
-
-            for (Node child : children) {
-
-                buildChildNodes(child);
-
-            }
-
-            node.setChildren(children);
-
-        }
-
-    }
-
-    /**
-     * 获取父节点下所有的子节点
-     *
-     * @return
-     */
-
-    public List<Node> getChildNodes(Node pnode) {
-
-        List<Node> childNodes = new ArrayList<Node>();
-
-        for (Node n : nodes) {
-
-            if (pnode.getMenuId().equals(n.getParentId())) {
-                childNodes.add(n);
-            }
-
-        }
-
-        return childNodes;
-
-    }
-
-    /**
-     * 判断是否为根节点
-     *
-     * @return
-     */
-
-    public boolean rootNode(Node node) {
-
-        boolean isRootNode = true;
-        for (Node n : nodes) {
-            if (node.getParentId().equals(n.getMenuId())) {
-                isRootNode = false;
-                break;
+        Set<Map.Entry<String, Node>> entrySet = dataMap.entrySet();
+        for (Map.Entry<String, Node> entry : entrySet) {
+            Node menu = entry.getValue();
+            if (StringExtension.GuidIsNullOrEmpty(menu.getParentId())) {
+                root.getChildren().add(menu);
+            } else {
+                dataMap.get(menu.getParentId()).getChildren().add(menu);
             }
         }
-        return isRootNode;
-    }
-
-    /**
-     * 获取集合中所有的根节点
-     *
-     * @return
-     */
-
-    public List<Node> getRootNodes() {
-        List<Node> rootNodes = new ArrayList<>();
-        for (Node n : nodes) {
-            if (rootNode(n)) {
-                rootNodes.add(n);
-            }
-        }
-        return rootNodes;
+        return root.getChildren();
     }
 }
