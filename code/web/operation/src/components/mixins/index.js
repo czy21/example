@@ -1,7 +1,5 @@
 import list from './list'
 
-const _ = require('lodash')
-
 export default {
   key: 'mixins',
   build(stub, deco = {}) {
