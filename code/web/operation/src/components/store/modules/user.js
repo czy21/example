@@ -19,9 +19,8 @@ const user = {
     CheckLogin({commit}, data) {
       stub.api.post("user/login", data).then(
         res => {
-          commit("SET_USER_INFO", res.data.token.user);
           stub.ref.jsUtil.auth.setToken(res.data.token);
-          stub.router.push("/home")
+          stub.router.push("/home", window.location.reload())
         }
       );
     },

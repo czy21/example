@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar">
-    <el-menu class="sidebar-el-menu" :collapse="isCollapse" :default-active="curRoute" background-color="#304156"
+    <el-menu class="sidebar-el-menu" :collapse="isCollapse" :default-active="$route.path" background-color="#304156"
              text-color="#bfcbd9" active-text-color="#409EFF" router>
       <NavMenu :colltitle="isCollapse" class="left-menu" :menuTree="menuTree" :iconSize="'16px'"></NavMenu>
     </el-menu>
@@ -25,13 +25,6 @@
       menuTree() {
         return this.sidebar.userMenuTree;
       },
-      curRoute() {
-        return this.$route.path.replace('/', '');
-      },
-
     },
-    mounted() {
-      // this.$store.dispatch("GetUserMenus", this.userInfo.loginName);
-    }
   };
 </script>

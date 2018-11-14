@@ -27,7 +27,7 @@ function formatTree(items, parentId) {
     return result;
   }
   for (let t of items[parentId]) {
-    t.children = formatTree(items, t.id)
+    t.children = formatTree(items, t.menuId)
     result.push(t);
   }
   return result;

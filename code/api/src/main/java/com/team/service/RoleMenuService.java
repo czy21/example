@@ -1,5 +1,6 @@
 package com.team.service;
 
+import com.team.entity.po.Menu;
 import com.team.entity.po.RoleMenu;
 import com.team.core.universal.BaseService;
 
@@ -13,4 +14,6 @@ import java.util.List;
 public interface RoleMenuService extends BaseService<RoleMenu> {
 
     List<String> getPermissionsByUserId(String userId);
+
+    List<Menu> getMenusByUserId(String userId);
 }
