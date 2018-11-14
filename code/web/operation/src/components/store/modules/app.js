@@ -6,7 +6,7 @@ const app = {
       // 是否收缩菜单状态
       opened: false,
       // 侧边栏用户树形菜单列表
-      userMenuTree: []
+      userMenuTree: stub.ref.jsUtil.auth.getToken() ? stub.ref.jsUtil.forTree.transChild(stub.ref.jsUtil.auth.getToken().menus) : []
     },
     isRouterAlive: true
   },
@@ -18,10 +18,6 @@ const app = {
     TOGGLE_SIDEBAR: state => {
       state.sidebar.opened = !state.sidebar.opened;
     },
-    // 设置侧边栏树形菜单数据
-    SET_USER_MENU_TREE: (state, data) => {
-      state.sidebar.userMenuTree = data;
-    },
     SUBMIT_ERROR: (state, err) => {
       stub.launch.$helper.eui.inform(err)
     }
@@ -30,12 +26,6 @@ const app = {
     // 触发设置收缩状态方法
     ToggleSideBar({commit}) {
       commit('TOGGLE_SIDEBAR')
-    },
-    // 获取用户树形菜单列表
-    GetUserMenus({commit}, loginName) {
-      stub.api.getUserMenus(loginName).then(res => {
-        commit('SET_USER_MENU_TREE', stub.ref.jsUtil.forTree.transChild(res.data));
-      })
     }
   }
 }

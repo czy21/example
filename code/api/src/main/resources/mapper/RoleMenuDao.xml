@@ -34,5 +34,17 @@
         and ur.RoleId=rm.RoleId
         and ur.UserId=#{userId}
     </select>
+    <select id="getMenusByUserId" resultType="com.team.entity.po.Menu" parameterType="string">
+        select distinct
+        m
+        from sys_menu m,
+        sys_role_menu rm,
+        sys_user_role ur
+        where
+        m.MenuId=rm.MenuId
+        and m.IsMenu=true
+        and ur.RoleId=rm.RoleId
+        and ur.UserId=#{userId}
+    </select>
 
 </mapper>

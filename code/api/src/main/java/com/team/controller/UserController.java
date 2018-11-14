@@ -8,6 +8,7 @@ import com.team.core.exception.WebException;
 import com.team.core.mvc.Pocket;
 import com.team.core.universal.PageModel;
 import com.team.core.util.JwtUtil;
+import com.team.entity.map.MenuMap;
 import com.team.entity.map.UserMap;
 import com.team.entity.po.Department;
 import com.team.entity.po.Menu;
@@ -17,6 +18,7 @@ import com.team.entity.vo.LoginDto;
 import com.team.entity.vo.PageDto;
 import com.team.entity.vo.TokenDto;
 import com.team.entity.vo.UserDto;
+import com.team.service.RoleMenuService;
 import com.team.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,9 +39,12 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
+    @Autowired
+    private RoleMenuService roleMenuService;
     @Autowired
     private UserMap userMap;
+    @Autowired
+    private MenuMap menuMap;
 
     @RequestMapping("load")
     @AnnotationLog(remark = "查询用户列表")
@@ -63,7 +68,11 @@ public class UserController {
         if (!user.getPassword().equals(password)) {
             throw new WebException(ErrorCode.PASSWORD_ERROR, "密码错误");
         }
-        json.put("token", new TokenDto(userMap.toLoginDto(user), JwtUtil.GenerateToken(user.getLoginName(), user.getPassword())));
+        TokenDto token = new TokenDto();
+        token.setUser(userMap.toLoginDto(user));
+        token.setValue(JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));
+        token.setMenus(menuMap.toMenuDtos(roleMenuService.getMenusByUserId(user.getUserId())));
+        json.put("token", token);
         return json;
     }
 }
