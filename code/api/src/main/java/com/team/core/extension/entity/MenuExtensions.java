@@ -24,6 +24,7 @@ public class MenuExtensions {
             SimpleItemModel temp = new SimpleItemModel();
             temp.setValue(t.getMenuId());
             temp.setLabel(t.getMenuName());
+            temp.setParentId(t.getParentId());
             simples.add(temp);
         });
         return simples;

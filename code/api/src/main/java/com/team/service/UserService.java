@@ -10,5 +10,6 @@ import com.team.core.universal.BaseService;
  */
 public interface UserService extends BaseService<User> {
 
+    User InsertDefaultPwd(User user);
 
 }

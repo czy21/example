@@ -34,6 +34,12 @@ public class BaseServiceImpl<TEntity> implements BaseService<TEntity> {
     }
 
     @Override
+    public TEntity InsertAndGetEntity(TEntity entity) {
+        baseDao.insert(entity);
+        return entity;
+    }
+
+    @Override
     public Integer Update(TEntity entity) {
         return baseDao.updateById(entity);
     }

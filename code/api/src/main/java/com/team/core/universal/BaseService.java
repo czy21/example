@@ -23,6 +23,15 @@ public interface BaseService<TEntity> {
 
     /*
      * @Author 陈昭宇
+     * @Description 添加并返回实体
+     * @Date 2018/7/26
+     * @Param [entity]
+     * @Return TEntity
+     */
+    TEntity InsertAndGetEntity(TEntity entity);
+
+    /*
+     * @Author 陈昭宇
      * @Description 修改实体
      * @Date 2018/7/26
      * @Param [entity]
