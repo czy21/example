@@ -8,6 +8,7 @@ import com.team.core.exception.WebException;
 import com.team.core.mvc.Pocket;
 import com.team.core.universal.PageModel;
 import com.team.core.util.JwtUtil;
+import com.team.core.util.TreeUtil;
 import com.team.entity.map.MenuMap;
 import com.team.entity.map.UserMap;
 import com.team.entity.po.Department;
@@ -60,7 +61,6 @@ public class UserController {
 
     @PostMapping("/login")
     public JSONObject Login(String loginName, String password) {
-        JSONObject json = new JSONObject();
         User user = userService.SelectBy("LoginName", loginName);
         if (user == null) {
             throw new WebException(ErrorCode.NO_USER, "用户不存在");
@@ -68,10 +68,12 @@ public class UserController {
         if (!user.getPassword().equals(password)) {
             throw new WebException(ErrorCode.PASSWORD_ERROR, "密码错误");
         }
+        JSONObject json = new JSONObject();
         TokenDto token = new TokenDto();
+        TreeUtil tree=new TreeUtil(menuMap.toMenuTree(roleMenuService.getMenusByUserId(user.getUserId())));
         token.setUser(userMap.toLoginDto(user));
+        token.setMenus(tree.buildTree());
         token.setValue(JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));
-        token.setMenus(menuMap.toMenuDtos(roleMenuService.getMenusByUserId(user.getUserId())));
         json.put("token", token);
         return json;
     }
