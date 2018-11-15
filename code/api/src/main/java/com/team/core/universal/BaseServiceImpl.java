@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Description 业务逻辑层基类实现
@@ -90,6 +92,7 @@ public class BaseServiceImpl<TEntity> implements BaseService<TEntity> {
             field.setAccessible(true);
             QueryWrapper<TEntity> wra = new QueryWrapper<>();
             wra.eq(field.getName(), value);
+            wra.orderByAsc("ModifiedTime");
             return baseDao.selectList(wra);
         } catch (ReflectiveOperationException e) {
             throw new ServiceException(e.getMessage(), e);
@@ -99,6 +102,8 @@ public class BaseServiceImpl<TEntity> implements BaseService<TEntity> {
     @Override
     public PageModel<TEntity> SelectPageList(Integer pageIndex, Integer pageSize) {
         PageHelper.startPage(pageIndex, pageSize);
-        return new PageModel<>(baseDao.selectList(null));
+        QueryWrapper<TEntity> wra = new QueryWrapper<>();
+        wra.orderByAsc("ModifiedTime");
+        return new PageModel<>(baseDao.selectList(wra));
     }
 }

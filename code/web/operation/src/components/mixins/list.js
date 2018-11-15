@@ -1,6 +1,7 @@
 export default {
   data() {
     return {
+      isDisable: false,
       searchModel: {
         pageIndex: 1,
         pageSize: 15
@@ -9,16 +10,16 @@ export default {
     }
   },
   methods: {
+    submitOne() {
+      this.isDisable = true
+      setTimeout(() => {
+        this.isDisable = false
+      }, 1000)
+    },
     load(url) {
       this.$api.get(url, this.searchModel).then(res => {
         res.data.page && Object.assign(this.searchModel, res.data.page)
         this.list = res.data.list
-      })
-    },
-    create(url, form) {
-      return this.$api.post(url, form).then(res => {
-        this.list.unshift(res.data)
-        return res
       })
     },
     handleIndexChange(val) {

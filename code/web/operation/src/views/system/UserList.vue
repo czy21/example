@@ -25,7 +25,12 @@
           <template slot-scope="scope">
             <el-button @click="edit(scope.row)">编辑</el-button>
             <el-button @click="handleAssignRole(scope.row)">分配角色</el-button>
-            <!--<el-button type="danger" @click="handleDelete(scope.row)">删除</el-button>-->
+            <el-button @click="modifiedUser(scope.row)"
+                       :class="scope.row.enabled
+                       ?'el-button--danger'
+                       :'el-button--success'">
+              {{scope.row.enabled?'禁用':'启用'}}
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -64,7 +69,7 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="addUser">确 定</el-button>
+        <el-button type="primary" @click="addUser" :disabled="isDisable">确 定</el-button>
       </div>
     </el-dialog>
 
@@ -126,9 +131,13 @@
         this.userAddShow = true
       },
       addUser() {
-        this.userAddShow = false
-        this.create("user/add", this.userAddForm).then(res => {
-          this.$refs['userAddForm'].resetFields();
+        this.submitOne()
+        this.$helper.eui.actWithValidation("userAddForm", () => {
+          this.userAddShow = false
+          this.$api.post("user/add", this.userAddForm).then(res => {
+            this.list.unshift(res.data)
+            this.$refs['userAddForm'].resetFields();
+          })
         })
       },
       edit(row) {
@@ -139,6 +148,14 @@
       editUser() {
         this.userEditShow = false
         this.reload()
+      },
+      modifiedUser(row) {
+        row.enabled = !row.enabled
+        const temp = {
+          userId: row.userId,
+          enabled: row.enabled
+        }
+        console.log(temp)
       },
       search() {
         this.$api.post("user/search", this.searchModel).then(v => {
