@@ -2,10 +2,33 @@ server:
   port: 8075
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/erp?&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true
-    username: root
-    password: sasa
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql://localhost:3306/erp?&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true
+      username: root
+      password: sasa
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filter:
+        slf4j:
+          enabled: true
+        wall:
+          enabled: true
+        stat:
+          enabled: true
+          merge-sql: true
+          slow-sql-millis: 5000
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: false
@@ -13,6 +36,7 @@ mybatis-plus:
   type-aliases-package: com.team.entity.po
   type-aliases-super-type: com.team.core.universal.BaseEntity
   global-config:
+    refresh: true
     db-config:
       id-type: uuid
       table-prefix: sys_
