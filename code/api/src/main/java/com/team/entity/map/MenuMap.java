@@ -9,7 +9,7 @@ import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring",unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(config = CentralConfig.class)
 public interface MenuMap {
     List<MenuDto> toMenuDtos(List<Menu> menus);
 
