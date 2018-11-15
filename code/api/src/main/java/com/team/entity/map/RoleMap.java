@@ -10,7 +10,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "spring",unmappedTargetPolicy = ReportingPolicy.IGNORE)
+@Mapper(config = CentralConfig.class)
 public interface RoleMap {
     @Mapping(source = "pageIndex", target = "page.pageIndex")
     @Mapping(source = "pageSize", target = "page.pageSize")
