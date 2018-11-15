@@ -8,8 +8,9 @@ import com.team.entity.vo.RoleDto;
 import com.team.entity.vo.UserDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring",unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface RoleMap {
     @Mapping(source = "pageIndex", target = "page.pageIndex")
     @Mapping(source = "pageSize", target = "page.pageSize")

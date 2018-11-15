@@ -7,10 +7,11 @@ import com.team.entity.vo.PageDto;
 import com.team.entity.vo.UserDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring",unmappedTargetPolicy = ReportingPolicy.IGNORE)
 public interface UserMap {
     UserDto toUserDto(User user);
 
