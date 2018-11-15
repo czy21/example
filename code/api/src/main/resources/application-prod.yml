@@ -1,0 +1,25 @@
+server:
+  port: 8075
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/erp?&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true
+    username: root
+    password: sasa
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.team.entity.po
+  type-aliases-super-type: com.team.core.universal.BaseEntity
+  global-config:
+    db-config:
+      id-type: uuid
+      table-prefix: sys_
+      db-type: mysql
+pagehelper:
+  auto-dialect: mysql # 指定数据库，不指定的话会默认自动检测数据库类型
+  reasonable: true    # 如果pageIndex<0是,查询第一页,如果pageIndex>pageSizes查询最后一页
+  support-methods-arguments: true
+  params: count=countSql
+  page-size-zero: true  #pageSize为0时,不执行分页,返回全部结果

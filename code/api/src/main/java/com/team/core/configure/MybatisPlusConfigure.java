@@ -14,7 +14,6 @@ import org.springframework.context.annotation.Bean;
 @MapperScan(value = "com.team.dao*")
 public class MybatisPlusConfigure {
 
-
     @Bean
     public ServletRegistrationBean<StatViewServlet> registrationBean() {
         ServletRegistrationBean<StatViewServlet> bean = new ServletRegistrationBean<>(new StatViewServlet(), "/druid/*");
