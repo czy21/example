@@ -1,11 +1,11 @@
 package com.team.core.exception;
 
-public class ErrorCode {
-
-    public static final String NO_USER = "NO_USER";
-    public static final String TOKEN_ERROR = "TOKEN_ERROR";
-    public static final String NO_AUTH = "NO_AUTH";
-    public static final String PASSWORD_ERROR = "PASSWORD_ERROR";
-    public static final String NAME_EXIST = "NAME_EXIST";
-
+public enum ErrorCode {
+    NO_USER,
+    TOKEN_ERROR,
+    NO_AUTH,
+    PASSWORD_ERROR,
+    NAME_EXIST,
+    NAME_NO_EXIST,
+    ID_NO_EXIST,
 }

@@ -9,8 +9,8 @@ public class WebException extends RuntimeException {
         return ErrorCode;
     }
 
-    public WebException(String _errorCode, String _message) {
+    public WebException(com.team.core.exception.ErrorCode _errorCode, String _message) {
         super(_message);
-        ErrorCode = _errorCode;
+        ErrorCode = _errorCode.toString();
     }
 }

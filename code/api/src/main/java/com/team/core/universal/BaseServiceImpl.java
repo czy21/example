@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.core.exception.ServiceException;
 import com.github.pagehelper.PageHelper;
+import com.team.core.util.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.lang.reflect.Field;
@@ -17,12 +18,12 @@ import java.util.Map;
  * @Author 陈昭宇
  * @Date 2018/7/26
  */
-public class BaseServiceImpl<TEntity> implements BaseService<TEntity> {
+public class BaseServiceImpl<TEntity extends BaseEntity> implements BaseService<TEntity> {
 
     @Autowired
-    private BaseDao<TEntity> baseDao;
+    protected BaseDao<TEntity> baseDao;
 
-    private Class<TEntity> modelClass;
+    protected Class<TEntity> modelClass;
 
     @SuppressWarnings("unchecked")
     protected BaseServiceImpl() {
@@ -32,18 +33,29 @@ public class BaseServiceImpl<TEntity> implements BaseService<TEntity> {
 
     @Override
     public Integer Insert(TEntity entity) {
+        entity.setAddedTime(DateTimeUtil.getCurrentDateTime());
+        entity.setModifiedTime(DateTimeUtil.getCurrentDateTime());
         return baseDao.insert(entity);
     }
 
     @Override
     public TEntity InsertAndGetEntity(TEntity entity) {
+        entity.setAddedTime(DateTimeUtil.getCurrentDateTime());
+        entity.setModifiedTime(DateTimeUtil.getCurrentDateTime());
         baseDao.insert(entity);
         return entity;
     }
 
     @Override
     public Integer Update(TEntity entity) {
+        entity.setModifiedTime(DateTimeUtil.getCurrentDateTime());
         return baseDao.updateById(entity);
+    }
+
+    @Override
+    public Integer UpdateBy(TEntity entity, QueryWrapper<TEntity> wra) {
+        entity.setModifiedTime(DateTimeUtil.getCurrentDateTime());
+        return baseDao.update(entity, wra);
     }
 
     @Override
@@ -92,7 +104,7 @@ public class BaseServiceImpl<TEntity> implements BaseService<TEntity> {
             field.setAccessible(true);
             QueryWrapper<TEntity> wra = new QueryWrapper<>();
             wra.eq(field.getName(), value);
-            wra.orderByAsc("ModifiedTime");
+            wra.orderByDesc("ModifiedTime");
             return baseDao.selectList(wra);
         } catch (ReflectiveOperationException e) {
             throw new ServiceException(e.getMessage(), e);
@@ -103,7 +115,7 @@ public class BaseServiceImpl<TEntity> implements BaseService<TEntity> {
     public PageModel<TEntity> SelectPageList(Integer pageIndex, Integer pageSize) {
         PageHelper.startPage(pageIndex, pageSize);
         QueryWrapper<TEntity> wra = new QueryWrapper<>();
-        wra.orderByAsc("ModifiedTime");
+        wra.orderByDesc("ModifiedTime");
         return new PageModel<>(baseDao.selectList(wra));
     }
 }

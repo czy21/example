@@ -1,6 +1,7 @@
 package com.team.core.universal;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.apache.ibatis.exceptions.TooManyResultsException;
 
 import java.util.List;
@@ -10,7 +11,7 @@ import java.util.List;
  * @Author 陈昭宇
  * @Date 2018/7/26
  */
-public interface BaseService<TEntity> {
+public interface BaseService<TEntity extends BaseEntity> {
 
     /*
      * @Author 陈昭宇
@@ -38,6 +39,16 @@ public interface BaseService<TEntity> {
      * @Return java.lang.Integer
      */
     Integer Update(TEntity entity);
+
+    /*
+     * @Author 陈昭宇
+     * @Description 修改实体
+     * @Date 2018/7/26
+     * @Param [entity,wrapper]
+     * @Return java.lang.Integer
+     */
+    Integer UpdateBy(TEntity entity, QueryWrapper<TEntity> wra);
+
 
     /*
      * @Author 陈昭宇

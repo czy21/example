@@ -135,19 +135,27 @@
         this.$helper.eui.actWithValidation("userAddForm", () => {
           this.userAddShow = false
           this.$api.post("user/add", this.userAddForm).then(res => {
-            this.list.unshift(res.data)
             this.$refs['userAddForm'].resetFields();
+            this.search();
           })
+
         })
       },
       edit(row) {
         this.userEditShow = true
-        this.userEditForm = row
-        console.log(this.userEditForm)
+        this.userEditForm = {
+          userId: row.userId,
+          userName: row.userName,
+          email: row.email,
+          phone: row.phone,
+          departmentId: row.departmentId,
+        }
       },
       editUser() {
         this.userEditShow = false
-        this.reload()
+        this.$api.post("user/edit", this.userEditForm).then(res => {
+          this.search();
+        })
       },
       modifiedUser(row) {
         row.enabled = !row.enabled
@@ -155,7 +163,9 @@
           userId: row.userId,
           enabled: row.enabled
         }
-        console.log(temp)
+        this.$api.post("user/modified", temp).then(res => {
+          this.search();
+        })
       },
       search() {
         this.$api.post("user/search", this.searchModel).then(v => {

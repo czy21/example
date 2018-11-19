@@ -66,8 +66,15 @@ public class UserController {
 
     @PostMapping("edit")
     public UserDto Edit(UserDto dto) {
-        return dto;
+        return userMap.toUserDto(userService.EditUser(dto));
     }
+
+    @PostMapping("modified")
+    public UserDto Modified(UserDto dto) {
+        return userMap.toUserDto(userService.EditUser(dto));
+    }
+
+
 
     @PostMapping("/login")
     public JSONObject Login(String loginName, String password) {
