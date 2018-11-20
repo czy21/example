@@ -9,8 +9,10 @@ import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootConfiguration
+@EnableTransactionManagement
 @MapperScan(value = "com.team.dao*")
 public class MybatisPlusConfigure {
 

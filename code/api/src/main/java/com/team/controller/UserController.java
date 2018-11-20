@@ -23,9 +23,7 @@ import com.team.service.RoleMenuService;
 import com.team.service.UserRoleService;
 import com.team.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -82,9 +80,10 @@ public class UserController {
         return userRoleService.getRolesByUserId(userId);
     }
 
-    @PostMapping("updateUserRole")
+    @PostMapping(value = "updateUserRole")
     public List<String> updateUserRole(String userId, List<String> userRoleIds) {
-        return null;
+        return userRoleIds;
+//        return userRoleService.insertOrUpdateUserRole(userId, userRoleIds);
     }
 
     @PostMapping("/login")
