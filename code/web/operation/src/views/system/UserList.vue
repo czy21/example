@@ -24,7 +24,7 @@
         <el-table-column label="操作" width="250">
           <template slot-scope="scope">
             <el-button @click="edit(scope.row)">编辑</el-button>
-            <el-button @click="handleAssignRole(scope.row)">分配角色</el-button>
+            <el-button @click="allotRole(scope.row)">分配角色</el-button>
             <el-button @click="modifiedUser(scope.row)"
                        :class="scope.row.enabled
                        ?'el-button--danger'
@@ -95,6 +95,20 @@
         <el-button type="primary" @click="editUser">确 定</el-button>
       </div>
     </el-dialog>
+
+    <el-dialog title="分配角色" :visible.sync="userRoleShow" width="35%">
+      <div class="allot-transfer">
+        <el-transfer :button-texts="['收回', '分配']"
+                     :titles="['未分配', '已分配']"
+                     :props="{key: 'value',label:'label'}"
+                     :data="$pocket.roles"
+                     v-model="userRoleIds">
+        </el-transfer>
+      </div>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="submitAllotRole">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
@@ -111,7 +125,9 @@
         userEditShow: false,
         userRoleShow: false,
         userAddForm: {},
-        userEditForm: {}
+        userEditForm: {},
+        userId: '',
+        userRoleIds: []
       };
     },
     computed: {
@@ -138,7 +154,6 @@
             this.$refs['userAddForm'].resetFields();
             this.search();
           })
-
         })
       },
       edit(row) {
@@ -166,6 +181,24 @@
         this.$api.post("user/modified", temp).then(res => {
           this.search();
         })
+      },
+      allotRole(row) {
+        this.userRoleShow = true
+        this.userId = row.userId
+        this.$api.post("user/userRoleDetails", {userId: this.userId}).then(res => {
+          this.userRoleIds = res.data
+        })
+      },
+      submitAllotRole() {
+        this.userRoleShow = false
+        const temp = {
+          userId: this.userId,
+          userRoleIds: this.userRoleIds
+        }
+        console.log(temp)
+        // this.$api.post("user/updateUserRole", temp).then(res => {
+        //   console.log(res)
+        // })
       },
       search() {
         this.$api.post("user/search", this.searchModel).then(v => {

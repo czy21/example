@@ -14,4 +14,5 @@ public interface UserRoleService extends BaseService<UserRole> {
 
     List<String> getRolesByUserId(String userId);
 
+    List<String> insertOrUpdateUserRole(String userId, List<String> userRoleIds);
 }

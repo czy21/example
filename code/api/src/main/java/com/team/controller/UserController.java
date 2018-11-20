@@ -20,6 +20,7 @@ import com.team.entity.vo.PageDto;
 import com.team.entity.vo.TokenDto;
 import com.team.entity.vo.UserDto;
 import com.team.service.RoleMenuService;
+import com.team.service.UserRoleService;
 import com.team.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -43,6 +44,8 @@ public class UserController {
     @Autowired
     private RoleMenuService roleMenuService;
     @Autowired
+    private UserRoleService userRoleService;
+    @Autowired
     private UserMap userMap;
     @Autowired
     private MenuMap menuMap;
@@ -61,17 +64,29 @@ public class UserController {
 
     @PostMapping("add")
     public UserDto Add(UserDto dto) {
-        return userMap.toUserDto(userService.InsertDefaultPwd(userMap.toUser(dto)));
+        return userMap.toUserDto(userService.insertDefaultPwd(userMap.toUser(dto)));
     }
 
     @PostMapping("edit")
     public UserDto Edit(UserDto dto) {
-        return userMap.toUserDto(userService.EditUser(dto));
+        return userMap.toUserDto(userService.editUser(dto));
     }
+
     @PostMapping("modified")
     public UserDto Modified(UserDto dto) {
-        return userMap.toUserDto(userService.ModifiedUser(dto));
+        return userMap.toUserDto(userService.modifiedUser(dto));
     }
+
+    @PostMapping("userRoleDetails")
+    public List<String> UserRoleDetails(String userId) {
+        return userRoleService.getRolesByUserId(userId);
+    }
+
+    @PostMapping("updateUserRole")
+    public List<String> updateUserRole(String userId, List<String> userRoleIds) {
+        return null;
+    }
+
     @PostMapping("/login")
     public JSONObject Login(String loginName, String password) {
         User user = userService.SelectBy("LoginName", loginName);
