@@ -2,6 +2,7 @@ package com.team.service;
 
 import com.team.entity.po.UserRole;
 import com.team.core.universal.BaseService;
+import com.team.entity.vo.UserDto;
 
 import java.util.List;
 
@@ -14,5 +15,5 @@ public interface UserRoleService extends BaseService<UserRole> {
 
     List<String> getRolesByUserId(String userId);
 
-    Boolean insertOrUpdateUserRole(String userId, List<String> userRoleIds);
+    String insertOrUpdateUserRole(String userId, String[] userRoleIds);
 }

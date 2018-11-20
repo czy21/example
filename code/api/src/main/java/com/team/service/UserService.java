@@ -15,6 +15,6 @@ public interface UserService extends BaseService<User> {
 
     User editUser(UserDto dto);
 
-    User modifiedUser(UserDto dto);
+    Boolean modifiedUser(UserDto dto);
 
 }

@@ -53,12 +53,12 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     }
 
     @Override
-    public User modifiedUser(UserDto dto) {
+    public Boolean modifiedUser(UserDto dto) {
         if (StringExtension.StringIsNullOrEmpty(dto.getUserId())) {
             throw new WebException(ErrorCode.ID_NO_EXIST, "用户Id不能为空");
         }
         User tempMap = userMap.toUser(dto);
         super.Update(tempMap);
-        return tempMap;
+        return tempMap.getEnabled();
     }
 }

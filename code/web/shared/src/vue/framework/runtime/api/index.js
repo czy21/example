@@ -13,7 +13,7 @@ export default {
       timeout: 5000,
     });
     service.interceptors.request.use(config => {
-        config.data = qs.stringify(config.data);
+        config.data = qs.stringify(config.data, {arrayFormat: 'brackets'});
         config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
         stub.ref.jsUtil.auth.getToken() && (config.headers['Authorization'] = stub.ref.jsUtil.auth.getToken().value)
         return config;
