@@ -9,6 +9,7 @@ import com.team.entity.po.UserRole;
 import com.team.service.UserRoleService;
 import com.team.core.universal.BaseServiceImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -32,15 +33,20 @@ public class UserRoleServiceImpl extends BaseServiceImpl<UserRole> implements Us
     }
 
     @Override
-    public List<String> insertOrUpdateUserRole(String userId, List<String> userRoleIds) {
+    @Transactional
+    public Boolean insertOrUpdateUserRole(String userId, List<String> userRoleIds) {
         if (StringExtension.StringIsNullOrEmpty(userId)) {
             throw new WebException(ErrorCode.ID_NO_EXIST, "用户Id不能为空");
         }
         QueryWrapper<UserRole> userRoleWra = new QueryWrapper<>();
         userRoleWra.eq("UserId", userId);
         super.baseDao.delete(new QueryWrapper<UserRole>().eq("UserId", userId));
-
-
-        return null;
+        userRoleIds.forEach(t -> {
+            UserRole userRole = new UserRole();
+            userRole.setUserId(userId);
+            userRole.setRoleId(t);
+            super.Insert(userRole);
+        });
+        return true;
     }
 }

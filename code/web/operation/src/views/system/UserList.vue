@@ -195,10 +195,9 @@
           userId: this.userId,
           userRoleIds: this.userRoleIds
         }
-        console.log(temp)
-        // this.$api.post("user/updateUserRole", temp).then(res => {
-        //   console.log(res)
-        // })
+        this.$api.post("user/updateUserRole", temp).then(res => {
+          console.log(res)
+        })
       },
       search() {
         this.$api.post("user/search", this.searchModel).then(v => {
