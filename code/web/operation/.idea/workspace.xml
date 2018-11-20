@@ -1,211 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../api/src/test/java/com/czy/EnumTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/exception/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/exception/ErrorCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/exception/WebException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/exception/WebException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/extension/StringExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/extension/StringExtension.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/universal/BaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/universal/BaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/universal/BaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/universal/BaseServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_2_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__ch_qos_logback_logback_core_1_2_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_alibaba_druid_1_1_10.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_alibaba_druid_spring_boot_starter_1_1_10.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_alibaba_fastjson_1_2_50.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_auth0_java_jwt_3_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_baomidou_mybatis_plus_3_0_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_baomidou_mybatis_plus_annotation_3_0_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_baomidou_mybatis_plus_boot_starter_3_0_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_baomidou_mybatis_plus_core_3_0_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_baomidou_mybatis_plus_extension_3_0_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_baomidou_mybatis_plus_generator_3_0_5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_9_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_9_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_9_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_9_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_github_pagehelper_pagehelper_5_1_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_autoconfigure_1_2_9.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_github_pagehelper_pagehelper_spring_boot_starter_1_2_9.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_google_protobuf_protobuf_java_2_6_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__com_zaxxer_HikariCP_2_7_9.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__commons_codec_commons_codec_1_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__javax_annotation_javax_annotation_api_1_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__javax_validation_validation_api_2_0_1_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__junit_junit_4_12.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_12.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_7_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_7_11.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__net_minidev_accessors_smart_1_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__net_minidev_json_smart_2_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_apache_commons_commons_lang3_3_7.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_10_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_10_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_34.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_34.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_34.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_apache_velocity_velocity_engine_core_2_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_13.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_assertj_assertj_core_3_9_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_bouncycastle_bcprov_jdk15on_1_55.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_13_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_mapstruct_mapstruct_jdk8_1_2_0_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_mapstruct_mapstruct_processor_1_2_0_Final.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_mockito_mockito_core_2_15_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_mybatis_mybatis_3_4_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_mybatis_mybatis_spring_1_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_autoconfigure_1_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_starter_1_3_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_objenesis_objenesis_2_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_ow2_asm_asm_5_0_4.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_projectlombok_lombok_1_18_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_5_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_25.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_0_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_0_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_boot_spring_boot_configuration_processor_2_0_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_boot_spring_boot_devtools_2_0_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_0_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_0_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_0_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_0_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_0_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_0_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_0_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_0_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_0_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_0_6_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_spring_aop_5_0_10_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_spring_beans_5_0_10_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_spring_context_5_0_10_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_spring_core_5_0_10_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_spring_expression_5_0_10_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_spring_jcl_5_0_10_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_spring_jdbc_5_0_10_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_spring_test_5_0_10_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_spring_tx_5_0_10_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_spring_web_5_0_10_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_springframework_spring_webmvc_5_0_10_RELEASE.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_5_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/libraries/Maven__org_yaml_snakeyaml_1_19.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/api.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-core/erp-core.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-core/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-core/src/main/java/com/team/configure/MybatisPlusConfigure.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-core/src/main/java/com/team/exception/ErrorCode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-core/src/main/java/com/team/exception/GlobalExceptionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-core/src/main/java/com/team/exception/ServiceException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-core/src/main/java/com/team/exception/WebException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-core/src/main/java/com/team/extension/StringExtension.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-core/src/main/java/com/team/model/PageModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-core/src/main/java/com/team/model/SimpleItemModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-domain/erp-domain.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-domain/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-domain/src/main/java/com/team/entity/BaseEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-domain/src/main/java/com/team/entity/system/Company.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-domain/src/main/java/com/team/entity/system/Department.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-domain/src/main/java/com/team/entity/system/Log.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-domain/src/main/java/com/team/entity/system/Menu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-domain/src/main/java/com/team/entity/system/Role.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-domain/src/main/java/com/team/entity/system/RoleMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-domain/src/main/java/com/team/entity/system/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-domain/src/main/java/com/team/entity/system/UserRole.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-operation/erp-operation.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-operation/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-respository/erp-respository.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-respository/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-respository/src/main/java/com/team/system/CompanyDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-respository/src/main/java/com/team/system/DepartmentDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-respository/src/main/java/com/team/system/LogDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-respository/src/main/java/com/team/system/MenuDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-respository/src/main/java/com/team/system/RoleDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-respository/src/main/java/com/team/system/RoleMenuDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-respository/src/main/java/com/team/system/UserDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-respository/src/main/java/com/team/system/UserRoleDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-respository/src/main/java/com/team/universal/BaseDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/erp-service.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/extension/DepartmentExtensions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/extension/MenuExtensions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/extension/RoleExtensions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/extension/UserExtensions.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/service/CompanyService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/service/DepartmentService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/service/LogService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/service/MenuService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/service/RoleMenuService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/service/RoleService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/service/UserRoleService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/service/UserService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/service/impl/CompanyServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/service/impl/DepartmentServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/service/impl/LogServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/service/impl/MenuServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/service/impl/RoleServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/service/impl/UserRoleServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/service/impl/UserServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/universal/BaseService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-service/src/main/java/com/team/universal/BaseServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/erp-web.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/java/com/team/StartupApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/java/com/team/aop/AnnotationLog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/java/com/team/aop/AspectLog.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/java/com/team/aop/LogConsumer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/java/com/team/aop/LogQueue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/java/com/team/configure/PocketConfigure.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/java/com/team/configure/ResponseConfigure.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/java/com/team/configure/WebMvcConfigure.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/java/com/team/mvc/AuthenticationInterceptor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/java/com/team/mvc/Pocket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/java/com/team/util/DateTimeUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/java/com/team/util/JwtUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/java/com/team/util/SpringContextProvider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/java/com/team/util/TreeUtil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/resources/application-dev.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/resources/application-prod.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/resources/mapper/CompanyDao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/resources/mapper/DepartmentDao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/resources/mapper/LogDao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/resources/mapper/MenuDao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/resources/mapper/RoleDao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/resources/mapper/RoleMenuDao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/resources/mapper/UserDao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/resources/mapper/UserRoleDao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/resources/templates/controller.java.vm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/resources/templates/dao.java.vm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/resources/templates/entity.java.vm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/resources/templates/mapper.xml.vm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/resources/templates/service.java.vm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/erp-web/src/main/resources/templates/serviceImpl.java.vm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../temp/api/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/UserList.vue" afterDir="false" />
-    </list>
+    <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -221,7 +17,7 @@
         <counts>
           <entry key="project.closed" value="8" />
           <entry key="project.open.time.0" value="4" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.3" value="1" />
@@ -229,7 +25,7 @@
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="2" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="14" />
+          <entry key="project.opened" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -238,7 +34,7 @@
           <entry key="css" value="1" />
           <entry key="editorconfig" value="1" />
           <entry key="html" value="5" />
-          <entry key="js" value="743" />
+          <entry key="js" value="757" />
           <entry key="json" value="45" />
           <entry key="lock" value="1" />
           <entry key="scss" value="4" />
@@ -250,7 +46,7 @@
           <entry key="CSS" value="1" />
           <entry key="HTML" value="5" />
           <entry key="JSON" value="55" />
-          <entry key="JavaScript" value="743" />
+          <entry key="JavaScript" value="757" />
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="SCSS" value="4" />
           <entry key="Vue.js" value="98" />
@@ -260,47 +56,23 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="1258" />
-          <entry key="js" value="9186" />
+          <entry key="js" value="9199" />
           <entry key="json" value="32" />
-          <entry key="vue" value="3590" />
+          <entry key="vue" value="3596" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="1258" />
           <entry key="JSON" value="32" />
-          <entry key="JavaScript" value="9186" />
-          <entry key="Vue.js" value="3590" />
+          <entry key="JavaScript" value="9199" />
+          <entry key="Vue.js" value="3596" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/views/system/UserList.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="155" column="68" lean-forward="true" selection-start-line="155" selection-start-column="68" selection-end-line="155" selection-end-column="68" />
-              <folding>
-                <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/ui/eui.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -336,7 +108,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/js/utility/ext.js" />
         <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/api/auth.js" />
         <option value="$PROJECT_DIR$/src/views/HelloWorld.vue" />
         <option value="$PROJECT_DIR$/src/app.vue" />
@@ -364,7 +135,6 @@
         <option value="$PROJECT_DIR$/src/views/system/user/UserRole.vue" />
         <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/store/index.js" />
         <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/store/data.js" />
-        <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/api/index.js" />
         <option value="$PROJECT_DIR$/src/views/system/user/UserEdit.vue" />
         <option value="$PROJECT_DIR$/src/views/system/user/UserAdd.vue" />
         <option value="$PROJECT_DIR$/src/components/mixins/reload.js" />
@@ -387,6 +157,8 @@
         <option value="$PROJECT_DIR$/src/components/routes/system.js" />
         <option value="$PROJECT_DIR$/src/components/mixins/list.js" />
         <option value="$PROJECT_DIR$/src/views/system/UserList.vue" />
+        <option value="$PROJECT_DIR$/script/cfg.js" />
+        <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/api/index.js" />
       </list>
     </option>
   </component>
@@ -414,11 +186,11 @@
       <path value="$PROJECT_DIR$/../shared/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-81" />
-    <option name="y" value="105" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="820" />
+    <option name="y" value="124" />
     <option name="width" value="1080" />
-    <option name="height" value="777" />
+    <option name="height" value="827" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -444,26 +216,7 @@
             <path>
               <item name="operation" type="b2602c69:ProjectViewProjectNode" />
               <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
               <item name="shared" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="shared" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="shared" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="vue" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -597,23 +350,23 @@
       <workItem from="1542251232258" duration="6094000" />
       <workItem from="1542341746356" duration="595000" />
       <workItem from="1542517688922" duration="3720000" />
+      <workItem from="1542690002072" duration="4123000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144316000" />
+    <option name="totallyTimeSpent" value="148439000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="820" y="124" width="1080" height="827" extended-state="0" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="npm" order="1" side_tool="true" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.15068494" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.28598848" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30151844" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" weight="0.2646421" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" visible="true" weight="0.32611832" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -644,37 +397,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/views/common/Home.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/common/Header.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="29" column="18" lean-forward="true" selection-start-line="29" selection-start-column="18" selection-end-line="29" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../shared/test/vue.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/runtime/helper/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/runtime/view/app.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/runtime/mixin/index.js" />
-    <entry file="file://$PROJECT_DIR$/src/components/utils/treeTable.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/runtime/mixins/index.js" />
     <entry file="file://$PROJECT_DIR$/src/components/index.js">
       <provider selected="true" editor-type-id="text-editor" />
@@ -719,13 +441,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
           <caret line="31" column="24" lean-forward="true" selection-start-line="31" selection-start-column="24" selection-end-line="31" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/build/webpack.base.conf.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="48" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -840,13 +555,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/runtime/api/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="77" selection-start-line="16" selection-start-column="77" selection-end-line="16" selection-end-column="77" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/system/user/UserAdd.vue" />
     <entry file="file://$PROJECT_DIR$/src/views/system/user/UserEdit.vue" />
     <entry file="file://$PROJECT_DIR$/src/views/system/user/UserRole.vue" />
@@ -910,10 +618,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/ui/eui.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/runtime/api/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="23" lean-forward="true" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/system/UserList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="155" column="68" lean-forward="true" selection-start-line="155" selection-start-column="68" selection-end-line="155" selection-end-column="68" />
+        <state relative-caret-position="-1312">
+          <caret line="27" column="55" lean-forward="true" selection-start-line="27" selection-start-column="55" selection-end-line="27" selection-end-column="55" />
           <folding>
             <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
@@ -922,10 +647,43 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ui/eui.js">
+    <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/build/webpack.prod.conf.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/build.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/app.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/build/config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+        <state relative-caret-position="1377">
+          <caret line="81" column="11" selection-start-line="81" selection-start-column="11" selection-end-line="81" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/cfg.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="10" lean-forward="true" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/dev.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/build/webpack.base.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="48" selection-start-line="36" selection-start-column="48" selection-end-line="36" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/build/webpack.dev.conf.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="34" column="14" lean-forward="true" selection-start-line="34" selection-start-column="14" selection-end-line="34" selection-end-column="14" />
         </state>
       </provider>
     </entry>

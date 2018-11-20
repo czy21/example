@@ -2,6 +2,7 @@ package com.team.core.universal;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.team.core.exception.ServiceException;
 import com.github.pagehelper.PageHelper;
 import com.team.core.util.DateTimeUtil;
@@ -53,7 +54,7 @@ public class BaseServiceImpl<TEntity extends BaseEntity> implements BaseService<
     }
 
     @Override
-    public Integer UpdateBy(TEntity entity, QueryWrapper<TEntity> wra) {
+    public Integer UpdateBy(TEntity entity, UpdateWrapper<TEntity> wra) {
         entity.setModifiedTime(DateTimeUtil.getCurrentDateTime());
         return baseDao.update(entity, wra);
     }

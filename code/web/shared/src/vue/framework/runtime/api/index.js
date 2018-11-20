@@ -6,7 +6,7 @@ export default {
   build(stub, deco = {}) {
 
     //配置API接口地址
-    const root = 'http://localhost:8075'
+    const root = '/api'
 
     const service = axios.create({
       baseURL: root,

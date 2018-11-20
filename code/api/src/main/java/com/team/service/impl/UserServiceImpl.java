@@ -1,6 +1,7 @@
 package com.team.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.team.core.exception.ErrorCode;
 import com.team.core.exception.ServiceException;
 import com.team.core.exception.WebException;
