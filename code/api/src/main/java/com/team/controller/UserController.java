@@ -71,8 +71,8 @@ public class UserController {
     }
 
     @PostMapping("modified")
-    public UserDto Modified(UserDto dto) {
-        return userMap.toUserDto(userService.modifiedUser(dto));
+    public Boolean Modified(UserDto dto) {
+        return userService.modifiedUser(dto);
     }
 
     @PostMapping("userRoleDetails")
@@ -81,9 +81,8 @@ public class UserController {
     }
 
     @PostMapping(value = "updateUserRole")
-    public List<String> updateUserRole(String userId, List<String> userRoleIds) {
-        return userRoleIds;
-//        return userRoleService.insertOrUpdateUserRole(userId, userRoleIds);
+    public String updateUserRole(String userId, @RequestParam(value = "userRoleIds[]", required = false) String[] userRoleIds) {
+        return userRoleService.insertOrUpdateUserRole(userId, userRoleIds);
     }
 
     @PostMapping("/login")

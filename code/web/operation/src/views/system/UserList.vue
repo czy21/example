@@ -179,7 +179,7 @@
           enabled: row.enabled
         }
         this.$api.post("user/modified", temp).then(res => {
-          this.search();
+          row.enabled = res.data
         })
       },
       allotRole(row) {
@@ -196,7 +196,7 @@
           userRoleIds: this.userRoleIds
         }
         this.$api.post("user/updateUserRole", temp).then(res => {
-          console.log(res)
+          res && this.$helper.eui.inform(res.data + "分配角色成功")
         })
       },
       search() {
