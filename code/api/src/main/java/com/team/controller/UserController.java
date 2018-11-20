@@ -68,14 +68,10 @@ public class UserController {
     public UserDto Edit(UserDto dto) {
         return userMap.toUserDto(userService.EditUser(dto));
     }
-
     @PostMapping("modified")
     public UserDto Modified(UserDto dto) {
-        return userMap.toUserDto(userService.EditUser(dto));
+        return userMap.toUserDto(userService.ModifiedUser(dto));
     }
-
-
-
     @PostMapping("/login")
     public JSONObject Login(String loginName, String password) {
         User user = userService.SelectBy("LoginName", loginName);

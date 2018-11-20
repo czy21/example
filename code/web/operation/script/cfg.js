@@ -9,8 +9,18 @@ module.exports = {
   },
   override: {
     dev: {
+      proxyTable: {
+        '/api': {
+          target: 'http://localhost:8075',
+          changeOrigin: true,
+          pathRewrite: {
+            '^/api': '/'
+          }
+        }
+      },
       url: 'http://localhost:8080'
     },
+
   },
   build: {},
 }

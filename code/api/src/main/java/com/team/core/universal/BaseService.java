@@ -2,6 +2,7 @@ package com.team.core.universal;
 
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import org.apache.ibatis.exceptions.TooManyResultsException;
 
 import java.util.List;
@@ -47,7 +48,7 @@ public interface BaseService<TEntity extends BaseEntity> {
      * @Param [entity,wrapper]
      * @Return java.lang.Integer
      */
-    Integer UpdateBy(TEntity entity, QueryWrapper<TEntity> wra);
+    Integer UpdateBy(TEntity entity, UpdateWrapper<TEntity> wra);
 
 
     /*
