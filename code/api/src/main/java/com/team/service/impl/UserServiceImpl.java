@@ -31,7 +31,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     private UserMap userMap;
 
     @Override
-    public User InsertDefaultPwd(User user) {
+    public User insertDefaultPwd(User user) {
         if (super.SelectBy("LoginName", user.getLoginName()) != null) {
             throw new WebException(ErrorCode.NAME_EXIST, "账号已存在");
         }
@@ -40,7 +40,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     }
 
     @Override
-    public User EditUser(UserDto dto) {
+    public User editUser(UserDto dto) {
         if (StringExtension.StringIsNullOrEmpty(dto.getUserId())) {
             throw new WebException(ErrorCode.ID_NO_EXIST, "用户Id不能为空");
         }
@@ -53,7 +53,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     }
 
     @Override
-    public User ModifiedUser(UserDto dto) {
+    public User modifiedUser(UserDto dto) {
         if (StringExtension.StringIsNullOrEmpty(dto.getUserId())) {
             throw new WebException(ErrorCode.ID_NO_EXIST, "用户Id不能为空");
         }

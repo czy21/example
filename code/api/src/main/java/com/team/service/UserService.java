@@ -11,10 +11,10 @@ import com.team.entity.vo.UserDto;
  */
 public interface UserService extends BaseService<User> {
 
-    User InsertDefaultPwd(User user);
+    User insertDefaultPwd(User user);
 
-    User EditUser(UserDto dto);
+    User editUser(UserDto dto);
 
-    User ModifiedUser(UserDto dto);
+    User modifiedUser(UserDto dto);
 
 }
