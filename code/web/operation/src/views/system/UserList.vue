@@ -2,7 +2,7 @@
   <div class="combine-table">
     <div class="handle-box">
       <div class="operate-box">
-        <el-button type="primary" icon="el-icon-edit" @click="add">添加用户</el-button>
+        <el-button type="primary" icon="el-icon-edit" @click="addUser('add')">添加用户</el-button>
         <el-button type="primary">批量修改</el-button>
         <el-button type="primary">导出</el-button>
         <el-button type="primary">重置密码</el-button>
@@ -23,8 +23,8 @@
         <el-table-column prop="isHeader" label="部门经理"></el-table-column>
         <el-table-column label="操作" width="250">
           <template slot-scope="scope">
-            <el-button @click="edit(scope.row)">编辑</el-button>
-            <el-button @click="allotRole(scope.row)">分配角色</el-button>
+            <el-button @click="editUser('edit',scope.row)">编辑</el-button>
+            <el-button @click="allotRole('allot',scope.row)">分配角色</el-button>
             <el-button @click="modifiedUser(scope.row)"
                        :class="scope.row.enabled
                        ?'el-button--danger'
@@ -69,7 +69,7 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="addUser" :disabled="isDisable">确 定</el-button>
+        <el-button type="primary" @click="addUser('submit')" :disabled="isDisable">确 定</el-button>
       </div>
     </el-dialog>
 
@@ -92,7 +92,7 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="editUser">确 定</el-button>
+        <el-button type="primary" @click="editUser('submit')">确 定</el-button>
       </div>
     </el-dialog>
 
@@ -106,7 +106,7 @@
         </el-transfer>
       </div>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="submitAllotRole">确 定</el-button>
+        <el-button type="primary" @click="allotRole('submit')">确 定</el-button>
       </div>
     </el-dialog>
   </div>
@@ -136,6 +136,9 @@
           loginName: [
             {required: true, message: "请输入账号", trigger: "blur"}
           ],
+          userName: [
+            {required: true, message: "用户姓名不能为空", trigger: "blur"}
+          ],
           departmentId: [
             {required: true, message: "请选择部门", trigger: "blur"}
           ]
@@ -143,34 +146,49 @@
       },
     },
     methods: {
-      add() {
-        this.userAddShow = true
-      },
-      addUser() {
-        this.submitOne()
-        this.$helper.eui.actWithValidation("userAddForm", () => {
-          this.userAddShow = false
-          this.$api.post("user/add", this.userAddForm).then(res => {
-            this.$refs['userAddForm'].resetFields();
-            this.search();
-          })
-        })
-      },
-      edit(row) {
-        this.userEditShow = true
-        this.userEditForm = {
-          userId: row.userId,
-          userName: row.userName,
-          email: row.email,
-          phone: row.phone,
-          departmentId: row.departmentId,
+      addUser(status) {
+        switch (status) {
+          case 'add':
+            this.userAddShow = true
+            break;
+          case 'submit':
+            this.submitOne()
+            this.$helper.eui.actWithValidation("userAddForm", () => {
+              this.userAddShow = false
+              this.$api.post("user/add", this.userAddForm).then(res => {
+                this.$refs['userAddForm'].resetFields();
+                this.search();
+              })
+            })
+            break;
+          default:
+            break;
         }
       },
-      editUser() {
-        this.userEditShow = false
-        this.$api.post("user/edit", this.userEditForm).then(res => {
-          this.search();
-        })
+      editUser(status, row) {
+        switch (status) {
+          case 'edit':
+            this.userEditShow = true
+            this.userEditForm = row
+            break;
+          case 'submit':
+            this.submitOne()
+            const temp = {
+              userId: this.userEditForm.userId,
+              userName: this.userEditForm.userName,
+              email: this.userEditForm.email,
+              phone: this.userEditForm.phone,
+              departmentId: this.userEditForm.departmentId,
+            }
+            this.$helper.eui.actWithValidation("userEditForm", () => {
+              this.userEditShow = false
+              this.$api.post("user/edit", temp).then(res => {
+                this.$refs['userEditForm'].clearValidate();
+                this.userEditForm = res.data
+              })
+            })
+            break;
+        }
       },
       modifiedUser(row) {
         row.enabled = !row.enabled
@@ -182,22 +200,26 @@
           row.enabled = res.data
         })
       },
-      allotRole(row) {
-        this.userRoleShow = true
-        this.userId = row.userId
-        this.$api.post("user/userRoleDetails", {userId: this.userId}).then(res => {
-          this.userRoleIds = res.data
-        })
-      },
-      submitAllotRole() {
-        this.userRoleShow = false
-        const temp = {
-          userId: this.userId,
-          userRoleIds: this.userRoleIds
+      allotRole(status, row) {
+        switch (status) {
+          case 'allot':
+            this.userRoleShow = true
+            this.userId = row.userId
+            this.$api.post("user/userRoleDetails", {userId: this.userId}).then(res => {
+              this.userRoleIds = res.data
+            })
+            break;
+          case 'submit':
+            this.userRoleShow = false
+            const temp = {
+              userId: this.userId,
+              userRoleIds: this.userRoleIds
+            }
+            this.$api.post("user/updateUserRole", temp).then(res => {
+              this.$helper.eui.inform(res.data + "分配角色成功")
+            })
+            break;
         }
-        this.$api.post("user/updateUserRole", temp).then(res => {
-          res && this.$helper.eui.inform(res.data + "分配角色成功")
-        })
       },
       search() {
         this.$api.post("user/search", this.searchModel).then(v => {
