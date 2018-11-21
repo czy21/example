@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b1c8e52-ef87-4df1-b033-ea6a2e11bcfd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../web/operation/src/views/system/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/views/system/UserList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/controller/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/controller/RoleController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,8 +38,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="class" value="62" />
-          <entry key="java" value="410" />
+          <entry key="BaseDao" value="1" />
+          <entry key="BaseMapper" value="1" />
+          <entry key="BaseService" value="1" />
+          <entry key="BaseServiceImpl" value="1" />
+          <entry key="class" value="63" />
+          <entry key="java" value="444" />
           <entry key="vm" value="6" />
           <entry key="xml" value="28" />
           <entry key="yml" value="18" />
@@ -47,8 +51,9 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="62" />
-          <entry key="JAVA" value="410" />
+          <entry key="CLASS" value="63" />
+          <entry key="JAVA" value="444" />
+          <entry key="UML" value="4" />
           <entry key="VTL" value="6" />
           <entry key="XML" value="28" />
           <entry key="YAML" value="18" />
@@ -57,14 +62,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="7" />
-          <entry key="java" value="8342" />
+          <entry key="java" value="8705" />
           <entry key="xml" value="30" />
           <entry key="yml" value="95" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="8342" />
+          <entry key="JAVA" value="8705" />
           <entry key="PLAIN_TEXT" value="7" />
           <entry key="XML" value="30" />
           <entry key="YAML" value="95" />
@@ -72,36 +77,11 @@
       </usages-collector>
     </session>
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="erp" />
+  </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/controller/UserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="69" column="50" selection-start-line="69" selection-start-column="50" selection-end-line="69" selection-end-column="50" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/UserService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/UserServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="51" column="19" lean-forward="true" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -127,8 +107,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/team/core/configure/CorsConfigure.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/entity/vo/LoginDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/model/TokenModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/vo/TokenModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/map/PageMap.java" />
@@ -143,7 +121,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/vo/TokenDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/util/MapUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/vo/RoleDto.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/controller/RoleController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/model/SimpleItemModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/extension/entity/MenuExtensions.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/vo/UserDto.java" />
@@ -156,28 +133,31 @@
         <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/map/CentralConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/map/MenuMap.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/entity/map/RoleMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/map/UserMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/exception/ErrorEnum.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/exception/WebException.java" />
         <option value="$PROJECT_DIR$/src/test/java/com/czy/EnumTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/exception/ErrorCode.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/util/TreeUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/configure/PocketConfigure.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/extension/entity/RoleExtensions.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/LogService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/RoleMenuService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/LogServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/UserServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/configure/MybatisPlusConfigure.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/extension/StringExtension.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/UserRoleServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/UserRoleService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/entity/map/RoleMap.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/service/RoleService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/RoleServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/UserServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/service/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/controller/RoleController.java" />
       </list>
     </option>
   </component>
@@ -196,11 +176,22 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="687" />
-    <option name="y" value="62" />
-    <option name="width" value="1179" />
-    <option name="height" value="881" />
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <expand>
+        <path>
+          <item name="" type="16c1761:MavenProjectsStructure$RootNode" />
+          <item name="erp" type="9519ce18:MavenProjectsStructure$ProjectNode" />
+        </path>
+      </expand>
+      <select />
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="597" />
+    <option name="y" value="90" />
+    <option name="width" value="1337" />
+    <option name="height" value="945" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -291,7 +282,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542723411028" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542772784033" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -392,12 +383,12 @@
       <workItem from="1542341825100" duration="5741000" />
       <workItem from="1542690036370" duration="11038000" />
       <workItem from="1542717409473" duration="5428000" />
-      <workItem from="1542766000796" duration="743000" />
+      <workItem from="1542766000796" duration="4946000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82753000" />
+    <option name="totallyTimeSpent" value="86956000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -409,20 +400,20 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
+    <frame x="698" y="37" width="1337" height="945" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17803837" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49909255" visible="true" weight="0.25841817" />
+      <window_info id="Structure" order="1" sideWeight="0.5018382" side_tool="true" weight="0.25841817" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="UI Designer" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Favorites" order="5" sideWeight="0.5018382" side_tool="true" weight="0.25841817" />
       <window_info id="Capture Tool" order="6" />
-      <window_info id="Web" order="7" side_tool="true" />
+      <window_info id="Web" order="7" sideWeight="0.5009074" side_tool="true" visible="true" weight="0.25841817" />
+      <window_info anchor="bottom" id="Analyze Dataflow to" weight="0.3292232" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.22993493" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7963753" visible="true" weight="0.3167028" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.32059187" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7963753" weight="0.3600493" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.38286334" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -436,15 +427,15 @@
       <window_info anchor="bottom" id="Version Control" order="13" weight="0.4262473" />
       <window_info anchor="bottom" id="Problems" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24980423" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24980423" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" />
-      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Maven Projects" order="5" weight="0.32967892" />
+      <window_info anchor="right" id="Database" order="6" weight="0.32967892" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
-      <window_info anchor="right" id="Bean Validation" order="9" />
+      <window_info anchor="right" id="Bean Validation" order="9" weight="0.32967892" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -464,87 +455,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="424">
-          <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="116" selection-end-column="12" />
-          <folding>
-            <element signature="n#dependencies#0;n#project#0;n#!!top" />
-            <element signature="n#build#0;n#project#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/universal/PageModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/configure/ResponseConfigure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/exception/GlobalExceptionHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/exception/WebException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="11" column="64" lean-forward="true" selection-start-line="11" selection-start-column="64" selection-end-line="11" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/czy/EnumTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/exception/ErrorCode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="18" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/mvc/AuthenticationInterceptor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="46" column="69" lean-forward="true" selection-start-line="46" selection-start-column="69" selection-end-line="46" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/entity/po/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="45" column="20" selection-start-line="45" selection-start-column="20" selection-end-line="45" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/target/generated-sources/annotations/com/team/entity/map/UserMapImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="58" selection-start-line="58" selection-end-line="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/team/entity/vo/UserDto.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -623,13 +533,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/RoleService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/CompanyServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -662,13 +565,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="38" column="13" lean-forward="true" selection-start-line="38" selection-start-column="13" selection-end-line="38" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/RoleServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -726,16 +622,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-core/3.0.5/mybatis-plus-core-3.0.5.jar!/com/baomidou/mybatisplus/core/override/PageMapperProxy.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -778,28 +664,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="716">
-          <caret line="123" column="23" selection-start-line="123" selection-start-column="23" selection-end-line="123" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-core/3.0.5/mybatis-plus-core-3.0.5.jar!/com/baomidou/mybatisplus/core/mapper/BaseMapper.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="16" column="8" selection-start-line="16" selection-start-column="8" selection-end-line="16" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="38" column="26" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
-          <folding>
-            <element signature="e#2111#2112#0" expanded="true" />
-            <element signature="e#2161#2162#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -817,24 +685,191 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/entity/vo/PageDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/entity/vo/RoleDto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/entity/map/RoleMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/RoleServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="30" column="5" lean-forward="true" selection-start-line="30" selection-start-column="5" selection-end-line="30" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/RoleService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="13" column="11" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/team/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="69" column="50" selection-start-line="69" selection-start-column="50" selection-end-line="69" selection-end-column="50" />
+        <state relative-caret-position="-102">
+          <caret line="66" lean-forward="true" selection-start-line="66" selection-end-line="66" />
+          <folding>
+            <element signature="e#1869#1870#0" expanded="true" />
+            <element signature="e#1941#1942#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/controller/RoleController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="33" column="29" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.0.10.RELEASE/spring-webmvc-5.0.10.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-204">
+          <caret line="48" column="13" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        <state relative-caret-position="187">
+          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/entity/map/UserMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="15" column="17" lean-forward="true" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="51" column="19" lean-forward="true" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="19" />
+        <state relative-caret-position="175">
+          <caret line="50" column="23" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.team.core.universal.BaseService">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.team.core.universal.BaseService</OriginalElement>
+          <nodes>
+            <node x="" y="">com.team.core.universal.BaseEntity</node>
+            <node x="" y="">com.team.core.universal.BaseService</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="58.5" y="56.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="14" column="26" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.team.core.universal.BaseDao">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.team.core.universal.BaseDao</OriginalElement>
+          <nodes>
+            <node x="" y="">com.baomidou.mybatisplus.core.mapper.BaseMapper</node>
+            <node x="" y="">com.team.core.universal.BaseDao</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="61.5" y="56.0" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.baomidou.mybatisplus.core.mapper.BaseMapper">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.baomidou.mybatisplus.core.mapper.BaseMapper</OriginalElement>
+          <nodes>
+            <node x="" y="">com.baomidou.mybatisplus.core.mapper.BaseMapper</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="61.5" y="15.5" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="uml://JAVA/com.team.core.universal.BaseServiceImpl">
+      <provider selected="true" editor-type-id="UmlEditorProvider">
+        <state>
+          <ID>JAVA</ID>
+          <OriginalElement>com.team.core.universal.BaseServiceImpl</OriginalElement>
+          <nodes>
+            <node x="" y="">com.team.core.universal.BaseEntity</node>
+            <node x="" y="">com.team.core.universal.BaseServiceImpl</node>
+            <node x="" y="">com.team.core.universal.BaseService</node>
+          </nodes>
+          <notes />
+          <edges />
+          <settings layout="Hierarchic Group" zoom="1.0" x="82.5" y="96.5" />
+          <SelectedNodes />
+          <Categories />
+          <SCOPE>All</SCOPE>
+          <VISIBILITY>private</VISIBILITY>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="48" selection-start-line="4" selection-start-column="48" selection-end-line="4" selection-end-column="48" />
         </state>
       </provider>
     </entry>

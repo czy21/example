@@ -45,6 +45,15 @@ public interface BaseService<TEntity extends BaseEntity> {
      * @Author 陈昭宇
      * @Description 修改实体
      * @Date 2018/7/26
+     * @Param [entity]
+     * @Return TEntity
+     */
+    TEntity UpdateAndGetEntity(TEntity entity);
+
+    /*
+     * @Author 陈昭宇
+     * @Description 修改实体
+     * @Date 2018/7/26
      * @Param [entity,wrapper]
      * @Return java.lang.Integer
      */

@@ -31,25 +31,24 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     private UserMap userMap;
 
     @Override
-    public User insertDefaultPwd(User user) {
-        if (super.SelectBy("LoginName", user.getLoginName()) != null) {
+    public UserDto insertDefaultPwd(UserDto dto) {
+        if (super.SelectBy("LoginName", dto.getLoginName()) != null) {
             throw new WebException(ErrorCode.NAME_EXIST, "账号已存在");
         }
+        User user = userMap.toUser(dto);
         user.setPassword("123456");
-        return super.InsertAndGetEntity(user);
+        return userMap.toUserDto(super.InsertAndGetEntity(user));
     }
 
     @Override
-    public User editUser(UserDto dto) {
+    public UserDto editUser(UserDto dto) {
         if (StringExtension.StringIsNullOrEmpty(dto.getUserId())) {
             throw new WebException(ErrorCode.ID_NO_EXIST, "用户Id不能为空");
         }
         if (StringExtension.StringIsNullOrEmpty(dto.getUserName())) {
             throw new WebException(ErrorCode.NAME_NO_EXIST, "用户姓名不能为空");
         }
-        User tempMap = userMap.toUser(dto);
-        super.Update(tempMap);
-        return tempMap;
+        return userMap.toUserDto(super.UpdateAndGetEntity(userMap.toUser(dto)));
     }
 
     @Override

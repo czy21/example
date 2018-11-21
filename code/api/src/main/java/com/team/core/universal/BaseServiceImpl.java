@@ -54,6 +54,13 @@ public class BaseServiceImpl<TEntity extends BaseEntity> implements BaseService<
     }
 
     @Override
+    public TEntity UpdateAndGetEntity(TEntity entity) {
+        entity.setModifiedTime(DateTimeUtil.getCurrentDateTime());
+        baseDao.updateById(entity);
+        return entity;
+    }
+
+    @Override
     public Integer UpdateBy(TEntity entity, UpdateWrapper<TEntity> wra) {
         entity.setModifiedTime(DateTimeUtil.getCurrentDateTime());
         return baseDao.update(entity, wra);
