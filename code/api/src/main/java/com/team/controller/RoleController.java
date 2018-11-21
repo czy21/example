@@ -69,4 +69,9 @@ public class RoleController {
         return roleMenuService.insertOrUpdateRoleMenu(roleId, roleMenuIds);
     }
 
+    @PostMapping("roleActionDetails")
+    public List<String> RoleActionDetails(String roleId) {
+        return roleMenuService.getPermissionsByRoleId(roleId);
+    }
+
 }

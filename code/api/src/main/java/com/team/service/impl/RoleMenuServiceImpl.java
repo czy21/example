@@ -5,10 +5,8 @@ import com.team.core.exception.ErrorCode;
 import com.team.core.exception.WebException;
 import com.team.core.extension.StringExtension;
 import com.team.dao.RoleMenuDao;
-import com.team.dao.UserDao;
 import com.team.entity.po.Menu;
 import com.team.entity.po.RoleMenu;
-import com.team.entity.po.UserRole;
 import com.team.service.MenuService;
 import com.team.service.RoleMenuService;
 import com.team.core.universal.BaseServiceImpl;
@@ -18,9 +16,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Description RoleMenu 服务实现类
@@ -44,7 +42,7 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
 
     @Override
     public List<String> getPermissionsByUserId(String userId) {
-        return roleMenuDao.getPermissionsByUserId(userId);
+        return roleMenuDao.getMenusByUserId(userId, false).stream().map(Menu::getUrl).collect(Collectors.toList());
     }
 
     @Override
@@ -54,7 +52,7 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
             wra.eq("IsMenu", true);
             return menuService.SelectListBy(wra);
         }
-        return roleMenuDao.getMenusByUserId(userId);
+        return roleMenuDao.getMenusByUserId(userId, true);
     }
 
     @Override
@@ -62,11 +60,15 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
         if (StringExtension.StringIsNullOrEmpty(roleId)) {
             throw new WebException(ErrorCode.ID_NO_EXIST, "角色Id不能为空");
         }
-        List<String> menuIds = new ArrayList<>();
-        QueryWrapper<RoleMenu> roleMenuWra = new QueryWrapper<>();
-        roleMenuWra.eq("RoleId", roleId);
-        super.SelectListBy(roleMenuWra).forEach(t -> menuIds.add(t.getMenuId()));
-        return menuIds;
+        return roleMenuDao.getMenusByRoleId(roleId, true).stream().map(Menu::getMenuId).collect(Collectors.toList());
+    }
+
+    @Override
+    public List<String> getPermissionsByRoleId(String roleId) {
+        if (StringExtension.StringIsNullOrEmpty(roleId)) {
+            throw new WebException(ErrorCode.ID_NO_EXIST, "角色Id不能为空");
+        }
+        return roleMenuDao.getMenusByRoleId(roleId, false).stream().map(Menu::getMenuId).collect(Collectors.toList());
     }
 
     @Override
