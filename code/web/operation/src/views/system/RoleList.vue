@@ -2,7 +2,7 @@
   <div class="combine-table">
     <div class="handle-box">
       <div class="operate-box">
-        <el-button type="primary" @click="add">添加角色</el-button>
+        <el-button type="primary" @click="addRole('add')">添加角色</el-button>
       </div>
       <div class="search-box">
         <el-input placeholder="关键词" style="width:200px"></el-input>
@@ -17,8 +17,8 @@
 
         <el-table-column label="操作" width="400">
           <template slot-scope="scope">
-            <el-button @click="edit(scope.row)">编辑</el-button>
-            <el-button @click="allotMenu(scope.row)">分配菜单</el-button>
+            <el-button @click="editRole('edit',scope.row)">编辑</el-button>
+            <el-button @click="allotMenu('allot',scope.row)">分配菜单</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -45,11 +45,11 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="addRole">确 定</el-button>
+        <el-button type="primary" @click="addRole('submit')">确 定</el-button>
       </div>
     </el-dialog>
 
-    <el-dialog title="添加角色" :visible.sync="roleEditShow" width="20%">
+    <el-dialog title="编辑角色" :visible.sync="roleEditShow" width="20%">
       <el-form ref="roleEditForm" :rules="validationRules" :model="roleEditForm" label-width="80px">
         <el-form-item label="角色名称" prop="roleName">
           <el-input v-model="roleEditForm.roleName"></el-input>
@@ -59,7 +59,7 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="editRole">确 定</el-button>
+        <el-button type="primary" @click="editRole('submit')">确 定</el-button>
       </div>
     </el-dialog>
 
@@ -70,10 +70,10 @@
         default-expand-all
         show-checkbox
         node-key="value"
-        ref="menuTree">
+        ref="roleMenu">
       </el-tree>
       <div slot="footer" class="dialog-footer">
-        <el-button type="primary" @click="submitAllotMenu">确 定</el-button>
+        <el-button type="primary" @click="allotMenu('submit')">确 定</el-button>
       </div>
     </el-dialog>
 
@@ -88,17 +88,19 @@
     name: "RoleList",
     data() {
       return {
+        // 树形控件属性
+        props: {
+          label: "label",
+          children: "children"
+        },
+        roleId: '',
         roleAddShow: false,
         roleDelShow: false,
         roleEditShow: false,
         roleMenuShow: false,
         roleAddForm: {},
         roleEditForm: {},
-        // 树形控件属性
-        props: {
-          label: "label",
-          children: "children"
-        },
+        roleMenuIds: [],
       };
     },
     computed: {
@@ -114,30 +116,78 @@
       }
     },
     methods: {
-      allotMenu(row) {
-        this.roleMenuShow = true
+      addRole(status) {
+        switch (status) {
+          case 'add':
+            this.roleAddShow = true
+            break;
+          case 'submit':
+            this.submitOne()
+            this.$helper.eui.actWithValidation("roleAddForm", () => {
+              this.roleAddShow = false
+              this.$api.post("role/add", this.roleAddForm).then(res => {
+                this.$refs['roleAddForm'].resetFields();
+                this.search();
+              })
+            })
+            break;
+          default:
+            break;
+        }
       },
-      submitAllotMenu() {
-        this.roleMenuShow = false
+      editRole(status, row) {
+        switch (status) {
+          case 'edit':
+            this.roleEditShow = true
+            this.roleEditForm = row
+            break;
+          case 'submit':
+            this.submitOne()
+            const temp = {
+              roleId: this.roleEditForm.roleId,
+              roleName: this.roleEditForm.roleName,
+              remark: this.roleEditForm.remark
+            }
+            this.$helper.eui.actWithValidation("roleEditForm", () => {
+              this.roleEditShow = false
+              this.$api.post("role/edit", temp).then(res => {
+                this.$refs['roleEditForm'].clearValidate();
+                this.roleEditForm = res.data
+              })
+            })
+            break;
+          default:
+            break;
+        }
       },
-      add() {
-        this.roleAddShow = true
-      },
-      addRole() {
-        this.roleAddShow = false
-        console.log(this.roleAddForm)
-      },
-      edit(row) {
-        this.roleEditShow = true
-        this.roleEditForm = row
-        console.log(this.roleEditForm)
-      },
-      editRole() {
-        this.roleEditShow = false
-        this.reload()
+      allotMenu(status, row) {
+        switch (status) {
+          case 'allot':
+            this.roleMenuShow = true
+            this.roleId = row.roleId
+            this.$api.post("role/roleMenuDetails", {roleId: this.roleId}).then(res => {
+              this.$refs.roleMenu.setCheckedKeys(res.data, false)
+            })
+            break;
+          case 'submit':
+            this.roleMenuShow = false
+            const temp = {
+              roleId: this.roleId,
+              roleMenuIds: this.$refs.roleMenu.getCheckedKeys(true)
+            }
+            this.$api.post("role/updateRoleMenu", temp).then(res => {
+              this.$helper.eui.inform(res.data + "分配角色成功")
+            })
+            break;
+          default:
+            break;
+        }
       },
       search() {
-        return this.$api.post("role/load", this.searchModel)
+        this.$api.post("role/search", this.searchModel).then(v => {
+          v.data.page && Object.assign(this.searchModel, v.data.page)
+          this.list = v.data.list
+        });
       },
     },
     mounted() {
