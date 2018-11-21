@@ -48,7 +48,7 @@ public class UserRoleServiceImpl extends BaseServiceImpl<UserRole> implements Us
         }
         QueryWrapper<UserRole> userRoleWra = new QueryWrapper<>();
         userRoleWra.eq("UserId", userId);
-        super.baseDao.delete(new QueryWrapper<UserRole>().eq("UserId", userId));
+        super.baseDao.delete(userRoleWra);
 
         if (!StringExtension.ArrayIsNullOrEmpty(userRoleIds)) {
             Arrays.asList(userRoleIds).forEach(t -> {

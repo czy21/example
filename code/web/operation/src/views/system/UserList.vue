@@ -120,13 +120,13 @@
     name: "UserList",
     data() {
       return {
+        userId: '',
         userAddShow: false,
         userDelShow: false,
         userEditShow: false,
         userRoleShow: false,
         userAddForm: {},
         userEditForm: {},
-        userId: '',
         userRoleIds: []
       };
     },
@@ -188,6 +188,8 @@
               })
             })
             break;
+          default:
+            break;
         }
       },
       modifiedUser(row) {
@@ -218,6 +220,8 @@
             this.$api.post("user/updateUserRole", temp).then(res => {
               this.$helper.eui.inform(res.data + "分配角色成功")
             })
+            break;
+          default:
             break;
         }
       },
