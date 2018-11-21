@@ -1,23 +1,15 @@
 package com.team.service.impl;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.team.core.exception.ErrorCode;
-import com.team.core.exception.ServiceException;
 import com.team.core.exception.WebException;
 import com.team.core.extension.StringExtension;
+import com.team.core.universal.BaseServiceImpl;
 import com.team.entity.map.UserMap;
 import com.team.entity.po.User;
 import com.team.entity.vo.UserDto;
 import com.team.service.UserService;
-import com.team.core.universal.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.security.auth.Subject;
-import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @Description User 服务实现类
@@ -56,8 +48,6 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         if (StringExtension.StringIsNullOrEmpty(dto.getUserId())) {
             throw new WebException(ErrorCode.ID_NO_EXIST, "用户Id不能为空");
         }
-        User tempMap = userMap.toUser(dto);
-        super.Update(tempMap);
-        return tempMap.getEnabled();
+        return super.UpdateAndGetEntity(userMap.toUser(dto)).getEnabled();
     }
 }
