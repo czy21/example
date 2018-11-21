@@ -126,4 +126,11 @@ public class BaseServiceImpl<TEntity extends BaseEntity> implements BaseService<
         wra.orderByDesc("ModifiedTime");
         return new PageModel<>(baseDao.selectList(wra));
     }
+
+    @Override
+    public PageModel<TEntity> SelectPageListBy(Integer pageIndex, Integer pageSize, QueryWrapper<TEntity> query) {
+        PageHelper.startPage(pageIndex, pageSize);
+        query.orderByDesc("ModifiedTime");
+        return new PageModel<>(baseDao.selectList(query));
+    }
 }
