@@ -3,6 +3,7 @@ package com.team.dao;
 import com.team.entity.po.Menu;
 import com.team.entity.po.RoleMenu;
 import com.team.core.universal.BaseDao;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public interface RoleMenuDao extends BaseDao<RoleMenu> {
 
-    List<String> getPermissionsByUserId(String userId);
+    List<Menu> getMenusByUserId(@Param("userId") String userId, @Param("isMenu") Boolean isMenu);
 
-    List<Menu> getMenusByUserId(String userId);
+    List<Menu> getMenusByRoleId(@Param("roleId") String roleId, @Param("isMenu") Boolean isMenu);
 }

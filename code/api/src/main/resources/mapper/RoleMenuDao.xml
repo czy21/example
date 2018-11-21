@@ -22,30 +22,29 @@
         MenuId
     </sql>
 
-    <select id="getPermissionsByUserId" resultType="string" parameterType="string">
+    <!--根据用户id查询该用户所有菜单或权限-->
+    <select id="getMenusByUserId" resultType="com.team.entity.po.Menu">
         select distinct
-        m.Url
+        m.*
         from sys_menu m,
         sys_role_menu rm,
         sys_user_role ur
         where
         m.MenuId=rm.MenuId
-        and m.IsMenu=false
+        and m.IsMenu=#{isMenu}
         and ur.RoleId=rm.RoleId
         and ur.UserId=#{userId}
     </select>
-    <!--根据用户id查询该用户所有菜单-->
-    <select id="getMenusByUserId" resultType="com.team.entity.po.Menu" parameterType="string">
+    <!--根据角色id查询该角色所有菜单或权限-->
+    <select id="getMenusByRoleId" resultType="com.team.entity.po.Menu">
         select distinct
-        m
+        m.*
         from sys_menu m,
-        sys_role_menu rm,
-        sys_user_role ur
+        sys_role_menu rm
         where
         m.MenuId=rm.MenuId
-        and m.IsMenu=true
-        and ur.RoleId=rm.RoleId
-        and ur.UserId=#{userId}
+        and m.IsMenu=#{isMenu}
+        and rm.RoleId=#{roleId}
     </select>
 
 </mapper>
