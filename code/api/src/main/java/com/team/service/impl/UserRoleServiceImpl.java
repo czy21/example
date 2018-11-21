@@ -4,19 +4,17 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.core.exception.ErrorCode;
 import com.team.core.exception.WebException;
 import com.team.core.extension.StringExtension;
-import com.team.dao.UserRoleDao;
-import com.team.entity.map.UserMap;
-import com.team.entity.po.RoleMenu;
-import com.team.entity.po.UserRole;
-import com.team.entity.vo.UserDto;
-import com.team.service.UserRoleService;
 import com.team.core.universal.BaseServiceImpl;
+import com.team.entity.po.UserRole;
+import com.team.service.UserRoleService;
 import com.team.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * @Description UserRole 服务实现类
@@ -26,10 +24,6 @@ import java.util.*;
 @Service
 public class UserRoleServiceImpl extends BaseServiceImpl<UserRole> implements UserRoleService {
 
-    @Resource
-    private UserRoleDao userRoleDao;
-    @Resource
-    private UserMap userMap;
     @Resource
     private UserService userService;
 
