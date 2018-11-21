@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/RoleList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/RoleList.vue" afterDir="false" />
-    </list>
+    <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -75,56 +72,7 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5221012">
-      <split-first>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/views/system/RoleList.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="405">
-                  <caret line="174" column="67" lean-forward="true" selection-start-line="174" selection-start-column="67" selection-end-line="174" selection-end-column="67" />
-                  <folding>
-                    <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
-                    <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                    <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
-                    <element signature="n#el-dialog#2;n#div#0;n#template#0;n#!!top" />
-                    <element signature="e#3774#4075#0" />
-                    <element signature="e#4114#4649#0" />
-                    <element signature="e#4679#5448#0" />
-                    <element signature="e#5952#6145#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/views/system/UserList.vue">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="391">
-                  <caret line="204" column="29" lean-forward="true" selection-start-line="204" selection-start-column="29" selection-end-line="204" selection-end-column="29" />
-                  <folding>
-                    <element signature="n#el-table#0;n#div#1;n#div#0;n#template#0;n#!!top" />
-                    <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />
-                    <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-                    <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
-                    <element signature="n#el-dialog#2;n#div#0;n#template#0;n#!!top" />
-                    <element signature="e#5544#5918#0" />
-                    <element signature="e#5957#6492#0" />
-                    <element signature="e#6522#7396#0" />
-                    <element signature="e#7422#7664#0" />
-                    <element signature="e#8403#8596#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -238,8 +186,8 @@
       <path value="$PROJECT_DIR$/../shared/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="795" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="811" />
     <option name="y" value="143" />
     <option name="width" value="1080" />
     <option name="height" value="815" />
@@ -267,26 +215,7 @@
             <path>
               <item name="operation" type="b2602c69:ProjectViewProjectNode" />
               <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
               <item name="shared" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="shared" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="shared" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="vue" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -422,15 +351,15 @@
       <workItem from="1542341746356" duration="595000" />
       <workItem from="1542517688922" duration="3720000" />
       <workItem from="1542690002072" duration="8809000" />
-      <workItem from="1542765890384" duration="8980000" />
+      <workItem from="1542765890384" duration="9368000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="162105000" />
+    <option name="totallyTimeSpent" value="162493000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
@@ -762,7 +691,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/system/RoleList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
+        <state relative-caret-position="660">
           <caret line="174" column="67" lean-forward="true" selection-start-line="174" selection-start-column="67" selection-end-line="174" selection-end-column="67" />
           <folding>
             <element signature="n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" />

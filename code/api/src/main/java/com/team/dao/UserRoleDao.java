@@ -12,5 +12,4 @@ import java.util.List;
  */
 public interface UserRoleDao extends BaseDao<UserRole> {
 
-    List<String> getRolesByUserId(String userId);
 }
