@@ -62,12 +62,12 @@ public class UserController {
 
     @PostMapping("add")
     public UserDto Add(UserDto dto) {
-        return userMap.toUserDto(userService.insertDefaultPwd(userMap.toUser(dto)));
+        return userService.insertDefaultPwd(dto);
     }
 
     @PostMapping("edit")
     public UserDto Edit(UserDto dto) {
-        return userMap.toUserDto(userService.editUser(dto));
+        return userService.editUser(dto);
     }
 
     @PostMapping("modified")

@@ -11,9 +11,9 @@ import com.team.entity.vo.UserDto;
  */
 public interface UserService extends BaseService<User> {
 
-    User insertDefaultPwd(User user);
+    UserDto insertDefaultPwd(UserDto user);
 
-    User editUser(UserDto dto);
+    UserDto editUser(UserDto dto);
 
     Boolean modifiedUser(UserDto dto);
 

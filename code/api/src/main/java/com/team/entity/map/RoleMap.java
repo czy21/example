@@ -12,6 +12,11 @@ import org.mapstruct.ReportingPolicy;
 
 @Mapper(config = CentralConfig.class)
 public interface RoleMap {
+
+    RoleDto toRoleDto(Role role);
+
+    Role toRole(RoleDto dto);
+
     @Mapping(source = "pageIndex", target = "page.pageIndex")
     @Mapping(source = "pageSize", target = "page.pageSize")
     @Mapping(source = "total", target = "page.total")
