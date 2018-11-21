@@ -100,7 +100,6 @@
         roleMenuShow: false,
         roleAddForm: {},
         roleEditForm: {},
-        roleMenuIds: [],
       };
     },
     computed: {
@@ -176,7 +175,7 @@
               roleMenuIds: this.$refs.roleMenu.getCheckedKeys(true)
             }
             this.$api.post("role/updateRoleMenu", temp).then(res => {
-              this.$helper.eui.inform(res.data + "分配角色成功")
+              this.$helper.eui.inform(res.data + "分配菜单成功")
             })
             break;
           default:
