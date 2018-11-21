@@ -132,4 +132,13 @@ public interface BaseService<TEntity extends BaseEntity> {
      */
     PageModel<TEntity> SelectPageList(Integer pageIndex, Integer pageSize);
 
+    /*
+     * @Author 陈昭宇
+     * @Description 根据条件分页查询
+     * @Date 2018/7/26
+     * @Param [pageIndex, pageSize,query]
+     * @Return PageModel<TEntity>
+     */
+    PageModel<TEntity> SelectPageListBy(Integer pageIndex, Integer pageSize, QueryWrapper<TEntity> query);
+
 }
