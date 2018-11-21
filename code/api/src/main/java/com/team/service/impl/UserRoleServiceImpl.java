@@ -6,6 +6,7 @@ import com.team.core.exception.WebException;
 import com.team.core.extension.StringExtension;
 import com.team.dao.UserRoleDao;
 import com.team.entity.map.UserMap;
+import com.team.entity.po.RoleMenu;
 import com.team.entity.po.UserRole;
 import com.team.entity.vo.UserDto;
 import com.team.service.UserRoleService;
@@ -15,10 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @Description UserRole 服务实现类
@@ -37,7 +35,14 @@ public class UserRoleServiceImpl extends BaseServiceImpl<UserRole> implements Us
 
     @Override
     public List<String> getRolesByUserId(String userId) {
-        return userRoleDao.getRolesByUserId(userId);
+        if (StringExtension.StringIsNullOrEmpty(userId)) {
+            throw new WebException(ErrorCode.ID_NO_EXIST, "用户Id不能为空");
+        }
+        List<String> roleIds = new ArrayList<>();
+        QueryWrapper<UserRole> roleMenuWra = new QueryWrapper<>();
+        roleMenuWra.eq("UserId", userId);
+        super.SelectListBy(roleMenuWra).forEach(t -> roleIds.add(t.getRoleId()));
+        return roleIds;
     }
 
     @Override
