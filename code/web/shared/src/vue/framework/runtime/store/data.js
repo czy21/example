@@ -2,7 +2,9 @@ import {stub} from '../../runtime'
 
 export default {
   state: {
-    pocket: {}
+    pocket: {
+      menuTree: []
+    }
   },
   mutations: {
     SET_POCKET: (state, data) => {

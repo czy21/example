@@ -31,9 +31,9 @@
         sys_user_role ur
         where
         m.MenuId=rm.MenuId
-        and m.IsMenu=#{isMenu}
         and ur.RoleId=rm.RoleId
         and ur.UserId=#{userId}
+        and m.IsMenu=#{isMenu}
     </select>
     <!--根据角色id查询该角色所有菜单或权限-->
     <select id="getMenusByRoleId" resultType="com.team.entity.po.Menu">
