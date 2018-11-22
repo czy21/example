@@ -18,10 +18,11 @@
                        style="width: 300px;"
                        clearable
                        show-all-levels
-                       placeholder="请选择菜单">
+                       placeholder="请选择菜单"
+                       @change="selectMenuChange">
           </el-cascader>
-          <el-button type="primary" icon="el-icon-edit">搜索</el-button>
-          <el-button type="primary" icon="el-icon-edit">添加功能</el-button>
+          <el-button type="primary" @click="search">搜索</el-button>
+          <el-button type="primary">添加功能</el-button>
         </div>
       </div>
       <div class="container">
@@ -54,17 +55,11 @@
           label: "label",
           children: "children"
         },
-        ecProps: {
-          value: 'label',
-          children: 'children'
-        },
-        menuId: '',
       }
     },
     methods: {
       selectMenuChange(data) {
-        this.menuId = data[data.length - 1];
-        console.log(this.menuId)
+        this.searchModel.menuIds = data;
       },
       search() {
         this.$api.post("menu/search", this.searchModel).then(v => {
