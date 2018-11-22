@@ -1,33 +1,27 @@
 <template>
   <div class="combine-table">
     <div class="aside-box">
-      <el-tree
-        style="width: 180px"
-        :props="props"
-        :data="$pocket.menuTree"
-        default-expand-all
-        node-key="value"
-        highlight-current>
-      </el-tree>
+      <!--<el-tree-->
+      <!--style="width: 180px"-->
+      <!--:props="props"-->
+      <!--:data="$pocket.menuTree"-->
+      <!--default-expand-all-->
+      <!--node-key="value"-->
+      <!--highlight-current>-->
+      <!--</el-tree>-->
     </div>
     <div class="right-box">
       <div class="handle-box">
         <div class="operate-box">
-          <!--<el-cascader expand-trigger="click"-->
-          <!--:options="menuTree"-->
-          <!--style="width: 300px;"-->
-          <!--clearable-->
-          <!--show-all-levels-->
-          <!--placeholder="请选择商品类别"-->
-          <!--@change="selectMenuChange">-->
-          <!--</el-cascader>-->
+          <el-cascader expand-trigger="click"
+                       :options="menuTree"
+                       style="width: 300px;"
+                       clearable
+                       show-all-levels
+                       placeholder="请选择菜单">
+          </el-cascader>
           <el-button type="primary" icon="el-icon-edit">搜索</el-button>
           <el-button type="primary" icon="el-icon-edit">添加功能</el-button>
-        </div>
-        <div class="search-box">
-          <el-input placeholder="关键词" style="width:200px"></el-input>
-          <el-button type="primary" icon="el-icon-search">查询</el-button>
-          <el-button type="primary" icon="el-icon-refresh">重置</el-button>
         </div>
       </div>
       <div class="container">
@@ -42,18 +36,6 @@
             </template>
           </el-table-column>
         </el-table>
-        <!--<div class="pagination">-->
-        <!--<el-button type="danger" icon="el-icon-delete">批量删除</el-button>-->
-        <!--<el-pagination background-->
-        <!--@current-change="handleCurrentChange"-->
-        <!--@size-change="handleSizeChange"-->
-        <!--:current-page="pageModel.pageIndex"-->
-        <!--:page-size="pageModel.pageSize"-->
-        <!--:page-sizes="[15,30,50,100]"-->
-        <!--:total=pageModel.totalCount-->
-        <!--layout="total ,sizes, prev, pager, next, jumper">-->
-        <!--</el-pagination>-->
-        <!--</div>-->
       </div>
     </div>
   </div>
@@ -72,9 +54,26 @@
           label: "label",
           children: "children"
         },
+        ecProps: {
+          value: 'label',
+          children: 'children'
+        },
+        menuId: '',
+      }
+    },
+    computed: {
+      menuTree() {
+        if (this.$pocket.menuTree != null) {
+          return this.$pocket.menuTree
+        }
+        return []
       }
     },
     methods: {
+      selectMenuChange(data) {
+        this.menuId = data[data.length - 1];
+        console.log(this.menuId)
+      },
       search() {
         this.$api.post("menu/search", this.searchModel).then(v => {
           v.data.page && Object.assign(this.searchModel, v.data.page)
@@ -82,7 +81,7 @@
         });
       },
     },
-    mounted() {
+    created() {
       this.load("menu/load")
     }
   };
