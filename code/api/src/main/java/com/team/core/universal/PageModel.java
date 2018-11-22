@@ -11,9 +11,9 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 public class PageModel<TEntity> extends PageSerializable<TEntity> {
 
-    private long pageIndex;
+    private Integer pageIndex;
 
-    private long pageSize;
+    private Integer pageSize;
 
     public PageModel(List<TEntity> list) {
         super(list);

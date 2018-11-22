@@ -21,9 +21,7 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
 
 
     @Override
-    public List<Menu> getPermissionPageList(Integer pageIndex, Integer pageSize, String menuId) {
-//        PageHelper.startPage(pageIndex, pageSize);
-        List<Menu> temp = super.SelectListBy(new QueryWrapper<Menu>().eq("IsMenu", true));
-        return MenuExtensions.GetSons(temp, menuId);
+    public List<Menu> getPermissionPageList(String menuId) {
+        return MenuExtensions.GetSons(super.SelectList(), menuId);
     }
 }
