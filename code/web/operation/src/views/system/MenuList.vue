@@ -19,6 +19,7 @@
                        clearable
                        show-all-levels
                        placeholder="请选择菜单"
+                       :change-on-select="true"
                        @change="selectMenuChange">
           </el-cascader>
           <el-button type="primary" @click="search">搜索</el-button>
@@ -59,9 +60,10 @@
     },
     methods: {
       selectMenuChange(data) {
-        this.searchModel.menuIds = data;
+        this.searchModel.menuId = data[data.length - 1];
       },
       search() {
+        console.log(this.searchModel)
         this.$api.post("menu/search", this.searchModel).then(v => {
           v.data.page && Object.assign(this.searchModel, v.data.page)
           this.list = v.data.list

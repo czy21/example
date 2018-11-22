@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Component
 public class MenuExtensions {
@@ -31,4 +32,20 @@ public class MenuExtensions {
         });
         return simples;
     }
+
+    /**
+     * 根据父节点CID获取所有了节点
+     */
+    public static List<Menu> GetSons(List<Menu> list, String parentId) {
+        List<Menu> query = list.stream().filter(t -> t.getMenuId().equals(parentId)).collect(Collectors.toList());
+        query.addAll(GetSonList(list, parentId));
+        return query;
+    }
+
+    private static List<Menu> GetSonList(List<Menu> list, String parentId) {
+        List<Menu> query = list.stream().filter(t -> t.getParentId().equals(parentId)).collect(Collectors.toList());
+        query.forEach(t -> GetSonList(list, t.getMenuId()));
+        return query;
+    }
+
 }

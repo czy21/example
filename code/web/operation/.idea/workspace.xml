@@ -3,6 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/controller/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/controller/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/extension/entity/MenuExtensions.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/extension/entity/MenuExtensions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/vo/PageParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/vo/PageParams.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/model/SearchPermissionModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/model/SearchPermissionModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/service/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/service/MenuService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/service/impl/MenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/service/impl/MenuServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/system/MenuList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/MenuList.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -18,7 +25,7 @@
     <session id="-1621276559">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="9" />
+          <entry key="project.closed" value="10" />
           <entry key="project.open.time.0" value="4" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.2" value="1" />
@@ -62,7 +69,7 @@
           <entry key="js" value="9490" />
           <entry key="json" value="32" />
           <entry key="scss" value="3" />
-          <entry key="vue" value="5649" />
+          <entry key="vue" value="5711" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -71,7 +78,7 @@
           <entry key="JSON" value="32" />
           <entry key="JavaScript" value="9490" />
           <entry key="SCSS" value="3" />
-          <entry key="Vue.js" value="5649" />
+          <entry key="Vue.js" value="5711" />
         </counts>
       </usages-collector>
     </session>
@@ -81,8 +88,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/system/MenuList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="23" column="50" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+            <state relative-caret-position="303">
+              <caret line="62" column="54" selection-start-line="62" selection-start-column="54" selection-end-line="62" selection-end-column="54" />
               <folding>
                 <element signature="n#style#0;n#el-tree#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#el-cascader#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
@@ -206,10 +213,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="816" />
-    <option name="y" value="111" />
+    <option name="x" value="666" />
+    <option name="y" value="125" />
     <option name="width" value="1205" />
-    <option name="height" value="902" />
+    <option name="height" value="864" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -237,13 +244,6 @@
               <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
               <item name="operation" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="operation" type="b2602c69:ProjectViewProjectNode" />
@@ -410,10 +410,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179212000" />
+    <option name="totallyTimeSpent" value="181869000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="811" y="111" width="1205" height="902" extended-state="0" />
+    <frame x="666" y="125" width="1205" height="864" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
@@ -422,7 +422,7 @@
       <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.27592117" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30151844" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" visible="true" weight="0.2578125" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" weight="0.27123287" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -738,8 +738,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/system/MenuList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="23" column="50" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
+        <state relative-caret-position="303">
+          <caret line="62" column="54" selection-start-line="62" selection-start-column="54" selection-end-line="62" selection-end-column="54" />
           <folding>
             <element signature="n#style#0;n#el-tree#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#el-cascader#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />

@@ -1,13 +1,16 @@
 package com.team.model;
 
+import com.team.entity.vo.PageParams;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+
+import java.util.List;
 
 @Data
-public class SearchPermissionModel {
+@EqualsAndHashCode(callSuper = true)
+public class SearchPermissionModel extends PageParams {
 
-    private Integer pageIndex;
-
-    private Integer pageSize;
+    private String menuId;
 
 
 }
