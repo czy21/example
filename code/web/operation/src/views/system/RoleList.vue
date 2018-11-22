@@ -169,7 +169,7 @@
             this.roleMenuShow = false
             const temp = {
               roleId: this.roleId,
-              roleMenuIds: this.$refs.roleMenu.getCheckedKeys(true)
+              roleMenuIds: this.$refs.roleMenu.getCheckedNodes(false, true).map(v => v.value)
             }
             this.$api.post("role/updateRoleMenu", temp).then(res => {
               this.$helper.eui.inform(res.data + "分配菜单成功")

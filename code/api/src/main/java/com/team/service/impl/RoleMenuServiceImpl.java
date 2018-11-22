@@ -52,6 +52,7 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
             wra.eq("IsMenu", true);
             return menuService.SelectListBy(wra);
         }
+
         return roleMenuDao.getMenusByUserId(userId, true);
     }
 
