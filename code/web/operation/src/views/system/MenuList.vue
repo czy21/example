@@ -1,20 +1,20 @@
 <template>
   <div class="combine-table">
     <div class="aside-box">
-      <!--<el-tree-->
-      <!--style="width: 180px"-->
-      <!--:props="props"-->
-      <!--:data="$pocket.menuTree"-->
-      <!--default-expand-all-->
-      <!--node-key="value"-->
-      <!--highlight-current>-->
-      <!--</el-tree>-->
+      <el-tree
+        style="width: 180px"
+        :props="props"
+        :data="$pocket.menuTree"
+        default-expand-all
+        node-key="value"
+        highlight-current>
+      </el-tree>
     </div>
     <div class="right-box">
       <div class="handle-box">
         <div class="operate-box">
           <el-cascader expand-trigger="click"
-                       :options="menuTree"
+                       :options="$pocket.menuTree"
                        style="width: 300px;"
                        clearable
                        show-all-levels
@@ -59,14 +59,6 @@
           children: 'children'
         },
         menuId: '',
-      }
-    },
-    computed: {
-      menuTree() {
-        if (this.$pocket.menuTree != null) {
-          return this.$pocket.menuTree
-        }
-        return []
       }
     },
     methods: {

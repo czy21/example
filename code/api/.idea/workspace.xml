@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b1c8e52-ef87-4df1-b033-ea6a2e11bcfd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/core/extension/entity/MenuExtensions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/core/extension/entity/MenuExtensions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/RoleMenuDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/RoleMenuDao.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../web/operation/src/views/system/MenuList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/views/system/MenuList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/operation/src/views/system/RoleList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/views/system/RoleList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../web/shared/src/vue/framework/runtime/store/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/shared/src/vue/framework/runtime/store/data.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -64,7 +62,7 @@
           <entry key="class" value="67" />
           <entry key="java" value="536" />
           <entry key="vm" value="6" />
-          <entry key="xml" value="58" />
+          <entry key="xml" value="60" />
           <entry key="yml" value="18" />
         </counts>
       </usages-collector>
@@ -74,7 +72,7 @@
           <entry key="JAVA" value="536" />
           <entry key="UML" value="4" />
           <entry key="VTL" value="6" />
-          <entry key="XML" value="58" />
+          <entry key="XML" value="60" />
           <entry key="YAML" value="18" />
         </counts>
       </usages-collector>
@@ -82,7 +80,7 @@
         <counts>
           <entry key="dummy" value="7" />
           <entry key="java" value="10347" />
-          <entry key="xml" value="200" />
+          <entry key="xml" value="202" />
           <entry key="yml" value="95" />
         </counts>
       </usages-collector>
@@ -90,7 +88,7 @@
         <counts>
           <entry key="JAVA" value="10347" />
           <entry key="PLAIN_TEXT" value="7" />
-          <entry key="XML" value="200" />
+          <entry key="XML" value="202" />
           <entry key="YAML" value="95" />
         </counts>
       </usages-collector>
@@ -102,10 +100,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/controller/UserController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/RoleMenuDao.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1155">
-              <caret line="101" column="48" lean-forward="true" selection-start-line="101" selection-start-column="48" selection-end-line="101" selection-end-column="48" />
+            <state relative-caret-position="213">
+              <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -177,7 +175,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/team/controller/RoleController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/extension/CollectionExtension.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/dao/RoleMenuDao.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/RoleMenuDao.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/map/MenuMap.java" />
@@ -187,6 +184,7 @@
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/util/TreeUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mapper/RoleMenuDao.xml" />
       </list>
     </option>
   </component>
@@ -216,9 +214,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="589" />
-    <option name="y" value="86" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="678" />
+    <option name="y" value="52" />
     <option name="width" value="1273" />
     <option name="height" value="927" />
   </component>
@@ -294,6 +292,14 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mapper" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -308,7 +314,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542864052025" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542875450155" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -411,12 +417,12 @@
       <workItem from="1542717409473" duration="5428000" />
       <workItem from="1542766000796" duration="16705000" />
       <workItem from="1542806374709" duration="4486000" />
-      <workItem from="1542852201331" duration="3728000" />
+      <workItem from="1542852201331" duration="3794000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106929000" />
+    <option name="totallyTimeSpent" value="106995000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -428,10 +434,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="683" y="49" width="1273" height="927" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.53996986" visible="true" weight="0.1684435" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.53996986" visible="true" weight="0.26051113" />
       <window_info id="Structure" order="1" sideWeight="0.46003017" side_tool="true" weight="0.1684435" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -441,7 +447,7 @@
       <window_info id="Web" order="7" sideWeight="0.5009074" side_tool="true" weight="0.25841817" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3257143" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7963753" visible="true" weight="0.3167028" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7963753" visible="true" weight="0.36822194" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.37527114" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -744,13 +750,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserRoleDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
@@ -828,13 +827,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/RoleMenuDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="35" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/team/dao/RoleMenuDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -870,10 +862,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/UserRoleDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/team/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1155">
           <caret line="101" column="48" lean-forward="true" selection-start-line="101" selection-start-column="48" selection-end-line="101" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mapper/RoleMenuDao.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="34" column="31" selection-start-line="34" selection-start-column="31" selection-end-line="34" selection-end-column="31" />
         </state>
       </provider>
     </entry>
