@@ -1,14 +1,14 @@
 <template>
   <div class="combine-table">
     <div class="aside-box">
-      <!--<el-tree-->
-        <!--style="width: 180px"-->
-        <!--:props="props"-->
-        <!--:data="menuTree"-->
-        <!--default-expand-all-->
-        <!--node-key="value"-->
-        <!--highlight-current>-->
-      <!--</el-tree>-->
+      <el-tree
+        style="width: 180px"
+        :props="props"
+        :data="$pocket.menuTree"
+        default-expand-all
+        node-key="value"
+        highlight-current>
+      </el-tree>
     </div>
     <div class="right-box">
       <div class="handle-box">
@@ -73,12 +73,6 @@
           children: "children"
         },
       }
-    },
-    computed: {
-      // 树形菜单数据
-      // menuTree() {
-      //   return c.ref.jsUtil.forTree.transNoChild(this.$pocket.menus, "value", "parentId", "children");
-      // }
     },
     methods: {
       search() {

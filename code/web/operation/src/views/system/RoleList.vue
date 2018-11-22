@@ -64,14 +64,14 @@
     </el-dialog>
 
     <el-dialog title="分配角色菜单" :visible.sync="roleMenuShow" width="20%">
-      <!--<el-tree-->
-        <!--:props="props"-->
-        <!--:data="menuTree"-->
-        <!--default-expand-all-->
-        <!--show-checkbox-->
-        <!--node-key="value"-->
-        <!--ref="roleMenu">-->
-      <!--</el-tree>-->
+      <el-tree
+        :props="props"
+        :data="$pocket.menuTree"
+        default-expand-all
+        show-checkbox
+        node-key="value"
+        ref="roleMenu">
+      </el-tree>
       <div slot="footer" class="dialog-footer">
         <el-button type="primary" @click="allotMenu('submit')">确 定</el-button>
       </div>
@@ -110,9 +110,6 @@
           ],
         };
       },
-      menuTree() {
-        return c.ref.jsUtil.forTree.transNoChild(this.$pocket.menus, "value", "parentId", "children")
-      }
     },
     methods: {
       addRole(status) {
