@@ -37,7 +37,7 @@ public class MenuController {
     @RequestMapping("load")
     @AnnotationLog(remark = "查询角色列表")
     @Pocket(entity = {Menu.class})
-    public PageDto<MenuDto> Load(Integer pageIndex,Integer pageSize) {
+    public PageDto<MenuDto> Load(Integer pageIndex, Integer pageSize) {
         QueryWrapper<Menu> query = new QueryWrapper<>();
         query.eq("IsMenu", false);
         return menuMap.toPageDto(menuService.SelectPageListBy(pageIndex, pageSize, query));
@@ -45,7 +45,7 @@ public class MenuController {
 
     @PostMapping("search")
     public List<MenuDto> Search(SearchPermissionModel search) {
-        return menuMap.toMenuDtos(menuService.getPermissionPageList(search.getPageIndex(), search.getPageSize(),search.getMenuId()));
+        return menuMap.toMenuDtos(menuService.getPermissionPageList(search.getMenuId()));
 
     }
 
