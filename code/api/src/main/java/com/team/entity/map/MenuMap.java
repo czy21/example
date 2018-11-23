@@ -1,6 +1,7 @@
 package com.team.entity.map;
 
 import com.team.core.universal.PageModel;
+import com.team.core.util.PageUtil;
 import com.team.core.util.TreeUtil;
 import com.team.entity.po.Menu;
 import com.team.entity.vo.MenuDto;
@@ -27,4 +28,9 @@ public interface MenuMap {
     @Mapping(source = "pageSize", target = "page.pageSize")
     @Mapping(source = "total", target = "page.total")
     PageDto<MenuDto> toPageDto(PageModel<Menu> page);
+
+    @Mapping(source = "pageIndex", target = "page.pageIndex")
+    @Mapping(source = "pageSize", target = "page.pageSize")
+    @Mapping(source = "total", target = "page.total")
+    PageDto<MenuDto> toPageDto(PageUtil<Menu> page);
 }
