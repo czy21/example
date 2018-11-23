@@ -99,30 +99,12 @@ public interface BaseService<TEntity extends BaseEntity> {
 
     /*
      * @Author 陈昭宇
-     * @Description 获取实体集合
-     * @Date 2018/7/26
-     * @Param []
-     * @Return java.util.List<TEntity>
-     */
-    List<TEntity> SelectList();
-
-    /*
-     * @Author 陈昭宇
      * @Description 根据条件获取实体集合
      * @Date 2018/7/26
      * @Param [wrapper]
      * @Return java.util.List<TEntity>
      */
-    List<TEntity> SelectListBy(Wrapper<TEntity> wrapper);
-
-    /*
-     * @Author 陈昭宇
-     * @Description 根据字段获取实体集合
-     * @Date 2018/7/26
-     * @Param [fieldName, value]
-     * @Return java.util.List<TEntity>
-     */
-    List<TEntity> SelectListBy(String fieldName, String value);
+    List<TEntity> SelectListBy(QueryWrapper<TEntity> query);
 
     /*
      * @Author 陈昭宇
@@ -131,7 +113,7 @@ public interface BaseService<TEntity extends BaseEntity> {
      * @Param [pageIndex, pageSize]
      * @Return PageModel<TEntity>
      */
-    PageModel<TEntity> SelectPageList(Integer pageIndex, Integer pageSize);
+//    PageModel<TEntity> SelectPageList(Integer pageIndex, Integer pageSize);
 
     /*
      * @Author 陈昭宇

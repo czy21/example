@@ -16,9 +16,9 @@ import java.util.List;
 @Mapper(config = CentralConfig.class)
 public interface MenuMap {
 
-    Menu toMenuDto(MenuDto dto);
+    Menu toMenu(MenuDto dto);
 
-    MenuDto toMenu(Menu menu);
+    MenuDto toMenuDto(Menu menu);
 
     List<MenuDto> toMenuDtos(List<Menu> menus);
 
