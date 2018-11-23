@@ -45,8 +45,7 @@ public class MenuController {
 
     @PostMapping("search")
     public List<MenuDto> Search(SearchPermissionModel search) {
-        return menuMap.toMenuDtos(menuService.getPermissionPageList(search.getMenuId()));
-
+        return menuMap.toMenuDtos(menuService.getPermissionPageList(search));
     }
 
 }

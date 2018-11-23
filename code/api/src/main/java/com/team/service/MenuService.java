@@ -3,6 +3,7 @@ package com.team.service;
 import com.team.core.universal.BaseService;
 import com.team.core.universal.PageModel;
 import com.team.entity.po.Menu;
+import com.team.model.SearchPermissionModel;
 
 import java.util.List;
 
@@ -14,6 +15,6 @@ import java.util.List;
 public interface MenuService extends BaseService<Menu> {
 
 
-    List<Menu> getPermissionPageList(String menuId);
+    List<Menu> getPermissionPageList(SearchPermissionModel search);
 
 }
