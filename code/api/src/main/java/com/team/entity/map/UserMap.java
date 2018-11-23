@@ -2,7 +2,7 @@ package com.team.entity.map;
 
 import com.team.core.universal.PageModel;
 import com.team.entity.po.User;
-import com.team.entity.vo.LoginDto;
+import com.team.entity.vo.AccountDto;
 import com.team.entity.vo.PageDto;
 import com.team.entity.vo.UserDto;
 import org.mapstruct.Mapper;
@@ -16,7 +16,7 @@ public interface UserMap {
 
     User toUser(UserDto dto);
 
-    LoginDto toLoginDto(User user);
+    AccountDto toAccountDto(User user);
 
     List<UserDto> toUserDtos(List<User> users);
 

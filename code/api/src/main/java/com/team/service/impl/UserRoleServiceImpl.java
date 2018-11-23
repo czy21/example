@@ -30,7 +30,7 @@ public class UserRoleServiceImpl extends BaseServiceImpl<UserRole> implements Us
     @Override
     public List<String> getRolesByUserId(String userId) {
         if (StringExtension.StringIsNullOrEmpty(userId)) {
-            throw new WebException(ErrorCode.ID_NO_EXIST, "用户Id不能为空");
+            throw new WebException(ErrorCode.ID_NO_NULL, "用户Id不能为空");
         }
         List<String> roleIds = new ArrayList<>();
         QueryWrapper<UserRole> roleMenuWra = new QueryWrapper<>();
@@ -43,7 +43,7 @@ public class UserRoleServiceImpl extends BaseServiceImpl<UserRole> implements Us
     @Transactional
     public String insertOrUpdateUserRole(String userId, String[] userRoleIds) {
         if (StringExtension.StringIsNullOrEmpty(userId)) {
-            throw new WebException(ErrorCode.ID_NO_EXIST, "用户Id不能为空");
+            throw new WebException(ErrorCode.ID_NO_NULL, "用户Id不能为空");
         }
         QueryWrapper<UserRole> userRoleWra = new QueryWrapper<>();
         userRoleWra.eq("UserId", userId);

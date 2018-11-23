@@ -27,6 +27,9 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
 
     @Override
     public RoleDto insertRole(RoleDto dto) {
+        if (StringExtension.StringIsNullOrEmpty(dto.getRoleName())) {
+            throw new WebException(ErrorCode.NAME_NO_NULL, "角色名称不能为空");
+        }
         if (super.SelectBy("RoleName", dto.getRoleName()) != null) {
             throw new WebException(ErrorCode.NAME_EXIST, "角色名称已存在");
         }
@@ -36,10 +39,10 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
     @Override
     public RoleDto editRole(RoleDto dto) {
         if (StringExtension.StringIsNullOrEmpty(dto.getRoleId())) {
-            throw new WebException(ErrorCode.ID_NO_EXIST, "角色Id不能为空");
+            throw new WebException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
         }
         if (StringExtension.StringIsNullOrEmpty(dto.getRoleName())) {
-            throw new WebException(ErrorCode.NAME_NO_EXIST, "角色名称不能为空");
+            throw new WebException(ErrorCode.NAME_NO_NULL, "角色名称不能为空");
         }
         return roleMap.toRoleDto(super.UpdateAndGetEntity(roleMap.toRole(dto)));
     }

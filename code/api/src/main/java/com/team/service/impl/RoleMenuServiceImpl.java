@@ -59,7 +59,7 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
     @Override
     public List<String> getMenusByRoleId(String roleId) {
         if (StringExtension.StringIsNullOrEmpty(roleId)) {
-            throw new WebException(ErrorCode.ID_NO_EXIST, "角色Id不能为空");
+            throw new WebException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
         }
         return roleMenuDao.getMenusByRoleId(roleId, true).stream().map(Menu::getMenuId).collect(Collectors.toList());
     }
@@ -67,7 +67,7 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
     @Override
     public List<String> getPermissionsByRoleId(String roleId) {
         if (StringExtension.StringIsNullOrEmpty(roleId)) {
-            throw new WebException(ErrorCode.ID_NO_EXIST, "角色Id不能为空");
+            throw new WebException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
         }
         return roleMenuDao.getMenusByRoleId(roleId, false).stream().map(Menu::getMenuId).collect(Collectors.toList());
     }
@@ -76,7 +76,7 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
     @Transactional
     public String insertOrUpdateRoleMenu(String roleId, String[] roleMenuIds) {
         if (StringExtension.StringIsNullOrEmpty(roleId)) {
-            throw new WebException(ErrorCode.ID_NO_EXIST, "角色Id不能为空");
+            throw new WebException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
         }
         QueryWrapper<RoleMenu> roleMenuWra = new QueryWrapper<>();
         roleMenuWra.eq("RoleId", roleId);
