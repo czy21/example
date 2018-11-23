@@ -48,44 +48,48 @@ public class UserController {
     @Autowired
     private MenuMap menuMap;
 
-    @AnnotationLog(remark = "查询用户列表")
+    @AnnotationLog(remark = "加载用户列表")
     @Pocket(entity = {Role.class, Department.class})
     @RequestMapping("load")
     public PageDto<UserDto> Load(int pageIndex, int pageSize) {
         return userMap.toPageDto(userService.SelectPageList(pageIndex, pageSize));
     }
 
+    @AnnotationLog(remark = "查询用户列表")
     @PostMapping("search")
     public PageDto<UserDto> Search(int pageIndex, int pageSize) {
         return userMap.toPageDto(userService.SelectPageList(pageIndex, pageSize));
     }
 
     @PostMapping("add")
+    @AnnotationLog(remark = "添加用户")
     public UserDto Add(UserDto dto) {
         return userService.insertDefaultPwd(dto);
     }
 
     @PostMapping("edit")
+    @AnnotationLog(remark = "修改用户")
     public UserDto Edit(UserDto dto) {
         return userService.editUser(dto);
     }
 
     @PostMapping("modified")
+    @AnnotationLog(remark = "更改用户状态")
     public Boolean Modified(UserDto dto) {
         return userService.modifiedUser(dto);
     }
 
     @PostMapping("userRoleDetails")
+    @AnnotationLog(remark = "获取用户角色列表")
     public List<String> UserRoleDetails(String userId) {
         return userRoleService.getRolesByUserId(userId);
     }
 
     @PostMapping(value = "updateUserRole")
+    @AnnotationLog(remark = "更新用户角色列表")
     public String updateUserRole(String userId, @RequestParam(value = "userRoleIds[]", required = false) String[] userRoleIds) {
         return userRoleService.insertOrUpdateUserRole(userId, userRoleIds);
     }
-
-
 
     @PostMapping("/login")
     public JSONObject Login(String loginName, String password) {
