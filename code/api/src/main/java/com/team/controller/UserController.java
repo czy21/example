@@ -3,22 +3,13 @@ package com.team.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.team.core.aop.AnnotationLog;
-import com.team.core.exception.ErrorCode;
-import com.team.core.exception.WebException;
 import com.team.core.mvc.Pocket;
-import com.team.core.util.JwtUtil;
-import com.team.core.util.TreeUtil;
-import com.team.entity.map.MenuMap;
-import com.team.entity.map.UserMap;
 import com.team.entity.po.Department;
 import com.team.entity.po.Role;
-import com.team.entity.po.User;
 import com.team.entity.vo.LoginDto;
 import com.team.entity.vo.PageDto;
-import com.team.entity.vo.TokenDto;
 import com.team.entity.vo.UserDto;
 import com.team.model.SearchUserModel;
-import com.team.service.RoleMenuService;
 import com.team.service.UserRoleService;
 import com.team.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +28,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/user")
+//@Api(tags = {"用户操作接口"},description = "UserController")
 public class UserController {
 
     @Autowired
@@ -44,15 +36,16 @@ public class UserController {
     @Autowired
     private UserRoleService userRoleService;
 
-    @AnnotationLog(remark = "加载用户列表")
-    @Pocket(entity = {Role.class, Department.class})
     @RequestMapping("load")
+    @Pocket(entity = {Role.class, Department.class})
+//    @ApiOperation(value = "查询用户",notes = "加载用户列表")
+    @AnnotationLog(remark = "加载用户列表")
     public PageDto<UserDto> Load(SearchUserModel search) {
         return userService.getUserPageListBy(search);
     }
 
-    @AnnotationLog(remark = "查询用户列表")
     @PostMapping("search")
+    @AnnotationLog(remark = "查询用户列表")
     public PageDto<UserDto> Search(SearchUserModel search) {
         return userService.getUserPageListBy(search);
     }
