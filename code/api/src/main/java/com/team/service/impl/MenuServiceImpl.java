@@ -5,6 +5,7 @@ import com.github.pagehelper.PageHelper;
 import com.team.core.extension.entity.MenuExtensions;
 import com.team.core.universal.PageModel;
 import com.team.entity.po.Menu;
+import com.team.model.SearchPermissionModel;
 import com.team.service.MenuService;
 import com.team.core.universal.BaseServiceImpl;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,8 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
 
 
     @Override
-    public List<Menu> getPermissionPageList(String menuId) {
-        return MenuExtensions.GetSons(super.SelectList(), menuId);
+    public List<Menu> getPermissionPageList(SearchPermissionModel search) {
+
+        return MenuExtensions.GetSons(super.SelectList(), search.getMenuId());
     }
 }
