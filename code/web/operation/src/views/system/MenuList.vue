@@ -13,6 +13,9 @@
     <div class="right-box">
       <div class="handle-box">
         <div class="operate-box">
+          <el-button type="primary">添加功能</el-button>
+        </div>
+        <div class="search-box">
           <el-cascader expand-trigger="click"
                        :options="$pocket.menuTree"
                        style="width: 300px;"
@@ -23,7 +26,7 @@
                        @change="selectMenuChange">
           </el-cascader>
           <el-button type="primary" @click="search">搜索</el-button>
-          <el-button type="primary">添加功能</el-button>
+
         </div>
       </div>
       <div class="container">
@@ -74,14 +77,13 @@
         this.searchModel.menuId = data[data.length - 1];
       },
       search() {
-        console.log(this.searchModel)
         this.$api.post("menu/search", this.searchModel).then(v => {
           v.data.page && Object.assign(this.searchModel, v.data.page)
           this.list = v.data.list
         });
       },
     },
-    created() {
+    mounted() {
       this.load("menu/load")
     }
   };
