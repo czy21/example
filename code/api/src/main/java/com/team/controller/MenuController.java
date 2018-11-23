@@ -36,7 +36,7 @@ public class MenuController {
     private MenuService menuService;
 
     @RequestMapping("load")
-    @AnnotationLog(remark = "查询角色列表")
+    @AnnotationLog(remark = "加载菜单(权限)列表")
     @Pocket(entity = {Menu.class})
     public PageDto<MenuDto> Load(SearchPermissionModel search) {
         return menuMap.toPageDto(menuService.SelectPageList(search.getPageIndex(), search.getPageSize()));

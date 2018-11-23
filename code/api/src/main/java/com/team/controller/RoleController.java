@@ -38,33 +38,38 @@ public class RoleController {
     private RoleMap roleMap;
 
     @RequestMapping("load")
-    @AnnotationLog(remark = "查询角色列表")
+    @AnnotationLog(remark = "加载角色列表")
     @Pocket(entity = {Menu.class})
     public PageDto<RoleDto> Load(int pageIndex, int pageSize) {
         return roleMap.toPageDto(roleService.SelectPageList(pageIndex, pageSize));
     }
 
     @PostMapping("search")
+    @AnnotationLog(remark = "查询角色列表")
     public PageDto<RoleDto> Search(int pageIndex, int pageSize) {
         return roleMap.toPageDto(roleService.SelectPageList(pageIndex, pageSize));
     }
 
     @PostMapping("add")
+    @AnnotationLog(remark = "添加角色")
     public RoleDto Add(RoleDto dto) {
         return roleService.insertRole(dto);
     }
 
     @PostMapping("edit")
+    @AnnotationLog(remark = "修改角色")
     public RoleDto Edit(RoleDto dto) {
         return roleService.editRole(dto);
     }
 
     @PostMapping("roleMenuDetails")
+    @AnnotationLog(remark = "获取角色菜单列表")
     public List<String> RoleMenuDetails(String roleId) {
         return roleMenuService.getMenusByRoleId(roleId);
     }
 
     @PostMapping("updateRoleMenu")
+    @AnnotationLog(remark = "更新角色菜单列表")
     public String updateRoleMenu(String roleId, @RequestParam(value = "roleMenuIds[]", required = false) String[] roleMenuIds) {
         return roleMenuService.insertOrUpdateRoleMenu(roleId, roleMenuIds);
     }
