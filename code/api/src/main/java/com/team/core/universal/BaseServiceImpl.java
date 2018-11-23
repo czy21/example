@@ -5,11 +5,14 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.team.core.exception.ServiceException;
 import com.github.pagehelper.PageHelper;
+import com.team.core.extension.entity.MenuExtensions;
 import com.team.core.util.DateTimeUtil;
+import com.team.core.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -132,5 +135,10 @@ public class BaseServiceImpl<TEntity extends BaseEntity> implements BaseService<
         PageHelper.startPage(pageIndex, pageSize);
         query.orderByDesc("ModifiedTime");
         return new PageModel<>(baseDao.selectList(query));
+    }
+
+    @Override
+    public PageUtil<TEntity> SelectPageList(Integer pageIndex, Integer pageSize, List<TEntity> list) {
+        return new PageUtil<>(pageIndex, pageSize, list);
     }
 }

@@ -5,15 +5,17 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class PageUtil {
+public class PageUtil<T> {
 
     private Integer pageIndex;
     private Integer pageSize;
     private Integer total;
+    private List<T> list;
 
-    private <T> List<T> ListSplit(List<T> list) {
-        total = list.size();
-        return list.subList(pageSize * (pageIndex - 1), ((pageSize * pageIndex) > total ? total : (pageSize * pageIndex)));
+    public PageUtil(Integer pageIndex, Integer pageSize, List<T> list) {
+        this.pageIndex = pageIndex;
+        this.pageSize = pageSize;
+        this.total = list.size();
+        this.list = list.subList(pageSize * (pageIndex - 1), ((pageSize * pageIndex) > total ? total : (pageSize * pageIndex)));
     }
-
 }

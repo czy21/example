@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.core.aop.AnnotationLog;
 import com.team.core.extension.entity.MenuExtensions;
 import com.team.core.mvc.Pocket;
+import com.team.core.util.PageUtil;
 import com.team.entity.map.MenuMap;
 import com.team.entity.po.Menu;
 import com.team.entity.vo.MenuDto;
@@ -37,15 +38,13 @@ public class MenuController {
     @RequestMapping("load")
     @AnnotationLog(remark = "查询角色列表")
     @Pocket(entity = {Menu.class})
-    public PageDto<MenuDto> Load(Integer pageIndex, Integer pageSize) {
-        QueryWrapper<Menu> query = new QueryWrapper<>();
-        query.eq("IsMenu", false);
-        return menuMap.toPageDto(menuService.SelectPageListBy(pageIndex, pageSize, query));
+    public PageDto<MenuDto> Load(SearchPermissionModel search) {
+        return menuMap.toPageDto(menuService.SelectPageList(search.getPageIndex(), search.getPageSize()));
     }
 
     @PostMapping("search")
-    public List<MenuDto> Search(SearchPermissionModel search) {
-        return menuMap.toMenuDtos(menuService.getPermissionPageList(search));
+    public PageDto<MenuDto> Search(SearchPermissionModel search) {
+        return menuMap.toPageDto(menuService.getMenuAndPermissionPageListBy(search));
     }
 
 }

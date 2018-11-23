@@ -28,7 +28,7 @@
       </div>
       <div class="container">
         <el-table :data="list" border fit highlight-current-row>
-          <el-table-column prop="name" label="权限名称"></el-table-column>
+          <el-table-column prop="menuName" label="权限名称"></el-table-column>
           <el-table-column prop="url" label="权限地址"></el-table-column>
           <el-table-column prop="remark" label="权限描述"></el-table-column>
           <el-table-column label="操作" width="260">
@@ -38,6 +38,17 @@
             </template>
           </el-table-column>
         </el-table>
+        <!-- 工具条 -->
+        <div class="pagination">
+          <el-button type="danger" icon="el-icon-delete">批量删除</el-button>
+          <el-pagination background @current-change="handleIndexChange" @size-change="handleSizeChange"
+                         :current-page="searchModel && searchModel.pageIndex"
+                         :page-size="searchModel && searchModel.pageSize"
+                         :page-sizes="[15,30,50,100]"
+                         layout="total ,sizes, prev, pager, next, jumper"
+                         :total="searchModel && searchModel.total">
+          </el-pagination>
+        </div>
       </div>
     </div>
   </div>

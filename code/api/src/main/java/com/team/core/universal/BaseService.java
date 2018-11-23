@@ -3,6 +3,7 @@ package com.team.core.universal;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.team.core.util.PageUtil;
 import org.apache.ibatis.exceptions.TooManyResultsException;
 
 import java.util.List;
@@ -94,7 +95,7 @@ public interface BaseService<TEntity extends BaseEntity> {
      * @Param [fieldName, value]
      * @Return TEntity
      */
-    TEntity SelectBy(String fieldName, String value) throws TooManyResultsException;
+    TEntity SelectBy(String fieldName, String value);
 
     /*
      * @Author 陈昭宇
@@ -125,7 +126,7 @@ public interface BaseService<TEntity extends BaseEntity> {
 
     /*
      * @Author 陈昭宇
-     * @Description 分页查询
+     * @Description 分页查询(mybatis分页)
      * @Date 2018/7/26
      * @Param [pageIndex, pageSize]
      * @Return PageModel<TEntity>
@@ -134,11 +135,21 @@ public interface BaseService<TEntity extends BaseEntity> {
 
     /*
      * @Author 陈昭宇
-     * @Description 根据条件分页查询
+     * @Description 根据条件分页查询(mybatis分页)
      * @Date 2018/7/26
      * @Param [pageIndex, pageSize,query]
      * @Return PageModel<TEntity>
      */
     PageModel<TEntity> SelectPageListBy(Integer pageIndex, Integer pageSize, QueryWrapper<TEntity> query);
+
+
+    /*
+     * @Author 陈昭宇
+     * @Description 根据条件分页查询(list物理分页)
+     * @Date 2018/7/26
+     * @Param [pageIndex, pageSize,query]
+     * @Return PageModel<TEntity>
+     */
+    PageUtil<TEntity> SelectPageList(Integer pageIndex, Integer pageSize, List<TEntity> list);
 
 }
