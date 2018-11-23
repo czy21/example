@@ -26,11 +26,8 @@ import java.util.List;
  * @Date 2018-10-15
  */
 @RestController
-@RequestMapping("/menu")
+@RequestMapping("menu")
 public class MenuController {
-
-    @Autowired
-    private MenuMap menuMap;
 
     @Autowired
     private MenuService menuService;
@@ -39,18 +36,16 @@ public class MenuController {
     @AnnotationLog(remark = "加载菜单(权限)列表")
     @Pocket(entity = {Menu.class})
     public PageDto<MenuDto> Load(SearchPermissionModel search) {
-        QueryWrapper<Menu> query = new QueryWrapper<>();
-        query.orderByDesc("IsMenu");
-        return menuMap.toPageDto(menuService.SelectPageListBy(search.getPageIndex(), search.getPageSize(), query));
+        return menuService.getMenuAndPermissionPageListBy(search);
     }
 
     @PostMapping("search")
     public PageDto<MenuDto> Search(SearchPermissionModel search) {
-        return menuMap.toPageDto(menuService.getMenuAndPermissionPageListBy(search));
+        return menuService.getMenuAndPermissionPageListBy(search);
     }
 
     @PostMapping("add")
     public MenuDto Add(MenuDto dto) {
-        return menuMap.toMenuDto(menuService.InsertAndGetEntity(menuMap.toMenu(dto)));
+        return menuService.insertMenu(dto);
     }
 }

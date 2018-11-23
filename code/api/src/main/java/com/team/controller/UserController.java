@@ -6,24 +6,26 @@ import com.team.core.aop.AnnotationLog;
 import com.team.core.exception.ErrorCode;
 import com.team.core.exception.WebException;
 import com.team.core.mvc.Pocket;
-import com.team.core.universal.PageModel;
 import com.team.core.util.JwtUtil;
 import com.team.core.util.TreeUtil;
 import com.team.entity.map.MenuMap;
 import com.team.entity.map.UserMap;
 import com.team.entity.po.Department;
-import com.team.entity.po.Menu;
 import com.team.entity.po.Role;
 import com.team.entity.po.User;
 import com.team.entity.vo.LoginDto;
 import com.team.entity.vo.PageDto;
 import com.team.entity.vo.TokenDto;
 import com.team.entity.vo.UserDto;
+import com.team.model.SearchUserModel;
 import com.team.service.RoleMenuService;
 import com.team.service.UserRoleService;
 import com.team.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -40,25 +42,19 @@ public class UserController {
     @Autowired
     private UserService userService;
     @Autowired
-    private RoleMenuService roleMenuService;
-    @Autowired
     private UserRoleService userRoleService;
-    @Autowired
-    private UserMap userMap;
-    @Autowired
-    private MenuMap menuMap;
 
     @AnnotationLog(remark = "加载用户列表")
     @Pocket(entity = {Role.class, Department.class})
     @RequestMapping("load")
-    public PageDto<UserDto> Load(int pageIndex, int pageSize) {
-        return userMap.toPageDto(userService.SelectPageListBy(pageIndex, pageSize, null));
+    public PageDto<UserDto> Load(SearchUserModel search) {
+        return userService.getUserPageListBy(search);
     }
 
     @AnnotationLog(remark = "查询用户列表")
     @PostMapping("search")
-    public PageDto<UserDto> Search(int pageIndex, int pageSize) {
-        return userMap.toPageDto(userService.SelectPageListBy(pageIndex, pageSize, null));
+    public PageDto<UserDto> Search(SearchUserModel search) {
+        return userService.getUserPageListBy(search);
     }
 
     @PostMapping("add")
@@ -92,22 +88,8 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public JSONObject Login(String loginName, String password) {
-        User user = userService.SelectBy("LoginName", loginName);
-        if (user == null) {
-            throw new WebException(ErrorCode.NO_USER, "用户不存在");
-        }
-        if (!user.getPassword().equals(password)) {
-            throw new WebException(ErrorCode.PASSWORD_ERROR, "密码错误");
-        }
-        JSONObject json = new JSONObject();
-        TokenDto token = new TokenDto();
-
-        token.setUser(userMap.toLoginDto(user));
-        token.setMenus(TreeUtil.createTreeMenus(menuMap.toMenuTree(roleMenuService.getMenusByUserId(user.getUserId()))));
-        token.setValue(JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));
-        json.put("token", token);
-        return json;
+    public JSONObject Login(LoginDto dto) {
+        return userService.Login(dto);
     }
 }
 

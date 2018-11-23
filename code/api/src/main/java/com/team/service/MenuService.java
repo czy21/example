@@ -4,6 +4,8 @@ import com.team.core.universal.BaseService;
 import com.team.core.universal.PageModel;
 import com.team.core.util.PageUtil;
 import com.team.entity.po.Menu;
+import com.team.entity.vo.MenuDto;
+import com.team.entity.vo.PageDto;
 import com.team.model.SearchPermissionModel;
 
 import java.util.List;
@@ -15,6 +17,10 @@ import java.util.List;
  */
 public interface MenuService extends BaseService<Menu> {
 
-    PageUtil<Menu> getMenuAndPermissionPageListBy(SearchPermissionModel search);
+    PageDto<MenuDto> getMenuAndPermissionPageListBy(SearchPermissionModel search);
+
+    MenuDto insertMenu(MenuDto dto);
+
+    MenuDto editMenu(MenuDto dto);
 
 }

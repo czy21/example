@@ -1,8 +1,12 @@
 package com.team.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.team.entity.po.User;
 import com.team.core.universal.BaseService;
+import com.team.entity.vo.LoginDto;
+import com.team.entity.vo.PageDto;
 import com.team.entity.vo.UserDto;
+import com.team.model.SearchUserModel;
 
 /**
  * @Description User 服务类
@@ -16,5 +20,9 @@ public interface UserService extends BaseService<User> {
     UserDto editUser(UserDto dto);
 
     Boolean modifiedUser(UserDto dto);
+
+    PageDto<UserDto> getUserPageListBy(SearchUserModel search);
+
+    JSONObject Login(LoginDto dto);
 
 }
