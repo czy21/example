@@ -52,13 +52,13 @@ public class UserController {
     @Pocket(entity = {Role.class, Department.class})
     @RequestMapping("load")
     public PageDto<UserDto> Load(int pageIndex, int pageSize) {
-        return userMap.toPageDto(userService.SelectPageList(pageIndex, pageSize));
+        return userMap.toPageDto(userService.SelectPageListBy(pageIndex, pageSize, null));
     }
 
     @AnnotationLog(remark = "查询用户列表")
     @PostMapping("search")
     public PageDto<UserDto> Search(int pageIndex, int pageSize) {
-        return userMap.toPageDto(userService.SelectPageList(pageIndex, pageSize));
+        return userMap.toPageDto(userService.SelectPageListBy(pageIndex, pageSize, null));
     }
 
     @PostMapping("add")

@@ -1,5 +1,6 @@
 package com.team.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.core.extension.entity.MenuExtensions;
 import com.team.core.universal.BaseServiceImpl;
 import com.team.core.util.PageUtil;
@@ -17,6 +18,8 @@ import org.springframework.stereotype.Service;
 public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuService {
     @Override
     public PageUtil<Menu> getMenuAndPermissionPageListBy(SearchPermissionModel search) {
-        return super.SelectPageList(search.getPageIndex(), search.getPageSize(), MenuExtensions.GetSons(super.SelectList(), search.getMenuId()));
+        QueryWrapper<Menu> query=new QueryWrapper<>();
+        query.orderByDesc("IsMenu");
+        return super.SelectPageList(search.getPageIndex(), search.getPageSize(), MenuExtensions.GetSons(super.SelectListBy(query), search.getMenuId()));
     }
 }

@@ -99,41 +99,21 @@ public class BaseServiceImpl<TEntity extends BaseEntity> implements BaseService<
     }
 
     @Override
-    public List<TEntity> SelectList() {
-        return baseDao.selectList(null);
-    }
-
-    @Override
-    public List<TEntity> SelectListBy(Wrapper<TEntity> wrapper) {
-        return baseDao.selectList(wrapper);
-    }
-
-    @Override
-    public List<TEntity> SelectListBy(String fieldName, String value) {
-        try {
-            Field field = modelClass.getDeclaredField(fieldName);
-            field.setAccessible(true);
-            QueryWrapper<TEntity> wra = new QueryWrapper<>();
-            wra.eq(field.getName(), value);
-            wra.orderByDesc("ModifiedTime");
-            return baseDao.selectList(wra);
-        } catch (ReflectiveOperationException e) {
-            throw new ServiceException(e.getMessage(), e);
+    public List<TEntity> SelectListBy(QueryWrapper<TEntity> query) {
+        if (query == null) {
+            query = new QueryWrapper<>();
         }
-    }
-
-    @Override
-    public PageModel<TEntity> SelectPageList(Integer pageIndex, Integer pageSize) {
-        PageHelper.startPage(pageIndex, pageSize);
-        QueryWrapper<TEntity> wra = new QueryWrapper<>();
-        wra.orderByDesc("ModifiedTime");
-        return new PageModel<>(baseDao.selectList(wra));
+        query.orderByDesc("ModifiedTime");
+        return baseDao.selectList(query);
     }
 
     @Override
     public PageModel<TEntity> SelectPageListBy(Integer pageIndex, Integer pageSize, QueryWrapper<TEntity> query) {
-        PageHelper.startPage(pageIndex, pageSize);
+        if (query == null) {
+            query = new QueryWrapper<>();
+        }
         query.orderByDesc("ModifiedTime");
+        PageHelper.startPage(pageIndex, pageSize);
         return new PageModel<>(baseDao.selectList(query));
     }
 
