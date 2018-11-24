@@ -10,7 +10,6 @@ CREATE TABLE `sys_menu`  (
   `AddedTime` datetime(0) DEFAULT NULL,
   `ModifiedTime` datetime(0) DEFAULT NULL,
   `AddedUser` varchar(36) DEFAULT NULL,
-  `ModifiedUser` varchar(36) DEFAULT NULL,
-  `Enabled` bit(1) NOT NULL DEFAULT 1,
+  `ModifiedUser` varchar(36) DEFAULT NULL
   PRIMARY KEY (`MenuId`) 
 ) COMMENT='菜单权限表';
