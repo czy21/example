@@ -48,5 +48,4 @@ public class Menu extends BaseEntity<Menu> {
      * 备注
      */
     private String Remark;
-    private Boolean Enabled;
 }

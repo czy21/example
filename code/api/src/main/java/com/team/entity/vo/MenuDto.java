@@ -12,5 +12,4 @@ public class MenuDto {
     private String Url;
     private Boolean IsMenu;
     private String Remark;
-    private Boolean Enabled;
 }
