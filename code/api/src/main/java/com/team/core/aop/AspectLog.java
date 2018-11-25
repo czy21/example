@@ -12,6 +12,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
+
 import javax.annotation.Resource;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
@@ -88,20 +89,16 @@ public class AspectLog {
     private static String getMthodRemark(JoinPoint joinPoint) throws Exception {
         String targetName = joinPoint.getTarget().getClass().getName();
         String methodName = joinPoint.getSignature().getName();
-        Object[] arguments = joinPoint.getArgs();
         Class targetClass = Class.forName(targetName);
         Method[] method = targetClass.getMethods();
         String methodRemark = "";
         for (Method m : method) {
             if (m.getName().equals(methodName)) {
-                Class[] tmpCs = m.getParameterTypes();
-                if (tmpCs.length == arguments.length) {
-                    ApiOperation methodCache = m.getAnnotation(ApiOperation.class);
-                    if (methodCache != null) {
-                        methodRemark = methodCache.value();
-                    }
-                    break;
+                ApiOperation methodCache = m.getAnnotation(ApiOperation.class);
+                if (methodCache != null) {
+                    methodRemark = methodCache.value();
                 }
+                break;
             }
         }
         return methodRemark;
