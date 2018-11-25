@@ -32,16 +32,15 @@ public class WebMvcConfigure extends WebMvcConfigurationSupport {
         corsConfiguration.addAllowedMethod(HttpMethod.PUT);
         corsConfiguration.addAllowedMethod(HttpMethod.POST);
         corsConfiguration.addAllowedMethod(HttpMethod.DELETE);
-        source.registerCorsConfiguration("/**", corsConfiguration); // 对接口配置跨域设置
+        source.registerCorsConfiguration("/api/**", corsConfiguration); // 对接口配置跨域设置
         return new CorsFilter(source);
     }
 
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(authenticationInterceptor())
-                .addPathPatterns("/**")
-                .excludePathPatterns("/user/login")
-                .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**");
+                .addPathPatterns("/api/**")
+                .excludePathPatterns("/api/user/login");
     }
 
     @Override
