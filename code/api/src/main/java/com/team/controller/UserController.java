@@ -2,7 +2,6 @@ package com.team.controller;
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.team.core.aop.AnnotationLog;
 import com.team.core.mvc.Pocket;
 import com.team.entity.po.Department;
 import com.team.entity.po.Role;
@@ -26,7 +25,7 @@ import java.util.List;
  * @Date 2018-09-24
  */
 @RestController
-@RequestMapping("user")
+@RequestMapping("api/user")
 @Api(tags = "用户操作接口")
 public class UserController {
 
@@ -37,48 +36,48 @@ public class UserController {
 
     @GetMapping("load")
     @Pocket(entity = {Role.class, Department.class})
-    @AnnotationLog(remark = "加载用户列表")
+    @ApiOperation(value = "加载用户列表")
     public PageDto<UserDto> Load(SearchUserModel search) {
         return userService.getUserPageListBy(search);
     }
 
     @PostMapping("search")
-    @AnnotationLog(remark = "查询用户列表")
+    @ApiOperation(value = "查询用户列表")
     public PageDto<UserDto> Search(SearchUserModel search) {
         return userService.getUserPageListBy(search);
     }
 
     @PostMapping("add")
-    @AnnotationLog(remark = "添加用户")
+    @ApiOperation(value = "添加用户")
     public UserDto Add(UserDto dto) {
         return userService.insertDefaultPwd(dto);
     }
 
     @PostMapping("edit")
-    @AnnotationLog(remark = "修改用户")
+    @ApiOperation(value = "修改用户")
     public UserDto Edit(UserDto dto) {
         return userService.editUser(dto);
     }
 
     @PostMapping("modified")
-    @AnnotationLog(remark = "更改用户状态")
+    @ApiOperation(value = "更改用户状态")
     public Boolean Modified(UserDto dto) {
         return userService.modifiedUser(dto);
     }
 
     @PostMapping("userRoleDetails")
-    @AnnotationLog(remark = "获取用户角色列表")
+    @ApiOperation(value = "获取用户角色列表")
     public List<String> UserRoleDetails(String userId) {
         return userRoleService.getRolesByUserId(userId);
     }
 
     @PostMapping(value = "updateUserRole")
-    @AnnotationLog(remark = "更新用户角色列表")
+    @ApiOperation(value = "更新用户角色列表")
     public String updateUserRole(String userId, @RequestParam(value = "userRoleIds[]", required = false) String[] userRoleIds) {
         return userRoleService.insertOrUpdateUserRole(userId, userRoleIds);
     }
 
-    @PostMapping("/login")
+    @PostMapping("login")
     public JSONObject Login(LoginDto dto) {
         return userService.Login(dto);
     }

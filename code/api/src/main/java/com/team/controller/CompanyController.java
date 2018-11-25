@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date 2018-10-15
  */
 @RestController
-@RequestMapping("/company")
+@RequestMapping("api/company")
 public class CompanyController {
 
 

@@ -4,6 +4,7 @@ import com.team.core.exception.ServiceException;
 import com.team.core.util.DateTimeUtil;
 import com.team.core.util.JwtUtil;
 import com.team.entity.po.Log;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterThrowing;
@@ -25,7 +26,7 @@ public class AspectLog {
     /*
     定义切点
      */
-    @Pointcut("@annotation(com.team.core.aop.AnnotationLog)")
+    @Pointcut("@annotation(io.swagger.annotations.ApiOperation)")
     public void methodCachePointcut() {
 
     }
@@ -95,9 +96,9 @@ public class AspectLog {
             if (m.getName().equals(methodName)) {
                 Class[] tmpCs = m.getParameterTypes();
                 if (tmpCs.length == arguments.length) {
-                    AnnotationLog methodCache = m.getAnnotation(AnnotationLog.class);
+                    ApiOperation methodCache = m.getAnnotation(ApiOperation.class);
                     if (methodCache != null) {
-                        methodRemark = methodCache.remark();
+                        methodRemark = methodCache.value();
                     }
                     break;
                 }

@@ -1,26 +1,19 @@
 package com.team.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.team.core.aop.AnnotationLog;
-import com.team.core.extension.entity.MenuExtensions;
 import com.team.core.mvc.Pocket;
-import com.team.core.util.PageUtil;
-import com.team.entity.map.MenuMap;
 import com.team.entity.po.Menu;
 import com.team.entity.vo.MenuDto;
 import com.team.entity.vo.PageDto;
-import com.team.entity.vo.RoleDto;
 import com.team.model.SearchPermissionModel;
 import com.team.service.MenuService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * @Description Menu 前端控制器
@@ -28,7 +21,7 @@ import java.util.List;
  * @Date 2018-10-15
  */
 @RestController
-@RequestMapping("menu")
+@RequestMapping("api/menu")
 @Api(tags = "菜单权限操作接口")
 public class MenuController {
 
@@ -37,7 +30,7 @@ public class MenuController {
 
     @GetMapping("load")
     @Pocket(entity = {Menu.class})
-    @AnnotationLog(remark = "加载菜单(权限)列表")
+    @ApiOperation(value = "加载菜单(权限)列表")
     public PageDto<MenuDto> Load(SearchPermissionModel search) {
         return menuService.getMenuAndPermissionPageListBy(search);
     }

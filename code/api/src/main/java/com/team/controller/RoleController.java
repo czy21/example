@@ -1,18 +1,15 @@
 package com.team.controller;
 
 
-import com.alibaba.fastjson.JSONObject;
-import com.team.core.aop.AnnotationLog;
 import com.team.core.mvc.Pocket;
 import com.team.entity.map.RoleMap;
 import com.team.entity.po.Menu;
-import com.team.entity.po.RoleMenu;
 import com.team.entity.vo.PageDto;
 import com.team.entity.vo.RoleDto;
-import com.team.entity.vo.UserDto;
 import com.team.service.RoleMenuService;
 import com.team.service.RoleService;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,7 +21,7 @@ import java.util.List;
  * @Date 2018-10-15
  */
 @RestController
-@RequestMapping("role")
+@RequestMapping("api/role")
 @Api(tags = "角色操作接口")
 public class RoleController {
 
@@ -37,38 +34,38 @@ public class RoleController {
     private RoleMap roleMap;
 
     @GetMapping("load")
-    @AnnotationLog(remark = "加载角色列表")
+    @ApiOperation(value = "加载角色列表")
     @Pocket(entity = {Menu.class})
     public PageDto<RoleDto> Load(int pageIndex, int pageSize) {
         return roleMap.toPageDto(roleService.SelectPageListBy(pageIndex, pageSize, null));
     }
 
     @PostMapping("search")
-    @AnnotationLog(remark = "查询角色列表")
+    @ApiOperation(value = "查询角色列表")
     public PageDto<RoleDto> Search(int pageIndex, int pageSize) {
         return roleMap.toPageDto(roleService.SelectPageListBy(pageIndex, pageSize, null));
     }
 
     @PostMapping("add")
-    @AnnotationLog(remark = "添加角色")
+    @ApiOperation(value = "添加角色")
     public RoleDto Add(RoleDto dto) {
         return roleService.insertRole(dto);
     }
 
     @PostMapping("edit")
-    @AnnotationLog(remark = "修改角色")
+    @ApiOperation(value = "修改角色")
     public RoleDto Edit(RoleDto dto) {
         return roleService.editRole(dto);
     }
 
     @PostMapping("roleMenuDetails")
-    @AnnotationLog(remark = "获取角色菜单列表")
+    @ApiOperation(value = "获取角色菜单列表")
     public List<String> RoleMenuDetails(String roleId) {
         return roleMenuService.getMenusByRoleId(roleId);
     }
 
     @PostMapping("updateRoleMenu")
-    @AnnotationLog(remark = "更新角色菜单列表")
+    @ApiOperation(value = "更新角色菜单列表")
     public String updateRoleMenu(String roleId, @RequestParam(value = "roleMenuIds[]", required = false) String[] roleMenuIds) {
         return roleMenuService.insertOrUpdateRoleMenu(roleId, roleMenuIds);
     }
