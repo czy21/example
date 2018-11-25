@@ -7,6 +7,7 @@ import com.team.entity.vo.PageDto;
 import com.team.entity.vo.UserDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 
 import java.util.List;
 
@@ -20,8 +21,10 @@ public interface UserMap {
 
     List<UserDto> toUserDtos(List<User> users);
 
-    @Mapping(source = "pageIndex", target = "page.pageIndex")
-    @Mapping(source = "pageSize", target = "page.pageSize")
-    @Mapping(source = "total", target = "page.total")
+
+    @Mappings({
+            @Mapping(source = "pageIndex", target = "page.pageIndex"),
+            @Mapping(source = "pageSize", target = "page.pageSize"),
+            @Mapping(source = "total", target = "page.total")})
     PageDto<UserDto> toPageDto(PageModel<User> page);
 }
