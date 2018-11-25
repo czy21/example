@@ -46,7 +46,7 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
         if (StringExtension.StringIsNullOrEmpty(dto.getMenuName())) {
             throw new WebException(ErrorCode.NAME_NO_NULL, "菜单或权限名称不能为空");
         }
-        return menuMap.toMenuDto(super.UpdateAndGetEntity(menuMap.toMenu(dto)));
+        return menuMap.toMenuDto(super.InsertAndGetEntity(menuMap.toMenu(dto)));
     }
 
     @Override
