@@ -12,11 +12,10 @@ import com.team.entity.vo.UserDto;
 import com.team.model.SearchUserModel;
 import com.team.service.UserRoleService;
 import com.team.service.UserService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,8 +26,8 @@ import java.util.List;
  * @Date 2018-09-24
  */
 @RestController
-@RequestMapping("/user")
-//@Api(tags = {"用户操作接口"},description = "UserController")
+@RequestMapping("user")
+@Api(tags = "用户操作接口")
 public class UserController {
 
     @Autowired
@@ -36,9 +35,8 @@ public class UserController {
     @Autowired
     private UserRoleService userRoleService;
 
-    @RequestMapping("load")
+    @GetMapping("load")
     @Pocket(entity = {Role.class, Department.class})
-//    @ApiOperation(value = "查询用户",notes = "加载用户列表")
     @AnnotationLog(remark = "加载用户列表")
     public PageDto<UserDto> Load(SearchUserModel search) {
         return userService.getUserPageListBy(search);
