@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("api/menu")
-@Api(tags = "菜单权限操作接口")
+@Api(tags = "菜单操作接口")
 public class MenuController {
 
     @Autowired
@@ -36,11 +36,13 @@ public class MenuController {
     }
 
     @PostMapping("search")
+    @ApiOperation(value = "查询权限列表")
     public PageDto<MenuDto> Search(SearchPermissionModel search) {
         return menuService.getMenuAndPermissionPageListBy(search);
     }
 
     @PostMapping("add")
+    @ApiOperation(value = "添加菜单或权限")
     public MenuDto Add(MenuDto dto) {
         return menuService.insertMenu(dto);
     }
