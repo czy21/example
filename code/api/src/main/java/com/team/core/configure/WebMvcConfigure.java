@@ -20,6 +20,7 @@ import java.util.List;
 
 @Configuration
 public class WebMvcConfigure extends WebMvcConfigurationSupport {
+
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
