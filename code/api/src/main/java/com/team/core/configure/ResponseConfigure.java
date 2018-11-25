@@ -1,7 +1,9 @@
 package com.team.core.configure;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.team.core.mvc.Pocket;
+import netscape.javascript.JSObject;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.server.ServerHttpRequest;
@@ -23,14 +25,17 @@ public class ResponseConfigure implements ResponseBodyAdvice {
 
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        HashMap<String, Object> res = new HashMap<>();
-        if (returnType.hasMethodAnnotation(Pocket.class)) {
-            Pocket pocket = returnType.getMethodAnnotation(Pocket.class);
-            if (pocket != null) {
-                res.put("pocket", PocketConfigure.InjectData(Arrays.asList(pocket.entity())));
+        if (body.getClass().equals(JSONObject.class)) {
+            HashMap<String, Object> res = new HashMap<>();
+            if (returnType.hasMethodAnnotation(Pocket.class)) {
+                Pocket pocket = returnType.getMethodAnnotation(Pocket.class);
+                if (pocket != null) {
+                    res.put("pocket", PocketConfigure.InjectData(Arrays.asList(pocket.entity())));
+                }
             }
+            res.put("data", body);
+            return res;
         }
-        res.put("data", body);
-        return res;
+        return body;
     }
 }

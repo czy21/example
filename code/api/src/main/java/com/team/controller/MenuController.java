@@ -13,7 +13,9 @@ import com.team.entity.vo.PageDto;
 import com.team.entity.vo.RoleDto;
 import com.team.model.SearchPermissionModel;
 import com.team.service.MenuService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,14 +29,15 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("menu")
+@Api(tags = "菜单权限操作接口")
 public class MenuController {
 
     @Autowired
     private MenuService menuService;
 
-    @RequestMapping("load")
-    @AnnotationLog(remark = "加载菜单(权限)列表")
+    @GetMapping("load")
     @Pocket(entity = {Menu.class})
+    @AnnotationLog(remark = "加载菜单(权限)列表")
     public PageDto<MenuDto> Load(SearchPermissionModel search) {
         return menuService.getMenuAndPermissionPageListBy(search);
     }

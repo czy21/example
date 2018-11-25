@@ -12,11 +12,9 @@ import com.team.entity.vo.RoleDto;
 import com.team.entity.vo.UserDto;
 import com.team.service.RoleMenuService;
 import com.team.service.RoleService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,7 +24,8 @@ import java.util.List;
  * @Date 2018-10-15
  */
 @RestController
-@RequestMapping("/role")
+@RequestMapping("role")
+@Api(tags = "角色操作接口")
 public class RoleController {
 
     @Autowired
@@ -37,7 +36,7 @@ public class RoleController {
     @Autowired
     private RoleMap roleMap;
 
-    @RequestMapping("load")
+    @GetMapping("load")
     @AnnotationLog(remark = "加载角色列表")
     @Pocket(entity = {Menu.class})
     public PageDto<RoleDto> Load(int pageIndex, int pageSize) {
