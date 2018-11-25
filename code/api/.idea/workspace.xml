@@ -66,9 +66,9 @@
           <entry key="BaseMapper" value="1" />
           <entry key="BaseService" value="1" />
           <entry key="BaseServiceImpl" value="1" />
-          <entry key="class" value="88" />
+          <entry key="class" value="89" />
           <entry key="html" value="1" />
-          <entry key="java" value="761" />
+          <entry key="java" value="764" />
           <entry key="vm" value="6" />
           <entry key="xml" value="66" />
           <entry key="yml" value="18" />
@@ -76,9 +76,9 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="CLASS" value="88" />
+          <entry key="CLASS" value="89" />
           <entry key="HTML" value="1" />
-          <entry key="JAVA" value="761" />
+          <entry key="JAVA" value="764" />
           <entry key="UML" value="4" />
           <entry key="VTL" value="6" />
           <entry key="XML" value="66" />
@@ -88,14 +88,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="108" />
-          <entry key="java" value="14959" />
+          <entry key="java" value="15060" />
           <entry key="xml" value="265" />
           <entry key="yml" value="95" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="14959" />
+          <entry key="JAVA" value="15060" />
           <entry key="PLAIN_TEXT" value="108" />
           <entry key="XML" value="265" />
           <entry key="YAML" value="95" />
@@ -109,34 +109,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/controller/UserController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="86">
-              <caret line="28" column="23" lean-forward="true" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/configure/WebMvcConfigure.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="281">
-              <caret line="42" column="110" lean-forward="true" selection-start-line="42" selection-start-column="110" selection-end-line="42" selection-end-column="110" />
+            <state relative-caret-position="51">
+              <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/configure/SwaggerConfigure.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/configure/MybatisPlusConfigure.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="276">
-              <caret line="32" column="24" lean-forward="true" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="51">
+              <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="34" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -167,7 +152,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/map/CentralConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/exception/ErrorEnum.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/exception/WebException.java" />
@@ -176,7 +160,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/extension/entity/RoleExtensions.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/LogService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/LogServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/core/configure/MybatisPlusConfigure.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/extension/StringExtension.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/UserRoleService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/RoleService.java" />
@@ -215,9 +198,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/mvc/AuthenticationInterceptor.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/controller/RoleController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/controller/BaaseController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/controller/BaseController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/core/configure/WebMvcConfigure.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/configure/SwaggerConfigure.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/core/configure/WebMvcConfigure.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/core/configure/MybatisPlusConfigure.java" />
       </list>
     </option>
   </component>
@@ -248,10 +233,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="738" />
-    <option name="y" value="70" />
+    <option name="x" value="98" />
+    <option name="y" value="81" />
     <option name="width" value="1155" />
-    <option name="height" value="913" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -360,7 +345,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543135915637" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543136789725" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -474,7 +459,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="148464000" />
+    <option name="totallyTimeSpent" value="149437000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -486,10 +471,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="686" y="78" width="1155" height="913" extended-state="0" />
+    <frame x="719" y="40" width="1155" height="949" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.53996986" visible="true" weight="0.34703195" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.53996986" visible="true" weight="0.3178082" />
       <window_info id="Structure" order="1" sideWeight="0.46003017" side_tool="true" weight="0.1684435" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -499,7 +484,7 @@
       <window_info id="Web" order="7" sideWeight="0.5009074" side_tool="true" weight="0.25841817" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32104123" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7963753" visible="true" weight="0.3992298" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7963753" visible="true" weight="0.3815951" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4197397" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -546,20 +531,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/extension/entity/MenuExtensions.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="39" column="29" selection-start-line="39" selection-start-column="29" selection-end-line="39" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-core/3.0.5/mybatis-plus-core-3.0.5.jar!/com/baomidou/mybatisplus/core/conditions/interfaces/Func.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="85" column="17" selection-start-line="85" selection-start-column="17" selection-end-line="85" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="346">
@@ -788,13 +759,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/configure/MybatisPlusConfigure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="19" column="72" lean-forward="true" selection-start-line="19" selection-start-column="72" selection-end-line="19" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.1.2.RELEASE/spring-webmvc-5.1.2.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/AbstractMessageConverterMethodProcessor.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
@@ -875,13 +839,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/configure/WebMvcConfigure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="42" column="110" lean-forward="true" selection-start-line="42" selection-start-column="110" selection-end-line="42" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-spring-web/2.9.2/springfox-spring-web-2.9.2.jar!/springfox/documentation/spring/web/plugins/ApiSelectorBuilder.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
@@ -896,13 +853,46 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/controller/BaseController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#255#256#0" expanded="true" />
+            <element signature="e#279#280#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/configure/SwaggerConfigure.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="276">
-          <caret line="32" column="24" lean-forward="true" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
+        <state relative-caret-position="259">
+          <caret line="31" column="16" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/5.1.2.RELEASE/spring-webmvc-5.1.2.RELEASE.jar!/org/springframework/web/servlet/config/annotation/WebMvcConfigurationSupport.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-510">
+          <caret line="80" column="13" selection-start-line="80" selection-start-column="13" selection-end-line="80" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/configure/WebMvcConfigure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="22" column="4" selection-start-line="22" selection-start-column="4" selection-end-line="22" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/configure/MybatisPlusConfigure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="34" selection-end-column="7" />
         </state>
       </provider>
     </entry>
