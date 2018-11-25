@@ -9,6 +9,7 @@ import com.team.entity.vo.PageDto;
 import com.team.entity.vo.RoleDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 import org.mapstruct.ReportingPolicy;
 
 import java.util.List;
@@ -24,13 +25,15 @@ public interface MenuMap {
 
     List<TreeUtil.Node> toMenuTree(List<Menu> menus);
 
-    @Mapping(source = "pageIndex", target = "page.pageIndex")
-    @Mapping(source = "pageSize", target = "page.pageSize")
-    @Mapping(source = "total", target = "page.total")
+    @Mappings({
+            @Mapping(source = "pageIndex", target = "page.pageIndex"),
+            @Mapping(source = "pageSize", target = "page.pageSize"),
+            @Mapping(source = "total", target = "page.total")})
     PageDto<MenuDto> toPageDto(PageModel<Menu> page);
 
-    @Mapping(source = "pageIndex", target = "page.pageIndex")
-    @Mapping(source = "pageSize", target = "page.pageSize")
-    @Mapping(source = "total", target = "page.total")
+    @Mappings({
+            @Mapping(source = "pageIndex", target = "page.pageIndex"),
+            @Mapping(source = "pageSize", target = "page.pageSize"),
+            @Mapping(source = "total", target = "page.total")})
     PageDto<MenuDto> toPageDto(PageUtil<Menu> page);
 }
