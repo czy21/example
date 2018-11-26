@@ -1,9 +1,15 @@
 package com.team.core.configure;
 
+import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
 import com.team.core.constant.ProjectConstant;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.web.bind.annotation.RestController;
+import springfox.documentation.RequestHandler;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -21,10 +27,10 @@ import java.util.List;
 
 @Configuration
 @EnableSwagger2
+@Profile({"dev", "test"})
 public class SwaggerConfigure {
     @Bean
     public Docket docket() {
-
 
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
