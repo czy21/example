@@ -14,6 +14,7 @@
       <div class="handle-box">
         <div class="operate-box">
           <el-button type="primary" @click="addMenu('add')">添加菜单(权限)</el-button>
+          <el-button type="primary" @click="batchAddPermission('add')">批量添加权限</el-button>
         </div>
         <div class="search-box">
           <el-cascader expand-trigger="click"
@@ -100,6 +101,13 @@
           <el-button type="primary" @click="addMenu('submit')">确 定</el-button>
         </div>
       </el-dialog>
+      <el-dialog title="批量添加权限" :visible.sync="batchAddPermissionShow" width="60%">
+
+
+        <div slot="footer" class="dialog-footer">
+          <el-button type="primary" @click="batchAddPermission('submit')">确 定</el-button>
+        </div>
+      </el-dialog>
     </div>
   </div>
 </template>
@@ -119,7 +127,8 @@
         },
         menuAddShow: false,
         menuAddForm: {},
-        isMenu: true
+        isMenu: true,
+        batchAddPermissionShow: false
       }
     },
     computed: {
@@ -138,6 +147,22 @@
       },
     },
     methods: {
+      batchAddPermission(status) {
+        switch (status) {
+          case 'add':
+            this.batchAddPermissionShow = true
+            break;
+          case 'submit':
+            // this.batchAddPermissionShow = false
+            this.$api.get("docs").then(res => {
+              console.log(res.data.paths)
+              console.log(res.data.tags)
+            })
+            break;
+          default:
+            break;
+        }
+      },
       addMenu(status) {
         switch (status) {
           case 'add':
