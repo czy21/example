@@ -50,7 +50,7 @@ public class MenuController {
 
     @PostMapping(value = "batchAddAction")
     public Object BatchAddAction(String permissions) {
-
-        return JSON.parseArray(permissions, PermissionDto.class);
+        List<PermissionDto> dto = JSON.parseArray(permissions, PermissionDto.class);
+        return dto;
     }
 }
