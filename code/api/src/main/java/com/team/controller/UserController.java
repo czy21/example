@@ -26,7 +26,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("api/user")
-@Api(tags = "用户操作接口")
+@Api(tags = "User", description = "用户操作接口")
 public class UserController {
 
     @Autowired

@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("api/menu")
-@Api(tags = "菜单操作接口")
+@Api(tags = "Menu", description = "菜单操作接口")
 public class MenuController {
 
     @Autowired
@@ -30,7 +30,7 @@ public class MenuController {
 
     @GetMapping("load")
     @Pocket(entity = {Menu.class})
-    @ApiOperation(value = "加载菜单(权限)列表")
+    @ApiOperation(value = "加载权限列表")
     public PageDto<MenuDto> Load(SearchPermissionModel search) {
         return menuService.getMenuAndPermissionPageListBy(search);
     }

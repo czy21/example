@@ -1,6 +1,7 @@
 package com.team.controller;
 
 
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("api/department")
+@Api(tags = "Department", description = "部门操作接口")
 public class DepartmentController {
 
 
