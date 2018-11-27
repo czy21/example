@@ -71,8 +71,11 @@ public class RoleController {
     }
 
     @PostMapping("roleActionDetails")
+    @ApiOperation(value = "获取角色权限列表")
     public List<String> RoleActionDetails(String roleId) {
         return roleMenuService.getPermissionsByRoleId(roleId);
     }
+
+
 
 }

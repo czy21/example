@@ -1,19 +1,20 @@
 package com.team.controller;
 
 
+import com.alibaba.fastjson.JSON;
 import com.team.core.mvc.Pocket;
 import com.team.entity.po.Menu;
 import com.team.entity.vo.MenuDto;
 import com.team.entity.vo.PageDto;
+import com.team.entity.vo.PermissionDto;
 import com.team.model.SearchPermissionModel;
 import com.team.service.MenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * @Description Menu 前端控制器
@@ -45,5 +46,11 @@ public class MenuController {
     @ApiOperation(value = "添加菜单或权限")
     public MenuDto Add(MenuDto dto) {
         return menuService.insertMenu(dto);
+    }
+
+    @PostMapping(value = "batchAddAction")
+    public Object BatchAddAction(String permissions) {
+
+        return JSON.parseArray(permissions, PermissionDto.class);
     }
 }

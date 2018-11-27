@@ -102,8 +102,20 @@
         </div>
       </el-dialog>
       <el-dialog title="批量添加权限" :visible.sync="batchAddPermissionShow" width="60%">
-
-
+        <div class="handle-box">
+          <div class="search-box">
+            <el-button type="primary" icon="el-icon-search">查询</el-button>
+          </div>
+        </div>
+        <div class="container">
+          <!-- 列表 -->
+          <el-table :data="apiList" border fit highlight-current-row @select-all="selectAction">
+            <el-table-column type="selection" width="55"></el-table-column>
+            <el-table-column prop="url" label="Api"></el-table-column>
+            <el-table-column prop="summary" label="名称"></el-table-column>
+            <el-table-column prop="tag" label="所属控制器"></el-table-column>
+          </el-table>
+        </div>
         <div slot="footer" class="dialog-footer">
           <el-button type="primary" @click="batchAddPermission('submit')">确 定</el-button>
         </div>
@@ -128,7 +140,9 @@
         menuAddShow: false,
         menuAddForm: {},
         isMenu: true,
-        batchAddPermissionShow: false
+        batchAddPermissionShow: false,
+        permissions: [],
+        apiList: []
       }
     },
     computed: {
@@ -147,16 +161,21 @@
       },
     },
     methods: {
+      selectAction(selection) {
+        this.permissions = selection;
+      },
       batchAddPermission(status) {
         switch (status) {
           case 'add':
             this.batchAddPermissionShow = true
+            this.$api.get("docs").then(res => {
+              this.apiList = c.ref.jsUtil.swagger.transDocsData(res.data.paths)
+            })
             break;
           case 'submit':
-            // this.batchAddPermissionShow = false
-            this.$api.get("docs").then(res => {
-              console.log(res.data.paths)
-              console.log(res.data.tags)
+            this.batchAddPermissionShow = false
+            this.$api.post("menu/batchAddAction", {permissions: JSON.stringify(this.permissions)}).then(res => {
+              console.log(res)
             })
             break;
           default:
