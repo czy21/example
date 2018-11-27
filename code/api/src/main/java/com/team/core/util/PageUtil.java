@@ -3,6 +3,7 @@ package com.team.core.util;
 import lombok.Data;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 public class PageUtil<T> {
@@ -16,6 +17,18 @@ public class PageUtil<T> {
         this.pageIndex = pageIndex;
         this.pageSize = pageSize;
         this.total = list.size();
-        this.list = list.subList(pageSize * (pageIndex - 1), ((pageSize * pageIndex) > total ? total : (pageSize * pageIndex)));
+
+        int pageCount = this.total / this.pageSize;
+        int fromIndex = pageSize * (pageIndex - 1);
+        int toIndex = fromIndex + pageSize;
+        if (toIndex > this.total) {
+            toIndex = this.total;
+        }
+        if (pageIndex > pageCount + 1) {
+            fromIndex = 0;
+            toIndex = this.total;
+        }
+        this.list = list.subList(fromIndex, toIndex);
+
     }
 }

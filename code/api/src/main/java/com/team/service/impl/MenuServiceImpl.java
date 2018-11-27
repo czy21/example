@@ -3,6 +3,7 @@ package com.team.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.core.exception.ErrorCode;
 import com.team.core.exception.WebException;
+import com.team.core.extension.CollectionExtension;
 import com.team.core.extension.StringExtension;
 import com.team.core.extension.entity.MenuExtensions;
 import com.team.core.universal.BaseServiceImpl;
@@ -11,11 +12,14 @@ import com.team.entity.map.MenuMap;
 import com.team.entity.po.Menu;
 import com.team.entity.vo.MenuDto;
 import com.team.entity.vo.PageDto;
+import com.team.entity.vo.PermissionDto;
 import com.team.model.SearchPermissionModel;
 import com.team.service.MenuService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @Description Menu 服务实现类
@@ -52,5 +56,26 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
     @Override
     public MenuDto editMenu(MenuDto dto) {
         return null;
+    }
+
+    @Override
+    @Transactional
+    public Boolean batchInsertPermission(List<PermissionDto> dtos) {
+        if (CollectionExtension.ListIsNullOrEmpty(dtos)) {
+            throw new WebException(ErrorCode.ID_NO_NULL, "权限集合不能为空");
+        }
+        List<Menu> menus = super.SelectListBy(new QueryWrapper<Menu>().eq("IsMenu", true));
+        List<Menu> permissions = super.SelectListBy(new QueryWrapper<Menu>().eq("IsMenu", false));
+        dtos.forEach(t -> menus.forEach(m -> {
+            if (m.getUrl().endsWith(t.getTag().toLowerCase())) {
+                Menu menu = new Menu();
+                menu.setMenuName(t.getSummary());
+                menu.setIsMenu(false);
+                menu.setUrl(t.getUrl());
+                menu.setParentId(m.getMenuId());
+                super.Insert(menu);
+            }
+        }));
+        return true;
     }
 }

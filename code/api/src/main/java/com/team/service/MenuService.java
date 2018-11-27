@@ -1,11 +1,13 @@
 package com.team.service;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.team.core.universal.BaseService;
 import com.team.core.universal.PageModel;
 import com.team.core.util.PageUtil;
 import com.team.entity.po.Menu;
 import com.team.entity.vo.MenuDto;
 import com.team.entity.vo.PageDto;
+import com.team.entity.vo.PermissionDto;
 import com.team.model.SearchPermissionModel;
 
 import java.util.List;
@@ -22,5 +24,7 @@ public interface MenuService extends BaseService<Menu> {
     MenuDto insertMenu(MenuDto dto);
 
     MenuDto editMenu(MenuDto dto);
+
+    Boolean batchInsertPermission(List<PermissionDto> dtos);
 
 }

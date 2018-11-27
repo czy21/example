@@ -43,6 +43,7 @@ public class MenuExtensions {
         }
         List<Menu> query = list.stream().filter(t -> t.getMenuId().equals(parentId)).collect(Collectors.toList());
         query.addAll(GetSonList(list, parentId));
+        query.sort((o1, o2) -> o2.getIsMenu().compareTo(o1.getIsMenu()));
         return query;
     }
 
