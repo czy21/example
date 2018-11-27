@@ -49,8 +49,7 @@ public class MenuController {
     }
 
     @PostMapping(value = "batchAddAction")
-    public Object BatchAddAction(String permissions) {
-        List<PermissionDto> dto = JSON.parseArray(permissions, PermissionDto.class);
-        return dto;
+    public Boolean BatchAddAction(String permissions) {
+        return menuService.batchInsertPermission(JSON.parseArray(permissions, PermissionDto.class));
     }
 }
