@@ -128,10 +128,10 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="698" />
-    <option name="y" value="139" />
-    <option name="width" value="1205" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="808" />
+    <option name="y" value="137" />
+    <option name="width" value="1106" />
     <option name="height" value="828" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
