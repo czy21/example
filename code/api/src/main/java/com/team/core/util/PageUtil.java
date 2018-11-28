@@ -23,9 +23,9 @@ public class PageUtil<T> {
             toIndex = this.total;
         }
         if (pageIndex > pageCount + 1) {
-            this.pageIndex = 1;
-            this.list = list;
-            return;
+            this.pageIndex = pageCount + 1;
+            fromIndex = pageCount + 1;
+            toIndex = this.total;
         }
         this.list = list.subList(fromIndex, toIndex);
     }
