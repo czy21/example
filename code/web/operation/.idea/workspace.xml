@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/MenuList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/MenuList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/system/RoleList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/RoleList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/UserList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/app.scss" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,20 +15,21 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/system/RoleList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="66" column="29" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
+            <state relative-caret-position="154">
+              <caret line="175" column="87" lean-forward="true" selection-start-line="175" selection-start-column="87" selection-end-line="175" selection-end-column="87" />
               <folding>
                 <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#el-dialog#2;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/css/app.scss">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="313">
@@ -127,8 +123,8 @@
         <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/js/utility/swagger.js" />
         <option value="$PROJECT_DIR$/src/views/system/UserList.vue" />
         <option value="$PROJECT_DIR$/src/views/system/MenuList.vue" />
-        <option value="$PROJECT_DIR$/src/views/system/RoleList.vue" />
         <option value="$PROJECT_DIR$/static/css/app.scss" />
+        <option value="$PROJECT_DIR$/src/views/system/RoleList.vue" />
       </list>
     </option>
   </component>
@@ -139,10 +135,10 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="853" />
-    <option name="y" value="175" />
-    <option name="width" value="1070" />
-    <option name="height" value="797" />
+    <option name="x" value="821" />
+    <option name="y" value="200" />
+    <option name="width" value="1051" />
+    <option name="height" value="790" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -176,34 +172,6 @@
               <item name="operation" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="operation" type="b2602c69:ProjectViewProjectNode" />
@@ -390,12 +358,12 @@
       <workItem from="1543285032286" duration="15094000" />
       <workItem from="1543376083016" duration="338000" />
       <workItem from="1543381157993" duration="1551000" />
-      <workItem from="1543408916643" duration="6496000" />
+      <workItem from="1543408916643" duration="9841000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="221177000" />
+    <option name="totallyTimeSpent" value="224522000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -404,16 +372,16 @@
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="npm" order="1" side_tool="true" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.16754478" />
+      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.17123288" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30151844" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" visible="true" weight="0.15075922" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" weight="0.21889764" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32315522" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.29067245" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3153961" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5009074" side_tool="true" weight="0.32216495" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -700,21 +668,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/system/RoleList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="66" column="29" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
-          <folding>
-            <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/css/app.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="313">
           <caret line="140" column="5" selection-start-line="140" selection-start-column="5" selection-end-line="140" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/system/RoleList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="154">
+          <caret line="175" column="87" lean-forward="true" selection-start-line="175" selection-start-column="87" selection-end-line="175" selection-end-column="87" />
+          <folding>
+            <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#el-dialog#2;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
