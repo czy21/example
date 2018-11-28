@@ -1,5 +1,5 @@
 <template>
-  <div class="combine-table">
+  <div class="main-box">
     <div class="handle-box">
       <div class="operate-box">
         <el-button type="primary" @click="addRole('add')">添加角色</el-button>
@@ -64,7 +64,7 @@
     </el-dialog>
 
     <el-dialog title="分配角色菜单" :visible.sync="roleMenuShow" width="60%">
-      <div class="combine-table">
+      <div class="combine-box">
         <div class="aside-box">
           <el-tree
             :props="props"
