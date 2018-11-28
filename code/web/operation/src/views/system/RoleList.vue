@@ -64,7 +64,7 @@
     </el-dialog>
 
     <el-dialog title="分配角色菜单" :visible.sync="roleMenuShow" width="60%">
-      <div class="combine-box">
+      <div class="combine-box" style="height: 350px">
         <div class="aside-box">
           <el-tree
             :props="props"
@@ -79,8 +79,7 @@
           <div class="container">
             <el-table :data="[]" border fit highlight-current-row>
               <el-table-column type="selection" prop="roleId" width="55"></el-table-column>
-              <el-table-column prop="roleName" label="角色名称"></el-table-column>
-              <el-table-column prop="remark" label="备注"></el-table-column>
+              <el-table-column prop="roleName" label="权限名称"></el-table-column>
 
             </el-table>
           </div>
@@ -175,7 +174,13 @@
             this.roleMenuShow = true
             this.roleId = row.roleId
             this.$api.post("role/roleMenuDetails", {roleId: this.roleId}).then(res => {
-              this.$refs.roleMenu.setCheckedKeys(res.data, false)
+              let temp = []
+              res.data.forEach((t) => {
+                if (!this.$refs.roleMenu.getNode(t).data.hasOwnProperty("children")) {
+                  temp.push(t)
+                }
+              });
+              this.$refs.roleMenu.setCheckedKeys(temp, false)
             })
             break;
           case 'submit':
