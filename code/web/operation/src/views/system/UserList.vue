@@ -1,5 +1,5 @@
 <template>
-  <div class="combine-table">
+  <div class="main-box">
     <div class="handle-box">
       <div class="operate-box">
         <el-button type="primary" icon="el-icon-edit" @click="addUser('add')">添加用户</el-button>

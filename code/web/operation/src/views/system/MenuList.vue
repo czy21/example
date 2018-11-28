@@ -1,8 +1,7 @@
 <template>
-  <div class="combine-table">
+  <div class="combine-box">
     <div class="aside-box">
       <el-tree
-        style="width: 180px"
         :props="props"
         :data="$pocket.menuTree"
         default-expand-all

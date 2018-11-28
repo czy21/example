@@ -46,24 +46,29 @@ a {
   line-height: 40px;
   color: #fff;
   background-color: #20a0ff;
+
   .collapse-btn {
     float: left;
     padding: 0 21px;
     cursor: pointer;
   }
+
   .collapse-btn:hover {
     background: rgb(40, 52, 70);
   }
+
   .logo {
     float: left;
     padding-left: 5px;
     width: 250px;
   }
+
   .user-info {
     float: right;
     padding-right: 50px;
     font-size: 14px;
     color: #fff;
+
     .el-dropdown-link {
       position: relative;
       display: inline-block;
@@ -72,6 +77,7 @@ a {
       cursor: pointer;
       vertical-align: middle;
     }
+
     .user-logo {
       position: absolute;
       left: 0;
@@ -80,6 +86,7 @@ a {
       height: 30px;
       border-radius: 50%;
     }
+
     .el-dropdown-menu__item {
       text-align: center;
     }
@@ -93,12 +100,15 @@ a {
   left: 0;
   top: 40px;
   bottom: 0;
+
   .sidebar-el-menu:not(.el-menu--collapse) {
     width: 200px;
   }
+
   ul {
     height: 100%;
   }
+
   .left-menu .el-submenu__title .el-icon-arrow-right {
     display: none;
   }
@@ -115,35 +125,47 @@ a {
   background: white;
   overflow-y: scroll;
   /* 组合table布局 */
-  .combine-table {
+  .main-box {
     height: 100%;
-    /*顶部窗口*/
-    .handle-box {
-      background: #f5fafe;
-      padding: 6px;
-      overflow: hidden;
-      /* 操作窗口 */
-      .operate-box {
-        float: left;
-      }
-      /* 查询窗口 */
-      .search-box {
-        float: right;
-      }
-    }
+  }
+
+  .combine-box {
+    height: 100%;
+    display: flex;
     /* 左侧table */
     .aside-box {
-      float: left;
+      flex: none;
+      width: 180px;
+      height: inherit;
       padding-right: 6px;
     }
+
     .right-box {
-      overflow: hidden;
+      height: inherit;
+      flex: 1;
     }
-    /*列表窗口*/
-    .container {
-      overflow: hidden;
-      padding-top: 10px;
+  }
+
+  /*顶部窗口*/
+  .handle-box {
+    background: #f5fafe;
+    padding: 6px;
+    overflow: hidden;
+    /* 操作窗口 */
+    .operate-box {
+      float: left;
     }
+
+    /* 查询窗口 */
+    .search-box {
+      float: right;
+    }
+  }
+
+  /*列表窗口*/
+  .container {
+    overflow: hidden;
+    padding-top: 10px;
   }
 }
 
@@ -153,10 +175,12 @@ a {
   overflow: hidden;
   background: #fff;
   padding-right: 120px;
+
   ul {
     box-sizing: border-box;
     width: 100%;
     height: 100%;
+
     .tags-li {
       float: left;
       margin: 3px 5px 2px 3px;
@@ -175,14 +199,17 @@ a {
       -moz-transition: all 0.3s ease-in;
       transition: all 0.3s ease-in;
     }
+
     .tags-li:not(.active):hover {
       background: #f8f8f8;
     }
+
     .active {
       color: #fff;
       border: 1px solid #409eff;
       background-color: #409eff;
     }
+
     .tags-li-title {
       float: left;
       max-width: 80px;
@@ -192,10 +219,12 @@ a {
       margin-right: 5px;
       color: #666;
     }
+
     .tags-li.active .tags-li-title {
       color: #fff;
     }
   }
+
   .tags-close-box {
     position: absolute;
     right: 0;

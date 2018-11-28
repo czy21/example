@@ -3,8 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/util/PageUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/util/PageUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/system/MenuList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/MenuList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/system/RoleList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/RoleList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/system/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/UserList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/css/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/app.scss" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -17,15 +20,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/system/RoleList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
+            <state relative-caret-position="153">
+              <caret line="66" column="29" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
               <folding>
                 <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/static/css/app.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="313">
+              <caret line="140" column="5" selection-start-line="140" selection-start-column="5" selection-end-line="140" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -101,7 +113,6 @@
         <option value="$PROJECT_DIR$/src/views/system/role/index.vue" />
         <option value="$PROJECT_DIR$/src/components/mixins/list.js" />
         <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/api/index.js" />
-        <option value="$PROJECT_DIR$/src/views/system/UserList.vue" />
         <option value="$PROJECT_DIR$/src/components/routes/system.js" />
         <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/js/utility/forTree.js" />
         <option value="$PROJECT_DIR$/src/views/system/general/TreeMenu.vue" />
@@ -114,6 +125,7 @@
         <option value="$PROJECT_DIR$/src/components/utils/swagger.js" />
         <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/js/utility/index.js" />
         <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/js/utility/swagger.js" />
+        <option value="$PROJECT_DIR$/src/views/system/UserList.vue" />
         <option value="$PROJECT_DIR$/src/views/system/MenuList.vue" />
         <option value="$PROJECT_DIR$/src/views/system/RoleList.vue" />
         <option value="$PROJECT_DIR$/static/css/app.scss" />
@@ -126,11 +138,11 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="848" />
-    <option name="y" value="179" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="853" />
+    <option name="y" value="175" />
     <option name="width" value="1070" />
-    <option name="height" value="769" />
+    <option name="height" value="797" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -164,6 +176,21 @@
               <item name="operation" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="operation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="operation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="operation" type="b2602c69:ProjectViewProjectNode" />
@@ -363,22 +390,24 @@
       <workItem from="1543285032286" duration="15094000" />
       <workItem from="1543376083016" duration="338000" />
       <workItem from="1543381157993" duration="1551000" />
+      <workItem from="1543408916643" duration="6496000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214681000" />
+    <option name="totallyTimeSpent" value="221177000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="npm" order="1" side_tool="true" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.16174921" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.16754478" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30151844" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49909255" visible="true" weight="0.22017354" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" visible="true" weight="0.15075922" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -572,13 +601,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/system/UserList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="156" column="14" selection-start-line="156" selection-start-column="14" selection-end-line="156" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/docs/api.json" />
     <entry file="file://$PROJECT_DIR$/script/cfg.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -666,26 +688,33 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/system/MenuList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="29" selection-start-line="1" selection-start-column="2" selection-end-line="1" selection-end-column="29" />
+        <state relative-caret-position="51">
+          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="9" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/app.scss">
+    <entry file="file://$PROJECT_DIR$/src/views/system/UserList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-173">
-          <caret line="125" column="20" lean-forward="true" selection-start-line="125" selection-start-column="20" selection-end-line="125" selection-end-column="20" />
+        <state relative-caret-position="17">
+          <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/system/RoleList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
+        <state relative-caret-position="153">
+          <caret line="66" column="29" selection-start-line="66" selection-start-column="29" selection-end-line="66" selection-end-column="29" />
           <folding>
             <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
             <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/css/app.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="313">
+          <caret line="140" column="5" selection-start-line="140" selection-start-column="5" selection-end-line="140" selection-end-column="5" />
         </state>
       </provider>
     </entry>
