@@ -48,13 +48,13 @@ public class UserController {
     }
 
     @PostMapping("add")
-    @ApiOperation(value = "添加用户")
+    @ApiOperation(value = "添加用户信息")
     public UserDto Add(UserDto dto) {
         return userService.insertDefaultPwd(dto);
     }
 
     @PostMapping("edit")
-    @ApiOperation(value = "修改用户")
+    @ApiOperation(value = "修改用户信息")
     public UserDto Edit(UserDto dto) {
         return userService.editUser(dto);
     }
@@ -66,13 +66,13 @@ public class UserController {
     }
 
     @PostMapping("userRoleDetails")
-    @ApiOperation(value = "获取用户角色列表")
+    @ApiOperation(value = "获取用户角色")
     public List<String> UserRoleDetails(String userId) {
         return userRoleService.getRolesByUserId(userId);
     }
 
     @PostMapping(value = "updateUserRole")
-    @ApiOperation(value = "更新用户角色列表")
+    @ApiOperation(value = "更新用户角色")
     public String updateUserRole(String userId, @RequestParam(value = "userRoleIds[]", required = false) String[] userRoleIds) {
         return userRoleService.insertOrUpdateUserRole(userId, userRoleIds);
     }

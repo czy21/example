@@ -50,36 +50,30 @@ public class RoleController {
     }
 
     @PostMapping("add")
-    @ApiOperation(value = "添加角色")
+    @ApiOperation(value = "添加角色信息")
     public RoleDto Add(RoleDto dto) {
         return roleService.insertRole(dto);
     }
 
     @PostMapping("edit")
-    @ApiOperation(value = "修改角色")
+    @ApiOperation(value = "修改角色信息")
     public RoleDto Edit(RoleDto dto) {
         return roleService.editRole(dto);
     }
 
     @PostMapping("roleMenuDetails")
-    @ApiOperation(value = "获取角色菜单列表")
+    @ApiOperation(value = "查询角色菜单")
     public Map RoleMenuDetails(String roleId) {
         Map<String, Object> hash = new HashMap<>();
-        hash.put("menuIds", roleMenuService.getMenusByRoleId(roleId));
-        hash.put("permissions", MenuExtensions.TransPermissionToRadioGroups());
+        hash.put("menuIds", roleMenuService.getPermissionsByRoleId(roleId));
+        hash.put("actions", MenuExtensions.TransPermissionToRadioGroups());
         return hash;
     }
 
     @PostMapping("updateRoleMenu")
-    @ApiOperation(value = "更新角色菜单列表")
+    @ApiOperation(value = "更新角色菜单")
     public String updateRoleMenu(String roleId, @RequestParam(value = "roleMenuIds[]", required = false) String[] roleMenuIds) {
         return roleMenuService.insertOrUpdateRoleMenu(roleId, roleMenuIds);
-    }
-
-    @PostMapping("roleActionDetails")
-    @ApiOperation(value = "获取角色权限列表")
-    public List<String> RoleActionDetails(String roleId) {
-        return roleMenuService.getPermissionsByRoleId(roleId);
     }
 
 
