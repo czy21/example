@@ -6,6 +6,7 @@ import com.team.core.exception.WebException;
 import com.team.core.extension.StringExtension;
 import com.team.dao.RoleMenuDao;
 import com.team.entity.po.Menu;
+import com.team.entity.po.Role;
 import com.team.entity.po.RoleMenu;
 import com.team.service.MenuService;
 import com.team.service.RoleMenuService;
@@ -61,7 +62,7 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
         if (StringExtension.StringIsNullOrEmpty(roleId)) {
             throw new WebException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
         }
-        return roleMenuDao.getMenusByRoleId(roleId, true).stream().map(Menu::getMenuId).collect(Collectors.toList());
+        return roleMenuDao.selectList(new QueryWrapper<RoleMenu>().eq("RoleId", roleId)).stream().map(RoleMenu::getMenuId).collect(Collectors.toList());
     }
 
     @Override

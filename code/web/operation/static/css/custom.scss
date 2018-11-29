@@ -8,6 +8,13 @@
   cursor: pointer;
 }
 
+.el-checkbox+.el-checkbox {
+  margin-left: 0;
+}
+.el-checkbox {
+  margin-right: 30px;
+}
+
 /*批量删除按钮*/
 .pagination .el-button {
   margin-left: 10px;

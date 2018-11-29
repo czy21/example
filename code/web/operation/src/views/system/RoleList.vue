@@ -64,7 +64,7 @@
     </el-dialog>
 
     <el-dialog title="分配角色菜单" :visible.sync="roleMenuShow" width="60%">
-      <div class="combine-box" style="height: 350px">
+      <div class="combine-box">
         <div class="aside-box">
           <el-tree
             :props="props"
@@ -82,8 +82,10 @@
                 <template slot="title">
                   {{item.label}}
                 </template>
-                <el-checkbox-group v-model="roleActionIds">
-                  <el-checkbox v-for="action in item.children" :key="action.value" :label="action.label"></el-checkbox>
+                <el-checkbox-group v-model="roleActionIds" @change="checkedActionsChange">
+                  <el-checkbox v-for="action in item.children" :key="action.value" :label="action.value">
+                    {{action.label}}
+                  </el-checkbox>
                 </el-checkbox-group>
               </el-collapse-item>
             </el-collapse>
@@ -133,6 +135,19 @@
       },
     },
     methods: {
+      checkedActionsChange(value) {
+        var temp = []
+        this.actionTree.forEach((t) => {
+          t.children.forEach((c) => {
+            value.forEach((v) => {
+              if (v == c.value) {
+                temp.push(c.parentId)
+              }
+            })
+          })
+        })
+        this.$refs.roleMenu.setCheckedKeys(Array.from(new Set(temp)), false)
+      },
       addRole(status) {
         switch (status) {
           case 'add':
@@ -184,24 +199,22 @@
             this.roleId = row.roleId
             this.$api.post("role/roleMenuDetails", {roleId: this.roleId}).then(res => {
               this.actionTree = res.data.permissions
-              let temp = []
-              res.data.menuIds.forEach((t) => {
-                if (!this.$refs.roleMenu.getNode(t).data.hasOwnProperty("children")) {
-                  temp.push(t)
+              this.roleActionIds = res.data.menuIds
+              this.$refs.roleMenu.setCheckedKeys(this.roleActionIds.map((t) => {
+                if (this.$refs.roleMenu.getNode(t) != null && !this.$refs.roleMenu.getNode(t).data.hasOwnProperty("children")) {
+                  return t
                 }
-              });
-              console.log(res.data.permissions)
-              this.$refs.roleMenu.setCheckedKeys(temp, false)
+              }), false)
             })
             break;
           case 'submit':
             this.roleMenuShow = false
-            const temp = {
+            var roleMenus = this.$refs.roleMenu.getCheckedNodes(false, true).map(v => v.value);
+            this.$api.post("role/updateRoleMenu", {
               roleId: this.roleId,
-              roleMenuIds: this.$refs.roleMenu.getCheckedNodes(false, true).map(v => v.value)
-            }
-            this.$api.post("role/updateRoleMenu", temp).then(res => {
-              this.$helper.eui.inform(res.data + "分配菜单成功")
+              roleMenuIds: this.roleActionIds.concat(roleMenus)
+            }).then(res => {
+              this.$helper.eui.inform(res.data + " 分配权限成功")
             })
             break;
           default:
