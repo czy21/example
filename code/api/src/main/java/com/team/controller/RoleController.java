@@ -1,6 +1,7 @@
 package com.team.controller;
 
 
+import com.team.core.extension.entity.MenuExtensions;
 import com.team.core.mvc.Pocket;
 import com.team.entity.map.RoleMap;
 import com.team.entity.po.Menu;
@@ -60,7 +61,7 @@ public class RoleController {
 
     @PostMapping("roleMenuDetails")
     @ApiOperation(value = "获取角色菜单列表")
-    public List<String> RoleMenuDetails(String roleId) {
+    public Object RoleMenuDetails(String roleId) {
         return roleMenuService.getMenusByRoleId(roleId);
     }
 
