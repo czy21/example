@@ -63,7 +63,7 @@
       </div>
     </el-dialog>
 
-    <el-dialog title="分配角色菜单" :visible.sync="roleMenuShow" width="60%">
+    <el-dialog title="分配角色菜单" :visible.sync="roleMenuShow" width="50%">
       <div class="combine-box">
         <div class="aside-box">
           <el-tree
@@ -77,18 +77,20 @@
         </div>
         <div class="right-box">
           <div class="container">
-            <el-collapse v-model="activeNames">
-              <el-collapse-item v-for="item in actionTree" :key="item.value" :name="item.value">
-                <template slot="title">
-                  {{item.label}}
-                </template>
-                <el-checkbox-group v-model="roleActionIds" @change="checkedActionsChange">
-                  <el-checkbox v-for="action in item.children" :key="action.value" :label="action.value">
-                    {{action.label}}
-                  </el-checkbox>
+            <dl v-for="item in actionTree" :key="item.value" :name="item.value">
+              <dt style="background: #efefef;padding: 5px 10px">
+                {{item.label}}
+              </dt>
+              <dd style="padding-left: 20px">
+                <el-checkbox-group class="custom-checkbox" v-model="roleActionIds" @change="checkedActionsChange">
+                  <dl style="padding: 5px 0;">
+                    <el-checkbox v-for="action in item.children" :key="action.value" :label="action.value">
+                      {{action.label}}
+                    </el-checkbox>
+                  </dl>
                 </el-checkbox-group>
-              </el-collapse-item>
-            </el-collapse>
+              </dd>
+            </dl>
           </div>
         </div>
       </div>
@@ -107,11 +109,8 @@
     name: "RoleList",
     data() {
       return {
-        activeNames: [1, 2],
-        // 角色权限Id集合
         roleActionIds: [],
         actionTree: [],
-        // 树形控件属性
         props: {
           label: "label",
           children: "children"
@@ -135,19 +134,6 @@
       },
     },
     methods: {
-      checkedActionsChange(value) {
-        var temp = []
-        this.actionTree.forEach((t) => {
-          t.children.forEach((c) => {
-            value.forEach((v) => {
-              if (v == c.value) {
-                temp.push(c.parentId)
-              }
-            })
-          })
-        })
-        this.$refs.roleMenu.setCheckedKeys(Array.from(new Set(temp)), false)
-      },
       addRole(status) {
         switch (status) {
           case 'add':
@@ -198,24 +184,12 @@
             this.roleMenuShow = true
             this.roleId = row.roleId
             this.$api.post("role/roleMenuDetails", {roleId: this.roleId}).then(res => {
-              this.actionTree = res.data.permissions
-              res.data.menuIds.forEach((t) => {
-                this.actionTree.forEach((p) => {
-                  p.children.forEach((c) => {
-                    if (t === c.value) {
-                      this.roleActionIds.push(t)
-                    }
-                  })
-                })
-              })
-              this.$refs.roleMenu.setCheckedKeys(res.data.menuIds.map((t) => {
-                if (this.$refs.roleMenu.getNode(t) != null && !this.$refs.roleMenu.getNode(t).data.hasOwnProperty("children")) {
-                  return t
-                }
-              }), false)
+              this.actionTree = res.data.actions
+              this.roleActionIds = res.data.menuIds
             })
             break;
-          case 'submit':
+          case
+          'submit':
             this.roleMenuShow = false
             var roleMenus = this.$refs.roleMenu.getCheckedNodes(false, true).map(v => v.value);
             this.$api.post("role/updateRoleMenu", {
@@ -229,12 +203,30 @@
             break;
         }
       },
+      checkedActionsChange(value) {
+        var temp = []
+        this.actionTree.forEach((t) => {
+          t.children.forEach((c) => {
+            value.forEach((v) => {
+              if (v == c.value) {
+                temp.push(c.parentId)
+              }
+            })
+          })
+        })
+        this.$refs.roleMenu.setCheckedKeys(Array.from(new Set(temp)), false)
+      },
       search() {
         this.$api.post("role/search", this.searchModel).then(v => {
           v.data.page && Object.assign(this.searchModel, v.data.page)
           this.list = v.data.list
         });
-      },
+      }
+    },
+    watch: {
+      roleActionIds(newVal) {
+        this.checkedActionsChange(newVal)
+      }
     },
     mounted() {
       this.load("role/load")

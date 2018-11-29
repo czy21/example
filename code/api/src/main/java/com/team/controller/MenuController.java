@@ -43,12 +43,13 @@ public class MenuController {
     }
 
     @PostMapping("add")
-    @ApiOperation(value = "添加菜单或权限")
+    @ApiOperation(value = "添加权限信息")
     public MenuDto Add(MenuDto dto) {
         return menuService.insertMenu(dto);
     }
 
     @PostMapping(value = "batchAddAction")
+    @ApiOperation(value = "批量添加权限")
     public Boolean BatchAddAction(String permissions) {
         return menuService.batchInsertPermission(JSON.parseArray(permissions, PermissionDto.class));
     }

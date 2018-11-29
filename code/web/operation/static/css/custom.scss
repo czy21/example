@@ -8,10 +8,8 @@
   cursor: pointer;
 }
 
-.el-checkbox+.el-checkbox {
+.custom-checkbox .el-checkbox {
   margin-left: 0;
-}
-.el-checkbox {
   margin-right: 30px;
 }
 
