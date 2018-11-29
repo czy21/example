@@ -14,7 +14,9 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Description Role 前端控制器
@@ -61,8 +63,11 @@ public class RoleController {
 
     @PostMapping("roleMenuDetails")
     @ApiOperation(value = "获取角色菜单列表")
-    public Object RoleMenuDetails(String roleId) {
-        return roleMenuService.getMenusByRoleId(roleId);
+    public Map RoleMenuDetails(String roleId) {
+        Map<String, Object> hash = new HashMap<>();
+        hash.put("menuIds", roleMenuService.getMenusByRoleId(roleId));
+        hash.put("permissions", MenuExtensions.TransPermissionToRadioGroups());
+        return hash;
     }
 
     @PostMapping("updateRoleMenu")
@@ -76,7 +81,6 @@ public class RoleController {
     public List<String> RoleActionDetails(String roleId) {
         return roleMenuService.getPermissionsByRoleId(roleId);
     }
-
 
 
 }

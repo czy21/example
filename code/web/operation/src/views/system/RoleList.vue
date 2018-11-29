@@ -77,11 +77,16 @@
         </div>
         <div class="right-box">
           <div class="container">
-            <el-table :data="[]" border fit highlight-current-row>
-              <el-table-column type="selection" prop="roleId" width="55"></el-table-column>
-              <el-table-column prop="roleName" label="权限名称"></el-table-column>
-
-            </el-table>
+            <el-collapse v-model="activeNames">
+              <el-collapse-item v-for="item in actionTree" :key="item.value" :name="item.value">
+                <template slot="title">
+                  {{item.label}}
+                </template>
+                <el-checkbox-group v-model="roleActionIds">
+                  <el-checkbox v-for="action in item.children" :key="action.value" :label="action.label"></el-checkbox>
+                </el-checkbox-group>
+              </el-collapse-item>
+            </el-collapse>
           </div>
         </div>
       </div>
@@ -100,6 +105,10 @@
     name: "RoleList",
     data() {
       return {
+        activeNames: [1, 2],
+        // 角色权限Id集合
+        roleActionIds: [],
+        actionTree: [],
         // 树形控件属性
         props: {
           label: "label",
@@ -174,12 +183,14 @@
             this.roleMenuShow = true
             this.roleId = row.roleId
             this.$api.post("role/roleMenuDetails", {roleId: this.roleId}).then(res => {
+              this.actionTree = res.data.permissions
               let temp = []
-              res.data.forEach((t) => {
+              res.data.menuIds.forEach((t) => {
                 if (!this.$refs.roleMenu.getNode(t).data.hasOwnProperty("children")) {
                   temp.push(t)
                 }
               });
+              console.log(res.data.permissions)
               this.$refs.roleMenu.setCheckedKeys(temp, false)
             })
             break;
