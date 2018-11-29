@@ -199,8 +199,16 @@
             this.roleId = row.roleId
             this.$api.post("role/roleMenuDetails", {roleId: this.roleId}).then(res => {
               this.actionTree = res.data.permissions
-              this.roleActionIds = res.data.menuIds
-              this.$refs.roleMenu.setCheckedKeys(this.roleActionIds.map((t) => {
+              res.data.menuIds.forEach((t) => {
+                this.actionTree.forEach((p) => {
+                  p.children.forEach((c) => {
+                    if (t === c.value) {
+                      this.roleActionIds.push(t)
+                    }
+                  })
+                })
+              })
+              this.$refs.roleMenu.setCheckedKeys(res.data.menuIds.map((t) => {
                 if (this.$refs.roleMenu.getNode(t) != null && !this.$refs.roleMenu.getNode(t).data.hasOwnProperty("children")) {
                   return t
                 }
