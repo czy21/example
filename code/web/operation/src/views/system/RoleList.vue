@@ -80,7 +80,7 @@
             <dl class="permission-list" v-for="item in actionTree" :key="item.value" :name="item.value">
               <dt>{{item.label}}</dt>
               <dd>
-                <el-checkbox-group class="custom-checkbox" v-model="roleActionIds" @change="checkedActionsChange">
+                <el-checkbox-group v-model="roleActionIds" @change="checkedActionsChange">
                   <dl>
                     <el-checkbox v-for="action in item.children" :key="action.value" :label="action.value">
                       {{action.label}}
