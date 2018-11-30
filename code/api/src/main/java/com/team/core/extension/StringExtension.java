@@ -21,8 +21,4 @@ public class StringExtension {
         return str == null || str.equals("");
     }
 
-    public static Boolean ArrayIsNullOrEmpty(String[] arr) {
-        return arr == null || arr.length == 0;
-    }
-
 }
