@@ -154,8 +154,8 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="738" />
-    <option name="y" value="105" />
+    <option name="x" value="637" />
+    <option name="y" value="129" />
     <option name="width" value="1278" />
     <option name="height" value="863" />
   </component>
@@ -388,12 +388,12 @@
       <workItem from="1543376074683" duration="403000" />
       <workItem from="1543381203972" duration="2658000" />
       <workItem from="1543457021918" duration="11288000" />
-      <workItem from="1543549412084" duration="704000" />
+      <workItem from="1543549412084" duration="1301000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="212993000" />
+    <option name="totallyTimeSpent" value="213590000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -406,8 +406,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="738" y="105" width="1278" height="863" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.53790087" visible="true" weight="0.21264368" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.53790087" visible="true" weight="0.21264368" />
       <window_info id="Structure" order="1" sideWeight="0.46209913" side_tool="true" weight="0.24520256" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -417,14 +418,14 @@
       <window_info id="Web" order="7" sideWeight="0.5009074" side_tool="true" weight="0.25841817" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3329718" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.79584223" weight="0.318872" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7947455" visible="true" weight="0.31824416" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3394794" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.329718" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.329718" />
-      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.20415778" side_tool="true" visible="true" weight="0.30452675" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.20525451" side_tool="true" visible="true" weight="0.31824416" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.20029028" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
