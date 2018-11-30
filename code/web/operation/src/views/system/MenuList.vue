@@ -108,10 +108,10 @@
         </div>
         <div class="container">
           <!-- 列表 -->
-          <el-table :data="apiList" border fit highlight-current-row @select-all="selectAction">
+          <el-table :data="apiList" height="400" border fit highlight-current-row @select-all="selectAction">
             <el-table-column type="selection" width="55"></el-table-column>
-            <el-table-column prop="url" label="Api"></el-table-column>
-            <el-table-column prop="summary" label="名称"></el-table-column>
+            <el-table-column prop="summary" label="权限名称"></el-table-column>
+            <el-table-column prop="url" label="请求地址(API)"></el-table-column>
             <el-table-column prop="tag" label="所属控制器"></el-table-column>
           </el-table>
         </div>

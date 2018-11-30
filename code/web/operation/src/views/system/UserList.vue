@@ -24,7 +24,7 @@
         <el-table-column label="操作" width="250">
           <template slot-scope="scope">
             <el-button @click="editUser('edit',scope.row)">编辑</el-button>
-            <el-button @click="allotRole('allot',scope.row)">分配角色</el-button>
+            <el-button type="primary" @click="allotRole('allot',scope.row)">分配角色</el-button>
             <el-button @click="modifiedUser(scope.row)"
                        :class="scope.row.enabled
                        ?'el-button--danger'
