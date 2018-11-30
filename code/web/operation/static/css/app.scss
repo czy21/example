@@ -148,20 +148,22 @@ a {
 
   .handle-box {
     background: #f5fafe;
+    //overflow: hidden;
     padding: 6px;
-    overflow: hidden;
+    margin-bottom: 10px;
+    display: flex;
 
     .operate-box {
-      float: left;
+      flex: 1;
     }
 
     .search-box {
-      float: right;
+      flex: none;
     }
   }
+
   .container {
-    overflow: hidden;
-    padding-top: 10px;
+    //overflow: hidden;
   }
 }
 
