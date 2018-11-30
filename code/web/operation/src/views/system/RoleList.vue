@@ -77,13 +77,11 @@
         </div>
         <div class="right-box">
           <div class="container">
-            <dl v-for="item in actionTree" :key="item.value" :name="item.value">
-              <dt style="background: #efefef;padding: 5px 10px">
-                {{item.label}}
-              </dt>
-              <dd style="padding-left: 20px">
+            <dl class="permission-list" v-for="item in actionTree" :key="item.value" :name="item.value">
+              <dt>{{item.label}}</dt>
+              <dd>
                 <el-checkbox-group class="custom-checkbox" v-model="roleActionIds" @change="checkedActionsChange">
-                  <dl style="padding: 5px 0;">
+                  <dl>
                     <el-checkbox v-for="action in item.children" :key="action.value" :label="action.value">
                       {{action.label}}
                     </el-checkbox>
