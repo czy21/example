@@ -7,15 +7,15 @@
 .permission-list {
   border: solid 1px #eee;
 
-  & > dt {
+  dt {
     background-color: #efefef;
-    padding:  5px 10px;
+    padding: 5px 10px;
   }
 
-  & > dd {
+  dd {
     padding: 10px 10px 10px 20px;
 
-    & > dl {
+    dl {
       padding: 5px 0;
     }
 
