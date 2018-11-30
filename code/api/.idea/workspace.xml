@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b1c8e52-ef87-4df1-b033-ea6a2e11bcfd" name="Default Changelist" comment="" />
+    <list default="true" id="7b1c8e52-ef87-4df1-b033-ea6a2e11bcfd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/core/extension/CollectionExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/core/extension/CollectionExtension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/core/extension/StringExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/core/extension/StringExtension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/service/impl/MenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/service/impl/MenuServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/service/impl/UserRoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/service/impl/UserRoleServiceImpl.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,22 +38,22 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/controller/RoleController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="68" column="63" lean-forward="true" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="564">
+              <caret line="86" column="67" lean-forward="true" selection-start-line="86" selection-start-column="67" selection-end-line="86" selection-end-column="67" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/extension/entity/MenuExtensions.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/MenuServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="63" column="62" lean-forward="true" selection-start-line="63" selection-start-column="62" selection-end-line="63" selection-end-column="62" />
+            <state relative-caret-position="274">
+              <caret line="68" column="64" selection-start-line="68" selection-start-column="64" selection-end-line="68" selection-end-column="64" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -83,7 +89,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/team/core/util/TreeUtil.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/RoleMenuDao.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/extension/RecursionExtension.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/universal/PageModel.java" />
@@ -96,7 +101,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/exception/ErrorCode.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/UserRoleServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/RoleServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/map/UserMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/map/RoleMap.java" />
@@ -121,8 +125,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/team/controller/CompanyController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/vo/PermissionDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/MenuService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/core/extension/CollectionExtension.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/MenuServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/util/PageUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/model/SimpleItemModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/model/SimpleTreeModel.java" />
@@ -130,10 +132,14 @@
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/extension/entity/MenuExtensions.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/configure/ResponseConfigure.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/controller/BaseController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/controller/MenuController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/controller/RoleController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/core/extension/StringExtension.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/core/extension/CollectionExtension.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/UserRoleServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/MenuServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -162,9 +168,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="637" />
-    <option name="y" value="129" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="171" />
+    <option name="y" value="50" />
     <option name="width" value="1278" />
     <option name="height" value="863" />
   </component>
@@ -190,8 +196,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -234,10 +238,43 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="team" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="team" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="team" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="team" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -248,7 +285,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543511101864" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543588193068" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -398,11 +435,12 @@
       <workItem from="1543381203972" duration="2658000" />
       <workItem from="1543457021918" duration="11288000" />
       <workItem from="1543549412084" duration="1921000" />
+      <workItem from="1543585529306" duration="2405000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="214210000" />
+    <option name="totallyTimeSpent" value="216615000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -414,10 +452,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="637" y="129" width="1278" height="863" extended-state="1" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.53790087" visible="true" weight="0.21264368" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.53790087" visible="true" weight="0.20895523" />
       <window_info id="Structure" order="1" sideWeight="0.46209913" side_tool="true" weight="0.24520256" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -426,8 +464,8 @@
       <window_info id="Capture Tool" order="6" />
       <window_info id="Web" order="7" sideWeight="0.5009074" side_tool="true" weight="0.25841817" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7947455" visible="true" weight="0.31824416" />
+      <window_info anchor="bottom" id="Find" order="1" visible="true" weight="0.34924078" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7947455" weight="0.2505423" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3394794" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -435,7 +473,7 @@
       <window_info anchor="bottom" id="Spring" order="7" weight="0.329718" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.329718" />
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.20525451" side_tool="true" weight="0.31824416" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.20029028" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.29609543" />
       <window_info anchor="bottom" id="Java Enterprise" order="11" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="13" weight="0.4262473" />
@@ -485,13 +523,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="48" column="49" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-core/2.9.2/springfox-core-2.9.2.jar!/springfox/documentation/builders/PathSelectors.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
@@ -620,28 +651,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8/src.zip!/java/util/Arrays.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="3798" column="30" selection-start-line="3798" selection-start-column="30" selection-end-line="3798" selection-end-column="30" />
-          <folding>
-            <element signature="e#177013#177014#0" expanded="true" />
-            <element signature="e#177054#177055#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/alibaba/fastjson/1.2.50/fastjson-1.2.50.jar!/com/alibaba/fastjson/JSON.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
           <caret line="359" column="30" selection-start-line="359" selection-start-column="30" selection-end-line="359" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/extension/StringExtension.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="25" column="5" lean-forward="true" selection-start-line="23" selection-start-column="3" selection-end-line="25" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -694,30 +707,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="475" column="44" selection-start-line="475" selection-start-column="44" selection-end-line="475" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/MenuServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="38" column="117" lean-forward="true" selection-start-line="38" selection-start-column="117" selection-end-line="38" selection-end-column="117" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/util/TreeUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/extension/CollectionExtension.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -804,13 +793,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="60" column="24" selection-start-line="60" selection-start-column="24" selection-end-line="60" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/RoleMenuService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -838,20 +820,78 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/extension/entity/MenuExtensions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="63" column="62" selection-start-line="63" selection-start-column="62" selection-end-line="63" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/team/controller/RoleController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
-          <caret line="68" column="63" lean-forward="true" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
+          <caret line="68" column="63" selection-start-line="68" selection-start-column="63" selection-end-line="68" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/extension/entity/MenuExtensions.java">
+    <entry file="jar://C:/Program Files/Java/jdk1.8/src.zip!/java/util/Arrays.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="63" column="62" lean-forward="true" selection-start-line="63" selection-start-column="62" selection-end-line="63" selection-end-column="62" />
+        <state relative-caret-position="17">
+          <caret line="5002" column="32" selection-start-line="5002" selection-start-column="32" selection-end-line="5002" selection-end-column="32" />
+          <folding>
+            <element signature="e#177013#177014#0" expanded="true" />
+            <element signature="e#177054#177055#0" expanded="true" />
+            <element signature="e#223144#223145#0" expanded="true" />
+            <element signature="e#223197#223198#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/util/TreeUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="316">
+          <caret line="32" column="32" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/extension/StringExtension.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="37" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/extension/CollectionExtension.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="5" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/UserRoleServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="52" column="32" selection-start-line="52" selection-start-column="32" selection-end-line="52" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="564">
+          <caret line="86" column="67" lean-forward="true" selection-start-line="86" selection-start-column="67" selection-end-line="86" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/MenuServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="68" column="64" selection-start-line="68" selection-start-column="64" selection-end-line="68" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

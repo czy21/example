@@ -2,7 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/static/css/custom.scss" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/custom.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/extension/CollectionExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/extension/CollectionExtension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/extension/StringExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/extension/StringExtension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/service/impl/MenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/service/impl/MenuServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/service/impl/UserRoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/service/impl/UserRoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -15,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/system/RoleList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-221">
-              <caret line="26" column="48" lean-forward="true" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+            <state relative-caret-position="17">
+              <caret line="26" column="48" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
               <folding>
                 <element signature="n#style#0;n#el-input#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
@@ -29,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/static/css/custom.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+            <state relative-caret-position="170">
+              <caret line="34" column="13" lean-forward="true" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
               <folding>
                 <element signature="e#77#330#0" />
               </folding>
@@ -45,7 +51,7 @@
         <entry file="file://$PROJECT_DIR$/static/css/app.scss">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="138">
-              <caret line="218" column="36" lean-forward="true" selection-start-line="218" selection-start-column="36" selection-end-line="218" selection-end-column="36" />
+              <caret line="214" column="24" selection-start-line="214" selection-start-column="24" selection-end-line="214" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -146,11 +152,11 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="574" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="787" />
     <option name="y" value="157" />
     <option name="width" value="1110" />
-    <option name="height" value="797" />
+    <option name="height" value="777" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -160,6 +166,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -215,7 +222,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -364,23 +370,23 @@
       <workItem from="1543408916643" duration="9841000" />
       <workItem from="1543498017897" duration="4070000" />
       <workItem from="1543549365591" duration="14266000" />
+      <workItem from="1543585511801" duration="675000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="256522000" />
+    <option name="totallyTimeSpent" value="257197000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="574" y="157" width="1110" height="797" extended-state="0" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="npm" order="1" side_tool="true" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.25373134" />
+      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.14330874" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30151844" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" visible="true" weight="0.25188538" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49909255" visible="true" weight="0.17462039" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -656,14 +662,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/system/RoleList.vue">
+    <entry file="file://$PROJECT_DIR$/static/css/custom.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-221">
-          <caret line="26" column="48" lean-forward="true" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
+        <state relative-caret-position="170">
+          <caret line="34" column="13" lean-forward="true" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
           <folding>
-            <element signature="n#style#0;n#el-input#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="e#77#330#0" />
           </folding>
         </state>
       </provider>
@@ -671,16 +675,18 @@
     <entry file="file://$PROJECT_DIR$/static/css/app.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="138">
-          <caret line="218" column="36" lean-forward="true" selection-start-line="218" selection-start-column="36" selection-end-line="218" selection-end-column="36" />
+          <caret line="214" column="24" selection-start-line="214" selection-start-column="24" selection-end-line="214" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/static/css/custom.scss">
+    <entry file="file://$PROJECT_DIR$/src/views/system/RoleList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+        <state relative-caret-position="17">
+          <caret line="26" column="48" selection-start-line="26" selection-start-column="48" selection-end-line="26" selection-end-column="48" />
           <folding>
-            <element signature="e#77#330#0" />
+            <element signature="n#style#0;n#el-input#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#el-dialog#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
           </folding>
         </state>
       </provider>

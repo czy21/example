@@ -65,15 +65,21 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
             throw new WebException(ErrorCode.ID_NO_NULL, "权限集合不能为空");
         }
         List<Menu> menus = super.SelectListBy(new QueryWrapper<Menu>().eq("IsMenu", true));
-        List<Menu> permissions = super.SelectListBy(new QueryWrapper<Menu>().eq("IsMenu", false));
         dtos.forEach(t -> menus.forEach(m -> {
             if (m.getUrl().endsWith(t.getTag().toLowerCase())) {
-                Menu menu = new Menu();
-                menu.setMenuName(t.getSummary());
-                menu.setIsMenu(false);
-                menu.setUrl(t.getUrl());
-                menu.setParentId(m.getMenuId());
-                super.Insert(menu);
+                Menu per = super.SelectBy("Url", t.getUrl());
+                if (per != null) {
+                    per.setMenuName(t.getSummary());
+                    per.setUrl(t.getUrl());
+                    super.Update(per);
+                } else {
+                    Menu menu = new Menu();
+                    menu.setParentId(m.getMenuId());
+                    menu.setIsMenu(false);
+                    menu.setMenuName(t.getSummary());
+                    menu.setUrl(t.getUrl());
+                    super.Insert(menu);
+                }
             }
         }));
         return true;
