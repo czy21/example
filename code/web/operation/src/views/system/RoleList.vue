@@ -10,12 +10,12 @@
       </div>
     </div>
     <div class="container">
-      <el-table :data="list" border fit highlight-current-row>
+      <el-table :data="list" border highlight-current-row>
         <el-table-column type="selection" prop="roleId" width="55"></el-table-column>
         <el-table-column prop="roleName" label="角色名称"></el-table-column>
         <el-table-column prop="remark" label="备注"></el-table-column>
 
-        <el-table-column label="操作" width="400">
+        <el-table-column label="操作" width="300">
           <template slot-scope="scope">
             <el-button @click="editRole('edit',scope.row)">编辑</el-button>
             <el-button type="primary" @click="allotMenu('allot',scope.row)">分配权限</el-button>

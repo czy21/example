@@ -30,7 +30,7 @@
         </div>
       </div>
       <div class="container">
-        <el-table :data="list" border fit highlight-current-row>
+        <el-table :data="list" border highlight-current-row>
           <el-table-column prop="menuName" label="菜单(权限)名称"></el-table-column>
           <el-table-column prop="url" label="菜单(权限)地址"></el-table-column>
           <el-table-column label="类型">
