@@ -18,7 +18,7 @@
         <el-table-column label="操作" width="400">
           <template slot-scope="scope">
             <el-button @click="editRole('edit',scope.row)">编辑</el-button>
-            <el-button @click="allotMenu('allot',scope.row)">分配菜单</el-button>
+            <el-button type="primary" @click="allotMenu('allot',scope.row)">分配权限</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -63,7 +63,7 @@
       </div>
     </el-dialog>
 
-    <el-dialog title="分配角色菜单" :visible.sync="roleMenuShow" width="50%">
+    <el-dialog title="分配角色权限" :visible.sync="roleMenuShow" width="50%">
       <div class="combine-box">
         <div class="aside-box">
           <el-tree
