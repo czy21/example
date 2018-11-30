@@ -14,7 +14,7 @@
     </div>
     <div class="container">
       <!-- 列表 -->
-      <el-table :data="list" border fit highlight-current-row>
+      <el-table :data="list" border highlight-current-row>
         <el-table-column type="selection" prop="userId" width="55"></el-table-column>
         <el-table-column prop="userName" label="用户姓名"></el-table-column>
         <el-table-column prop="loginName" label="登录名称"></el-table-column>

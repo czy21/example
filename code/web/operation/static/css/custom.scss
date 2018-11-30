@@ -38,16 +38,6 @@
   text-align: right;
 }
 
-/*自定义树形控件样式*/
-.custom-tree-node {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 14px;
-  padding-right: 6px;
-}
-
 //穿梭框居中div
 .allot-transfer {
   text-align: center
@@ -57,4 +47,8 @@
 .el-transfer {
   text-align: left;
   display: inline-block
+}
+
+.el-tree {
+  height: 100%;
 }
