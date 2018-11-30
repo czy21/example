@@ -124,7 +124,7 @@ a {
   border-top: 6px solid #e9eaec;
   background: white;
   overflow-y: scroll;
-  /* 组合table布局 */
+
   .main-box {
     height: 100%;
   }
@@ -132,7 +132,7 @@ a {
   .combine-box {
     height: 100%;
     display: flex;
-    /* 左侧table */
+
     .aside-box {
       flex: none;
       width: 180px;
@@ -146,23 +146,19 @@ a {
     }
   }
 
-  /*顶部窗口*/
   .handle-box {
     background: #f5fafe;
     padding: 6px;
     overflow: hidden;
-    /* 操作窗口 */
+
     .operate-box {
       float: left;
     }
 
-    /* 查询窗口 */
     .search-box {
       float: right;
     }
   }
-
-  /*列表窗口*/
   .container {
     overflow: hidden;
     padding-top: 10px;
