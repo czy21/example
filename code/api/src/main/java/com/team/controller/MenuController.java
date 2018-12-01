@@ -57,7 +57,7 @@ public class MenuController {
     @DeleteMapping("delete")
     @ApiOperation(value = "删除菜单或权限信息")
     public Integer Delete(String menuId) {
-      return   menuService.deleteMenu(menuId);
+        return menuService.deleteMenu(menuId);
     }
 
     @PostMapping(value = "batchAddAction")
