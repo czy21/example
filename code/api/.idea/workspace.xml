@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b1c8e52-ef87-4df1-b033-ea6a2e11bcfd" name="Default Changelist" comment="" />
+    <list default="true" id="7b1c8e52-ef87-4df1-b033-ea6a2e11bcfd" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/service/MenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/service/MenuService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,36 +35,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/controller/MenuController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
-              <caret line="59" column="27" selection-start-line="59" selection-start-column="27" selection-end-line="59" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1473#1474#0" expanded="true" />
-                <element signature="e#1521#1522#0" expanded="true" />
-                <element signature="e#1633#1634#0" expanded="true" />
-                <element signature="e#1686#1687#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/MenuService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/MenuServiceImpl.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/configure/SwaggerConfigure.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="75" column="5" lean-forward="true" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+            <state relative-caret-position="272">
+              <caret line="57" column="54" selection-start-line="57" selection-start-column="54" selection-end-line="57" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -99,8 +78,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/mapper/RoleMenuDao.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/core/extension/RecursionExtension.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/universal/PageModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/model/SearchPermissionModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseService.java" />
@@ -120,7 +97,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/springfox.js" />
         <option value="$PROJECT_DIR$/src/test/java/com/czy/core/GetControllersTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/util/ReflectUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/core/configure/WebMvcConfigure.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/vo/PageParams.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/configure/MybatisPlusConfigure.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/aop/AspectLog.java" />
@@ -129,7 +105,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/Attributes/ApiController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/util/SwaggerUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/util/HttpClientUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/core/configure/SwaggerConfigure.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/controller/DepartmentController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/controller/CompanyController.java" />
@@ -147,9 +122,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/extension/CollectionExtension.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/UserRoleServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/service/MenuService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/controller/MenuController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/MenuServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/service/MenuService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.yml" />
+        <option value="$PROJECT_DIR$/src/main/resources/application-prod.yml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/core/configure/SwaggerConfigure.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/core/configure/WebMvcConfigure.java" />
       </list>
     </option>
   </component>
@@ -178,9 +157,9 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="584" />
-    <option name="y" value="50" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="694" />
+    <option name="y" value="140" />
     <option name="width" value="1278" />
     <option name="height" value="863" />
   </component>
@@ -256,7 +235,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="team" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="erp" type="b2602c69:ProjectViewProjectNode" />
@@ -267,6 +246,14 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="team" type="462c0819:PsiDirectoryNode" />
               <item name="core" type="462c0819:PsiDirectoryNode" />
+              <item name="configure" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -284,7 +271,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543653323673" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543662711385" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -434,12 +421,12 @@
       <workItem from="1543381203972" duration="2658000" />
       <workItem from="1543457021918" duration="11288000" />
       <workItem from="1543549412084" duration="1921000" />
-      <workItem from="1543585529306" duration="7987000" />
+      <workItem from="1543585529306" duration="11672000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="222197000" />
+    <option name="totallyTimeSpent" value="225882000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -451,9 +438,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="551" y="50" width="1278" height="863" extended-state="1" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.53790087" visible="true" weight="0.3144499" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.53790087" visible="true" weight="0.18017058" />
       <window_info id="Structure" order="1" sideWeight="0.46209913" side_tool="true" weight="0.24520256" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -463,7 +451,7 @@
       <window_info id="Web" order="7" sideWeight="0.5009074" side_tool="true" weight="0.25841817" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.34924078" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7947455" visible="true" weight="0.34293553" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7947455" visible="true" weight="0.27114967" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3394794" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -488,7 +476,7 @@
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
       <window_info anchor="right" id="Bean Validation" order="9" weight="0.32967892" />
-      <window_info anchor="right" id="Maven" order="10" />
+      <window_info anchor="right" id="Maven" order="10" weight="0.17270789" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -521,24 +509,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/Attributes/ApiController.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-core/2.9.2/springfox-core-2.9.2.jar!/springfox/documentation/RequestHandler.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-swagger2/2.9.2/springfox-swagger2-2.9.2.jar!/springfox/documentation/swagger2/web/Swagger2Controller.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="47" column="26" selection-start-line="47" selection-start-column="26" selection-end-line="47" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/util/SwaggerUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -566,16 +536,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="81" column="43" lean-forward="true" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/configure/SwaggerConfigure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="34" column="54" lean-forward="true" selection-start-line="34" selection-start-column="54" selection-end-line="34" selection-end-column="54" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -722,13 +682,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/configure/WebMvcConfigure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-628">
-          <caret line="39" column="66" lean-forward="true" selection-start-line="39" selection-start-column="66" selection-end-line="39" selection-end-column="66" />
         </state>
       </provider>
     </entry>
@@ -884,17 +837,54 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/MenuService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/MenuServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+        <state relative-caret-position="138">
+          <caret line="60" column="34" lean-forward="true" selection-start-line="60" selection-start-column="34" selection-end-line="60" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/MenuServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="75" column="5" lean-forward="true" selection-start-line="75" selection-start-column="5" selection-end-line="75" selection-end-column="5" />
+        <state relative-caret-position="34">
+          <caret line="2" column="16" selection-start-line="2" selection-start-column="16" selection-end-line="2" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/MenuService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="82" selection-start-line="18" selection-start-column="82" selection-end-line="18" selection-end-column="82" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application-prod.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/configure/WebMvcConfigure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="27" column="68" lean-forward="true" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/configure/SwaggerConfigure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="57" column="54" selection-start-line="57" selection-start-column="54" selection-end-line="57" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
