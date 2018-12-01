@@ -41,7 +41,7 @@
           <el-table-column prop="remark" label="菜单(权限)描述"></el-table-column>
           <el-table-column label="操作" width="260">
             <template slot-scope="scope">
-              <el-button>编辑</el-button>
+              <el-button @click="editMenu('edit',scope.row)">编辑</el-button>
               <el-button type="danger">删除</el-button>
             </template>
           </el-table-column>
@@ -100,6 +100,51 @@
           <el-button type="primary" @click="addMenu('submit')">确 定</el-button>
         </div>
       </el-dialog>
+
+      <el-dialog title="修改菜单或权限" :visible.sync="menuEditShow" width="30%">
+        <el-form :model="menuEditForm" label-width="120px" :rules="validationRules" ref="menuEditForm">
+          <el-form-item label="菜单名称" prop="menuName">
+            <el-input v-model="menuEditForm.menuName"></el-input>
+          </el-form-item>
+          <el-form-item label="类型" prop="isMenu">
+            <el-radio-group v-model="isMenu">
+              <el-radio :label="true">菜单导航</el-radio>
+              <el-radio :label="false">功能请求</el-radio>
+            </el-radio-group>
+          </el-form-item>
+          <el-form-item label="图标" prop="icon">
+            <el-input v-model="menuEditForm.icon" placeholder="请输入图标的class名称" :disabled="!isMenu"></el-input>
+          </el-form-item>
+          <el-form-item label="链接地址" prop="url">
+            <el-input v-model="menuEditForm.url"
+                      :placeholder="isMenu
+                      ?'输入#则为菜单节点'
+                      :'请输入权限地址'"></el-input>
+          </el-form-item>
+          <el-form-item label="上级菜单" prop="parentId">
+            <el-select v-model="menuEditForm.parentId" placeholder="请选择上级菜单">
+              <el-option
+                value="00000000-0000-0000-0000-000000000000"
+                label="顶级菜单"
+                style="color: #FF7F24;"></el-option>
+              <el-option
+                v-for="item in $pocket.menus"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="描述" prop="remark">
+            <el-input type="textarea" v-model="menuEditForm.remark"></el-input>
+          </el-form-item>
+        </el-form>
+        <div slot="footer" class="dialog-footer">
+          <el-button type="primary" @click="editMenu('submit')">确 定</el-button>
+        </div>
+      </el-dialog>
+
+
       <el-dialog title="批量添加权限" :visible.sync="batchAddPermissionShow" width="60%">
         <div class="handle-box">
           <div class="search-box">
@@ -137,7 +182,11 @@
           children: "children"
         },
         menuAddShow: false,
+        menuEditShow: false,
         menuAddForm: {},
+        menuEditForm: {},
+        tempMenuEditForm: {},
+
         isMenu: true,
         batchAddPermissionShow: false,
         permissions: [],
@@ -201,6 +250,26 @@
             break;
         }
       },
+      editMenu(status, row) {
+        switch (status) {
+          case 'edit':
+            this.menuEditShow = true
+            this.menuEditForm = Object.assign({}, this.menuEditForm, row)
+            break;
+          case 'submit':
+            this.submitOne()
+            this.$helper.eui.actWithValidation("menuEditForm", () => {
+              this.menuEditShow = false
+              this.$api.post("menu/edit", this.menuEditForm).then(res => {
+                this.$refs['menuEditForm'].clearValidate();
+                this.search()
+              })
+            })
+            break;
+          default:
+            break;
+        }
+      },
       selectMenuChange(data) {
         this.searchModel.menuId = data[data.length - 1];
       },
@@ -213,8 +282,13 @@
     },
     watch: {
       isMenu(newVal) {
-        (!newVal) && (this.menuAddForm.icon = "")
-
+        if (!newVal) {
+          this.menuAddForm.icon = ""
+          this.menuEditForm.icon = ""
+        }
+      },
+      menuEditForm(newVal) {
+        this.isMenu = newVal.isMenu
       }
     },
     mounted() {

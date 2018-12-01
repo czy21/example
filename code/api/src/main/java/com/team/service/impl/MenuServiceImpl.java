@@ -9,6 +9,7 @@ import com.team.core.extension.entity.MenuExtensions;
 import com.team.core.universal.BaseServiceImpl;
 import com.team.core.util.PageUtil;
 import com.team.entity.map.MenuMap;
+import com.team.entity.map.UserMap;
 import com.team.entity.po.Menu;
 import com.team.entity.vo.MenuDto;
 import com.team.entity.vo.PageDto;
@@ -55,7 +56,17 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
 
     @Override
     public MenuDto editMenu(MenuDto dto) {
-        return null;
+        if (StringExtension.StringIsNullOrEmpty(dto.getMenuId())) {
+            if (dto.getIsMenu()) {
+                throw new WebException(ErrorCode.ID_NO_NULL, "菜单Id不能为空");
+            } else {
+                throw new WebException(ErrorCode.ID_NO_NULL, "权限Id不能为空");
+            }
+        }
+        if (StringExtension.StringIsNullOrEmpty(dto.getParentId())) {
+            throw new WebException(ErrorCode.ID_NO_NULL, "上级菜单Id不能为空");
+        }
+        return menuMap.toMenuDto(super.UpdateAndGetEntity(menuMap.toMenu(dto)));
     }
 
     @Override
