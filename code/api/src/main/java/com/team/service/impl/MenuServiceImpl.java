@@ -72,8 +72,7 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
 
     @Override
     public Integer deleteMenu(String menuId) {
-        List<String> menuIds = MenuExtensions.GetSons(super.SelectListBy(null), menuId).stream().map(Menu::getMenuId).collect(Collectors.toList());
-        return super.DeleteByIds(menuIds);
+        return super.DeleteByIds(MenuExtensions.GetSons(super.SelectListBy(null), menuId).stream().map(Menu::getMenuId).collect(Collectors.toList()));
     }
 
     @Override
