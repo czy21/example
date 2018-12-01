@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Description Menu 服务实现类
@@ -67,6 +68,12 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
             throw new WebException(ErrorCode.ID_NO_NULL, "上级菜单Id不能为空");
         }
         return menuMap.toMenuDto(super.UpdateAndGetEntity(menuMap.toMenu(dto)));
+    }
+
+    @Override
+    public Integer deleteMenu(String menuId) {
+        List<String> menuIds = MenuExtensions.GetSons(super.SelectListBy(null), menuId).stream().map(Menu::getMenuId).collect(Collectors.toList());
+        return super.DeleteByIds(menuIds);
     }
 
     @Override

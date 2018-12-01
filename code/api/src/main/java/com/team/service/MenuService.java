@@ -25,6 +25,8 @@ public interface MenuService extends BaseService<Menu> {
 
     MenuDto editMenu(MenuDto dto);
 
+    Integer deleteMenu(String menuId);
+
     Boolean batchInsertPermission(List<PermissionDto> dtos);
 
 }
