@@ -188,8 +188,12 @@
             break;
           case
           'submit':
-            this.roleMenuShow = false
             var roleMenus = this.$refs.roleMenu.getCheckedNodes(false, true).map(v => v.value);
+            if (roleMenus.length === 0 && this.roleActionIds.length > 0) {
+              this.$helper.eui.warn("必须选择菜单")
+              return
+            }
+            this.roleMenuShow = false
             this.$api.post("role/updateRoleMenu", {
               roleId: this.roleId,
               roleMenuIds: this.roleActionIds.concat(roleMenus)
