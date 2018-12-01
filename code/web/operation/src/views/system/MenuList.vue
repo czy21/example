@@ -42,7 +42,7 @@
           <el-table-column label="操作" width="260">
             <template slot-scope="scope">
               <el-button @click="editMenu('edit',scope.row)">编辑</el-button>
-              <el-button type="danger">删除</el-button>
+              <el-button @click="deleteMenu(scope.row)" type="danger">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -144,7 +144,6 @@
         </div>
       </el-dialog>
 
-
       <el-dialog title="批量添加权限" :visible.sync="batchAddPermissionShow" width="60%">
         <div class="handle-box">
           <div class="search-box">
@@ -223,7 +222,7 @@
           case 'submit':
             this.batchAddPermissionShow = false
             this.$api.post("menu/batchAddAction", {permissions: JSON.stringify(this.permissions)}).then(res => {
-              console.log(res)
+              this.$helper.eui.inform("批量添加成功", this.search())
             })
             break;
           default:
@@ -241,8 +240,10 @@
             this.$helper.eui.actWithValidation("menuAddForm", () => {
               this.menuAddShow = false
               this.$api.post("menu/add", this.menuAddForm).then(() => {
-                this.$refs['menuAddForm'].resetFields();
-                this.search();
+                this.$helper.eui.inform(`<strong>${this.menuAddForm.menuName}</strong> 添加成功`, () => {
+                  this.$refs['menuAddForm'].resetFields();
+                  this.load("menu/load")
+                })
               })
             })
             break;
@@ -260,15 +261,24 @@
             this.submitOne()
             this.$helper.eui.actWithValidation("menuEditForm", () => {
               this.menuEditShow = false
-              this.$api.post("menu/edit", this.menuEditForm).then(res => {
-                this.$refs['menuEditForm'].clearValidate();
-                this.search()
+              this.$api.post("menu/edit", this.menuEditForm).then(() => {
+                this.$helper.eui.inform(`<strong>${this.menuEditForm.menuName}</strong> 修改成功`, () => {
+                  this.$refs['menuEditForm'].clearValidate();
+                  this.load("menu/load")
+                })
               })
             })
             break;
           default:
             break;
         }
+      },
+      deleteMenu(row) {
+        this.$helper.eui.confirm(`此操作不可恢复,确定删除 <strong>${row.menuName}</strong> ?`, () => {
+          this.$api.delete("menu/delete", {menuId: row.menuId}).then(() => {
+            this.$helper.eui.inform(`<strong>${row.menuName}</strong> 删除成功`, this.load("menu/load"))
+          })
+        })
       },
       selectMenuChange(data) {
         this.searchModel.menuId = data[data.length - 1];
