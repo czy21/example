@@ -317,12 +317,12 @@
       <workItem from="1543408916643" duration="9841000" />
       <workItem from="1543498017897" duration="4070000" />
       <workItem from="1543549365591" duration="14266000" />
-      <workItem from="1543585511801" duration="14091000" />
+      <workItem from="1543585511801" duration="14209000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="270613000" />
+    <option name="totallyTimeSpent" value="270731000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -334,7 +334,7 @@
       <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.1601686" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30151844" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" visible="true" weight="0.2657267" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" weight="0.2657267" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />

@@ -1,8 +1,8 @@
 # !/usr/bin/env python
 import os
-from common import prepare_path, _temp_db_path, db_host, db_name, db_user, db_pass, db_port
+from common import prepare_path, temp_db_path, db_host, db_name, db_user, db_pass, db_port
 
-prepare_sql = open(_temp_db_path + "\\prepare.sql", "w+", encoding="utf8")
+prepare_sql = open(temp_db_path + "\\prepare.sql", "w+", encoding="utf8")
 for r, s, fs in os.walk(prepare_path):
     if r[-3:] == "(s)":
         for r, s, fs in os.walk(r):

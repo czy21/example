@@ -1,10 +1,10 @@
 # !/usr/bin/env python
 import os
-from common import version_path, _temp_db_path, db_name, db_user, db_pass, db_bak_name
+from common import version_path, temp_db_path, db_name, db_user, db_pass, db_bak_name
 
 dumpcmd = "mysqldump " + db_bak_name + " -u " + db_user + " -p" + db_pass + " --add-drop-table " + "| " + "mysql " + db_name + " -u " + db_user + " -p" + db_pass
 os.system(dumpcmd)
-all_sql = open(_temp_db_path + "\\prepare.sql", "w+", encoding="utf8")
+all_sql = open(temp_db_path + "\\prepare.sql", "w+", encoding="utf8")
 for r, s, fs in os.walk(version_path):
     if r[-3:] == "(s)":
         for r, s, fs in os.walk(r):
