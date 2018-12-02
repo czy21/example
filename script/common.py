@@ -17,10 +17,13 @@ temp_path = root_path + "\\_temp"
 temp_db_path = temp_path + "\\db"
 temp_api_path = temp_path + "\\api"
 temp_web_path = temp_path + "\\web"
+temp_operation_path = temp_web_path + "\\operation"
 
 cf = configparser.ConfigParser()
 cf.read(config_path + "\\mysql.conf")
 cf.read(config_path + "\\shell.conf")
+cf.read(config_path + "\\remote.conf")
+erp_home = cf.get("home", "erp_home")
 api_build_shell = cf.get("api", "api_build_shell")
 web_build_shell = cf.get("web", "web_build_shell")
 db_host = cf.get("db", "db_host")
@@ -38,3 +41,5 @@ if not os.path.exists(temp_api_path):
     os.makedirs(temp_api_path)
 if not os.path.exists(temp_web_path):
     os.makedirs(temp_web_path)
+if not os.path.exists(temp_operation_path):
+    os.makedirs(temp_operation_path)
