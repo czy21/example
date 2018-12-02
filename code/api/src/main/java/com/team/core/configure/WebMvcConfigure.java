@@ -26,7 +26,7 @@ public class WebMvcConfigure extends WebMvcConfigurationSupport {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.addAllowedOrigin("http://localhost:8080");
-        corsConfiguration.addAllowedOrigin("http://localhost:8090");
+        corsConfiguration.addAllowedOrigin("http://47.106.191.56:8090");
         corsConfiguration.addAllowedHeader("*");
         corsConfiguration.addAllowedMethod(HttpMethod.GET);
         corsConfiguration.addAllowedMethod(HttpMethod.OPTIONS);
