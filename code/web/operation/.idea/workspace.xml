@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../script/local_publish_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../script/local_publish_api.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -28,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/Login.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="55" column="33" lean-forward="true" selection-start-line="46" selection-start-column="4" selection-end-line="55" selection-end-column="33" />
+            <state relative-caret-position="221">
+              <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -133,8 +132,8 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="667" />
-    <option name="y" value="122" />
+    <option name="x" value="755" />
+    <option name="y" value="220" />
     <option name="width" value="1110" />
     <option name="height" value="793" />
   </component>
@@ -319,15 +318,15 @@
       <workItem from="1543585511801" duration="14209000" />
       <workItem from="1543755117229" duration="2496000" />
       <workItem from="1543760777182" duration="243000" />
-      <workItem from="1543806473930" duration="667000" />
+      <workItem from="1543806473930" duration="2467000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="274137000" />
+    <option name="totallyTimeSpent" value="275937000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="817" y="190" width="1110" height="793" extended-state="0" />
+    <frame x="755" y="220" width="1110" height="793" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
@@ -642,8 +641,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/Login.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="55" column="33" lean-forward="true" selection-start-line="46" selection-start-column="4" selection-end-line="55" selection-end-column="33" />
+        <state relative-caret-position="221">
+          <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
         </state>
       </provider>
     </entry>
