@@ -2,6 +2,7 @@ package com.team.core.aop;
 
 import com.team.core.exception.ServiceException;
 import com.team.core.util.DateTimeUtil;
+import com.team.core.util.HttpClientUtil;
 import com.team.core.util.JwtUtil;
 import com.team.entity.po.Log;
 import io.swagger.annotations.ApiOperation;
@@ -69,7 +70,7 @@ public class AspectLog {
             String tartgetMethod = p.getSignature().getName();
             sysLog.setDescription(getMthodRemark(p));
             sysLog.setMethod(targetClass + "->" + tartgetMethod);
-            sysLog.setRequestIp(InetAddress.getLocalHost().getHostAddress());
+            sysLog.setRequestIp(HttpClientUtil.getClientIp());
             sysLog.setUserId(JwtUtil.getCurrentUser().getUserId());
             sysLog.setAddedTime(DateTimeUtil.getCurrentDateTime());
         } catch (Exception ex) {

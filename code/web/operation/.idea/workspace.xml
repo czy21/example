@@ -124,9 +124,9 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="773" />
-    <option name="y" value="185" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="754" />
+    <option name="y" value="187" />
     <option name="width" value="1110" />
     <option name="height" value="783" />
   </component>
@@ -226,16 +226,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="npm.build">
-    <configuration name="vue.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/operation/test/vue.html">
-      <method v="2" />
-    </configuration>
-    <configuration name="demo.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="demo.js" working-dir="$PROJECT_DIR$/../shared/test">
-      <method v="2" />
-    </configuration>
-    <configuration name="swagger.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/../shared/src/vue/framework/runtime/js/utility/swagger.js" working-dir="$PROJECT_DIR$">
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="npm.dev">
     <configuration default="true" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -281,20 +272,10 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="JavaScript Debug.vue.html" />
-      <item itemvalue="Node.js.demo.js" />
-      <item itemvalue="Node.js.swagger.js" />
       <item itemvalue="npm.build" />
       <item itemvalue="npm.dev" />
       <item itemvalue="npm.prod" />
     </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Node.js.swagger.js" />
-        <item itemvalue="JavaScript Debug.vue.html" />
-        <item itemvalue="Node.js.demo.js" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration>C:\Users\Administrator\AppData\Roaming\Subversion</configuration>
