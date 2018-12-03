@@ -1,5 +1,6 @@
 # !/usr/bin/env python
 import os
+import shutil
 import configparser
 
 root_path = os.path.abspath('..')
@@ -37,9 +38,12 @@ if not os.path.exists(backup_path):
     os.makedirs(backup_path)
 if not os.path.exists(temp_db_path):
     os.makedirs(temp_db_path)
-if not os.path.exists(temp_api_path):
-    os.makedirs(temp_api_path)
 if not os.path.exists(temp_web_path):
     os.makedirs(temp_web_path)
 if not os.path.exists(temp_operation_path):
     os.makedirs(temp_operation_path)
+if not os.path.exists(temp_api_path):
+    os.makedirs(temp_api_path)
+else:
+    shutil.rmtree(temp_api_path)
+    os.makedirs(temp_api_path)
