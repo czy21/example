@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="" />
+    <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/assets/login_bg.gif" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -16,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/Login.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="935">
-              <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
+            <state>
+              <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -63,7 +67,6 @@
         <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/mixin/index.js" />
         <option value="$PROJECT_DIR$/src/components/init/ui.js" />
         <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/mixins/index.js" />
-        <option value="$PROJECT_DIR$/src/views/Login.vue" />
         <option value="$PROJECT_DIR$/src/components/init/index.js" />
         <option value="$PROJECT_DIR$/src/components/init/prepare.js" />
         <option value="$PROJECT_DIR$/../shared/test/js/demo.js" />
@@ -111,6 +114,7 @@
         <option value="$PROJECT_DIR$/script/cfg.js" />
         <option value="$PROJECT_DIR$/src/views/system/UserList.vue" />
         <option value="$PROJECT_DIR$/src/views/system/RoleList.vue" />
+        <option value="$PROJECT_DIR$/src/views/Login.vue" />
       </list>
     </option>
   </component>
@@ -120,11 +124,11 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="809" />
-    <option name="y" value="148" />
-    <option name="width" value="1110" />
-    <option name="height" value="818" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="-81" />
+    <option name="y" value="267" />
+    <option name="width" value="1070" />
+    <option name="height" value="785" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -202,19 +206,19 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.appearance" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Developer\JavaProjects\erp\code\web\operation\src\assets" />
-      <recent name="D:\Developer\JavaProjects\erp\code\web\operation\src\views\system" />
-      <recent name="D:\Developer\JavaProjects\erp\code\web\operation\src\views" />
-      <recent name="D:\Developer\JavaProjects\erp\code\web\operation\src\components\store\modules" />
-      <recent name="D:\Developer\JavaProjects\erp\code\web\operation\src\components\utils" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Developer\JavaProjects\erp\code\web\shared\src\vue\framework\runtime\js\utility" />
       <recent name="D:\Developer\JavaProjects\erp\code\web\operation\src\components\docs" />
       <recent name="D:\Developer\JavaProjects\erp\code\web\operation\src\views\system" />
       <recent name="D:\Developer\JavaProjects\erp\code\web\shared\test\js" />
       <recent name="D:\Developer\JavaProjects\erp\code\web\shared\src\vue\framework\runtime\api" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Developer\JavaProjects\erp\code\web\operation\src\assets" />
+      <recent name="D:\Developer\JavaProjects\erp\code\web\operation\src\views\system" />
+      <recent name="D:\Developer\JavaProjects\erp\code\web\operation\src\views" />
+      <recent name="D:\Developer\JavaProjects\erp\code\web\operation\src\components\store\modules" />
+      <recent name="D:\Developer\JavaProjects\erp\code\web\operation\src\components\utils" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -327,19 +331,19 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="278120000" />
+    <option name="totallyTimeSpent" value="279552000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="809" y="148" width="1110" height="818" extended-state="1" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="npm" order="1" side_tool="true" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.28451493" />
+      <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.15753424" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30151844" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" visible="true" weight="0.25146198" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49909255" visible="true" weight="0.18655097" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -647,8 +651,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/Login.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
+        <state>
+          <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
         </state>
       </provider>
     </entry>
