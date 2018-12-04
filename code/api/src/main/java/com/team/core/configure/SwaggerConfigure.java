@@ -27,7 +27,6 @@ import java.util.List;
 
 @Configuration
 @EnableSwagger2
-@Profile({"dev", "test"})
 public class SwaggerConfigure {
     @Bean
     public Docket docket() {
