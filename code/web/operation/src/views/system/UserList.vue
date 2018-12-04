@@ -173,16 +173,15 @@
             break;
           case 'submit':
             this.submitOne()
-            const temp = {
-              userId: this.userEditForm.userId,
-              userName: this.userEditForm.userName,
-              email: this.userEditForm.email,
-              phone: this.userEditForm.phone,
-              departmentId: this.userEditForm.departmentId,
-            }
             this.$helper.eui.actWithValidation("userEditForm", () => {
               this.userEditShow = false
-              this.$api.post("user/edit", temp).then(res => {
+              this.$api.post("user/edit", {
+                userId: this.userEditForm.userId,
+                userName: this.userEditForm.userName,
+                email: this.userEditForm.email,
+                phone: this.userEditForm.phone,
+                departmentId: this.userEditForm.departmentId,
+              }).then(res => {
                 this.$refs['userEditForm'].clearValidate();
                 this.userEditForm = res.data
               })
@@ -194,11 +193,10 @@
       },
       modifiedUser(row) {
         row.enabled = !row.enabled
-        const temp = {
+        this.$api.post("user/modified", {
           userId: row.userId,
           enabled: row.enabled
-        }
-        this.$api.post("user/modified", temp).then(res => {
+        }).then(res => {
           row.enabled = res.data
         })
       },
@@ -213,11 +211,10 @@
             break;
           case 'submit':
             this.userRoleShow = false
-            const temp = {
+            this.$api.post("user/updateUserRole", {
               userId: this.userId,
               userRoleIds: this.userRoleIds
-            }
-            this.$api.post("user/updateUserRole", temp).then(res => {
+            }).then(res => {
               this.$helper.eui.inform(res.data + "分配角色成功")
             })
             break;

@@ -159,14 +159,13 @@
             break;
           case 'submit':
             this.submitOne()
-            const temp = {
-              roleId: this.roleEditForm.roleId,
-              roleName: this.roleEditForm.roleName,
-              remark: this.roleEditForm.remark
-            }
             this.$helper.eui.actWithValidation("roleEditForm", () => {
               this.roleEditShow = false
-              this.$api.post("role/edit", temp).then(res => {
+              this.$api.post("role/edit", {
+                roleId: this.roleEditForm.roleId,
+                roleName: this.roleEditForm.roleName,
+                remark: this.roleEditForm.remark
+              }).then(res => {
                 this.$refs['roleEditForm'].clearValidate();
                 this.roleEditForm = res.data
               })
