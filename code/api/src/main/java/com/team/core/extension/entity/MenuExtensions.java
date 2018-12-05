@@ -9,6 +9,7 @@ import com.team.dao.MenuDao;
 import com.team.entity.po.Menu;
 import com.team.entity.vo.MenuDto;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,7 +43,7 @@ public class MenuExtensions {
      * 根据父节点CID获取所有子节点
      */
     public static List<Menu> GetSons(List<Menu> list, String parentId) {
-        if (StringExtension.StringIsNullOrEmpty(parentId)) {
+        if (StringUtils.isEmpty(parentId)) {
             return list;
         }
         List<Menu> query = list.stream().filter(t -> t.getMenuId().equals(parentId)).collect(Collectors.toList());

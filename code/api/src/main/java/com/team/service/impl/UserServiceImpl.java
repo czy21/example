@@ -20,6 +20,7 @@ import com.team.service.RoleMenuService;
 import com.team.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 
@@ -42,7 +43,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public UserDto insertDefaultPwd(UserDto dto) {
-        if (StringExtension.StringIsNullOrEmpty(dto.getUserName())) {
+        if (StringUtils.isEmpty(dto.getUserName())) {
             throw new WebException(ErrorCode.NAME_EXIST, "用户姓名已存在");
         }
         if (super.SelectBy("LoginName", dto.getLoginName()) != null) {
@@ -55,10 +56,10 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public UserDto editUser(UserDto dto) {
-        if (StringExtension.StringIsNullOrEmpty(dto.getUserId())) {
+        if (StringUtils.isEmpty(dto.getUserId())) {
             throw new WebException(ErrorCode.ID_NO_NULL, "用户Id不能为空");
         }
-        if (StringExtension.StringIsNullOrEmpty(dto.getUserName())) {
+        if (StringUtils.isEmpty(dto.getUserName())) {
             throw new WebException(ErrorCode.NAME_NO_NULL, "用户姓名不能为空");
         }
         return userMap.toUserDto(super.UpdateAndGetEntity(userMap.toUser(dto)));
@@ -66,7 +67,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public Boolean modifiedUser(UserDto dto) {
-        if (StringExtension.StringIsNullOrEmpty(dto.getUserId())) {
+        if (StringUtils.isEmpty(dto.getUserId())) {
             throw new WebException(ErrorCode.ID_NO_NULL, "用户Id不能为空");
         }
         return super.UpdateAndGetEntity(userMap.toUser(dto)).getEnabled();

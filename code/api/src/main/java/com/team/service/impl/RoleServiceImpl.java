@@ -10,6 +10,7 @@ import com.team.entity.vo.RoleDto;
 import com.team.service.RoleService;
 import com.team.core.universal.BaseServiceImpl;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
@@ -27,7 +28,7 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
 
     @Override
     public RoleDto insertRole(RoleDto dto) {
-        if (StringExtension.StringIsNullOrEmpty(dto.getRoleName())) {
+        if (StringUtils.isEmpty(dto.getRoleName())) {
             throw new WebException(ErrorCode.NAME_NO_NULL, "角色名称不能为空");
         }
         if (super.SelectBy("RoleName", dto.getRoleName()) != null) {
@@ -38,10 +39,10 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
 
     @Override
     public RoleDto editRole(RoleDto dto) {
-        if (StringExtension.StringIsNullOrEmpty(dto.getRoleId())) {
+        if (StringUtils.isEmpty(dto.getRoleId())) {
             throw new WebException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
         }
-        if (StringExtension.StringIsNullOrEmpty(dto.getRoleName())) {
+        if (StringUtils.isEmpty(dto.getRoleName())) {
             throw new WebException(ErrorCode.NAME_NO_NULL, "角色名称不能为空");
         }
         return roleMap.toRoleDto(super.UpdateAndGetEntity(roleMap.toRole(dto)));
