@@ -3,13 +3,9 @@ package com.team.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.core.exception.ErrorCode;
 import com.team.core.exception.WebException;
-import com.team.core.extension.CollectionExtension;
-import com.team.core.extension.StringExtension;
-import com.team.core.extension.entity.MenuExtensions;
+import com.team.core.extension.entity.MenuExtension;
 import com.team.core.universal.BaseServiceImpl;
-import com.team.core.util.PageUtil;
 import com.team.entity.map.MenuMap;
-import com.team.entity.map.UserMap;
 import com.team.entity.po.Menu;
 import com.team.entity.vo.MenuDto;
 import com.team.entity.vo.PageDto;
@@ -40,7 +36,7 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
     public PageDto<MenuDto> getMenuAndPermissionPageListBy(SearchPermissionModel search) {
         QueryWrapper<Menu> query = new QueryWrapper<>();
         query.orderByDesc("IsMenu");
-        return menuMap.toPageDto(super.SelectPageList(search.getPageIndex(), search.getPageSize(), MenuExtensions.GetSons(super.SelectListBy(query), search.getMenuId())));
+        return menuMap.toPageDto(super.SelectPageList(search.getPageIndex(), search.getPageSize(), MenuExtension.getSons(super.SelectListBy(query), search.getMenuId())));
     }
 
     @Override
@@ -74,7 +70,7 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
 
     @Override
     public Integer deleteMenu(String menuId) {
-        return super.DeleteByIds(MenuExtensions.GetSons(super.SelectListBy(null), menuId).stream().map(Menu::getMenuId).collect(Collectors.toList()));
+        return super.DeleteByIds(MenuExtension.getSons(super.SelectListBy(null), menuId).stream().map(Menu::getMenuId).collect(Collectors.toList()));
     }
 
     @Override

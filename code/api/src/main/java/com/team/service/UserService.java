@@ -23,6 +23,6 @@ public interface UserService extends BaseService<User> {
 
     PageDto<UserDto> getUserPageListBy(SearchUserModel search);
 
-    JSONObject Login(LoginDto dto);
+    JSONObject login(LoginDto dto);
 
 }

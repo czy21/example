@@ -40,7 +40,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                             return true;
                         }
                         List<String> apis = roleMenuService.getPermissionsByUserId(user.getUserId());
-                        if (StringExtension.ConvertAllToLower(apis).contains((request.getRequestURI().toLowerCase()))) {
+                        if (StringExtension.convertAllToLower(apis).contains((request.getRequestURI().toLowerCase()))) {
                             return true;
                         }
                     }

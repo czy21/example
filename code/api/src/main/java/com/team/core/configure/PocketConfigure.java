@@ -1,10 +1,10 @@
 package com.team.core.configure;
 
 
-import com.team.core.extension.entity.DepartmentExtensions;
-import com.team.core.extension.entity.MenuExtensions;
-import com.team.core.extension.entity.RoleExtensions;
-import com.team.core.extension.entity.UserExtensions;
+import com.team.core.extension.entity.DepartmentExtension;
+import com.team.core.extension.entity.MenuExtension;
+import com.team.core.extension.entity.RoleExtension;
+import com.team.core.extension.entity.UserExtension;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,16 +16,16 @@ public class PocketConfigure {
         clazz.forEach((t) -> {
             switch (t.getSimpleName()) {
                 case "User":
-                    hash.put(t.getSimpleName().toLowerCase() + "s", UserExtensions.ConvertToSimple());
+                    hash.put(t.getSimpleName().toLowerCase() + "s", UserExtension.convertToSimple());
                     break;
                 case "Role":
-                    hash.put(t.getSimpleName().toLowerCase() + "s", RoleExtensions.ConvertToSimple());
+                    hash.put(t.getSimpleName().toLowerCase() + "s", RoleExtension.convertToSimple());
                     break;
                 case "Menu":
-                    hash.put(t.getSimpleName().toLowerCase() + "s", MenuExtensions.ConvertToSimple());
+                    hash.put(t.getSimpleName().toLowerCase() + "s", MenuExtension.convertToSimple());
                     break;
                 case "Department":
-                    hash.put(t.getSimpleName().toLowerCase() + "s", DepartmentExtensions.ConvertToSimple());
+                    hash.put(t.getSimpleName().toLowerCase() + "s", DepartmentExtension.convertToSimple());
                     break;
                 default:
                     break;

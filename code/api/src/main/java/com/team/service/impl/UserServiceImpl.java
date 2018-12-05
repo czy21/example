@@ -79,7 +79,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     }
 
     @Override
-    public JSONObject Login(LoginDto dto) {
+    public JSONObject login(LoginDto dto) {
         User user = super.SelectBy("LoginName", dto.getLoginName());
         if (user == null) {
             throw new WebException(ErrorCode.NO_USER, "用户不存在");

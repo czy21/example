@@ -18,15 +18,15 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
-public class MenuExtensions {
+public class MenuExtension {
 
     private static MenuDao _dao;
 
-    public MenuExtensions(MenuDao dao) {
+    public MenuExtension(MenuDao dao) {
         _dao = dao;
     }
 
-    public static List<SimpleItemModel> ConvertToSimple() {
+    public static List<SimpleItemModel> convertToSimple() {
 
         List<SimpleItemModel> simples = new ArrayList<>();
         _dao.selectList(new QueryWrapper<Menu>().eq("IsMenu", true)).forEach((t) -> {
@@ -42,27 +42,27 @@ public class MenuExtensions {
     /**
      * 根据父节点CID获取所有子节点
      */
-    public static List<Menu> GetSons(List<Menu> list, String parentId) {
+    public static List<Menu> getSons(List<Menu> list, String parentId) {
         if (StringUtils.isEmpty(parentId)) {
             return list;
         }
         List<Menu> query = list.stream().filter(t -> t.getMenuId().equals(parentId)).collect(Collectors.toList());
-        query.addAll(GetSonList(list, parentId));
+        query.addAll(getSonList(list, parentId));
         query.sort((o1, o2) -> o2.getIsMenu().compareTo(o1.getIsMenu()));
         return query;
     }
 
-    private static List<Menu> GetSonList(List<Menu> list, String parentId) {
+    private static List<Menu> getSonList(List<Menu> list, String parentId) {
         List<Menu> menus = new ArrayList<>();
         list.forEach(t -> {
             if (t.getParentId().equals(parentId)) {
-                menus.addAll(GetSons(list, t.getMenuId()));
+                menus.addAll(getSons(list, t.getMenuId()));
             }
         });
         return menus;
     }
 
-    public static List<SimpleTreeModel> TransPermissionToRadioGroups() {
+    public static List<SimpleTreeModel> transPermissionToRadioGroups() {
         QueryWrapper<Menu> queryMenu = new QueryWrapper<>();
         queryMenu.ne("Url", "#");
         List<Menu> menus = _dao.selectList(queryMenu);
@@ -72,13 +72,13 @@ public class MenuExtensions {
             rootNode.setLabel(t.getMenuName());
             rootNode.setValue(t.getMenuId());
             rootNode.setParentId(t.getParentId());
-            rootNode.setChildren(CreateActionChildren(menus, rootNode));
+            rootNode.setChildren(createActionChildren(menus, rootNode));
             simpleTreeModels.add(rootNode);
         });
         return simpleTreeModels;
     }
 
-    public static List<SimpleTreeModel> CreateActionChildren(List<Menu> allActionList, SimpleTreeModel dto) {
+    public static List<SimpleTreeModel> createActionChildren(List<Menu> allActionList, SimpleTreeModel dto) {
         List<SimpleTreeModel> simpleTreeModels = new ArrayList<>();
         List<Menu> permissions = allActionList.stream()
                 .filter(t -> t.getParentId().equals(dto.getValue()))

@@ -1,7 +1,7 @@
 package com.team.controller;
 
 
-import com.team.core.extension.entity.MenuExtensions;
+import com.team.core.extension.entity.MenuExtension;
 import com.team.core.mvc.Pocket;
 import com.team.entity.map.RoleMap;
 import com.team.entity.po.Menu;
@@ -15,7 +15,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -66,7 +65,7 @@ public class RoleController {
     public Map RoleMenuDetails(String roleId) {
         Map<String, Object> hash = new HashMap<>();
         hash.put("menuIds", roleMenuService.getPermissionsByRoleId(roleId));
-        hash.put("actions", MenuExtensions.TransPermissionToRadioGroups());
+        hash.put("actions", MenuExtension.transPermissionToRadioGroups());
         return hash;
     }
 

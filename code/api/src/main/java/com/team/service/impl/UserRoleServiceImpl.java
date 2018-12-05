@@ -3,8 +3,7 @@ package com.team.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.core.exception.ErrorCode;
 import com.team.core.exception.WebException;
-import com.team.core.extension.CollectionExtension;
-import com.team.core.extension.StringExtension;
+import com.team.core.extension.ArrayExtension;
 import com.team.core.universal.BaseServiceImpl;
 import com.team.entity.po.UserRole;
 import com.team.service.UserRoleService;
@@ -51,7 +50,7 @@ public class UserRoleServiceImpl extends BaseServiceImpl<UserRole> implements Us
         userRoleWra.eq("UserId", userId);
         super.baseDao.delete(userRoleWra);
 
-        if (!CollectionExtension.ArrayIsNullOrEmpty(userRoleIds)) {
+        if (!ArrayExtension.isEmpty(userRoleIds)) {
             Arrays.asList(userRoleIds).forEach(t -> {
                 UserRole userRole = new UserRole();
                 userRole.setUserId(userId);

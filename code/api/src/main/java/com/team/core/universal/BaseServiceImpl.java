@@ -1,21 +1,16 @@
 package com.team.core.universal;
 
-import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.team.core.exception.ServiceException;
 import com.github.pagehelper.PageHelper;
-import com.team.core.extension.entity.MenuExtensions;
 import com.team.core.util.DateTimeUtil;
 import com.team.core.util.PageUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @Description 业务逻辑层基类实现
