@@ -18,6 +18,8 @@ import com.team.model.SearchPermissionModel;
 import com.team.service.MenuService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -43,13 +45,13 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
 
     @Override
     public MenuDto insertMenu(MenuDto dto) {
-        if (StringExtension.StringIsNullOrEmpty(dto.getParentId())) {
+        if (StringUtils.isEmpty(dto.getParentId())) {
             throw new WebException(ErrorCode.ID_NO_NULL, "上级菜单Id不能为空");
         }
         if (super.SelectBy("MenuName", dto.getMenuName()) != null) {
             throw new WebException(ErrorCode.NAME_EXIST, "菜单或权限名称已存在");
         }
-        if (StringExtension.StringIsNullOrEmpty(dto.getMenuName())) {
+        if (StringUtils.isEmpty(dto.getMenuName())) {
             throw new WebException(ErrorCode.NAME_NO_NULL, "菜单或权限名称不能为空");
         }
         return menuMap.toMenuDto(super.InsertAndGetEntity(menuMap.toMenu(dto)));
@@ -57,14 +59,14 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
 
     @Override
     public MenuDto editMenu(MenuDto dto) {
-        if (StringExtension.StringIsNullOrEmpty(dto.getMenuId())) {
+        if (StringUtils.isEmpty(dto.getMenuId())) {
             if (dto.getIsMenu()) {
                 throw new WebException(ErrorCode.ID_NO_NULL, "菜单Id不能为空");
             } else {
                 throw new WebException(ErrorCode.ID_NO_NULL, "权限Id不能为空");
             }
         }
-        if (StringExtension.StringIsNullOrEmpty(dto.getParentId())) {
+        if (StringUtils.isEmpty(dto.getParentId())) {
             throw new WebException(ErrorCode.ID_NO_NULL, "上级菜单Id不能为空");
         }
         return menuMap.toMenuDto(super.UpdateAndGetEntity(menuMap.toMenu(dto)));
@@ -78,7 +80,7 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
     @Override
     @Transactional
     public Boolean batchInsertPermission(List<PermissionDto> dtos) {
-        if (CollectionExtension.ListIsNullOrEmpty(dtos)) {
+        if (CollectionUtils.isEmpty(dtos)) {
             throw new WebException(ErrorCode.ID_NO_NULL, "权限集合不能为空");
         }
         List<Menu> menus = super.SelectListBy(new QueryWrapper<Menu>().eq("IsMenu", true));

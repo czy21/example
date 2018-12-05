@@ -16,6 +16,7 @@ import com.team.service.RoleService;
 import com.team.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.Arrays;
@@ -60,7 +61,7 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
 
     @Override
     public List<String> getMenusByRoleId(String roleId) {
-        if (StringExtension.StringIsNullOrEmpty(roleId)) {
+        if (StringUtils.isEmpty(roleId)) {
             throw new WebException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
         }
         return roleMenuDao.selectList(new QueryWrapper<RoleMenu>().eq("RoleId", roleId)).stream().map(RoleMenu::getMenuId).collect(Collectors.toList());
@@ -68,7 +69,7 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
 
     @Override
     public List<String> getPermissionsByRoleId(String roleId) {
-        if (StringExtension.StringIsNullOrEmpty(roleId)) {
+        if (StringUtils.isEmpty(roleId)) {
             throw new WebException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
         }
         return roleMenuDao.getMenusByRoleId(roleId, false).stream().map(Menu::getMenuId).collect(Collectors.toList());
@@ -77,7 +78,7 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
     @Override
     @Transactional
     public String insertOrUpdateRoleMenu(String roleId, String[] roleMenuIds) {
-        if (StringExtension.StringIsNullOrEmpty(roleId)) {
+        if (StringUtils.isEmpty(roleId)) {
             throw new WebException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
         }
         QueryWrapper<RoleMenu> roleMenuWra = new QueryWrapper<>();

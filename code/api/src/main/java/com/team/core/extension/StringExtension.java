@@ -17,8 +17,4 @@ public class StringExtension {
         return temp;
     }
 
-    public static Boolean StringIsNullOrEmpty(String str) {
-        return str == null || str.equals("");
-    }
-
 }
