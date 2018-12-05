@@ -7,18 +7,24 @@ import com.team.core.model.SimpleItemModel;
 import com.team.core.model.SimpleTreeModel;
 import com.team.dao.MenuDao;
 import com.team.entity.po.Menu;
-import com.team.entity.vo.MenuDto;
+import lombok.Data;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
 public class MenuExtension {
+    @Data
+    public static class Node {
+        private String menuId;
+        private String parentId;
+        private String menuName;
+        private String icon;
+        private String url;
+        private List<Node> children = new ArrayList<>();
+    }
 
     private static MenuDao _dao;
 
@@ -37,6 +43,25 @@ public class MenuExtension {
             simples.add(temp);
         });
         return simples;
+    }
+
+    public static List<Node> createTreeMenus(List<Node> menus) {
+        Node root = new Node();
+        root.setParentId(StringExtension.GuidEmpty);
+        Map<String, Node> dataMap = new HashMap<>();
+        for (Node menu : menus) {
+            dataMap.put(menu.getMenuId(), menu);
+        }
+        Set<Map.Entry<String, Node>> entrySet = dataMap.entrySet();
+        for (Map.Entry<String, Node> entry : entrySet) {
+            Node menu = entry.getValue();
+            if (StringExtension.guidIsEmpty(menu.getParentId())) {
+                root.getChildren().add(menu);
+            } else {
+                dataMap.get(menu.getParentId()).getChildren().add(menu);
+            }
+        }
+        return root.getChildren();
     }
 
     /**

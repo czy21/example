@@ -3,14 +3,14 @@ package com.team.core.exception;
 
 public class WebException extends RuntimeException {
 
-    private String ErrorCode;
+    private String errorCode;
 
     public String getErrorCode() {
-        return ErrorCode;
+        return errorCode;
     }
 
-    public WebException(com.team.core.exception.ErrorCode _errorCode, String _message) {
+    public WebException(com.team.core.exception.ErrorCode errorCode, String _message) {
         super(_message);
-        ErrorCode = _errorCode.toString();
+        this.errorCode = errorCode.toString();
     }
 }

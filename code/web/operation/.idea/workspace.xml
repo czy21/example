@@ -2,7 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/exception/ErrorModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/exception/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/exception/WebException.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/exception/WebException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/extension/entity/MenuExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/extension/entity/MenuExtension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/model/SimpleItemModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/model/SimpleItemModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/model/SimpleTreeModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/model/SimpleTreeModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/util/SwaggerUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/util/TreeUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/map/MenuMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/map/MenuMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/vo/AccountDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/vo/AccountDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/vo/TokenDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/vo/TokenDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shared/src/vue/framework/runtime/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../shared/src/vue/framework/runtime/api/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -15,11 +29,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/Login.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
+              <caret column="10" selection-start-column="10" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/runtime/api/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="512">
+              <caret line="44" column="11" lean-forward="true" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -91,7 +114,6 @@
         <option value="$PROJECT_DIR$/src/views/system/role/RoleMenu.vue" />
         <option value="$PROJECT_DIR$/src/views/system/role/index.vue" />
         <option value="$PROJECT_DIR$/src/components/mixins/list.js" />
-        <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/api/index.js" />
         <option value="$PROJECT_DIR$/src/components/routes/system.js" />
         <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/js/utility/forTree.js" />
         <option value="$PROJECT_DIR$/src/views/system/general/TreeMenu.vue" />
@@ -113,6 +135,7 @@
         <option value="$PROJECT_DIR$/src/views/system/UserList.vue" />
         <option value="$PROJECT_DIR$/src/views/system/RoleList.vue" />
         <option value="$PROJECT_DIR$/src/views/Login.vue" />
+        <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/api/index.js" />
       </list>
     </option>
   </component>
@@ -122,7 +145,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="568" />
     <option name="y" value="188" />
     <option name="width" value="1070" />
@@ -136,7 +159,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -154,13 +176,6 @@
               <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
               <item name="operation" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="operation" type="b2602c69:ProjectViewProjectNode" />
@@ -188,10 +203,30 @@
               <item name="vue" type="462c0819:PsiDirectoryNode" />
               <item name="framework" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="vue" type="462c0819:PsiDirectoryNode" />
+              <item name="framework" type="462c0819:PsiDirectoryNode" />
+              <item name="runtime" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="vue" type="462c0819:PsiDirectoryNode" />
+              <item name="framework" type="462c0819:PsiDirectoryNode" />
+              <item name="runtime" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -325,11 +360,12 @@
       <workItem from="1543755117229" duration="2496000" />
       <workItem from="1543760777182" duration="243000" />
       <workItem from="1543806473930" duration="2467000" />
+      <workItem from="1544019746229" duration="1226000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="279552000" />
+    <option name="totallyTimeSpent" value="280778000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -341,7 +377,7 @@
       <window_info content_ui="combo" id="Project" order="3" visible="true" weight="0.15753424" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30151844" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" weight="0.18655097" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49909255" visible="true" weight="0.29609543" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -526,13 +562,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/runtime/api/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="75" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="75" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/runtime/js/utility/ext.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -650,7 +679,14 @@
     <entry file="file://$PROJECT_DIR$/src/views/Login.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="10" lean-forward="true" selection-start-column="10" selection-end-column="10" />
+          <caret column="10" selection-start-column="10" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/runtime/api/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="512">
+          <caret line="44" column="11" lean-forward="true" selection-start-line="44" selection-start-column="11" selection-end-line="44" selection-end-column="11" />
         </state>
       </provider>
     </entry>

@@ -6,5 +6,5 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class SimpleTreeModel extends SimpleItemModel {
-    private Object Children;
+    private Object children;
 }

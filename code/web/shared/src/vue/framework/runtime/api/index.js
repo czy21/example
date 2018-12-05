@@ -38,12 +38,12 @@ export default {
           data: method === 'POST' || method === 'PUT' ? params : null,
           params: method === 'GET' || method === 'DELETE' ? params : null
         }).then(res => {
-          if (!res.data.data.hasOwnProperty("ErrorCode")) {
+          if (!res.data.data.hasOwnProperty("errorCode")) {
             res.data.pocket && stub.store.commit('SET_POCKET', res.data.pocket)
             resolve(res.data)
             return
           }
-          stub.store.commit("SUBMIT_ERROR", res.data.data.Message)
+          stub.store.commit("SUBMIT_ERROR", res.data.data.message)
         }, error => {
           reject(error);
         }).catch(error => {
