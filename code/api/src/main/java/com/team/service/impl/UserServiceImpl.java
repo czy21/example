@@ -1,13 +1,11 @@
 package com.team.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
-import com.github.pagehelper.PageHelper;
 import com.team.core.exception.ErrorCode;
 import com.team.core.exception.WebException;
-import com.team.core.extension.StringExtension;
+import com.team.core.extension.entity.MenuExtension;
 import com.team.core.universal.BaseServiceImpl;
 import com.team.core.util.JwtUtil;
-import com.team.core.util.TreeUtil;
 import com.team.entity.map.MenuMap;
 import com.team.entity.map.UserMap;
 import com.team.entity.po.User;
@@ -18,7 +16,6 @@ import com.team.entity.vo.UserDto;
 import com.team.model.SearchUserModel;
 import com.team.service.RoleMenuService;
 import com.team.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -90,7 +87,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         JSONObject json = new JSONObject();
         TokenDto token = new TokenDto();
         token.setUser(userMap.toAccountDto(user));
-        token.setMenus(TreeUtil.createTreeMenus(menuMap.toMenuTree(roleMenuService.getMenusByUserId(user.getUserId()))));
+        token.setMenus(MenuExtension.createTreeMenus(menuMap.toMenuTree(roleMenuService.getMenusByUserId(user.getUserId()))));
         token.setValue(JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));
         json.put("token", token);
         return json;

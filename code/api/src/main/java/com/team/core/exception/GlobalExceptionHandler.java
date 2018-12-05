@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class GlobalExceptionHandler {
     @ResponseBody
     @ExceptionHandler(WebException.class)
-    public Object handleException(WebException e) {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("ErrorCode", e.getErrorCode());
-        jsonObject.put("Message", e.getMessage());
-        return jsonObject;
+    public ErrorModel handleException(WebException e) {
+        return new ErrorModel(e.getErrorCode(),e.getMessage());
     }
 }
