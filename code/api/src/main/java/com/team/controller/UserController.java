@@ -79,7 +79,7 @@ public class UserController {
 
     @PostMapping("login")
     public JSONObject Login(LoginDto dto) {
-        return userService.Login(dto);
+        return userService.login(dto);
     }
 }
 

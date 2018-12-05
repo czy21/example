@@ -1,30 +1,30 @@
 package com.team.core.extension.entity;
 
 import com.team.core.model.SimpleItemModel;
-import com.team.dao.DepartmentDao;
-import com.team.dao.MenuDao;
+import com.team.dao.RoleDao;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class DepartmentExtensions {
-    private static DepartmentDao _dao;
+public class RoleExtension {
 
-    public DepartmentExtensions(DepartmentDao dao) {
+    private static RoleDao _dao;
+
+    public RoleExtension(RoleDao dao) {
         _dao = dao;
     }
 
-    public static List<SimpleItemModel> ConvertToSimple() {
-
+    public static List<SimpleItemModel> convertToSimple() {
         List<SimpleItemModel> simples = new ArrayList<>();
         _dao.selectList(null).forEach((t) -> {
             SimpleItemModel temp = new SimpleItemModel();
-            temp.setValue(t.getDepartmentId());
-            temp.setLabel(t.getDepartmentName());
+            temp.setValue(t.getRoleId());
+            temp.setLabel(t.getRoleName());
             simples.add(temp);
         });
+
         return simples;
     }
 }

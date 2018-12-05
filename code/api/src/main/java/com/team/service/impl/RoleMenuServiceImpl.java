@@ -3,11 +3,9 @@ package com.team.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.core.exception.ErrorCode;
 import com.team.core.exception.WebException;
-import com.team.core.extension.CollectionExtension;
-import com.team.core.extension.StringExtension;
+import com.team.core.extension.ArrayExtension;
 import com.team.dao.RoleMenuDao;
 import com.team.entity.po.Menu;
-import com.team.entity.po.Role;
 import com.team.entity.po.RoleMenu;
 import com.team.service.MenuService;
 import com.team.service.RoleMenuService;
@@ -84,8 +82,7 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
         QueryWrapper<RoleMenu> roleMenuWra = new QueryWrapper<>();
         roleMenuWra.eq("RoleId", roleId);
         super.baseDao.delete(roleMenuWra);
-
-        if (!CollectionExtension.ArrayIsNullOrEmpty(roleMenuIds)) {
+        if (!ArrayExtension.isEmpty(roleMenuIds)) {
             Arrays.asList(roleMenuIds).forEach(t -> {
                 RoleMenu roleMenu = new RoleMenu();
                 roleMenu.setRoleId(roleId);
