@@ -43,7 +43,7 @@ public class JwtUtil {
         try {
             Algorithm algorithm = Algorithm.HMAC256(password);
             String token = JWT.create().withClaim("loginName", loginName).sign(algorithm);
-            redisUtil.set(loginName, token, RedisUtil.TOKEN_EXPIRES_SECOND);
+            redisUtil.set(loginName, token, RedisUtil.TOKEN_EXPIRES_MINUTE);
             return token;
         } catch (UnsupportedEncodingException e) {
             return null;
@@ -62,15 +62,8 @@ public class JwtUtil {
         try {
             String redisToken = redisUtil.get(loginName);
             if (redisToken != null && redisToken.equals(token)) {
-                Algorithm algorithm = Algorithm.HMAC256(password);
-                //在token中附带了username信息
-                JWTVerifier verifier = JWT.require(algorithm)
-                        .withClaim("loginName", loginName)
-                        .build();
-                //验证 token
-                verifier.verify(token);
-                redisUtil.expire(loginName, RedisUtil.TOKEN_EXPIRES_SECOND);
-                return true;
+                JWT.require(Algorithm.HMAC256(password)).withClaim("loginName", loginName).build().verify(token);
+                return redisUtil.expire(loginName, RedisUtil.TOKEN_EXPIRES_MINUTE);
             }
         } catch (Exception exception) {
             return false;
