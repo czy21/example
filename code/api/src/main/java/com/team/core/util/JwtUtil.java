@@ -34,12 +34,10 @@ public class JwtUtil {
      */
     public static String GenerateToken(String loginName, String password) {
         try {
-            Date date = new Date(System.currentTimeMillis() + EXPIRE_TIME);
             Algorithm algorithm = Algorithm.HMAC256(password);
             // 附带username信息
             return JWT.create()
                     .withClaim("loginName", loginName)
-                    .withExpiresAt(date)
                     .sign(algorithm);
         } catch (UnsupportedEncodingException e) {
             return null;
