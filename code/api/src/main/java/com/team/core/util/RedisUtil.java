@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 
 @Component
 public class RedisUtil {
-    public static final long TOKEN_EXPIRES_SECOND = 1800;
+    public static final long TOKEN_EXPIRES_SECOND = 30;
 
     @Autowired
     private StringRedisTemplate redisTemplate;
@@ -16,19 +16,17 @@ public class RedisUtil {
     /**
      * 向redis中设值
      *
-     * @param key   使用 a:b:id的形式在使用rdm进行查看redis情况时会看到分层文件夹的展示形式，便于管理
+     * @param key
      * @param value
      * @return
      */
     public boolean set(String key, String value) {
-        boolean flag = false;
         try {
             redisTemplate.opsForValue().set(key, value);
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            return false;
         }
-        return flag;
     }
 
     /**
@@ -40,15 +38,13 @@ public class RedisUtil {
      * @return
      */
     public boolean set(String key, String value, long time) {
-        boolean result = false;
         try {
             redisTemplate.opsForValue().set(key, value);
             expire(key, time);
-            result = true;
+            return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            return false;
         }
-        return result;
     }
 
     /**
@@ -62,7 +58,7 @@ public class RedisUtil {
         boolean result = false;
         try {
             if (time > 0) {
-                redisTemplate.expire(key, time, TimeUnit.SECONDS);
+                redisTemplate.expire(key, time, TimeUnit.MINUTES);
                 result = true;
             }
         } catch (Exception e) {
@@ -78,14 +74,7 @@ public class RedisUtil {
      * @return
      */
     public String get(String key) {
-        String result = null;
-        try {
-            result = redisTemplate.opsForValue().get(key);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
-
+        return redisTemplate.opsForValue().get(key);
     }
 
     /**
