@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.google.common.base.Optional;
 import com.google.common.base.Strings;
 import com.team.core.util.HttpClientUtil;
+import com.team.core.util.RedisUtil;
 import io.swagger.models.Swagger;
 import org.apache.http.HttpEntity;
 import org.apache.http.ParseException;
@@ -38,6 +39,8 @@ import java.util.Map;
 public class BaseController {
 
     @Autowired
+    private RedisUtil redisUtil;
+    @Autowired
     private HttpServletRequest request;
 
     @GetMapping("/")
@@ -69,5 +72,17 @@ public class BaseController {
             }
         }
         return null;
+    }
+
+    @GetMapping("setRedis")
+    public Object testRedis() {
+
+        return redisUtil.set("1", "没什么");
+    }
+
+    @GetMapping("getRedis")
+    public Object getRedis() {
+
+        return redisUtil.get("1");
     }
 }
