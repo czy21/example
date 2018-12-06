@@ -38,13 +38,8 @@ public class RedisUtil {
      * @return
      */
     public boolean set(String key, String value, long time) {
-        try {
-            redisTemplate.opsForValue().set(key, value);
-            expire(key, time);
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
+        redisTemplate.opsForValue().set(key, value);
+        return expire(key, time);
     }
 
     /**
@@ -54,17 +49,8 @@ public class RedisUtil {
      * @param time
      * @return
      */
-    public boolean expire(String key, long time) {
-        boolean result = false;
-        try {
-            if (time > 0) {
-                redisTemplate.expire(key, time, TimeUnit.MINUTES);
-                result = true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
+    public Boolean expire(String key, long time) {
+        return redisTemplate.expire(key, time, TimeUnit.MINUTES);
     }
 
     /**
@@ -83,14 +69,7 @@ public class RedisUtil {
      * @param key
      * @return
      */
-    public boolean remove(String key) {
-        boolean result = false;
-        try {
-            redisTemplate.delete(key);
-            result = true;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return result;
+    public Boolean remove(String key) {
+        return redisTemplate.delete(key);
     }
 }
