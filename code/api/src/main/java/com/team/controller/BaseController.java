@@ -83,6 +83,6 @@ public class BaseController {
     @GetMapping("getRedis")
     public Object getRedis() {
 
-        return redisUtil.get("1");
+        return redisUtil.get("admin");
     }
 }
