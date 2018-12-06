@@ -29,6 +29,11 @@ spring:
           enabled: true
           merge-sql: true
           slow-sql-millis: 5000
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: team3059
+    timeout: 3600
 mybatis-plus:
   configuration:
     map-underscore-to-camel-case: false
