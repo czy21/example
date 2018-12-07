@@ -108,15 +108,6 @@ public interface BaseService<TEntity extends BaseEntity> {
 
     /*
      * @Author 陈昭宇
-     * @Description 分页查询(mybatis分页)
-     * @Date 2018/7/26
-     * @Param [pageIndex, pageSize]
-     * @Return PageModel<TEntity>
-     */
-//    PageModel<TEntity> SelectPageList(Integer pageIndex, Integer pageSize);
-
-    /*
-     * @Author 陈昭宇
      * @Description 根据条件分页查询(mybatis分页)
      * @Date 2018/7/26
      * @Param [pageIndex, pageSize,query]

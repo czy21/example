@@ -32,17 +32,9 @@ public class JwtUtil {
         JwtUtil.currentUser = currentUser;
     }
 
-    /**
-     * 生成 token
-     *
-     * @param loginName 用户名
-     * @param password  密码
-     * @return 加密的token
-     */
     public static String GenerateToken(String loginName, String password) {
         try {
-            Algorithm algorithm = Algorithm.HMAC256(password);
-            String token = JWT.create().withClaim("loginName", loginName).sign(algorithm);
+            String token = JWT.create().withClaim("loginName", loginName).sign(Algorithm.HMAC256(password));
             redisUtil.set(loginName, token, RedisUtil.TOKEN_EXPIRES_MINUTE);
             return token;
         } catch (UnsupportedEncodingException e) {
@@ -50,14 +42,6 @@ public class JwtUtil {
         }
     }
 
-    /**
-     * 校验 token 是否正确
-     *
-     * @param token     密钥
-     * @param loginName 用户名
-     * @param password  密码
-     * @return 是否正确
-     */
     public static boolean Verify(String token, String loginName, String password) {
         try {
             String redisToken = redisUtil.get(loginName);
@@ -71,11 +55,6 @@ public class JwtUtil {
         return false;
     }
 
-    /**
-     * 获得token中的信息，无需secret解密也能获得
-     *
-     * @return token中包含的用户名
-     */
     public static String GetLoginName(String token) {
         try {
             DecodedJWT jwt = JWT.decode(token);

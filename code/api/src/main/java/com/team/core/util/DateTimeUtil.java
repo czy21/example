@@ -29,7 +29,6 @@ public class DateTimeUtil {
      */
     public final static String FMT_yyyyMMddHHmmss = "yyyy-MM-dd HH:mm:ss";
 
-
     public static LocalDateTime getCurrentDateTime() {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(FMT_yyyyMMddHHmmss);
         return LocalDateTime.parse(dateTimeFormatter.format(LocalDateTime.now()), dateTimeFormatter);

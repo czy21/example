@@ -64,9 +64,6 @@ public class MenuExtension {
         return root.getChildren();
     }
 
-    /**
-     * 根据父节点CID获取所有子节点
-     */
     public static List<Menu> getSons(List<Menu> list, String parentId) {
         if (StringUtils.isEmpty(parentId)) {
             return list;
