@@ -5,16 +5,10 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
-/**
- * 获取Spring上下文对象
- */
+
 @Component
 public class SpringContextProvider implements ApplicationContextAware {
 
-
-    /**
-     * 上下文对象实例
-     */
     private static ApplicationContext applicationContext;
 
     @Override
@@ -22,11 +16,6 @@ public class SpringContextProvider implements ApplicationContextAware {
         SpringContextProvider.applicationContext = context;
     }
 
-    /**
-     * 获取applicationContext
-     *
-     * @return
-     */
     public static ApplicationContext getApplicationContext() {
         return applicationContext;
     }

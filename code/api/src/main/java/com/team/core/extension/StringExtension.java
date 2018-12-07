@@ -11,10 +11,4 @@ public class StringExtension {
         return str.equals(GuidEmpty);
     }
 
-    public static List<String> convertAllToLower(List<String> list) {
-        List<String> temp = new ArrayList<>();
-        list.forEach(t -> temp.add(t.toLowerCase()));
-        return temp;
-    }
-
 }

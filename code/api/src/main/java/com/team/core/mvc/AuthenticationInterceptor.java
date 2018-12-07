@@ -2,7 +2,6 @@ package com.team.core.mvc;
 
 import com.team.core.exception.ErrorCode;
 import com.team.core.exception.WebException;
-import com.team.core.extension.StringExtension;
 import com.team.core.util.JwtUtil;
 import com.team.entity.po.User;
 import com.team.service.RoleMenuService;
@@ -14,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class AuthenticationInterceptor implements HandlerInterceptor {
 
@@ -40,7 +40,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
                             return true;
                         }
                         List<String> apis = roleMenuService.getPermissionsByUserId(user.getUserId());
-                        if (StringExtension.convertAllToLower(apis).contains((request.getRequestURI().toLowerCase()))) {
+                        if (apis.stream().map(String::toLowerCase).collect(Collectors.toList()).contains((request.getRequestURI().toLowerCase()))) {
                             return true;
                         }
                     }
