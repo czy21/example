@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class UserExtension {
+public class UserExtension  {
 
     private static UserDao _dao;
 
