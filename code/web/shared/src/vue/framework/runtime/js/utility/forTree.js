@@ -1,9 +1,10 @@
 const _ = require('lodash')
+
 /**
  * 转换数组为树形列表(有children空对象)
  * @params list     代转化数组列表
  */
-export default function transData(list) {
+export function transChild(list, id) {
   let parentId = '00000000-0000-0000-0000-000000000000';
   let items = {};
   // 获取每个节点的直属子节点，*记住是直属，不是所有子节点
@@ -16,19 +17,19 @@ export default function transData(list) {
       items[key].push(list[i]);
     }
   }
-  return formatTree(items, parentId);
+  return formatTree(items, parentId, id);
 }
 
 /**
  * 利用递归格式化每个节点
  */
-function formatTree(items, parentId) {
+function formatTree(items, parentId, id) {
   let result = [];
   if (!items[parentId]) {
     return result;
   }
   for (let t of items[parentId]) {
-    t.children = formatTree(items, t.id)
+    t.children = formatTree(items, t[id])
     result.push(t);
   }
   return result;
@@ -75,8 +76,7 @@ export function findParents(list, id) {
         result.push(list[i].parentId)
         result.push(list[i].value)
         return result;
-      }
-      else if (list[i].children && list[i].children.length > 0) {
+      } else if (list[i].children && list[i].children.length > 0) {
         let res = findParents(list[i].children, id);
         return res.concat(list[i].parentId)
       }

@@ -1,15 +1,9 @@
-import CompanyList from '@/views/system/company'
 import UserList from '@/views/system/UserList'
 import MenuList from '@/views/system/MenuList'
 import RoleList from '@/views/system/RoleList'
+import DepartmentList from '@/views/system/DepartmentList'
 
 export default [
-  // {
-  //   name: "CompanyList",
-  //   path: '/system/company',
-  //   component: CompanyList,
-  //   meta: {title: "公司管理"}
-  // },
   {
     name: "UserList",
     path: '/system/user',
@@ -27,5 +21,11 @@ export default [
     path: '/system/menu',
     component: MenuList,
     meta: {title: "菜单管理"}
+  },
+  {
+    name: "DepartmentList",
+    path: '/system/department',
+    component: DepartmentList,
+    meta: {title: "部门管理"}
   },
 ]

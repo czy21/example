@@ -134,13 +134,13 @@
       validationRules() {
         return {
           loginName: [
-            {required: true, message: "请输入账号", trigger: "blur"}
+            {required: true, message: "必须输入用户账号", trigger: "blur"}
           ],
           userName: [
-            {required: true, message: "用户姓名不能为空", trigger: "blur"}
+            {required: true, message: "必须输入用户名称", trigger: "blur"}
           ],
           departmentId: [
-            {required: true, message: "请选择部门", trigger: "blur"}
+            {required: true, message: "必须选择所属部门", trigger: "blur"}
           ]
         };
       },
@@ -160,8 +160,6 @@
                 this.search();
               })
             })
-            break;
-          default:
             break;
         }
       },

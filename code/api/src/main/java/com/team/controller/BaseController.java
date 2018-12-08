@@ -73,16 +73,4 @@ public class BaseController {
         }
         return null;
     }
-
-    @GetMapping("setRedis")
-    public Object testRedis() {
-
-        return redisUtil.set("1", "没什么");
-    }
-
-    @GetMapping("getRedis")
-    public Object getRedis() {
-
-        return redisUtil.get("admin");
-    }
 }

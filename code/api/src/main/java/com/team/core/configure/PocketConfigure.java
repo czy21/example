@@ -1,10 +1,7 @@
 package com.team.core.configure;
 
 
-import com.team.core.extension.entity.DepartmentExtension;
-import com.team.core.extension.entity.MenuExtension;
-import com.team.core.extension.entity.RoleExtension;
-import com.team.core.extension.entity.UserExtension;
+import com.team.core.extension.entity.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,6 +25,9 @@ public class PocketConfigure {
                     break;
                 case "Department":
                     hash.put(suggestKey, DepartmentExtension.convertToSimple());
+                    break;
+                case "Company":
+                    hash.put(suggestKey, CompanyExtension.convertToSimple());
                     break;
             }
         });

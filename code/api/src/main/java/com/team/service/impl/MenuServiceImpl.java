@@ -44,11 +44,11 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
         if (StringUtils.isEmpty(dto.getParentId())) {
             throw new WebException(ErrorCode.ID_NO_NULL, "上级菜单Id不能为空");
         }
-        if (super.SelectBy("MenuName", dto.getMenuName()) != null) {
-            throw new WebException(ErrorCode.NAME_EXIST, "菜单或权限名称已存在");
-        }
         if (StringUtils.isEmpty(dto.getMenuName())) {
             throw new WebException(ErrorCode.NAME_NO_NULL, "菜单或权限名称不能为空");
+        }
+        if (super.SelectBy("MenuName", dto.getMenuName()) != null) {
+            throw new WebException(ErrorCode.NAME_EXIST, "菜单或权限名称已存在");
         }
         return menuMap.toMenuDto(super.InsertAndGetEntity(menuMap.toMenu(dto)));
     }
