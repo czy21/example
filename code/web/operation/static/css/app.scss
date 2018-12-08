@@ -138,6 +138,10 @@ a {
       width: 180px;
       height: inherit;
       padding-right: 6px;
+
+      & > .el-table--fit {
+        height: 100%;
+      }
     }
 
     .right-box {
