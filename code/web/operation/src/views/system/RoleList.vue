@@ -147,8 +147,7 @@
               })
             })
             break;
-          default:
-            break;
+
         }
       },
       editRole(status, row) {
@@ -171,8 +170,7 @@
               })
             })
             break;
-          default:
-            break;
+
         }
       },
       allotMenu(status, row) {
@@ -200,8 +198,7 @@
               this.$helper.eui.inform(res.data + " 分配权限成功")
             })
             break;
-          default:
-            break;
+
         }
       },
       checkedActionsChange(value) {
