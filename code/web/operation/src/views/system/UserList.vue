@@ -215,7 +215,6 @@
               this.$helper.eui.inform(res.data + "分配角色成功")
             })
             break;
-
         }
       },
       search() {

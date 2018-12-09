@@ -49,4 +49,15 @@ public class DepartmentController {
         return departmentService.insertDepartment(dto);
     }
 
+    @PostMapping("edit")
+    @ApiOperation(value = "修改部门信息")
+    public DepartmentDto Edit(DepartmentDto dto) {
+        return departmentService.editDepartment(dto);
+    }
+
+    @PostMapping("modified")
+    @ApiOperation(value = "更改部门状态")
+    public Boolean Modified(DepartmentDto dto) {
+        return departmentService.modifiedDepartment(dto);
+    }
 }
