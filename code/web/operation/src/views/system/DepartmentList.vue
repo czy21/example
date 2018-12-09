@@ -14,21 +14,10 @@
         </div>
       </div>
       <div class="container">
-        <el-table :data="formatData" :row-style="showRow" fit highlight-current-row v-bind="$attrs">
-          <el-table-column type="selection"></el-table-column>
-          <el-table-column v-for="(column, index) in columns" :key="column.value" :label="column.text"
-                           :width="column.width">
-            <template slot-scope="scope">
-                    <span v-if="index === 0" v-for="space in scope.row._level" class="ms-tree-space"
-                          :key="space"></span>
-              <span class="tree-ctrl" v-if="iconShow(index,scope.row)" @click="toggleExpanded(scope.$index)">
-                <i v-if="!scope.row._expanded" class="el-icon-plus"></i>
-                <i v-else class="el-icon-minus"></i>
-              </span>
-              <span>{{scope.row[column.value]}}</span>
-            </template>
-          </el-table-column>
-
+        <el-table :data="formatData" highlight-current-row>
+          <table-tree-column label="部门名称" prop="departmentName" tree-key="departmentId"></table-tree-column>
+          <el-table-column label="部门电话" prop="phone"></el-table-column>
+          <el-table-column label="备注" prop="remark"></el-table-column>
           <el-table-column label="操作" width="300">
             <template slot-scope="scope">
               <el-button @click="addDepartment('addSub',scope.row.departmentId)">添加下级部门</el-button>
@@ -65,48 +54,24 @@
 </template>
 <script>
   import c from '@c'
-  import treeTable from '@c/utils/treeTable'
+  import {treeDataTranslate} from '@c/utils'
+  import TableTreeColumn from '@v/general/TableTreeColumn'
 
   export default {
     mixins: [c.mixins.list],
     name: "DepartmentList",
-    props: {
-      evalFunc: Function,
-      evalArgs: Array,
-      expandAll: {
-        type: Boolean,
-        default: false
-      }
+    components: {
+      TableTreeColumn
     },
     data() {
       return {
-        columns: [
-          {
-            text: "部门名称",
-            value: "departmentName"
-          },
-          {
-            text: "电话",
-            value: "phone"
-          },
-          {
-            text: "描述",
-            value: "remark"
-          },
-        ],
         departmentAddShow: false,
         departmentAddForm: {}
       };
     },
     computed: {
-      // 格式化数据源
       formatData() {
-        let tmp = c.ref.jsUtil.forTree.transChild(this.list, "departmentId");
-        const func = this.evalFunc || treeTable;
-        const args = this.evalArgs
-          ? Array.concat([tmp, this.expandAll], this.evalArgs)
-          : [tmp, this.expandAll];
-        return func.apply(null, args);
+        return treeDataTranslate(this.list, 'departmentId')
       },
       validationRules() {
         return {
@@ -141,23 +106,6 @@
             })
             break;
         }
-      },
-      showRow(row) {
-        const show = row.row.parent
-          ? row.row.parent._expanded && row.row.parent._show
-          : true;
-        row.row._show = show;
-        return show
-          ? "animation:treeTableShow 1s;-webkit-animation:treeTableShow 1s;"
-          : "display:none;";
-      },
-      toggleExpanded(trIndex) {
-        const record = this.formatData[trIndex];
-        record._expanded = !record._expanded;
-      },
-      // 图标显示
-      iconShow(index, record) {
-        return index === 0 && record.children && record.children.length > 0;
       },
       search() {
         this.$api.post("department/search", this.searchModel).then(v => {

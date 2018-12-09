@@ -31,8 +31,13 @@
       </div>
       <div class="container">
         <el-table :data="list" border highlight-current-row>
-          <el-table-column prop="menuName" label="菜单(权限)名称"></el-table-column>
-          <el-table-column prop="url" label="菜单(权限)地址"></el-table-column>
+          <el-table-column prop="menuName" label="名称"></el-table-column>
+          <el-table-column label="图标">
+            <template slot-scope="scope">
+              <icon-svg :name="scope.row.icon || ''"></icon-svg>
+            </template>
+          </el-table-column>
+          <el-table-column prop="url" label="菜单URL"></el-table-column>
           <el-table-column label="类型">
             <template slot-scope="scope">
               {{scope.row.isMenu?'菜单':'权限'}}
@@ -169,10 +174,12 @@
 
 <script>
   import c from '@c'
+  import IconSvg from '@v/general/IconSvg'
 
   export default {
     mixins: [c.mixins.list],
     name: "MenuList",
+    components: {IconSvg},
     data() {
       return {
         // 树形控件属性
@@ -225,8 +232,7 @@
               this.$helper.eui.inform("批量添加成功", this.search())
             })
             break;
-          default:
-            break;
+
         }
       },
       addMenu(status) {
@@ -247,8 +253,7 @@
               })
             })
             break;
-          default:
-            break;
+
         }
       },
       editMenu(status, row) {
@@ -268,8 +273,6 @@
                 })
               })
             })
-            break;
-          default:
             break;
         }
       },
