@@ -29,7 +29,7 @@ public class AuthenticationInterceptor implements HandlerInterceptor {
         if (token != null) {
             String loginName = JwtUtil.GetLoginName(token);
             if (loginName != null) {
-                User user = userService.SelectBy("LoginName", loginName);
+                User user = userService.SelectBy(User::getLoginName, loginName);
                 if (user != null) {
                     User currentUser = JwtUtil.getCurrentUser();
                     if (currentUser == null || !currentUser.getLoginName().equals(user.getLoginName())) {

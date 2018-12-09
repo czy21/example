@@ -35,7 +35,7 @@ public class AspectLog {
     @Before("methodCachePointcut()")
     public void doBefore(JoinPoint point) throws Exception {
         Log sysLog = getSystemLogInit(point);
-        sysLog.setLogType(Log.LogInfo);
+        sysLog.setLogType(Log.logInfo);
         logQueue.add(sysLog);
     }
 
@@ -51,7 +51,7 @@ public class AspectLog {
         if (!(e instanceof ServiceException)) {
             try {
                 Log sysLog = getSystemLogInit(p);
-                sysLog.setLogType(Log.LogError);
+                sysLog.setLogType(Log.logError);
                 sysLog.setExceptionCode(e.getClass().getName());
                 sysLog.setExceptionDetail(e.getMessage());
                 logQueue.add(sysLog);

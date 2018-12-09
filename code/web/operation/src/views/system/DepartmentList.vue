@@ -10,7 +10,6 @@
       <div class="handle-box">
         <div class="operate-box">
           <el-button type="primary" @click="addDepartment('addRoot')">添加部门</el-button>
-          <el-button type="primary">批量修改</el-button>
         </div>
       </div>
       <div class="container">
@@ -21,7 +20,7 @@
           <el-table-column label="操作" width="300">
             <template slot-scope="scope">
               <el-button @click="addDepartment('addSub',scope.row.departmentId)">添加下级部门</el-button>
-              <el-button>编辑</el-button>
+              <el-button @click="editDepartment('edit',scope.row)">编辑</el-button>
               <el-button type="danger">删除</el-button>
             </template>
           </el-table-column>
@@ -50,6 +49,44 @@
         <el-button type="primary" @click="addDepartment('submit')">确 定</el-button>
       </div>
     </el-dialog>
+
+    <el-dialog title="编辑部门" :visible.sync="departmentEditShow" width="20%">
+      <el-form :model="departmentEditForm" label-width="100px" :rules="validationRules" ref="departmentEditForm">
+        <el-form-item label="部门名称" prop="departmentName">
+          <el-input v-model="departmentEditForm.departmentName"></el-input>
+        </el-form-item>
+        <el-form-item label="部门电话" prop="phone">
+          <el-input v-model="departmentEditForm.phone"></el-input>
+        </el-form-item>
+        <el-form-item label="部门电话" prop="phone">
+          <el-popover
+            ref="depTreePopover"
+            placement="bottom-start"
+            trigger="click">
+            <el-tree
+              :data="formatData"
+              :props="props"
+              node-key="departmentId"
+              ref="departmentTree"
+              :default-expand-all="true"
+              :highlight-current="true"
+              :expand-on-click-node="false">
+            </el-tree>
+          </el-popover>
+          <el-input v-model="departmentEditForm.parentId"
+                    v-popover:depTreePopover
+                    :readonly="true"
+                    placeholder="点击选择上级菜单"
+                    class="menu-list__input"></el-input>
+        </el-form-item>
+        <el-form-item label="描述" prop="remark">
+          <el-input type="textarea" v-model="departmentEditForm.remark"></el-input>
+        </el-form-item>
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="editDepartment('submit')">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 <script>
@@ -65,8 +102,14 @@
     },
     data() {
       return {
+        props: {
+          label: "departmentName",
+          children: "children"
+        },
         departmentAddShow: false,
-        departmentAddForm: {}
+        departmentAddForm: {},
+        departmentEditShow: false,
+        departmentEditForm: {}
       };
     },
     computed: {
@@ -85,6 +128,26 @@
       },
     },
     methods: {
+      editDepartment(status, row) {
+        switch (status) {
+          case 'edit':
+            this.departmentEditShow = true
+            const temp = {
+              companyId: row.companyId,
+              departmentId: row.departmentId,
+              departmentName: row.departmentName,
+              parentId: row.parentId,
+              remark: row.remark,
+              phone: row.phone,
+            }
+            console.log(temp)
+            break;
+          case 'submit':
+            this.submitOne()
+
+            break;
+        }
+      },
       addDepartment(status, departmentId) {
         switch (status) {
           case 'addRoot':
@@ -99,9 +162,11 @@
             this.submitOne()
             this.$helper.eui.actWithValidation("departmentAddForm", () => {
               this.departmentAddShow = false
-              this.$api.post("department/add", this.departmentAddForm).then(res => {
-                this.$refs['departmentAddForm'].resetFields();
-                this.search();
+              this.$api.post("department/add", this.departmentAddForm).then(() => {
+                this.$helper.eui.inform(`<strong>${this.departmentAddForm.departmentName}</strong> 添加成功`, () => {
+                  this.$refs['departmentAddForm'].resetFields();
+                  this.search();
+                })
               })
             })
             break;
@@ -119,62 +184,3 @@
     }
   };
 </script>
-<style rel="stylesheet/css">
-  @keyframes treeTableShow {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  @-webkit-keyframes treeTableShow {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-</style>
-
-<style lang="scss" rel="stylesheet/scss" scoped>
-  $color-blue: #2196f3;
-  $space-width: 18px;
-  .ms-tree-space {
-    position: relative;
-    top: 1px;
-    display: inline-block;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 1;
-    width: $space-width;
-    height: 14px;
-
-    &::before {
-      content: "";
-    }
-  }
-
-  .processContainer {
-    width: 100%;
-    height: 100%;
-  }
-
-  table td {
-    line-height: 26px;
-  }
-
-  .tree-ctrl {
-    position: relative;
-    cursor: pointer;
-    color: $color-blue;
-    margin-left: -$space-width;
-  }
-
-  .recursion-menu {
-    margin-bottom: 20px;
-  }
-</style>
-

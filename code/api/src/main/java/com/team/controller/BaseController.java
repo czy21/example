@@ -1,10 +1,15 @@
 package com.team.controller;
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.google.common.base.Optional;
 import com.google.common.base.Strings;
 import com.team.core.util.HttpClientUtil;
 import com.team.core.util.RedisUtil;
+import com.team.dao.MenuDao;
+import com.team.entity.po.Menu;
+import com.team.entity.vo.MenuDto;
 import io.swagger.models.Swagger;
 import org.apache.http.HttpEntity;
 import org.apache.http.ParseException;
@@ -39,9 +44,7 @@ import java.util.Map;
 public class BaseController {
 
     @Autowired
-    private RedisUtil redisUtil;
-    @Autowired
-    private HttpServletRequest request;
+    private MenuDao menuDao;
 
     @GetMapping("/")
     public String Index() {
@@ -72,5 +75,14 @@ public class BaseController {
             }
         }
         return null;
+    }
+
+    @GetMapping("Test")
+    public Object Test() {
+
+        QueryWrapper<Menu> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(Menu::getIsMenu, true);
+       return menuDao.selectList(queryWrapper);
+
     }
 }

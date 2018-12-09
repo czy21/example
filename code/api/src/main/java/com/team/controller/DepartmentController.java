@@ -31,7 +31,7 @@ public class DepartmentController {
     private DepartmentService departmentService;
 
     @GetMapping("load")
-    @Pocket(entity = Company.class)
+    @Pocket(entity = {Company.class, Department.class})
     @ApiOperation(value = "加载部门列表")
     public PageDto<DepartmentDto> Load(SearchDepartmentModel search) {
         return departmentService.getDepartmentPageListBy(search);

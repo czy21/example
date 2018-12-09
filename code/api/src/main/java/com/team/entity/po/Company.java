@@ -1,5 +1,6 @@
 package com.team.entity.po;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.team.core.universal.BaseEntity;
 import lombok.Data;
@@ -10,40 +11,51 @@ import lombok.EqualsAndHashCode;
  * 公司表
  *
  * @author 陈昭宇
- * @since 2018-11-03
+ * @date 2018-12-09
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Company extends BaseEntity<Company> {
-    @TableId
-    private String CompanyId;
+public class Company extends BaseEntity {
+
+    private static final long serialVersionUID = 1L;
+
+    @TableId("company_id")
+    private String companyId;
     /**
      * 公司名称
      */
-    private String CompanyName;
+    @TableField("company_name")
+    private String companyName;
     /**
      * 联系人
      */
-    private String ContactPerson;
+    @TableField("contact_person")
+    private String contactPerson;
     /**
      * 公司地点
      */
-    private String Location;
+    @TableField("location")
+    private String location;
     /**
      * 公司电话
      */
-    private String Phone;
+    @TableField("phone")
+    private String phone;
     /**
      * 公司传真
      */
-    private String Fax;
+    @TableField("fax")
+    private String fax;
     /**
      * 公司邮编
      */
-    private String Postcode;
+    @TableField("postcode")
+    private String postcode;
     /**
      * 备注
      */
-    private String Remark;
-    private Boolean Enabled;
+    @TableField("remark")
+    private String remark;
+    @TableField("enabled")
+    private Boolean enabled;
 }

@@ -1,52 +1,61 @@
 package com.team.entity.po;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.team.core.universal.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
 
 /**
  * 用户表
  *
  * @author 陈昭宇
- * @since 2018-11-03
+ * @date 2018-12-09
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class User extends BaseEntity<User> {
-    @TableId
-    private String UserId;
+public class User extends BaseEntity {
+
+    private static final long serialVersionUID = 1L;
+
+    @TableId("user_id")
+    private String userId;
     /**
      * 用户账号
      */
-    private String LoginName;
+    @TableField("login_name")
+    private String loginName;
     /**
      * 用户密码
      */
-    private String Password;
+    @TableField("password")
+    private String password;
     /**
      * 用户姓名
      */
-    private String UserName;
+    @TableField("user_name")
+    private String userName;
     /**
      * 用户邮箱
      */
-    private String Email;
+    @TableField("email")
+    private String email;
     /**
      * 用户电话
      */
-    private String Phone;
+    @TableField("phone")
+    private String phone;
     /**
      * 是否是部长
      */
-    private Boolean IsHeader;
+    @TableField("is_header")
+    private Boolean isHeader;
     /**
      * 所属部门
      */
-    private String DepartmentId;
-    private Boolean Enabled;
+    @TableField("department_id")
+    private String departmentId;
+    @TableField("enabled")
+    private Boolean enabled;
 }

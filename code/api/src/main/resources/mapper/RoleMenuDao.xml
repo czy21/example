@@ -3,23 +3,23 @@
 <mapper namespace="com.team.dao.RoleMenuDao">
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.team.entity.po.RoleMenu">
-        <id column="RoleMenuId" property="RoleMenuId"/>
-        <result column="AddedTime" property="AddedTime"/>
-        <result column="ModifiedTime" property="ModifiedTime"/>
-        <result column="AddedUser" property="AddedUser"/>
-        <result column="ModifiedUser" property="ModifiedUser"/>
-        <result column="RoleId" property="RoleId"/>
-        <result column="MenuId" property="MenuId"/>
+        <id column="role_menu_id" property="roleMenuId" />
+        <result column="added_time" property="addedTime" />
+        <result column="modified_time" property="modifiedTime" />
+        <result column="added_user" property="addedUser" />
+        <result column="modified_user" property="modifiedUser" />
+        <result column="role_id" property="roleId" />
+        <result column="menu_id" property="menuId" />
     </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        AddedTime,
-        ModifiedTime,
-        AddedUser,
-        ModifiedUser,
-        RoleMenuId
-        RoleId
-        MenuId
+        added_time,
+        modified_time,
+        added_user,
+        modified_user,
+        role_menu_id
+        role_id
+        menu_id
     </sql>
 
     <!--根据用户id查询该用户所有菜单或权限-->
@@ -30,10 +30,10 @@
         sys_role_menu rm,
         sys_user_role ur
         where
-        m.MenuId=rm.MenuId
-        and ur.RoleId=rm.RoleId
-        and ur.UserId=#{userId}
-        and m.IsMenu=#{isMenu}
+        m.menu_id=rm.menu_id
+        and ur.role_id=rm.role_id
+        and ur.user_id=#{userId}
+        and m.is_menu=#{isMenu}
     </select>
     <!--根据角色id查询该角色所有菜单或权限-->
     <select id="getMenusByRoleId" resultType="com.team.entity.po.Menu">
@@ -42,9 +42,9 @@
         from sys_menu m,
         sys_role_menu rm
         where
-        m.MenuId=rm.MenuId
-        and m.IsMenu=#{isMenu}
-        and rm.RoleId=#{roleId}
+        m.menu_id=rm.menu_id
+        and m.is_menu=#{isMenu}
+        and rm.role_id=#{roleId}
     </select>
 
 </mapper>

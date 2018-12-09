@@ -31,7 +31,7 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
         if (StringUtils.isEmpty(dto.getRoleName())) {
             throw new WebException(ErrorCode.NAME_NO_NULL, "角色名称不能为空");
         }
-        if (super.SelectBy("RoleName", dto.getRoleName()) != null) {
+        if (super.SelectBy(Role::getRoleName, dto.getRoleName()) != null) {
             throw new WebException(ErrorCode.NAME_EXIST, "角色名称已存在");
         }
         return roleMap.toRoleDto(super.InsertAndGetEntity(roleMap.toRole(dto)));

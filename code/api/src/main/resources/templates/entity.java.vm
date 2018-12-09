@@ -12,7 +12,7 @@ import lombok.experimental.Accessors;
  * $!{table.comment}
  *
  * @author ${author}
- * @since ${date}
+ * @date ${date}
  */
 @Data
 #if(${superEntityClass})
@@ -21,6 +21,9 @@ import lombok.experimental.Accessors;
 #if(${superEntityClass})
 public class ${entity} extends ${superEntityClass}<${entity}> {
 #end
+
+    private static final long serialVersionUID = 1L;
+
 ## ----------  BEGIN 字段循环遍历  ----------
 #foreach($field in ${table.fields})
 #if("$!field.comment" != "")
@@ -29,9 +32,20 @@ public class ${entity} extends ${superEntityClass}<${entity}> {
      */
 #end
 #if(${field.keyFlag})
+## 主键
 #if(${field.convert})
-    @TableId
+    @TableId("${field.name}")
 #end
+## 普通字段
+#elseif(${field.fill})
+## -----   存在字段填充设置   -----
+#if(${field.convert})
+    @TableField(value = "${field.name}", fill = FieldFill.${field.fill})
+#else
+    @TableField(fill = FieldFill.${field.fill})
+#end
+#elseif(${field.convert})
+    @TableField("${field.name}")
 #end
     private ${field.propertyType} ${field.propertyName};
 #end

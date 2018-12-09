@@ -1,4 +1,4 @@
-set @UserId = (select UserId from sys_user where LoginName='admin');
-set @RoleId = (select RoleId from sys_role where RoleName='管理员');
-insert into sys_user_role(UserRoleId,UserId,RoleId,AddedTime,ModifiedTime,AddedUser,ModifiedUser)
-values(UUID(),@UserId,@RoleId,NOW(),NOW(),NULL,NULL);
+set @user_id = (select user_id from sys_user where login_name='admin');
+set @role_id = (select role_id from sys_role where role_name='管理员');
+insert into sys_user_role(user_role_id,user_id,role_id,added_time,modified_time,added_user,modified_user)
+values(UUID(),@user_id,@role_id,NOW(),NOW(),NULL,NULL);

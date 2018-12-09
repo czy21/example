@@ -3,6 +3,8 @@ package com.team.core.universal;
 import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
+import com.baomidou.mybatisplus.extension.api.R;
 import com.team.core.util.PageUtil;
 import org.apache.ibatis.exceptions.TooManyResultsException;
 
@@ -58,7 +60,7 @@ public interface BaseService<TEntity extends BaseEntity> {
      * @Param [entity,wrapper]
      * @Return java.lang.Integer
      */
-    Integer UpdateBy(TEntity entity, UpdateWrapper<TEntity> wra);
+    Integer UpdateBy(TEntity entity, UpdateWrapper<TEntity> query);
 
 
     /*
@@ -90,12 +92,12 @@ public interface BaseService<TEntity extends BaseEntity> {
 
     /*
      * @Author 陈昭宇
-     * @Description 根据属性值获取实体
+     * @Description 根据字段值获取实体
      * @Date 2018/7/26
      * @Param [fieldName, value]
      * @Return TEntity
      */
-    TEntity SelectBy(String fieldName, String value);
+    TEntity SelectBy(SFunction<TEntity, ?> column, String value);
 
     /*
      * @Author 陈昭宇

@@ -35,8 +35,9 @@ public class MybatisPlusCodeGenerator {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setTablePrefix("sys_");
         strategy.setNaming(NamingStrategy.underline_to_camel);
+        strategy.entityTableFieldAnnotationEnable(true);
         strategy.setSuperEntityClass("com.team.core.universal.BaseEntity");
-        strategy.setSuperEntityColumns("AddedTime", "ModifiedTime", "AddedUser", "ModifiedUser");
+        strategy.setSuperEntityColumns("added_time", "modified_time", "added_user", "modified_user");
         strategy.setSuperMapperClass("com.team.core.universal.BaseEntity.BaseDao");
         strategy.setSuperServiceClass("com.team.core.universal.BaseEntity.BaseService");
         strategy.setSuperServiceImplClass("com.team.core.universal.BaseEntity.BaseServiceImpl");

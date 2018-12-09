@@ -15,46 +15,56 @@ import lombok.EqualsAndHashCode;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Log extends BaseEntity<Log> {
-    @TableId
-    private String LogId;
+public class Log extends BaseEntity {
+
+    private static final long serialVersionUID = 1L;
+
+    @TableId("log_id")
+    private String logId;
     /**
      * 日志信息描述
      */
-    private String Description;
+    @TableField("description")
+    private String description;
     /**
      * 方法名称
      */
-    private String Method;
+    @TableField("method")
+    private String method;
     /**
      * 日志类型 0是正常，1是异常
      */
-    private Boolean LogType;
+    @TableField("log_type")
+    private Boolean logType;
     /**
      * 请求的ip
      */
-    private String RequestIp;
+    @TableField("request_ip")
+    private String requestIp;
     /**
      * 异常错误码
      */
-    private String ExceptionCode;
+    @TableField("exception_code")
+    private String exceptionCode;
     /**
      * 异常详情
      */
-    private String ExceptionDetail;
+    @TableField("exception_detail")
+    private String exceptionDetail;
     /**
      * 请求的用户id
      */
-    private String UserId;
+    @TableField("user_id")
+    private String userId;
     /**
      * 日志类型为正常
      */
     @TableField(exist = false)
-    public static final Boolean LogInfo = false;
+    public static final Boolean logInfo = false;
 
     /**
      * 日志类型为异常
      */
     @TableField(exist = false)
-    public static final Boolean LogError = true;
+    public static final Boolean logError = true;
 }

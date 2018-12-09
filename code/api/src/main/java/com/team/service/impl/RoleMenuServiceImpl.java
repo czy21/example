@@ -49,9 +49,9 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
     @Override
     public List<Menu> getMenusByUserId(String userId) {
         if (userService.SelectById(userId).getLoginName().equals("admin")) {
-            QueryWrapper<Menu> wra = new QueryWrapper<>();
-            wra.eq("IsMenu", true);
-            return menuService.SelectListBy(wra);
+            QueryWrapper<Menu> query = new QueryWrapper<>();
+            query.lambda().eq(Menu::getIsMenu, true);
+            return menuService.SelectListBy(query);
         }
 
         return roleMenuDao.getMenusByUserId(userId, true);
@@ -79,9 +79,9 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
         if (StringUtils.isEmpty(roleId)) {
             throw new WebException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
         }
-        QueryWrapper<RoleMenu> roleMenuWra = new QueryWrapper<>();
-        roleMenuWra.eq("RoleId", roleId);
-        super.baseDao.delete(roleMenuWra);
+        QueryWrapper<RoleMenu> query = new QueryWrapper<>();
+        query.lambda().eq(RoleMenu::getRoleId, roleId);
+        super.baseDao.delete(query);
         if (!ArrayExtension.isEmpty(roleMenuIds)) {
             Arrays.asList(roleMenuIds).forEach(t -> {
                 RoleMenu roleMenu = new RoleMenu();
