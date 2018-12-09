@@ -16,4 +16,8 @@ public interface DepartmentService extends BaseService<Department> {
     PageDto<DepartmentDto> getDepartmentPageListBy(SearchDepartmentModel search);
 
     DepartmentDto insertDepartment(DepartmentDto dto);
+
+    DepartmentDto editDepartment(DepartmentDto dto);
+
+    Boolean modifiedDepartment(DepartmentDto dto);
 }

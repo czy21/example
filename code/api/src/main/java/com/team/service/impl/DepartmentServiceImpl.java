@@ -47,4 +47,27 @@ public class DepartmentServiceImpl extends BaseServiceImpl<Department> implement
 
         return departmentMap.toDepartmentDto(super.InsertAndGetEntity(departmentMap.toDepartment(dto)));
     }
+
+    @Override
+    public DepartmentDto editDepartment(DepartmentDto dto) {
+        if (StringUtils.isEmpty(dto.getCompanyId())) {
+            throw new WebException(ErrorCode.ID_NO_NULL, "公司Id不能为空");
+        }
+        if (StringUtils.isEmpty(dto.getParentId())) {
+            throw new WebException(ErrorCode.ID_NO_NULL, "上级部门Id不能为空");
+        }
+        if (StringUtils.isEmpty(dto.getDepartmentName())) {
+            throw new WebException(ErrorCode.NAME_NO_NULL, "上级部门Id不能为空");
+        }
+        return departmentMap.toDepartmentDto(super.UpdateAndGetEntity(departmentMap.toDepartment(dto)));
+    }
+
+    @Override
+    public Boolean modifiedDepartment(DepartmentDto dto) {
+        if (StringUtils.isEmpty(dto.getDepartmentId())) {
+            throw new WebException(ErrorCode.ID_NO_NULL, "部门Id不能为空");
+        }
+        return super.UpdateAndGetEntity(departmentMap.toDepartment(dto)).getEnabled();
+
+    }
 }

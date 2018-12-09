@@ -21,10 +21,26 @@
             <template slot-scope="scope">
               <el-button @click="addDepartment('addSub',scope.row.departmentId)">添加下级部门</el-button>
               <el-button @click="editDepartment('edit',scope.row)">编辑</el-button>
-              <el-button type="danger">删除</el-button>
+              <el-button @click="modifiedDepartment(scope.row)"
+                         :class="scope.row.enabled
+                       ?'el-button--danger'
+                       :'el-button--success'">
+                {{scope.row.enabled?'禁用':'启用'}}
+              </el-button>
             </template>
           </el-table-column>
         </el-table>
+        <!-- 工具条 -->
+        <div class="pagination">
+          <el-button type="danger" icon="el-icon-delete">批量删除</el-button>
+          <el-pagination background @current-change="handleIndexChange" @size-change="handleSizeChange"
+                         :current-page="searchModel && searchModel.pageIndex"
+                         :page-size="searchModel && searchModel.pageSize"
+                         :page-sizes="[15,30,50,100]"
+                         layout="total ,sizes, prev, pager, next, jumper"
+                         :total="searchModel && searchModel.total">
+          </el-pagination>
+        </div>
       </div>
     </div>
     <el-dialog title="添加部门" :visible.sync="departmentAddShow" width="20%">
@@ -58,26 +74,25 @@
         <el-form-item label="部门电话" prop="phone">
           <el-input v-model="departmentEditForm.phone"></el-input>
         </el-form-item>
-        <el-form-item label="部门电话" prop="phone">
-          <el-popover
-            ref="depTreePopover"
-            placement="bottom-start"
-            trigger="click">
-            <el-tree
-              :data="formatData"
-              :props="props"
-              node-key="departmentId"
-              ref="departmentTree"
-              :default-expand-all="true"
-              :highlight-current="true"
-              :expand-on-click-node="false">
-            </el-tree>
-          </el-popover>
-          <el-input v-model="departmentEditForm.parentId"
-                    v-popover:depTreePopover
-                    :readonly="true"
-                    placeholder="点击选择上级菜单"
-                    class="menu-list__input"></el-input>
+        <el-form-item label="所属公司" prop="companyId">
+          <el-select v-model="departmentEditForm.companyId" placeholder="请选择公司">
+            <el-option v-for="item in $pocket.companys" :key="item.value" :label="item.label" :value="item.value">
+            </el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="上级部门" prop="parentId">
+          <el-select v-model="departmentEditForm.parentId" placeholder="请选择上级部门">
+            <el-option
+              value="00000000-0000-0000-0000-000000000000"
+              label="顶级部门"
+              style="color: #FF7F24;"></el-option>
+            <el-option
+              v-for="item in list"
+              :key="item.departmentId"
+              :label="item.departmentName"
+              :value="item.departmentId">
+            </el-option>
+          </el-select>
         </el-form-item>
         <el-form-item label="描述" prop="remark">
           <el-input type="textarea" v-model="departmentEditForm.remark"></el-input>
@@ -109,7 +124,7 @@
         departmentAddShow: false,
         departmentAddForm: {},
         departmentEditShow: false,
-        departmentEditForm: {}
+        departmentEditForm: {},
       };
     },
     computed: {
@@ -124,15 +139,27 @@
           companyId: [
             {required: true, message: "必须选择所属公司", trigger: "blur"}
           ],
+          parentId: [
+            {required: true, message: "必须选择上级部门", trigger: "blur"}
+          ]
         };
       },
     },
     methods: {
+      modifiedDepartment(row) {
+        row.enabled = !row.enabled
+        this.$api.post("department/modified", {
+          departmentId: row.departmentId,
+          enabled: row.enabled
+        }).then(res => {
+          row.enabled = res.data
+        })
+      },
       editDepartment(status, row) {
         switch (status) {
           case 'edit':
             this.departmentEditShow = true
-            const temp = {
+            this.departmentEditForm = {
               companyId: row.companyId,
               departmentId: row.departmentId,
               departmentName: row.departmentName,
@@ -140,11 +167,19 @@
               remark: row.remark,
               phone: row.phone,
             }
-            console.log(temp)
             break;
           case 'submit':
             this.submitOne()
-
+            this.$helper.eui.actWithValidation("departmentEditForm", () => {
+              console.log(this.departmentEditForm)
+              this.departmentEditShow = false
+              this.$api.post("department/edit", this.departmentEditForm).then(() => {
+                this.$helper.eui.inform(`<strong>${this.departmentEditForm.departmentName}</strong> 修改成功`, () => {
+                  this.$refs['departmentEditForm'].clearValidate();
+                  this.load("department/load")
+                })
+              })
+            })
             break;
         }
       },

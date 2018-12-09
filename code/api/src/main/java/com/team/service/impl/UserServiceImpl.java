@@ -17,6 +17,7 @@ import com.team.model.SearchUserModel;
 import com.team.service.RoleMenuService;
 import com.team.service.UserService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
@@ -78,7 +79,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
     @Override
     public JSONObject login(LoginDto dto) {
         User user = super.SelectBy(User::getLoginName, dto.getLoginName());
-        if (user == null) {
+        if (ObjectUtils.isEmpty(user)) {
             throw new WebException(ErrorCode.NO_USER, "用户不存在");
         }
         if (!user.getPassword().equals(dto.getPassword())) {
