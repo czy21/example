@@ -34,7 +34,7 @@
           <el-table-column prop="menuName" label="名称"></el-table-column>
           <el-table-column label="图标">
             <template slot-scope="scope">
-              <icon-svg :name="scope.row.icon || ''"></icon-svg>
+              <i :class="scope.row.icon"></i>
             </template>
           </el-table-column>
           <el-table-column prop="url" label="菜单URL"></el-table-column>
@@ -174,12 +174,10 @@
 
 <script>
   import c from '@c'
-  import IconSvg from '@v/general/IconSvg'
 
   export default {
     mixins: [c.mixins.list],
     name: "MenuList",
-    components: {IconSvg},
     data() {
       return {
         // 树形控件属性

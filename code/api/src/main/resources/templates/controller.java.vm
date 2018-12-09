@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 /**
  * @description ${entity} 前端控制器
  * @author ${author}
- * @since ${date}
+ * @date ${date}
  */
 @RestController
 @RequestMapping("/${table.entityPath}")

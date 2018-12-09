@@ -3,35 +3,35 @@
 <mapper namespace="com.team.dao.UserDao">
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.team.entity.po.User">
-        <id column="UserId" property="UserId" />
-        <result column="AddedTime" property="AddedTime" />
-        <result column="ModifiedTime" property="ModifiedTime" />
-        <result column="AddedUser" property="AddedUser" />
-        <result column="ModifiedUser" property="ModifiedUser" />
-        <result column="LoginName" property="LoginName" />
-        <result column="Password" property="Password" />
-        <result column="UserName" property="UserName" />
-        <result column="Email" property="Email" />
-        <result column="Phone" property="Phone" />
-        <result column="IsHeader" property="IsHeader" />
-        <result column="DepartmentId" property="DepartmentId" />
-        <result column="Enabled" property="Enabled" />
+        <id column="user_id" property="userId" />
+        <result column="added_time" property="addedTime" />
+        <result column="modified_time" property="modifiedTime" />
+        <result column="added_user" property="addedUser" />
+        <result column="modified_user" property="modifiedUser" />
+        <result column="login_name" property="loginName" />
+        <result column="password" property="password" />
+        <result column="user_name" property="userName" />
+        <result column="email" property="email" />
+        <result column="phone" property="phone" />
+        <result column="is_header" property="isHeader" />
+        <result column="department_id" property="departmentId" />
+        <result column="enabled" property="enabled" />
     </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        AddedTime,
-        ModifiedTime,
-        AddedUser,
-        ModifiedUser,
-        UserId
-        LoginName
-        Password
-        UserName
-        Email
-        Phone
-        IsHeader
-        DepartmentId
-        Enabled
+        added_time,
+        modified_time,
+        added_user,
+        modified_user,
+        user_id
+        login_name
+        password
+        user_name
+        email
+        phone
+        is_header
+        department_id
+        enabled
     </sql>
 
 </mapper>

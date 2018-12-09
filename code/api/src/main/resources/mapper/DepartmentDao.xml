@@ -3,31 +3,31 @@
 <mapper namespace="com.team.dao.DepartmentDao">
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.team.entity.po.Department">
-        <id column="DepartmentId" property="DepartmentId" />
-        <result column="AddedTime" property="AddedTime" />
-        <result column="ModifiedTime" property="ModifiedTime" />
-        <result column="AddedUser" property="AddedUser" />
-        <result column="ModifiedUser" property="ModifiedUser" />
-        <result column="ParentId" property="ParentId" />
-        <result column="DepartmentName" property="DepartmentName" />
-        <result column="Phone" property="Phone" />
-        <result column="Remark" property="Remark" />
-        <result column="CompanyId" property="CompanyId" />
-        <result column="Enabled" property="Enabled" />
+        <id column="department_id" property="departmentId" />
+        <result column="added_time" property="addedTime" />
+        <result column="modified_time" property="modifiedTime" />
+        <result column="added_user" property="addedUser" />
+        <result column="modified_user" property="modifiedUser" />
+        <result column="parent_id" property="parentId" />
+        <result column="department_name" property="departmentName" />
+        <result column="phone" property="phone" />
+        <result column="remark" property="remark" />
+        <result column="company_id" property="companyId" />
+        <result column="enabled" property="enabled" />
     </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        AddedTime,
-        ModifiedTime,
-        AddedUser,
-        ModifiedUser,
-        DepartmentId
-        ParentId
-        DepartmentName
-        Phone
-        Remark
-        CompanyId
-        Enabled
+        added_time,
+        modified_time,
+        added_user,
+        modified_user,
+        department_id
+        parent_id
+        department_name
+        phone
+        remark
+        company_id
+        enabled
     </sql>
 
 </mapper>

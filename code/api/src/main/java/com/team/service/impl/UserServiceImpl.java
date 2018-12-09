@@ -43,7 +43,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         if (StringUtils.isEmpty(dto.getUserName())) {
             throw new WebException(ErrorCode.NAME_EXIST, "用户姓名已存在");
         }
-        if (super.SelectBy("LoginName", dto.getLoginName()) != null) {
+        if (super.SelectBy(User::getLoginName, dto.getLoginName()) != null) {
             throw new WebException(ErrorCode.ACCOUNT_EXIST, "用户账号已存在");
         }
         User user = userMap.toUser(dto);
@@ -77,7 +77,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 
     @Override
     public JSONObject login(LoginDto dto) {
-        User user = super.SelectBy("LoginName", dto.getLoginName());
+        User user = super.SelectBy(User::getLoginName, dto.getLoginName());
         if (user == null) {
             throw new WebException(ErrorCode.NO_USER, "用户不存在");
         }

@@ -35,7 +35,7 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
     @Override
     public PageDto<MenuDto> getMenuAndPermissionPageListBy(SearchPermissionModel search) {
         QueryWrapper<Menu> query = new QueryWrapper<>();
-        query.orderByDesc("IsMenu");
+        query.lambda().orderByDesc(Menu::getIsMenu);
         return menuMap.toPageDto(super.SelectPageList(search.getPageIndex(), search.getPageSize(), MenuExtension.getSons(super.SelectListBy(query), search.getMenuId())));
     }
 
@@ -47,7 +47,7 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
         if (StringUtils.isEmpty(dto.getMenuName())) {
             throw new WebException(ErrorCode.NAME_NO_NULL, "菜单或权限名称不能为空");
         }
-        if (super.SelectBy("MenuName", dto.getMenuName()) != null) {
+        if (super.SelectBy(Menu::getMenuName, dto.getMenuName()) != null) {
             throw new WebException(ErrorCode.NAME_EXIST, "菜单或权限名称已存在");
         }
         return menuMap.toMenuDto(super.InsertAndGetEntity(menuMap.toMenu(dto)));
@@ -79,10 +79,12 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
         if (CollectionUtils.isEmpty(dtos)) {
             throw new WebException(ErrorCode.ID_NO_NULL, "权限集合不能为空");
         }
-        List<Menu> menus = super.SelectListBy(new QueryWrapper<Menu>().eq("IsMenu", true));
+        QueryWrapper<Menu> query= new QueryWrapper<>();
+        query.lambda().eq(Menu::getIsMenu, true);
+        List<Menu> menus = super.SelectListBy(query);
         dtos.forEach(t -> menus.forEach(m -> {
             if (m.getUrl().endsWith(t.getTag().toLowerCase())) {
-                Menu per = super.SelectBy("Url", t.getUrl());
+                Menu per = super.SelectBy(Menu::getUrl, t.getUrl());
                 if (per != null) {
                     per.setMenuName(t.getSummary());
                     per.setUrl(t.getUrl());

@@ -35,7 +35,7 @@ public class MenuExtension {
     public static List<SimpleItemModel> convertToSimple() {
 
         List<SimpleItemModel> simples = new ArrayList<>();
-        _dao.selectList(new QueryWrapper<Menu>().eq("IsMenu", true)).forEach((t) -> {
+        _dao.selectList(new QueryWrapper<Menu>().lambda().eq(Menu::getIsMenu, true)).forEach((t) -> {
             SimpleItemModel temp = new SimpleItemModel();
             temp.setValue(t.getMenuId());
             temp.setLabel(t.getMenuName());
@@ -86,7 +86,7 @@ public class MenuExtension {
 
     public static List<SimpleTreeModel> transPermissionToRadioGroups() {
         QueryWrapper<Menu> queryMenu = new QueryWrapper<>();
-        queryMenu.ne("Url", "#");
+        queryMenu.lambda().ne(Menu::getUrl, "#");
         List<Menu> menus = _dao.selectList(queryMenu);
         List<SimpleTreeModel> simpleTreeModels = new ArrayList<>();
         menus.stream().filter(t -> t.getIsMenu().equals(true)).forEach(t -> {

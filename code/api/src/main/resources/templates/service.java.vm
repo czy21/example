@@ -6,7 +6,7 @@ import ${superServiceClassPackage};
 /**
  * @description ${entity} 服务类
  * @author ${author}
- * @since ${date}
+ * @date ${date}
  */
 public interface ${table.serviceName} extends ${superServiceClass}<${entity}> {
 

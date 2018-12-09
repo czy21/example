@@ -1,2 +1,2 @@
-insert into sys_company (CompanyId,CompanyName,ContactPerson,Location,Phone,Fax,Postcode,Remark,AddedTime,ModifiedTime,AddedUser,ModifiedUser,Enabled)
+insert into sys_company (company_id,company_name,contact_person,location,phone,fax,postcode,remark,added_time,modified_time,added_user,modified_user,enabled)
 values (UUID(),'Demo公司',NULL,NULL,NULL,NULL,NULL,NULL,NOW(),NOW(),NULL,NULL,1);

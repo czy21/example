@@ -34,9 +34,9 @@ public class UserRoleServiceImpl extends BaseServiceImpl<UserRole> implements Us
             throw new WebException(ErrorCode.ID_NO_NULL, "用户Id不能为空");
         }
         List<String> roleIds = new ArrayList<>();
-        QueryWrapper<UserRole> roleMenuWra = new QueryWrapper<>();
-        roleMenuWra.eq("UserId", userId);
-        super.SelectListBy(roleMenuWra).forEach(t -> roleIds.add(t.getRoleId()));
+        QueryWrapper<UserRole> query = new QueryWrapper<>();
+        query.lambda().eq(UserRole::getUserId, userId);
+        super.SelectListBy(query).forEach(t -> roleIds.add(t.getRoleId()));
         return roleIds;
     }
 
@@ -46,9 +46,9 @@ public class UserRoleServiceImpl extends BaseServiceImpl<UserRole> implements Us
         if (StringUtils.isEmpty(userId)) {
             throw new WebException(ErrorCode.ID_NO_NULL, "用户Id不能为空");
         }
-        QueryWrapper<UserRole> userRoleWra = new QueryWrapper<>();
-        userRoleWra.eq("UserId", userId);
-        super.baseDao.delete(userRoleWra);
+        QueryWrapper<UserRole> query = new QueryWrapper<>();
+        query.lambda().eq(UserRole::getUserId, userId);
+        super.baseDao.delete(query);
 
         if (!ArrayExtension.isEmpty(userRoleIds)) {
             Arrays.asList(userRoleIds).forEach(t -> {

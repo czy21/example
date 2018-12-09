@@ -3,25 +3,25 @@
 <mapper namespace="com.team.dao.RoleDao">
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.team.entity.po.Role">
-        <id column="RoleId" property="RoleId" />
-        <result column="AddedTime" property="AddedTime" />
-        <result column="ModifiedTime" property="ModifiedTime" />
-        <result column="AddedUser" property="AddedUser" />
-        <result column="ModifiedUser" property="ModifiedUser" />
-        <result column="RoleName" property="RoleName" />
-        <result column="Remark" property="Remark" />
-        <result column="Enabled" property="Enabled" />
+        <id column="role_id" property="roleId" />
+        <result column="added_time" property="addedTime" />
+        <result column="modified_time" property="modifiedTime" />
+        <result column="added_user" property="addedUser" />
+        <result column="modified_user" property="modifiedUser" />
+        <result column="role_name" property="roleName" />
+        <result column="remark" property="remark" />
+        <result column="enabled" property="enabled" />
     </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        AddedTime,
-        ModifiedTime,
-        AddedUser,
-        ModifiedUser,
-        RoleId
-        RoleName
-        Remark
-        Enabled
+        added_time,
+        modified_time,
+        added_user,
+        modified_user,
+        role_id
+        role_name
+        remark
+        enabled
     </sql>
 
 </mapper>

@@ -34,13 +34,10 @@ spring:
     port: 6379
     timeout: 3600
 mybatis-plus:
-  configuration:
-    map-underscore-to-camel-case: false
   mapper-locations: classpath:/mapper/*.xml
   type-aliases-package: com.team.entity.po
   type-aliases-super-type: com.team.core.universal.BaseEntity
   global-config:
-    refresh: true
     db-config:
       id-type: uuid
       table-prefix: sys_

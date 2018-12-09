@@ -1,7 +1,10 @@
 package com.team.core.universal;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
+import com.baomidou.mybatisplus.extension.api.R;
 import com.team.core.exception.ServiceException;
 import com.github.pagehelper.PageHelper;
 import com.team.core.util.DateTimeUtil;
@@ -59,9 +62,9 @@ public class BaseServiceImpl<TEntity extends BaseEntity> implements BaseService<
     }
 
     @Override
-    public Integer UpdateBy(TEntity entity, UpdateWrapper<TEntity> wra) {
+    public Integer UpdateBy(TEntity entity, UpdateWrapper<TEntity> query) {
         entity.setModifiedTime(DateTimeUtil.getCurrentDateTime());
-        return baseDao.update(entity, wra);
+        return baseDao.update(entity, query);
     }
 
     @Override
@@ -80,17 +83,10 @@ public class BaseServiceImpl<TEntity extends BaseEntity> implements BaseService<
     }
 
     @Override
-    public TEntity SelectBy(String fieldName, String value) {
-
-        try {
-            Field field = modelClass.getDeclaredField(fieldName);
-            field.setAccessible(true);
-            QueryWrapper<TEntity> wra = new QueryWrapper<>();
-            wra.eq(field.getName(), value);
-            return baseDao.selectOne(wra.last("limit 1"));
-        } catch (ReflectiveOperationException e) {
-            throw new ServiceException(e.getMessage(), e);
-        }
+    public TEntity SelectBy(SFunction<TEntity, ?> column, String value) {
+        QueryWrapper<TEntity> query = new QueryWrapper<>();
+        query.lambda().eq(column, value);
+        return baseDao.selectOne(query.last("limit 1"));
     }
 
     @Override
@@ -98,7 +94,7 @@ public class BaseServiceImpl<TEntity extends BaseEntity> implements BaseService<
         if (query == null) {
             query = new QueryWrapper<>();
         }
-        query.orderByDesc("ModifiedTime");
+        query.lambda().orderByDesc(TEntity::getModifiedTime);
         return baseDao.selectList(query);
     }
 
@@ -107,7 +103,7 @@ public class BaseServiceImpl<TEntity extends BaseEntity> implements BaseService<
         if (query == null) {
             query = new QueryWrapper<>();
         }
-        query.orderByDesc("ModifiedTime");
+        query.lambda().orderByDesc(TEntity::getModifiedTime);
         PageHelper.startPage(pageIndex, pageSize);
         return new PageModel<>(baseDao.selectList(query));
     }

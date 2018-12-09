@@ -41,7 +41,7 @@ public class DepartmentServiceImpl extends BaseServiceImpl<Department> implement
         if (StringUtils.isEmpty(dto.getDepartmentName())) {
             throw new WebException(ErrorCode.NAME_NO_NULL, "部门名称不能为空");
         }
-        if (super.SelectBy("DepartmentName", dto.getDepartmentName()) != null) {
+        if (super.SelectBy(Department::getDepartmentName, dto.getDepartmentName()) != null) {
             throw new WebException(ErrorCode.NAME_EXIST, "部门名称已存在");
         }
 
