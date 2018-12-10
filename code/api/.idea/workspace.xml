@@ -2,27 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7b1c8e52-ef87-4df1-b033-ea6a2e11bcfd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/entity/map/UserMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/entity/map/UserMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/entity/po/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/entity/po/Company.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/entity/po/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/entity/po/Department.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/entity/po/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/entity/po/Log.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/entity/po/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/entity/po/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/entity/po/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/entity/po/Role.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/entity/po/RoleMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/entity/po/RoleMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/entity/po/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/entity/po/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/entity/po/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/entity/po/UserRole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/entity/vo/DepartmentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/entity/vo/DepartmentDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/entity/vo/MenuDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/entity/vo/MenuDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/entity/vo/RoleDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/entity/vo/RoleDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/entity/vo/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/entity/vo/UserDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/controller.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/controller.java.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/dao.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/dao.java.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/entity.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/entity.java.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/service.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/service.java.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/serviceImpl.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/serviceImpl.java.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/czy/MybatisPlusCodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/czy/MybatisPlusCodeGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/core/extension/entity/MenuExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/core/extension/entity/MenuExtension.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,7 +32,44 @@
     <favorites_list name="erp" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/controller/MenuController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="303">
+              <caret line="35" column="49" selection-start-line="35" selection-start-column="49" selection-end-line="35" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/MenuService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/MenuServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="38" column="135" selection-start-line="38" selection-start-column="135" selection-end-line="38" selection-end-column="135" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/extension/entity/MenuExtension.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="257">
+              <caret line="71" column="44" lean-forward="true" selection-start-line="71" selection-start-column="44" selection-end-line="71" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -107,7 +124,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/RoleServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/service/impl/UserRoleServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/core/mvc/AuthenticationInterceptor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/core/extension/entity/MenuExtension.java" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/RoleMenuDao.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/mapper/LogDao.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/application-prod.yml" />
@@ -132,12 +148,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/vo/RoleDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/vo/UserDto.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/map/CentralConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/map/DepartmentMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/map/MenuMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/map/RoleMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/map/UserMap.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/team/entity/map/PageMapping.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/team/core/extension/entity/MenuExtension.java" />
       </list>
     </option>
   </component>
@@ -172,10 +189,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="806" />
-    <option name="y" value="130" />
-    <option name="width" value="1101" />
-    <option name="height" value="818" />
+    <option name="x" value="689" />
+    <option name="y" value="292" />
+    <option name="width" value="1055" />
+    <option name="height" value="732" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -227,16 +244,6 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="team" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="team" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -253,10 +260,11 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544409845858" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544423925310" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../db" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -370,12 +378,12 @@
       <workItem from="1544242022373" duration="1965000" />
       <workItem from="1544252880977" duration="5197000" />
       <workItem from="1544361063876" duration="1879000" />
-      <workItem from="1544407266428" duration="2688000" />
+      <workItem from="1544407266428" duration="7229000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="310748000" />
+    <option name="totallyTimeSpent" value="315289000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -388,8 +396,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5353805" visible="true" weight="0.19083156" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.5353805" visible="true" weight="0.17750533" />
       <window_info id="Structure" order="1" sideWeight="0.4646195" side_tool="true" weight="0.16044776" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -399,7 +408,7 @@
       <window_info id="Web" order="7" sideWeight="0.5009074" side_tool="true" weight="0.25841817" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3286334" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7947455" visible="true" weight="0.31344903" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7947455" visible="true" weight="0.30694142" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.32321042" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -444,12 +453,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/czy/core/GetControllersTest.java</url>
-          <line>12</line>
-          <properties />
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/team/controller/BaseController.java</url>
           <line>86</line>
           <properties />
@@ -463,36 +466,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-core/3.0.6/mybatis-plus-core-3.0.6.jar!/com/baomidou/mybatisplus/core/toolkit/support/SFunction.class" />
-    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-extension/3.0.6/mybatis-plus-extension-3.0.6.jar!/com/baomidou/mybatisplus/extension/activerecord/Model.class" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/MenuServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="233">
-          <caret line="37" column="50" selection-start-line="37" selection-start-column="50" selection-end-line="37" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/MenuService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application-prod.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="36" column="13" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/DepartmentServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="65" column="58" selection-start-line="65" selection-start-column="58" selection-end-line="65" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/team/controller/DepartmentController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -756,13 +729,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/team/entity/map/PageMapping.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -805,6 +771,58 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="5" column="86" lean-forward="true" selection-start-line="5" selection-start-column="86" selection-end-line="5" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/czy/core/GetControllersTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/MenuService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/controller/MenuController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="303">
+          <caret line="35" column="49" selection-start-line="35" selection-start-column="49" selection-end-line="35" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/universal/BaseServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="96" column="61" lean-forward="true" selection-start-line="96" selection-start-column="61" selection-end-line="96" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/MenuServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="38" column="135" selection-start-line="38" selection-start-column="135" selection-end-line="38" selection-end-column="135" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8/src.zip!/java/util/Comparator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="428" column="39" selection-start-line="428" selection-start-column="39" selection-end-line="428" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/team/core/extension/entity/MenuExtension.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="71" column="44" lean-forward="true" selection-start-line="71" selection-start-column="44" selection-end-line="71" selection-end-column="44" />
         </state>
       </provider>
     </entry>
