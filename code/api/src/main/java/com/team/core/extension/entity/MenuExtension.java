@@ -65,12 +65,15 @@ public class MenuExtension {
     }
 
     public static List<Menu> getSons(List<Menu> list, String parentId) {
+        list = list.stream()
+                .sorted(Comparator.comparing(Menu::getSort, Comparator.nullsLast(Integer::compareTo)))
+                .sorted(Comparator.comparing(Menu::getIsMenu).reversed())
+                .collect(Collectors.toList());
         if (StringUtils.isEmpty(parentId)) {
             return list;
         }
         List<Menu> query = list.stream().filter(t -> t.getMenuId().equals(parentId)).collect(Collectors.toList());
         query.addAll(getSonList(list, parentId));
-        query.sort((o1, o2) -> o2.getIsMenu().compareTo(o1.getIsMenu()));
         return query;
     }
 
@@ -81,7 +84,7 @@ public class MenuExtension {
                 menus.addAll(getSons(list, t.getMenuId()));
             }
         });
-        return menus;
+        return menus.stream().sorted(Comparator.comparing(Menu::getSort, Comparator.nullsLast(Integer::compareTo))).collect(Collectors.toList());
     }
 
     public static List<SimpleTreeModel> transPermissionToRadioGroups() {
