@@ -18,7 +18,10 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import javax.swing.text.html.HTML;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -79,12 +82,16 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
         if (CollectionUtils.isEmpty(dtos)) {
             throw new WebException(ErrorCode.ID_NO_NULL, "权限集合不能为空");
         }
-        QueryWrapper<Menu> query= new QueryWrapper<>();
+        QueryWrapper<Menu> query = new QueryWrapper<>();
         query.lambda().eq(Menu::getIsMenu, true);
         List<Menu> menus = super.SelectListBy(query);
-        dtos.forEach(t -> menus.forEach(m -> {
-            if (m.getUrl().endsWith(t.getTag().toLowerCase())) {
+        dtos.stream().sorted(Comparator.comparing(PermissionDto::getTag)).forEach(t -> {
+            Optional<Menu> temp = menus.stream().filter(m -> m.getUrl().endsWith(t.getTag().toLowerCase())).findFirst();
+            temp.ifPresent(m -> {
+                QueryWrapper<Menu> countQuery = new QueryWrapper<>();
+                countQuery.lambda().eq(Menu::getParentId, m.getMenuId());
                 Menu per = super.SelectBy(Menu::getUrl, t.getUrl());
+                int count = super.SelectListBy(countQuery).stream().map(Menu::getSort).reduce(0, Integer::max);
                 if (per != null) {
                     per.setMenuName(t.getSummary());
                     per.setUrl(t.getUrl());
@@ -95,10 +102,11 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
                     menu.setIsMenu(false);
                     menu.setMenuName(t.getSummary());
                     menu.setUrl(t.getUrl());
+                    menu.setSort(StringUtils.isEmpty(count) ? 1 : count + 1);
                     super.Insert(menu);
                 }
-            }
-        }));
+            });
+        });
         return true;
     }
 }
