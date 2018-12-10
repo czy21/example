@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7b1c8e52-ef87-4df1-b033-ea6a2e11bcfd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/core/extension/entity/MenuExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/core/extension/entity/MenuExtension.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/team/service/impl/MenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/team/service/impl/MenuServiceImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="7b1c8e52-ef87-4df1-b033-ea6a2e11bcfd" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,8 +34,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/MenuServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
-              <caret line="91" column="72" selection-start-line="91" selection-start-column="72" selection-end-line="91" selection-end-column="72" />
+            <state relative-caret-position="306">
+              <caret line="40" column="52" lean-forward="true" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -286,7 +283,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544453329059" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1544453456842" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../db" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -405,12 +402,12 @@
       <workItem from="1544252880977" duration="5197000" />
       <workItem from="1544361063876" duration="1879000" />
       <workItem from="1544407266428" duration="16388000" />
-      <workItem from="1544444143260" duration="9123000" />
+      <workItem from="1544444143260" duration="9301000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="333571000" />
+    <option name="totallyTimeSpent" value="333749000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -435,7 +432,7 @@
       <window_info id="Web" order="7" sideWeight="0.5009074" side_tool="true" weight="0.25841817" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.43039772" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.7947455" visible="true" weight="0.31236443" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.7947455" weight="0.31236443" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3286334" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -870,8 +867,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/team/service/impl/MenuServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="91" column="72" selection-start-line="91" selection-start-column="72" selection-end-line="91" selection-end-column="72" />
+        <state relative-caret-position="306">
+          <caret line="40" column="52" lean-forward="true" selection-start-line="40" selection-start-column="52" selection-end-line="40" selection-end-column="52" />
         </state>
       </provider>
     </entry>
