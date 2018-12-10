@@ -3,10 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/controller/DepartmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/controller/DepartmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/universal/BaseEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/core/universal/BaseEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/po/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/po/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/po/Department.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/po/Department.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/po/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/po/Log.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/po/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/po/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/po/Role.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/po/Role.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/po/RoleMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/po/RoleMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/po/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/po/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/po/UserRole.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/java/com/team/entity/po/UserRole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/resources/templates/controller.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/resources/templates/controller.java.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/resources/templates/dao.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/resources/templates/dao.java.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/resources/templates/entity.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/resources/templates/entity.java.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/resources/templates/service.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/resources/templates/service.java.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/main/resources/templates/serviceImpl.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/main/resources/templates/serviceImpl.java.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/src/test/java/com/czy/MybatisPlusCodeGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/src/test/java/com/czy/MybatisPlusCodeGenerator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/DepartmentList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/DepartmentList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/UserList.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -26,10 +39,6 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="330">
                   <caret line="154" column="32" selection-start-line="154" selection-start-column="32" selection-end-line="154" selection-end-column="32" />
-                  <folding>
-                    <element signature="n#style#0;n#el-option#0;n#el-select#0;n#el-form-item#2;n#el-form#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                    <element signature="e#4064#4082#0" expanded="true" />
-                  </folding>
                 </state>
               </provider>
             </entry>
@@ -46,12 +55,12 @@
         </leaf>
       </split-first>
       <split-second>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/views/system/UserList.vue">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="196">
-                  <caret line="190" column="6" selection-start-line="190" selection-start-column="6" selection-end-line="198" selection-end-column="8" />
+                  <caret line="188" column="6" selection-start-line="188" selection-start-column="6" selection-end-line="188" selection-end-column="6" />
                   <folding>
                     <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
                     <element signature="n#el-dialog#2;n#div#0;n#template#0;n#!!top" />
@@ -161,7 +170,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="679" />
     <option name="y" value="61" />
     <option name="width" value="1202" />
@@ -360,20 +369,20 @@
       <workItem from="1544252850207" duration="12727000" />
       <workItem from="1544340711452" duration="7979000" />
       <workItem from="1544361042348" duration="5166000" />
+      <workItem from="1544407233693" duration="594000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="309351000" />
+    <option name="totallyTimeSpent" value="309945000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="npm" order="1" side_tool="true" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.16438356" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.10063224" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30151844" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" visible="true" weight="0.27440348" />
@@ -666,13 +675,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/utils/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="55" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/system/MenuList.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -680,24 +682,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/system/UserList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="190" column="6" selection-start-line="190" selection-start-column="6" selection-end-line="198" selection-end-column="8" />
-          <folding>
-            <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#el-dialog#2;n#div#0;n#template#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/system/DepartmentList.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="154" column="32" selection-start-line="154" selection-start-column="32" selection-end-line="154" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/utils/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="55" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/system/UserList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="188" column="6" selection-start-line="188" selection-start-column="6" selection-end-line="188" selection-end-column="6" />
           <folding>
-            <element signature="n#style#0;n#el-option#0;n#el-select#0;n#el-form-item#2;n#el-form#0;n#el-dialog#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#4064#4082#0" expanded="true" />
+            <element signature="n#el-dialog#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#el-dialog#2;n#div#0;n#template#0;n#!!top" />
           </folding>
         </state>
       </provider>

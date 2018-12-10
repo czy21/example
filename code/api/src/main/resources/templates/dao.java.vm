@@ -4,8 +4,8 @@ import ${package.Entity}.${entity};
 import ${superMapperClassPackage};
 
 /**
- * @description ${entity} 数据访问层
  * @author ${author}
+ * @description ${entity} 数据访问层
  * @date ${date}
  */
 public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {

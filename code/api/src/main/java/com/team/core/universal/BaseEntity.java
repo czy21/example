@@ -7,12 +7,12 @@ import lombok.Data;
 import java.time.LocalDateTime;
 
 /**
- * @description 实体基类
  * @author 陈昭宇
+ * @description 实体基类
  * @date 2018/7/26
  */
 @Data
-public class BaseEntity {
+public class BaseEntity<TEntity> {
 
     @TableField("added_time")
     private LocalDateTime addedTime;

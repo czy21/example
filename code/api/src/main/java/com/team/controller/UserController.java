@@ -20,13 +20,13 @@ import java.util.List;
 
 
 /**
- * @Description User 前端控制器
- * @Author 陈昭宇
- * @Date 2018-09-24
+ * @author 陈昭宇
+ * @description User 前端控制器
+ * @date 2018-09-24
  */
 @RestController
 @RequestMapping("api/user")
-@Api(tags = "User", description = "用户操作接口")
+@Api(tags = "User" , description = "用户操作接口")
 public class UserController {
 
     @Autowired
@@ -73,7 +73,7 @@ public class UserController {
 
     @PostMapping(value = "updateUserRole")
     @ApiOperation(value = "更新用户角色")
-    public String updateUserRole(String userId, @RequestParam(value = "userRoleIds[]", required = false) String[] userRoleIds) {
+    public String updateUserRole(String userId, @RequestParam(value = "userRoleIds[]" , required = false) String[] userRoleIds) {
         return userRoleService.insertOrUpdateUserRole(userId, userRoleIds);
     }
 

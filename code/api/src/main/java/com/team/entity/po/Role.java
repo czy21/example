@@ -1,36 +1,34 @@
 package com.team.entity.po;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.team.core.universal.BaseEntity;
 import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.experimental.Accessors;
 
 
 /**
- * 角色表
- *
  * @author 陈昭宇
- * @date 2018-12-09
+ * @description 角色表
+ * @date 2018-12-10
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class Role extends BaseEntity {
+public class Role extends BaseEntity<Role> {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId("role_id")
+    @TableId
     private String roleId;
     /**
      * 角色名称
      */
-    @TableField("role_name")
     private String roleName;
     /**
      * 备注
      */
-    @TableField("remark")
     private String remark;
-    @TableField("enabled")
     private Boolean enabled;
 }
