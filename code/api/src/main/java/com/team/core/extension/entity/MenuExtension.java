@@ -23,7 +23,33 @@ public class MenuExtension {
         private String menuName;
         private String icon;
         private String url;
+        private Integer sort;
         private List<Node> children = new ArrayList<>();
+
+        /**
+         * <Description> 孩子节点排序<br>
+         *
+         * @author lu.wei<br>
+         * @email 1025742048@qq.com <br>
+         * @date 2016年12月22日 下午10:54:26 <br>
+         * <br>
+         */
+        public void sortChildren() {
+            children.sort((menu1, menu2) -> {
+                int result = 0;
+                Integer ordby1 = menu1.getSort();
+                Integer ordby2 = menu2.getSort();
+
+                if (null != ordby1 && null != ordby2) {
+                    result = (ordby1 < ordby2 ? -1 : (ordby1.equals(ordby2) ? 0 : 1));
+                }
+                return result;
+            });
+            // 对每个节点的下一层节点进行排序
+            for (Node child : children) {
+                child.sortChildren();
+            }
+        }
     }
 
     private static MenuDao _dao;
@@ -59,16 +85,18 @@ public class MenuExtension {
                 dataMap.get(menu.getParentId()).getChildren().add(menu);
             }
         });
+        root.sortChildren();
         return root.getChildren();
     }
 
     public static List<Menu> getSons(List<Menu> list, String parentId) {
-        if (StringUtils.isEmpty(parentId)) {
-            return list.stream()
-                    .sorted(Comparator.comparing(Menu::getIsMenu).reversed().thenComparing(Menu::getSort, Comparator.nullsLast(Integer::compareTo)))
-                    .collect(Collectors.toList());
-        }
-        List<Menu> query = list.stream().filter(t -> t.getMenuId().equals(parentId)).collect(Collectors.toList());
+        List<Menu> query = list.stream().filter(t -> {
+            return StringUtils.isEmpty(parentId)?
+            if () {
+                return true;
+            }
+            return t.getMenuId().equals(parentId);
+        }).collect(Collectors.toList());
         query.addAll(getSonList(list, parentId));
         return query.stream().sorted(Comparator.comparing(Menu::getIsMenu).reversed()).collect(Collectors.toList());
     }
