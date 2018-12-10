@@ -26,14 +26,6 @@ public class MenuExtension {
         private Integer sort;
         private List<Node> children = new ArrayList<>();
 
-        /**
-         * <Description> 孩子节点排序<br>
-         *
-         * @author lu.wei<br>
-         * @email 1025742048@qq.com <br>
-         * @date 2016年12月22日 下午10:54:26 <br>
-         * <br>
-         */
         public void sortChildren() {
             children.sort((menu1, menu2) -> {
                 int result = 0;
@@ -45,7 +37,6 @@ public class MenuExtension {
                 }
                 return result;
             });
-            // 对每个节点的下一层节点进行排序
             for (Node child : children) {
                 child.sortChildren();
             }
@@ -59,7 +50,6 @@ public class MenuExtension {
     }
 
     public static List<SimpleItemModel> convertToSimple() {
-
         List<SimpleItemModel> simples = new ArrayList<>();
         _dao.selectList(new QueryWrapper<Menu>().lambda().eq(Menu::getIsMenu, true)).forEach((t) -> {
             SimpleItemModel temp = new SimpleItemModel();
@@ -90,13 +80,12 @@ public class MenuExtension {
     }
 
     public static List<Menu> getSons(List<Menu> list, String parentId) {
-        List<Menu> query = list.stream().filter(t -> {
-            return StringUtils.isEmpty(parentId)?
-            if () {
-                return true;
-            }
-            return t.getMenuId().equals(parentId);
-        }).collect(Collectors.toList());
+        if (StringUtils.isEmpty(parentId)) {
+            return list.stream()
+                    .sorted(Comparator.comparing(Menu::getIsMenu).reversed().thenComparing(Menu::getSort, Comparator.nullsLast(Integer::compareTo)))
+                    .collect(Collectors.toList());
+        }
+        List<Menu> query = list.stream().filter(t -> t.getMenuId().equals(parentId)).collect(Collectors.toList());
         query.addAll(getSonList(list, parentId));
         return query.stream().sorted(Comparator.comparing(Menu::getIsMenu).reversed()).collect(Collectors.toList());
     }
