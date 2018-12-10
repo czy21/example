@@ -49,32 +49,28 @@ public class MenuExtension {
         Node root = new Node();
         root.setParentId(StringExtension.GuidEmpty);
         Map<String, Node> dataMap = new HashMap<>();
-        for (Node menu : menus) {
-            dataMap.put(menu.getMenuId(), menu);
-        }
+        menus.forEach(t -> dataMap.put(t.getMenuId(), t));
         Set<Map.Entry<String, Node>> entrySet = dataMap.entrySet();
-        for (Map.Entry<String, Node> entry : entrySet) {
-            Node menu = entry.getValue();
+        entrySet.forEach(t -> {
+            Node menu = t.getValue();
             if (StringExtension.guidIsEmpty(menu.getParentId())) {
                 root.getChildren().add(menu);
             } else {
                 dataMap.get(menu.getParentId()).getChildren().add(menu);
             }
-        }
+        });
         return root.getChildren();
     }
 
     public static List<Menu> getSons(List<Menu> list, String parentId) {
-        list = list.stream()
-                .sorted(Comparator.comparing(Menu::getSort, Comparator.nullsLast(Integer::compareTo)))
-                .sorted(Comparator.comparing(Menu::getIsMenu).reversed())
-                .collect(Collectors.toList());
         if (StringUtils.isEmpty(parentId)) {
-            return list;
+            return list.stream()
+                    .sorted(Comparator.comparing(Menu::getIsMenu).reversed().thenComparing(Menu::getSort, Comparator.nullsLast(Integer::compareTo)))
+                    .collect(Collectors.toList());
         }
         List<Menu> query = list.stream().filter(t -> t.getMenuId().equals(parentId)).collect(Collectors.toList());
         query.addAll(getSonList(list, parentId));
-        return query;
+        return query.stream().sorted(Comparator.comparing(Menu::getIsMenu).reversed()).collect(Collectors.toList());
     }
 
     private static List<Menu> getSonList(List<Menu> list, String parentId) {
