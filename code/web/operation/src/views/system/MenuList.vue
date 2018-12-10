@@ -43,6 +43,7 @@
               {{scope.row.isMenu?'菜单':'权限'}}
             </template>
           </el-table-column>
+          <el-table-column prop="sort" label="排序"></el-table-column>
           <el-table-column prop="remark" label="菜单(权限)描述"></el-table-column>
           <el-table-column label="操作" width="260">
             <template slot-scope="scope">

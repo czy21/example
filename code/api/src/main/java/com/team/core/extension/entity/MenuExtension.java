@@ -131,4 +131,22 @@ public class MenuExtension {
         return simpleTreeModels;
     }
 
+    public static Integer SortValue(String url) {
+        if (url.endsWith("load")) {
+            return 1;
+        }
+        if (url.endsWith("search")) {
+            return 2;
+        }
+        if (url.endsWith("add")) {
+            return 3;
+        }
+        if (url.endsWith("edit")) {
+            return 4;
+        }
+        if (url.endsWith("modified")) {
+            return 5;
+        }
+        return null;
+    }
 }
