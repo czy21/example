@@ -9,9 +9,8 @@ import lombok.experimental.Accessors;
 
 
 /**
- * $!{table.comment}
- *
  * @author ${author}
+ * @description $!{table.comment}
  * @date ${date}
  */
 @Data
@@ -34,7 +33,7 @@ public class ${entity} extends ${superEntityClass}<${entity}> {
 #if(${field.keyFlag})
 ## 主键
 #if(${field.convert})
-    @TableId("${field.name}")
+    @TableId
 #end
 ## 普通字段
 #elseif(${field.fill})
@@ -44,8 +43,6 @@ public class ${entity} extends ${superEntityClass}<${entity}> {
 #else
     @TableField(fill = FieldFill.${field.fill})
 #end
-#elseif(${field.convert})
-    @TableField("${field.name}")
 #end
     private ${field.propertyType} ${field.propertyName};
 #end

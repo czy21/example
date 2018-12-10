@@ -4,12 +4,12 @@ import lombok.Data;
 
 @Data
 public class MenuDto {
-    private String MenuId;
-    private String ParentId;
-    private String MenuName;
-    private String Icon;
-    private Integer Sort;
-    private String Url;
-    private Boolean IsMenu;
-    private String Remark;
+    private String menuId;
+    private String parentId;
+    private String menuName;
+    private String icon;
+    private String url;
+    private Integer sort;
+    private Boolean isMenu;
+    private String remark;
 }

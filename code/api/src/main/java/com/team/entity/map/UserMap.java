@@ -21,7 +21,6 @@ public interface UserMap {
 
     List<UserDto> toUserDtos(List<User> users);
 
-
     @Mappings({
             @Mapping(source = "pageIndex", target = "page.pageIndex"),
             @Mapping(source = "pageSize", target = "page.pageSize"),
