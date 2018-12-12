@@ -34,10 +34,9 @@
                 <artifactId>maven-antrun-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>copy-lib-src-webapps</id>
                         <phase>package</phase>
                         <configuration>
-                            <tasks>
+                            <target>
                                 <!-- 你将要拷贝的位置 -->
                                 <copy todir="../target">
                                     <!-- 从哪里拷贝 -->
@@ -46,7 +45,7 @@
                                         <include name="*.jar"/>
                                     </fileset>
                                 </copy>
-                            </tasks>
+                            </target>
                         </configuration>
                         <goals>
                             <goal>run</goal>
