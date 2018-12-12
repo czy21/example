@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="erp-operation:war">
+    <output-path>$PROJECT_DIR$/erp-operation/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>erp-operation</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="erp-operation.war">
+      <element id="artifact" artifact-name="erp-operation:war exploded" />
+    </root>
+  </artifact>
+</component>

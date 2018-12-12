@@ -1,7 +1,7 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
-    <inspection_tool class="Duplicates" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="Duplicates" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="JavaDoc" enabled="false" level="WARNING" enabled_by_default="false">
       <option name="TOP_LEVEL_CLASS_OPTIONS">
         <value>
@@ -33,13 +33,8 @@
       <option name="IGNORE_POINT_TO_ITSELF" value="false" />
       <option name="myAdditionalJavadocTags" value="" />
     </inspection_tool>
-    <inspection_tool class="SpellCheckingInspection" enabled="false" level="TYPO" enabled_by_default="false">
-      <option name="processCode" value="true" />
-      <option name="processLiterals" value="true" />
-      <option name="processComments" value="true" />
-    </inspection_tool>
+    <inspection_tool class="RedundantSuppression" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="SpringJavaAutowiredFieldsWarningInspection" enabled="false" level="WARNING" enabled_by_default="false" />
-    <inspection_tool class="SpringJavaAutowiredMembersInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="SpringJavaInjectionPointsAutowiringInspection" enabled="false" level="ERROR" enabled_by_default="false" />
     <inspection_tool class="UNCHECKED_WARNING" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="UnusedReturnValue" enabled="false" level="WARNING" enabled_by_default="false" />

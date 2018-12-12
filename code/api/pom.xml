@@ -6,15 +6,19 @@
     <groupId>team3059</groupId>
     <artifactId>erp</artifactId>
     <version>1000</version>
-    <packaging>jar</packaging>
-
+    <modules>
+        <module>erp-application</module>
+        <module>erp-domain</module>
+        <module>erp-operation</module>
+    </modules>
+    <packaging>pom</packaging>
     <name>erp</name>
-    <description>erp project for Spring Boot</description>
+    <description>erp project for spring boot</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.0.RELEASE</version>
+        <version>2.1.1.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -126,18 +130,25 @@
             <scope>test</scope>
         </dependency>
         <!--热启动-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <optional>true</optional>
-        </dependency>
     </dependencies>
     <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <mainClass>com.team.StartupApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
+
+
 </project>
