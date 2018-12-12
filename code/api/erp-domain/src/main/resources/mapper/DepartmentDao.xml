@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.dal.system.DepartmentDao">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.team.entity.system.Department">
+        <id column="department_id" property="departmentId" />
+        <result column="added_time" property="addedTime" />
+        <result column="modified_time" property="modifiedTime" />
+        <result column="added_user" property="addedUser" />
+        <result column="modified_user" property="modifiedUser" />
+        <result column="parent_id" property="parentId" />
+        <result column="department_name" property="departmentName" />
+        <result column="phone" property="phone" />
+        <result column="remark" property="remark" />
+        <result column="company_id" property="companyId" />
+        <result column="enabled" property="enabled" />
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        added_time,
+        modified_time,
+        added_user,
+        modified_user,
+        department_id
+        parent_id
+        department_name
+        phone
+        remark
+        company_id
+        enabled
+    </sql>
+
+</mapper>
