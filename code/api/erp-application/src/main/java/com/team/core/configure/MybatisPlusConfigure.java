@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootConfiguration
 @EnableTransactionManagement
-@MapperScan(value = "com.team.dao*")
+@MapperScan(basePackages = "com.team.dao")
 public class MybatisPlusConfigure {
 
     @Bean
@@ -31,4 +31,6 @@ public class MybatisPlusConfigure {
         bean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
         return bean;
     }
+
+
 }
