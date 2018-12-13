@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootConfiguration
 @EnableTransactionManagement
-@MapperScan(value = "com.team.dal*")
+@MapperScan(value = "com.team.dao*")
 public class MybatisPlusConfigure {
 
     @Bean

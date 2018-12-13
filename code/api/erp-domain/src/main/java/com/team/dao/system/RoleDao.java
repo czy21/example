@@ -1,6 +1,6 @@
-package com.team.dal.system;
+package com.team.dao.system;
 
-import com.team.dal.BaseDao;
+import com.team.dao.BaseDao;
 import com.team.entity.system.Role;
 
 /**

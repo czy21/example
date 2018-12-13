@@ -5,7 +5,7 @@ import com.team.exception.ErrorCode;
 import com.team.exception.WebException;
 import com.team.extension.ArrayExtension;
 import com.team.core.universal.BaseServiceImpl;
-import com.team.dal.system.RoleMenuDao;
+import com.team.dao.system.RoleMenuDao;
 import com.team.entity.system.Menu;
 import com.team.entity.system.RoleMenu;
 import com.team.service.MenuService;
