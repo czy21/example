@@ -6,7 +6,7 @@ public class ProjectConstant {
     public static final String BASE_PACKAGE = "com.team";
 
     // Model所在包
-    public static final String MODEL_PACKAGE = BASE_PACKAGE + ".model.po";
+    public static final String MODEL_PACKAGE = BASE_PACKAGE + ".entity";
 
     // Mapper所在包
     public static final String MAPPER_PACKAGE = BASE_PACKAGE + ".dao";
