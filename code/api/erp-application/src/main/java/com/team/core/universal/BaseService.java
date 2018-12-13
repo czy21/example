@@ -3,6 +3,7 @@ package com.team.core.universal;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
+import com.team.entity.page.PageModel;
 import com.team.util.PageUtil;
 import com.team.entity.BaseEntity;
 

@@ -1,4 +1,4 @@
-package com.team.entity.dto;
+package com.team.entity.page;
 
 import lombok.Data;
 

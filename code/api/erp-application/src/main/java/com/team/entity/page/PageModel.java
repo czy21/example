@@ -1,4 +1,4 @@
-package com.team.core.universal;
+package com.team.entity.page;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageSerializable;
