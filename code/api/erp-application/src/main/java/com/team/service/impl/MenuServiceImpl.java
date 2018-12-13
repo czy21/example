@@ -35,6 +35,7 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
     private MenuMap menuMap;
 
     @Override
+    @SuppressWarnings("unchecked")
     public PageDto<MenuDto> getMenuAndPermissionPageListBy(SearchPermissionModel search) {
         QueryWrapper<Menu> query = new QueryWrapper<>();
         query.lambda().orderByDesc(Menu::getIsMenu);

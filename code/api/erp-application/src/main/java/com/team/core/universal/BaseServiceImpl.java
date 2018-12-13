@@ -11,6 +11,7 @@ import com.team.dao.BaseDao;
 import com.team.entity.BaseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.annotation.Resource;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import java.util.List;
  * @Author 陈昭宇
  * @Date 2018/7/26
  */
+@SuppressWarnings("unchecked")
 public class BaseServiceImpl<TEntity extends BaseEntity> implements BaseService<TEntity> {
 
     @Autowired
@@ -26,7 +28,7 @@ public class BaseServiceImpl<TEntity extends BaseEntity> implements BaseService<
 
     protected Class<TEntity> modelClass;
 
-    @SuppressWarnings("unchecked")
+
     protected BaseServiceImpl() {
         ParameterizedType pt = (ParameterizedType) this.getClass().getGenericSuperclass();
         modelClass = (Class<TEntity>) pt.getActualTypeArguments()[0];
