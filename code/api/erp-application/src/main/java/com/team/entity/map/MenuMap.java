@@ -1,7 +1,7 @@
 package com.team.entity.map;
 
 import com.team.extension.entity.MenuExtension;
-import com.team.core.universal.PageModel;
+import com.team.entity.page.PageModel;
 import com.team.util.PageUtil;
 import com.team.entity.system.Menu;
 import com.team.entity.dto.MenuDto;

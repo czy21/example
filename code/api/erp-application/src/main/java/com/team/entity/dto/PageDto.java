@@ -1,5 +1,6 @@
 package com.team.entity.dto;
 
+import com.team.entity.page.PageParams;
 import lombok.Data;
 
 import java.util.List;

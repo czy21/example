@@ -1,6 +1,6 @@
 package com.team.entity.map;
 
-import com.team.core.universal.PageModel;
+import com.team.entity.page.PageModel;
 import com.team.entity.system.User;
 import com.team.entity.dto.AccountDto;
 import com.team.entity.dto.PageDto;
