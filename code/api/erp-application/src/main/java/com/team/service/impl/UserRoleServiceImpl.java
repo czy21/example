@@ -16,6 +16,7 @@ import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Description UserRole 服务实现类
@@ -28,28 +29,24 @@ public class UserRoleServiceImpl extends BaseServiceImpl<UserRole> implements Us
     @Resource
     private UserService userService;
 
-    @Override
-    public List<String> getRolesByUserId(String userId) {
+    private QueryWrapper<UserRole> queryByUserId(String userId) {
         if (StringUtils.isEmpty(userId)) {
             throw new WebException(ErrorCode.ID_NO_NULL, "用户Id不能为空");
         }
-        List<String> roleIds = new ArrayList<>();
         QueryWrapper<UserRole> query = new QueryWrapper<>();
         query.lambda().eq(UserRole::getUserId, userId);
-        super.SelectListBy(query).forEach(t -> roleIds.add(t.getRoleId()));
-        return roleIds;
+        return query;
+    }
+
+    @Override
+    public List<String> getRolesByUserId(String userId) {
+        return super.SelectListBy(queryByUserId(userId)).stream().map(UserRole::getRoleId).collect(Collectors.toList());
     }
 
     @Override
     @Transactional
     public String insertOrUpdateUserRole(String userId, String[] userRoleIds) {
-        if (StringUtils.isEmpty(userId)) {
-            throw new WebException(ErrorCode.ID_NO_NULL, "用户Id不能为空");
-        }
-        QueryWrapper<UserRole> query = new QueryWrapper<>();
-        query.lambda().eq(UserRole::getUserId, userId);
-        super.baseDao.delete(query);
-
+        super.baseDao.delete(queryByUserId(userId));
         if (!ArrayExtension.isEmpty(userRoleIds)) {
             Arrays.asList(userRoleIds).forEach(t -> {
                 UserRole userRole = new UserRole();
@@ -60,4 +57,6 @@ public class UserRoleServiceImpl extends BaseServiceImpl<UserRole> implements Us
         }
         return userService.SelectById(userId).getUserName();
     }
+
+
 }
