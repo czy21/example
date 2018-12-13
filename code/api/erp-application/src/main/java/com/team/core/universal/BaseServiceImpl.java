@@ -7,7 +7,7 @@ import com.github.pagehelper.PageHelper;
 import com.team.entity.page.PageModel;
 import com.team.util.DateTimeUtil;
 import com.team.util.PageUtil;
-import com.team.dal.BaseDao;
+import com.team.dao.BaseDao;
 import com.team.entity.BaseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 

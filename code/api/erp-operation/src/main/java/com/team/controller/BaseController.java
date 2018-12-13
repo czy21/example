@@ -2,7 +2,7 @@ package com.team.controller;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.team.dal.system.MenuDao;
+import com.team.dao.system.MenuDao;
 import com.team.entity.system.Menu;
 import org.apache.http.ParseException;
 import org.apache.http.client.methods.CloseableHttpResponse;

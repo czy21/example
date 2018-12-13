@@ -1,7 +1,7 @@
 package com.team.service.impl;
 
 import com.team.core.universal.BaseServiceImpl;
-import com.team.dal.system.LogDao;
+import com.team.dao.system.LogDao;
 import com.team.entity.system.Log;
 import com.team.service.LogService;
 import org.springframework.stereotype.Service;

@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.extension.StringExtension;
 import com.team.model.SimpleItemModel;
 import com.team.model.SimpleTreeModel;
-import com.team.dal.system.MenuDao;
+import com.team.dao.system.MenuDao;
 import com.team.entity.system.Menu;
 import lombok.Data;
 import org.springframework.stereotype.Component;

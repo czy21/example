@@ -1,7 +1,7 @@
 package com.team.extension.entity;
 
 import com.team.model.SimpleItemModel;
-import com.team.dal.system.CompanyDao;
+import com.team.dao.system.CompanyDao;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

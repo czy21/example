@@ -1,4 +1,4 @@
-package com.team.dal;
+package com.team.dao;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
