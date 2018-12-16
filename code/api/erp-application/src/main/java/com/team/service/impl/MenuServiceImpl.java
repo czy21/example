@@ -53,6 +53,9 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
         if (super.SelectBy(Menu::getMenuName, dto.getMenuName()) != null) {
             throw new WebException(ErrorCode.NAME_EXIST, "菜单或权限名称已存在");
         }
+        QueryWrapper<Menu> countQuery = new QueryWrapper<>();
+        countQuery.lambda().eq(Menu::getParentId, dto.getMenuId());
+        dto.setSort(super.SelectListBy(countQuery).stream().map(Menu::getSort).reduce(0, Integer::max));
         return menuMap.toMenuDto(super.InsertAndGetEntity(menuMap.toMenu(dto)));
     }
 
