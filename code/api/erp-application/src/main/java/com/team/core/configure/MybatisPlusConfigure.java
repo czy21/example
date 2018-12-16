@@ -8,5 +8,5 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableTransactionManagement
 @MapperScan(basePackages = "com.team.dao")
 public class MybatisPlusConfigure {
-    
+
 }
