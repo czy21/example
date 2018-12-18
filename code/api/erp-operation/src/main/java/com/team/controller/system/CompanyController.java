@@ -1,4 +1,4 @@
-package com.team.controller;
+package com.team.controller.system;
 
 
 import io.swagger.annotations.Api;

@@ -1,4 +1,4 @@
-package com.team.controller;
+package com.team.controller.basic;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -20,9 +20,6 @@ import java.io.IOException;
 @RestController
 @RequestMapping("/")
 public class BaseController {
-
-    @Autowired
-    private MenuDao menuDao;
 
     @GetMapping("/")
     public String Index() {
@@ -53,14 +50,5 @@ public class BaseController {
             }
         }
         return null;
-    }
-
-    @GetMapping("Test")
-    public Object Test() {
-
-        QueryWrapper<Menu> queryWrapper = new QueryWrapper<>();
-        queryWrapper.lambda().eq(Menu::getIsMenu, true);
-       return menuDao.selectList(queryWrapper);
-
     }
 }

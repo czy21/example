@@ -12,27 +12,27 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 
-@ControllerAdvice
-public class ResponseConfigure implements ResponseBodyAdvice {
-
-    @Override
-    public boolean supports(MethodParameter returnType, Class converterType) {
-        return true;
-    }
-
-    @Override
-    public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        if (request.getURI().getPath().startsWith("/api")) {
-            HashMap<String, Object> res = new HashMap<>();
-            if (returnType.hasMethodAnnotation(Pocket.class)) {
-                Pocket pocket = returnType.getMethodAnnotation(Pocket.class);
-                if (pocket != null) {
-                    res.put("pocket", PocketConfigure.InjectData(Arrays.asList(pocket.entity())));
-                }
-            }
-            res.put("data", body);
-            return res;
-        }
-        return body;
-    }
-}
+//@ControllerAdvice
+//public class ResponseConfigure implements ResponseBodyAdvice {
+//
+//    @Override
+//    public boolean supports(MethodParameter returnType, Class converterType) {
+//        return true;
+//    }
+//
+//    @Override
+//    public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
+//        if (request.getURI().getPath().startsWith("/api")) {
+//            HashMap<String, Object> res = new HashMap<>();
+//            if (returnType.hasMethodAnnotation(Pocket.class)) {
+//                Pocket pocket = returnType.getMethodAnnotation(Pocket.class);
+//                if (pocket != null) {
+//                    res.put("pocket", PocketConfigure.InjectData(Arrays.asList(pocket.entity())));
+//                }
+//            }
+//            res.put("data", body);
+//            return res;
+//        }
+//        return body;
+//    }
+//}
