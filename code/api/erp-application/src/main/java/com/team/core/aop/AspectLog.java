@@ -33,7 +33,7 @@ public class AspectLog {
     }
 
     @Before("methodCachePointcut()")
-    public void doBefore(JoinPoint point) throws Exception {
+    public void doBefore(JoinPoint point) {
         Log sysLog = getSystemLogInit(point);
         sysLog.setLogType(Log.logInfo);
         logQueue.add(sysLog);
@@ -46,7 +46,7 @@ public class AspectLog {
      * @param e
      */
     @AfterThrowing(pointcut = "methodCachePointcut()", throwing = "e")
-    public void doAfterThrowing(JoinPoint p, Throwable e) throws Throwable {
+    public void doAfterThrowing(JoinPoint p, Throwable e) {
         //业务异常不用记录
         if (!(e instanceof ServiceException)) {
             try {
@@ -67,7 +67,7 @@ public class AspectLog {
         try {
             String targetClass = p.getTarget().getClass().getSimpleName();
             String tartgetMethod = p.getSignature().getName();
-            sysLog.setDescription(getMthodRemark(p));
+            sysLog.setDescription(getMethodRemark(p));
             sysLog.setMethod(targetClass + "->" + tartgetMethod);
             sysLog.setRequestIp(HttpClientUtil.getClientIp());
             sysLog.setUserId(JwtUtil.getCurrentUser().getUserId());
@@ -86,7 +86,7 @@ public class AspectLog {
      * @return
      * @throws Exception
      */
-    private static String getMthodRemark(JoinPoint joinPoint) throws Exception {
+    private static String getMethodRemark(JoinPoint joinPoint) throws Exception {
         String targetName = joinPoint.getTarget().getClass().getName();
         String methodName = joinPoint.getSignature().getName();
         Class targetClass = Class.forName(targetName);

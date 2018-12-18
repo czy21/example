@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/aop/AspectResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/configure/MybatisPlusConfigure.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/configure/MybatisPlusConfigure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/MenuList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/MenuList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/aop/AspectLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/aop/AspectLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/configure/ResponseConfigure.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/configure/ResponseConfigure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/extension/ArrayExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/extension/ArrayExtension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/extension/entity/MenuExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/extension/entity/MenuExtension.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/BaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -16,17 +22,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/views/system/MenuList.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="249" column="42" selection-start-line="249" selection-start-column="42" selection-end-line="249" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -125,11 +121,11 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="701" />
-    <option name="y" value="200" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="685" />
+    <option name="y" value="177" />
     <option name="width" value="1070" />
-    <option name="height" value="758" />
+    <option name="height" value="730" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -151,27 +147,6 @@
               <item name="operation" type="b2602c69:ProjectViewProjectNode" />
               <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
               <item name="operation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="system" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -321,20 +296,21 @@
       <workItem from="1544444109273" duration="1547000" />
       <workItem from="1544677693446" duration="606000" />
       <workItem from="1544927747849" duration="1660000" />
+      <workItem from="1545102042698" duration="607000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="319762000" />
+    <option name="totallyTimeSpent" value="320369000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="685" y="177" width="1070" height="730" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="npm" order="1" side_tool="true" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.16807166" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.2974806" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30151844" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" weight="0.18546638" />
@@ -663,8 +639,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/system/MenuList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="249" column="42" selection-start-line="249" selection-start-column="42" selection-end-line="249" selection-end-column="42" />
+        <state relative-caret-position="510">
+          <caret line="252" column="40" selection-start-line="252" selection-start-column="40" selection-end-line="252" selection-end-column="40" />
+          <folding>
+            <element signature="n#style#0;n#el-option#0;n#el-select#0;n#el-form-item#5;n#el-form#0;n#el-dialog#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#el-option#0;n#el-select#0;n#el-form-item#4;n#el-form#0;n#el-dialog#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

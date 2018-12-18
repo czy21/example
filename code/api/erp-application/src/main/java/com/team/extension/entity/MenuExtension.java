@@ -101,9 +101,9 @@ public class MenuExtension {
     }
 
     public static List<SimpleTreeModel> transPermissionToRadioGroups() {
-        QueryWrapper<Menu> queryMenu = new QueryWrapper<>();
-        queryMenu.lambda().ne(Menu::getUrl, "#");
-        List<Menu> menus = _dao.selectList(queryMenu);
+        QueryWrapper<Menu> query = new QueryWrapper<>();
+        query.lambda().ne(Menu::getUrl, "#");
+        List<Menu> menus = _dao.selectList(query);
         List<SimpleTreeModel> simpleTreeModels = new ArrayList<>();
         menus.stream().filter(t -> t.getIsMenu().equals(true)).forEach(t -> {
             SimpleTreeModel rootNode = new SimpleTreeModel();
@@ -124,29 +124,10 @@ public class MenuExtension {
         permissions.forEach(t -> {
             SimpleTreeModel simpleTreeModel = new SimpleTreeModel();
             simpleTreeModel.setValue(t.getMenuId());
-            simpleTreeModel.setParentId(t.getParentId());
             simpleTreeModel.setLabel(t.getMenuName());
+            simpleTreeModel.setParentId(t.getParentId());
             simpleTreeModels.add(simpleTreeModel);
         });
         return simpleTreeModels;
-    }
-
-    public static Integer SortValue(String url) {
-        if (url.endsWith("load")) {
-            return 1;
-        }
-        if (url.endsWith("search")) {
-            return 2;
-        }
-        if (url.endsWith("add")) {
-            return 3;
-        }
-        if (url.endsWith("edit")) {
-            return 4;
-        }
-        if (url.endsWith("modified")) {
-            return 5;
-        }
-        return null;
     }
 }
