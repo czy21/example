@@ -3,19 +3,21 @@
 <mapper namespace="com.team.dao.system.LogDao">
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.team.entity.system.Log">
-        <id column="log_id" property="logId" />
-        <result column="added_time" property="addedTime" />
-        <result column="description" property="description" />
-        <result column="method" property="method" />
-        <result column="log_type" property="logType" />
-        <result column="request_ip" property="requestIp" />
-        <result column="exception_code" property="exceptionCode" />
-        <result column="exception_detail" property="exceptionDetail" />
-        <result column="user_id" property="userId" />
+        <id column="log_id" property="logId"/>
+        <result column="added_time" property="addedTime"/>
+        <result column="description" property="description"/>
+        <result column="method" property="method"/>
+        <result column="log_type" property="logType"/>
+        <result column="request_ip" property="requestIp"/>
+        <result column="exception_code" property="exceptionCode"/>
+        <result column="exception_detail" property="exceptionDetail"/>
+        <result column="user_id" property="userId"/>
+        <result column="spend_time" property="spendTime"/>
     </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        added_time,
+        added_time
+        ,
         log_id
         description
         method
@@ -26,7 +28,8 @@
         user_id
     </sql>
     <insert id="insertByBatch" parameterType="java.util.List">
-        insert into sys_log(log_id,description, method,log_type,request_ip,exception_code,exception_detail, user_id,added_time)
+        insert into sys_log(log_id,description, method,log_type,request_ip,exception_code,exception_detail,
+        user_id,added_time,spend_time)
         values
         <foreach collection="list" item="item" index="index" separator=",">
             (
@@ -38,7 +41,8 @@
             #{item.exceptionCode,jdbcType=VARCHAR},
             #{item.exceptionDetail,jdbcType=VARCHAR},
             #{item.userId,jdbcType=VARCHAR},
-            #{item.addedTime,jdbcType=TIMESTAMP}
+            #{item.addedTime,jdbcType=TIMESTAMP},
+            #{item.spendTime,jdbcType=INTEGER}
             )
         </foreach>
 
