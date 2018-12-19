@@ -1,5 +1,6 @@
 package com.team.core.aop;
 
+import com.team.dao.system.LogDao;
 import com.team.entity.system.Log;
 import com.team.service.LogService;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +21,7 @@ public class LogConsumer implements Runnable {
     private LogQueue auditLogQueue;
 
     @Resource
-    private LogService logService;
+    private LogDao logDao;
 
     public static final int DEFAULT_BATCH_SIZE = 64;
 
@@ -68,7 +69,7 @@ public class LogConsumer implements Runnable {
         }
         if (!logs.isEmpty()) {
             try {
-                logService.insertByBatch(logs);
+                logDao.insertByBatch(logs);
             } catch (Exception e) {
                 log.error("异常信息:{}", e.getMessage());
             }

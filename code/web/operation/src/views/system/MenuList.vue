@@ -78,9 +78,6 @@
           <el-form-item label="图标" prop="icon">
             <el-input v-model="menuAddForm.icon" placeholder="请输入图标的class名称" :disabled="!isMenu"></el-input>
           </el-form-item>
-          <el-form-item label="排序" prop="sort">
-            <el-input v-model="menuAddForm.sort"></el-input>
-          </el-form-item>
           <el-form-item label="链接地址" prop="url">
             <el-input v-model="menuAddForm.url"
                       :placeholder="isMenu
@@ -123,6 +120,9 @@
           </el-form-item>
           <el-form-item label="图标" prop="icon">
             <el-input v-model="menuEditForm.icon" placeholder="请输入图标的class名称" :disabled="!isMenu"></el-input>
+          </el-form-item>
+          <el-form-item label="排序" prop="sort">
+            <el-input v-model="menuEditForm.sort"></el-input>
           </el-form-item>
           <el-form-item label="链接地址" prop="url">
             <el-input v-model="menuEditForm.url"
@@ -247,13 +247,12 @@
             this.menuAddForm.isMenu = this.isMenu
             this.$helper.eui.actWithValidation("menuAddForm", () => {
               this.menuAddShow = false
-              console.log(this.menuAddForm)
-              // this.$api.post("menu/add", this.menuAddForm).then(() => {
-              //   this.$helper.eui.inform(`<strong>${this.menuAddForm.menuName}</strong> 添加成功`, () => {
-              //     this.$refs['menuAddForm'].resetFields();
-              //     this.load("menu/load")
-              //   })
-              // })
+              this.$api.post("menu/add", this.menuAddForm).then(() => {
+                this.$helper.eui.inform(`<strong>${this.menuAddForm.menuName}</strong> 添加成功`, () => {
+                  this.$refs['menuAddForm'].resetFields();
+                  this.load("menu/load")
+                })
+              })
             })
             break;
 

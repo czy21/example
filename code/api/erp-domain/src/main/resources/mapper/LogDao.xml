@@ -17,7 +17,6 @@
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         added_time
-        ,
         log_id
         description
         method
@@ -27,6 +26,11 @@
         exception_detail
         user_id
     </sql>
+    <select id="selectLogList" resultType="com.team.entity.system.Log">
+        select l.*,u.user_name as operator_name
+        from sys_log l
+                 left join sys_user u on u.user_id = l.user_id
+    </select>
     <insert id="insertByBatch" parameterType="java.util.List">
         insert into sys_log(log_id,description, method,log_type,request_ip,exception_code,exception_detail,
         user_id,added_time,spend_time)

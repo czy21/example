@@ -5,6 +5,9 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.team.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import net.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
+
+import java.time.LocalDateTime;
 
 
 /**
@@ -52,15 +55,24 @@ public class Log extends BaseEntity {
      * 请求时长
      */
     private Integer spendTime;
+
+    @TableField(exist = false)
+    private String operatorName;
     /**
      * 日志类型为正常
      */
     @TableField(exist = false)
     public static final Boolean logInfo = false;
-
     /**
      * 日志类型为异常
      */
     @TableField(exist = false)
     public static final Boolean logError = true;
+
+    @TableField(exist = false)
+    private LocalDateTime modifiedTime;
+    @TableField(exist = false)
+    private String addedUser;
+    @TableField(exist = false)
+    private String modifiedUser;
 }

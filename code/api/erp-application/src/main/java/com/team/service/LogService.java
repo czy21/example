@@ -1,16 +1,20 @@
 package com.team.service;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.core.universal.BaseService;
+import com.team.entity.dto.LogDto;
+import com.team.entity.dto.PageDto;
+import com.team.entity.page.PageParams;
 import com.team.entity.system.Log;
 
 import java.util.List;
 
 /**
- * @description Log 服务类
  * @author 陈昭宇
+ * @description Log 服务类
  * @since 2018-10-28
  */
 public interface LogService extends BaseService<Log> {
 
-    Integer insertByBatch(List<Log> list);
+    PageDto<LogDto> getLogPageListBy(PageParams params, QueryWrapper<Log> query);
 }
