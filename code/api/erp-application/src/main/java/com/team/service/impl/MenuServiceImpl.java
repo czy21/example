@@ -55,7 +55,7 @@ public class MenuServiceImpl extends BaseServiceImpl<Menu> implements MenuServic
         }
         QueryWrapper<Menu> countQuery = new QueryWrapper<>();
         countQuery.lambda().eq(Menu::getParentId, dto.getMenuId());
-        dto.setSort(super.SelectListBy(countQuery).stream().map(Menu::getSort).reduce(0, Integer::max));
+        dto.setSort(super.SelectListBy(countQuery).stream().map(Menu::getSort).reduce(0, Integer::max) + 1);
         return menuMap.toMenuDto(super.InsertAndGetEntity(menuMap.toMenu(dto)));
     }
 

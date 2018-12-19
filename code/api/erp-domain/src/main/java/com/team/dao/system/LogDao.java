@@ -13,4 +13,6 @@ import java.util.List;
 public interface LogDao extends BaseDao<Log> {
 
     Integer insertByBatch(List<Log> list);
+
+    List<Log> selectLogList();
 }

@@ -2,6 +2,7 @@ import UserList from '@/views/system/UserList'
 import MenuList from '@/views/system/MenuList'
 import RoleList from '@/views/system/RoleList'
 import DepartmentList from '@/views/system/DepartmentList'
+import LogList from '@/views/system/LogList'
 
 export default [
   {
@@ -27,5 +28,11 @@ export default [
     path: '/system/department',
     component: DepartmentList,
     meta: {title: "部门管理"}
+  },
+  {
+    name: "LogList",
+    path: '/system/log',
+    component: LogList,
+    meta: {title: "系统日志"}
   },
 ]
