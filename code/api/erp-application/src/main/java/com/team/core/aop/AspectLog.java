@@ -39,7 +39,8 @@ public class AspectLog {
     public void doAfterReturning(JoinPoint point) {
         Log sysLog = getSystemLogInit(point);
         sysLog.setLogType(Log.logInfo);
-        sysLog.setSpendTime(Math.toIntExact(System.currentTimeMillis() - startTime.get()));
+        long endTime = System.currentTimeMillis() - startTime.get();
+        sysLog.setSpendTime((int) endTime);
         logQueue.add(sysLog);
     }
 
