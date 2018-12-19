@@ -8,10 +8,7 @@ import com.team.entity.system.Log;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
-import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
@@ -24,27 +21,28 @@ public class AspectLog {
     @Resource
     private LogQueue logQueue;
 
-    /*
-    定义切点
-     */
+    ThreadLocal<Long> startTime = new ThreadLocal<>();
+
+
     @Pointcut("@annotation(io.swagger.annotations.ApiOperation)")
     public void methodCachePointcut() {
 
     }
 
     @Before("methodCachePointcut()")
-    public void doBefore(JoinPoint point) {
+    public void doBefore() {
+        startTime.set(System.currentTimeMillis());
+    }
+
+
+    @AfterReturning("methodCachePointcut()")
+    public void doAfterReturning(JoinPoint point) {
         Log sysLog = getSystemLogInit(point);
         sysLog.setLogType(Log.logInfo);
+        sysLog.setSpendTime(Math.toIntExact(System.currentTimeMillis() - startTime.get()));
         logQueue.add(sysLog);
     }
 
-    /**
-     * 调用后的异常处理
-     *
-     * @param p
-     * @param e
-     */
     @AfterThrowing(pointcut = "methodCachePointcut()", throwing = "e")
     public void doAfterThrowing(JoinPoint p, Throwable e) {
         //业务异常不用记录

@@ -49,6 +49,10 @@ public class Log extends BaseEntity {
      */
     private String userId;
     /**
+     * 请求时长
+     */
+    private Integer spendTime;
+    /**
      * 日志类型为正常
      */
     @TableField(exist = false)
