@@ -9,17 +9,17 @@
     <div class="container">
       <!-- 列表 -->
       <el-table :data="list" border highlight-current-row>
-        <el-table-column prop="description" label="API名称" width="150"></el-table-column>
-        <el-table-column prop="method" label="方法名" width="200"></el-table-column>
-        <el-table-column label="请求状态" width="80">
+        <el-table-column prop="description" label="API名称" width="180"></el-table-column>
+        <el-table-column prop="method" label="方法名" width="280"></el-table-column>
+        <el-table-column prop="requestIp" label="请求IP" width="150"></el-table-column>
+        <el-table-column prop="exceptionCode" label="异常代码"></el-table-column>
+        <el-table-column prop="exceptionDetail" label="异常描述"></el-table-column>
+        <el-table-column label="状态" width="60">
           <template slot-scope="scope">
             {{scope.row.logType?'失败':'成功'}}
           </template>
         </el-table-column>
-        <el-table-column prop="requestIp" label="请求IP" width="100"></el-table-column>
-        <el-table-column prop="exceptionCode" label="异常代码"></el-table-column>
-        <el-table-column prop="exceptionDetail" label="异常描述"></el-table-column>
-        <el-table-column prop="operatorName" label="操作人" width="100"></el-table-column>
+        <el-table-column prop="operatorName" label="操作人" width="60"></el-table-column>
         <el-table-column prop="addedTime" label="执行日期" width="150"></el-table-column>
         <el-table-column prop="spendTime" label="执行时长(ms)" width="100"></el-table-column>
       </el-table>
