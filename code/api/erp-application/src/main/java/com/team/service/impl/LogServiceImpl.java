@@ -10,8 +10,10 @@ import com.team.entity.map.LogMap;
 import com.team.entity.page.PageModel;
 import com.team.entity.page.PageParams;
 import com.team.entity.system.Log;
+import com.team.model.SeachLogModel;
 import com.team.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -31,11 +33,8 @@ public class LogServiceImpl extends BaseServiceImpl<Log> implements LogService {
     private LogDao logDao;
 
     @Override
-    public PageDto<LogDto> getLogPageListBy(PageParams params, QueryWrapper<Log> query) {
-        if (query == null) {
-            query = new QueryWrapper<>();
-        }
-        PageHelper.startPage(params.getPageIndex(), params.getPageSize());
-        return logMap.toPageDto(new PageModel<>(logDao.selectLogList()));
+    public PageDto<LogDto> getLogPageListBy(SeachLogModel search) {
+        PageHelper.startPage(search.getPageIndex(), search.getPageSize());
+        return logMap.toPageDto(new PageModel<>(logDao.selectLogList(null, search.getAddedTimeSort())));
     }
 }

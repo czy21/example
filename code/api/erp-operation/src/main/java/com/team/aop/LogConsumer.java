@@ -1,8 +1,7 @@
-package com.team.core.aop;
+package com.team.aop;
 
 import com.team.dao.system.LogDao;
 import com.team.entity.system.Log;
-import com.team.service.LogService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
