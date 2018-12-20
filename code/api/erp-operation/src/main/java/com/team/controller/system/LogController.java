@@ -1,5 +1,6 @@
 package com.team.controller.system;
 
+import com.team.core.annotations.NoLog;
 import com.team.core.configure.Pocket;
 import com.team.dao.system.LogDao;
 import com.team.entity.dto.LogDto;
@@ -8,6 +9,7 @@ import com.team.entity.dto.UserDto;
 import com.team.entity.map.LogMap;
 import com.team.entity.page.PageParams;
 import com.team.entity.system.Department;
+import com.team.model.SeachLogModel;
 import com.team.model.SearchUserModel;
 import com.team.service.LogService;
 import io.swagger.annotations.Api;
@@ -31,16 +33,18 @@ public class LogController {
     @Autowired
     private LogService logService;
 
+    @NoLog
     @GetMapping("load")
     @ApiOperation(value = "加载日志列表")
-    public PageDto<LogDto> Load(PageParams search) {
-        return logService.getLogPageListBy(search, null);
+    public PageDto<LogDto> Load(SeachLogModel search) {
+        return logService.getLogPageListBy(search);
     }
 
+    @NoLog
     @PostMapping("search")
     @ApiOperation(value = "查询日志列表")
-    public PageDto<LogDto> Search(SearchUserModel search) {
-        return logService.getLogPageListBy(search, null);
+    public PageDto<LogDto> Search(SeachLogModel search) {
+        return logService.getLogPageListBy(search);
     }
 
 }

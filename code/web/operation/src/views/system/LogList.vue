@@ -3,12 +3,12 @@
     <div class="handle-box">
       <div class="search-box">
         <el-input placeholder="关键词" style="width:200px"></el-input>
-        <el-button type="primary" icon="el-icon-search" @click="search">查询</el-button>
+        <el-button type="primary" icon="el-icon-search" @click="search();clearSort()">查询</el-button>
       </div>
     </div>
     <div class="container">
       <!-- 列表 -->
-      <el-table :data="list" border highlight-current-row>
+      <el-table :data="list" border highlight-current-row @sort-change='sortChange'>
         <el-table-column prop="description" label="API名称" width="180"></el-table-column>
         <el-table-column prop="method" label="方法名" width="280"></el-table-column>
         <el-table-column prop="requestIp" label="请求IP" width="150"></el-table-column>
@@ -20,7 +20,8 @@
           </template>
         </el-table-column>
         <el-table-column prop="operatorName" label="操作人" width="60"></el-table-column>
-        <el-table-column prop="addedTime" label="执行日期" width="150"></el-table-column>
+        <el-table-column prop="addedTime" label="执行日期" width="150" sortable="custom"
+                         ref="addedTimeSort"></el-table-column>
         <el-table-column prop="spendTime" label="执行时长(ms)" width="100"></el-table-column>
       </el-table>
       <!-- 工具条 -->
@@ -44,6 +45,14 @@
     mixins: [c.mixins.list],
     name: "LogList",
     methods: {
+      sortChange({column, prop, order}) {
+        this.searchModel.addedTimeSort = order.replace("ending", "")
+        this.search()
+      },
+      clearSort() {
+        this.$refs.addedTimeSort.columnConfig.order = ''
+        this.searchModel.addedTimeSort = 'desc'
+      },
       search() {
         this.$api.post("log/search", this.searchModel).then(v => {
           v.data.page && Object.assign(this.searchModel, v.data.page)
