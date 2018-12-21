@@ -6,7 +6,7 @@
                   :data="model"
                   :index="model.menuName">
         <template slot="title">
-          <i :class="model.icon" :style="{fontSize:iconSize}"></i>
+          <svg-icon :icon-class="model.icon" :style="{fontSize:iconSize}"></svg-icon>
           <span slot="title" v-if="!colltitle"> {{model.menuName}}</span>
         </template>
         <NavMenu :menuTree="model.children" :iconSize="iconSize"></NavMenu>
@@ -16,7 +16,7 @@
                     :data="model"
                     :index="model.url"
                     :route="model.url">
-        <i :class="model.icon" :style="{fontSize:iconSize}"></i>
+        <svg-icon :icon-class="model.icon" :style="{fontSize:iconSize}"></svg-icon>
         <span slot="title">{{model.menuName}}</span>
       </el-menu-item>
 

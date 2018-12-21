@@ -1,8 +1,9 @@
-import UserList from '@/views/system/UserList'
-import MenuList from '@/views/system/MenuList'
-import RoleList from '@/views/system/RoleList'
-import DepartmentList from '@/views/system/DepartmentList'
-import LogList from '@/views/system/LogList'
+import UserList from '@v/system/UserList'
+import MenuList from '@v/system/MenuList'
+import RoleList from '@v/system/RoleList'
+import DepartmentList from '@v/system/DepartmentList'
+import LogList from '@v/system/LogList'
+import SvgList from '@v/general/SvgList'
 
 export default [
   {
@@ -34,5 +35,11 @@ export default [
     path: '/system/log',
     component: LogList,
     meta: {title: "系统日志"}
+  },
+  {
+    name: "SvgList",
+    path: '/system/svg',
+    component: SvgList,
+    meta: {title: "Svg图标"}
   },
 ]

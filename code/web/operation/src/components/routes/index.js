@@ -1,5 +1,5 @@
-import Login from '@/views/Login'
-import Home from '@/views/common/Home'
+import Login from '@v/Login'
+import Home from '@v/common/Home'
 import system from './system'
 
 export default [

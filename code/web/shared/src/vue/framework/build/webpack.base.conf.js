@@ -53,8 +53,14 @@ module.exports = function (config) {
           loader: 'babel-loader'
         },
         {
+          test: /\.svg$/,
+          loader: 'svg-sprite-loader',
+          include: [resolve('src/assets/icons')],
+        },
+        {
           test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
           loader: 'url-loader',
+          exclude: [resolve('src/assets/icons')],
           options: {
             limit: 10000,
             name: utils.assetsPath('img/[name].[hash:7].[ext]')
