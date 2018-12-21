@@ -29,5 +29,5 @@ const prepare = ({decorators = {}, extraComponents = []} = {}) => {
 const start = ({decorators = {}} = {}) => {
   return register({decorators, components: [router, launch]})
 }
-
+console.log(stub)
 export {stub, start, prepare}
