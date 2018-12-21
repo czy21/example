@@ -3,6 +3,10 @@
   cursor: pointer;
 }
 
+.el-table {
+  margin-bottom: 80px;
+}
+
 //分配权限样式
 .permission-list {
   border: solid 1px #eee;
@@ -26,16 +30,17 @@
   }
 }
 
-/*批量删除按钮*/
-.pagination .el-button {
-  float: left;
-}
-
-/*翻页导航*/
 .pagination {
-  margin-top: 10px;
-  text-align: right;
-
+  display: inline-block;
+  width: 63%;
+  height: 50px;
+  padding: 20px 0 0 25%;
+  color: #000;
+  background: #fff;
+  opacity: .85;
+  position: fixed;
+  bottom: 10px;
+  overflow: hidden;
 }
 
 //穿梭框居中div
@@ -52,3 +57,4 @@
 .el-tree {
   height: 100%;
 }
+

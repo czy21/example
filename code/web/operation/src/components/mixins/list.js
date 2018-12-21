@@ -4,7 +4,7 @@ export default {
       isDisable: false,
       searchModel: {
         pageIndex: 1,
-        pageSize: 15
+        pageSize: 20
       },
       list: [],
     }
