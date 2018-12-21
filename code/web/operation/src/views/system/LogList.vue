@@ -24,16 +24,13 @@
                          ref="addedTimeSort"></el-table-column>
         <el-table-column prop="spendTime" label="执行时长(ms)" width="100"></el-table-column>
       </el-table>
-      <!-- 工具条 -->
-      <div class="pagination">
-        <el-pagination background @current-change="handleIndexChange" @size-change="handleSizeChange"
-                       :current-page="searchModel && searchModel.pageIndex"
-                       :page-size="searchModel && searchModel.pageSize"
-                       :page-sizes="[15,30,50,100]"
-                       layout="total ,sizes, prev, pager, next, jumper"
-                       :total="searchModel && searchModel.total">
-        </el-pagination>
-      </div>
+      <el-pagination class="pagination" background @current-change="handleIndexChange" @size-change="handleSizeChange"
+                     :current-page="searchModel && searchModel.pageIndex"
+                     :page-size="searchModel && searchModel.pageSize"
+                     :page-sizes="[20,50,100]"
+                     layout="total ,sizes, prev, pager, next, jumper"
+                     :total="searchModel && searchModel.total">
+      </el-pagination>
     </div>
   </div>
 </template>

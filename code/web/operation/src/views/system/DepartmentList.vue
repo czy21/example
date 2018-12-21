@@ -36,7 +36,7 @@
           <el-pagination background @current-change="handleIndexChange" @size-change="handleSizeChange"
                          :current-page="searchModel && searchModel.pageIndex"
                          :page-size="searchModel && searchModel.pageSize"
-                         :page-sizes="[15,30,50,100]"
+                         :page-sizes="[20,50,100]"
                          layout="total ,sizes, prev, pager, next, jumper"
                          :total="searchModel && searchModel.total">
           </el-pagination>
