@@ -2,48 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/svg/erp-icon-authorization.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/svg/erp-icon-classify.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/svg/erp-icon-company.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/svg/erp-icon-department.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/svg/erp-icon-log.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/svg/erp-icon-material.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/svg/erp-icon-menu.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/svg/erp-icon-organization.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/svg/erp-icon-permission.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/svg/erp-icon-post.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/svg/erp-icon-role.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/svg/erp-icon-storage.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/svg/erp-icon-system.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/svg/erp-icon-user.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/svg/erp-icon-useradd.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/icons/svg/erp-icon-warehouse.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/custom/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/custom/svg/SvgIcon.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/custom/svg/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/general/SvgList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/icon/demo.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/icon/demo_fontclass.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/icon/demo_symbol.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/icon/demo_unicode.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/icon/iconfont.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/icon/iconfont.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/icon/iconfont.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/icon/iconfont.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/icon/iconfont.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/icon/iconfont.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/routes/system.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/routes/system.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/common/NavMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/common/NavMenu.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/common/Sidebar.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/common/Sidebar.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shared/src/vue/framework/build/webpack.base.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/../shared/src/vue/framework/build/webpack.base.conf.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shared/src/vue/framework/runtime/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../shared/src/vue/framework/runtime/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/icons/svg/erp-icon-menu.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/icons/svg/erp-icon-menu.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/custom/svg/SvgIcon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/custom/svg/SvgIcon.vue" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -56,22 +16,18 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/components/ui/index.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/views/custom/svg/SvgIcon.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="30" lean-forward="true" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
+            <state relative-caret-position="595">
+              <caret line="35" column="11" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/views/common/NavMenu.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-            </state>
-          </provider>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/assets/icons/svg/erp-icon-menu.svg">
+          <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
     </leaf>
@@ -164,9 +120,9 @@
         <option value="$PROJECT_DIR$/../shared/src/vue/framework/build/webpack.base.conf.js" />
         <option value="$PROJECT_DIR$/src/views/custom/svg/index.js" />
         <option value="$PROJECT_DIR$/src/views/common/Sidebar.vue" />
-        <option value="$PROJECT_DIR$/src/views/custom/svg/SvgIcon.vue" />
         <option value="$PROJECT_DIR$/src/views/common/NavMenu.vue" />
         <option value="$PROJECT_DIR$/src/components/ui/index.js" />
+        <option value="$PROJECT_DIR$/src/views/custom/svg/SvgIcon.vue" />
       </list>
     </option>
   </component>
@@ -220,15 +176,17 @@
               <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
               <item name="operation" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="icons" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="operation" type="b2602c69:ProjectViewProjectNode" />
               <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
               <item name="operation" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="icons" type="462c0819:PsiDirectoryNode" />
+              <item name="svg" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="operation" type="b2602c69:ProjectViewProjectNode" />
@@ -243,7 +201,16 @@
               <item name="operation" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="custom" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="operation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="custom" type="462c0819:PsiDirectoryNode" />
+              <item name="svg" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="operation" type="b2602c69:ProjectViewProjectNode" />
@@ -270,15 +237,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="vue" type="462c0819:PsiDirectoryNode" />
               <item name="framework" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="shared" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="vue" type="462c0819:PsiDirectoryNode" />
-              <item name="framework" type="462c0819:PsiDirectoryNode" />
-              <item name="build" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -433,24 +391,24 @@
       <workItem from="1545222124460" duration="6931000" />
       <workItem from="1545233569065" duration="481000" />
       <workItem from="1545313702382" duration="2672000" />
-      <workItem from="1545395423287" duration="8022000" />
+      <workItem from="1545395423287" duration="9052000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="340700000" />
+    <option name="totallyTimeSpent" value="341730000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="821" y="136" width="1070" height="793" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
       <window_info id="npm" order="1" side_tool="true" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.19652265" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" visible="true" weight="0.3614341" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30151844" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" visible="true" weight="0.30368763" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" visible="true" weight="0.4248862" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -749,21 +707,11 @@
     <entry file="file://$PROJECT_DIR$/src/assets/icons/svg/erp-icon-organization.svg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/assets/icons/svg/erp-icon-menu.svg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/icons/svg/erp-icon-authorization.svg">
       <provider selected="true" editor-type-id="images" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/assets/icons/svg/erp-icon-log.svg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/custom/svg/SvgIcon.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="18" lean-forward="true" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/common/NavMenu.vue">
       <provider selected="true" editor-type-id="text-editor">
@@ -778,6 +726,16 @@
           <caret line="2" column="30" lean-forward="true" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/custom/svg/SvgIcon.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="11" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/assets/icons/svg/erp-icon-menu.svg">
+      <provider selected="true" editor-type-id="images" />
     </entry>
   </component>
   <component name="masterDetails">
