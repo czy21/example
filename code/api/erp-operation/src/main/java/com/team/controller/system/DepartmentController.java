@@ -1,7 +1,7 @@
 package com.team.controller.system;
 
 
-import com.team.core.configure.Pocket;
+import com.team.core.annotations.Pocket;
 import com.team.entity.dto.DepartmentDto;
 import com.team.entity.dto.PageDto;
 import com.team.entity.system.Company;

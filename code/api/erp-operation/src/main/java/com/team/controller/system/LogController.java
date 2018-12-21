@@ -1,16 +1,9 @@
 package com.team.controller.system;
 
 import com.team.core.annotations.NoLog;
-import com.team.core.configure.Pocket;
-import com.team.dao.system.LogDao;
 import com.team.entity.dto.LogDto;
 import com.team.entity.dto.PageDto;
-import com.team.entity.dto.UserDto;
-import com.team.entity.map.LogMap;
-import com.team.entity.page.PageParams;
-import com.team.entity.system.Department;
 import com.team.model.SeachLogModel;
-import com.team.model.SearchUserModel;
 import com.team.service.LogService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

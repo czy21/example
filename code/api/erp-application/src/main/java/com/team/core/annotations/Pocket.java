@@ -1,4 +1,4 @@
-package com.team.core.configure;
+package com.team.core.annotations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -8,5 +8,5 @@ import java.lang.annotation.Target;
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Pocket {
-    Class[] entity() default Pocket.class;
+    Class[] entity();
 }

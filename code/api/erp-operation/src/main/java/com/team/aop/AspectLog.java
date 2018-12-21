@@ -76,19 +76,17 @@ public class AspectLog {
         return method.isAnnotationPresent(ApiOperation.class);
     }
 
-    private String getMethodRemark(JoinPoint joinPoint) {
-        Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
-        ApiOperation methodCache = method.getAnnotation(ApiOperation.class);
-        return methodCache.value();
+    private String getMethodRemark(Method method) {
+        return method.getAnnotation(ApiOperation.class).value();
     }
 
     private Log getSystemLogInit(JoinPoint joinPoint) {
         Log sysLog = new Log();
         try {
-            String targetClass = joinPoint.getTarget().getClass().getSimpleName();
-            String tartgetMethod = joinPoint.getSignature().getName();
-            sysLog.setDescription(getMethodRemark(joinPoint));
-            sysLog.setMethod(targetClass + "->" + tartgetMethod);
+            String targetClassName = joinPoint.getTarget().getClass().getSimpleName();
+            Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
+            sysLog.setDescription(getMethodRemark(method));
+            sysLog.setMethod(targetClassName + "->" + method.getName());
             sysLog.setRequestIp(HttpClientUtil.getClientIp());
             sysLog.setUserId(JwtUtil.getCurrentUser().getUserId());
             sysLog.setAddedTime(DateTimeUtil.getCurrentDateTime());
