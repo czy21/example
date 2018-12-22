@@ -3,7 +3,6 @@
     <template v-for="model in menuTree">
       <el-submenu v-if="model.children.length!=0"
                   :key="model.menuId"
-                  :data="model"
                   :index="model.menuName">
         <template slot="title">
           <svg-icon :icon-class="model.icon" :style="{fontSize:iconSize}"></svg-icon>
@@ -13,7 +12,6 @@
       </el-submenu>
       <el-menu-item v-if="model.children.length==0"
                     :key="model.menuId"
-                    :data="model"
                     :index="model.url">
         <svg-icon :icon-class="model.icon" :style="{fontSize:iconSize}"></svg-icon>
         <span slot="title">{{model.menuName}}</span>
