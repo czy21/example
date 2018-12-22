@@ -14,8 +14,7 @@
       <el-menu-item v-if="model.children.length==0"
                     :key="model.menuId"
                     :data="model"
-                    :index="model.url"
-                    :route="model.url">
+                    :index="model.url">
         <svg-icon :icon-class="model.icon" :style="{fontSize:iconSize}"></svg-icon>
         <span slot="title">{{model.menuName}}</span>
       </el-menu-item>
