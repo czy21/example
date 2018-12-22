@@ -220,7 +220,7 @@
         switch (status) {
           case 'add':
             this.batchAddPermissionShow = true
-            this.$api.get("docs").then(res => {
+            this.$api.get("swagger/docs").then(res => {
               this.apiList = c.ref.jsUtil.swagger.transDocsData(res.data.paths)
             })
             break;

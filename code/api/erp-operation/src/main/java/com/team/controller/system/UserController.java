@@ -15,6 +15,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
 
@@ -26,7 +27,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("api/user")
-@Api(tags = "User" , description = "用户操作接口")
+@Api(tags = "User", description = "用户操作接口")
 public class UserController {
 
     @Autowired
@@ -73,10 +74,11 @@ public class UserController {
 
     @PostMapping(value = "updateUserRole")
     @ApiOperation(value = "更新用户角色")
-    public String updateUserRole(String userId, @RequestParam(value = "userRoleIds[]" , required = false) String[] userRoleIds) {
+    public String updateUserRole(String userId, @RequestParam(value = "userRoleIds[]", required = false) String[] userRoleIds) {
         return userRoleService.insertOrUpdateUserRole(userId, userRoleIds);
     }
 
+    @ApiIgnore
     @PostMapping("login")
     public JSONObject Login(LoginDto dto) {
         return userService.login(dto);
