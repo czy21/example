@@ -30,25 +30,4 @@ public class BaseController {
     public String Csrf() {
         return "csrf";
     }
-
-    @GetMapping("/api/docs")
-    public Object Docs() {
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-        try {
-            HttpGet httpget = new HttpGet("http://localhost:8075/v2/api-docs");
-            try (CloseableHttpResponse response = httpClient.execute(httpget)) {
-                return JSONObject.parseObject(EntityUtils.toString(response.getEntity()));
-            }
-        } catch (ParseException | IOException e) {
-            e.printStackTrace();
-        } finally {
-            // 关闭连接,释放资源
-            try {
-                httpClient.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return null;
-    }
 }

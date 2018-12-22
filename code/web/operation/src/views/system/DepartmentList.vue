@@ -30,17 +30,13 @@
             </template>
           </el-table-column>
         </el-table>
-        <!-- 工具条 -->
-        <div class="pagination">
-          <el-button type="danger" icon="el-icon-delete">批量删除</el-button>
-          <el-pagination background @current-change="handleIndexChange" @size-change="handleSizeChange"
-                         :current-page="searchModel && searchModel.pageIndex"
-                         :page-size="searchModel && searchModel.pageSize"
-                         :page-sizes="[20,50,100]"
-                         layout="total ,sizes, prev, pager, next, jumper"
-                         :total="searchModel && searchModel.total">
-          </el-pagination>
-        </div>
+        <el-pagination class="pagination" background @current-change="handleIndexChange" @size-change="handleSizeChange"
+                       :current-page="searchModel && searchModel.pageIndex"
+                       :page-size="searchModel && searchModel.pageSize"
+                       :page-sizes="[20,50,100]"
+                       layout="total ,sizes, prev, pager, next, jumper"
+                       :total="searchModel && searchModel.total">
+        </el-pagination>
       </div>
     </div>
     <el-dialog title="添加部门" :visible.sync="departmentAddShow" width="20%">
