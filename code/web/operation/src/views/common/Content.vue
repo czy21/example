@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <router-view v-if="isRouterAlive"></router-view>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -9,8 +9,5 @@
 
   export default {
     name: "Content",
-    computed: {
-      ...mapGetters(["isRouterAlive"])
-    },
   }
 </script>

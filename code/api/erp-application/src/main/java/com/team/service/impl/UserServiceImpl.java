@@ -13,6 +13,7 @@ import com.team.exception.ErrorCode;
 import com.team.exception.WebException;
 import com.team.extension.entity.MenuExtension;
 import com.team.model.SearchUserModel;
+import com.team.service.MenuService;
 import com.team.service.RoleMenuService;
 import com.team.service.UserService;
 import com.team.util.JwtUtil;
@@ -89,6 +90,7 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
         TokenDto token = new TokenDto();
         token.setUser(userMap.toAccountDto(user));
         token.setMenus(MenuExtension.createTreeMenus(menuMap.toMenuTree(roleMenuService.getMenusByUserId(user.getUserId()))));
+        token.setPermissions(roleMenuService.getPermissionOfValuesByUserId(user.getUserId()));
         token.setValue(JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));
         json.put("token", token);
         return json;

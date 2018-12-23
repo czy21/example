@@ -92,4 +92,10 @@ public class RoleMenuServiceImpl extends BaseServiceImpl<RoleMenu> implements Ro
         }
         return roleService.SelectById(roleId).getRoleName();
     }
+
+    @Override
+    public List<String> getPermissionOfValuesByUserId(String userId) {
+        String suffiex = "/api/";
+        return roleMenuDao.getMenusByUserId(userId, false).stream().filter(t -> t.getUrl().startsWith(suffiex)).map(t -> t.getUrl().substring(suffiex.length())).collect(Collectors.toList());
+    }
 }
