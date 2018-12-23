@@ -1,0 +1,87 @@
+{
+  "data": {
+    "token": {
+      "menus": [
+        {
+          "children": [
+            {
+              "children": [],
+              "icon": "erp-icon-user",
+              "menuId": "c9f71740-fba3-11e8-8e7f-1cb72c963248",
+              "menuName": "用户管理",
+              "parentId": "c9f6e040-fba3-11e8-8e7f-1cb72c963248",
+              "sort": 1,
+              "url": "/system/user"
+            },
+            {
+              "children": [],
+              "icon": "erp-icon-role",
+              "menuId": "c9f749fb-fba3-11e8-8e7f-1cb72c963248",
+              "menuName": "角色管理",
+              "parentId": "c9f6e040-fba3-11e8-8e7f-1cb72c963248",
+              "sort": 2,
+              "url": "/system/role"
+            },
+            {
+              "children": [
+                {
+                  "children": [],
+                  "icon": "erp-icon-company",
+                  "menuId": "c9f85ae5-fba3-11e8-8e7f-1cb72c963248",
+                  "menuName": "公司管理",
+                  "parentId": "c9f7dabe-fba3-11e8-8e7f-1cb72c963248",
+                  "sort": 1,
+                  "url": "/system/company"
+                },
+                {
+                  "children": [],
+                  "icon": "erp-icon-department",
+                  "menuId": "c9f8289c-fba3-11e8-8e7f-1cb72c963248",
+                  "menuName": "部门管理",
+                  "parentId": "c9f7dabe-fba3-11e8-8e7f-1cb72c963248",
+                  "sort": 2,
+                  "url": "/system/department"
+                }
+              ],
+              "icon": "erp-icon-organization",
+              "menuId": "c9f7dabe-fba3-11e8-8e7f-1cb72c963248",
+              "menuName": "组织管理",
+              "parentId": "c9f6e040-fba3-11e8-8e7f-1cb72c963248",
+              "sort": 3,
+              "url": "#"
+            },
+            {
+              "children": [],
+              "icon": "erp-icon-menu",
+              "menuId": "c9f7a169-fba3-11e8-8e7f-1cb72c963248",
+              "menuName": "菜单管理",
+              "parentId": "c9f6e040-fba3-11e8-8e7f-1cb72c963248",
+              "sort": 4,
+              "url": "/system/menu"
+            },
+            {
+              "children": [],
+              "icon": "erp-icon-log",
+              "menuId": "52b99ee8f05addfc828bd0e1e1bdc808",
+              "menuName": "系统日志",
+              "parentId": "c9f6e040-fba3-11e8-8e7f-1cb72c963248",
+              "sort": 6,
+              "url": "/system/log"
+            }
+          ],
+          "icon": "erp-icon-system",
+          "menuId": "c9f6e040-fba3-11e8-8e7f-1cb72c963248",
+          "menuName": "系统管理",
+          "parentId": "00000000-0000-0000-0000-000000000000",
+          "sort": 1,
+          "url": "#"
+        }
+      ],
+      "user": {
+        "loginName": "admin",
+        "userName": "管理员"
+      },
+      "value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJsb2dpbk5hbWUiOiJhZG1pbiJ9.JRd2FTjykkcFAoYMjhw6RMjGPR5hI7xdIyX59G9lt1c"
+    }
+  }
+}

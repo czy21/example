@@ -117,10 +117,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="421" />
-    <option name="y" value="102" />
+    <option name="x" value="754" />
+    <option name="y" value="163" />
     <option name="width" value="1155" />
-    <option name="height" value="831" />
+    <option name="height" value="835" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -315,18 +315,18 @@
       <workItem from="1545479240328" duration="10729000" />
       <workItem from="1545495697687" duration="384000" />
       <workItem from="1545496349800" duration="1368000" />
-      <workItem from="1545534605252" duration="750000" />
+      <workItem from="1545534605252" duration="1937000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66622000" />
+    <option name="totallyTimeSpent" value="67809000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="421" y="102" width="1155" height="831" extended-state="1" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989154" visible="true" weight="0.32968035" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989154" visible="true" weight="0.1924307" />
       <window_info id="Structure" order="1" sideWeight="0.5010846" side_tool="true" weight="0.20095949" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -336,7 +336,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36011478" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27223426" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.31453362" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
