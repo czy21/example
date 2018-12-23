@@ -30,3 +30,4 @@ const start = ({decorators = {}} = {}) => {
   return register({decorators, components: [router, launch]})
 }
 export {stub, start, prepare}
+console.log(stub)

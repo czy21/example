@@ -1,7 +1,7 @@
+import stub from '@c'
 import Login from '@v/Login'
 import Home from '@v/common/Home'
 import system from './system'
-import stub from '../'
 
 export default [
   {

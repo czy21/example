@@ -15,6 +15,8 @@ public interface RoleMenuService extends BaseService<RoleMenu> {
 
     List<String> getPermissionsByUserId(String userId);
 
+    List<String> getPermissionOfValuesByUserId(String userId);
+
     List<Menu> getMenusByUserId(String userId);
 
     List<String> getMenusByRoleId(String roleId);
@@ -22,4 +24,5 @@ public interface RoleMenuService extends BaseService<RoleMenu> {
     List<String> getPermissionsByRoleId(String roleId);
 
     String insertOrUpdateRoleMenu(String roleId, String[] roleMenuIds);
+
 }

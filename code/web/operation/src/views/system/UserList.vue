@@ -2,7 +2,9 @@
   <div class="main-box">
     <div class="handle-box">
       <div class="operate-box">
-        <el-button type="primary" icon="el-icon-edit" @click="addUser('add')">添加用户</el-button>
+        <el-button type="primary" icon="el-icon-edit" @click="addUser('add')" :disabled="!$hasPermission('user/add')">
+          添加用户
+        </el-button>
         <el-button type="primary">批量修改</el-button>
         <el-button type="primary">导出</el-button>
         <el-button type="primary">重置密码</el-button>
@@ -23,9 +25,12 @@
         <el-table-column prop="isHeader" label="部门经理"></el-table-column>
         <el-table-column label="操作" width="250">
           <template slot-scope="scope">
-            <el-button @click="editUser('edit',scope.row)">编辑</el-button>
-            <el-button type="primary" @click="allotRole('allot',scope.row)">分配角色</el-button>
+            <el-button @click="editUser('edit',scope.row)" :disabled="!$hasPermission('user/edit')">编辑</el-button>
+            <el-button type="primary" @click="allotRole('allot',scope.row)"
+                       :disabled="$hasPermission(['user/userRoleDetails','user/updateUserRole'])">分配角色
+            </el-button>
             <el-button @click="modifiedUser(scope.row)"
+                       :disabled="!$hasPermission('user/modified')"
                        :class="scope.row.enabled
                        ?'el-button--danger'
                        :'el-button--success'">

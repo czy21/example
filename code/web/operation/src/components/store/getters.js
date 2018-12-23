@@ -1,8 +1,8 @@
 const getters = {
   // 主界面
   sidebar: state => state.app.sidebar,
-  isRouterAlive: state => state.app.isRouterAlive,
   userInfo: state => state.user.userInfo,
+  permissions: state => state.user.permissions,
 }
 
 export default getters

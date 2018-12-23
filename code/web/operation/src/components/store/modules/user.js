@@ -4,6 +4,7 @@ const user = {
   state: {
     // 前端显示用户实体
     userInfo: stub.ref.jsUtil.auth.getToken() ? stub.ref.jsUtil.auth.getToken().user : {},
+    permissions: stub.ref.jsUtil.auth.getToken() ? stub.ref.jsUtil.auth.getToken().permissions : []
   },
   mutations: {
     // 设置当前用户信息
