@@ -27,7 +27,7 @@
           <template slot-scope="scope">
             <el-button @click="editUser('edit',scope.row)" :disabled="!$hasPermission('user/edit')">编辑</el-button>
             <el-button type="primary" @click="allotRole('allot',scope.row)"
-                       :disabled="$hasPermission(['user/userRoleDetails','user/updateUserRole'])">分配角色
+                       :disabled="!$hasPermission(['user/userRoleDetails','user/updateUserRole'])">分配角色
             </el-button>
             <el-button @click="modifiedUser(scope.row)"
                        :disabled="!$hasPermission('user/modified')"
