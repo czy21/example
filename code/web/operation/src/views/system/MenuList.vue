@@ -71,25 +71,6 @@
               <el-radio :label="false">功能请求</el-radio>
             </el-radio-group>
           </el-form-item>
-          <el-form-item label="图标" prop="icon">
-            <el-popover
-              ref="iconListPopover"
-              placement="bottom-start"
-              trigger="click"
-              popper-class="mod-menu__icon-popover">
-              <div class="mod-menu__icon-list">
-                <el-button
-                  v-for="(item, index) in iconList"
-                  :key="index"
-                  @click="iconActiveHandle(item)"
-                  :class="{ 'is-active': item === menuAddForm.icon }">
-                  <svg-icon :icon-class="item"/>
-                </el-button>
-              </div>
-            </el-popover>
-            <el-input v-model="menuAddForm.icon" v-popover:iconListPopover :readonly="true" placeholder="菜单图标名称"
-                      class="icon-list__input" :disabled="!isMenu"></el-input>
-          </el-form-item>
           <el-form-item label="链接地址" prop="url">
             <el-input v-model="menuAddForm.url"
                       :placeholder="isMenu
@@ -110,6 +91,26 @@
               </el-option>
             </el-select>
           </el-form-item>
+          <el-form-item label="菜单图标" prop="icon" v-if="isMenu">
+            <el-popover
+              ref="iconListPopover"
+              placement="bottom-start"
+              trigger="click"
+              v-model="iconAddPopoverVisible"
+              popper-class="mod-menu__icon-popover">
+              <div class="mod-menu__icon-list">
+                <el-button
+                  v-for="(item, index) in iconList"
+                  :key="index"
+                  :class="{ 'is-active': item === menuAddForm.icon }"
+                  @click="iconActiveHandle('add',item)">
+                  <svg-icon :icon-class="item"/>
+                </el-button>
+              </div>
+            </el-popover>
+            <el-input v-model="menuAddForm.icon" v-popover:iconListPopover :readonly="true" placeholder="菜单图标名称"
+                      class="icon-list__input" :disabled="!isMenu"></el-input>
+          </el-form-item>
           <el-form-item label="描述" prop="remark">
             <el-input type="textarea" v-model="menuAddForm.remark"></el-input>
           </el-form-item>
@@ -129,25 +130,6 @@
               <el-radio :label="true">菜单导航</el-radio>
               <el-radio :label="false">功能请求</el-radio>
             </el-radio-group>
-          </el-form-item>
-          <el-form-item label="图标" prop="icon">
-            <el-popover
-              ref="iconListPopover"
-              placement="bottom-start"
-              trigger="click"
-              popper-class="mod-menu__icon-popover">
-              <div class="mod-menu__icon-list">
-                <el-button
-                  v-for="(item, index) in iconList"
-                  :key="index"
-                  @click="iconActiveHandle(item)"
-                  :class="{ 'is-active': item === menuEditForm.icon }">
-                  <svg-icon :icon-class="item"/>
-                </el-button>
-              </div>
-            </el-popover>
-            <el-input v-model="menuEditForm.icon" v-popover:iconListPopover :readonly="true" placeholder="菜单图标名称"
-                      class="icon-list__input" :disabled="!isMenu"></el-input>
           </el-form-item>
           <el-form-item label="排序" prop="sort">
             <el-input v-model="menuEditForm.sort"></el-input>
@@ -171,6 +153,26 @@
                 :value="item.value">
               </el-option>
             </el-select>
+          </el-form-item>
+          <el-form-item label="图标" prop="icon" v-if="isMenu">
+            <el-popover
+              ref="iconListPopover"
+              placement="bottom-start"
+              trigger="click"
+              v-model="iconEditPopoverVisible"
+              popper-class="mod-menu__icon-popover">
+              <div class="mod-menu__icon-list">
+                <el-button
+                  v-for="(item, index) in iconList"
+                  :key="index"
+                  :class="{ 'is-active': item === menuEditForm.icon }"
+                  @click="iconActiveHandle('edit',item)">
+                  <svg-icon :icon-class="item"/>
+                </el-button>
+              </div>
+            </el-popover>
+            <el-input v-model="menuEditForm.icon" v-popover:iconListPopover :readonly="true" placeholder="菜单图标名称"
+                      class="icon-list__input"></el-input>
           </el-form-item>
           <el-form-item label="描述" prop="remark">
             <el-input type="textarea" v-model="menuEditForm.remark"></el-input>
@@ -220,16 +222,18 @@
         },
         menuAddShow: false,
         menuEditShow: false,
+        iconAddPopoverVisible: false,
+        iconEditPopoverVisible: false,
+        batchAddPermissionShow: false,
         menuAddForm: {
           icon: ''
         },
         menuEditForm: {},
         tempMenuEditForm: {},
         isMenu: true,
-        batchAddPermissionShow: false,
         permissions: [],
         apiList: [],
-        iconList: []
+        iconList: [],
       }
     },
     computed: {
@@ -248,9 +252,16 @@
       },
     },
     methods: {
-      iconActiveHandle(iconName) {
-        this.menuAddForm.icon = iconName
-        this.menuEditForm.icon = iconName
+      iconActiveHandle(status, iconName) {
+        switch (status) {
+          case 'add':
+            this.menuAddForm.icon = iconName
+            this.iconAddPopoverVisible = false
+            break;
+          case 'edit':
+            this.menuEditForm.icon = iconName
+            this.iconEditPopoverVisible = false
+        }
       },
       selectAction(selection) {
         this.permissions = selection;
@@ -269,7 +280,6 @@
               this.$helper.eui.inform("批量添加成功", this.search())
             })
             break;
-
         }
       },
       addMenu(status) {
@@ -280,6 +290,7 @@
           case 'submit':
             this.submitOne()
             this.menuAddForm.isMenu = this.isMenu
+            this.menuAddForm.icon = this.isMenu ? this.menuAddForm.icon : null
             this.$helper.eui.actWithValidation("menuAddForm", () => {
               this.menuAddShow = false
               this.$api.post("menu/add", this.menuAddForm).then(() => {
@@ -290,7 +301,6 @@
               })
             })
             break;
-
         }
       },
       editMenu(status, row) {
@@ -301,6 +311,7 @@
             break;
           case 'submit':
             this.submitOne()
+            this.menuEditForm.icon = this.isMenu ? this.menuEditForm.icon : null
             this.$helper.eui.actWithValidation("menuEditForm", () => {
               this.menuEditShow = false
               this.$api.post("menu/edit", this.menuEditForm).then(() => {
@@ -330,17 +341,6 @@
         });
       },
     },
-    watch: {
-      isMenu(newVal) {
-        if (!newVal) {
-          this.menuAddForm.icon = ""
-          this.menuEditForm.icon = ""
-        }
-      },
-      menuEditForm(newVal) {
-        this.isMenu = newVal.isMenu
-      }
-    },
     mounted() {
       this.iconList = Icon.getIconList();
       this.load("menu/load")
@@ -363,8 +363,6 @@
 
     &__icon-list {
       max-height: 180px;
-      padding: 0;
-      margin: -8px 0 0 -8px;
 
       > .el-button {
         padding: 8px;
