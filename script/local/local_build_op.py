@@ -1,7 +1,8 @@
 # !/usr/bin/env python
 import os
 import shutil
-from common import operation_path, web_build_shell, temp_operation_path
+from default.path_default import operation_path, temp_operation_path
+from default.basic_config import web_build_shell
 
 os.chdir(operation_path)
 os.system(web_build_shell)
