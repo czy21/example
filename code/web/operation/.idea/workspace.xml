@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/views/system/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/UserList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../shared/src/vue/framework/runtime/js/utility/basic.js" beforeDir="false" afterPath="$PROJECT_DIR$/../shared/src/vue/framework/runtime/js/utility/basic.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -15,24 +17,27 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/views/system/UserList.vue">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/ui/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="29" column="75" lean-forward="true" selection-start-line="29" selection-start-column="75" selection-end-line="29" selection-end-column="75" />
+            <state relative-caret-position="136">
+              <caret line="8" column="38" lean-forward="true" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
               <folding>
-                <element signature="n#el-dialog#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="e#0#34#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/mixins/index.js">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/runtime/js/utility/basic.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="47" selection-start-line="8" selection-start-column="47" selection-end-line="8" selection-end-column="47" />
+            <state relative-caret-position="289">
+              <caret line="17" column="64" selection-start-line="17" selection-start-column="64" selection-end-line="17" selection-end-column="64" />
+              <folding>
+                <element signature="e#0#22#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -79,13 +84,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="dummy://restClient/response3.json" root0="SKIP_INSPECTION" />
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/views/Login.vue" />
         <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/api/index.js" />
         <option value="$PROJECT_DIR$/src/views/system/general/TreeDepartment.vue" />
         <option value="$PROJECT_DIR$/static/css/app.scss" />
@@ -101,7 +102,6 @@
         <option value="$PROJECT_DIR$/src/views/general/SvgList.vue" />
         <option value="$PROJECT_DIR$/src/views/custom/index.js" />
         <option value="$PROJECT_DIR$/src/views/custom/svg/index.js" />
-        <option value="$PROJECT_DIR$/src/components/ui/index.js" />
         <option value="$PROJECT_DIR$/src/views/custom/svg/SvgIcon.vue" />
         <option value="$PROJECT_DIR$/src/views/system/RoleList.vue" />
         <option value="$PROJECT_DIR$/src/views/system/LogList.vue" />
@@ -136,6 +136,8 @@
         <option value="$PROJECT_DIR$/src/components/mixins/hasPermission.js" />
         <option value="$PROJECT_DIR$/src/components/mixins/index.js" />
         <option value="$PROJECT_DIR$/src/views/system/UserList.vue" />
+        <option value="$PROJECT_DIR$/src/components/ui/index.js" />
+        <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/js/utility/basic.js" />
       </list>
     </option>
   </component>
@@ -181,17 +183,13 @@
             <path>
               <item name="operation" type="b2602c69:ProjectViewProjectNode" />
               <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="operation" type="b2602c69:ProjectViewProjectNode" />
               <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="mixins" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -417,7 +415,16 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="378785000" />
+    <option name="totallyTimeSpent" value="378939000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -426,19 +433,19 @@
       <window_info id="Structure" order="0" sideWeight="0.5019231" side_tool="true" weight="0.19336143" />
       <window_info id="npm" order="1" sideWeight="0.5015528" side_tool="true" weight="0.19704953" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.4984472" visible="true" weight="0.170706" />
-      <window_info anchor="bottom" id="REST Client" weight="0.43600866" />
+      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.4984472" visible="true" weight="0.16596417" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30151844" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" weight="0.29501083" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.29067245" />
-      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.20281996" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="9" visible="true" weight="0.2624729" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5009074" side_tool="true" weight="0.32216495" />
+      <window_info anchor="bottom" id="REST Client" order="11" weight="0.43600866" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -552,9 +559,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/rest-api.http">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/rest-api.http" />
     <entry file="file://$PROJECT_DIR$/../shared/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -646,13 +651,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/init/permission.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="44" lean-forward="true" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/init/permission.js" />
     <entry file="file://$PROJECT_DIR$/src/components/init/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -660,13 +659,6 @@
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/runtime/js/utility/basic.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
         </state>
       </provider>
     </entry>
@@ -680,13 +672,7 @@
     <entry file="file://$PROJECT_DIR$/src/components/index.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/dist/static/js/app.046ba7b30496c6b77dce.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret column="19239" selection-start-column="19239" selection-end-column="19239" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/static/js/app.046ba7b30496c6b77dce.js" />
     <entry file="file://$PROJECT_DIR$/src/components/store/modules/app.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -703,13 +689,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/prototype.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/prototype.js" />
     <entry file="file://$PROJECT_DIR$/src/components/ui/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="12" selection-end-column="1" />
+        <state relative-caret-position="136">
+          <caret line="8" column="38" lean-forward="true" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>
@@ -743,13 +727,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/property/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" selection-start-line="5" selection-end-line="13" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/property/index.js" />
     <entry file="file://$PROJECT_DIR$/src/components/mixins/list.js">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -764,13 +742,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/mixins/hasPermission.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/mixins/hasPermission.js" />
     <entry file="file://$PROJECT_DIR$/src/components/store/getters.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -815,6 +787,16 @@
           <caret line="29" column="75" lean-forward="true" selection-start-line="29" selection-start-column="75" selection-end-line="29" selection-end-column="75" />
           <folding>
             <element signature="n#el-dialog#2;n#div#0;n#template#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../shared/src/vue/framework/runtime/js/utility/basic.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="64" selection-start-line="17" selection-start-column="64" selection-end-line="17" selection-end-column="64" />
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
           </folding>
         </state>
       </provider>
