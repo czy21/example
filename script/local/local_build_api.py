@@ -2,7 +2,8 @@
 import os
 import glob
 import shutil
-from common import api_path, api_build_shell, temp_api_path
+from default.path_default import api_path, temp_api_path
+from default.basic_config import api_build_shell
 
 os.chdir(api_path)
 os.system(api_build_shell)
