@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e0c33ad-5bfe-400f-a92c-151223c9fb22" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/erp-application/src/main/java/com/team/entity/dto/TokenDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-application/src/main/java/com/team/entity/dto/TokenDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/RoleMenuService.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/RoleMenuService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/impl/UserServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/operation/src/components/init/prepare.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/components/init/prepare.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/operation/src/components/mixins/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/components/mixins/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/operation/src/components/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/components/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/operation/src/components/store/getters.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/components/store/getters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/operation/src/components/store/modules/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/components/store/modules/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/operation/src/components/store/modules/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/components/store/modules/user.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/operation/src/views/common/Content.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/views/common/Content.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/operation/src/views/system/UserList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/../web/operation/src/views/system/UserList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../web/shared/src/vue/framework/runtime/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../web/shared/src/vue/framework/runtime/index.js" afterDir="false" />
-    </list>
+    <list default="true" id="0e0c33ad-5bfe-400f-a92c-151223c9fb22" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/erp-operation/target/" />
     <ignored path="$PROJECT_DIR$/erp-application/target/" />
     <ignored path="$PROJECT_DIR$/erp-domain/target/" />
@@ -458,10 +444,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71630000" />
+    <option name="totallyTimeSpent" value="72228000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4989154" visible="true" weight="0.21055438" />
