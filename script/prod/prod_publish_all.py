@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 import os
 
 os.system("python ../local/local_publish_api.py")

@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 import os
 from default.path_default import temp_operation_path
 from default.basic_config import erp_home
