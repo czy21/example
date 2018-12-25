@@ -1,4 +1,4 @@
-# !/usr/bin/env python
+#!/usr/bin/python3
 import os
 from default.path_default import prepare_path, temp_db_path
 from default.local_default import local
