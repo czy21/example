@@ -9,8 +9,8 @@ cf.read(config_path + "\\mysql.conf")
 cf.read(config_path + "\\shell.conf")
 cf.read(config_path + "\\remote.conf")
 erp_home = cf.get("home", "erp_home")
-api_build_shell = cf.get("api", "api_build_shell")
-web_build_shell = cf.get("web", "web_build_shell")
+api_build_shell = cf.get("api", "build_shell")
+web_build_shell = cf.get("web", "build_shell")
 
 
 class db_config:

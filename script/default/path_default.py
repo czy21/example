@@ -1,6 +1,5 @@
 # !/usr/bin/env python
 import os
-import shutil
 
 root_path = os.path.abspath('../../')
 
@@ -28,7 +27,4 @@ if not os.path.exists(temp_web_path):
 if not os.path.exists(temp_operation_path):
     os.makedirs(temp_operation_path)
 if not os.path.exists(temp_api_path):
-    os.makedirs(temp_api_path)
-else:
-    shutil.rmtree(temp_api_path)
     os.makedirs(temp_api_path)
