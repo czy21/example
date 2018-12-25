@@ -1,4 +1,4 @@
-# !/usr/bin/env python
+#!/usr/bin/python3
 import os
 
 root_path = os.path.abspath('../../')
