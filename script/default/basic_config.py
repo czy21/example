@@ -30,8 +30,8 @@ def update_release_config_sql(user_param, version_value):
            + "update release_config set config_value=Now() where config_key='BuildDate'\""
 
 
-def select_release_config_sql(user_param):
-    return "mysql" + user_param + " -Ne" + " \"use erp_bak;select config_value from release_config where config_key='Version'\""
+def select_release_config_sql(db_name, user_param):
+    return mysql_cmd(db_name, user_param) + " -Ne" + " \"select config_value from release_config where config_key='Version'\""
 
 
 def user_param(port, user, pwd):
@@ -39,8 +39,16 @@ def user_param(port, user, pwd):
 
 
 def migrate_db_sql(s_db, s_user_param, t_db, t_user_param):
-    return "mysqldump " + s_db + s_user_param + " --add-drop-table " + "| " + mysql_cmd(t_db, t_user_param)
+    return mysqldump_cmd(s_db, s_user_param) + " --add-drop-table " + "| " + mysql_cmd(t_db, t_user_param)
 
 
 def mysql_cmd(db_name, user_param):
     return "mysql " + db_name + user_param
+
+
+def mysqldump_cmd(db_name, user_param):
+    return "mysqldump " + db_name + user_param
+
+
+def import_sql_file(sql_file_name, file):
+    return " < " + sql_file_name + " >" + file + ".log"
