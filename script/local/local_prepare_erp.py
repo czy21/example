@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 import os
 from default.path_default import prepare_path, temp_db_path
-from default.local_default import local
+from default.local_default import local, local_user
+from default.basic_config import mysql_cmd
 
 prepare_sql = open(temp_db_path + "\\prepare.sql", "w+", encoding="utf8")
 for r, s, fs in os.walk(prepare_path):
@@ -18,5 +19,5 @@ for r, s, fs in os.walk(prepare_path):
                 prepare_sql.writelines(init_data_sql.read())
                 init_data_sql.close()
 prepare_sql.close()
-upgrade_cmd = "mysql" + " -h" + local.db_host + " -P" + local.db_port + " -D" + local.db_name + " -u" + local.db_user + " -p" + local.db_pass + " < " + prepare_sql.name
+upgrade_cmd = mysql_cmd(local.db_name, local_user) + " < " + prepare_sql.name
 os.system(upgrade_cmd)
