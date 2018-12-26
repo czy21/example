@@ -2,20 +2,14 @@
 import os
 import re
 from subprocess import Popen, PIPE
-from default.local_default import local
-from default.path_default import temp_db_path, version_path
-from default.basic_config \
-    import update_release_config_sql, \
-    select_release_config_sql, \
-    user_param, \
-    migrate_db_sql, \
-    mysql_cmd
 
-local_user = user_param(local.db_port, local.db_user, local.db_pass)
+from default.basic_config import update_release_config_sql, select_release_config_sql, migrate_db_sql, mysql_cmd, import_sql_file
+from default.local_default import local, local_user
+from default.path_default import temp_db_path, version_path
 
 dump_cmd = migrate_db_sql(local.db_bak_name, local_user, local.db_name, local_user)
 os.system(dump_cmd)
-release_config = select_release_config_sql(local_user)
+release_config = select_release_config_sql(local.db_bak_name, local_user)
 db_version_value = re.findall("\d+", str(Popen(release_config, stdout=PIPE, stderr=PIPE).stdout.readline()))[0]
 phy_max_db_path = max(os.listdir(version_path))
 
@@ -37,8 +31,6 @@ if phy_max_db_path.endswith("v"):
                         all_sql.write(init_data_sql.read())
                         init_data_sql.close()
         all_sql.close()
-        upgrade_cmd = mysql_cmd(local.db_name, local_user) \
-                      + " < " + all_sql.name + " >" \
-                      + os.path.basename(__file__) + ".log"
+        upgrade_cmd = mysql_cmd(local.db_name, local_user) + import_sql_file(all_sql.name, os.path.basename(__file__))
         update_release_config = update_release_config_sql(local_user, phy_max_db_path[:-1])
         os.system(upgrade_cmd + " && " + update_release_config)
