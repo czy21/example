@@ -37,11 +37,25 @@ public class AspectLog {
 
     }
 
+    /*
+     * @author 陈昭宇
+     * @description 方法执行前调用
+     * @date 2018/12/27 16:13
+     * @param []
+     * @return void
+     */
     @Before("excudeController()&&apiAnnotation()")
     public void doBefore() {
         startTime.set(System.currentTimeMillis());
     }
 
+    /*
+     * @author 陈昭宇
+     * @description 方法执行成功与否都会调用
+     * @date 2018/12/27 16:13
+     * @param [joinPoint]
+     * @return void
+     */
     @After("excudeController()&&apiAnnotation()")
     public void doAfterReturning(JoinPoint joinPoint) {
         Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
@@ -53,6 +67,13 @@ public class AspectLog {
         }
     }
 
+    /*
+     * @author 陈昭宇
+     * @description 方法异常后调用
+     * @date 2018/12/27 16:12
+     * @param [p, e]
+     * @return void
+     */
     @AfterThrowing(pointcut = "excudeController()&&apiAnnotation()", throwing = "e")
     public void doAfterThrowing(JoinPoint p, Throwable e) {
         if (!(e instanceof ServiceException)) {
@@ -68,10 +89,24 @@ public class AspectLog {
         }
     }
 
+    /*
+     * @author 陈昭宇
+     * @description 判断是否有Nolog标识的Bean
+     * @date 2018/12/27 16:09
+     * @param [method]
+     * @return java.lang.Boolean
+     */
     private Boolean isNoLog(Method method) {
         return method.isAnnotationPresent(NoLog.class);
     }
 
+    /*
+     * @author 陈昭宇
+     * @description 判断是否有Api标识的Bean
+     * @date 2018/12/27 16:09
+     * @param [method]
+     * @return java.lang.Boolean
+     */
     private Boolean isApiOperation(Method method) {
         return method.isAnnotationPresent(ApiOperation.class);
     }
@@ -80,6 +115,13 @@ public class AspectLog {
         return method.getAnnotation(ApiOperation.class).value();
     }
 
+    /*
+     * @author 陈昭宇
+     * @description 获取被访问方法并创建日志信息
+     * @date 2018/12/27 16:11
+     * @param [joinPoint]
+     * @return com.team.entity.system.Log
+     */
     private Log getSystemLogInit(JoinPoint joinPoint) {
         Log sysLog = new Log();
         try {
