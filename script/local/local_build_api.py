@@ -1,7 +1,9 @@
 # !/usr/bin/env python
 import os
 import shutil
+import sys
 
+sys.path.append("..")
 from default.basic_config import api_build_shell
 from default.path_default import api_path, temp_api_path
 

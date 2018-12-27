@@ -1,6 +1,9 @@
 # !/usr/bin/env python
 import os
 import re
+import sys
+
+sys.path.append("..")
 from subprocess import Popen, PIPE
 
 from default.basic_config import update_release_config_sql, select_release_config_sql, migrate_db_sql, mysql_cmd, import_sql_file

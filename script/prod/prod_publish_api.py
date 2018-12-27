@@ -1,5 +1,8 @@
 # !/usr/bin/env python
 import os
+import sys
+
+sys.path.append("..")
 from default.path_default import temp_api_path
 from default.basic_config import erp_home
 
