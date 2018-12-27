@@ -4,5 +4,5 @@ backup/
 node_modules/
 dist/
 /script/.idea/
-/script/__pycache__
-
+__pycache__/
+*.log
