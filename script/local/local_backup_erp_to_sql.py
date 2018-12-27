@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+# !/usr/bin/env python
 import os
 from default.local_default import local, local_user
 from default.path_default import backup_path

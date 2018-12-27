@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+# !/usr/bin/env python
 import os
 import shutil
 from default.path_default import operation_path, temp_operation_path
