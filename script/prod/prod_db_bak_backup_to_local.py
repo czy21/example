@@ -1,6 +1,8 @@
 # !/usr/bin/env python
 import os
+import sys
 
+sys.path.append("..")
 from default.basic_config import migrate_db_sql
 from default.local_default import local, local_user
 from default.prod_default import prod, prod_user

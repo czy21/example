@@ -1,5 +1,7 @@
 # !/usr/bin/env python
 import os
+import sys
+sys.path.append("..")
 from default.path_default import prepare_path, temp_db_path
 from default.local_default import local, local_user
 from default.basic_config import mysql_cmd
