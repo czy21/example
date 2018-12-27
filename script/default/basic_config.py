@@ -51,4 +51,4 @@ def mysqldump_cmd(db_name, user_param):
 
 
 def import_sql_file(sql_file_name, file):
-    return " < " + sql_file_name + " >" + file + ".log"
+    return " < " + sql_file_name + " > " + file + ".log"
