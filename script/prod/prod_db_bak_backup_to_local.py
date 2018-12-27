@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+# !/usr/bin/env python
 import os
 
 from default.basic_config import migrate_db_sql
