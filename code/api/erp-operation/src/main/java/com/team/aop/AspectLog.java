@@ -42,7 +42,7 @@ public class AspectLog {
         startTime.set(System.currentTimeMillis());
     }
 
-    @AfterReturning("excudeController()&&apiAnnotation()")
+    @After("excudeController()&&apiAnnotation()")
     public void doAfterReturning(JoinPoint joinPoint) {
         Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
         if (!isNoLog(method) && isApiOperation(method)) {
