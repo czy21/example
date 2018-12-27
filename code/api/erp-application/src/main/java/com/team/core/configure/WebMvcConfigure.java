@@ -33,6 +33,13 @@ import java.util.List;
 @Configuration
 public class WebMvcConfigure extends WebMvcConfigurationSupport {
 
+    /*
+     * @author 陈昭宇
+     * @description 配置跨域
+     * @date 2018/12/27 16:15
+     * @param []
+     * @return org.springframework.web.filter.CorsFilter
+     */
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -49,6 +56,13 @@ public class WebMvcConfigure extends WebMvcConfigurationSupport {
         return new CorsFilter(source);
     }
 
+    /*
+     * @author 陈昭宇
+     * @description 配置权限拦截路径
+     * @date 2018/12/27 16:16
+     * @param [registry]
+     * @return void
+     */
     @Override
     protected void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(authenticationInterceptor())
@@ -56,6 +70,13 @@ public class WebMvcConfigure extends WebMvcConfigurationSupport {
                 .excludePathPatterns("/api/user/login");
     }
 
+    /*
+     * @author 陈昭宇
+     * @description 忽略静态资源拦截
+     * @date 2018/12/27 16:16
+     * @param [registry]
+     * @return void
+     */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("swagger-ui.html")
@@ -67,11 +88,25 @@ public class WebMvcConfigure extends WebMvcConfigurationSupport {
         super.addResourceHandlers(registry);
     }
 
+    /*
+     * @author 陈昭宇
+     * @description 配置权限拦截器
+     * @date 2018/12/27 16:17
+     * @param []
+     * @return com.team.core.configure.AuthenticationInterceptor
+     */
     @Bean
     public AuthenticationInterceptor authenticationInterceptor() {
         return new AuthenticationInterceptor();
     }
 
+    /*
+     * @author 陈昭宇
+     * @description 配置请求url大小写均可请求
+     * @date 2018/12/27 16:17
+     * @param []
+     * @return org.springframework.web.servlet.config.annotation.PathMatchConfigurer
+     */
     @Override
     protected PathMatchConfigurer getPathMatchConfigurer() {
         PathMatchConfigurer configure = super.getPathMatchConfigurer();
@@ -81,6 +116,13 @@ public class WebMvcConfigure extends WebMvcConfigurationSupport {
         return configure;
     }
 
+    /*
+     * @author 陈昭宇
+     * @description 配置消息转换器(格式化)
+     * @date 2018/12/27 16:18
+     * @param [converters]
+     * @return void
+     */
     @Override
     protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         super.configureMessageConverters(converters);
