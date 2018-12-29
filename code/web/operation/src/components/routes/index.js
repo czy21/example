@@ -21,9 +21,7 @@ export default [
     ],
     beforeEnter(to, from, next) {
       let token = stub.ref.jsUtil.auth.getToken()
-      if (!token) {
-        next({path: 'login'})
-      }
+      !token && next({path: 'login'})
       next()
     }
   },

@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e0c33ad-5bfe-400f-a92c-151223c9fb22" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/erp-application/src/main/java/com/team/core/configure/WebMvcConfigure.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-application/src/main/java/com/team/core/configure/WebMvcConfigure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-operation/src/main/java/com/team/controller/basic/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-operation/src/main/java/com/team/controller/basic/BaseController.java" afterDir="false" />
-    </list>
+    <list default="true" id="0e0c33ad-5bfe-400f-a92c-151223c9fb22" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/erp-operation/target/" />
     <ignored path="$PROJECT_DIR$/erp-application/target/" />
     <ignored path="$PROJECT_DIR$/erp-domain/target/" />
@@ -20,8 +17,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/erp-application/src/main/java/com/team/core/configure/WebMvcConfigure.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="120" column="77" lean-forward="true" selection-start-line="120" selection-start-column="77" selection-end-line="120" selection-end-column="77" />
+            <state relative-caret-position="580">
+              <caret line="118" column="54" selection-start-line="118" selection-start-column="54" selection-end-line="118" selection-end-column="54" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4027#4028#0" expanded="true" />
@@ -35,7 +32,7 @@
         <entry file="file://$PROJECT_DIR$/erp-operation/src/main/resources/application-dev.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="17">
-              <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+              <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -44,7 +41,7 @@
         <entry file="file://$PROJECT_DIR$/erp-operation/src/main/java/com/team/controller/basic/BaseController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+              <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
               <folding>
                 <element signature="e#1019#1020#0" expanded="true" />
                 <element signature="e#1046#1047#0" expanded="true" />
@@ -431,7 +428,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546055318597" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546055382063" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -501,12 +498,12 @@
       <workItem from="1545496349800" duration="1368000" />
       <workItem from="1545534605252" duration="5757000" />
       <workItem from="1545793034880" duration="3845000" />
-      <workItem from="1545993250557" duration="5749000" />
+      <workItem from="1545993250557" duration="6440000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82440000" />
+    <option name="totallyTimeSpent" value="83131000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -531,7 +528,7 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3449024" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.28633407" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.28633407" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.34924078" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -913,7 +910,7 @@
     <entry file="file://$PROJECT_DIR$/erp-operation/src/main/resources/application-dev.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="2" column="7" lean-forward="true" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
+          <caret line="2" column="7" selection-start-line="2" selection-start-column="7" selection-end-line="2" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -934,7 +931,7 @@
     <entry file="file://$PROJECT_DIR$/erp-operation/src/main/java/com/team/controller/basic/BaseController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
-          <caret line="23" column="29" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+          <caret line="21" column="29" selection-start-line="21" selection-start-column="29" selection-end-line="21" selection-end-column="29" />
           <folding>
             <element signature="e#1019#1020#0" expanded="true" />
             <element signature="e#1046#1047#0" expanded="true" />
@@ -946,8 +943,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/erp-application/src/main/java/com/team/core/configure/WebMvcConfigure.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="120" column="77" lean-forward="true" selection-start-line="120" selection-start-column="77" selection-end-line="120" selection-end-column="77" />
+        <state relative-caret-position="580">
+          <caret line="118" column="54" selection-start-line="118" selection-start-column="54" selection-end-line="118" selection-end-column="54" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4027#4028#0" expanded="true" />
