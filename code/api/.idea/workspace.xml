@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e0c33ad-5bfe-400f-a92c-151223c9fb22" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/erp-application/src/main/java/com/team/core/configure/WebMvcConfigure.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-application/src/main/java/com/team/core/configure/WebMvcConfigure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-application/src/main/java/com/team/entity/page/PageParams.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-application/src/main/java/com/team/entity/page/PageParams.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-operation/src/main/java/com/team/aop/AspectLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-operation/src/main/java/com/team/aop/AspectLog.java" afterDir="false" />
-    </list>
+    <list default="true" id="0e0c33ad-5bfe-400f-a92c-151223c9fb22" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/erp-operation/target/" />
     <ignored path="$PROJECT_DIR$/erp-application/target/" />
     <ignored path="$PROJECT_DIR$/erp-domain/target/" />
@@ -17,7 +13,24 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/erp-application/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-9" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="487">
+              <caret line="148" column="27" lean-forward="true" selection-start-line="148" selection-start-column="27" selection-end-line="148" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -114,11 +127,11 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="308" />
-    <option name="y" value="-8" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="746" />
+    <option name="y" value="204" />
     <option name="width" value="1155" />
-    <option name="height" value="744" />
+    <option name="height" value="795" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -190,6 +203,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -242,7 +256,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -252,7 +265,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545905906415" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1545993437964" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -284,7 +297,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Spring Boot.StartupApplication">
+  <component name="RunManager" selected="Remote.Remote_Debug">
     <configuration name="MybatisPlusCodeGenerator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.team.MybatisPlusCodeGenerator" />
       <module name="erp-operation" />
@@ -298,6 +311,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Remote_Debug" type="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" />
+      <option name="HOST" value="47.106.191.56" />
+      <option name="PORT" value="8075" />
+      <option name="AUTO_RESTART" value="false" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="8075" />
+        <option name="LOCAL" value="false" />
+      </RunnerSettings>
+      <method v="2" />
+    </configuration>
     <configuration name="StartupApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="erp-operation" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.team.StartupApplication" />
@@ -305,6 +331,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.MybatisPlusCodeGenerator" />
+      <item itemvalue="Remote.Remote_Debug" />
+      <item itemvalue="Spring Boot.StartupApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.MybatisPlusCodeGenerator" />
@@ -340,16 +371,18 @@
       <workItem from="1545496349800" duration="1368000" />
       <workItem from="1545534605252" duration="5757000" />
       <workItem from="1545793034880" duration="3845000" />
+      <workItem from="1545993250557" duration="298000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76691000" />
+    <option name="totallyTimeSpent" value="76989000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989154" visible="true" weight="0.19349681" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4989154" visible="true" weight="0.14765458" />
       <window_info id="Structure" order="1" sideWeight="0.5010846" side_tool="true" weight="0.20095949" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -359,11 +392,11 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3449024" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.29609543" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.31453362" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22993493" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3494705" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32980332" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.3286334" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3264642" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
@@ -376,7 +409,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" weight="0.16044776" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.1380597" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Database" order="6" />
@@ -399,16 +432,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-swagger2/2.9.2/springfox-swagger2-2.9.2.jar!/springfox/documentation/swagger2/configuration/Swagger2JacksonModule.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1326">
-          <caret line="40" column="13" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/io/springfox/springfox-swagger-ui/2.9.2/springfox-swagger-ui-2.9.2.jar!/META-INF/resources/swagger-ui.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/aspectj/aspectjweaver/1.9.2/aspectjweaver-1.9.2.jar!/org/aspectj/lang/annotation/Before.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -781,6 +804,18 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/erp-application/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="487">
+          <caret line="148" column="27" lean-forward="true" selection-start-line="148" selection-start-column="27" selection-end-line="148" selection-end-column="27" />
         </state>
       </provider>
     </entry>
