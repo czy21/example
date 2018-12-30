@@ -1,5 +1,5 @@
 # !/usr/bin/env python
-import os, sys
+import sys, os
 
 sys.path.append("..")
 from default.basic_config import erp_home
@@ -12,3 +12,7 @@ def run():
     os.system('ssh erp "cd api && ./restart.sh -d"')
     os.system("scp -r " + temp_api_path + " erp:" + erp_home)
     os.system('ssh erp "cd api && ./restart.sh -u"')
+
+
+if __name__ == '__main__':
+    run()

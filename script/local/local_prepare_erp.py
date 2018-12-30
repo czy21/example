@@ -1,6 +1,5 @@
 # !/usr/bin/env python
-import os
-import sys
+import os, sys
 sys.path.append("..")
 from default.path_default import prepare_path
 from default.temp_path import temp_db_path

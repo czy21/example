@@ -1,5 +1,6 @@
 # !/usr/bin/env python
-import os, sys
+import os
+import sys
 
 sys.path.append("..")
 from prod.prod_publish_db import db_update

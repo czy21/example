@@ -1,6 +1,5 @@
 # !/usr/bin/env python
-import os
-import sys
+import os, sys
 
 sys.path.append("..")
 from default.path_default import version_path

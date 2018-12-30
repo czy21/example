@@ -1,6 +1,5 @@
 # !/usr/bin/env python
-import os
-import configparser
+import os,configparser
 
 config_path = os.path.abspath("../conf")
 

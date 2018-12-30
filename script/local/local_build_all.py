@@ -1,5 +1,5 @@
 # !/usr/bin/env python
-import os, sys, shutil
+import sys
 
 sys.path.append("..")
 from local import local_build_api, local_build_op

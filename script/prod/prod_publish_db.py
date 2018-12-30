@@ -1,6 +1,7 @@
 # !/usr/bin/env python
 
-import os, sys
+import os
+import sys
 
 sys.path.append("..")
 from default.basic_config import update_release_config_sql, mysql_cmd, import_sql_file

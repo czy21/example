@@ -12,3 +12,7 @@ def build_to_temp():
     shutil.rmtree(temp_operation_path)
     shutil.copytree(operation_path + "\\dist", temp_operation_path)
     return
+
+
+if __name__ == '__main__':
+    build_to_temp()
