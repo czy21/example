@@ -10,6 +10,9 @@ cf.read(config_path + "\\shell.conf")
 cf.read(config_path + "\\remote.conf")
 erp_home = cf.get("home", "erp_home")
 api_build_shell = cf.get("api", "build_shell")
+api_update_shell = cf.get("api", "update_version")
+api_commit_shell = cf.get("api", "commit_version")
+api_revert_shell = cf.get("api", "revert_version")
 web_build_shell = cf.get("web", "build_shell")
 
 
@@ -31,7 +34,8 @@ def update_release_config_sql(user_param, version_value):
 
 
 def select_release_config_sql(db_name, user_param):
-    return mysql_cmd(db_name, user_param) + " -Ne" + " \"select config_value from release_config where config_key='Version'\""
+    return mysql_cmd(db_name,
+                     user_param) + " -Ne" + " \"select config_value from release_config where config_key='Version'\""
 
 
 def user_param(port, user, pwd):

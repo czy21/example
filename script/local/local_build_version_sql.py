@@ -3,10 +3,11 @@ import os
 import sys
 
 sys.path.append("..")
-from default.path_default import temp_db_path, version_path
+from default.path_default import version_path
+from default.temp_path import temp_db_path
 
 
-def built_version_sql_path(version_dir_val):
+def built_version_sql(version_dir_val):
     all_sql = open(temp_db_path + "\\all_in_one.sql", "w+", encoding="utf8")
     for r, s, fs in os.walk(version_path + "\\" + version_dir_val):
         if r[-3:] == "(s)":
