@@ -1,12 +1,14 @@
 # !/usr/bin/env python
-import os
-import sys
+import os, sys
 
 sys.path.append("..")
-from default.path_default import temp_api_path
 from default.basic_config import erp_home
+from default.temp_path import temp_api_path
+from local import local_build_api
 
-os.system("python ../local/local_build_api.py")
-os.system('ssh erp "cd api && ./restart.sh -d"')
-os.system("scp -r " + temp_api_path + " erp:" + erp_home)
-os.system('ssh erp "cd api && ./restart.sh -u"')
+
+def run():
+    local_build_api.build_to_temp()
+    os.system('ssh erp "cd api && ./restart.sh -d"')
+    os.system("scp -r " + temp_api_path + " erp:" + erp_home)
+    os.system('ssh erp "cd api && ./restart.sh -u"')

@@ -5,7 +5,7 @@
     <parent>
         <artifactId>erp</artifactId>
         <groupId>team3059</groupId>
-        <version>1000</version>
+        <version>1.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>
@@ -16,12 +16,12 @@
         <dependency>
             <groupId>team3059</groupId>
             <artifactId>erp-domain</artifactId>
-            <version>1000</version>
+            <version>1.0.1</version>
         </dependency>
         <dependency>
             <groupId>team3059</groupId>
             <artifactId>erp-application</artifactId>
-            <version>1000</version>
+            <version>1.0.1</version>
         </dependency>
     </dependencies>
     <build>
