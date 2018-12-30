@@ -19,3 +19,7 @@ def update_version(version):
     if is_success != 0:
         os.system("cd " + api_path + " && " + api_revert_shell)
     return
+
+
+if __name__ == '__main__':
+    build_to_temp()

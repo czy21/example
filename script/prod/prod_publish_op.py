@@ -1,6 +1,5 @@
 # !/usr/bin/env python
-import os
-import sys
+import os, sys
 
 sys.path.append("..")
 from default.basic_config import erp_home
@@ -11,5 +10,8 @@ from local import local_build_op
 def run():
     local_build_op.build_to_temp()
     os.system('ssh erp "cd web/operation && rm -rf *"')
-    op_publish = "scp -r " + temp_operation_path + " erp:" + erp_home + "/web"
-    os.system(op_publish)
+    os.system("scp -r " + temp_operation_path + " erp:" + erp_home + "/web")
+
+
+if __name__=='__main__':
+    run()

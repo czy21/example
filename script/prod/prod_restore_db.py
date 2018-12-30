@@ -1,6 +1,5 @@
 # !/usr/bin/env python
-import os
-import sys
+import os, sys
 
 sys.path.append("..")
 from default.basic_config import migrate_db_sql
