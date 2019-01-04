@@ -4,7 +4,7 @@
 
 <script>
   export default {
-    name: "CompanyIndex"
+    name: "CompanyList"
   }
 </script>
 
