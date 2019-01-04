@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e0c33ad-5bfe-400f-a92c-151223c9fb22" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../script/default/temp_path.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../script/prod/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/erp-application/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-domain/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-operation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/erp-operation/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../db/create/200_ByVersion/1000v/100_structure(s)/100_sys/100_sys_log.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../script/conf/shell.conf" beforeDir="false" afterPath="$PROJECT_DIR$/../../script/conf/shell.conf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../script/default/basic_config.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../script/default/basic_config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../script/default/path_default.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../script/default/path_default.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../script/local/local_build_all.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../script/local/local_build_all.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../script/local/local_build_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../script/local/local_build_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../script/local/local_build_op.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../script/local/local_build_op.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../script/local/local_build_version_sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../script/local/local_build_version_sql.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../script/local/local_prepare_erp.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../script/local/local_prepare_erp.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../script/local/local_restore_upgrate.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../script/local/local_restore_upgrate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../script/prod/prod_publish_all.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../script/prod/prod_publish_all.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../script/prod/prod_publish_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../script/prod/prod_publish_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../script/prod/prod_publish_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../script/prod/prod_publish_db.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../script/prod/prod_publish_op.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../script/prod/prod_publish_op.py" afterDir="false" />
-    </list>
+    <list default="true" id="0e0c33ad-5bfe-400f-a92c-151223c9fb22" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/erp-operation/target/" />
     <ignored path="$PROJECT_DIR$/erp-application/target/" />
     <ignored path="$PROJECT_DIR$/erp-domain/target/" />
@@ -34,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -126,10 +105,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="682" />
-    <option name="y" value="159" />
+    <option name="x" value="645" />
+    <option name="y" value="208" />
     <option name="width" value="1113" />
-    <option name="height" value="756" />
+    <option name="height" value="735" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -139,27 +118,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="erp-domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="erp-operation" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -207,6 +165,27 @@
               <item name="erp-domain" type="616d4139:PackageViewModuleNode" />
               <item name="com" type="1f31426a:PackageElementNode" />
               <item name="team" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="erp-domain" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="erp-operation" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -297,11 +276,12 @@
       <workItem from="1546072800443" duration="594000" />
       <workItem from="1546077148867" duration="843000" />
       <workItem from="1546091447659" duration="8174000" />
+      <workItem from="1546567556316" duration="589000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="92742000" />
+    <option name="totallyTimeSpent" value="93331000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -313,9 +293,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="677" y="174" width="1113" height="756" extended-state="0" />
+    <frame x="645" y="208" width="1113" height="735" extended-state="0" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49760765" visible="true" weight="0.26875594" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49760765" visible="true" weight="0.2735043" />
       <window_info id="Structure" order="1" sideWeight="0.50239235" side_tool="true" weight="0.19402985" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -331,7 +311,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32980332" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.31995663" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3118971" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.32279533" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50048685" side_tool="true" weight="0.43166667" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.329718" />
@@ -672,15 +652,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/erp-domain/pom.xml.versionsBackup">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/erp-operation/pom.xml.versionsBackup">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml.versionsBackup">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/erp-domain/pom.xml.versionsBackup" />
+    <entry file="file://$PROJECT_DIR$/erp-operation/pom.xml.versionsBackup" />
+    <entry file="file://$PROJECT_DIR$/pom.xml.versionsBackup" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
