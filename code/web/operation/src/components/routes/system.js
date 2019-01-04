@@ -3,6 +3,7 @@ import MenuList from '@v/system/MenuList'
 import RoleList from '@v/system/RoleList'
 import DepartmentList from '@v/system/DepartmentList'
 import LogList from '@v/system/LogList'
+import CompanyList from '@v/system/CompanyList'
 import SvgList from '@v/general/SvgList'
 
 export default [
@@ -23,6 +24,12 @@ export default [
     path: '/system/menu',
     component: MenuList,
     meta: {title: "菜单管理"}
+  },
+  {
+    name: "CompanyList",
+    path: '/system/company',
+    component: CompanyList,
+    meta: {title: "公司管理"}
   },
   {
     name: "DepartmentList",
