@@ -9,9 +9,9 @@ from local import local_build_op
 
 def run():
     local_build_op.build_to_temp()
-    os.system('ssh erp "cd web/operation && rm -rf *"')
-    os.system("scp -r " + temp_operation_path + " erp:" + erp_home + "/web")
+    os.system('ssh erp@erp "cd web/operation && rm -rf *"')
+    os.system("scp -r " + temp_operation_path + " erp@erp:web")
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     run()
