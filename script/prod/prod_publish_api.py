@@ -9,9 +9,9 @@ from local import local_build_api
 
 def run():
     local_build_api.build_to_temp()
-    os.system('ssh erp "cd api && ./restart.sh -d"')
-    os.system("scp -r " + temp_api_path + " erp:" + erp_home)
-    os.system('ssh erp "cd api && ./restart.sh -u"')
+    os.system('ssh erp@erp "cd api && ./restart.sh -d"')
+    os.system("scp -r " + temp_api_path + " erp@erp:" + erp_home)
+    os.system('ssh erp@erp "cd api && ./restart.sh -u"')
 
 
 if __name__ == '__main__':
