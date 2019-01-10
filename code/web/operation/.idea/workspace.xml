@@ -3,6 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-application/erp-application.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/erp-application.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/configure/MybatisPlusConfigure.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/configure/MybatisPlusConfigure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/LogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/LogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/impl/LogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/impl/LogServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-domain/erp-domain.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-domain/erp-domain.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-domain/src/main/java/com/team/dao/system/LogDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-domain/src/main/java/com/team/dao/mongo/LogDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-domain/src/main/java/com/team/entity/system/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-domain/src/main/java/com/team/entity/system/Log.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-domain/src/main/resources/mapper/LogDao.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-operation/erp-operation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-operation/erp-operation.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/aop/LogConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/aop/LogConsumer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/basic/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/basic/BaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/system/LogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/system/LogController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-operation/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-operation/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -16,17 +31,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/package.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="547">
-              <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -132,8 +137,8 @@
     <auto-save>true</auto-save>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="505" />
-    <option name="y" value="138" />
+    <option name="x" value="548" />
+    <option name="y" value="168" />
     <option name="width" value="1070" />
     <option name="height" value="767" />
   </component>
@@ -157,31 +162,6 @@
               <item name="operation" type="b2602c69:ProjectViewProjectNode" />
               <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
               <item name="operation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="shared" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -406,11 +386,12 @@
       <workItem from="1546072554595" duration="947000" />
       <workItem from="1546567549986" duration="2532000" />
       <workItem from="1546831317617" duration="595000" />
+      <workItem from="1547127877541" duration="683000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="385042000" />
+    <option name="totallyTimeSpent" value="385725000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -422,15 +403,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="505" y="138" width="1070" height="767" extended-state="0" />
+    <frame x="548" y="168" width="1070" height="767" extended-state="0" />
     <layout>
       <window_info id="Structure" order="0" sideWeight="0.5019231" side_tool="true" weight="0.19336143" />
       <window_info id="npm" order="1" sideWeight="0.5015528" side_tool="true" weight="0.19704953" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.4984472" visible="true" weight="0.2858527" />
+      <window_info content_ui="combo" id="Project" order="3" sideWeight="0.4984472" visible="true" weight="0.31589147" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30151844" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" weight="0.18483412" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" weight="0.3270142" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -791,7 +772,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="547">
+        <state relative-caret-position="154">
           <caret line="40" column="28" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="28" />
         </state>
       </provider>

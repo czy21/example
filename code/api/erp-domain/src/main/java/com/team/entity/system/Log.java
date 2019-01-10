@@ -6,8 +6,11 @@ import com.team.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import net.bytebuddy.implementation.bind.annotation.IgnoreForBinding;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 
 /**
@@ -21,7 +24,7 @@ public class Log extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @TableId
+    @Id
     private String logId;
     /**
      * 日志信息描述
@@ -68,11 +71,4 @@ public class Log extends BaseEntity {
      */
     @TableField(exist = false)
     public static final Boolean logError = true;
-
-    @TableField(exist = false)
-    private LocalDateTime modifiedTime;
-    @TableField(exist = false)
-    private String addedUser;
-    @TableField(exist = false)
-    private String modifiedUser;
 }
