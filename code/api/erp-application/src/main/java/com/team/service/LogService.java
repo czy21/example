@@ -15,7 +15,7 @@ import java.util.List;
  * @description Log 服务类
  * @since 2018-10-28
  */
-public interface LogService extends BaseService<Log> {
+public interface LogService {
 
-    PageDto<LogDto> getLogPageListBy(SeachLogModel search);
+    Object getLogPageListBy(SeachLogModel search);
 }
