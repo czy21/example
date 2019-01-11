@@ -8,7 +8,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@EnableTransactionManagement
 @MapperScan(basePackages = "com.team.dao", markerInterface = BaseMapper.class)
 public class MybatisPlusConfigure {
 
