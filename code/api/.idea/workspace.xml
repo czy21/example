@@ -3,16 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="0e0c33ad-5bfe-400f-a92c-151223c9fb22" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/erp-application/src/main/java/com/team/core/configure/MybatisPlusConfigure.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-application/src/main/java/com/team/core/configure/MybatisPlusConfigure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/LogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/LogService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/impl/LogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/impl/LogServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-domain/src/main/java/com/team/dao/system/LogDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/team/dao/mongo/LogDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-domain/src/main/java/com/team/entity/system/Log.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/team/entity/system/Log.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-domain/src/main/resources/mapper/LogDao.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-operation/src/main/java/com/team/aop/LogConsumer.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-operation/src/main/java/com/team/aop/LogConsumer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-operation/src/main/java/com/team/controller/basic/BaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-operation/src/main/java/com/team/controller/basic/BaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-operation/src/main/java/com/team/controller/system/LogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-operation/src/main/java/com/team/controller/system/LogController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-operation/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/erp-operation/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/impl/MenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/impl/MenuServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/impl/UserRoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/impl/UserRoleServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/erp-operation/src/main/java/com/team/StartupApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-operation/src/main/java/com/team/StartupApplication.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/erp-operation/target/" />
     <ignored path="$PROJECT_DIR$/erp-application/target/" />
@@ -25,7 +18,35 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/erp-operation/src/main/java/com/team/StartupApplication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="10" column="87" lean-forward="true" selection-start-line="10" selection-start-column="87" selection-end-line="10" selection-end-column="87" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/erp-application/src/main/java/com/team/core/configure/MybatisPlusConfigure.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/erp-application/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="77" column="18" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -34,6 +55,14 @@
         <option value="Interface" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>@Transactional</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>//@Transactional</replace>
+    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -44,7 +73,6 @@
         <option value="$PROJECT_DIR$/erp-application/src/main/java/com/team/constant/ProjectConstant.java" />
         <option value="$PROJECT_DIR$/erp-application/src/main/java/com/team/core/configure/DruidConfig.java" />
         <option value="$PROJECT_DIR$/erp-application/src/main/java/com/team/core/configure/DruidConfigure.java" />
-        <option value="$PROJECT_DIR$/erp-operation/src/main/java/com/team/StartupApplication.java" />
         <option value="$PROJECT_DIR$/erp-application/src/main/java/com/team/extension/ArrayExtension.java" />
         <option value="$PROJECT_DIR$/erp-operation/src/main/java/com/team/controller/BaseController.java" />
         <option value="$PROJECT_DIR$/erp-application/src/main/java/com/team/core/aop/AspectResponse.java" />
@@ -70,7 +98,6 @@
         <option value="$PROJECT_DIR$/erp-application/src/main/java/com/team/entity/dto/TokenDto.java" />
         <option value="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/RoleMenuService.java" />
         <option value="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java" />
         <option value="$PROJECT_DIR$/erp-operation/src/main/java/com/team/aop/AspectLog.java" />
         <option value="$PROJECT_DIR$/erp-application/src/main/java/com/team/entity/page/PageParams.java" />
         <option value="$PROJECT_DIR$/erp-application/src/main/java/com/team/core/configure/LocalDateTimeConfigure.java" />
@@ -83,7 +110,6 @@
         <option value="$PROJECT_DIR$/erp-domain/src/main/java/com/team/entity/system/Customer.java" />
         <option value="$PROJECT_DIR$/erp-domain/src/main/java/com/team/dao/mongo/CustomerDao.java" />
         <option value="$PROJECT_DIR$/erp-domain/src/main/java/com/team/mongo/CustomerDao.java" />
-        <option value="$PROJECT_DIR$/erp-application/src/main/java/com/team/core/configure/MybatisPlusConfigure.java" />
         <option value="$PROJECT_DIR$/erp-operation/src/main/java/com/team/aop/LogConsumer.java" />
         <option value="$PROJECT_DIR$/erp-domain/src/main/java/com/team/dao/mongo/LogDao.java" />
         <option value="$PROJECT_DIR$/erp-operation/src/main/java/com/team/controller/basic/BaseController.java" />
@@ -92,6 +118,9 @@
         <option value="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/LogService.java" />
         <option value="$PROJECT_DIR$/erp-operation/src/main/java/com/team/controller/system/LogController.java" />
         <option value="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/impl/LogServiceImpl.java" />
+        <option value="$PROJECT_DIR$/erp-operation/src/main/java/com/team/StartupApplication.java" />
+        <option value="$PROJECT_DIR$/erp-application/src/main/java/com/team/core/configure/MybatisPlusConfigure.java" />
+        <option value="$PROJECT_DIR$/erp-application/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java" />
       </list>
     </option>
   </component>
@@ -126,10 +155,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="714" />
-    <option name="y" value="127" />
+    <option name="x" value="561" />
+    <option name="y" value="124" />
     <option name="width" value="1142" />
-    <option name="height" value="841" />
+    <option name="height" value="844" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -140,6 +169,58 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="erp" type="58d84e3e:PackageViewProjectNode" />
+              <item name="erp-application" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="erp" type="58d84e3e:PackageViewProjectNode" />
+              <item name="erp-application" type="616d4139:PackageViewModuleNode" />
+              <item name="com" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="erp" type="58d84e3e:PackageViewProjectNode" />
+              <item name="erp-application" type="616d4139:PackageViewModuleNode" />
+              <item name="com" type="1f31426a:PackageElementNode" />
+              <item name="team" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="erp" type="58d84e3e:PackageViewProjectNode" />
+              <item name="erp-application" type="616d4139:PackageViewModuleNode" />
+              <item name="com" type="1f31426a:PackageElementNode" />
+              <item name="team" type="1f31426a:PackageElementNode" />
+              <item name="core" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="erp" type="58d84e3e:PackageViewProjectNode" />
+              <item name="erp-application" type="616d4139:PackageViewModuleNode" />
+              <item name="com" type="1f31426a:PackageElementNode" />
+              <item name="team" type="1f31426a:PackageElementNode" />
+              <item name="core" type="1f31426a:PackageElementNode" />
+              <item name="configure" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="erp" type="58d84e3e:PackageViewProjectNode" />
+              <item name="erp-domain" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="erp" type="58d84e3e:PackageViewProjectNode" />
+              <item name="erp-domain" type="616d4139:PackageViewModuleNode" />
+              <item name="com" type="1f31426a:PackageElementNode" />
+            </path>
+            <path>
+              <item name="erp" type="58d84e3e:PackageViewProjectNode" />
+              <item name="erp-domain" type="616d4139:PackageViewModuleNode" />
+              <item name="com" type="1f31426a:PackageElementNode" />
+              <item name="team" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -201,7 +282,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="team" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
+              <item name="core" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="erp" type="b2602c69:ProjectViewProjectNode" />
@@ -212,51 +293,7 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="team" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
-              <item name="page" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="erp-domain" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="erp-domain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="erp-domain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="erp-domain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="erp-domain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="erp-domain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="erp" type="b2602c69:ProjectViewProjectNode" />
@@ -302,69 +339,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="team" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="erp-operation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="team" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="erp" type="58d84e3e:PackageViewProjectNode" />
-              <item name="erp-application" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="erp" type="58d84e3e:PackageViewProjectNode" />
-              <item name="erp-application" type="616d4139:PackageViewModuleNode" />
-              <item name="com" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="erp" type="58d84e3e:PackageViewProjectNode" />
-              <item name="erp-application" type="616d4139:PackageViewModuleNode" />
-              <item name="com" type="1f31426a:PackageElementNode" />
-              <item name="team" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="erp" type="58d84e3e:PackageViewProjectNode" />
-              <item name="erp-application" type="616d4139:PackageViewModuleNode" />
-              <item name="com" type="1f31426a:PackageElementNode" />
-              <item name="team" type="1f31426a:PackageElementNode" />
-              <item name="core" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="erp" type="58d84e3e:PackageViewProjectNode" />
-              <item name="erp-application" type="616d4139:PackageViewModuleNode" />
-              <item name="com" type="1f31426a:PackageElementNode" />
-              <item name="team" type="1f31426a:PackageElementNode" />
-              <item name="core" type="1f31426a:PackageElementNode" />
-              <item name="configure" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="erp" type="58d84e3e:PackageViewProjectNode" />
-              <item name="erp-domain" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="erp" type="58d84e3e:PackageViewProjectNode" />
-              <item name="erp-domain" type="616d4139:PackageViewModuleNode" />
-              <item name="com" type="1f31426a:PackageElementNode" />
-            </path>
-            <path>
-              <item name="erp" type="58d84e3e:PackageViewProjectNode" />
-              <item name="erp-domain" type="616d4139:PackageViewModuleNode" />
-              <item name="com" type="1f31426a:PackageElementNode" />
-              <item name="team" type="1f31426a:PackageElementNode" />
             </path>
           </expand>
           <select />
@@ -379,7 +353,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547130665042" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1547174385911" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -462,7 +436,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104938000" />
+    <option name="totallyTimeSpent" value="106448000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -475,8 +449,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49760765" visible="true" weight="0.22068231" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49760765" visible="true" weight="0.21162046" />
       <window_info id="Structure" order="1" sideWeight="0.50239235" side_tool="true" weight="0.19402985" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -486,12 +461,12 @@
       <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3449024" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49951315" weight="0.37199435" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49951315" weight="0.31019524" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.34924078" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32980332" />
-      <window_info anchor="bottom" id="Spring" order="7" weight="0.31995663" />
+      <window_info active="true" anchor="bottom" id="Spring" order="7" visible="true" weight="0.31995663" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.32279533" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50048685" side_tool="true" weight="0.43166667" />
@@ -503,7 +478,7 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Maven" order="3" weight="0.38170055" />
+      <window_info anchor="right" id="Maven" order="3" weight="0.16364606" />
       <window_info anchor="right" id="Palette" order="4" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Database" order="6" />
@@ -526,55 +501,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-core/3.0.6/mybatis-plus-core-3.0.6.jar!/com/baomidou/mybatisplus/core/incrementer/IKeyGenerator.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-core/3.0.6/mybatis-plus-core-3.0.6.jar!/com/baomidou/mybatisplus/core/injector/AbstractMethod.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="27" column="22" selection-start-line="27" selection-start-column="22" selection-end-line="27" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-core/3.0.6/mybatis-plus-core-3.0.6.jar!/com/baomidou/mybatisplus/core/injector/AbstractSqlInjector.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="16" column="22" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-core/3.0.6/mybatis-plus-core-3.0.6.jar!/com/baomidou/mybatisplus/core/injector/DefaultSqlInjector.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-core/3.0.6/mybatis-plus-core-3.0.6.jar!/com/baomidou/mybatisplus/core/injector/ISqlInjector.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-core/3.0.6/mybatis-plus-core-3.0.6.jar!/com/baomidou/mybatisplus/core/injector/SqlRunnerInjector.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-core/3.0.6/mybatis-plus-core-3.0.6.jar!/com/baomidou/mybatisplus/core/mapper/BaseMapper.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="15" column="17" selection-start-line="15" selection-start-column="17" selection-end-line="15" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-core/3.0.6/mybatis-plus-core-3.0.6.jar!/com/baomidou/mybatisplus/core/metadata/IPage.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -684,16 +610,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/erp-domain/src/main/java/com/team/dao/mongo/CustomerDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="70" lean-forward="true" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="70" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/erp-domain/src/main/java/com/team/dao/mongo/CustomerDao.java" />
     <entry file="file://$PROJECT_DIR$/erp-domain/src/main/java/com/team/entity/BaseEntity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
@@ -701,11 +618,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/erp-domain/src/main/resources/mapper/LogDao.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-658" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/erp-domain/src/main/resources/mapper/LogDao.xml" />
     <entry file="file://$PROJECT_DIR$/erp-operation/src/main/java/com/team/aop/LogConsumer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="969">
@@ -713,16 +626,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/erp-domain/src/main/java/com/team/entity/system/Customer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/erp-domain/src/main/java/com/team/entity/system/Customer.java" />
     <entry file="file://$PROJECT_DIR$/erp-operation/src/main/java/com/team/aop/AspectLog.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="379">
@@ -754,13 +658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="27" column="25" lean-forward="true" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/erp-application/src/main/java/com/team/core/configure/MybatisPlusConfigure.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
@@ -886,16 +783,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-mongodb/2.1.2.RELEASE/spring-data-mongodb-2.1.2.RELEASE.jar!/org/springframework/data/mongodb/repository/MongoRepository.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="15" column="65" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-mongodb/2.1.2.RELEASE/spring-data-mongodb-2.1.2.RELEASE.jar!/org/springframework/data/mongodb/repository/MongoRepository.class" />
     <entry file="file://$PROJECT_DIR$/erp-application/src/main/java/com/team/service/impl/LogServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -907,6 +795,62 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="11" column="49" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-tx/5.1.2.RELEASE/spring-tx-5.1.2.RELEASE.jar!/org/springframework/transaction/annotation/AbstractTransactionManagementConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="21" column="22" selection-start-line="21" selection-start-column="22" selection-end-line="21" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-tx/5.1.2.RELEASE/spring-tx-5.1.2.RELEASE.jar!/org/springframework/transaction/annotation/ProxyTransactionManagementConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="15" column="89" lean-forward="true" selection-start-line="15" selection-start-column="89" selection-end-line="15" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-tx/5.1.2.RELEASE/spring-tx-5.1.2.RELEASE.jar!/org/springframework/transaction/annotation/TransactionManagementConfigurationSelector.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="19" column="83" selection-start-line="19" selection-start-column="83" selection-end-line="19" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.0.RELEASE/spring-boot-autoconfigure-2.1.0.RELEASE.jar!/org/springframework/boot/autoconfigure/jdbc/DataSourceTransactionManagerAutoConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="42" column="44" selection-start-line="42" selection-start-column="44" selection-end-line="42" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-autoconfigure/2.1.0.RELEASE/spring-boot-autoconfigure-2.1.0.RELEASE.jar!/org/springframework/boot/autoconfigure/transaction/TransactionAutoConfiguration.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-389">
+          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/erp-application/src/main/java/com/team/core/configure/MybatisPlusConfigure.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="14" selection-start-line="9" selection-start-column="14" selection-end-line="9" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/erp-operation/src/main/java/com/team/StartupApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="10" column="87" lean-forward="true" selection-start-line="10" selection-start-column="87" selection-end-line="10" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/erp-application/src/main/java/com/team/service/impl/RoleMenuServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="77" column="18" selection-start-line="77" selection-start-column="18" selection-end-line="77" selection-end-column="18" />
         </state>
       </provider>
     </entry>
