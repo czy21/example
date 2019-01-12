@@ -1,34 +1,18 @@
 package com.team.service.impl;
 
-import com.team.repository.mongo.LogRepository;
-import com.team.entity.page.PageModel;
+import com.team.core.universal.MongoBaseServiceImpl;
+import com.team.entity.dto.PageDto;
 import com.team.entity.mongo.Log;
 import com.team.model.SeachLogModel;
 import com.team.service.LogService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
-/**
- * @author 陈昭宇
- * @description Log 服务实现类
- * @since 2018-10-28
- */
 @Service
-public class LogServiceImpl implements LogService {
-
-
-    @Autowired
-    private LogRepository logRepository;
-
+public class LogServiceImpl extends MongoBaseServiceImpl<Log> implements LogService {
 
     @Override
-    public Object getLogPageListBy(SeachLogModel search) {
-        List<Log> list = logRepository.findAll(PageRequest.of(search.getPageIndex() - 1, search.getPageSize())).getContent();
-        return new PageModel<Log>(search.getPageIndex(), search.getPageSize(), list);
+    public PageDto<Log> getDepartmentPageListBy(SeachLogModel search) {
 
-
+        return null;
     }
 }
