@@ -3,7 +3,7 @@ package com.team.entity.map;
 import com.team.extension.entity.MenuExtension;
 import com.team.entity.page.PageModel;
 import com.team.util.PageUtil;
-import com.team.entity.system.Menu;
+import com.team.entity.mybatis.system.Menu;
 import com.team.entity.dto.MenuDto;
 import com.team.entity.dto.PageDto;
 import org.mapstruct.Mapper;

@@ -6,7 +6,7 @@ import com.team.core.annotations.Pocket;
 import com.team.entity.dto.MenuDto;
 import com.team.entity.dto.PageDto;
 import com.team.entity.dto.PermissionDto;
-import com.team.entity.system.Menu;
+import com.team.entity.mybatis.system.Menu;
 import com.team.model.SearchPermissionModel;
 import com.team.service.MenuService;
 import io.swagger.annotations.Api;

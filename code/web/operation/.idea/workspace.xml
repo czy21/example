@@ -123,9 +123,9 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="701" />
-    <option name="y" value="163" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="778" />
+    <option name="y" value="175" />
     <option name="width" value="1070" />
     <option name="height" value="767" />
   </component>

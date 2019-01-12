@@ -1,7 +1,7 @@
 package com.team.service;
 
-import com.team.core.universal.BaseService;
-import com.team.entity.system.UserRole;
+import com.team.core.universal.MybatisBaseService;
+import com.team.entity.mybatis.system.UserRole;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * @Author 陈昭宇
  * @Date 2018-10-15
  */
-public interface UserRoleService extends BaseService<UserRole> {
+public interface UserRoleService extends MybatisBaseService<UserRole> {
 
     List<String> getRolesByUserId(String userId);
 

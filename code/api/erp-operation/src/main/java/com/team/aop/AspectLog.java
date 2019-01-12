@@ -1,15 +1,13 @@
 package com.team.aop;
 
 import com.team.core.annotations.NoLog;
+import com.team.entity.mongo.Log;
 import com.team.exception.ServiceException;
 import com.team.util.DateTimeUtil;
 import com.team.util.HttpClientUtil;
 import com.team.util.JwtUtil;
-import com.team.entity.system.Log;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
-import net.sf.jsqlparser.statement.select.Join;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
@@ -120,7 +118,7 @@ public class AspectLog {
      * @description 获取被访问方法并创建日志信息
      * @date 2018/12/27 16:11
      * @param [joinPoint]
-     * @return com.team.entity.system.Log
+     * @return com.team.entity.mongo.Log
      */
     private Log getSystemLogInit(JoinPoint joinPoint) {
         Log sysLog = new Log();

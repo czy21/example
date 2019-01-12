@@ -1,7 +1,7 @@
 package com.team.entity.map;
 
 import com.team.entity.page.PageModel;
-import com.team.entity.system.User;
+import com.team.entity.mybatis.system.User;
 import com.team.entity.dto.AccountDto;
 import com.team.entity.dto.PageDto;
 import com.team.entity.dto.UserDto;
