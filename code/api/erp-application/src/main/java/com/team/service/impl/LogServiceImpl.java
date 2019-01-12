@@ -1,8 +1,8 @@
 package com.team.service.impl;
 
-import com.team.dao.mongo.LogDao;
+import com.team.repository.mongo.LogRepository;
 import com.team.entity.page.PageModel;
-import com.team.entity.system.Log;
+import com.team.entity.mongo.Log;
 import com.team.model.SeachLogModel;
 import com.team.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +21,12 @@ public class LogServiceImpl implements LogService {
 
 
     @Autowired
-    private LogDao logDao;
+    private LogRepository logRepository;
 
 
     @Override
     public Object getLogPageListBy(SeachLogModel search) {
-        List<Log> list = logDao.findAll(PageRequest.of(search.getPageIndex() - 1, search.getPageSize())).getContent();
+        List<Log> list = logRepository.findAll(PageRequest.of(search.getPageIndex() - 1, search.getPageSize())).getContent();
         return new PageModel<Log>(search.getPageIndex(), search.getPageSize(), list);
 
 

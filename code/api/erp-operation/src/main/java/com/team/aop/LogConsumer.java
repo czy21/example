@@ -1,7 +1,7 @@
 package com.team.aop;
 
-import com.team.dao.mongo.LogDao;
-import com.team.entity.system.Log;
+import com.team.repository.mongo.LogRepository;
+import com.team.entity.mongo.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,7 +21,7 @@ public class LogConsumer implements Runnable {
     private LogQueue auditLogQueue;
 
     @Autowired
-    private LogDao logDao;
+    private LogRepository logRepository;
 
     public static final int DEFAULT_BATCH_SIZE = 64;
 
@@ -69,7 +69,7 @@ public class LogConsumer implements Runnable {
         }
         if (!logs.isEmpty()) {
             try {
-                logDao.insert(logs);
+                logRepository.insert(logs);
             } catch (Exception e) {
                 log.error("异常信息:{}", e.getMessage());
             }

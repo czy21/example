@@ -5,7 +5,7 @@ import com.team.core.annotations.Pocket;
 import com.team.entity.dto.PageDto;
 import com.team.entity.dto.RoleDto;
 import com.team.entity.map.RoleMap;
-import com.team.entity.system.Menu;
+import com.team.entity.mybatis.system.Menu;
 import com.team.extension.entity.MenuExtension;
 import com.team.service.RoleMenuService;
 import com.team.service.RoleService;

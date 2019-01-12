@@ -1,6 +1,6 @@
 package com.team.controller.basic;
 
-import com.team.dao.mongo.LogDao;
+import com.team.repository.mongo.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,7 +12,7 @@ public class BaseController {
 
 
     @Autowired
-    private LogDao dao;
+    private LogRepository dao;
 
     @GetMapping("/")
     public String Index() {

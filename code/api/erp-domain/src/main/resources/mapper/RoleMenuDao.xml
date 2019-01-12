@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.team.dao.system.RoleMenuDao">
+<mapper namespace="com.team.repository.mybatis.system.RoleMenuRepositoryMybatis">
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.team.entity.system.RoleMenu">
+    <resultMap id="BaseResultMap" type="com.team.entity.mybatis.system.RoleMenu">
         <id column="role_menu_id" property="roleMenuId" />
         <result column="added_time" property="addedTime" />
         <result column="modified_time" property="modifiedTime" />
@@ -23,7 +23,7 @@
     </sql>
 
     <!--根据用户id查询该用户所有菜单或权限-->
-    <select id="getMenusByUserId" resultType="com.team.entity.system.Menu">
+    <select id="getMenusByUserId" resultType="com.team.entity.mybatis.system.Menu">
         select distinct
         m.*
         from sys_menu m,
@@ -36,7 +36,7 @@
         and m.is_menu=#{isMenu}
     </select>
     <!--根据角色id查询该角色所有菜单或权限-->
-    <select id="getMenusByRoleId" resultType="com.team.entity.system.Menu">
+    <select id="getMenusByRoleId" resultType="com.team.entity.mybatis.system.Menu">
         select distinct
         m.*
         from sys_menu m,

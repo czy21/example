@@ -1,7 +1,7 @@
 package com.team.entity.map;
 
 import com.team.entity.page.PageModel;
-import com.team.entity.system.Department;
+import com.team.entity.mybatis.system.Department;
 import com.team.entity.dto.DepartmentDto;
 import com.team.entity.dto.PageDto;
 import org.mapstruct.Mapper;

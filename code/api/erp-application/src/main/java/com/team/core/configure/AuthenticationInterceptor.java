@@ -3,7 +3,7 @@ package com.team.core.configure;
 import com.team.exception.ErrorCode;
 import com.team.exception.WebException;
 import com.team.util.JwtUtil;
-import com.team.entity.system.User;
+import com.team.entity.mybatis.system.User;
 import com.team.service.RoleMenuService;
 import com.team.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

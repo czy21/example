@@ -1,6 +1,6 @@
 package com.team.aop;
 
-import com.team.entity.system.Log;
+import com.team.entity.mongo.Log;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.BlockingQueue;

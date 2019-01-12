@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.team.dao.system.UserRoleDao">
+<mapper namespace="com.team.repository.mybatis.system.UserRoleRepositoryMybatis">
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.team.entity.system.UserRole">
+    <resultMap id="BaseResultMap" type="com.team.entity.mybatis.system.UserRole">
         <id column="user_role_id" property="userRoleId" />
         <result column="added_time" property="addedTime" />
         <result column="modified_time" property="modifiedTime" />
