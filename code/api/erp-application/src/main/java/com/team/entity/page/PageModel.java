@@ -21,4 +21,12 @@ public class PageModel<TEntity> extends PageSerializable<TEntity> {
         this.pageIndex = page.getPageNum();
         this.pageSize = page.getPageSize();
     }
+
+    public PageModel(Integer pageIndex, Integer pageSize, List<TEntity> list) {
+        this.pageIndex = pageIndex;
+        this.pageSize = pageSize;
+        this.list = list;
+        this.total = list.size();
+    }
+
 }
