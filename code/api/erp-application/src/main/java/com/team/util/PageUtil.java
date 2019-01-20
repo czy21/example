@@ -1,21 +1,17 @@
 package com.team.util;
 
+import com.team.entity.page.PageModel;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.List;
 
 @Data
-public class PageUtil<T> {
-
-    private Integer pageIndex;
-    private Integer pageSize;
-    private Integer total;
-    private List<T> list;
+@EqualsAndHashCode(callSuper = true)
+public class PageUtil<T> extends PageModel<T> {
 
     public PageUtil(Integer pageIndex, Integer pageSize, List<T> list) {
-        this.pageIndex = pageIndex;
-        this.pageSize = pageSize;
-        this.total = list.size();
+        super(pageIndex, pageSize, list);
         int pageCount = this.total / this.pageSize;
         int fromIndex = pageSize * (pageIndex - 1);
         int toIndex = fromIndex + pageSize;
@@ -28,5 +24,9 @@ public class PageUtil<T> {
             toIndex = this.total;
         }
         this.list = list.subList(fromIndex, toIndex);
+    }
+
+    public static <T> PageUtil<T> of(Integer pageIndex, Integer pageSize, List<T> list) {
+        return new PageUtil<>(pageIndex, pageSize, list);
     }
 }
