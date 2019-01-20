@@ -3,6 +3,7 @@ package com.team.core.universal;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.team.entity.page.PageModel;
 import com.team.util.DateTimeUtil;
@@ -104,12 +105,13 @@ public class MybatisBaseServiceImpl<TEntity extends BaseEntity> implements Mybat
             query = new QueryWrapper<>();
         }
         query.lambda().orderByDesc(TEntity::getModifiedTime);
-        PageHelper.startPage(pageIndex, pageSize);
-        return new PageModel<>(mybatisBaseRepository.selectList(query));
+        Page page = PageHelper.startPage(pageIndex, pageSize);
+        mybatisBaseRepository.selectList(query);
+        return PageModel.of(page);
     }
 
     @Override
     public PageUtil<TEntity> SelectPageList(Integer pageIndex, Integer pageSize, List<TEntity> list) {
-        return new PageUtil<>(pageIndex, pageSize, list);
+        return PageUtil.of(pageIndex, pageSize, list);
     }
 }
