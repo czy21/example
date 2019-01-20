@@ -39,13 +39,13 @@ public class RoleController {
     @ApiOperation(value = "加载角色列表")
     @Pocket(entity = {Menu.class})
     public PageDto<RoleDto> Load(int pageIndex, int pageSize) {
-        return roleMap.toPageDto(roleService.SelectPageListBy(pageIndex, pageSize, null));
+        return roleMap.mapToPageDto(roleService.SelectPageListBy(pageIndex, pageSize, null));
     }
 
     @PostMapping("search")
     @ApiOperation(value = "查询角色列表")
     public PageDto<RoleDto> Search(int pageIndex, int pageSize) {
-        return roleMap.toPageDto(roleService.SelectPageListBy(pageIndex, pageSize, null));
+        return roleMap.mapToPageDto(roleService.SelectPageListBy(pageIndex, pageSize, null));
     }
 
     @PostMapping("add")

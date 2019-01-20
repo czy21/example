@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.repository.MongoRepository;
  * @description Log 数据访问层
  * @since 2018-10-28
  */
-public interface LogRepository extends MongoRepository<Log, String> {
+public interface LogRepository extends MongoBaseRepository<Log> {
 
 //    Integer insertByBatch(List<Log> list);
 

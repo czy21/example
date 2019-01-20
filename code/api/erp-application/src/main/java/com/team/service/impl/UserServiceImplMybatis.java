@@ -47,9 +47,9 @@ public class UserServiceImplMybatis extends MybatisBaseServiceImpl<User> impleme
         if (super.SelectBy(User::getLoginName, dto.getLoginName()) != null) {
             throw new WebException(ErrorCode.ACCOUNT_EXIST, "用户账号已存在");
         }
-        User user = userMap.toUser(dto);
+        User user = userMap.mapToEntity(dto);
         user.setPassword("123456");
-        return userMap.toUserDto(super.InsertAndGetEntity(user));
+        return userMap.mapToDto(super.InsertAndGetEntity(user));
     }
 
     @Override
@@ -60,7 +60,7 @@ public class UserServiceImplMybatis extends MybatisBaseServiceImpl<User> impleme
         if (StringUtils.isEmpty(dto.getUserName())) {
             throw new WebException(ErrorCode.NAME_NO_NULL, "用户姓名不能为空");
         }
-        return userMap.toUserDto(super.UpdateAndGetEntity(userMap.toUser(dto)));
+        return userMap.mapToDto(super.UpdateAndGetEntity(userMap.mapToEntity(dto)));
     }
 
     @Override
@@ -68,12 +68,12 @@ public class UserServiceImplMybatis extends MybatisBaseServiceImpl<User> impleme
         if (StringUtils.isEmpty(dto.getUserId())) {
             throw new WebException(ErrorCode.ID_NO_NULL, "用户Id不能为空");
         }
-        return super.UpdateAndGetEntity(userMap.toUser(dto)).getEnabled();
+        return super.UpdateAndGetEntity(userMap.mapToEntity(dto)).getEnabled();
     }
 
     @Override
     public PageDto<UserDto> getUserPageListBy(SearchUserModel search) {
-        return userMap.toPageDto(super.SelectPageListBy(search.getPageIndex(), search.getPageSize(), null));
+        return userMap.mapToPageDto(super.SelectPageListBy(search.getPageIndex(), search.getPageSize(), null));
     }
 
     @Override
@@ -87,7 +87,7 @@ public class UserServiceImplMybatis extends MybatisBaseServiceImpl<User> impleme
         }
         JSONObject json = new JSONObject();
         TokenDto token = new TokenDto();
-        token.setUser(userMap.toAccountDto(user));
+        token.setUser(userMap.mapToAccountDto(user));
         token.setMenus(MenuExtension.createTreeMenus(menuMap.toMenuTree(roleMenuService.getMenusByUserId(user.getUserId()))));
         token.setPermissions(roleMenuService.getPermissionOfValuesByUserId(user.getUserId()));
         token.setValue(JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));

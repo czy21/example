@@ -23,21 +23,21 @@ import org.springframework.web.bind.annotation.RestController;
 @Api(tags = "Log", description = "日志操作接口")
 public class LogController {
 
-//    @Autowired
-//    private LogService logService;
+    @Autowired
+    private LogService logService;
 
-//    @NoLog
-//    @GetMapping("load")
-//    @ApiOperation(value = "加载日志列表")
-//    public Object Load(SeachLogModel search) {
-//        return logService.getLogPageListBy(search);
-//    }
-//
-//    @NoLog
-//    @PostMapping("search")
-//    @ApiOperation(value = "查询日志列表")
-//    public Object Search(SeachLogModel search) {
-//        return logService.getLogPageListBy(search);
-//    }
+    @NoLog
+    @GetMapping("load")
+    @ApiOperation(value = "加载日志列表")
+    public Object Load(SeachLogModel search) {
+        return logService.getLogPageListBy(search);
+    }
+
+    @NoLog
+    @PostMapping("search")
+    @ApiOperation(value = "查询日志列表")
+    public Object Search(SeachLogModel search) {
+        return logService.getLogPageListBy(search);
+    }
 
 }

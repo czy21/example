@@ -27,7 +27,7 @@ public class DepartmentServiceImplMybatis extends MybatisBaseServiceImpl<Departm
 
     @Override
     public PageDto<DepartmentDto> getDepartmentPageListBy(SearchDepartmentModel search) {
-        return departmentMap.toPageDto(super.SelectPageListBy(search.getPageIndex(), search.getPageSize(), null));
+        return departmentMap.mapToPageDto(super.SelectPageListBy(search.getPageIndex(), search.getPageSize(), null));
     }
 
     @Override
@@ -45,7 +45,7 @@ public class DepartmentServiceImplMybatis extends MybatisBaseServiceImpl<Departm
             throw new WebException(ErrorCode.NAME_EXIST, "部门名称已存在");
         }
 
-        return departmentMap.toDepartmentDto(super.InsertAndGetEntity(departmentMap.toDepartment(dto)));
+        return departmentMap.mapToDto(super.InsertAndGetEntity(departmentMap.mapToEntity(dto)));
     }
 
     @Override
@@ -59,7 +59,7 @@ public class DepartmentServiceImplMybatis extends MybatisBaseServiceImpl<Departm
         if (StringUtils.isEmpty(dto.getDepartmentName())) {
             throw new WebException(ErrorCode.NAME_NO_NULL, "上级部门Id不能为空");
         }
-        return departmentMap.toDepartmentDto(super.UpdateAndGetEntity(departmentMap.toDepartment(dto)));
+        return departmentMap.mapToDto(super.UpdateAndGetEntity(departmentMap.mapToEntity(dto)));
     }
 
     @Override
@@ -67,7 +67,7 @@ public class DepartmentServiceImplMybatis extends MybatisBaseServiceImpl<Departm
         if (StringUtils.isEmpty(dto.getDepartmentId())) {
             throw new WebException(ErrorCode.ID_NO_NULL, "部门Id不能为空");
         }
-        return super.UpdateAndGetEntity(departmentMap.toDepartment(dto)).getEnabled();
+        return super.UpdateAndGetEntity(departmentMap.mapToEntity(dto)).getEnabled();
 
     }
 }
