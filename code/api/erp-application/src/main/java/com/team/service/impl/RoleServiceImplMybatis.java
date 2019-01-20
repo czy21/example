@@ -31,7 +31,7 @@ public class RoleServiceImplMybatis extends MybatisBaseServiceImpl<Role> impleme
         if (super.SelectBy(Role::getRoleName, dto.getRoleName()) != null) {
             throw new WebException(ErrorCode.NAME_EXIST, "角色名称已存在");
         }
-        return roleMap.toRoleDto(super.InsertAndGetEntity(roleMap.toRole(dto)));
+        return roleMap.mapToDto(super.InsertAndGetEntity(roleMap.mapToEntity(dto)));
     }
 
     @Override
@@ -42,7 +42,7 @@ public class RoleServiceImplMybatis extends MybatisBaseServiceImpl<Role> impleme
         if (StringUtils.isEmpty(dto.getRoleName())) {
             throw new WebException(ErrorCode.NAME_NO_NULL, "角色名称不能为空");
         }
-        return roleMap.toRoleDto(super.UpdateAndGetEntity(roleMap.toRole(dto)));
+        return roleMap.mapToDto(super.UpdateAndGetEntity(roleMap.mapToEntity(dto)));
     }
 
 }

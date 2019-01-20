@@ -39,7 +39,7 @@ public class MenuServiceImplMybatis extends MybatisBaseServiceImpl<Menu> impleme
     public PageDto<MenuDto> getMenuAndPermissionPageListBy(SearchPermissionModel search) {
         QueryWrapper<Menu> query = new QueryWrapper<>();
         query.lambda().orderByDesc(Menu::getIsMenu);
-        return menuMap.toPageDto(super.SelectPageList(search.getPageIndex(), search.getPageSize(), MenuExtension.getSons(super.SelectListBy(query), search.getMenuId())));
+        return menuMap.mapToPageDto(super.SelectPageList(search.getPageIndex(), search.getPageSize(), MenuExtension.getSons(super.SelectListBy(query), search.getMenuId())));
     }
 
     @Override
@@ -59,7 +59,7 @@ public class MenuServiceImplMybatis extends MybatisBaseServiceImpl<Menu> impleme
         QueryWrapper<Menu> countQuery = new QueryWrapper<>();
         countQuery.lambda().eq(Menu::getParentId, dto.getParentId());
         dto.setSort(super.SelectListBy(countQuery).stream().map(Menu::getSort).reduce(0, Integer::max) + 1);
-        return menuMap.toMenuDto(super.InsertAndGetEntity(menuMap.toMenu(dto)));
+        return menuMap.mapToDto(super.InsertAndGetEntity(menuMap.mapToEntity(dto)));
     }
 
     @Override
@@ -74,7 +74,7 @@ public class MenuServiceImplMybatis extends MybatisBaseServiceImpl<Menu> impleme
         if (StringUtils.isEmpty(dto.getParentId())) {
             throw new WebException(ErrorCode.ID_NO_NULL, "上级菜单Id不能为空");
         }
-        return menuMap.toMenuDto(super.UpdateAndGetEntity(menuMap.toMenu(dto)));
+        return menuMap.mapToDto(super.UpdateAndGetEntity(menuMap.mapToEntity(dto)));
     }
 
     @Override

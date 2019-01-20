@@ -9,13 +9,12 @@ import com.team.entity.mongo.Log;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
+import org.springframework.data.domain.Page;
 
 import java.util.List;
 @Mapper(config = CentralConfig.class)
-public interface LogMap {
-    @Mappings({
-            @Mapping(source = "pageIndex", target = "page.pageIndex"),
-            @Mapping(source = "pageSize", target = "page.pageSize"),
-            @Mapping(source = "total", target = "page.total")})
-    PageDto<LogDto> toPageDto(PageModel<Log> page);
+public interface LogMap<TEntity,TResult> {
+//    @Mappings({
+//            @Mapping(source = "getTotalElements()", target = "page.pageSize")})
+//    PageDto<LogDto> toPageDto(Page<Log> page);
 }
