@@ -4,9 +4,7 @@ import com.team.core.universal.MongoBaseService;
 import com.team.entity.dto.LogDto;
 import com.team.entity.dto.PageDto;
 import com.team.entity.mongo.Log;
-import com.team.entity.page.PageModel;
 import com.team.model.SeachLogModel;
-import org.springframework.data.domain.Page;
 
 /**
  * @author 陈昭宇
@@ -15,6 +13,6 @@ import org.springframework.data.domain.Page;
  */
 public interface LogService extends MongoBaseService<Log> {
 
-    Page getLogPageListBy(SeachLogModel seach);
+    PageDto<LogDto> getLogPageListBy(SeachLogModel seach);
 
 }
