@@ -8,6 +8,6 @@ import com.team.entity.mybatis.system.Department;
  * @Author 陈昭宇
  * @Date 2018-10-15
  */
-public interface DepartmentRepositoryMybatis extends MybatisBaseRepository<Department> {
+public interface DepartmentRepository extends MybatisBaseRepository<Department> {
 
 }

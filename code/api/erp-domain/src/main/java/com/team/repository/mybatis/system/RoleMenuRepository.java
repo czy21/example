@@ -12,7 +12,7 @@ import java.util.List;
  * @Author 陈昭宇
  * @Date 2018-10-15
  */
-public interface RoleMenuRepositoryMybatis extends MybatisBaseRepository<RoleMenu> {
+public interface RoleMenuRepository extends MybatisBaseRepository<RoleMenu> {
 
     List<Menu> getMenusByUserId(@Param("userId") String userId, @Param("isMenu") Boolean isMenu);
 
