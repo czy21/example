@@ -1,6 +1,6 @@
 package com.team.aop;
 
-import com.team.repository.mongo.LogRepository;
+import com.team.repository.mongo.system.LogRepository;
 import com.team.entity.mongo.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

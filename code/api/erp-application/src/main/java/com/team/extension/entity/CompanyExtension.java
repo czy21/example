@@ -1,7 +1,7 @@
 package com.team.extension.entity;
 
 import com.team.model.SimpleItemModel;
-import com.team.repository.mybatis.system.CompanyRepositoryMybatis;
+import com.team.repository.mybatis.system.CompanyRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -9,9 +9,9 @@ import java.util.List;
 
 @Component
 public class CompanyExtension {
-    private static CompanyRepositoryMybatis _dao;
+    private static CompanyRepository _dao;
 
-    public CompanyExtension(CompanyRepositoryMybatis dao) {
+    public CompanyExtension(CompanyRepository dao) {
         _dao = dao;
     }
 

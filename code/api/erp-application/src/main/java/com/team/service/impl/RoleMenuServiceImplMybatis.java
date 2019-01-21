@@ -5,7 +5,7 @@ import com.team.exception.ErrorCode;
 import com.team.exception.WebException;
 import com.team.extension.ArrayExtension;
 import com.team.core.universal.MybatisBaseServiceImpl;
-import com.team.repository.mybatis.system.RoleMenuRepositoryMybatis;
+import com.team.repository.mybatis.system.RoleMenuRepository;
 import com.team.entity.mybatis.system.Menu;
 import com.team.entity.mybatis.system.RoleMenu;
 import com.team.service.MenuService;
@@ -30,7 +30,7 @@ import java.util.stream.Collectors;
 public class RoleMenuServiceImplMybatis extends MybatisBaseServiceImpl<RoleMenu> implements RoleMenuService {
 
     @Resource
-    private RoleMenuRepositoryMybatis roleMenuDao;
+    private RoleMenuRepository roleMenuDao;
 
     @Resource
     private UserService userService;

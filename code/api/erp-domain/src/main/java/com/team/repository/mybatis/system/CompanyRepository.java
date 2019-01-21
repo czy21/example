@@ -8,6 +8,6 @@ import com.team.entity.mybatis.system.Company;
  * @Author 陈昭宇
  * @Date 2018-10-15
  */
-public interface CompanyRepositoryMybatis extends MybatisBaseRepository<Company> {
+public interface CompanyRepository extends MybatisBaseRepository<Company> {
 
 }

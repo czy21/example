@@ -1,6 +1,6 @@
 package com.team.controller.basic;
 
-import com.team.repository.mongo.LogRepository;
+import com.team.repository.mongo.system.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

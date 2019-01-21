@@ -5,7 +5,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.extension.StringExtension;
 import com.team.model.SimpleItemModel;
 import com.team.model.SimpleTreeModel;
-import com.team.repository.mybatis.system.MenuRepositoryMybatis;
+import com.team.repository.mybatis.system.MenuRepository;
 import com.team.entity.mybatis.system.Menu;
 import lombok.Data;
 import org.springframework.stereotype.Component;
@@ -43,9 +43,9 @@ public class MenuExtension {
         }
     }
 
-    private static MenuRepositoryMybatis _dao;
+    private static MenuRepository _dao;
 
-    public MenuExtension(MenuRepositoryMybatis dao) {
+    public MenuExtension(MenuRepository dao) {
         _dao = dao;
     }
 

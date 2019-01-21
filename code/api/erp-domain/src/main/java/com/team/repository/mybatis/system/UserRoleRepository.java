@@ -8,6 +8,6 @@ import com.team.entity.mybatis.system.UserRole;
  * @Author 陈昭宇
  * @Date 2018-10-15
  */
-public interface UserRoleRepositoryMybatis extends MybatisBaseRepository<UserRole> {
+public interface UserRoleRepository extends MybatisBaseRepository<UserRole> {
 
 }

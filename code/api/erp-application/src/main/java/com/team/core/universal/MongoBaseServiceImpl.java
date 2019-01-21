@@ -12,7 +12,7 @@ import java.util.List;
 public class MongoBaseServiceImpl<TEntity extends BaseEntity> implements MongoBaseService<TEntity> {
 
     @Autowired
-    protected MongoBaseRepository<TEntity> mongoRepository;
+    protected MongoBaseRepository<TEntity, String> mongoRepository;
 
     @Override
     public PageModel<TEntity> SelectPageListBy(Integer pageIndex, Integer pageSize, Example<TEntity> query) {
