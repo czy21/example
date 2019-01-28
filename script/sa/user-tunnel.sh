@@ -11,7 +11,7 @@ case "$2" in
                 sudo -u tunnel bash -c "\""set -e;cd;
                 mkdir .ssh;chmod 700 .ssh;
                 cat >> .ssh/authorized_keys;
-                chmod 644 .ssh/authorized_keys;"\"
+                chmod 644 .ssh/authorized_keys;"\" 
         ;;
         -import)
         ssh $1 "sudo -u tunnel bash -c" \''set -e;cd;
