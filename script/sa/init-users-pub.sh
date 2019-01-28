@@ -1,8 +1,8 @@
 #!/bin/bash
 
+
 for file in $(ls ./pubs/*.pub);
     do 
-    pub_content="command=\"read\",no-X11-forwarding,no-agent-forwarding,no-pty,no-user-rc ""$(cat $file)"
-    rsa_pubs= echo $rsa_pubs$pub_content
+    rsa_pub="$rsa_pub"command=\"read\",no-X11-forwarding,no-agent-forwarding,no-pty,no-user-rc"`cat $file`\n"
 done
-./user-tunnel.sh cent_a -create < $rsa_pubs
+./user-tunnel.sh cent_a -create < echo -e $rsa_pub
