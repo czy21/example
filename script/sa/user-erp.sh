@@ -11,7 +11,7 @@ case "$2" in
                 sudo passwd -d erp;
                 sudo -u erp bash -c "\""set -e;cd;
                 chmod 750 ~;mkdir .ssh;chmod 700 .ssh;
-                touch .ssh/authorized_keys;
+                cat >> .ssh/authorized_keys;
                 chmod 644 .ssh/authorized_keys;"\"
         ;;
         -import)
