@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # $1: user@host
-# $2: -init | -import
-# -init ./user-tunnel.sh user@host -init
+# $2: -create | -import
+# -init ./user-tunnel.sh user@host -create
 # -import ./user-tunnel.sh user@host -import < ~/.ssh/[user]-rsa.pub
 set -e
 case "$2" in
-        -init)
+        -create)
         ssh $1 "sudo useradd -m erp;
                 sudo passwd -d erp;
                 sudo -u erp bash -c "\""set -e;cd;
