@@ -19,3 +19,11 @@ gpgcheck=1
 enabled=1
 gpgkey=https://www.mongodb.org/static/pgp/server-4.0.asc
 " > /etc/yum.repos.d/mongodb-org-4.0.repo'
+
+# nginx
+sudo bash -c 'echo -e "
+[nginx]
+name=nginx repo
+baseurl=http://nginx.org/packages/rhel/\$releasever/\$basearch/
+gpgcheck=0
+enabled=1" > /etc/yum.repos.d/nginx.repo'
