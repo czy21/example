@@ -30,3 +30,6 @@ pid-file=/var/run/mysqld/mysqld.pid
 " > /etc/my.cnf'
 sudo service mysqld start
 sudo service mysqld status
+
+# mongo
+sudo yum install -y mongodb-org
