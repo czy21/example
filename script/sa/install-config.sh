@@ -33,3 +33,12 @@ sudo service mysqld status
 
 # mongo
 sudo yum install -y mongodb-org
+
+# node
+curl --location https://rpm.nodesource.com/setup_8.x | sudo bash -
+sudo yum -y install nodejs
+sudo npm install -g nrm
+sudo nrm use taobao
+nrm use taobao
+sudo wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo
+sudo yum -y install yarn
