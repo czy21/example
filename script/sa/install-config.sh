@@ -5,6 +5,10 @@ set -e
 # jdk
 sudo rpm -ivh jdk-8u191-linux-x64.rpm
 
+# gcc
+if ! which gcc;then
+    sudo yum -y install gcc gc++
+fi
 # mysql
 sudo yum -y install mysql-community-server
 sudo bash -c 'echo -e "
@@ -37,6 +41,16 @@ sudo service mysqld status
 
 # mongo
 sudo yum install -y mongodb-org
+
+# redis
+sudo bash -c 'echo -e "
+http://download.redis.io/releases/redis-5.0.3.tar.gz
+"'
+tar xzf redis-5.0.3.tar.gz
+cd redis-5.0.3
+make MALLOC=libc
+cd src && make
+
 
 # node
 curl --location https://rpm.nodesource.com/setup_8.x | sudo bash -
