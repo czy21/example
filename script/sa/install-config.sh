@@ -1,6 +1,10 @@
 #!/bin/bash
 
 set -e
+
+# jdk
+sudo rpm -ivh jdk-8u191-linux-x64.rpm
+
 # mysql
 sudo yum -y install mysql-community-server
 sudo bash -c 'echo -e "
