@@ -3,6 +3,6 @@ spring:
     druid:
       url: jdbc:mysql://localhost:3372/erp?&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true
       username: root
-      password: czy101048
+      password: Czy.101048
   redis:
     password: team3059
