@@ -10,7 +10,7 @@ case "$2" in
         ssh $1 "sudo useradd -m erp;
                 sudo passwd -d erp;
                 sudo -u erp bash -c "\""set -e;cd;
-                chmod 750 ~;mkdir .ssh;chmod 700 .ssh;
+                chmod 755 ~;mkdir .ssh;chmod 700 .ssh;
                 cat >> .ssh/authorized_keys;
                 chmod 644 .ssh/authorized_keys;
                 mkdir api web"\"
