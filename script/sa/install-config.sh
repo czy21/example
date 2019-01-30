@@ -53,12 +53,14 @@ tar -zxvf redis-5.0.3.tar.gz -C /usr/local/
 cd /usr/local/redis-5.0.3 && make MALLOC=libc
 cd /usr/local/redis-5.0.3/src && make install
 sudo mkdir /etc/redis 
-sudo cp /usr/local/redis-5.0.3/redis.conf /etc/redis/default.conf
+sudo cp /usr/local/redis-5.0.3/redis.conf /etc/redis/6379.conf
 sudo cp /usr/local/redis-5.0.3/utils/redis_init_script /etc/init.d/redis
-sudo sed -i -r "s/^\s*daemonize\s+no/daemonize yes/;" /etc/redis/default.conf
-sudo sed -i "5i\#chkconfig: 2345 90 10\n#description: Redis is a persitent key-value database" /etc/init.d/redis
+sudo sed -i -r "s/^\s*daemonize\s+no/daemonize yes/;" /etc/redis/6379.conf
+sudo sed -i "5i\# chkconfig: 2345 90 10\n# description: Redis is a persistent key-value database" /etc/init.d/redis
 sudo chmod +x /etc/init.d/redis
 sudo chkconfig redis on
+sudo service redis start
+
 # node
 curl --location https://rpm.nodesource.com/setup_8.x | sudo bash -
 sudo yum -y install nodejs
