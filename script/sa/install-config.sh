@@ -49,8 +49,7 @@ sudo service mysqld start
 sudo yum -y install mongodb-org
 
 # redis
-sudo wget http://download.redis.io/releases/redis-5.0.3.tar.gz
-tar -zxvf redis-5.0.3.tar.gz -C /usr/local/
+sudo wget http://download.redis.io/releases/redis-5.0.3.tar.gz -O - | tar -zxvf - -C /usr/local/
 cd /usr/local/redis-5.0.3 && make MALLOC=libc
 cd /usr/local/redis-5.0.3/src && make install
 sudo mkdir /etc/redis 
@@ -68,3 +67,6 @@ sudo yum -y install nodejs
 sudo wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo
 sudo yum -y install yarn
 sudo yarn config set registry 'https://registry.npm.taobao.org'
+
+# nginx
+sudo yum -y install nginx
