@@ -39,17 +39,19 @@ log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
 " > /etc/my.cnf'
 sudo service mysqld start
-# sudo grep 'temporary password' /var/log/mysqld.log
+# sudo grep 'temporary password' /var/lib/mysql/error.err
 # mysql -uroot -p
 # ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass4!';
 
 # redis
+# stop service redis stop
+# start service redis start
 sudo wget http://download.redis.io/releases/redis-5.0.3.tar.gz -O - | tar -zxvf - -C /usr/local/
 cd /usr/local/redis-5.0.3 && make MALLOC=libc
 cd /usr/local/redis-5.0.3/src && make install
 sudo mkdir /etc/redis 
 sudo cp /usr/local/redis-5.0.3/redis.conf /etc/redis/6379.conf
-sudo sed -i -r "s/^\s*daemonize\s+no/daemonize yes/;" /etc/redis/6379.conf
+sudo sed -i -r "s/^\s*daemonize\s+no/daemonize yes/;s/^\s*# requirepass\s+foobared/requirepass team3059/;" /etc/redis/6379.conf
 sudo cp /usr/local/redis-5.0.3/utils/redis_init_script /etc/init.d/redis
 sudo sed -i "5i\# chkconfig: 2345 90 10\n# description: Redis is a persistent key-value database" /etc/init.d/redis
 sudo chmod +x /etc/init.d/redis

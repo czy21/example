@@ -1,5 +1,5 @@
 #!/bin/bash
-export JAVA_HOME=/usr/lib/java/jdk1.8.0_191
+export JAVA_HOME=/usr/java/jdk1.8.0_191-amd64
 export JAVA=$JAVA_HOME/jre/bin/java
 
 erp_pid=`ps -ef | grep java | grep erp- | grep -v grep | awk '{print $2}'`
@@ -14,7 +14,7 @@ case "$1" in
 	fi;;
 	"-u") 
 	cur_erp=`find ./ -name "*.jar"`
-	nohup $JAVA -jar $cur_erp --spring.profiles.active=prod >erp.log &
+	nohup $JAVA -jar $cur_erp --spring.profiles.active=prod > erp.log &
 	echo "start api success";;
 esac
 
