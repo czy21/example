@@ -6,12 +6,20 @@ set -e
 if ! which gcc;then
     sudo yum -y install gcc
 fi
+
+# vim
 if ! which vim;then
     sudo yum -y install vim*
 fi
 
 # jdk
 sudo rpm -ivh jdk-8u191-linux-x64.rpm
+
+# mongo
+sudo yum -y install mongodb-org
+
+# nginx
+sudo yum -y install nginx
 
 # mysql
 sudo yum -y install mysql-community-server
@@ -45,9 +53,6 @@ sudo service mysqld start
 # mysql -uroot -p
 # ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass4!';
 
-# mongo
-sudo yum -y install mongodb-org
-
 # redis
 sudo wget http://download.redis.io/releases/redis-5.0.3.tar.gz -O - | tar -zxvf - -C /usr/local/
 cd /usr/local/redis-5.0.3 && make MALLOC=libc
@@ -68,5 +73,3 @@ sudo wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo
 sudo yum -y install yarn
 sudo yarn config set registry 'https://registry.npm.taobao.org'
 
-# nginx
-sudo yum -y install nginx
