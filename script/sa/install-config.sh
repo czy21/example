@@ -2,16 +2,6 @@
 
 set -e
 
-# gcc
-if ! which gcc;then
-    sudo yum -y install gcc
-fi
-
-# vim
-if ! which vim;then
-    sudo yum -y install vim*
-fi
-
 # jdk
 sudo rpm -ivh jdk-8u191-linux-x64.rpm
 
