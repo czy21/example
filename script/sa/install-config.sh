@@ -2,13 +2,17 @@
 
 set -e
 
+# gcc
+if ! which gcc;then
+    sudo yum -y install gcc
+fi
+if ! which vim;then
+    sudo yum -y install vim*
+fi
+
 # jdk
 sudo rpm -ivh jdk-8u191-linux-x64.rpm
 
-# gcc
-if ! which gcc;then
-    sudo yum -y install gcc gc++
-fi
 # mysql
 sudo yum -y install mysql-community-server
 sudo bash -c 'echo -e "
@@ -37,25 +41,21 @@ log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
 " > /etc/my.cnf'
 sudo service mysqld start
-sudo service mysqld status
+
+sudo service mysqld restart
 
 # mongo
 sudo yum install -y mongodb-org
 
 # redis
-sudo bash -c 'echo -e "
-http://download.redis.io/releases/redis-5.0.3.tar.gz
-"'
-tar -zxzf redis-5.0.3.tar.gz
-cd redis-5.0.3
-make MALLOC=libc
-cd src && make
+sudo wget http://download.redis.io/releases/redis-5.0.3.tar.gz
+tar -zxvf redis-5.0.3.tar.gz -C /usr/local/
+cd /usr/local/redis-5.0.3 && make MALLOC=libc
+cd /usr/local/redis-5.0.3/src && make install
 
 # node
 curl --location https://rpm.nodesource.com/setup_8.x | sudo bash -
 sudo yum -y install nodejs
-sudo npm install -g nrm
-sudo nrm use taobao
-nrm use taobao
 sudo wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo
 sudo yum -y install yarn
+sudo yarn config set registry 'https://registry.npm.taobao.org'
