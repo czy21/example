@@ -12,7 +12,8 @@ case "$2" in
                 sudo -u erp bash -c "\""set -e;cd;
                 chmod 750 ~;mkdir .ssh;chmod 700 .ssh;
                 cat >> .ssh/authorized_keys;
-                chmod 644 .ssh/authorized_keys;"\"
+                chmod 644 .ssh/authorized_keys;
+                mkdir api web"\"
         ;;
         -import)
         ssh $1 "sudo -u erp bash -c" \''set -e;cd;cat >>.ssh/authorized_keys;'\'
