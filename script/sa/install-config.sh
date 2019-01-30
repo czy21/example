@@ -41,11 +41,12 @@ log-error=/var/log/mysqld.log
 pid-file=/var/run/mysqld/mysqld.pid
 " > /etc/my.cnf'
 sudo service mysqld start
-
-sudo service mysqld restart
+# sudo grep 'temporary password' /var/log/mysqld.log
+# mysql -uroot -p
+# ALTER USER 'root'@'localhost' IDENTIFIED BY 'MyNewPass4!';
 
 # mongo
-sudo yum install -y mongodb-org
+sudo yum -y install mongodb-org
 
 # redis
 sudo wget http://download.redis.io/releases/redis-5.0.3.tar.gz
@@ -54,8 +55,8 @@ cd /usr/local/redis-5.0.3 && make MALLOC=libc
 cd /usr/local/redis-5.0.3/src && make install
 sudo mkdir /etc/redis 
 sudo cp /usr/local/redis-5.0.3/redis.conf /etc/redis/6379.conf
-sudo cp /usr/local/redis-5.0.3/utils/redis_init_script /etc/init.d/redis
 sudo sed -i -r "s/^\s*daemonize\s+no/daemonize yes/;" /etc/redis/6379.conf
+sudo cp /usr/local/redis-5.0.3/utils/redis_init_script /etc/init.d/redis
 sudo sed -i "5i\# chkconfig: 2345 90 10\n# description: Redis is a persistent key-value database" /etc/init.d/redis
 sudo chmod +x /etc/init.d/redis
 sudo chkconfig redis on
