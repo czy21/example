@@ -16,6 +16,12 @@ api_revert_shell = cf.get("api", "revert_version")
 web_build_shell = cf.get("web", "build_shell")
 
 
+class ssh_config:
+    def __init__(self, key):
+        self.host_name = cf.get(key, "host_name")
+        self.user_name = cf.get(key, "user_name")
+
+
 class db_config:
     def __init__(self, key):
         self.db_host = cf.get(key, "db_host")
