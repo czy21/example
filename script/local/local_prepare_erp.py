@@ -1,13 +1,13 @@
 # !/usr/bin/env python
 import os, sys
 sys.path.append("..")
-from default.path_default import prepare_path
+from default.path_default import db_prepare_path
 from default.temp_path import temp_db_path
 from default.local_default import local, local_user
 from default.basic_config import mysql_cmd
 
 prepare_sql = open(temp_db_path + "\\prepare.sql", "w+", encoding="utf8")
-for r, s, fs in os.walk(prepare_path):
+for r, s, fs in os.walk(db_prepare_path):
     if r[-3:] == "(s)":
         for r, s, fs in os.walk(r):
             for f in fs:

@@ -10,5 +10,5 @@ operation_path = web_path + '\\operation'
 backup_path = root_path + '\\backup'
 script_path = root_path + "\\script"
 db_path = root_path + '\\db'
-prepare_path = db_path + '\\create\\100_Prepare'
-version_path = db_path + '\\create\\200_ByVersion'
+db_prepare_path = db_path + '\\create\\100_Prepare'
+db_version_path = db_path + '\\create\\200_ByVersion'

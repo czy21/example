@@ -1,5 +1,6 @@
 # !/usr/bin/env python
-import os,configparser
+import configparser
+import os
 
 config_path = os.path.abspath("../conf")
 
@@ -25,26 +26,6 @@ class db_config:
         self.db_bak_name = cf.get(key, "db_bak_name")
 
 
-def update_release_config_sql(user_param, version_value):
-    return "mysql" + user_param + " -Ne" \
-           + " \"use erp;update release_config set config_value=\'" \
-           + version_value + "\' where config_key='Version';" \
-           + "update release_config set config_value=Now() where config_key='BuildDate'\""
-
-
-def select_release_config_sql(db_name, user_param):
-    return mysql_cmd(db_name,
-                     user_param) + " -Ne" + " \"select config_value from release_config where config_key='Version'\""
-
-
-def user_param(port, user, pwd):
-    return " -P" + port + " -u" + user + " -p" + pwd + " "
-
-
-def migrate_db_sql(s_db, s_user_param, t_db, t_user_param):
-    return mysqldump_cmd(s_db, s_user_param) + " --add-drop-table " + "| " + mysql_cmd(t_db, t_user_param)
-
-
 def mysql_cmd(db_name, user_param):
     return "mysql " + db_name + user_param
 
@@ -53,5 +34,29 @@ def mysqldump_cmd(db_name, user_param):
     return "mysqldump " + db_name + user_param
 
 
+# 更新数据库版本号
+def update_release_config_sql(db_name, user_param, version_value):
+    return mysql_cmd(db_name, user_param) + " -Ne" \
+           + " \"update release_config set config_value=\'" + version_value + "\' where config_key='Version';" \
+           + "update release_config set config_value=Now() where config_key='BuildDate'\""
+
+
+# 查询数据库版本号
+def select_release_config_sql(db_name, user_param):
+    return mysql_cmd(db_name,
+                     user_param) + " -Ne" + " \"select config_value from release_config where config_key='Version'\""
+
+
+# mysql连接的用户信息
+def user_param(port, user, pwd):
+    return " -P" + port + " -u" + user + " -p" + pwd + " "
+
+
+# 迁移(备份)数据库至其他数据库
+def migrate_db_sql(s_db, s_user_param, t_db, t_user_param):
+    return mysqldump_cmd(s_db, s_user_param) + " --add-drop-table " + "| " + mysql_cmd(t_db, t_user_param)
+
+
+# 导入sql文件
 def import_sql_file(sql_file_name, file):
     return " < " + sql_file_name + " > " + file + ".log"
