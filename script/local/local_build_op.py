@@ -16,3 +16,4 @@ def build_to_temp():
 
 if __name__ == '__main__':
     build_to_temp()
+    os.system("pause")
