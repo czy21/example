@@ -43,8 +43,7 @@ def update_release_config_sql(db_name, user_param, version_value):
 
 # 查询数据库版本号
 def select_release_config_sql(db_name, user_param):
-    return mysql_cmd(db_name,
-                     user_param) + " -Ne" + " \"select config_value from release_config where config_key='Version'\""
+    return mysql_cmd(db_name, user_param) + " -Ne" + " \"select config_value from release_config where config_key='Version'\""
 
 
 # mysql连接的用户信息

@@ -27,3 +27,4 @@ def update_api_version(version):
 
 if __name__ == '__main__':
     build_to_temp()
+    os.system("pause")
