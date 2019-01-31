@@ -47,8 +47,8 @@ sudo service mysqld start
 # stop service redis stop
 # start service redis start
 sudo wget http://download.redis.io/releases/redis-5.0.3.tar.gz -O - | tar -zxvf - -C /usr/local/
-cd /usr/local/redis-5.0.3 && make MALLOC=libc
-cd /usr/local/redis-5.0.3/src && make install
+sudo make MALLOC=libc -C /usr/local/redis-5.0.3
+sudo make install -C /usr/local/redis-5.0.3/src
 sudo mkdir /etc/redis 
 sudo cp /usr/local/redis-5.0.3/redis.conf /etc/redis/6379.conf
 sudo sed -i -r "s/^\s*daemonize\s+no/daemonize yes/;s/^\s*# requirepass\s+foobared/requirepass team3059/;" /etc/redis/6379.conf
