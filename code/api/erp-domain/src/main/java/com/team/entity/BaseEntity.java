@@ -13,12 +13,11 @@ import java.time.LocalDateTime;
 @Data
 public class BaseEntity<TEntity> {
 
-    @TableField("added_time")
     private LocalDateTime addedTime;
-    @TableField("modified_time")
+
     private LocalDateTime modifiedTime;
-    @TableField("added_user")
+
     private String addedUser;
-    @TableField("modified_user")
+
     private String modifiedUser;
 }

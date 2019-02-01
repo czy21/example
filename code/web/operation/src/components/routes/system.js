@@ -5,6 +5,7 @@ import DepartmentList from '@v/system/DepartmentList'
 import LogList from '@v/system/LogList'
 import CompanyList from '@v/system/CompanyList'
 import SvgList from '@v/general/SvgList'
+import Privilege from '@v/system/Privilege'
 
 export default [
   {
@@ -48,5 +49,11 @@ export default [
     path: '/system/svg',
     component: SvgList,
     meta: {title: "Svg图标"}
+  },
+  {
+    name: "Privilege",
+    path: '/system/privilege',
+    component: Privilege,
+    meta: {title: "特权操作"}
   },
 ]
