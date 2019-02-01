@@ -37,12 +37,19 @@ public class PageModel<TEntity> implements Serializable {
         this.pageSize = pageSize;
     }
 
+    public PageModel(org.springframework.data.domain.Page<TEntity> page) {
+        this.pageIndex = page.getNumber() + 1;
+        this.pageSize = page.getSize();
+        this.total = (int) page.getTotalElements();
+        this.list = page.getContent();
+    }
+
     public static <TEntity> PageModel<TEntity> of(Page<TEntity> page) {
         return new PageModel<>(page);
     }
 
-    public static <TEntity> PageModel<TEntity> of(Integer pageIndex, Integer pageSize, List<TEntity> list) {
-        return new PageModel<>(pageIndex, pageSize, list);
+    public static <TEntity> PageModel<TEntity> of(org.springframework.data.domain.Page<TEntity> page) {
+        return new PageModel<>(page);
     }
 
 }
