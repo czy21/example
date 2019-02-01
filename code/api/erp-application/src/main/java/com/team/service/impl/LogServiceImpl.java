@@ -1,8 +1,6 @@
 package com.team.service.impl;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import com.team.core.universal.MongoBaseServiceImpl;
-import com.team.core.universal.MybatisBaseService;
 import com.team.entity.dto.LogDto;
 import com.team.entity.dto.PageDto;
 import com.team.entity.map.LogMap;
