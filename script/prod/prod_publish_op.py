@@ -11,9 +11,10 @@ ssh_user = remote.user_name + "@" + remote.host_name
 
 
 def run():
-    print('ssh ' + ssh_user + ' "rm -rf ./web/operation/*"')
-    print("scp -r " + temp_operation_path + " " + ssh_user + ":web")
+    os.system('ssh ' + ssh_user + ' "rm -rf web/operation/*"')
+    os.system("scp -r " + temp_operation_path + " " + ssh_user + ":web")
+
 
 if __name__ == '__main__':
-        run()
-        os.system("pause")
+    run()
+    os.system("pause")
