@@ -1,12 +1,12 @@
-package com.team.entity.mongo;
+package com.team.entity.mybatis.system;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.team.entity.BaseEntity;
-import com.team.entity.mybatis.system.User;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.time.LocalDateTime;
 
 
 /**
@@ -15,14 +15,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * @date 2018-12-10
  */
 @Data
-@Document(collection = "sys_log")
-
 @EqualsAndHashCode(callSuper = true)
 public class Log extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
+    @TableId
     private String logId;
     /**
      * 日志信息描述
@@ -48,24 +46,19 @@ public class Log extends BaseEntity {
      * 异常详情
      */
     private String exceptionDetail;
-
+    /**
+     * 请求的用户id
+     */
+    private String userId;
     /**
      * 请求时长
      */
     private Integer spendTime;
 
-    /**
-     * 操作人
-     */
-    private User operator;
-    /**
-     * 日志类型为正常
-     */
     @TableField(exist = false)
-    public static final Boolean logInfo = false;
-    /**
-     * 日志类型为异常
-     */
+    private LocalDateTime modifiedTime;
     @TableField(exist = false)
-    public static final Boolean logError = true;
+    private String addedUser;
+    @TableField(exist = false)
+    private String modifiedUser;
 }

@@ -4,5 +4,9 @@ spring:
       url: jdbc:mysql://localhost:3372/erp?&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true
       username: root
       password: Czy.101048
+  data:
+    mongodb:
+      uri: mongodb://localhost:3270
+      database: erp
   redis:
     password: team3059

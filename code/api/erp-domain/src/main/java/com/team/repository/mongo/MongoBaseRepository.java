@@ -3,6 +3,7 @@ package com.team.repository.mongo;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.NoRepositoryBean;
 
+import java.util.List;
 import java.util.Map;
 
 @NoRepositoryBean

@@ -15,4 +15,7 @@ public interface LogService extends MongoBaseService<Log> {
 
     PageDto<LogDto> getLogPageListBy(SeachLogModel seach);
 
+    Boolean migrateLogByMysql();
+
+
 }

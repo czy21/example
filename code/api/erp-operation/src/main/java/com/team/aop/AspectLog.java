@@ -128,7 +128,7 @@ public class AspectLog {
             sysLog.setDescription(getMethodRemark(method));
             sysLog.setMethod(targetClassName + "->" + method.getName());
             sysLog.setRequestIp(HttpClientUtil.getClientIp());
-            sysLog.setUserId(JwtUtil.getCurrentUser().getUserId());
+            sysLog.setOperator(JwtUtil.getCurrentUser());
             sysLog.setAddedTime(DateTimeUtil.getCurrentDateTime());
         } catch (Exception ex) {
             log.error("异常信息:{}", ex.getMessage());
