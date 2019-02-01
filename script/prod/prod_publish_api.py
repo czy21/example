@@ -11,9 +11,9 @@ ssh_user = remote.user_name + "@" + remote.host_name
 
 
 def run():
-    os.system('ssh ' + ssh_user + ' "./api/api-restart.sh -d"')
+    os.system('ssh ' + ssh_user + ' "api/api-restart.sh -d"')
     os.system("scp -r " + temp_api_path + " " + ssh_user + ":")
-    os.system('ssh ' + ssh_user + ' "./api/api-restart.sh -u"')
+    os.system('ssh ' + ssh_user + ' "api/api-restart.sh -u"')
 
 
 if __name__ == '__main__':
