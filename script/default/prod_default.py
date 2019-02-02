@@ -1,5 +1,5 @@
 # !/usr/bin/env python
-from default.basic_config import db_config, user_param
+from default.basic_config import mysql_db_config, mysql_user_param
 
-prod = db_config("prod")
-prod_user = user_param(prod.db_port, prod.db_user, prod.db_pass)
+prod_mysql = mysql_db_config("prod_mysql")
+prod_mysql_user = mysql_user_param(prod_mysql.db_port, prod_mysql.db_user, prod_mysql.db_pass)
