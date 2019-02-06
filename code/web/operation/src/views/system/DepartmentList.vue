@@ -9,7 +9,9 @@
     <div class="right-box">
       <div class="handle-box">
         <div class="operate-box">
-          <el-button type="primary" @click="addDepartment('addRoot')">添加部门</el-button>
+          <el-button type="primary" @click="addDepartment('addRoot')" :disabled="!$hasPermission('department/add')">
+            添加部门
+          </el-button>
         </div>
       </div>
       <div class="container">
@@ -19,12 +21,14 @@
           <el-table-column label="备注" prop="remark"></el-table-column>
           <el-table-column label="操作" width="300">
             <template slot-scope="scope">
-              <el-button @click="addDepartment('addSub',scope.row.departmentId)">添加下级部门</el-button>
-              <el-button @click="editDepartment('edit',scope.row)">编辑</el-button>
+              <el-button @click="addDepartment('addSub',scope.row.departmentId)"
+                         :disabled="!$hasPermission('department/add')">添加下级部门
+              </el-button>
+              <el-button @click="editDepartment('edit',scope.row)" :disabled="!$hasPermission('department/edit')">编辑
+              </el-button>
               <el-button @click="modifiedDepartment(scope.row)"
-                         :class="scope.row.enabled
-                       ?'el-button--danger'
-                       :'el-button--success'">
+                         :class="scope.row.enabled ?'el-button--danger':'el-button--success'"
+                         :disabled="!$hasPermission('department/modified')">
                 {{scope.row.enabled?'禁用':'启用'}}
               </el-button>
             </template>

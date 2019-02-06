@@ -47,8 +47,9 @@
           <el-table-column prop="remark" label="菜单(权限)描述"></el-table-column>
           <el-table-column label="操作" width="260">
             <template slot-scope="scope">
-              <el-button @click="editMenu('edit',scope.row)">编辑</el-button>
-              <el-button @click="deleteMenu(scope.row)" type="danger">删除</el-button>
+              <el-button @click="editMenu('edit',scope.row)" :disabled="!$hasPermission('menu/edit')">编辑</el-button>
+              <el-button type="danger" @click="deleteMenu(scope.row)"
+                         :disabled="!$hasPermission('menu/delete')">删除</el-button>
             </template>
           </el-table-column>
         </el-table>
