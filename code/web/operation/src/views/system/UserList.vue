@@ -30,10 +30,8 @@
                        :disabled="!$hasPermission(['user/userRoleDetails','user/updateUserRole'])">分配角色
             </el-button>
             <el-button @click="modifiedUser(scope.row)"
-                       :disabled="!$hasPermission('user/modified')"
-                       :class="scope.row.enabled
-                       ?'el-button--danger'
-                       :'el-button--success'">
+                       :class="scope.row.enabled ?'el-button--danger':'el-button--success'"
+                       :disabled="!$hasPermission('user/modified')">
               {{scope.row.enabled?'禁用':'启用'}}
             </el-button>
           </template>
