@@ -29,14 +29,14 @@ public class LogController {
     @NoLog
     @GetMapping("load")
     @ApiOperation(value = "加载日志列表")
-    public Object Load(SeachLogModel search) {
+    public PageDto<LogDto> Load(SeachLogModel search) {
         return logService.getLogPageListBy(search);
     }
 
     @NoLog
     @PostMapping("search")
     @ApiOperation(value = "查询日志列表")
-    public Object Search(SeachLogModel search) {
+    public PageDto<LogDto> Search(SeachLogModel search) {
         return logService.getLogPageListBy(search);
     }
 

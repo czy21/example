@@ -7,7 +7,7 @@ import com.team.entity.map.LogMap;
 import com.team.entity.mongo.Log;
 import com.team.model.SeachLogModel;
 import com.team.service.LogService;
-import com.team.service.UserService;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,12 +17,9 @@ public class LogServiceImpl extends MongoBaseServiceImpl<Log> implements LogServ
 
     @Resource
     private LogMap logMap;
-    @Resource
-    private UserService userService;
-
 
     @Override
     public PageDto<LogDto> getLogPageListBy(SeachLogModel search) {
-        return logMap.mapToPageDto(super.SelectPageListBy(search.getPageIndex(), search.getPageSize(), null));
+        return logMap.mapToPageDto(super.SelectPageListBy(search.getPageIndex(), search.getPageSize(), null, Sort.Direction.fromString(search.getAddedTimeSort()), "addedTime"));
     }
 }
