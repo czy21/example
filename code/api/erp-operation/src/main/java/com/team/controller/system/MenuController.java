@@ -28,7 +28,7 @@ public class MenuController {
     private MenuService menuService;
 
     @GetMapping("load")
-    @Pocket(entity = {Menu.class})
+    @Pocket(entity = Menu.class, obtainTree = true)
     @ApiOperation(value = "加载权限列表")
     public PageDto<MenuDto> Load(SearchPermissionModel search) {
         return menuService.getMenuAndPermissionPageListBy(search);

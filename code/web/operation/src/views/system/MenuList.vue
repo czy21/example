@@ -49,7 +49,8 @@
             <template slot-scope="scope">
               <el-button @click="editMenu('edit',scope.row)" :disabled="!$hasPermission('menu/edit')">编辑</el-button>
               <el-button type="danger" @click="deleteMenu(scope.row)"
-                         :disabled="!$hasPermission('menu/delete')">删除</el-button>
+                         :disabled="!$hasPermission('menu/delete')">删除
+              </el-button>
             </template>
           </el-table-column>
         </el-table>

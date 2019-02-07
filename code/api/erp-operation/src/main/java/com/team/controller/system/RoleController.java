@@ -6,7 +6,7 @@ import com.team.entity.dto.PageDto;
 import com.team.entity.dto.RoleDto;
 import com.team.entity.map.RoleMap;
 import com.team.entity.mybatis.system.Menu;
-import com.team.extension.entity.MenuExtension;
+import com.team.extension.MenuExtension;
 import com.team.service.RoleMenuService;
 import com.team.service.RoleService;
 import io.swagger.annotations.Api;
@@ -37,7 +37,7 @@ public class RoleController {
 
     @GetMapping("load")
     @ApiOperation(value = "加载角色列表")
-    @Pocket(entity = {Menu.class})
+    @Pocket(entity = Menu.class, obtainTree = true)
     public PageDto<RoleDto> Load(int pageIndex, int pageSize) {
         return roleMap.mapToPageDto(roleService.SelectPageListBy(pageIndex, pageSize, null));
     }

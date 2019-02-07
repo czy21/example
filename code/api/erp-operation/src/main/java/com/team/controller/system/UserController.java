@@ -36,7 +36,8 @@ public class UserController {
     private UserRoleService userRoleService;
 
     @GetMapping("load")
-    @Pocket(entity = {Role.class, Department.class})
+    @Pocket(entity = Role.class)
+    @Pocket(entity = Department.class)
     @ApiOperation(value = "加载用户列表")
     public PageDto<UserDto> Load(SearchUserModel search) {
         return userService.getUserPageListBy(search);

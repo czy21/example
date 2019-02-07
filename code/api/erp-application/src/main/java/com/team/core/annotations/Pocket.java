@@ -1,12 +1,12 @@
 package com.team.core.annotations;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+import java.lang.annotation.*;
 
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
+@Repeatable(Pockets.class)
 public @interface Pocket {
-    Class[] entity();
+    Class entity();
+
+    boolean obtainTree() default false;
 }

@@ -11,7 +11,7 @@ import com.team.entity.map.UserMap;
 import com.team.entity.mybatis.system.User;
 import com.team.exception.ErrorCode;
 import com.team.exception.WebException;
-import com.team.extension.entity.MenuExtension;
+import com.team.extension.MenuExtension;
 import com.team.model.SearchUserModel;
 import com.team.service.RoleMenuService;
 import com.team.service.UserService;

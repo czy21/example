@@ -1,12 +1,15 @@
-package com.team.extension.entity;
+package com.team.extension;
 
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.team.entity.mybatis.system.Menu;
 import com.team.extension.StringExtension;
 import com.team.model.SimpleItemModel;
 import com.team.model.SimpleTreeModel;
 import com.team.repository.mybatis.system.MenuRepository;
-import com.team.entity.mybatis.system.Menu;
+import com.team.util.TreeUtil;
 import lombok.Data;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
@@ -59,6 +62,10 @@ public class MenuExtension {
             simples.add(temp);
         });
         return simples;
+    }
+
+    public static JSONArray convertToTreeSimple() {
+        return TreeUtil.listToTree(JSONArray.parseArray(JSON.toJSONString(convertToSimple())), "value", "parentId", "children");
     }
 
     public static List<Node> createTreeMenus(List<Node> menus) {
