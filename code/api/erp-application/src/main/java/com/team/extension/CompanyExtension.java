@@ -1,18 +1,17 @@
-package com.team.extension.entity;
+package com.team.extension;
 
 import com.team.model.SimpleItemModel;
-import com.team.repository.mybatis.system.RoleRepository;
+import com.team.repository.mybatis.system.CompanyRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class RoleExtension {
+public class CompanyExtension {
+    private static CompanyRepository _dao;
 
-    private static RoleRepository _dao;
-
-    public RoleExtension(RoleRepository dao) {
+    public CompanyExtension(CompanyRepository dao) {
         _dao = dao;
     }
 
@@ -20,11 +19,10 @@ public class RoleExtension {
         List<SimpleItemModel> simples = new ArrayList<>();
         _dao.selectList(null).forEach((t) -> {
             SimpleItemModel temp = new SimpleItemModel();
-            temp.setValue(t.getRoleId());
-            temp.setLabel(t.getRoleName());
+            temp.setValue(t.getCompanyId());
+            temp.setLabel(t.getCompanyName());
             simples.add(temp);
         });
-
         return simples;
     }
 }

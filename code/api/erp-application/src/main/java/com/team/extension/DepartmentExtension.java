@@ -1,4 +1,4 @@
-package com.team.extension.entity;
+package com.team.extension;
 
 import com.team.model.SimpleItemModel;
 import com.team.repository.mybatis.system.DepartmentRepository;

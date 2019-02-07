@@ -9,7 +9,7 @@ import com.team.entity.map.MenuMap;
 import com.team.entity.mybatis.system.Menu;
 import com.team.exception.ErrorCode;
 import com.team.exception.WebException;
-import com.team.extension.entity.MenuExtension;
+import com.team.extension.MenuExtension;
 import com.team.model.SearchPermissionModel;
 import com.team.service.MenuService;
 import org.springframework.stereotype.Service;

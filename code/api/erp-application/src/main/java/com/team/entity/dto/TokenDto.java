@@ -1,6 +1,6 @@
 package com.team.entity.dto;
 
-import com.team.extension.entity.MenuExtension;
+import com.team.extension.MenuExtension;
 import lombok.Data;
 
 import java.util.List;
