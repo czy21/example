@@ -2,28 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/annotations/Pockets.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/util/TreeUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/annotations/Pocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/annotations/Pocket.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/configure/PocketConfigure.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/configure/PocketConfigure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/configure/ResponseConfigure.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/configure/ResponseConfigure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/entity/dto/TokenDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/entity/dto/TokenDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/entity/map/MenuMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/entity/map/MenuMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/extension/entity/CompanyExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/extension/CompanyExtension.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/extension/entity/DepartmentExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/extension/DepartmentExtension.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/extension/entity/MenuExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/extension/MenuExtension.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/extension/entity/RoleExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/extension/RoleExtension.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/extension/entity/UserExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/extension/UserExtension.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/impl/MenuServiceImplMybatis.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/impl/MenuServiceImplMybatis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/impl/UserServiceImplMybatis.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/impl/UserServiceImplMybatis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/system/DepartmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/system/DepartmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/system/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/system/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/system/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/system/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/system/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/system/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/universal/MongoBaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/universal/MongoBaseService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/universal/MongoBaseServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/universal/MongoBaseServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/model/SeachLogModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/model/SeachLogModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/impl/LogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/impl/LogServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/system/LogController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/system/LogController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/MenuList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/MenuList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../shared/src/vue/framework/runtime/store/data.js" beforeDir="false" afterPath="$PROJECT_DIR$/../shared/src/vue/framework/runtime/store/data.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -37,11 +22,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/views/system/MenuList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="221">
+              <caret line="28" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="n#style#0;n#el-cascader#0;n#div#1;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#el-dialog#2;n#div#1;n#div#0;n#template#0;n#!!top" />
@@ -51,11 +36,20 @@
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/views/system/LogList.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="294">
+              <caret line="46" column="21" lean-forward="true" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/mixins/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="10" column="11" lean-forward="true" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+              <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -116,7 +110,6 @@
         <option value="$PROJECT_DIR$/src/views/custom/index.js" />
         <option value="$PROJECT_DIR$/src/views/custom/svg/index.js" />
         <option value="$PROJECT_DIR$/src/views/custom/svg/SvgIcon.vue" />
-        <option value="$PROJECT_DIR$/src/views/system/LogList.vue" />
         <option value="$PROJECT_DIR$/src/components/mixins/list.js" />
         <option value="$PROJECT_DIR$/static/css/custom.scss" />
         <option value="$PROJECT_DIR$/src/views/common/Sidebar.vue" />
@@ -157,6 +150,7 @@
         <option value="$PROJECT_DIR$/src/components/mixins/index.js" />
         <option value="$PROJECT_DIR$/src/views/system/MenuList.vue" />
         <option value="$PROJECT_DIR$/../shared/src/vue/framework/runtime/store/data.js" />
+        <option value="$PROJECT_DIR$/src/views/system/LogList.vue" />
       </list>
     </option>
   </component>
@@ -166,7 +160,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="744" />
     <option name="y" value="113" />
     <option name="width" value="1070" />
@@ -208,6 +202,21 @@
             <path>
               <item name="operation" type="b2602c69:ProjectViewProjectNode" />
               <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="operation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
+              <item name="operation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="system" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
+              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
               <item name="shared" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -230,15 +239,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="vue" type="462c0819:PsiDirectoryNode" />
               <item name="framework" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="shared" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="vue" type="462c0819:PsiDirectoryNode" />
-              <item name="framework" type="462c0819:PsiDirectoryNode" />
-              <item name="runtime" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -469,12 +469,12 @@
       <workItem from="1548383261690" duration="2436000" />
       <workItem from="1549084531414" duration="934000" />
       <workItem from="1549170557015" duration="673000" />
-      <workItem from="1549457882150" duration="9691000" />
+      <workItem from="1549457882150" duration="11684000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="403716000" />
+    <option name="totallyTimeSpent" value="405709000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -733,9 +733,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/views/system/LogList.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/views/system/RoleList.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -843,19 +840,26 @@
     <entry file="file://$PROJECT_DIR$/src/components/mixins/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
-          <caret line="10" column="11" lean-forward="true" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
+          <caret line="10" column="11" selection-start-line="10" selection-start-column="11" selection-end-line="10" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/system/MenuList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="221">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="n#style#0;n#el-cascader#0;n#div#1;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#el-dialog#2;n#div#1;n#div#0;n#template#0;n#!!top" />
             <element signature="e#9094#9112#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/system/LogList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="46" column="21" lean-forward="true" selection-start-line="46" selection-start-column="21" selection-end-line="46" selection-end-column="21" />
         </state>
       </provider>
     </entry>
