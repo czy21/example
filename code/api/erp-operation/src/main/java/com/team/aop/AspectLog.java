@@ -75,17 +75,22 @@ public class AspectLog {
     @AfterThrowing(pointcut = "excudeController()&&apiAnnotation()", throwing = "e")
     public void doAfterThrowing(JoinPoint p, Throwable e) {
         if (!(e instanceof ServiceException)) {
+            Method method = ((MethodSignature) p.getSignature()).getMethod();
             try {
-                Log sysLog = getSystemLogInit(p);
-                sysLog.setLogType(Log.logError);
-                sysLog.setExceptionCode(e.getClass().getName());
-                sysLog.setExceptionDetail(e.getMessage());
-                logQueue.add(sysLog);
+                if (!isNoLog(method) && isApiOperation(method)) {
+                    Log sysLog = getSystemLogInit(p);
+                    sysLog.setLogType(Log.logError);
+                    sysLog.setExceptionCode(e.getClass().getName());
+                    sysLog.setExceptionDetail(e.getMessage());
+                    sysLog.setSpendTime((int) (System.currentTimeMillis() - startTime.get()));
+                    logQueue.add(sysLog);
+                }
             } catch (Exception ex) {
                 log.error("异常信息:{}", ex.getMessage());
             }
         }
     }
+
 
     /*
      * @author 陈昭宇

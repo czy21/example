@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
  * @Date 2018-10-15
  */
 @Service
-public class MenuServiceImplMybatis extends MybatisBaseServiceImpl<Menu> implements MenuService {
+public class MenuServiceImpl extends MybatisBaseServiceImpl<Menu> implements MenuService {
 
     @Resource
     private MenuMap menuMap;

@@ -7,5 +7,12 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class SeachLogModel extends PageParams {
-    private String addedTimeSort = "desc";
+    private String description;
+    private String method;
+    private String requestIp;
+    private String exceptionCode;
+    private String exceptionDetail;
+    private Boolean logType;
+    private String addedTimeSort;
+
 }

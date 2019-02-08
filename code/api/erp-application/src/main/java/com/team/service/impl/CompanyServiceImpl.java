@@ -11,6 +11,6 @@ import org.springframework.stereotype.Service;
  * @Date 2018-10-15
  */
 @Service
-public class CompanyServiceImplMybatis extends MybatisBaseServiceImpl<Company> implements CompanyService {
+public class CompanyServiceImpl extends MybatisBaseServiceImpl<Company> implements CompanyService {
 
 }

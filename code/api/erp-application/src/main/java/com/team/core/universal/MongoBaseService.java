@@ -7,6 +7,6 @@ import org.springframework.data.domain.Sort;
 
 public interface MongoBaseService<TEntity extends BaseEntity> {
 
-    PageModel<TEntity> SelectPageListBy(Integer pageIndex, Integer pageSize, Example<TEntity> query, Sort.Direction direction, String... properties);
+    PageModel<TEntity> SelectPageListBy(Integer pageIndex, Integer pageSize, Example<TEntity> example, Sort.Direction direction, String... properties);
 
 }

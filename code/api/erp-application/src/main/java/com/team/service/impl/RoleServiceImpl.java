@@ -18,7 +18,7 @@ import javax.annotation.Resource;
  * @Date 2018-10-15
  */
 @Service
-public class RoleServiceImplMybatis extends MybatisBaseServiceImpl<Role> implements RoleService {
+public class RoleServiceImpl extends MybatisBaseServiceImpl<Role> implements RoleService {
 
     @Resource
     private RoleMap roleMap;
