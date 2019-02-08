@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
  * @Date 2018-10-15
  */
 @Service
-public class UserRoleServiceImplMybatis extends MybatisBaseServiceImpl<UserRole> implements UserRoleService {
+public class UserRoleServiceImpl extends MybatisBaseServiceImpl<UserRole> implements UserRoleService {
 
     @Resource
     private UserService userService;

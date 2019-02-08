@@ -10,7 +10,7 @@
         <el-button type="primary">重置密码</el-button>
       </div>
       <div class="search-box">
-        <el-input placeholder="关键词" style="width:200px"></el-input>
+        <el-input placeholder="关键词" ></el-input>
         <el-button type="primary" icon="el-icon-search" @click="search">查询</el-button>
       </div>
     </div>

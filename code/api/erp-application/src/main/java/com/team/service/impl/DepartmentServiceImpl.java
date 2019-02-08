@@ -20,7 +20,7 @@ import javax.annotation.Resource;
  * @Date 2018-10-15
  */
 @Service
-public class DepartmentServiceImplMybatis extends MybatisBaseServiceImpl<Department> implements DepartmentService {
+public class DepartmentServiceImpl extends MybatisBaseServiceImpl<Department> implements DepartmentService {
 
     @Resource
     private DepartmentMap departmentMap;

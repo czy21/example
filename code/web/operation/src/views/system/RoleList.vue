@@ -5,7 +5,7 @@
         <el-button type="primary" @click="addRole('add')">添加角色</el-button>
       </div>
       <div class="search-box">
-        <el-input placeholder="关键词" style="width:200px"></el-input>
+        <el-input placeholder="关键词"></el-input>
         <el-button type="primary" icon="el-icon-search" @click="search">查询</el-button>
       </div>
     </div>
@@ -19,7 +19,8 @@
           <template slot-scope="scope">
             <el-button @click="editRole('edit',scope.row)" :disabled="!$hasPermission('role/edit')">编辑</el-button>
             <el-button type="primary" @click="allotMenu('allot',scope.row)"
-                       :disabled="!$hasPermission(['role/roleMenuDetails','role/updateRoleMenu'])">分配权限</el-button>
+                       :disabled="!$hasPermission(['role/roleMenuDetails','role/updateRoleMenu'])">分配权限
+            </el-button>
           </template>
         </el-table-column>
       </el-table>

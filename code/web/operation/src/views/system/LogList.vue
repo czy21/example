@@ -2,8 +2,36 @@
   <div class="main-box">
     <div class="handle-box">
       <div class="search-box">
-        <el-input placeholder="关键词" style="width:200px"></el-input>
-        <el-button type="primary" icon="el-icon-search" @click="search();clearSort()">查询</el-button>
+        <el-form ref="searchForm" :inline="true" :model="searchModel" label-position="left" label-width="80px">
+          <el-form-item label="API名称" prop="description">
+            <el-input v-model="searchModel.description"></el-input>
+          </el-form-item>
+          <el-form-item label="方法名" prop="method">
+            <el-input v-model="searchModel.method"></el-input>
+          </el-form-item>
+          <el-form-item label="请求IP" prop="requestIp">
+            <el-input v-model="searchModel.requestIp"></el-input>
+          </el-form-item>
+          <el-form-item label="异常代码" prop="exceptionCode">
+            <el-input v-model="searchModel.exceptionCode"></el-input>
+          </el-form-item>
+          <el-form-item label="异常描述" prop="exceptionDetail">
+            <el-input v-model="searchModel.exceptionDetail"></el-input>
+          </el-form-item>
+          <el-form-item label="是否成功" prop="logType">
+            <el-select v-model="searchModel.logType" placeholder="请选择">
+              <el-option
+                v-for="(item,index) in success"
+                :key="index"
+                :label="item.label"
+                :value="item.value">
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="search();clearSort()">查询</el-button>
+          </el-form-item>
+        </el-form>
       </div>
     </div>
     <div class="container">
@@ -40,6 +68,15 @@
 
   export default {
     mixins: [c.mixins.list],
+    data() {
+      return {
+        success: [
+          {value: '', label: ''},
+          {value: true, label: '是'},
+          {value: false, label: '否'}
+        ]
+      }
+    },
     name: "LogList",
     methods: {
       sortChange({column, prop, order}) {

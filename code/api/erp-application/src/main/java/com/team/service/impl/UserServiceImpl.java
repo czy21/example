@@ -28,7 +28,7 @@ import javax.annotation.Resource;
  * @Date 2018-10-15
  */
 @Service
-public class UserServiceImplMybatis extends MybatisBaseServiceImpl<User> implements UserService {
+public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements UserService {
 
     @Resource
     private UserMap userMap;

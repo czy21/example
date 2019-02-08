@@ -13,7 +13,7 @@ import java.util.Map;
 
 public class MongoBaseRepositoryImpl<TEntity, ID extends Serializable> extends SimpleMongoRepository<TEntity, ID> implements MongoBaseRepository<TEntity, ID> {
 
-    protected final MongoOperations mongoTemplate;
+    protected final MongoOperations mongoOperations;
 
     protected final MongoEntityInformation<TEntity, ID> entityInformation;
 
@@ -21,7 +21,7 @@ public class MongoBaseRepositoryImpl<TEntity, ID extends Serializable> extends S
 
     public MongoBaseRepositoryImpl(MongoEntityInformation<TEntity, ID> metadata, MongoOperations mongoOperations) {
         super(metadata, mongoOperations);
-        this.mongoTemplate = mongoOperations;
+        this.mongoOperations = mongoOperations;
         this.entityInformation = metadata;
         clazz = entityInformation.getJavaType();
     }
@@ -43,7 +43,7 @@ public class MongoBaseRepositoryImpl<TEntity, ID extends Serializable> extends S
                 e.printStackTrace();
             }
         }
-        this.mongoTemplate.updateFirst(query, update, clazz);
+        this.mongoOperations.updateFirst(query, update, clazz);
         return super.findById(id).orElse(null);
     }
 
@@ -53,7 +53,7 @@ public class MongoBaseRepositoryImpl<TEntity, ID extends Serializable> extends S
             Criteria criteria = new Criteria("_id").is(id);
             Update update = new Update();
             updateFieldMap.forEach(update::set);
-            mongoTemplate.updateFirst(new Query(criteria), update, clazz);
+            mongoOperations.updateFirst(new Query(criteria), update, clazz);
         }
         return super.findById(id).orElse(null);
     }

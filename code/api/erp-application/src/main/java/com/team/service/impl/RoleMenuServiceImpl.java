@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
  * @Date 2018-10-15
  */
 @Service
-public class RoleMenuServiceImplMybatis extends MybatisBaseServiceImpl<RoleMenu> implements RoleMenuService {
+public class RoleMenuServiceImpl extends MybatisBaseServiceImpl<RoleMenu> implements RoleMenuService {
 
     @Resource
     private RoleMenuRepository roleMenuDao;
