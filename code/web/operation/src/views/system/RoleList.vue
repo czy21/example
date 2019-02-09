@@ -1,12 +1,18 @@
 <template>
   <div class="main-box">
     <div class="handle-box">
+      <div class="search-box">
+        <el-form ref="searchForm" :inline="true" :model="searchModel" label-position="left" label-width="80px">
+          <el-form-item label="角色名称" prop="roleName">
+            <el-input></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="search">查询</el-button>
+          </el-form-item>
+        </el-form>
+      </div>
       <div class="operate-box">
         <el-button type="primary" @click="addRole('add')">添加角色</el-button>
-      </div>
-      <div class="search-box">
-        <el-input placeholder="关键词"></el-input>
-        <el-button type="primary" icon="el-icon-search" @click="search">查询</el-button>
       </div>
     </div>
     <div class="container">
