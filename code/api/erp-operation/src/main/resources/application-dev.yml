@@ -8,3 +8,5 @@ spring:
     mongodb:
       uri: mongodb://localhost:27017
       database: erp
+authentication:
+  token-expire-time: 0

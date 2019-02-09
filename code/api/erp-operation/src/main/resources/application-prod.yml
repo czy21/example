@@ -10,3 +10,5 @@ spring:
       database: erp
   redis:
     password: team3059
+authentication:
+  token-expire-time: 30
