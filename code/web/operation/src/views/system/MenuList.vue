@@ -11,22 +11,27 @@
     </div>
     <div class="right-box">
       <div class="handle-box">
+        <div class="search-box">
+          <el-form ref="searchForm" :inline="true" :model="searchModel" label-position="left" label-width="80px">
+            <el-form-item label="菜单" prop="menuId">
+              <el-cascader expand-trigger="click"
+                           :options="$pocket.menuTree"
+                           style="width: 300px;"
+                           clearable
+                           show-all-levels
+                           placeholder="请选择菜单"
+                           :change-on-select="true"
+                           @change="selectMenuChange">
+              </el-cascader>
+            </el-form-item>
+            <el-form-item>
+              <el-button type="primary" @click="search">搜索</el-button>
+            </el-form-item>
+          </el-form>
+        </div>
         <div class="operate-box">
           <el-button type="primary" @click="addMenu('add')">添加菜单(权限)</el-button>
           <el-button type="primary" @click="batchAddPermission('add')">批量添加权限</el-button>
-        </div>
-        <div class="search-box">
-          <el-cascader expand-trigger="click"
-                       :options="$pocket.menuTree"
-                       style="width: 300px;"
-                       clearable
-                       show-all-levels
-                       placeholder="请选择菜单"
-                       :change-on-select="true"
-                       @change="selectMenuChange">
-          </el-cascader>
-          <el-button type="primary" @click="search">搜索</el-button>
-
         </div>
       </div>
       <div class="container">
@@ -188,7 +193,7 @@
       <el-dialog title="批量添加权限" :visible.sync="batchAddPermissionShow" width="60%">
         <div class="handle-box">
           <div class="search-box">
-            <el-button type="primary" icon="el-icon-search">查询</el-button>
+            <el-button type="primary">查询</el-button>
           </div>
         </div>
         <div class="container">

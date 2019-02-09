@@ -1,17 +1,23 @@
 <template>
   <div class="main-box">
     <div class="handle-box">
+      <div class="search-box">
+        <el-form ref="searchForm" :inline="true" :model="searchModel" label-position="left" label-width="80px">
+          <el-form-item label="姓名" prop="userName">
+            <el-input v-model="searchModel.userName"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="search">搜索</el-button>
+          </el-form-item>
+        </el-form>
+      </div>
       <div class="operate-box">
-        <el-button type="primary" icon="el-icon-edit" @click="addUser('add')" :disabled="!$hasPermission('user/add')">
+        <el-button type="primary" @click="addUser('add')" :disabled="!$hasPermission('user/add')">
           添加用户
         </el-button>
         <el-button type="primary">批量修改</el-button>
         <el-button type="primary">导出</el-button>
         <el-button type="primary">重置密码</el-button>
-      </div>
-      <div class="search-box">
-        <el-input placeholder="关键词" ></el-input>
-        <el-button type="primary" icon="el-icon-search" @click="search">查询</el-button>
       </div>
     </div>
     <div class="container">
