@@ -8,7 +8,6 @@ import java.util.concurrent.TimeUnit;
 
 @Component
 public class RedisUtil {
-    public static final long TOKEN_EXPIRES_MINUTE = 30;
 
     @Autowired
     private StringRedisTemplate redisTemplate;
@@ -22,13 +21,13 @@ public class RedisUtil {
         }
     }
 
-    public boolean set(String key, String value, long time) {
+    public Boolean set(String key, String value, long time) {
         redisTemplate.opsForValue().set(key, value);
         return expire(key, time);
     }
 
     public Boolean expire(String key, long time) {
-        return redisTemplate.expire(key, time, TimeUnit.MINUTES);
+        return time == 0 ? true : redisTemplate.expire(key, time, TimeUnit.MINUTES);
     }
 
     public String get(String key) {
