@@ -5,6 +5,7 @@ import com.team.entity.dto.LogDto;
 import com.team.entity.dto.PageDto;
 import com.team.model.SeachLogModel;
 import com.team.service.LogService;
+import com.team.core.universal.UidGenService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class LogController {
     @Autowired
     private LogService logService;
 
+    @Autowired
+    private UidGenService uidGenService;
+
     @NoLog
     @GetMapping("load")
     @ApiOperation(value = "加载日志列表")
@@ -40,4 +44,8 @@ public class LogController {
         return logService.getLogPageListBy(search);
     }
 
+    @GetMapping("testUid")
+    public Object testUid() {
+        return uidGenService.getUid();
+    }
 }
