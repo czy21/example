@@ -10,6 +10,7 @@
         <module>erp-application</module>
         <module>erp-domain</module>
         <module>erp-operation</module>
+        <module>baidu-external</module>
     </modules>
     <packaging>pom</packaging>
     <name>erp</name>

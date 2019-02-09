@@ -17,6 +17,11 @@
             <artifactId>erp-domain</artifactId>
             <version>1.0.2</version>
         </dependency>
+        <dependency>
+            <groupId>team3059</groupId>
+            <artifactId>baidu-external</artifactId>
+            <version>1.0.2</version>
+        </dependency>
     </dependencies>
     <build>
         <finalName>erp-application</finalName>

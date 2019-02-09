@@ -4,7 +4,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan(basePackages = "com.team.repository.mybatis")
+@MapperScan({"com.team.repository.mybatis","com.baidu.fsg.uid.worker.dao"})
 public class MybatisPlusConfigure {
 
 }
