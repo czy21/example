@@ -19,7 +19,7 @@
         </dependency>
         <dependency>
             <groupId>team3059</groupId>
-            <artifactId>baidu-external</artifactId>
+            <artifactId>erp-external</artifactId>
             <version>1.0.2</version>
         </dependency>
     </dependencies>

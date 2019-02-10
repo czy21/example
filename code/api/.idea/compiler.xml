@@ -6,9 +6,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="baidu-external" />
         <module name="erp-application" />
         <module name="erp-domain" />
+        <module name="erp-external" />
         <module name="erp-operation" />
       </profile>
     </annotationProcessing>
@@ -17,6 +17,7 @@
       <module name="erp" target="1.8" />
       <module name="erp-application" target="1.8" />
       <module name="erp-domain" target="1.8" />
+      <module name="erp-external" target="1.8" />
       <module name="erp-operation" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -25,6 +26,7 @@
       <module name="baidu-external" options="-parameters" />
       <module name="erp-application" options="-parameters" />
       <module name="erp-domain" options="-parameters" />
+      <module name="erp-external" options="-parameters" />
       <module name="erp-operation" options="-parameters" />
     </option>
   </component>

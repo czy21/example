@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Maven: team3059:baidu-external:1.0.2">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/team3059/baidu-external/1.0.2/baidu-external-1.0.2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$PROJECT_DIR$/baidu-external/baidu-external-1.0.2-javadoc.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/team3059/baidu-external/1.0.2/baidu-external-1.0.2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/baidu-external/baidu-external-1.0.2-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/team3059/baidu-external/1.0.2/baidu-external-1.0.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
