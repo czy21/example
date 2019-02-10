@@ -1,38 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e0c33ad-5bfe-400f-a92c-151223c9fb22" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/team/aop/AspectKey.aj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/team/entity/PrimaryKeyGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/erp-application/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-domain/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-domain/src/main/java/com/team/repository/mybatis/MybatisBaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/team/repository/mybatis/MybatisBaseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/BitsAllocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/BitsAllocator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/UidGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/UidGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/buffer/BufferPaddingExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/buffer/BufferPaddingExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/buffer/BufferedUidProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/buffer/BufferedUidProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/buffer/RejectedPutBufferHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/buffer/RejectedPutBufferHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/buffer/RejectedTakeBufferHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/buffer/RejectedTakeBufferHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/buffer/RingBuffer.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/buffer/RingBuffer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/exception/UidGenerateException.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/exception/UidGenerateException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/impl/CachedUidGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/impl/CachedUidGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/impl/DefaultUidGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/impl/DefaultUidGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/utils/DateUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/utils/DateUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/utils/DockerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/utils/DockerUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/utils/EnumUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/utils/EnumUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/utils/NamingThreadFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/utils/NamingThreadFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/utils/NetUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/utils/NetUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/utils/PaddedAtomicLong.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/utils/PaddedAtomicLong.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/utils/ValuedEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/utils/ValuedEnum.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/worker/DisposableWorkerIdAssigner.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/worker/DisposableWorkerIdAssigner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/worker/WorkerIdAssigner.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/worker/WorkerIdAssigner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/worker/WorkerNodeType.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/worker/WorkerNodeType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/worker/dao/WorkerNodeDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/worker/dao/WorkerNodeDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/worker/entity/WorkerNodeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/worker/entity/WorkerNodeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-operation/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/erp-operation/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="0e0c33ad-5bfe-400f-a92c-151223c9fb22" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/erp-operation/target/" />
     <ignored path="$PROJECT_DIR$/erp-application/target/" />
     <ignored path="$PROJECT_DIR$/erp-domain/target/" />
@@ -58,7 +27,7 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/erp-operation/src/main/resources/application.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="231">
@@ -67,13 +36,36 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/erp-domain/src/main/java/com/team/entity/mybatis/system/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+            <state relative-caret-position="306">
+              <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/erp-operation/src/main/java/com/team/controller/system/LogController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="241">
+              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/erp-operation/src/main/resources/application-dev.yml">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -144,10 +136,10 @@
         <option value="$PROJECT_DIR$/erp-domain/src/main/java/com/team/repository/mybatis/MybatisBaseRepository.java" />
         <option value="$PROJECT_DIR$/erp-operation/src/main/java/com/team/controller/system/UserController.java" />
         <option value="$PROJECT_DIR$/erp-operation/src/main/java/com/team/aop/AspectLog.java" />
-        <option value="$PROJECT_DIR$/erp-domain/src/main/java/com/team/entity/PrimaryKeyGenerator.java" />
         <option value="$PROJECT_DIR$/erp-operation/src/main/java/com/team/aop/AspectKey.aj" />
         <option value="$PROJECT_DIR$/erp-operation/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/erp-domain/src/main/java/com/team/entity/mybatis/system/User.java" />
+        <option value="$PROJECT_DIR$/erp-domain/src/main/java/com/team/entity/PrimaryKeyGenerator.java" />
       </list>
     </option>
   </component>
@@ -181,7 +173,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-310" />
     <option name="y" value="12" />
     <option name="width" value="1504" />
@@ -207,58 +199,55 @@
             <path>
               <item name="erp" type="b2602c69:ProjectViewProjectNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="erp-domain" type="462c0819:PsiDirectoryNode" />
+              <item name="erp-operation" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="erp" type="b2602c69:ProjectViewProjectNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="erp-domain" type="462c0819:PsiDirectoryNode" />
+              <item name="erp-operation" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="erp" type="b2602c69:ProjectViewProjectNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="erp-domain" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="erp-domain" type="462c0819:PsiDirectoryNode" />
+              <item name="erp-operation" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="erp" type="b2602c69:ProjectViewProjectNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="erp-domain" type="462c0819:PsiDirectoryNode" />
+              <item name="erp-operation" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="com" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="erp" type="b2602c69:ProjectViewProjectNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="erp-domain" type="462c0819:PsiDirectoryNode" />
+              <item name="erp-operation" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
-              <item name="team" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="erp" type="b2602c69:ProjectViewProjectNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
-              <item name="erp-domain" type="462c0819:PsiDirectoryNode" />
+              <item name="erp-operation" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="team" type="462c0819:PsiDirectoryNode" />
-              <item name="entity" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="erp" type="b2602c69:ProjectViewProjectNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="erp-operation" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -326,7 +315,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549796565260" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1549797016122" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../GitProjects/easy-cloud/easy-cloud-core-parent" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -441,12 +430,12 @@
       <workItem from="1549084455404" duration="808000" />
       <workItem from="1549170647975" duration="677000" />
       <workItem from="1549457892891" duration="44850000" />
-      <workItem from="1549786341430" duration="10174000" />
+      <workItem from="1549786341430" duration="10468000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="179142000" />
+    <option name="totallyTimeSpent" value="179436000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -458,7 +447,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49441788" visible="true" weight="0.21268657" />
@@ -515,19 +504,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/erp-external/src/main/java/com/baidu/fsg/uid/impl/CachedUidGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="93" column="20" selection-start-line="93" selection-start-column="20" selection-end-line="93" selection-end-column="20" />
-          <folding>
-            <element signature="e#3800#3801#0" expanded="true" />
-            <element signature="e#3842#3843#0" expanded="true" />
-            <element signature="e#3939#3940#0" expanded="true" />
-            <element signature="e#3965#3966#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/erp-domain/src/main/java/com/baidu/fsg/uid/utils/DateUtils.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -601,13 +577,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="12" column="11" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
         </state>
       </provider>
     </entry>
@@ -755,13 +724,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/erp-domain/src/main/java/com/team/entity/PrimaryKeyGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-core/3.0.6/mybatis-plus-core-3.0.6.jar!/com/baomidou/mybatisplus/core/handlers/MetaObjectHandler.class">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -817,16 +779,6 @@
     <entry file="file://$PROJECT_DIR$/erp-operation/pom.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/erp-operation/src/main/resources/application-dev.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/erp-operation/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="34" column="13" lean-forward="true" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/com/baomidou/mybatis-plus-core/3.0.6/mybatis-plus-core-3.0.6.jar!/com/baomidou/mybatisplus/core/mapper/BaseMapper.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -834,10 +786,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/erp-domain/src/main/java/com/team/entity/PrimaryKeyGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="9" column="39" selection-start-line="9" selection-start-column="39" selection-end-line="9" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/erp-domain/src/main/java/com/team/entity/mybatis/system/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+        <state relative-caret-position="306">
+          <caret line="21" column="7" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/erp-operation/src/main/java/com/team/controller/system/LogController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/erp-operation/src/main/resources/application-dev.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/erp-operation/src/main/resources/application.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="34" column="13" lean-forward="true" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
         </state>
       </provider>
     </entry>
