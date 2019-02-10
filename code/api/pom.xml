@@ -10,7 +10,6 @@
         <module>erp-application</module>
         <module>erp-domain</module>
         <module>erp-operation</module>
-        <module>erp-external</module>
     </modules>
     <packaging>pom</packaging>
     <name>erp</name>

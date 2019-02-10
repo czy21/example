@@ -11,6 +11,20 @@
 
     <artifactId>erp-domain</artifactId>
     <packaging>jar</packaging>
+
+    <dependencies>
+        <!-- Apache Commons -->
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.2</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>2.6</version>
+        </dependency>
+    </dependencies>
     <build>
         <finalName>erp-domain</finalName>
         <plugins>
