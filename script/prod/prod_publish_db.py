@@ -20,3 +20,9 @@ def db_update(version):
         os.system(upgrade_cmd + "&&" + update_release_config)
     else:
         os.system(update_release_config)
+
+
+if __name__ == '__main__':
+    db_version = input("please input db version: ")
+    db_update(db_version)
+    os.system("pause")
