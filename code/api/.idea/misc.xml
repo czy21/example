@@ -9,6 +9,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/baidu-external/pom.xml" />
+        <option value="$PROJECT_DIR$/erp-external/pom.xml" />
       </set>
     </option>
   </component>

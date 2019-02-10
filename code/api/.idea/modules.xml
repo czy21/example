@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/erp.iml" filepath="$PROJECT_DIR$/erp.iml" />
       <module fileurl="file://$PROJECT_DIR$/erp-application/erp-application.iml" filepath="$PROJECT_DIR$/erp-application/erp-application.iml" />
       <module fileurl="file://$PROJECT_DIR$/erp-domain/erp-domain.iml" filepath="$PROJECT_DIR$/erp-domain/erp-domain.iml" />
-      <module fileurl="file://$PROJECT_DIR$/erp-external/erp-external.iml" filepath="$PROJECT_DIR$/erp-external/erp-external.iml" />
       <module fileurl="file://$PROJECT_DIR$/erp-operation/erp-operation.iml" filepath="$PROJECT_DIR$/erp-operation/erp-operation.iml" />
     </modules>
   </component>

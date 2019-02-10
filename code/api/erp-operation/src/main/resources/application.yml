@@ -38,7 +38,7 @@ mybatis-plus:
   type-aliases-super-type: com.team.entity.BaseEntity
   global-config:
     db-config:
-      id-type: uuid
+      id-type: id_worker_str
       table-prefix: sys_
       db-type: mysql
     banner: false
