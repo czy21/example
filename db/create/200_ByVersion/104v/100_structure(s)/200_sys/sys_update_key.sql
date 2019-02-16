@@ -1,0 +1,1 @@
+alter table vip drop foreign key FK1C81D1738DA76
