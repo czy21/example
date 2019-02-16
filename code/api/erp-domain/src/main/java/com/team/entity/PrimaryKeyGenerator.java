@@ -1,12 +1,18 @@
 package com.team.entity;
 
 import com.baidu.fsg.uid.UidGenerator;
+import com.baomidou.mybatisplus.core.incrementer.IKeyGenerator;
 
-import java.lang.annotation.*;
+import javax.annotation.Resource;
 
-@Documented
-@Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD})
-public @interface PrimaryKeyGenerator {
-    Class<? extends UidGenerator> keyGeneratorClass();
+
+public class PrimaryKeyGenerator implements IKeyGenerator {
+
+    @Resource
+    private UidGenerator uidGenerator;
+
+    @Override
+    public String executeSql(String s) {
+        return String.valueOf(uidGenerator.getUID());
+    }
 }
