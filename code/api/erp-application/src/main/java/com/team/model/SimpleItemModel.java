@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class SimpleItemModel {
-    private String value;
+    private Long value;
     private String label;
-    private String parentId;
+    private Long parentId;
 }

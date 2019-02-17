@@ -5,7 +5,6 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.entity.mybatis.system.Menu;
-import com.team.extension.StringExtension;
 import com.team.model.SimpleItemModel;
 import com.team.model.SimpleTreeModel;
 import com.team.repository.mybatis.system.MenuRepository;
@@ -21,8 +20,8 @@ import java.util.stream.Collectors;
 public class MenuExtension {
     @Data
     public static class Node {
-        private String menuId;
-        private String parentId;
+        private Long menuId;
+        private Long parentId;
         private String menuName;
         private String icon;
         private String url;
@@ -70,13 +69,13 @@ public class MenuExtension {
 
     public static List<Node> createTreeMenus(List<Node> menus) {
         Node root = new Node();
-        root.setParentId(StringExtension.GuidEmpty);
-        Map<String, Node> dataMap = new HashMap<>();
+        root.setParentId(LongExtension.empty);
+        Map<Long, Node> dataMap = new HashMap<>();
         menus.forEach(t -> dataMap.put(t.getMenuId(), t));
-        Set<Map.Entry<String, Node>> entrySet = dataMap.entrySet();
+        Set<Map.Entry<Long, Node>> entrySet = dataMap.entrySet();
         entrySet.forEach(t -> {
             Node menu = t.getValue();
-            if (StringExtension.guidIsEmpty(menu.getParentId())) {
+            if (LongExtension.guidIsEmpty(menu.getParentId())) {
                 root.getChildren().add(menu);
             } else {
                 dataMap.get(menu.getParentId()).getChildren().add(menu);
@@ -86,7 +85,7 @@ public class MenuExtension {
         return root.getChildren();
     }
 
-    public static List<Menu> getSons(List<Menu> list, String parentId) {
+    public static List<Menu> getSons(List<Menu> list, Long parentId) {
         if (StringUtils.isEmpty(parentId)) {
             return list.stream()
                     .sorted(Comparator.comparing(Menu::getIsMenu).reversed().thenComparing(Menu::getSort, Comparator.nullsLast(Integer::compareTo)))
@@ -97,7 +96,7 @@ public class MenuExtension {
         return query.stream().sorted(Comparator.comparing(Menu::getIsMenu).reversed()).collect(Collectors.toList());
     }
 
-    private static List<Menu> getSonList(List<Menu> list, String parentId) {
+    private static List<Menu> getSonList(List<Menu> list, Long parentId) {
         List<Menu> menus = new ArrayList<>();
         list.forEach(t -> {
             if (t.getParentId().equals(parentId)) {

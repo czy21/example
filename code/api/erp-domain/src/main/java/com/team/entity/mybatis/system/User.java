@@ -18,7 +18,7 @@ public class User extends BaseEntity<User> {
     private static final long serialVersionUID = 1L;
 
     @TableId
-    private String userId;
+    private Long userId;
     /**
      * 用户账号
      */
@@ -46,6 +46,6 @@ public class User extends BaseEntity<User> {
     /**
      * 所属部门
      */
-    private String departmentId;
+    private Long departmentId;
     private Boolean enabled;
 }

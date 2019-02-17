@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface UserRoleService extends MybatisBaseService<UserRole> {
 
-    List<String> getRolesByUserId(String userId);
+    List<Long> getRolesByUserId(Long userId);
 
-    String insertOrUpdateUserRole(String userId, String[] userRoleIds);
+    String insertOrUpdateUserRole(Long userId, Long[] userRoleIds);
 }

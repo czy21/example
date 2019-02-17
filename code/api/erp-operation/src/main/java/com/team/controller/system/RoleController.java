@@ -62,7 +62,7 @@ public class RoleController {
 
     @PostMapping("roleMenuDetails")
     @ApiOperation(value = "查询角色菜单")
-    public Map RoleMenuDetails(String roleId) {
+    public Map RoleMenuDetails(Long roleId) {
         Map<String, Object> hash = new HashMap<>();
         hash.put("menuIds", roleMenuService.getPermissionsByRoleId(roleId));
         hash.put("actions", MenuExtension.transPermissionToRadioGroups());
@@ -71,7 +71,7 @@ public class RoleController {
 
     @PostMapping("updateRoleMenu")
     @ApiOperation(value = "更新角色菜单")
-    public String updateRoleMenu(String roleId, @RequestParam(value = "roleMenuIds[]", required = false) String[] roleMenuIds) {
+    public String updateRoleMenu(Long roleId, @RequestParam(value = "roleMenuIds[]", required = false) Long[] roleMenuIds) {
         return roleMenuService.insertOrUpdateRoleMenu(roleId, roleMenuIds);
     }
 

@@ -18,7 +18,7 @@ public class Company extends BaseEntity<Company> {
     private static final long serialVersionUID = 1L;
 
     @TableId
-    private String companyId;
+    private Long companyId;
     /**
      * 公司名称
      */

@@ -126,7 +126,7 @@ public class MybatisDefaultParameterHandler extends DefaultParameterHandler {
                 Object idValue = metaObject.getValue(tableInfo.getKeyProperty());
                 if (StringUtils.checkValNull(idValue)) {
                     if (tableInfo.getIdType() == IdType.ID_WORKER) {
-                        metaObject.setValue(tableInfo.getKeyProperty(), IdWorker.getId());
+                        metaObject.setValue(tableInfo.getKeyProperty(), UidGenService.getUid());
                     } else if (tableInfo.getIdType() == IdType.ID_WORKER_STR) {
                         metaObject.setValue(tableInfo.getKeyProperty(), String.valueOf(UidGenService.getUid()));
                     } else if (tableInfo.getIdType() == IdType.UUID) {

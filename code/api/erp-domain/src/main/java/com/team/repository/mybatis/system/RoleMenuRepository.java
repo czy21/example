@@ -14,7 +14,7 @@ import java.util.List;
  */
 public interface RoleMenuRepository extends MybatisBaseRepository<RoleMenu> {
 
-    List<Menu> getMenusByUserId(@Param("userId") String userId, @Param("isMenu") Boolean isMenu);
+    List<Menu> getMenusByUserId(@Param("userId") Long userId, @Param("isMenu") Boolean isMenu);
 
-    List<Menu> getMenusByRoleId(@Param("roleId") String roleId, @Param("isMenu") Boolean isMenu);
+    List<Menu> getMenusByRoleId(@Param("roleId") Long roleId, @Param("isMenu") Boolean isMenu);
 }

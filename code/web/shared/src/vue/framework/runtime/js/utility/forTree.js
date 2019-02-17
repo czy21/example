@@ -5,7 +5,7 @@ const _ = require('lodash')
  * @params list     代转化数组列表
  */
 export function transChild(list, id) {
-  let parentId = '00000000-0000-0000-0000-000000000000';
+  let parentId = '0';
   let items = {};
   // 获取每个节点的直属子节点，*记住是直属，不是所有子节点
   for (let i = 0; i < list.length; i++) {

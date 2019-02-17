@@ -69,7 +69,7 @@ public interface MybatisBaseService<TEntity extends BaseEntity> {
      * @Param [id]
      * @Return java.lang.Integer
      */
-    Integer DeleteById(String id);
+    Integer DeleteById(Long id);
 
     /*
      * @Author 陈昭宇
@@ -78,7 +78,7 @@ public interface MybatisBaseService<TEntity extends BaseEntity> {
      * @Param [ids]
      * @Return java.lang.Integer
      */
-    Integer DeleteByIds(List<String> ids);
+    Integer DeleteByIds(List<Long> ids);
 
     /*
      * @Author 陈昭宇
@@ -87,7 +87,7 @@ public interface MybatisBaseService<TEntity extends BaseEntity> {
      * @Param [id]
      * @Return TEntity
      */
-    TEntity SelectById(String id);
+    TEntity SelectById(Long id);
 
     /*
      * @Author 陈昭宇
