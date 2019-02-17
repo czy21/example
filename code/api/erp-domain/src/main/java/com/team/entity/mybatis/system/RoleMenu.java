@@ -18,7 +18,7 @@ public class RoleMenu extends BaseEntity<RoleMenu> {
     private static final long serialVersionUID = 1L;
 
     @TableId
-    private String roleMenuId;
-    private String roleId;
-    private String menuId;
+    private Long roleMenuId;
+    private Long roleId;
+    private Long menuId;
 }

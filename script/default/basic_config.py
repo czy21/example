@@ -69,7 +69,13 @@ def mysql_user_param(port, user, pwd):
 
 # 迁移(备份)数据库至其他数据库
 def mysql_migrate_db(s_db, s_user_param, t_db, t_user_param):
-    return mysqldump_cmd(s_db, s_user_param) + " --add-drop-table " + "| " + mysql_cmd(t_db, t_user_param)
+    return mysqldump_cmd(s_db, s_user_param) + " | " + mysql_cmd(t_db, t_user_param)
+
+
+# 重新创建数据库
+def mysql_create_db(s_user_param, db_name):
+    return 'mysql' + s_user_param + "-Ne "\
+           "\"drop database if exists " + db_name + "; create database if not exists " + db_name + " default charset utf8 collate utf8_general_ci;\""
 
 
 # 导入sql文件

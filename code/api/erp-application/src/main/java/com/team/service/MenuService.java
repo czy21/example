@@ -22,7 +22,7 @@ public interface MenuService extends MybatisBaseService<Menu> {
 
     MenuDto editMenu(MenuDto dto);
 
-    Integer deleteMenu(String menuId);
+    Integer deleteMenu(Long menuId);
 
     Boolean batchInsertPermission(List<PermissionDto> dtos);
 

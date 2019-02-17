@@ -18,7 +18,7 @@ public class Department extends BaseEntity<Department> {
     private static final long serialVersionUID = 1L;
 
     @TableId
-    private String departmentId;
+    private Long departmentId;
     /**
      * 上级部门
      */

@@ -28,7 +28,7 @@ public class UserRoleServiceImpl extends MybatisBaseServiceImpl<UserRole> implem
     @Resource
     private UserService userService;
 
-    private QueryWrapper<UserRole> queryByUserId(String userId) {
+    private QueryWrapper<UserRole> queryByUserId(Long userId) {
         if (StringUtils.isEmpty(userId)) {
             throw new WebException(ErrorCode.ID_NO_NULL, "用户Id不能为空");
         }
@@ -38,13 +38,13 @@ public class UserRoleServiceImpl extends MybatisBaseServiceImpl<UserRole> implem
     }
 
     @Override
-    public List<String> getRolesByUserId(String userId) {
+    public List<Long> getRolesByUserId(Long userId) {
         return super.SelectListBy(queryByUserId(userId)).stream().map(UserRole::getRoleId).collect(Collectors.toList());
     }
 
     @Override
     @Transactional
-    public String insertOrUpdateUserRole(String userId, String[] userRoleIds) {
+    public String insertOrUpdateUserRole(Long userId, Long[] userRoleIds) {
         super.mybatisBaseRepository.delete(queryByUserId(userId));
         if (!ArrayExtension.isEmpty(userRoleIds)) {
             Arrays.asList(userRoleIds).forEach(t -> {

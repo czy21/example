@@ -69,17 +69,17 @@ public class MybatisBaseServiceImpl<TEntity extends BaseEntity> implements Mybat
     }
 
     @Override
-    public Integer DeleteById(String id) {
+    public Integer DeleteById(Long id) {
         return mybatisBaseRepository.deleteById(id);
     }
 
     @Override
-    public Integer DeleteByIds(List<String> ids) {
+    public Integer DeleteByIds(List<Long> ids) {
         return mybatisBaseRepository.deleteBatchIds(ids);
     }
 
     @Override
-    public TEntity SelectById(String id) {
+    public TEntity SelectById(Long id) {
         return mybatisBaseRepository.selectById(id);
     }
 

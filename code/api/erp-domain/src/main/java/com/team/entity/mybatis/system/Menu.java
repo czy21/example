@@ -18,11 +18,11 @@ public class Menu extends BaseEntity<Menu> {
     private static final long serialVersionUID = 1L;
 
     @TableId
-    private String menuId;
+    private Long menuId;
     /**
      * 上级菜单
      */
-    private String parentId;
+    private Long parentId;
     /**
      * 菜单名称
      */

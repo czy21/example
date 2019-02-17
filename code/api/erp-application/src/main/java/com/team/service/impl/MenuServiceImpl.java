@@ -78,7 +78,7 @@ public class MenuServiceImpl extends MybatisBaseServiceImpl<Menu> implements Men
     }
 
     @Override
-    public Integer deleteMenu(String menuId) {
+    public Integer deleteMenu(Long menuId) {
         return super.DeleteByIds(MenuExtension.getSons(super.SelectListBy(null), menuId).stream().map(Menu::getMenuId).collect(Collectors.toList()));
     }
 

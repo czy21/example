@@ -4,11 +4,11 @@ import lombok.Data;
 
 @Data
 public class DepartmentDto {
-    private String departmentId;
-    private String parentId;
+    private Long departmentId;
+    private Long parentId;
     private String departmentName;
     private String phone;
     private String remark;
-    private String companyId;
+    private Long companyId;
     private Boolean enabled;
 }

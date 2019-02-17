@@ -13,16 +13,16 @@ import java.util.List;
  */
 public interface RoleMenuService extends MybatisBaseService<RoleMenu> {
 
-    List<String> getPermissionsByUserId(String userId);
+    List<String> getPermissionsByUserId(Long userId);
 
-    List<String> getPermissionOfValuesByUserId(String userId);
+    List<String> getPermissionOfValuesByUserId(Long userId);
 
-    List<Menu> getMenusByUserId(String userId);
+    List<Menu> getMenusByUserId(Long userId);
 
-    List<String> getMenusByRoleId(String roleId);
+    List<Long> getMenusByRoleId(Long roleId);
 
-    List<String> getPermissionsByRoleId(String roleId);
+    List<Long> getPermissionsByRoleId(Long roleId);
 
-    String insertOrUpdateRoleMenu(String roleId, String[] roleMenuIds);
+    String insertOrUpdateRoleMenu(Long roleId, Long[] roleMenuIds);
 
 }

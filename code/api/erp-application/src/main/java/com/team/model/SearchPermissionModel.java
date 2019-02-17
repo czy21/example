@@ -7,5 +7,5 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class SearchPermissionModel extends PageParams {
-    private String menuId;
+    private Long menuId;
 }

@@ -18,7 +18,7 @@ public class UserRole extends BaseEntity<UserRole> {
     private static final long serialVersionUID = 1L;
 
     @TableId
-    private String userRoleId;
-    private String userId;
-    private String roleId;
+    private Long userRoleId;
+    private Long userId;
+    private Long roleId;
 }
