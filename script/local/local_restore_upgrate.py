@@ -9,7 +9,7 @@ from default.local_default import local_mysql, local_mysql_user
 from default.path_default import db_version_path
 from local.local_build_db import built_version_sql
 
-create_db_cmd = mysql_create_db(local_mysql_user, "erp")
+create_db_cmd = mysql_create_db(local_mysql_user, local_mysql.db_name)
 dump_cmd = mysql_migrate_db(local_mysql.db_bak_name, local_mysql_user, local_mysql.db_name, local_mysql_user)
 os.system(create_db_cmd)
 os.system(dump_cmd);
