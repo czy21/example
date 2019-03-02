@@ -7,7 +7,6 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.team.entity.page.PageModel;
 import com.team.util.DateTimeUtil;
-import com.team.util.PageUtil;
 import com.team.repository.mybatis.MybatisBaseRepository;
 import com.team.entity.BaseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -111,7 +110,7 @@ public class MybatisBaseServiceImpl<TEntity extends BaseEntity> implements Mybat
     }
 
     @Override
-    public PageUtil<TEntity> SelectPageList(Integer pageIndex, Integer pageSize, List<TEntity> list) {
-        return PageUtil.of(pageIndex, pageSize, list);
+    public PageModel<TEntity> SelectPageList(Integer pageIndex, Integer pageSize, List<TEntity> list) {
+        return PageModel.of(pageIndex, pageSize, list);
     }
 }
