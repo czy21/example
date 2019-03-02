@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import com.team.entity.page.PageModel;
-import com.team.util.PageUtil;
 import com.team.entity.BaseEntity;
 
 import java.util.List;
@@ -124,6 +123,6 @@ public interface MybatisBaseService<TEntity extends BaseEntity> {
      * @Param [pageIndex, pageSize,query]
      * @Return PageModel<TEntity>
      */
-    PageUtil<TEntity> SelectPageList(Integer pageIndex, Integer pageSize, List<TEntity> list);
+    PageModel<TEntity> SelectPageList(Integer pageIndex, Integer pageSize, List<TEntity> list);
 
 }
