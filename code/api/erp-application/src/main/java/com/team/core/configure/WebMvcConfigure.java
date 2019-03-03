@@ -12,7 +12,6 @@ import org.springframework.util.AntPathMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
@@ -48,20 +47,6 @@ public class WebMvcConfigure extends WebMvcConfigurationSupport {
 
     /*
      * @author 陈昭宇
-     * @description 配置权限拦截路径
-     * @date 2018/12/27 16:16
-     * @param [registry]
-     * @return void
-     */
-    @Override
-    protected void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(authenticationInterceptor())
-                .addPathPatterns("/api/**")
-                .excludePathPatterns("/api/user/login");
-    }
-
-    /*
-     * @author 陈昭宇
      * @description 忽略静态资源拦截
      * @date 2018/12/27 16:16
      * @param [registry]
@@ -76,18 +61,6 @@ public class WebMvcConfigure extends WebMvcConfigurationSupport {
         registry.addResourceHandler("/favicon.ico")
                 .addResourceLocations("classpath:/META-INF/resources/favicon.ico");
         super.addResourceHandlers(registry);
-    }
-
-    /*
-     * @author 陈昭宇
-     * @description 配置权限拦截器
-     * @date 2018/12/27 16:17
-     * @param []
-     * @return com.team.core.configure.AuthenticationInterceptor
-     */
-    @Bean
-    public AuthenticationInterceptor authenticationInterceptor() {
-        return new AuthenticationInterceptor();
     }
 
     /*

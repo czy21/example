@@ -1,7 +1,9 @@
 package com.team.shiro;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.entity.mybatis.system.Function;
 import com.team.entity.mybatis.system.Role;
+import com.team.entity.mybatis.system.User;
 import com.team.repository.mybatis.system.UserRepository;
 import com.team.util.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -26,11 +28,6 @@ public class CustomRealm extends AuthorizingRealm {
     @Autowired
     private UserRepository userRepository;
 
-//    @Autowired
-//    public CustomRealm(UserRepository userRepository) {
-//        this.userRepository = userRepository;
-//    }
-
     @Override
     public boolean supports(AuthenticationToken token) {
         return token instanceof JWToken;
@@ -38,7 +35,6 @@ public class CustomRealm extends AuthorizingRealm {
 
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
-        log.info("-----权限认证-----");
         String loginName = JwtUtil.GetLoginName(principalCollection.toString());
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
         List<Role> roles = userRepository.getRolesByLoginName(loginName);
@@ -52,9 +48,14 @@ public class CustomRealm extends AuthorizingRealm {
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        log.info("-----身份认证方法-----");
         String token = (String) authenticationToken.getCredentials();
         String loginName = JwtUtil.GetLoginName(token);
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.lambda().eq(User::getLoginName, loginName);
+        User user = userRepository.selectOne(queryWrapper);
+        if (loginName == null || !JwtUtil.Verify(token, loginName, user.getPassword())) {
+            throw new AuthenticationException("token认证失败！");
+        }
         return new SimpleAuthenticationInfo(token, token, "MyRealm");
     }
 }

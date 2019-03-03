@@ -33,7 +33,6 @@
         m.menu_id=rm.menu_id
         and ur.role_id=rm.role_id
         and ur.user_id=#{userId}
-        and m.is_menu=#{isMenu}
     </select>
     <!--根据角色id查询该角色所有菜单或权限-->
     <select id="getMenusByRoleId" resultType="com.team.entity.mybatis.system.Menu">
@@ -43,7 +42,6 @@
         sys_role_menu rm
         where
         m.menu_id=rm.menu_id
-        and m.is_menu=#{isMenu}
         and rm.role_id=#{roleId}
     </select>
 
