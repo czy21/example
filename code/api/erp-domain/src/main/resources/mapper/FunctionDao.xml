@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.repository.mybatis.system.FunctionRepository">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.team.entity.mybatis.system.Function">
+        <id column="function_id" property="functionId"/>
+        <result column="added_time" property="addedTime"/>
+        <result column="modified_time" property="modifiedTime"/>
+        <result column="added_user" property="addedUser"/>
+        <result column="modified_user" property="modifiedUser"/>
+        <result column="function_code" property="functionCode"/>
+        <result column="function_name" property="functionName"/>
+        <result column="sort" property="sort"/>
+        <result column="remark" property="remark"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        added_time,
+        modified_time,
+        added_user,
+        modified_user,
+        function_id
+        function_code
+        function_name
+        sort
+        remark
+    </sql>
+
+</mapper>

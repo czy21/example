@@ -49,11 +49,11 @@ public class RoleMenuServiceImpl extends MybatisBaseServiceImpl<RoleMenu> implem
 
     @Override
     public List<Menu> getMenusByUserId(Long userId) {
-        if (userService.SelectById(userId).getLoginName().equals("admin")) {
-            QueryWrapper<Menu> query = new QueryWrapper<>();
-            query.lambda().eq(Menu::getIsMenu, true);
-            return menuService.SelectListBy(query);
-        }
+//        if (userService.SelectById(userId).getLoginName().equals("admin")) {
+//            QueryWrapper<Menu> query = new QueryWrapper<>();
+//            query.lambda().eq(Menu::getIsMenu, true);
+//            return menuService.SelectListBy(query);
+//        }
 
         return roleMenuDao.getMenusByUserId(userId, true);
     }

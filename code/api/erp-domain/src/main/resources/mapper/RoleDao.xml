@@ -3,14 +3,14 @@
 <mapper namespace="com.team.repository.mybatis.system.RoleRepository">
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.team.entity.mybatis.system.Role">
-        <id column="role_id" property="roleId" />
-        <result column="added_time" property="addedTime" />
-        <result column="modified_time" property="modifiedTime" />
-        <result column="added_user" property="addedUser" />
-        <result column="modified_user" property="modifiedUser" />
-        <result column="role_name" property="roleName" />
-        <result column="remark" property="remark" />
-        <result column="enabled" property="enabled" />
+        <id column="role_id" property="roleId"/>
+        <result column="added_time" property="addedTime"/>
+        <result column="modified_time" property="modifiedTime"/>
+        <result column="added_user" property="addedUser"/>
+        <result column="modified_user" property="modifiedUser"/>
+        <result column="role_name" property="roleName"/>
+        <result column="remark" property="remark"/>
+        <result column="enabled" property="enabled"/>
     </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
@@ -23,5 +23,4 @@
         remark
         enabled
     </sql>
-
 </mapper>

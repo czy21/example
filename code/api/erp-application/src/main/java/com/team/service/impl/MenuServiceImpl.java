@@ -9,19 +9,14 @@ import com.team.entity.map.MenuMap;
 import com.team.entity.mybatis.system.Menu;
 import com.team.exception.ErrorCode;
 import com.team.exception.WebException;
-import com.team.extension.MenuExtension;
 import com.team.model.SearchPermissionModel;
 import com.team.service.MenuService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.CollectionUtils;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 /**
  * @Description Menu 服务实现类
@@ -38,8 +33,9 @@ public class MenuServiceImpl extends MybatisBaseServiceImpl<Menu> implements Men
     @SuppressWarnings("unchecked")
     public PageDto<MenuDto> getMenuAndPermissionPageListBy(SearchPermissionModel search) {
         QueryWrapper<Menu> query = new QueryWrapper<>();
-        query.lambda().orderByDesc(Menu::getIsMenu);
-        return menuMap.mapToPageDto(super.SelectPageList(search.getPageIndex(), search.getPageSize(), MenuExtension.getSons(super.SelectListBy(query), search.getMenuId())));
+//        query.lambda().orderByDesc(Menu::getIsMenu);
+//        return menuMap.mapToPageDto(super.SelectPageList(search.getPageIndex(), search.getPageSize(), MenuExtension.getSons(super.SelectListBy(query), search.getMenuId())));
+        return null;
     }
 
     @Override
@@ -79,40 +75,41 @@ public class MenuServiceImpl extends MybatisBaseServiceImpl<Menu> implements Men
 
     @Override
     public Integer deleteMenu(Long menuId) {
-        return super.DeleteByIds(MenuExtension.getSons(super.SelectListBy(null), menuId).stream().map(Menu::getMenuId).collect(Collectors.toList()));
+//        return super.DeleteByIds(MenuExtension.getSons(super.SelectListBy(null), menuId).stream().map(Menu::getMenuId).collect(Collectors.toList()));
+        return null;
     }
 
     @Override
     @Transactional
     public Boolean batchInsertPermission(List<PermissionDto> dtos) {
-        if (CollectionUtils.isEmpty(dtos)) {
-            throw new WebException(ErrorCode.ID_NO_NULL, "权限集合不能为空");
-        }
-        QueryWrapper<Menu> query = new QueryWrapper<>();
-        query.lambda().eq(Menu::getIsMenu, true);
-        List<Menu> menus = super.SelectListBy(query);
-        dtos.stream().sorted(Comparator.comparing(PermissionDto::getTag)).forEach(t -> {
-            Optional<Menu> temp = menus.stream().filter(m -> m.getUrl().endsWith(t.getTag().toLowerCase())).findFirst();
-            temp.ifPresent(m -> {
-                QueryWrapper<Menu> countQuery = new QueryWrapper<>();
-                countQuery.lambda().eq(Menu::getParentId, m.getMenuId());
-                Menu per = super.SelectBy(Menu::getUrl, t.getUrl());
-                int count = super.SelectListBy(countQuery).stream().map(Menu::getSort).reduce(0, Integer::max);
-                if (per != null) {
-                    per.setMenuName(t.getSummary());
-                    per.setUrl(t.getUrl());
-                    super.Update(per);
-                } else {
-                    Menu menu = new Menu();
-                    menu.setParentId(m.getMenuId());
-                    menu.setIsMenu(false);
-                    menu.setMenuName(t.getSummary());
-                    menu.setUrl(t.getUrl());
-                    menu.setSort(StringUtils.isEmpty(count) ? 1 : count + 1);
-                    super.Insert(menu);
-                }
-            });
-        });
+//        if (CollectionUtils.isEmpty(dtos)) {
+//            throw new WebException(ErrorCode.ID_NO_NULL, "权限集合不能为空");
+//        }
+//        QueryWrapper<Menu> query = new QueryWrapper<>();
+//        query.lambda().eq(Menu::getIsMenu, true);
+//        List<Menu> menus = super.SelectListBy(query);
+//        dtos.stream().sorted(Comparator.comparing(PermissionDto::getTag)).forEach(t -> {
+//            Optional<Menu> temp = menus.stream().filter(m -> m.getUrl().endsWith(t.getTag().toLowerCase())).findFirst();
+//            temp.ifPresent(m -> {
+//                QueryWrapper<Menu> countQuery = new QueryWrapper<>();
+//                countQuery.lambda().eq(Menu::getParentId, m.getMenuId());
+//                Menu per = super.SelectBy(Menu::getUrl, t.getUrl());
+//                int count = super.SelectListBy(countQuery).stream().map(Menu::getSort).reduce(0, Integer::max);
+//                if (per != null) {
+//                    per.setMenuName(t.getSummary());
+//                    per.setUrl(t.getUrl());
+//                    super.Update(per);
+//                } else {
+//                    Menu menu = new Menu();
+//                    menu.setParentId(m.getMenuId());
+//                    menu.setIsMenu(false);
+//                    menu.setMenuName(t.getSummary());
+//                    menu.setUrl(t.getUrl());
+//                    menu.setSort(StringUtils.isEmpty(count) ? 1 : count + 1);
+//                    super.Insert(menu);
+//                }
+//            });
+//        });
         return true;
     }
 }

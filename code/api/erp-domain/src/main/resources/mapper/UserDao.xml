@@ -3,19 +3,19 @@
 <mapper namespace="com.team.repository.mybatis.system.UserRepository">
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.team.entity.mybatis.system.User">
-        <id column="user_id" property="userId" />
-        <result column="added_time" property="addedTime" />
-        <result column="modified_time" property="modifiedTime" />
-        <result column="added_user" property="addedUser" />
-        <result column="modified_user" property="modifiedUser" />
-        <result column="login_name" property="loginName" />
-        <result column="password" property="password" />
-        <result column="user_name" property="userName" />
-        <result column="email" property="email" />
-        <result column="phone" property="phone" />
-        <result column="is_header" property="isHeader" />
-        <result column="department_id" property="departmentId" />
-        <result column="enabled" property="enabled" />
+        <id column="user_id" property="userId"/>
+        <result column="added_time" property="addedTime"/>
+        <result column="modified_time" property="modifiedTime"/>
+        <result column="added_user" property="addedUser"/>
+        <result column="modified_user" property="modifiedUser"/>
+        <result column="login_name" property="loginName"/>
+        <result column="password" property="password"/>
+        <result column="user_name" property="userName"/>
+        <result column="email" property="email"/>
+        <result column="phone" property="phone"/>
+        <result column="is_header" property="isHeader"/>
+        <result column="department_id" property="departmentId"/>
+        <result column="enabled" property="enabled"/>
     </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
@@ -33,5 +33,21 @@
         department_id
         enabled
     </sql>
+    <select id="getRolesByLoginName" resultType="com.team.entity.mybatis.system.Role">
+        select r.* from sys_user u
+        inner join sys_user_role ur on ur.user_id = u.user_id
+        inner join sys_role  r on ur.role_id = r.role_id
+        where u.login_name=#{loginName}
+    </select>
+    <select id="getFunctionsByRole" resultType="com.team.entity.mybatis.system.Function">
+        select f.* from sys_role r
+        inner join sys_role_function rf on rf.role_id=r.role_id
+        inner join sys_function f on f.function_id=rf.function_id
+        where r.role_id in
+        <foreach collection="roleIds" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        group by rf.function_id
+    </select>
 
 </mapper>
