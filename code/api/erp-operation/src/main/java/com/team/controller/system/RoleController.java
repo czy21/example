@@ -6,7 +6,6 @@ import com.team.entity.dto.PageDto;
 import com.team.entity.dto.RoleDto;
 import com.team.entity.map.RoleMap;
 import com.team.entity.mybatis.system.Menu;
-import com.team.extension.MenuExtension;
 import com.team.service.RoleMenuService;
 import com.team.service.RoleService;
 import io.swagger.annotations.Api;
@@ -65,7 +64,7 @@ public class RoleController {
     public Map RoleMenuDetails(Long roleId) {
         Map<String, Object> hash = new HashMap<>();
         hash.put("menuIds", roleMenuService.getPermissionsByRoleId(roleId));
-        hash.put("actions", MenuExtension.transPermissionToRadioGroups());
+//        hash.put("actions", MenuExtension.transPermissionToRadioGroups());
         return hash;
     }
 

@@ -3,18 +3,13 @@ package com.team.extension;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.team.entity.mybatis.system.Menu;
 import com.team.model.SimpleItemModel;
-import com.team.model.SimpleTreeModel;
 import com.team.repository.mybatis.system.MenuRepository;
 import com.team.util.TreeUtil;
 import lombok.Data;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StringUtils;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Component
 public class MenuExtension {
@@ -53,7 +48,7 @@ public class MenuExtension {
 
     public static List<SimpleItemModel> convertToSimple() {
         List<SimpleItemModel> simples = new ArrayList<>();
-        _dao.selectList(new QueryWrapper<Menu>().lambda().eq(Menu::getIsMenu, true)).forEach((t) -> {
+        _dao.selectList(null).forEach((t) -> {
             SimpleItemModel temp = new SimpleItemModel();
             temp.setValue(t.getMenuId());
             temp.setLabel(t.getMenuName());
@@ -85,55 +80,55 @@ public class MenuExtension {
         return root.getChildren();
     }
 
-    public static List<Menu> getSons(List<Menu> list, Long parentId) {
-        if (StringUtils.isEmpty(parentId)) {
-            return list.stream()
-                    .sorted(Comparator.comparing(Menu::getIsMenu).reversed().thenComparing(Menu::getSort, Comparator.nullsLast(Integer::compareTo)))
-                    .collect(Collectors.toList());
-        }
-        List<Menu> query = list.stream().filter(t -> t.getMenuId().equals(parentId)).collect(Collectors.toList());
-        query.addAll(getSonList(list, parentId));
-        return query.stream().sorted(Comparator.comparing(Menu::getIsMenu).reversed()).collect(Collectors.toList());
-    }
+//    public static List<Menu> getSons(List<Menu> list, Long parentId) {
+//        if (StringUtils.isEmpty(parentId)) {
+//            return list.stream()
+//                    .sorted(Comparator.comparing(Menu::getIsMenu).reversed().thenComparing(Menu::getSort, Comparator.nullsLast(Integer::compareTo)))
+//                    .collect(Collectors.toList());
+//        }
+//        List<Menu> query = list.stream().filter(t -> t.getMenuId().equals(parentId)).collect(Collectors.toList());
+//        query.addAll(getSonList(list, parentId));
+//        return query.stream().sorted(Comparator.comparing(Menu::getIsMenu).reversed()).collect(Collectors.toList());
+//    }
 
-    private static List<Menu> getSonList(List<Menu> list, Long parentId) {
-        List<Menu> menus = new ArrayList<>();
-        list.forEach(t -> {
-            if (t.getParentId().equals(parentId)) {
-                menus.addAll(getSons(list, t.getMenuId()));
-            }
-        });
-        return menus.stream().sorted(Comparator.comparing(Menu::getSort, Comparator.nullsLast(Integer::compareTo))).collect(Collectors.toList());
-    }
+//    private static List<Menu> getSonList(List<Menu> list, Long parentId) {
+//        List<Menu> menus = new ArrayList<>();
+//        list.forEach(t -> {
+//            if (t.getParentId().equals(parentId)) {
+//                menus.addAll(getSons(list, t.getMenuId()));
+//            }
+//        });
+//        return menus.stream().sorted(Comparator.comparing(Menu::getSort, Comparator.nullsLast(Integer::compareTo))).collect(Collectors.toList());
+//    }
 
-    public static List<SimpleTreeModel> transPermissionToRadioGroups() {
-        QueryWrapper<Menu> query = new QueryWrapper<>();
-        query.lambda().ne(Menu::getUrl, "#");
-        List<Menu> menus = _dao.selectList(query);
-        List<SimpleTreeModel> simpleTreeModels = new ArrayList<>();
-        menus.stream().filter(t -> t.getIsMenu().equals(true)).forEach(t -> {
-            SimpleTreeModel rootNode = new SimpleTreeModel();
-            rootNode.setLabel(t.getMenuName());
-            rootNode.setValue(t.getMenuId());
-            rootNode.setParentId(t.getParentId());
-            rootNode.setChildren(createActionChildren(menus, rootNode));
-            simpleTreeModels.add(rootNode);
-        });
-        return simpleTreeModels;
-    }
+//    public static List<SimpleTreeModel> transPermissionToRadioGroups() {
+//        QueryWrapper<Menu> query = new QueryWrapper<>();
+//        query.lambda().ne(Menu::getUrl, "#");
+//        List<Menu> menus = _dao.selectList(query);
+//        List<SimpleTreeModel> simpleTreeModels = new ArrayList<>();
+//        menus.stream().filter(t -> t.getIsMenu().equals(true)).forEach(t -> {
+//            SimpleTreeModel rootNode = new SimpleTreeModel();
+//            rootNode.setLabel(t.getMenuName());
+//            rootNode.setValue(t.getMenuId());
+//            rootNode.setParentId(t.getParentId());
+//            rootNode.setChildren(createActionChildren(menus, rootNode));
+//            simpleTreeModels.add(rootNode);
+//        });
+//        return simpleTreeModels;
+//    }
 
-    public static List<SimpleTreeModel> createActionChildren(List<Menu> allActionList, SimpleTreeModel dto) {
-        List<SimpleTreeModel> simpleTreeModels = new ArrayList<>();
-        List<Menu> permissions = allActionList.stream()
-                .filter(t -> t.getParentId().equals(dto.getValue()))
-                .filter(t -> t.getIsMenu().equals(false)).collect(Collectors.toList());
-        permissions.forEach(t -> {
-            SimpleTreeModel simpleTreeModel = new SimpleTreeModel();
-            simpleTreeModel.setValue(t.getMenuId());
-            simpleTreeModel.setLabel(t.getMenuName());
-            simpleTreeModel.setParentId(t.getParentId());
-            simpleTreeModels.add(simpleTreeModel);
-        });
-        return simpleTreeModels;
-    }
+//    public static List<SimpleTreeModel> createActionChildren(List<Menu> allActionList, SimpleTreeModel dto) {
+//        List<SimpleTreeModel> simpleTreeModels = new ArrayList<>();
+//        List<Menu> permissions = allActionList.stream()
+//                .filter(t -> t.getParentId().equals(dto.getValue()))
+//                .filter(t -> t.getIsMenu().equals(false)).collect(Collectors.toList());
+//        permissions.forEach(t -> {
+//            SimpleTreeModel simpleTreeModel = new SimpleTreeModel();
+//            simpleTreeModel.setValue(t.getMenuId());
+//            simpleTreeModel.setLabel(t.getMenuName());
+//            simpleTreeModel.setParentId(t.getParentId());
+//            simpleTreeModels.add(simpleTreeModel);
+//        });
+//        return simpleTreeModels;
+//    }
 }

@@ -8,7 +8,7 @@ import lombok.EqualsAndHashCode;
 
 /**
  * @author 陈昭宇
- * @description 菜单权限表
+ * @description 菜单表
  * @date 2018-12-10
  */
 @Data
@@ -19,9 +19,6 @@ public class Menu extends BaseEntity<Menu> {
 
     @TableId
     private Long menuId;
-    /**
-     * 上级菜单
-     */
     private Long parentId;
     /**
      * 菜单名称
@@ -39,10 +36,6 @@ public class Menu extends BaseEntity<Menu> {
      * 菜单或权限地址
      */
     private String url;
-    /**
-     * 是否是菜单 0-权限,1-菜单
-     */
-    private Boolean isMenu;
     /**
      * 备注
      */
