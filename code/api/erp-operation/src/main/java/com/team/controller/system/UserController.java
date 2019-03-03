@@ -13,10 +13,12 @@ import com.team.service.UserRoleService;
 import com.team.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 
@@ -39,6 +41,7 @@ public class UserController {
     @Pocket(entity = Role.class)
     @Pocket(entity = Department.class)
     @ApiOperation(value = "加载用户列表")
+    @RequiresPermissions("SearchUser")
     public PageDto<UserDto> Load(SearchUserModel search) {
         return userService.getUserPageListBy(search);
     }
@@ -83,6 +86,11 @@ public class UserController {
     @PostMapping("login")
     public JSONObject Login(LoginDto dto) {
         return userService.login(dto);
+    }
+
+    @RequestMapping(path = "unauthorized/{message}")
+    public Object unauthorized(@PathVariable String message) throws UnsupportedEncodingException {
+        return message;
     }
 }
 

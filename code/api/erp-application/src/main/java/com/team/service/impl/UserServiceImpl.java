@@ -89,7 +89,7 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
         TokenDto token = new TokenDto();
         token.setUser(userMap.mapToAccountDto(user));
         token.setMenus(MenuExtension.createTreeMenus(menuMap.toMenuTree(roleMenuService.getMenusByUserId(user.getUserId()))));
-        token.setPermissions(roleMenuService.getPermissionOfValuesByUserId(user.getUserId()));
+//        token.setPermissions(roleMenuService.getPermissionOfValuesByUserId(user.getUserId()));
         token.setValue(JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));
         json.put("token", token);
         return json;

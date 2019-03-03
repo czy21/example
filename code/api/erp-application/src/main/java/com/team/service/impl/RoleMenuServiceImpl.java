@@ -44,18 +44,15 @@ public class RoleMenuServiceImpl extends MybatisBaseServiceImpl<RoleMenu> implem
 
     @Override
     public List<String> getPermissionsByUserId(Long userId) {
-        return roleMenuDao.getMenusByUserId(userId, false).stream().map(Menu::getUrl).collect(Collectors.toList());
+        return roleMenuDao.getMenusByUserId(userId).stream().map(Menu::getUrl).collect(Collectors.toList());
     }
 
     @Override
     public List<Menu> getMenusByUserId(Long userId) {
-//        if (userService.SelectById(userId).getLoginName().equals("admin")) {
-//            QueryWrapper<Menu> query = new QueryWrapper<>();
-//            query.lambda().eq(Menu::getIsMenu, true);
-//            return menuService.SelectListBy(query);
-//        }
-
-        return roleMenuDao.getMenusByUserId(userId, true);
+        if (userService.SelectById(userId).getLoginName().equals("admin")) {
+            return menuService.SelectListBy(null);
+        }
+        return roleMenuDao.getMenusByUserId(userId);
     }
 
     @Override
@@ -71,7 +68,7 @@ public class RoleMenuServiceImpl extends MybatisBaseServiceImpl<RoleMenu> implem
         if (StringUtils.isEmpty(roleId)) {
             throw new WebException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
         }
-        return roleMenuDao.getMenusByRoleId(roleId, false).stream().map(Menu::getMenuId).collect(Collectors.toList());
+        return roleMenuDao.getMenusByRoleId(roleId).stream().map(Menu::getMenuId).collect(Collectors.toList());
     }
 
     @Override
@@ -104,6 +101,6 @@ public class RoleMenuServiceImpl extends MybatisBaseServiceImpl<RoleMenu> implem
             return menuService.SelectListBy(queryWrapper).stream().filter(t -> t.getUrl().startsWith(suffiex)).map(t -> t.getUrl().substring(suffiex.length())).collect(Collectors.toList());
 
         }
-        return roleMenuDao.getMenusByUserId(userId, false).stream().filter(t -> t.getUrl().startsWith(suffiex)).map(t -> t.getUrl().substring(suffiex.length())).collect(Collectors.toList());
+        return roleMenuDao.getMenusByUserId(userId).stream().filter(t -> t.getUrl().startsWith(suffiex)).map(t -> t.getUrl().substring(suffiex.length())).collect(Collectors.toList());
     }
 }
