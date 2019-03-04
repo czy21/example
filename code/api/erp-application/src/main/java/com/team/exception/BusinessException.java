@@ -1,7 +1,7 @@
 package com.team.exception;
 
 
-public class WebException extends RuntimeException {
+public class BusinessException extends RuntimeException {
 
     private String errorCode;
 
@@ -9,7 +9,7 @@ public class WebException extends RuntimeException {
         return errorCode;
     }
 
-    public WebException(com.team.exception.ErrorCode errorCode, String _message) {
+    public BusinessException(com.team.exception.ErrorCode errorCode, String _message) {
         super(_message);
         this.errorCode = errorCode.toString();
     }

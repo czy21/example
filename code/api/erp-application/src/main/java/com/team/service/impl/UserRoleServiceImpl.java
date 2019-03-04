@@ -2,7 +2,7 @@ package com.team.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.exception.ErrorCode;
-import com.team.exception.WebException;
+import com.team.exception.BusinessException;
 import com.team.extension.ArrayExtension;
 import com.team.core.universal.MybatisBaseServiceImpl;
 import com.team.entity.mybatis.system.UserRole;
@@ -30,7 +30,7 @@ public class UserRoleServiceImpl extends MybatisBaseServiceImpl<UserRole> implem
 
     private QueryWrapper<UserRole> queryByUserId(Long userId) {
         if (StringUtils.isEmpty(userId)) {
-            throw new WebException(ErrorCode.ID_NO_NULL, "用户Id不能为空");
+            throw new BusinessException(ErrorCode.ID_NO_NULL, "用户Id不能为空");
         }
         QueryWrapper<UserRole> query = new QueryWrapper<>();
         query.lambda().eq(UserRole::getUserId, userId);
