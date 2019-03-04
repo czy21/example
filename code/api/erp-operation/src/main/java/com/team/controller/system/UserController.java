@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
-import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 
@@ -48,36 +47,42 @@ public class UserController {
 
     @PostMapping("search")
     @ApiOperation(value = "查询用户列表")
+    @RequiresPermissions("SearchUser")
     public PageDto<UserDto> Search(SearchUserModel search) {
         return userService.getUserPageListBy(search);
     }
 
     @PostMapping("add")
     @ApiOperation(value = "添加用户信息")
+    @RequiresPermissions("AddUser")
     public UserDto Add(UserDto dto) {
         return userService.insertDefaultPwd(dto);
     }
 
     @PostMapping("edit")
     @ApiOperation(value = "修改用户信息")
+    @RequiresPermissions("EditUser")
     public UserDto Edit(UserDto dto) {
         return userService.editUser(dto);
     }
 
     @PostMapping("modified")
     @ApiOperation(value = "更改用户状态")
+    @RequiresPermissions("DisableUser")
     public Boolean Modified(UserDto dto) {
         return userService.modifiedUser(dto);
     }
 
     @PostMapping("userRoleDetails")
     @ApiOperation(value = "获取用户角色")
+    @RequiresPermissions("AllotUser")
     public List<Long> UserRoleDetails(Long userId) {
         return userRoleService.getRolesByUserId(userId);
     }
 
     @PostMapping(value = "updateUserRole")
     @ApiOperation(value = "更新用户角色")
+    @RequiresPermissions("AllotUser")
     public String updateUserRole(Long userId, @RequestParam(value = "userRoleIds[]", required = false) Long[] userRoleIds) {
         return userRoleService.insertOrUpdateUserRole(userId, userRoleIds);
     }
@@ -86,11 +91,6 @@ public class UserController {
     @PostMapping("login")
     public JSONObject Login(LoginDto dto) {
         return userService.login(dto);
-    }
-
-    @RequestMapping(path = "unauthorized/{message}")
-    public Object unauthorized(@PathVariable String message) throws UnsupportedEncodingException {
-        return message;
     }
 }
 

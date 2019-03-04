@@ -1,0 +1,1 @@
+INSERT INTO sys_function (`function_id`, `function_code`, `function_name`, `sort`, `added_time`, `modified_time`, `added_user`, `modified_user`, `remark`) VALUES (1, 'SearchUser', '查询用户', NULL, NULL, NULL, NULL, NULL, NULL);
