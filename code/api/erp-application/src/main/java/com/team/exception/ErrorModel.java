@@ -1,5 +1,6 @@
 package com.team.exception;
 
+import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 
 @Data
@@ -11,4 +12,10 @@ public class ErrorModel {
         this.errorCode = errorCode;
         this.message = message;
     }
+
+    public static String toJSONString(ErrorCode code, String message) {
+        return JSONObject.toJSONString(new ErrorModel(code.toString(), message));
+    }
+
+
 }

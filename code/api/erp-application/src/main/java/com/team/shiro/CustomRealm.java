@@ -1,6 +1,5 @@
 package com.team.shiro;
 
-import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.entity.mybatis.system.Function;
 import com.team.entity.mybatis.system.Role;
@@ -57,8 +56,7 @@ public class CustomRealm extends AuthorizingRealm {
         queryWrapper.lambda().eq(User::getLoginName, loginName);
         User user = userRepository.selectOne(queryWrapper);
         if (loginName == null || !JwtUtil.Verify(token, loginName, user.getPassword())) {
-            ErrorModel model = new ErrorModel(ErrorCode.TOKEN_ERROR.toString(), "token认证失败");
-            throw new AuthenticationException(JSONObject.toJSONString(model));
+            throw new AuthenticationException(ErrorModel.toJSONString(ErrorCode.TOKEN_ERROR, "token认证失败"));
         }
         return new SimpleAuthenticationInfo(token, token, "MyRealm");
     }
