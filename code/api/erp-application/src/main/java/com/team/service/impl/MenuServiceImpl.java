@@ -8,7 +8,7 @@ import com.team.entity.dto.PermissionDto;
 import com.team.entity.map.MenuMap;
 import com.team.entity.mybatis.system.Menu;
 import com.team.exception.ErrorCode;
-import com.team.exception.WebException;
+import com.team.exception.BusinessException;
 import com.team.model.SearchPermissionModel;
 import com.team.service.MenuService;
 import org.springframework.stereotype.Service;
@@ -41,16 +41,16 @@ public class MenuServiceImpl extends MybatisBaseServiceImpl<Menu> implements Men
     @Override
     public MenuDto insertMenu(MenuDto dto) {
         if (StringUtils.isEmpty(dto.getParentId())) {
-            throw new WebException(ErrorCode.ID_NO_NULL, "上级菜单Id不能为空");
+            throw new BusinessException(ErrorCode.ID_NO_NULL, "上级菜单Id不能为空");
         }
         if (StringUtils.isEmpty(dto.getMenuName())) {
-            throw new WebException(ErrorCode.NAME_NO_NULL, "菜单或权限名称不能为空");
+            throw new BusinessException(ErrorCode.NAME_NO_NULL, "菜单或权限名称不能为空");
         }
         if (super.SelectBy(Menu::getMenuName, dto.getMenuName()) != null) {
-            throw new WebException(ErrorCode.NAME_EXIST, "菜单或权限名称已存在");
+            throw new BusinessException(ErrorCode.NAME_EXIST, "菜单或权限名称已存在");
         }
         if (super.SelectBy(Menu::getUrl, dto.getUrl()) != null) {
-            throw new WebException(ErrorCode.NAME_EXIST, "菜单或权限地址已存在");
+            throw new BusinessException(ErrorCode.NAME_EXIST, "菜单或权限地址已存在");
         }
         QueryWrapper<Menu> countQuery = new QueryWrapper<>();
         countQuery.lambda().eq(Menu::getParentId, dto.getParentId());
@@ -62,13 +62,13 @@ public class MenuServiceImpl extends MybatisBaseServiceImpl<Menu> implements Men
     public MenuDto editMenu(MenuDto dto) {
         if (StringUtils.isEmpty(dto.getMenuId())) {
             if (dto.getIsMenu()) {
-                throw new WebException(ErrorCode.ID_NO_NULL, "菜单Id不能为空");
+                throw new BusinessException(ErrorCode.ID_NO_NULL, "菜单Id不能为空");
             } else {
-                throw new WebException(ErrorCode.ID_NO_NULL, "权限Id不能为空");
+                throw new BusinessException(ErrorCode.ID_NO_NULL, "权限Id不能为空");
             }
         }
         if (StringUtils.isEmpty(dto.getParentId())) {
-            throw new WebException(ErrorCode.ID_NO_NULL, "上级菜单Id不能为空");
+            throw new BusinessException(ErrorCode.ID_NO_NULL, "上级菜单Id不能为空");
         }
         return menuMap.mapToDto(super.UpdateAndGetEntity(menuMap.mapToEntity(dto)));
     }

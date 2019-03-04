@@ -10,7 +10,7 @@ import com.team.entity.map.MenuMap;
 import com.team.entity.map.UserMap;
 import com.team.entity.mybatis.system.User;
 import com.team.exception.ErrorCode;
-import com.team.exception.WebException;
+import com.team.exception.BusinessException;
 import com.team.extension.MenuExtension;
 import com.team.model.SearchUserModel;
 import com.team.service.RoleMenuService;
@@ -42,10 +42,10 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
     @Override
     public UserDto insertDefaultPwd(UserDto dto) {
         if (StringUtils.isEmpty(dto.getUserName())) {
-            throw new WebException(ErrorCode.NAME_EXIST, "用户姓名已存在");
+            throw new BusinessException(ErrorCode.NAME_EXIST, "用户姓名不能为空");
         }
         if (super.SelectBy(User::getLoginName, dto.getLoginName()) != null) {
-            throw new WebException(ErrorCode.ACCOUNT_EXIST, "用户账号已存在");
+            throw new BusinessException(ErrorCode.ACCOUNT_EXIST, "用户账号已存在");
         }
         User user = userMap.mapToEntity(dto);
         user.setPassword("123456");
@@ -55,10 +55,10 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
     @Override
     public UserDto editUser(UserDto dto) {
         if (StringUtils.isEmpty(dto.getUserId())) {
-            throw new WebException(ErrorCode.ID_NO_NULL, "用户Id不能为空");
+            throw new BusinessException(ErrorCode.ID_NO_NULL, "用户Id不能为空");
         }
         if (StringUtils.isEmpty(dto.getUserName())) {
-            throw new WebException(ErrorCode.NAME_NO_NULL, "用户姓名不能为空");
+            throw new BusinessException(ErrorCode.NAME_NO_NULL, "用户姓名不能为空");
         }
         return userMap.mapToDto(super.UpdateAndGetEntity(userMap.mapToEntity(dto)));
     }
@@ -66,7 +66,7 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
     @Override
     public Boolean modifiedUser(UserDto dto) {
         if (StringUtils.isEmpty(dto.getUserId())) {
-            throw new WebException(ErrorCode.ID_NO_NULL, "用户Id不能为空");
+            throw new BusinessException(ErrorCode.ID_NO_NULL, "用户Id不能为空");
         }
         return super.UpdateAndGetEntity(userMap.mapToEntity(dto)).getEnabled();
     }
@@ -80,10 +80,10 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
     public JSONObject login(LoginDto dto) {
         User user = super.SelectBy(User::getLoginName, dto.getLoginName());
         if (ObjectUtils.isEmpty(user)) {
-            throw new WebException(ErrorCode.NO_USER, "用户不存在");
+            throw new BusinessException(ErrorCode.NO_USER, "用户不存在");
         }
         if (!user.getPassword().equals(dto.getPassword())) {
-            throw new WebException(ErrorCode.PASSWORD_ERROR, "密码错误");
+            throw new BusinessException(ErrorCode.PASSWORD_ERROR, "密码错误");
         }
         JSONObject json = new JSONObject();
         TokenDto token = new TokenDto();

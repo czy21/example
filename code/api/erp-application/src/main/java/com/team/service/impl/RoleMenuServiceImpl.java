@@ -6,7 +6,7 @@ import com.team.entity.mybatis.system.Menu;
 import com.team.entity.mybatis.system.RoleMenu;
 import com.team.entity.mybatis.system.User;
 import com.team.exception.ErrorCode;
-import com.team.exception.WebException;
+import com.team.exception.BusinessException;
 import com.team.extension.ArrayExtension;
 import com.team.repository.mybatis.system.RoleMenuRepository;
 import com.team.service.MenuService;
@@ -58,7 +58,7 @@ public class RoleMenuServiceImpl extends MybatisBaseServiceImpl<RoleMenu> implem
     @Override
     public List<Long> getMenusByRoleId(Long roleId) {
         if (StringUtils.isEmpty(roleId)) {
-            throw new WebException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
+            throw new BusinessException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
         }
         return roleMenuDao.selectList(new QueryWrapper<RoleMenu>().eq("RoleId", roleId)).stream().map(RoleMenu::getMenuId).collect(Collectors.toList());
     }
@@ -66,7 +66,7 @@ public class RoleMenuServiceImpl extends MybatisBaseServiceImpl<RoleMenu> implem
     @Override
     public List<Long> getPermissionsByRoleId(Long roleId) {
         if (StringUtils.isEmpty(roleId)) {
-            throw new WebException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
+            throw new BusinessException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
         }
         return roleMenuDao.getMenusByRoleId(roleId).stream().map(Menu::getMenuId).collect(Collectors.toList());
     }
@@ -75,7 +75,7 @@ public class RoleMenuServiceImpl extends MybatisBaseServiceImpl<RoleMenu> implem
     @Transactional
     public String insertOrUpdateRoleMenu(Long roleId, Long[] roleMenuIds) {
         if (StringUtils.isEmpty(roleId)) {
-            throw new WebException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
+            throw new BusinessException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
         }
         QueryWrapper<RoleMenu> query = new QueryWrapper<>();
         query.lambda().eq(RoleMenu::getRoleId, roleId);

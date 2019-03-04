@@ -12,7 +12,7 @@
         </el-form>
       </div>
       <div class="operate-box">
-        <el-button type="primary" @click="addUser('add')" :disabled="!$hasPermission('user/add')">
+        <el-button type="primary" @click="addUser('add')">
           添加用户
         </el-button>
         <el-button type="primary">批量修改</el-button>
@@ -158,13 +158,13 @@
             break;
           case 'submit':
             this.submitOne()
-            this.$helper.eui.actWithValidation("userAddForm", () => {
+            // this.$helper.eui.actWithValidation("userAddForm", () => {
               this.userAddShow = false
               this.$api.post("user/add", this.userAddForm).then(res => {
                 this.$refs['userAddForm'].resetFields();
                 this.search();
               })
-            })
+            // })
             break;
         }
       },
