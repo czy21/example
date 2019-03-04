@@ -13,14 +13,14 @@ import javax.servlet.http.HttpServletRequest;
 public class GlobalExceptionHandler {
     // 捕捉shiro的异常
     @ExceptionHandler(UnauthenticatedException.class)
-    public Object handle401() {
-        return "您没有权限访问！";
+    public ErrorModel handle401() {
+        return new ErrorModel(ErrorCode.NO_AUTH.toString(), "您没有权限访问");
     }
 
     // 捕捉其他所有异常
     @ExceptionHandler({Exception.class})
-    public Object globalException(HttpServletRequest request, Throwable ex) {
-        return getStatus(request)+"访问出错，无法访问: " + ex.getMessage();
+    public ErrorModel globalException(HttpServletRequest request, Throwable ex) {
+        return new ErrorModel(getStatus(request).toString(), ex.getMessage());
     }
 
     private HttpStatus getStatus(HttpServletRequest request) {
