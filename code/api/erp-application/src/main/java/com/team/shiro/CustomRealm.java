@@ -55,8 +55,11 @@ public class CustomRealm extends AuthorizingRealm {
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda().eq(User::getLoginName, loginName);
         User user = userRepository.selectOne(queryWrapper);
-        if (loginName == null || !JwtUtil.Verify(token, loginName, user.getPassword())) {
-            throw new AuthenticationException(ErrorModel.toJSONString(ErrorCode.TOKEN_ERROR, "Token为空或输入有误"));
+        if(loginName == null){
+            throw new AuthenticationException(ErrorModel.toJSONString(ErrorCode.TOKEN_ERROR, "Token校验失败"));
+        }
+        else if( !JwtUtil.Verify(token, loginName, user.getPassword())){
+            throw new AuthenticationException(ErrorModel.toJSONString(ErrorCode.TOKEN_ERROR, "Token已过期"));
         }
         return new SimpleAuthenticationInfo(token, token, "MyRealm");
     }
