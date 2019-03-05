@@ -12,3 +12,4 @@ script_path = root_path + "\\script"
 db_path = root_path + '\\db'
 db_prepare_path = db_path + '\\create\\100_Prepare'
 db_version_path = db_path + '\\create\\200_ByVersion'
+db_everyRun_path = db_path + '\\create\\300_EveryRun'
