@@ -23,4 +23,10 @@
         remark
         enabled
     </sql>
+    <select id="getRolesByLoginName" resultType="com.team.entity.mybatis.system.Role">
+        select r.* from sys_user u
+        inner join sys_user_role ur on ur.user_id = u.user_id
+        inner join sys_role  r on ur.role_id = r.role_id
+        where u.login_name=#{loginName}
+    </select>
 </mapper>

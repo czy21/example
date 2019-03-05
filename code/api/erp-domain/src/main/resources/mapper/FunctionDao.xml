@@ -26,4 +26,24 @@
         remark
     </sql>
 
+    <select id="getFunctionsByRoleIds" resultType="com.team.entity.mybatis.system.Function">
+        select f.* from sys_role r
+        inner join sys_role_function rf on rf.role_id=r.role_id
+        inner join sys_function f on f.function_id=rf.function_id
+        where r.role_id in
+        <foreach collection="roleIds" index="index" item="item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+        group by rf.function_id
+    </select>
+
+    <!--根据用户id查询该用户所有菜单-->
+    <select id="getFunctionsByUserId" resultType="com.team.entity.mybatis.system.Function">
+        select DISTINCT f.* from sys_role_function rf
+        inner join sys_function f on f.function_id=rf.function_id
+        inner join sys_user_role ur on ur.role_id=rf.role_id
+        where ur.user_id=#{userId}
+        group by rf.function_id
+    </select>
+
 </mapper>

@@ -1,11 +1,9 @@
 package com.team.controller.system;
 
 
-import com.alibaba.fastjson.JSON;
 import com.team.core.annotations.Pocket;
 import com.team.entity.dto.MenuDto;
 import com.team.entity.dto.PageDto;
-import com.team.entity.dto.PermissionDto;
 import com.team.entity.mybatis.system.Menu;
 import com.team.model.SearchPermissionModel;
 import com.team.service.MenuService;
@@ -56,11 +54,5 @@ public class MenuController {
     @ApiOperation(value = "删除菜单或权限信息")
     public Integer Delete(Long menuId) {
         return menuService.deleteMenu(menuId);
-    }
-
-    @PostMapping(value = "batchAddAction")
-    @ApiOperation(value = "批量添加权限")
-    public Boolean BatchAddAction(String permissions) {
-        return menuService.batchInsertPermission(JSON.parseArray(permissions, PermissionDto.class));
     }
 }

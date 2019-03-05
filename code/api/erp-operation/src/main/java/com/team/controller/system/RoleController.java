@@ -69,7 +69,7 @@ public class RoleController {
     @RequiresPermissions("AllotRoleMenu")
     public Map RoleMenuDetails(Long roleId) {
         Map<String, Object> hash = new HashMap<>();
-        hash.put("menuIds", roleMenuService.getPermissionsByRoleId(roleId));
+//        hash.put("menuIds", roleMenuService.getPermissionsByRoleId(roleId));
 //        hash.put("actions", MenuExtension.transPermissionToRadioGroups());
         return hash;
     }

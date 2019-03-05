@@ -12,7 +12,7 @@
         </el-form>
       </div>
       <div class="operate-box">
-        <el-button type="primary" @click="addUser('add')">
+        <el-button type="primary" @click="addUser('add')" :disabled="!$hasPermission('AddUser')">
           添加用户
         </el-button>
         <el-button type="primary">批量修改</el-button>
@@ -31,13 +31,13 @@
         <el-table-column prop="isHeader" label="部门经理"></el-table-column>
         <el-table-column label="操作" width="250">
           <template slot-scope="scope">
-            <el-button @click="editUser('edit',scope.row)" :disabled="!$hasPermission('user/edit')">编辑</el-button>
+            <el-button @click="editUser('edit',scope.row)" :disabled="!$hasPermission('EditUser')">编辑</el-button>
             <el-button type="primary" @click="allotRole('allot',scope.row)"
-                       :disabled="!$hasPermission(['user/userRoleDetails','user/updateUserRole'])">分配角色
+                       :disabled="!$hasPermission('AllotUserRole')">分配角色
             </el-button>
             <el-button @click="modifiedUser(scope.row)"
                        :class="scope.row.enabled ?'el-button--danger':'el-button--success'"
-                       :disabled="!$hasPermission('user/modified')">
+                       :disabled="!$hasPermission('DisableUser')">
               {{scope.row.enabled?'禁用':'启用'}}
             </el-button>
           </template>
@@ -158,13 +158,13 @@
             break;
           case 'submit':
             this.submitOne()
-            // this.$helper.eui.actWithValidation("userAddForm", () => {
+            this.$helper.eui.actWithValidation("userAddForm", () => {
               this.userAddShow = false
               this.$api.post("user/add", this.userAddForm).then(res => {
                 this.$refs['userAddForm'].resetFields();
                 this.search();
               })
-            // })
+            })
             break;
         }
       },

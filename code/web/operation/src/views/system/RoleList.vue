@@ -23,9 +23,8 @@
 
         <el-table-column label="操作" width="300">
           <template slot-scope="scope">
-            <el-button @click="editRole('edit',scope.row)" :disabled="!$hasPermission('role/edit')">编辑</el-button>
-            <el-button type="primary" @click="allotMenu('allot',scope.row)"
-                       :disabled="!$hasPermission(['role/roleMenuDetails','role/updateRoleMenu'])">分配权限
+            <el-button @click="editRole('edit',scope.row)">编辑</el-button>
+            <el-button type="primary" @click="allotMenu('allot',scope.row)">分配权限
             </el-button>
           </template>
         </el-table-column>

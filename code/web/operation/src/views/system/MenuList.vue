@@ -30,75 +30,63 @@
           </el-form>
         </div>
         <div class="operate-box">
-          <el-button type="primary" @click="addMenu('add')">添加菜单(权限)</el-button>
-          <el-button type="primary" @click="batchAddPermission('add')">批量添加权限</el-button>
+          <el-button type="primary" @click="addMenu('add')">添加菜单</el-button>
         </div>
       </div>
       <div class="container">
-        <el-table :data="list" border highlight-current-row>
-          <el-table-column prop="menuName" label="名称"></el-table-column>
-          <el-table-column label="图标">
-            <template slot-scope="scope">
-              <i :class="scope.row.icon"></i>
-            </template>
-          </el-table-column>
-          <el-table-column prop="url" label="菜单URL"></el-table-column>
-          <el-table-column label="类型">
-            <template slot-scope="scope">
-              {{scope.row.isMenu?'菜单':'权限'}}
-            </template>
-          </el-table-column>
-          <el-table-column prop="sort" label="排序"></el-table-column>
-          <el-table-column prop="remark" label="菜单(权限)描述"></el-table-column>
-          <el-table-column label="操作" width="260">
-            <template slot-scope="scope">
-              <el-button @click="editMenu('edit',scope.row)" :disabled="!$hasPermission('menu/edit')">编辑</el-button>
-              <el-button type="danger" @click="deleteMenu(scope.row)"
-                         :disabled="!$hasPermission('menu/delete')">删除
-              </el-button>
-            </template>
-          </el-table-column>
-        </el-table>
-        <el-pagination class="pagination" background @current-change="handleIndexChange" @size-change="handleSizeChange"
-                       :current-page="searchModel && searchModel.pageIndex"
-                       :page-size="searchModel && searchModel.pageSize"
-                       :page-sizes="[20,50,100]"
-                       layout="total ,sizes, prev, pager, next, jumper"
-                       :total="searchModel && searchModel.total">
-        </el-pagination>
+        <el-tabs type="card">
+          <el-tab-pane label="菜单列表"><el-table :data="list" border highlight-current-row>
+            <el-table-column prop="menuName" label="名称"></el-table-column>
+            <el-table-column label="图标">
+              <template slot-scope="scope">
+                <i :class="scope.row.icon"></i>
+              </template>
+            </el-table-column>
+            <el-table-column prop="url" label="菜单URL"></el-table-column>
+            <el-table-column label="类型">
+              <template slot-scope="scope">
+                {{scope.row.isMenu?'菜单':'权限'}}
+              </template>
+            </el-table-column>
+            <el-table-column prop="sort" label="排序"></el-table-column>
+            <el-table-column prop="remark" label="菜单(权限)描述"></el-table-column>
+            <el-table-column label="操作" width="260">
+              <template slot-scope="scope">
+                <el-button @click="editMenu('edit',scope.row)">编辑</el-button>
+                <el-button type="danger" @click="deleteMenu(scope.row)"
+                           :disabled="!$hasPermission('menu/delete')">删除
+                </el-button>
+              </template>
+            </el-table-column>
+          </el-table>
+            <el-pagination class="pagination" background @current-change="handleIndexChange" @size-change="handleSizeChange"
+                           :current-page="searchModel && searchModel.pageIndex"
+                           :page-size="searchModel && searchModel.pageSize"
+                           :page-sizes="[20,50,100]"
+                           layout="total ,sizes, prev, pager, next, jumper"
+                           :total="searchModel && searchModel.total">
+            </el-pagination></el-tab-pane>
+          <el-tab-pane label="权限列表">权限列表</el-tab-pane>
+        </el-tabs>
+
       </div>
-      <el-dialog title="添加菜单或权限" :visible.sync="menuAddShow" width="30%">
+      <el-dialog title="添加菜单或权限" :visible.sync="menuAddShow" width="25%">
         <el-form :model="menuAddForm" label-width="120px" :rules="validationRules" ref="menuAddForm">
           <el-form-item label="菜单名称" prop="menuName">
             <el-input v-model="menuAddForm.menuName"></el-input>
           </el-form-item>
-          <el-form-item label="类型" prop="isMenu">
-            <el-radio-group v-model="isMenu">
-              <el-radio :label="true">菜单导航</el-radio>
-              <el-radio :label="false">功能请求</el-radio>
-            </el-radio-group>
-          </el-form-item>
           <el-form-item label="链接地址" prop="url">
             <el-input v-model="menuAddForm.url"
-                      :placeholder="isMenu
-                      ?'输入#则为菜单节点'
-                      :'请输入权限地址'"></el-input>
+                      placeholder="输入#则为菜单节点"></el-input>
           </el-form-item>
           <el-form-item label="上级菜单" prop="parentId">
             <el-select v-model="menuAddForm.parentId" placeholder="请选择上级菜单">
-              <el-option
-                value="00000000-0000-0000-0000-000000000000"
-                label="顶级菜单"
-                style="color: #FF7F24;"></el-option>
-              <el-option
-                v-for="item in $pocket.menus"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value">
-              </el-option>
+              <el-option value="0" label="顶级菜单" style="color: #FF7F24;"></el-option>
+              <el-option v-for="item in $pocket.menus" :key="item.value" :label="item.label"
+                         :value="item.value"></el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="菜单图标" prop="icon" v-if="isMenu">
+          <el-form-item label="菜单图标" prop="icon">
             <el-popover
               ref="iconListPopover"
               placement="bottom-start"
@@ -116,7 +104,7 @@
               </div>
             </el-popover>
             <el-input v-model="menuAddForm.icon" v-popover:iconListPopover :readonly="true" placeholder="菜单图标名称"
-                      class="icon-list__input" :disabled="!isMenu"></el-input>
+                      class="icon-list__input"></el-input>
           </el-form-item>
           <el-form-item label="描述" prop="remark">
             <el-input type="textarea" v-model="menuAddForm.remark"></el-input>
@@ -132,25 +120,17 @@
           <el-form-item label="菜单名称" prop="menuName">
             <el-input v-model="menuEditForm.menuName"></el-input>
           </el-form-item>
-          <el-form-item label="类型" prop="isMenu">
-            <el-radio-group v-model="isMenu">
-              <el-radio :label="true">菜单导航</el-radio>
-              <el-radio :label="false">功能请求</el-radio>
-            </el-radio-group>
-          </el-form-item>
           <el-form-item label="排序" prop="sort">
             <el-input v-model="menuEditForm.sort"></el-input>
           </el-form-item>
           <el-form-item label="链接地址" prop="url">
             <el-input v-model="menuEditForm.url"
-                      :placeholder="isMenu
-                      ?'输入#则为菜单节点'
-                      :'请输入权限地址'"></el-input>
+                      placeholder="输入#则为菜单节点"></el-input>
           </el-form-item>
           <el-form-item label="上级菜单" prop="parentId">
             <el-select v-model="menuEditForm.parentId" placeholder="请选择上级菜单">
               <el-option
-                value="00000000-0000-0000-0000-000000000000"
+                value="0"
                 label="顶级菜单"
                 style="color: #FF7F24;"></el-option>
               <el-option
@@ -161,7 +141,7 @@
               </el-option>
             </el-select>
           </el-form-item>
-          <el-form-item label="图标" prop="icon" v-if="isMenu">
+          <el-form-item label="菜单图标" prop="icon">
             <el-popover
               ref="iconListPopover"
               placement="bottom-start"
@@ -187,26 +167,6 @@
         </el-form>
         <div slot="footer" class="dialog-footer">
           <el-button type="primary" @click="editMenu('submit')">确 定</el-button>
-        </div>
-      </el-dialog>
-
-      <el-dialog title="批量添加权限" :visible.sync="batchAddPermissionShow" width="60%">
-        <div class="handle-box">
-          <div class="search-box">
-            <el-button type="primary">查询</el-button>
-          </div>
-        </div>
-        <div class="container">
-          <!-- 列表 -->
-          <el-table :data="apiList" height="400" border fit highlight-current-row @select-all="selectAction">
-            <el-table-column type="selection" width="55"></el-table-column>
-            <el-table-column prop="summary" label="权限名称"></el-table-column>
-            <el-table-column prop="url" label="请求地址(API)"></el-table-column>
-            <el-table-column prop="tag" label="所属控制器"></el-table-column>
-          </el-table>
-        </div>
-        <div slot="footer" class="dialog-footer">
-          <el-button type="primary" @click="batchAddPermission('submit')">确 定</el-button>
         </div>
       </el-dialog>
     </div>
@@ -237,7 +197,6 @@
         },
         menuEditForm: {},
         tempMenuEditForm: {},
-        isMenu: true,
         permissions: [],
         apiList: [],
         iconList: [],
@@ -273,22 +232,6 @@
       selectAction(selection) {
         this.permissions = selection;
       },
-      batchAddPermission(status) {
-        switch (status) {
-          case 'add':
-            this.batchAddPermissionShow = true
-            this.$api.get("swagger/docs").then(res => {
-              this.apiList = c.ref.jsUtil.swagger.transDocsData(res.data.paths)
-            })
-            break;
-          case 'submit':
-            this.batchAddPermissionShow = false
-            this.$api.post("menu/batchAddAction", {permissions: JSON.stringify(this.permissions)}).then(res => {
-              this.$helper.eui.inform("批量添加成功", this.search())
-            })
-            break;
-        }
-      },
       addMenu(status) {
         switch (status) {
           case 'add':
@@ -296,8 +239,6 @@
             break;
           case 'submit':
             this.submitOne()
-            this.menuAddForm.isMenu = this.isMenu
-            this.menuAddForm.icon = this.isMenu ? this.menuAddForm.icon : null
             this.$helper.eui.actWithValidation("menuAddForm", () => {
               this.menuAddShow = false
               this.$api.post("menu/add", this.menuAddForm).then(() => {

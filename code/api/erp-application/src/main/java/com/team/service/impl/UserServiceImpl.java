@@ -8,19 +8,27 @@ import com.team.entity.dto.TokenDto;
 import com.team.entity.dto.UserDto;
 import com.team.entity.map.MenuMap;
 import com.team.entity.map.UserMap;
+import com.team.entity.mybatis.system.Function;
+import com.team.entity.mybatis.system.Role;
 import com.team.entity.mybatis.system.User;
-import com.team.exception.ErrorCode;
 import com.team.exception.BusinessException;
+import com.team.exception.ErrorCode;
 import com.team.extension.MenuExtension;
 import com.team.model.SearchUserModel;
+import com.team.repository.mybatis.system.FunctionRepository;
+import com.team.repository.mybatis.system.MenuRepository;
+import com.team.repository.mybatis.system.RoleRepository;
 import com.team.service.RoleMenuService;
 import com.team.service.UserService;
 import com.team.util.JwtUtil;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @Description User 服务实现类
@@ -38,6 +46,15 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
 
     @Resource
     private MenuMap menuMap;
+
+    @Autowired
+    private RoleRepository roleRepository;
+
+    @Autowired
+    private FunctionRepository functionRepository;
+
+    @Autowired
+    private MenuRepository menuRepository;
 
     @Override
     public UserDto insertDefaultPwd(UserDto dto) {
@@ -77,6 +94,16 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
     }
 
     @Override
+    public List<Role> getRolesByLoginName(String loginName) {
+        return roleRepository.getRolesByLoginName(loginName);
+    }
+
+    @Override
+    public List<Function> getFunctionsByRole(List<Long> roleIds) {
+        return functionRepository.getFunctionsByRoleIds(roleIds);
+    }
+
+    @Override
     public JSONObject login(LoginDto dto) {
         User user = super.SelectBy(User::getLoginName, dto.getLoginName());
         if (ObjectUtils.isEmpty(user)) {
@@ -88,8 +115,8 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
         JSONObject json = new JSONObject();
         TokenDto token = new TokenDto();
         token.setUser(userMap.mapToAccountDto(user));
-        token.setMenus(MenuExtension.createTreeMenus(menuMap.toMenuTree(roleMenuService.getMenusByUserId(user.getUserId()))));
-//        token.setPermissions(roleMenuService.getPermissionOfValuesByUserId(user.getUserId()));
+        token.setMenus(MenuExtension.createTreeMenus(menuMap.toMenuTree(menuRepository.getMenusByUserId(user.getUserId()))));
+        token.setPermissions(functionRepository.getFunctionsByUserId(user.getUserId()).stream().map(Function::getFunctionCode).collect(Collectors.toList()));
         token.setValue(JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));
         json.put("token", token);
         return json;

@@ -10,6 +10,5 @@ public class MenuDto {
     private String icon;
     private String url;
     private Integer sort;
-    private Boolean isMenu;
     private String remark;
 }
