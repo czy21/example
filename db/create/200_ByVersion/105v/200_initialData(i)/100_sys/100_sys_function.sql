@@ -1,4 +1,4 @@
-set @max_function_id=max_target_table_id{{function_id,sys_function}};
+set @max_function_id = max_target_table_id{{function_id,sys_function}};
 
 INSERT INTO sys_function (`function_id`, `function_code`, `function_name`, `sort`, `added_time`, `modified_time`, `added_user`, `modified_user`, `remark`)
 values 
