@@ -1,9 +1,17 @@
 # !/usr/bin/env python
-import os, sys
+import os, sys, re
 
 sys.path.append("..")
 from default.path_default import db_version_path, db_everyRun_path
 from default.temp_path import temp_db_path
+
+
+# max_target_table_id{{function_id,sys_function}};
+def parse_max_target_table_id(source_sql_file):
+    for target in re.findall(r"max_target_table_id{{(.+?)}}", source_sql_file, re.M):
+        max_sql = "(select ifnull((select max(" + target.split(",")[0] + ")from " + target.split(",")[1] + ")" \
+                  + ",(select wn.sequence_value from worker_node wn order by wn.modified_time desc limit 1)))"
+        return re.sub(r"max_target_table_id{{" + target.split(",")[0] + "," + target.split(",")[1] + "}}", max_sql, source_sql_file)
 
 
 def built_version_sql(version_dir_val):
@@ -19,7 +27,7 @@ def built_version_sql(version_dir_val):
             for r, ds, fs in os.walk(r):
                 for f in fs:
                     init_data_sql = open(r + "\\" + f, 'r', encoding="utf-8")
-                    all_sql.write(init_data_sql.read())
+                    all_sql.write(parse_max_target_table_id(init_data_sql.read()) + "\n")
                     init_data_sql.close()
     for r, ds, fs in os.walk(db_everyRun_path):
         for f in fs:
@@ -31,6 +39,6 @@ def built_version_sql(version_dir_val):
 
 
 if __name__ == '__main__':
-    db_version = input("please input db version: ")
-    built_version_sql(db_version + 'v')
+    # db_version = input("please input db version: ")
+    built_version_sql('105' + 'v')
     os.system("pause")
