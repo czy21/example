@@ -75,14 +75,14 @@ public class UserController {
 
     @PostMapping("userRoleDetails")
     @ApiOperation(value = "获取用户角色")
-    @RequiresPermissions("AllotUser")
+    @RequiresPermissions("AllotRole")
     public List<Long> UserRoleDetails(Long userId) {
         return userRoleService.getRolesByUserId(userId);
     }
 
     @PostMapping(value = "updateUserRole")
     @ApiOperation(value = "更新用户角色")
-    @RequiresPermissions("AllotUser")
+    @RequiresPermissions("AllotRole")
     public String updateUserRole(Long userId, @RequestParam(value = "userRoleIds[]", required = false) Long[] userRoleIds) {
         return userRoleService.insertOrUpdateUserRole(userId, userRoleIds);
     }
