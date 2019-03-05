@@ -2,6 +2,9 @@ package com.team.repository.mybatis.system;
 
 import com.team.entity.mybatis.system.Function;
 import com.team.repository.mybatis.MybatisBaseRepository;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 /**
  * @author 陈昭宇
@@ -10,4 +13,7 @@ import com.team.repository.mybatis.MybatisBaseRepository;
  */
 public interface FunctionRepository extends MybatisBaseRepository<Function> {
 
+    List<Function> getFunctionsByRoleIds(@Param("roleIds") List<Long> roleIds);
+
+    List<Function> getFunctionsByUserId(@Param("userId") Long userId);
 }

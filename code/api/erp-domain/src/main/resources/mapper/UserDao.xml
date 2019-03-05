@@ -33,21 +33,6 @@
         department_id
         enabled
     </sql>
-    <select id="getRolesByLoginName" resultType="com.team.entity.mybatis.system.Role">
-        select r.* from sys_user u
-        inner join sys_user_role ur on ur.user_id = u.user_id
-        inner join sys_role  r on ur.role_id = r.role_id
-        where u.login_name=#{loginName}
-    </select>
-    <select id="getFunctionsByRole" resultType="com.team.entity.mybatis.system.Function">
-        select f.* from sys_role r
-        inner join sys_role_function rf on rf.role_id=r.role_id
-        inner join sys_function f on f.function_id=rf.function_id
-        where r.role_id in
-        <foreach collection="roleIds" index="index" item="item" open="(" separator="," close=")">
-            #{item}
-        </foreach>
-        group by rf.function_id
-    </select>
+
 
 </mapper>

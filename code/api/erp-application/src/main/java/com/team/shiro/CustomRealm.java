@@ -1,12 +1,11 @@
 package com.team.shiro;
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.entity.mybatis.system.Function;
 import com.team.entity.mybatis.system.Role;
 import com.team.entity.mybatis.system.User;
 import com.team.exception.ErrorCode;
 import com.team.exception.ErrorModel;
-import com.team.repository.mybatis.system.UserRepository;
+import com.team.service.UserService;
 import com.team.util.JwtUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
@@ -27,8 +26,9 @@ import java.util.stream.Collectors;
 @Component
 @Slf4j
 public class CustomRealm extends AuthorizingRealm {
+
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Override
     public boolean supports(AuthenticationToken token) {
@@ -39,8 +39,8 @@ public class CustomRealm extends AuthorizingRealm {
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         String loginName = JwtUtil.GetLoginName(principalCollection.toString());
         SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-        List<Role> roles = userRepository.getRolesByLoginName(loginName);
-        List<Function> roleFunctions = userRepository.getFunctionsByRole(roles.stream().map(t -> t.getRoleId()).collect(Collectors.toList()));
+        List<Role> roles = userService.getRolesByLoginName(loginName);
+        List<Function> roleFunctions = userService.getFunctionsByRole(roles.stream().map(t -> t.getRoleId()).collect(Collectors.toList()));
         Set<String> roleSet = roles.stream().map(Role::getRoleName).collect(Collectors.toSet());
         Set<String> functionSet = roleFunctions.stream().map(Function::getFunctionCode).collect(Collectors.toSet());
         authorizationInfo.setRoles(roleSet);
@@ -52,13 +52,10 @@ public class CustomRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         String token = (String) authenticationToken.getCredentials();
         String loginName = JwtUtil.GetLoginName(token);
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.lambda().eq(User::getLoginName, loginName);
-        User user = userRepository.selectOne(queryWrapper);
-        if(loginName == null){
+        User user = userService.SelectBy(User::getLoginName, loginName);
+        if (loginName == null) {
             throw new AuthenticationException(ErrorModel.toJSONString(ErrorCode.TOKEN_ERROR, "Token校验失败"));
-        }
-        else if( !JwtUtil.Verify(token, loginName, user.getPassword())){
+        } else if (!JwtUtil.Verify(token, loginName, user.getPassword())) {
             throw new AuthenticationException(ErrorModel.toJSONString(ErrorCode.TOKEN_ERROR, "Token已过期"));
         }
         return new SimpleAuthenticationInfo(token, token, "MyRealm");

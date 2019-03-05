@@ -3,11 +3,8 @@ package com.team.service;
 import com.team.core.universal.MybatisBaseService;
 import com.team.entity.dto.MenuDto;
 import com.team.entity.dto.PageDto;
-import com.team.entity.dto.PermissionDto;
 import com.team.entity.mybatis.system.Menu;
 import com.team.model.SearchPermissionModel;
-
-import java.util.List;
 
 /**
  * @Description Menu 服务类
@@ -23,7 +20,5 @@ public interface MenuService extends MybatisBaseService<Menu> {
     MenuDto editMenu(MenuDto dto);
 
     Integer deleteMenu(Long menuId);
-
-    Boolean batchInsertPermission(List<PermissionDto> dtos);
 
 }

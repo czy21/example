@@ -14,7 +14,7 @@ public class MybatisPlusCodeGenerator {
         gc.setOutputDir("D://");
         gc.setFileOverride(true);
         gc.setAuthor("陈昭宇");
-        gc.setMapperName("%sDao");
+        gc.setMapperName("%sRepository");
         gc.setXmlName("%sDao");
         gc.setServiceName("%sService");
         gc.setServiceImplName("%sServiceImpl");
@@ -35,11 +35,11 @@ public class MybatisPlusCodeGenerator {
         strategy.setTablePrefix("sys_");
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.entityTableFieldAnnotationEnable(true);
-        strategy.setSuperEntityClass("com.team.core.universal.BaseEntity");
+        strategy.setSuperEntityClass("com.team.entity.BaseEntity");
         strategy.setSuperEntityColumns("added_time", "modified_time", "added_user", "modified_user");
-        strategy.setSuperMapperClass("com.team.core.universal.BaseEntity.BaseDao");
-        strategy.setSuperServiceClass("com.team.core.universal.BaseEntity.BaseService");
-        strategy.setSuperServiceImplClass("com.team.core.universal.BaseEntity.BaseServiceImpl");
+        strategy.setSuperMapperClass("com.team.repository.mybatis.MybatisBaseRepository");
+        strategy.setSuperServiceClass("com.team.core.universal.MybatisBaseService");
+        strategy.setSuperServiceImplClass("com.team.core.universal.MybatisBaseServiceImpl");
         mpg.setStrategy(strategy);
 
         //自定义模板配置
