@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e0c33ad-5bfe-400f-a92c-151223c9fb22" name="Default Changelist" comment="" />
+    <list default="true" id="0e0c33ad-5bfe-400f-a92c-151223c9fb22" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../db/create/200_ByVersion/105v/200_initialData(i)/100_sys/100_sys_function.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../db/create/200_ByVersion/105v/200_initialData(i)/100_sys/100_sys_function.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../db/create/300_EveryRun/100_sys/Admin.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../../db/create/300_EveryRun/100_sys/Admin.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../script/default/path_default.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../script/default/path_default.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../script/local/local_build_db.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../script/local/local_build_db.py" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/erp-operation/target/" />
     <ignored path="$PROJECT_DIR$/erp-application/target/" />
     <ignored path="$PROJECT_DIR$/erp-domain/target/" />
@@ -84,8 +89,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/erp-operation/src/main/java/com/team/controller/system/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="30" column="43" lean-forward="true" selection-start-line="30" selection-start-column="43" selection-end-line="48" selection-end-column="35" />
+            <state relative-caret-position="360">
+              <caret line="48" column="35" lean-forward="true" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -210,7 +215,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="822" />
     <option name="y" value="74" />
     <option name="width" value="1378" />
@@ -380,7 +385,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551753280757" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1551756593938" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../GitProjects/ChaoqiIsPrivateLibrary/springboot_shiro_redis" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -524,12 +529,12 @@
       <workItem from="1551274611829" duration="792000" />
       <workItem from="1551504476838" duration="5965000" />
       <workItem from="1551586523087" duration="25703000" />
-      <workItem from="1551668504778" duration="10085000" />
+      <workItem from="1551668504778" duration="10088000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="261230000" />
+    <option name="totallyTimeSpent" value="261233000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -541,7 +546,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48739496" visible="true" weight="0.1977612" />
@@ -994,8 +999,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/erp-operation/src/main/java/com/team/controller/system/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="30" column="43" lean-forward="true" selection-start-line="30" selection-start-column="43" selection-end-line="48" selection-end-column="35" />
+        <state relative-caret-position="360">
+          <caret line="48" column="35" lean-forward="true" selection-start-line="48" selection-start-column="35" selection-end-line="48" selection-end-column="35" />
         </state>
       </provider>
     </entry>
