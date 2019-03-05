@@ -42,6 +42,6 @@ def built_version_sql(version_dir_val):
 
 
 if __name__ == '__main__':
-    # db_version = input("please input db version: ")
-    built_version_sql('105' + 'v')
+    db_version = input("please input db version: ")
+    built_version_sql(db_version + 'v')
     os.system("pause")
