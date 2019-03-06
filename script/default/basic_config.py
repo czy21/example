@@ -51,9 +51,9 @@ def mysqldump_cmd(db_name, user_param):
 
 # 更新数据库版本号
 def mysql_update_release_config(db_name, user_param, version_value):
-    return mysql_cmd(db_name, user_param) + " -Ne" \
-           + " \"update release_config set config_value=\'" + version_value + "\' where config_key='Version';" \
-           + "update release_config set config_value=Now() where config_key='BuildDate'\""
+    version_sql = "\"update release_config set config_value=\'" + version_value + "\' where config_key='Version';"
+    build_date_sql = "update release_config set config_value=Now() where config_key='BuildDate'\""
+    return mysql_cmd(db_name, user_param) + " -e " + version_sql + build_date_sql
 
 
 # 查询数据库版本号
@@ -68,14 +68,14 @@ def mysql_user_param(port, user, pwd):
 
 # 恢复源数据库至目标数据库
 def mysql_restore_db(s_db, s_user_param, t_db, t_user_param):
-    return mysql_create_db(t_user_param, t_db) + " && " + mysqldump_cmd(s_db, s_user_param) + " | " + mysql_cmd(t_db, t_user_param)
+    return mysql_create_db(t_db, t_user_param) + " && " + mysqldump_cmd(s_db, s_user_param) + " | " + mysql_cmd(t_db, t_user_param)
 
 
 # 重新创建数据库
-def mysql_create_db(t_user_param, t_db):
+def mysql_create_db(t_db, t_user_param):
     return 'mysql' + t_user_param + "-e " + "\"drop database if exists " + t_db + "; create database if not exists " + t_db + " default charset utf8 collate utf8_general_ci;\""
 
 
 # 导入sql文件
-def mysql_import_sql_file(sql_file_name, file):
-    return "-vvv < " + sql_file_name + " > " + file + ".log"
+def mysql_import_sql_file(sql_file_name, log_file_name):
+    return "-vvv < " + sql_file_name + " > " + log_file_name + ".log"
