@@ -58,8 +58,8 @@ def mysql_update_release_config(db_name, user_param, version_value):
 
 # 查询数据库版本号
 def mysql_select_release_config(db_name, user_param):
-    return mysql_cmd(db_name,
-                     user_param) + " -Ne" + " \"select config_value from release_config where config_key='Version'\""
+    return mysql_cmd(db_name, user_param) + " -Ne" \
+           + " \"select config_value from release_config where config_key='Version'\""
 
 
 # mysql连接的用户信息
@@ -67,17 +67,19 @@ def mysql_user_param(port, user, pwd):
     return " -P" + port + " -u" + user + " -p" + pwd + " "
 
 
-# 迁移(备份)数据库至其他数据库
+# 迁移源数据库至目标数据库
 def mysql_migrate_db(s_db, s_user_param, t_db, t_user_param):
     return mysqldump_cmd(s_db, s_user_param) + " | " + mysql_cmd(t_db, t_user_param)
 
 
 # 重新创建数据库
 def mysql_create_db(s_user_param, db_name):
-    return 'mysql' + s_user_param + "-Ne "\
-           "\"drop database if exists " + db_name + "; create database if not exists " + db_name + " default charset utf8 collate utf8_general_ci;\""
+    return 'mysql' + s_user_param + "-Ne " \
+           + "\"drop database if exists " + db_name + "; create database if not exists " + db_name + " default charset utf8 collate utf8_general_ci;\""
 
 
 # 导入sql文件
 def mysql_import_sql_file(sql_file_name, file):
-    return " < " + sql_file_name + " > " + file + ".log"
+    return "-v -v -v < " + sql_file_name + " > " + file + ".log"
+
+
