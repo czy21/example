@@ -11,8 +11,8 @@ from default.font_color import printWithColor
 restore_db_cmd = mysql_restore_db(prod_mysql.db_bak_name, prod_mysql_user, prod_mysql.db_name, prod_mysql_user)
 
 if __name__ == '__main__':
-    printWithColor('starting restore db', font_color.GREEN)
+    printWithColor('db restoring', font_color.GREEN)
     printWithColor(restore_db_cmd, font_color.DARKSKYBLUE)
     os.system(restore_db_cmd)
-    printWithColor('finished restore db', font_color.GREEN)
+    printWithColor('db restored', font_color.GREEN)
     os.system("pause")
