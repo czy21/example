@@ -13,9 +13,9 @@ if __name__ == '__main__':
     printWithColor(local_restore_db.restore_db_cmd, font_color.DARKSKYBLUE)
     os.system(local_restore_db.restore_db_cmd)
     printWithColor('db restored', font_color.GREEN)
-    if local_upgrade_db.build_upgrade_cmd() is not None:
+    if local_upgrade_db.build_upgrade_cmd(__file__) is not None:
         printWithColor('db upgrading', font_color.GREEN)
-        printWithColor(local_upgrade_db.build_upgrade_cmd(), font_color.DARKSKYBLUE)
-        os.system(local_upgrade_db.build_upgrade_cmd())
+        printWithColor(local_upgrade_db.build_upgrade_cmd(__file__), font_color.DARKSKYBLUE)
+        os.system(local_upgrade_db.build_upgrade_cmd(__file__))
         printWithColor('db upgraded', font_color.GREEN)
     os.system("pause")
