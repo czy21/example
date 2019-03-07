@@ -10,11 +10,11 @@ cf.read(config_path + "\\mongo.conf")
 cf.read(config_path + "\\shell.conf")
 cf.read(config_path + "\\remote.conf")
 erp_home = cf.get("home", "erp_home")
-api_build_shell = cf.get("api", "build_shell")
-api_update_shell = cf.get("api", "update_version")
-api_commit_shell = cf.get("api", "commit_version")
-api_revert_shell = cf.get("api", "revert_version")
-web_build_shell = cf.get("web", "build_shell")
+api_build_cmd = cf.get("api", "build_shell")
+api_update_cmd = cf.get("api", "update_version")
+api_commit_cmd = cf.get("api", "commit_version")
+api_revert_cmd = cf.get("api", "revert_version")
+web_build_cmd = cf.get("web", "build_shell")
 
 
 class ssh_config:

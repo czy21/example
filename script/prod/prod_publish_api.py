@@ -18,6 +18,6 @@ def run():
 
 
 if __name__ == '__main__':
-    local_build_api.build_to_temp()
+    local_build_api.to_temp()
     run()
     os.system("pause")
