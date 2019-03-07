@@ -13,3 +13,7 @@ db_path = root_path + '\\db'
 db_prepare_path = db_path + '\\create\\100_Prepare'
 db_version_path = db_path + '\\create\\200_ByVersion'
 db_everyRun_path = db_path + '\\create\\300_EveryRun'
+
+
+def with_param_api_path(*params):
+    return " " + " ".join(params) + " " + api_path
