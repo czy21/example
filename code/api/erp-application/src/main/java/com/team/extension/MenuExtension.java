@@ -3,13 +3,16 @@ package com.team.extension;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.team.entity.mybatis.system.Menu;
 import com.team.model.SimpleItemModel;
 import com.team.repository.mybatis.system.MenuRepository;
 import com.team.util.TreeUtil;
 import lombok.Data;
 import org.springframework.stereotype.Component;
+import org.springframework.util.StringUtils;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Component
 public class MenuExtension {
@@ -79,4 +82,26 @@ public class MenuExtension {
         root.sortChildren();
         return root.getChildren();
     }
+
+    public static List<Menu> getSons(List<Menu> list, Long parentId) {
+        if (StringUtils.isEmpty(parentId)) {
+            return list.stream()
+                    .sorted(Comparator.comparing(Menu::getSort, Comparator.nullsLast(Integer::compareTo)))
+                    .collect(Collectors.toList());
+        }
+        List<Menu> query = list.stream().filter(t -> t.getMenuId().equals(parentId)).collect(Collectors.toList());
+        query.addAll(getSonList(list, parentId));
+        return query;
+    }
+
+    private static List<Menu> getSonList(List<Menu> list, Long parentId) {
+        List<Menu> menus = new ArrayList<>();
+        list.forEach(t -> {
+            if (t.getParentId().equals(parentId)) {
+                menus.addAll(getSons(list, t.getMenuId()));
+            }
+        });
+        return menus.stream().sorted(Comparator.comparing(Menu::getSort, Comparator.nullsLast(Integer::compareTo))).collect(Collectors.toList());
+    }
+
 }
