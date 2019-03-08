@@ -4,7 +4,7 @@ import com.team.core.universal.MybatisBaseService;
 import com.team.entity.dto.MenuDto;
 import com.team.entity.dto.PageDto;
 import com.team.entity.mybatis.system.Menu;
-import com.team.model.SearchPermissionModel;
+import com.team.model.SearchMenuModel;
 
 /**
  * @Description Menu 服务类
@@ -13,12 +13,12 @@ import com.team.model.SearchPermissionModel;
  */
 public interface MenuService extends MybatisBaseService<Menu> {
 
-    PageDto<MenuDto> getMenuAndPermissionPageListBy(SearchPermissionModel search);
-
     MenuDto insertMenu(MenuDto dto);
 
     MenuDto editMenu(MenuDto dto);
 
     Integer deleteMenu(Long menuId);
+
+    PageDto<MenuDto> getMenuPageListBy(SearchMenuModel search);
 
 }

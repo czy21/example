@@ -8,12 +8,14 @@ import com.team.entity.map.MenuMap;
 import com.team.entity.mybatis.system.Menu;
 import com.team.exception.BusinessException;
 import com.team.exception.ErrorCode;
-import com.team.model.SearchPermissionModel;
+import com.team.extension.MenuExtension;
+import com.team.model.SearchMenuModel;
 import com.team.service.MenuService;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.stream.Collectors;
 
 /**
  * @Description Menu 服务实现类
@@ -25,12 +27,6 @@ public class MenuServiceImpl extends MybatisBaseServiceImpl<Menu> implements Men
 
     @Resource
     private MenuMap menuMap;
-
-    @Override
-    @SuppressWarnings("unchecked")
-    public PageDto<MenuDto> getMenuAndPermissionPageListBy(SearchPermissionModel search) {
-        return new PageDto<>();
-    }
 
     @Override
     public MenuDto insertMenu(MenuDto dto) {
@@ -65,8 +61,16 @@ public class MenuServiceImpl extends MybatisBaseServiceImpl<Menu> implements Men
 
     @Override
     public Integer deleteMenu(Long menuId) {
-//        return super.DeleteByIds(MenuExtension.getSons(super.SelectListBy(null), menuId).stream().map(Menu::getMenuId).collect(Collectors.toList()));
-        return null;
+        return super.DeleteByIds(MenuExtension.getSons(super.SelectListBy(null), menuId).stream().map(Menu::getMenuId).collect(Collectors.toList()));
+    }
+
+    @Override
+    public PageDto<MenuDto> getMenuPageListBy(SearchMenuModel search) {
+        QueryWrapper<Menu> query = new QueryWrapper<>();
+        if (StringUtils.isEmpty(search.getMenuName())) {
+            query.lambda().like(Menu::getMenuName, search.getMenuName());
+        }
+        return menuMap.mapToPageDto(super.SelectPageListBy(search.getPageIndex(), search.getPageSize(), query));
     }
 
 }

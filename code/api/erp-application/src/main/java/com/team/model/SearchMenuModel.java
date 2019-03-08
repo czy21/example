@@ -6,6 +6,6 @@ import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class SearchPermissionModel extends PageParams {
-    private Long menuId;
+public class SearchMenuModel extends PageParams {
+    private String menuName;
 }
