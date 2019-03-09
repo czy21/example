@@ -13,16 +13,8 @@
       <div class="handle-box">
         <div class="search-box">
           <el-form ref="searchForm" :inline="true" :model="searchModel" label-position="left" label-width="80px">
-            <el-form-item label="菜单" prop="menuId">
-              <el-cascader expand-trigger="click"
-                           :options="$pocket.menuTree"
-                           style="width: 300px;"
-                           clearable
-                           show-all-levels
-                           placeholder="请选择菜单"
-                           :change-on-select="true"
-                           @change="selectMenuChange">
-              </el-cascader>
+            <el-form-item label="菜单名称" prop="menuName">
+              <el-input v-model="searchModel.menuName"></el-input>
             </el-form-item>
             <el-form-item>
               <el-button type="primary" @click="search">搜索</el-button>
@@ -34,40 +26,36 @@
         </div>
       </div>
       <div class="container">
-        <el-tabs type="card">
-          <el-tab-pane label="菜单列表"><el-table :data="list" border highlight-current-row>
-            <el-table-column prop="menuName" label="名称"></el-table-column>
-            <el-table-column label="图标">
-              <template slot-scope="scope">
-                <i :class="scope.row.icon"></i>
-              </template>
-            </el-table-column>
-            <el-table-column prop="url" label="菜单URL"></el-table-column>
-            <el-table-column label="类型">
-              <template slot-scope="scope">
-                {{scope.row.isMenu?'菜单':'权限'}}
-              </template>
-            </el-table-column>
-            <el-table-column prop="sort" label="排序"></el-table-column>
-            <el-table-column prop="remark" label="菜单(权限)描述"></el-table-column>
-            <el-table-column label="操作" width="260">
-              <template slot-scope="scope">
-                <el-button @click="editMenu('edit',scope.row)">编辑</el-button>
-                <el-button type="danger" @click="deleteMenu(scope.row)"
-                           :disabled="!$hasPermission('menu/delete')">删除
-                </el-button>
-              </template>
-            </el-table-column>
-          </el-table>
-            <el-pagination class="pagination" background @current-change="handleIndexChange" @size-change="handleSizeChange"
-                           :current-page="searchModel && searchModel.pageIndex"
-                           :page-size="searchModel && searchModel.pageSize"
-                           :page-sizes="[20,50,100]"
-                           layout="total ,sizes, prev, pager, next, jumper"
-                           :total="searchModel && searchModel.total">
-            </el-pagination></el-tab-pane>
-          <el-tab-pane label="权限列表">权限列表</el-tab-pane>
-        </el-tabs>
+        <el-table :data="list" border highlight-current-row>
+          <el-table-column prop="menuName" label="名称"></el-table-column>
+          <el-table-column label="图标">
+            <template slot-scope="scope">
+              <svg-icon :icon-class="scope.row.icon"/>
+            </template>
+          </el-table-column>
+          <el-table-column prop="url" label="菜单URL"></el-table-column>
+          <el-table-column label="类型">
+            <template slot-scope="scope">
+              {{scope.row.isMenu?'菜单':'权限'}}
+            </template>
+          </el-table-column>
+          <el-table-column prop="sort" label="排序"></el-table-column>
+          <el-table-column prop="remark" label="菜单(权限)描述"></el-table-column>
+          <el-table-column label="操作" width="260">
+            <template slot-scope="scope">
+              <el-button @click="editMenu('edit',scope.row)">编辑</el-button>
+              <el-button type="danger" @click="deleteMenu(scope.row)">删除</el-button>
+            </template>
+          </el-table-column>
+        </el-table>
+        <el-pagination class="pagination" background @current-change="handleIndexChange" @size-change="handleSizeChange"
+                       :current-page="searchModel && searchModel.pageIndex"
+                       :page-size="searchModel && searchModel.pageSize"
+                       :page-sizes="[20,50,100]"
+                       layout="total ,sizes, prev, pager, next, jumper"
+                       :total="searchModel && searchModel.total">
+        </el-pagination>
+
 
       </div>
       <el-dialog title="添加菜单或权限" :visible.sync="menuAddShow" width="25%">
@@ -106,7 +94,7 @@
             <el-input v-model="menuAddForm.icon" v-popover:iconListPopover :readonly="true" placeholder="菜单图标名称"
                       class="icon-list__input"></el-input>
           </el-form-item>
-          <el-form-item label="描述" prop="remark">
+          <el-form-item label="备注" prop="remark">
             <el-input type="textarea" v-model="menuAddForm.remark"></el-input>
           </el-form-item>
         </el-form>
@@ -161,7 +149,7 @@
             <el-input v-model="menuEditForm.icon" v-popover:iconListPopover :readonly="true" placeholder="菜单图标名称"
                       class="icon-list__input"></el-input>
           </el-form-item>
-          <el-form-item label="描述" prop="remark">
+          <el-form-item label="备注" prop="remark">
             <el-input type="textarea" v-model="menuEditForm.remark"></el-input>
           </el-form-item>
         </el-form>
@@ -229,9 +217,6 @@
             this.iconEditPopoverVisible = false
         }
       },
-      selectAction(selection) {
-        this.permissions = selection;
-      },
       addMenu(status) {
         switch (status) {
           case 'add':
@@ -244,7 +229,7 @@
               this.$api.post("menu/add", this.menuAddForm).then(() => {
                 this.$helper.eui.inform(`<strong>${this.menuAddForm.menuName}</strong> 添加成功`, () => {
                   this.$refs['menuAddForm'].resetFields();
-                  this.load("menu/load")
+                  this.search()
                 })
               })
             })
@@ -255,17 +240,16 @@
         switch (status) {
           case 'edit':
             this.menuEditShow = true
-            this.menuEditForm = Object.assign({}, this.menuEditForm, row)
+            this.menuEditForm = row
             break;
           case 'submit':
             this.submitOne()
-            this.menuEditForm.icon = this.isMenu ? this.menuEditForm.icon : null
             this.$helper.eui.actWithValidation("menuEditForm", () => {
               this.menuEditShow = false
-              this.$api.post("menu/edit", this.menuEditForm).then(() => {
+              this.$api.post("menu/edit", this.menuEditForm).then(res => {
                 this.$helper.eui.inform(`<strong>${this.menuEditForm.menuName}</strong> 修改成功`, () => {
                   this.$refs['menuEditForm'].clearValidate();
-                  this.load("menu/load")
+                  this.menuEditForm = res.data
                 })
               })
             })
@@ -275,12 +259,9 @@
       deleteMenu(row) {
         this.$helper.eui.confirm(`此操作不可恢复,确定删除 <strong>${row.menuName}</strong> ?`, () => {
           this.$api.delete("menu/delete", {menuId: row.menuId}).then(() => {
-            this.$helper.eui.inform(`<strong>${row.menuName}</strong> 删除成功`, this.load("menu/load"))
+            this.$helper.eui.inform(`<strong>${row.menuName}</strong> 删除成功`, this.search())
           })
         })
-      },
-      selectMenuChange(data) {
-        this.searchModel.menuId = data[data.length - 1];
       },
       search() {
         this.$api.post("menu/search", this.searchModel).then(v => {

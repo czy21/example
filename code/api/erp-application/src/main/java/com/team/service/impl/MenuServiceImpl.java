@@ -67,7 +67,7 @@ public class MenuServiceImpl extends MybatisBaseServiceImpl<Menu> implements Men
     @Override
     public PageDto<MenuDto> getMenuPageListBy(SearchMenuModel search) {
         QueryWrapper<Menu> query = new QueryWrapper<>();
-        if (StringUtils.isEmpty(search.getMenuName())) {
+        if (!StringUtils.isEmpty(search.getMenuName())) {
             query.lambda().like(Menu::getMenuName, search.getMenuName());
         }
         return menuMap.mapToPageDto(super.SelectPageListBy(search.getPageIndex(), search.getPageSize(), query));

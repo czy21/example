@@ -9,4 +9,5 @@ public enum ErrorCode {
     ACCOUNT_EXIST,
     NAME_NO_NULL,
     ID_NO_NULL,
+    VALUE_NO_NULL
 }

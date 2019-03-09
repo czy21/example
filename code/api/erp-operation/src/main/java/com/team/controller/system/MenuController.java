@@ -4,7 +4,6 @@ package com.team.controller.system;
 import com.team.core.annotations.Pocket;
 import com.team.entity.dto.MenuDto;
 import com.team.entity.dto.PageDto;
-import com.team.entity.map.MenuMap;
 import com.team.entity.mybatis.system.Menu;
 import com.team.model.SearchMenuModel;
 import com.team.service.MenuService;
@@ -25,9 +24,6 @@ public class MenuController {
 
     @Autowired
     private MenuService menuService;
-
-    @Autowired
-    private MenuMap menuMap;
 
     @GetMapping("load")
     @Pocket(entity = Menu.class, obtainTree = true)
@@ -59,4 +55,5 @@ public class MenuController {
     public Integer Delete(Long menuId) {
         return menuService.deleteMenu(menuId);
     }
+
 }

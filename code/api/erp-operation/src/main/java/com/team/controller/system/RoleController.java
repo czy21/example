@@ -5,6 +5,7 @@ import com.team.core.annotations.Pocket;
 import com.team.entity.dto.PageDto;
 import com.team.entity.dto.RoleDto;
 import com.team.entity.map.RoleMap;
+import com.team.entity.mybatis.system.Function;
 import com.team.entity.mybatis.system.Menu;
 import com.team.service.RoleMenuService;
 import com.team.service.RoleService;
@@ -14,8 +15,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 /**
  * @Description Role 前端控制器
@@ -32,12 +32,14 @@ public class RoleController {
 
     @Autowired
     private RoleMenuService roleMenuService;
+
     @Autowired
     private RoleMap roleMap;
 
     @GetMapping("load")
     @ApiOperation(value = "加载角色列表")
     @Pocket(entity = Menu.class, obtainTree = true)
+    @Pocket(entity = Function.class)
     @RequiresPermissions("SearchRole")
     public PageDto<RoleDto> Load(int pageIndex, int pageSize) {
         return roleMap.mapToPageDto(roleService.SelectPageListBy(pageIndex, pageSize, null));
@@ -67,11 +69,8 @@ public class RoleController {
     @PostMapping("roleMenuDetails")
     @ApiOperation(value = "查询角色菜单")
     @RequiresPermissions("AllotRoleMenu")
-    public Map RoleMenuDetails(Long roleId) {
-        Map<String, Object> hash = new HashMap<>();
-//        hash.put("menuIds", roleMenuService.getPermissionsByRoleId(roleId));
-//        hash.put("actions", MenuExtension.transPermissionToRadioGroups());
-        return hash;
+    public List<Long> RoleMenuDetails(Long roleId) {
+        return roleService.getMenusByRoleId(roleId);
     }
 
     @PostMapping("updateRoleMenu")
@@ -81,5 +80,18 @@ public class RoleController {
         return roleMenuService.insertOrUpdateRoleMenu(roleId, roleMenuIds);
     }
 
+    @PostMapping("roleFuncDetails")
+    @ApiOperation(value = "查询角色权限")
+    @RequiresPermissions("AllotRoleFunc")
+    public List<Long> RoleFuncDetails(Long roleId) {
+        return roleService.getFunctionsByRoleId(roleId);
+    }
+
+    @PostMapping("updateRoleFunc")
+    @ApiOperation(value = "更新角色权限")
+    @RequiresPermissions("AllotRoleFunc")
+    public String updateRoleFunc(Long roleId, @RequestParam(value = "roleFuncIds[]", required = false) Long[] roleFuncIds) {
+        return roleService.updateRoleFuncByRoleId(roleId, roleFuncIds);
+    }
 
 }

@@ -67,13 +67,13 @@ public class MenuExtension {
 
     public static List<Node> createTreeMenus(List<Node> menus) {
         Node root = new Node();
-        root.setParentId(LongExtension.empty);
+        root.setParentId(0L);
         Map<Long, Node> dataMap = new HashMap<>();
         menus.forEach(t -> dataMap.put(t.getMenuId(), t));
         Set<Map.Entry<Long, Node>> entrySet = dataMap.entrySet();
         entrySet.forEach(t -> {
             Node menu = t.getValue();
-            if (LongExtension.guidIsEmpty(menu.getParentId())) {
+            if (menu.getParentId().equals(0L)) {
                 root.getChildren().add(menu);
             } else {
                 dataMap.get(menu.getParentId()).getChildren().add(menu);

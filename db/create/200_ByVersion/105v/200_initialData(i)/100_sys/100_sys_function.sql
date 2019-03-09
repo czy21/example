@@ -11,6 +11,7 @@ values
 (@max_function_id:=@max_function_id+1, 'AddRole', '添加角色', NULL, now(), now(), NULL, NULL, NULL),
 (@max_function_id:=@max_function_id+1, 'EditRole', '修改角色', NULL, now(), now(), NULL, NULL, NULL),
 (@max_function_id:=@max_function_id+1, 'AllotRoleMenu', '分配角色菜单', NULL, now(), now(), NULL, NULL, NULL),
+(@max_function_id:=@max_function_id+1, 'AllotRoleFunc', '分配角色权限', NULL, now(), now(), NULL, NULL, NULL),
 (@max_function_id:=@max_function_id+1, 'SearchLog', '查询日志', NULL, now(), now(), NULL, NULL, NULL),
 (@max_function_id:=@max_function_id+1, 'SearchDepartment', '查询部门', NULL, now(), now(), NULL, NULL, NULL),
 (@max_function_id:=@max_function_id+1, 'AddDepartment', '添加部门', NULL, now(), now(), NULL, NULL, NULL),

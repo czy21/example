@@ -57,7 +57,7 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="描述" prop="remark">
+        <el-form-item label="备注" prop="remark">
           <el-input type="textarea" v-model="departmentAddForm.remark"></el-input>
         </el-form-item>
       </el-form>
@@ -94,7 +94,7 @@
             </el-option>
           </el-select>
         </el-form-item>
-        <el-form-item label="描述" prop="remark">
+        <el-form-item label="备注" prop="remark">
           <el-input type="textarea" v-model="departmentEditForm.remark"></el-input>
         </el-form-item>
       </el-form>

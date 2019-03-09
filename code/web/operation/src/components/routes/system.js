@@ -1,5 +1,6 @@
 import UserList from '@v/system/UserList'
 import MenuList from '@v/system/MenuList'
+import FunctionList from '@v/system/FunctionList'
 import RoleList from '@v/system/RoleList'
 import DepartmentList from '@v/system/DepartmentList'
 import LogList from '@v/system/LogList'
@@ -25,6 +26,12 @@ export default [
     path: '/system/menu',
     component: MenuList,
     meta: {title: "菜单管理"}
+  },
+  {
+    name: "FunctionList",
+    path: '/system/function',
+    component: FunctionList,
+    meta: {title: "权限管理"}
   },
   {
     name: "CompanyList",
