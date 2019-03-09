@@ -11,4 +11,6 @@ import com.team.entity.mybatis.system.RoleFunction;
 public interface RoleFunctionService extends MybatisBaseService<RoleFunction> {
 
 
+    String insertOrUpdateRoleFunc(Long roleId, Long[] roleFuncIds);
+
 }

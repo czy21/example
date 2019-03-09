@@ -24,7 +24,9 @@
         <el-table-column label="操作" width="300">
           <template slot-scope="scope">
             <el-button @click="editRole('edit',scope.row)">编辑</el-button>
-            <el-button type="primary" @click="allotMenu('allot',scope.row)">分配权限
+            <el-button type="primary" @click="allotMenu('allot',scope.row)">分配菜单
+            </el-button>
+            <el-button type="primary" @click="allotFunc('allot',scope.row)">分配权限
             </el-button>
           </template>
         </el-table-column>
@@ -66,37 +68,32 @@
       </div>
     </el-dialog>
 
-    <el-dialog title="分配角色权限" :visible.sync="roleMenuShow" width="50%">
-      <div class="combine-box">
-        <div class="aside-box">
-          <el-tree
-            :props="props"
-            :data="$pocket.menuTree"
-            default-expand-all
-            show-checkbox
-            node-key="value"
-            ref="roleMenu">
-          </el-tree>
-        </div>
-        <div class="right-box">
-          <div class="container">
-            <dl class="permission-list" v-for="item in actionTree" :key="item.value" :name="item.value">
-              <dt>{{item.label}}</dt>
-              <dd>
-                <el-checkbox-group v-model="roleActionIds" @change="checkedActionsChange">
-                  <dl>
-                    <el-checkbox v-for="action in item.children" :key="action.value" :label="action.value">
-                      {{action.label}}
-                    </el-checkbox>
-                  </dl>
-                </el-checkbox-group>
-              </dd>
-            </dl>
-          </div>
-        </div>
-      </div>
+    <el-dialog title="分配角色菜单" :visible.sync="roleMenuShow" width="20%">
+      <el-tree
+        :data="$pocket.menuTree"
+        default-expand-all
+        show-checkbox
+        node-key="value"
+        ref="roleMenu">
+      </el-tree>
       <div slot="footer" class="dialog-footer">
         <el-button type="primary" @click="allotMenu('submit')">确 定</el-button>
+      </div>
+    </el-dialog>
+
+    <el-dialog title="分配角色权限" :visible.sync="roleFuncShow" width="35%">
+      <el-transfer
+        filterable
+        filter-placeholder="请输入权限名称"
+        v-model="roleFuncIds"
+        :filter-method="filterFunc"
+        :props="{label:'label',key:'value'}"
+        :titles="['未分配', '已分配']"
+        :button-texts="['收回', '分配']"
+        :data="$pocket.functions">
+      </el-transfer>
+      <div slot="footer" class="dialog-footer">
+        <el-button type="primary" @click="allotFunc('submit')">确 定</el-button>
       </div>
     </el-dialog>
   </div>
@@ -110,19 +107,14 @@
     name: "RoleList",
     data() {
       return {
-        roleActionIds: [],
-        actionTree: [],
-        props: {
-          label: "label",
-          children: "children"
-        },
-        roleId: '',
         roleAddShow: false,
         roleDelShow: false,
         roleEditShow: false,
         roleMenuShow: false,
+        roleFuncShow: false,
         roleAddForm: {},
         roleEditForm: {},
+        roleFuncIds: [],
       };
     },
     computed: {
@@ -163,11 +155,7 @@
             this.submitOne()
             this.$helper.eui.actWithValidation("roleEditForm", () => {
               this.roleEditShow = false
-              this.$api.post("role/edit", {
-                roleId: this.roleEditForm.roleId,
-                roleName: this.roleEditForm.roleName,
-                remark: this.roleEditForm.remark
-              }).then(res => {
+              this.$api.post("role/edit", this.roleEditForm).then(res => {
                 this.$refs['roleEditForm'].clearValidate();
                 this.roleEditForm = res.data
               })
@@ -182,21 +170,37 @@
             this.roleMenuShow = true
             this.roleId = row.roleId
             this.$api.post("role/roleMenuDetails", {roleId: this.roleId}).then(res => {
-              this.actionTree = res.data.actions
-              this.roleActionIds = res.data.menuIds
+              this.$refs.roleMenu.setCheckedKeys(res.data)
             })
             break;
           case
           'submit':
             var roleMenus = this.$refs.roleMenu.getCheckedNodes(false, true).map(v => v.value);
-            if (roleMenus.length === 0 && this.roleActionIds.length > 0) {
-              this.$helper.eui.warn("必须选择菜单")
-              return
-            }
             this.roleMenuShow = false
             this.$api.post("role/updateRoleMenu", {
               roleId: this.roleId,
-              roleMenuIds: this.roleActionIds.concat(roleMenus)
+              roleMenuIds: roleMenus
+            }).then(res => {
+              this.$helper.eui.inform(res.data + " 分配菜单成功")
+            })
+            break;
+        }
+      },
+      allotFunc(status, row) {
+        switch (status) {
+          case 'allot':
+            this.roleFuncShow = true
+            this.roleId = row.roleId
+            this.$api.post("role/roleFuncDetails", {roleId: this.roleId}).then(res => {
+              this.roleFuncIds = res.data
+            })
+            break;
+          case
+          'submit':
+            this.roleFuncShow = false
+            this.$api.post("role/updateRoleFunc", {
+              roleId: this.roleId,
+              roleFuncIds: this.roleFuncIds
             }).then(res => {
               this.$helper.eui.inform(res.data + " 分配权限成功")
             })
@@ -204,29 +208,14 @@
 
         }
       },
-      checkedActionsChange(value) {
-        var temp = []
-        this.actionTree.forEach((t) => {
-          t.children.forEach((c) => {
-            value.forEach((v) => {
-              if (v == c.value) {
-                temp.push(c.parentId)
-              }
-            })
-          })
-        })
-        this.$refs.roleMenu.setCheckedKeys(Array.from(new Set(temp)), false)
+      filterFunc(query, item) {
+        return item.label.indexOf(query) > -1;
       },
       search() {
         this.$api.post("role/search", this.searchModel).then(v => {
           v.data.page && Object.assign(this.searchModel, v.data.page)
           this.list = v.data.list
         });
-      }
-    },
-    watch: {
-      roleActionIds(newVal) {
-        this.checkedActionsChange(newVal)
       }
     },
     mounted() {

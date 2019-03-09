@@ -38,6 +38,8 @@ public class PocketConfigure {
             case "Company":
                 hash.put(suggestKey, CompanyExtension.convertToSimple());
                 break;
+            case "Function":
+                hash.put(suggestKey, FunctionExtension.convertToSimple());
         }
         return hash;
     }
