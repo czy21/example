@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0e0c33ad-5bfe-400f-a92c-151223c9fb22" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/erp-application/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/erp-application/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-domain/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/erp-domain/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/erp-operation/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/erp-operation/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-    </list>
+    <list default="true" id="0e0c33ad-5bfe-400f-a92c-151223c9fb22" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/erp-operation/target/" />
     <ignored path="$PROJECT_DIR$/erp-application/target/" />
     <ignored path="$PROJECT_DIR$/erp-domain/target/" />
@@ -330,7 +325,7 @@
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552146556154" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552202083601" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../GitProjects/ChaoqiIsPrivateLibrary/springboot_shiro_redis" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -479,7 +474,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="288722000" />
+    <option name="totallyTimeSpent" value="289317000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
