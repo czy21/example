@@ -2,33 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="269535c4-c081-4471-b993-b3f461cc5932" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/entity/dto/FunctionDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/entity/map/FunctionMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/extension/FunctionExtension.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/model/SearchFunctionModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/system/FunctionController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/system/FunctionList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/configure/PocketConfigure.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/core/configure/PocketConfigure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/exception/ErrorCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/exception/ErrorCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/extension/LongExtension.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/extension/MenuExtension.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/extension/MenuExtension.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/FunctionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/FunctionService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/RoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/RoleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/impl/FunctionServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/impl/FunctionServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/impl/MenuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/impl/MenuServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/impl/RoleServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-application/src/main/java/com/team/service/impl/RoleServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/system/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/system/MenuController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/system/RoleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-operation/src/main/java/com/team/controller/system/RoleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../api/erp-operation/src/main/resources/templates/controller.java.vm" beforeDir="false" afterPath="$PROJECT_DIR$/../../api/erp-operation/src/main/resources/templates/controller.java.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/routes/system.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/routes/system.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/common/NavMenu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/common/NavMenu.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/custom/svg/SvgIcon.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/custom/svg/SvgIcon.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/DepartmentList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/DepartmentList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/MenuList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/MenuList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/system/RoleList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/system/RoleList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/custom.scss" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/custom.scss" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -45,8 +19,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/views/system/RoleList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="185" column="18" selection-start-line="185" selection-start-column="18" selection-end-line="185" selection-end-column="18" />
+            <state relative-caret-position="3051">
+              <caret line="200" column="51" lean-forward="true" selection-start-line="200" selection-start-column="51" selection-end-line="200" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -165,7 +139,7 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="674" />
     <option name="y" value="60" />
     <option name="width" value="1407" />
@@ -203,35 +177,7 @@
               <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
               <item name="operation" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="mixins" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="operation" type="b2602c69:ProjectViewProjectNode" />
-              <item name="operation" type="47feb1d3:ProjectViewModuleNode" />
-              <item name="operation" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="operation" type="b2602c69:ProjectViewProjectNode" />
@@ -477,7 +423,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="449689000" />
+    <option name="totallyTimeSpent" value="450029000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -490,12 +436,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" sideWeight="0.5019231" side_tool="true" weight="0.19336143" />
       <window_info id="npm" order="1" sideWeight="0.5015528" side_tool="true" weight="0.19704953" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.4984472" visible="true" weight="0.17702845" />
+      <window_info active="true" content_ui="combo" id="Project" order="3" sideWeight="0.4984472" visible="true" weight="0.17755532" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.30151844" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49909255" weight="0.21583514" />
@@ -504,7 +449,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.329718" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.3438178" />
+      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.34056398" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.2624729" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5009074" side_tool="true" weight="0.32216495" />
       <window_info anchor="bottom" id="REST Client" order="11" weight="0.43600866" />
@@ -867,8 +812,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/views/system/RoleList.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="185" column="18" selection-start-line="185" selection-start-column="18" selection-end-line="185" selection-end-column="18" />
+        <state relative-caret-position="3051">
+          <caret line="200" column="51" lean-forward="true" selection-start-line="200" selection-start-column="51" selection-end-line="200" selection-end-column="51" />
         </state>
       </provider>
     </entry>
