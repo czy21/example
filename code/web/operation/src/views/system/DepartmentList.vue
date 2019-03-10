@@ -22,7 +22,7 @@
           <el-table-column label="操作" width="300">
             <template slot-scope="scope">
               <el-button @click="addDepartment('addSub',scope.row.departmentId)"
-                         :disabled="!$hasPermission('department/add')">添加下级部门
+                         :disabled="!$hasPermission('AddDepartment')">添加下级部门
               </el-button>
               <el-button @click="editDepartment('edit',scope.row)" :disabled="!$hasPermission('EditDepartment')">编辑
               </el-button>
