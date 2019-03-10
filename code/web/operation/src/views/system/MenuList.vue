@@ -2,7 +2,6 @@
   <div class="combine-box">
     <div class="aside-box">
       <el-tree
-        :props="props"
         :data="$pocket.menuTree"
         default-expand-all
         node-key="value"
@@ -22,7 +21,7 @@
           </el-form>
         </div>
         <div class="operate-box">
-          <el-button type="primary" @click="addMenu('add')">添加菜单</el-button>
+          <el-button type="primary" @click="addMenu('add')" :disabled="!$hasPermission('AddMenu')">添加菜单</el-button>
         </div>
       </div>
       <div class="container">
@@ -43,8 +42,7 @@
           <el-table-column prop="remark" label="菜单(权限)描述"></el-table-column>
           <el-table-column label="操作" width="260">
             <template slot-scope="scope">
-              <el-button @click="editMenu('edit',scope.row)">编辑</el-button>
-              <el-button type="danger" @click="deleteMenu(scope.row)">删除</el-button>
+              <el-button @click="editMenu('edit',scope.row)" :disabled="!$hasPermission('EditMenu')">编辑</el-button>
             </template>
           </el-table-column>
         </el-table>
@@ -58,7 +56,7 @@
 
 
       </div>
-      <el-dialog title="添加菜单或权限" :visible.sync="menuAddShow" width="25%">
+      <el-dialog title="添加菜单" :visible.sync="menuAddShow" width="25%">
         <el-form :model="menuAddForm" label-width="120px" :rules="validationRules" ref="menuAddForm">
           <el-form-item label="菜单名称" prop="menuName">
             <el-input v-model="menuAddForm.menuName"></el-input>
@@ -103,7 +101,7 @@
         </div>
       </el-dialog>
 
-      <el-dialog title="修改菜单或权限" :visible.sync="menuEditShow" width="30%">
+      <el-dialog title="修改菜单" :visible.sync="menuEditShow" width="30%">
         <el-form :model="menuEditForm" label-width="120px" :rules="validationRules" ref="menuEditForm">
           <el-form-item label="菜单名称" prop="menuName">
             <el-input v-model="menuEditForm.menuName"></el-input>
@@ -170,23 +168,12 @@
     name: "MenuList",
     data() {
       return {
-        // 树形控件属性
-        props: {
-          label: "label",
-          children: "children"
-        },
         menuAddShow: false,
         menuEditShow: false,
         iconAddPopoverVisible: false,
         iconEditPopoverVisible: false,
-        batchAddPermissionShow: false,
-        menuAddForm: {
-          icon: ''
-        },
+        menuAddForm: {},
         menuEditForm: {},
-        tempMenuEditForm: {},
-        permissions: [],
-        apiList: [],
         iconList: [],
       }
     },
@@ -255,13 +242,6 @@
             })
             break;
         }
-      },
-      deleteMenu(row) {
-        this.$helper.eui.confirm(`此操作不可恢复,确定删除 <strong>${row.menuName}</strong> ?`, () => {
-          this.$api.delete("menu/delete", {menuId: row.menuId}).then(() => {
-            this.$helper.eui.inform(`<strong>${row.menuName}</strong> 删除成功`, this.search())
-          })
-        })
       },
       search() {
         this.$api.post("menu/search", this.searchModel).then(v => {

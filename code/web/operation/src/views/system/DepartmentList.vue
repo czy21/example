@@ -9,7 +9,7 @@
     <div class="right-box">
       <div class="handle-box">
         <div class="operate-box">
-          <el-button type="primary" @click="addDepartment('addRoot')" :disabled="!$hasPermission('department/add')">
+          <el-button type="primary" @click="addDepartment('addRoot')" :disabled="!$hasPermission('AddDepartment')">
             添加部门
           </el-button>
         </div>
@@ -24,11 +24,11 @@
               <el-button @click="addDepartment('addSub',scope.row.departmentId)"
                          :disabled="!$hasPermission('department/add')">添加下级部门
               </el-button>
-              <el-button @click="editDepartment('edit',scope.row)" :disabled="!$hasPermission('department/edit')">编辑
+              <el-button @click="editDepartment('edit',scope.row)" :disabled="!$hasPermission('EditDepartment')">编辑
               </el-button>
               <el-button @click="modifiedDepartment(scope.row)"
                          :class="scope.row.enabled ?'el-button--danger':'el-button--success'"
-                         :disabled="!$hasPermission('department/modified')">
+                         :disabled="!$hasPermission('DisableDepartment')">
                 {{scope.row.enabled?'禁用':'启用'}}
               </el-button>
             </template>

@@ -12,7 +12,7 @@
         </el-form>
       </div>
       <div class="operate-box">
-        <el-button type="primary" @click="addRole('add')">添加角色</el-button>
+        <el-button type="primary" @click="addRole('add')" :disabled="!$hasPermission('AddRole')">添加角色</el-button>
       </div>
     </div>
     <div class="container">
@@ -23,10 +23,12 @@
 
         <el-table-column label="操作" width="300">
           <template slot-scope="scope">
-            <el-button @click="editRole('edit',scope.row)">编辑</el-button>
-            <el-button type="primary" @click="allotMenu('allot',scope.row)">分配菜单
+            <el-button @click="editRole('edit',scope.row)" :disabled="!$hasPermission('EditRole')">编辑</el-button>
+            <el-button type="primary" @click="allotMenu('allot',scope.row)"
+                       :disabled="!$hasPermission('AllotRoleMenu')">分配菜单
             </el-button>
-            <el-button type="primary" @click="allotFunc('allot',scope.row)">分配权限
+            <el-button type="primary" @click="allotFunc('allot',scope.row)"
+                       :disabled="!$hasPermission('AllotRoleFunc')">分配权限
             </el-button>
           </template>
         </el-table-column>
@@ -82,16 +84,18 @@
     </el-dialog>
 
     <el-dialog title="分配角色权限" :visible.sync="roleFuncShow" width="35%">
-      <el-transfer
-        filterable
-        filter-placeholder="请输入权限名称"
-        v-model="roleFuncIds"
-        :filter-method="filterFunc"
-        :props="{label:'label',key:'value'}"
-        :titles="['未分配', '已分配']"
-        :button-texts="['收回', '分配']"
-        :data="$pocket.functions">
-      </el-transfer>
+      <div class="allot-transfer">
+        <el-transfer
+          filterable
+          filter-placeholder="请输入权限名称"
+          v-model="roleFuncIds"
+          :filter-method="filterFunc"
+          :props="{label:'label',key:'value'}"
+          :titles="['未分配', '已分配']"
+          :button-texts="['收回', '分配']"
+          :data="$pocket.functions">
+        </el-transfer>
+      </div>
       <div slot="footer" class="dialog-footer">
         <el-button type="primary" @click="allotFunc('submit')">确 定</el-button>
       </div>
