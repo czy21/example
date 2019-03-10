@@ -15,7 +15,7 @@
         </el-form>
       </div>
       <div class="operate-box">
-        <el-button type="primary" @click="addFunc('add')">添加权限</el-button>
+        <el-button type="primary" @click="addFunc('add')" :disabled="!$hasPermission('AddFunc')">添加权限</el-button>
       </div>
     </div>
     <div class="container">
@@ -26,7 +26,7 @@
         <el-table-column prop="remark" label="备注"></el-table-column>
         <el-table-column label="操作" width="250">
           <template slot-scope="scope">
-            <el-button @click="editFunc('edit',scope.row)">编辑</el-button>
+            <el-button @click="editFunc('edit',scope.row)" :disabled="!$hasPermission('EditFunc')">编辑</el-button>
           </template>
         </el-table-column>
       </el-table>

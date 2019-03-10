@@ -8,6 +8,7 @@ import com.team.model.SearchFunctionModel;
 import com.team.service.FunctionService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,24 +31,28 @@ public class FunctionController {
     @GetMapping("load")
     @Pocket(entity = Menu.class)
     @ApiOperation(value = "加载权限列表")
+    @RequiresPermissions("SearchFunc")
     public PageDto<FunctionDto> Load(SearchFunctionModel search) {
         return functionService.getFunctionPageListBy(search);
     }
 
     @PostMapping("search")
     @ApiOperation(value = "查询权限列表")
+    @RequiresPermissions("SearchFunc")
     public PageDto<FunctionDto> Search(SearchFunctionModel search) {
         return functionService.getFunctionPageListBy(search);
     }
 
     @PostMapping("add")
     @ApiOperation(value = "添加权限信息")
+    @RequiresPermissions("AddFunc")
     public FunctionDto Add(FunctionDto dto) {
         return functionService.insertFunction(dto);
     }
 
     @PostMapping("edit")
     @ApiOperation(value = "修改权限信息")
+    @RequiresPermissions("EditFunc")
     public FunctionDto Edit(FunctionDto dto) {
         return functionService.editFunction(dto);
     }
