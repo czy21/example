@@ -35,11 +35,11 @@
     <favorites_list name="erp" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/erp-operation/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
+            <state relative-caret-position="324">
               <caret line="67" column="65" selection-start-line="67" selection-start-column="65" selection-end-line="67" selection-end-column="65" />
               <folding>
                 <element signature="n#plugin#1;n#plugins#0;n#build#0;n#project#0;n#!!top" />
@@ -168,7 +168,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="602" />
     <option name="y" value="71" />
     <option name="width" value="1378" />
@@ -186,7 +186,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -268,6 +267,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -423,11 +423,12 @@
       <workItem from="1551504476838" duration="5965000" />
       <workItem from="1551586523087" duration="25703000" />
       <workItem from="1551668504778" duration="17453000" />
+      <workItem from="1552488731394" duration="284000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="295455000" />
+    <option name="totallyTimeSpent" value="295739000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -439,9 +440,9 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1912" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48739496" visible="true" weight="0.21028744" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48739496" visible="true" weight="0.21268657" />
       <window_info id="Structure" order="1" sideWeight="0.5126051" side_tool="true" weight="0.21375267" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -457,7 +458,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32980332" />
       <window_info anchor="bottom" id="Spring" order="7" weight="0.31995663" />
-      <window_info anchor="bottom" id="Terminal" order="8" visible="true" weight="0.33442622" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3340564" />
       <window_info anchor="bottom" id="Docker" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50048685" side_tool="true" weight="0.43166667" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.21475054" />
@@ -674,13 +675,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/erp-application/target/generated-sources/annotations/com/team/entity/map/MenuMapImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="88" column="22" selection-start-line="88" selection-start-column="22" selection-end-line="88" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/erp-application/target/generated-sources/annotations/com/team/entity/map/MenuMapImpl.java" />
     <entry file="file://$PROJECT_DIR$/erp-application/src/main/java/com/team/entity/map/MenuMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -921,7 +916,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/erp-operation/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
+        <state relative-caret-position="324">
           <caret line="67" column="65" selection-start-line="67" selection-start-column="65" selection-end-line="67" selection-end-column="65" />
           <folding>
             <element signature="n#plugin#1;n#plugins#0;n#build#0;n#project#0;n#!!top" />
