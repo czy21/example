@@ -2,6 +2,12 @@
 
 set -e
 
+sudo mkdir -p /etc/docker
+sudo tee /etc/docker/daemon.json <<-'EOF'
+{
+  "registry-mirrors": ["https://idyylogn.mirror.aliyuncs.com"]
+}
+EOF
 sudo yum install -y yum-utils device-mapper-persistent-data lvm2
 sudo yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 sudo yum makecache fast
