@@ -1,6 +1,11 @@
 # !/usr/bin/env python
 import configparser
 import os
+import re
+from subprocess import Popen, PIPE
+
+from default import font_color
+from default.font_color import printWithColor
 
 config_path = os.path.abspath("../conf")
 
@@ -41,39 +46,71 @@ class mongo_db_config:
         self.db_bak_name = cf.get(key, "db_bak_name")
 
 
-def mysql_cmd(db_name, user_param):
-    return "mysql " + db_name + user_param
+class mysql_obj:
+    def __init__(self, s_host="", s_port="", s_user="", s_pwd="", s_db="", t_host="", t_port="", t_user="", t_pwd="", t_db=""):
+        self._s_host = s_host
+        self._s_port = s_port
+        self._s_user = s_user
+        self._s_db = s_db
+        self._s_pwd = s_pwd
+        self._t_host = t_host
+        self._t_port = t_port
+        self._t_user = t_user
+        self._t_db = t_db
+        self._t_pwd = t_pwd
+
+        self.s_user_param = " --port=" + self._s_port + " --user=" + self._s_user + " --password=" + self._s_pwd
+        self.t_user_param = " --port=" + self._t_port + " --user=" + self._t_user + " --password=" + self._t_pwd
+
+    def exec_source_db(self):
+        return "mysql " + "--database=" + self._s_db + self.s_user_param
+
+    def exec_target_db(self):
+        return "mysql " + "--database=" + self._t_db + self.t_user_param
+
+    def dump_source_db(self):
+        return "mysqldump " + "--databases " + self._s_db + self.s_user_param
+
+    def dump_target_db(self):
+        return "mysqldump " + "--databases " + self._t_db + self.t_user_param
+
+    # 更新数据库版本号
+    def update_release_config(self, version_value, execute=True):
+        version_sql = "\"update release_config set config_value=\'" + version_value + "\' where config_key='Version';"
+        build_date_sql = "update release_config set config_value=Now() where config_key='BuildDate'\""
+        cmd = self.exec_target_db() + " -e " + version_sql + build_date_sql
+        if execute:
+            printWithColor('updating ' + self._t_db + ' release config', font_color.GREEN)
+            printWithColor(cmd, font_color.DARKSKYBLUE)
+            os.system(cmd)
+            printWithColor('updated ' + self._t_db + ' release config', font_color.GREEN)
+        return cmd
+
+    # 查询数据库版本号
+    def select_release_config(self, execute=True):
+        cmd = self.exec_target_db() + " -Ne" + " \"select config_value from release_config where config_key='Version'\""
+        if execute:
+            return re.findall("\d+", str(Popen(cmd, stdout=PIPE, stderr=PIPE).stdout.readline()))[0]
+        return cmd
+
+    # 重新创建数据库
+    def create_db(self, execute=True):
+        cmd = 'mysql' + self.t_user_param + "-e " + "\"drop database if exists " + self._t_db + "; create database if not exists " + self._t_db + " default charset utf8 collate utf8_general_ci;\""
+        if execute:
+            os.system(cmd)
+        return cmd
+
+    # 恢复源数据库至目标数据库
+    def restore_db(self, execute=True):
+        cmd = self.create_db(False) + " && " + self.dump_source_db() + " | " + self.exec_target_db()
+        if execute:
+            os.system(cmd)
+        return cmd
 
 
-def mysqldump_cmd(db_name, user_param):
-    return "mysqldump " + db_name + user_param
-
-
-# 更新数据库版本号
-def mysql_update_release_config(db_name, user_param, version_value):
-    version_sql = "\"update release_config set config_value=\'" + version_value + "\' where config_key='Version';"
-    build_date_sql = "update release_config set config_value=Now() where config_key='BuildDate'\""
-    return mysql_cmd(db_name, user_param) + " -e " + version_sql + build_date_sql
-
-
-# 查询数据库版本号
-def mysql_select_release_config(db_name, user_param):
-    return mysql_cmd(db_name, user_param) + " -Ne" + " \"select config_value from release_config where config_key='Version'\""
-
-
-# mysql连接的用户信息
-def mysql_user_param(port, user, pwd):
-    return " -P" + port + " -u" + user + " -p" + pwd + " "
-
-
-# 恢复源数据库至目标数据库
-def mysql_restore_db(s_db, s_user_param, t_db, t_user_param):
-    return mysql_create_db(t_db, t_user_param) + " && " + mysqldump_cmd(s_db, s_user_param) + " | " + mysql_cmd(t_db, t_user_param)
-
-
-# 重新创建数据库
-def mysql_create_db(t_db, t_user_param):
-    return 'mysql' + t_user_param + "-e " + "\"drop database if exists " + t_db + "; create database if not exists " + t_db + " default charset utf8 collate utf8_general_ci;\""
+# mysql备份压缩数据库
+def mysqldump_contraction_db(t_db, t_user_param, bak_path):
+    return "mysqldump --databases " + t_db + t_user_param + " --routines --single-transaction | gzip > " + bak_path + "\\mysql.gz"
 
 
 # 导入sql文件
