@@ -53,6 +53,6 @@ EOF
 
 sudo docker run -d -p 27017:27017 --name mongo-master \
  -v /etc/mongo/mongod.conf:/data/configdb/mongod.conf \
- -v /var/lib/mongo:/data/db  \
- -v /var/lib/mongo/mongod.log:/data/configdb/mongod.log \
- mongo:4.0 --config /data/configdb/mongod.conf
+ -v /var/lib/mongo:/data/db \
+ -v /var/lib/mongo/mongod.log:/data/configdb/mongod.log mongo:4.0 \
+ --config /data/configdb/mongod.conf

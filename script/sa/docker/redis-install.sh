@@ -1,3 +1,11 @@
+#!/bin/bash
+
+set -e
+
+sudo mkdir -p /etc/redis
+sudo mkdir -p /var/lib/redis
+
+sudo tee /etc/redis/redis.conf <<-'EOF'
 # Redis configuration file example.
 #
 # Note that in order to read the configuration file, Redis must be
@@ -1375,4 +1383,8 @@ rdb-save-incremental-fsync yes
 # Maximum number of set/hash/zset/list fields that will be processed from
 # the main dictionary scan
 # active-defrag-max-scan-fields 1000
+EOF
 
+docker run -d -p 6379:6379 --name redis-master  \
+-v /var/lib/redis:/data \
+-v /etc/redis/redis.conf:/etc/redis/redis.conf redis:5.0.3 redis-server /etc/redis/redis.conf --appendonly yes
