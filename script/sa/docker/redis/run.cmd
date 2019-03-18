@@ -1,1 +1,0 @@
-docker run --name redis-master -p 36379:6379 -v /d/Database/Redis/Data:/data -v /d/Database/Redis/redis.conf:/etc/redis/redis.conf -d redis:5.0.3 redis-server /etc/redis/redis.conf --appendonly yes
