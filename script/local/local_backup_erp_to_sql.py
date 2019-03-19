@@ -5,10 +5,10 @@ import sys
 sys.path.append("..")
 from default.local_default import local_mysql, local_mysql_user
 from default.path_default import backup_path
+from default.basic_config import mysql
 
 if not os.path.exists(backup_path):
     os.makedirs(backup_path)
-local_mysql_user._t_db = local_mysql.db_name
-dump_cmd = local_mysql_user.dump_target_db() + " --skip-add-locks --quick -t " + " > " + backup_path + "\\" + local_mysql.db_name + "_bak" ".sql"
-print(dump_cmd)
+dump_cmd = mysql(t_user_param=local_mysql_user.t_user_param, t_db=local_mysql.db_name).obtain_dump_cmd() \
+           + " --skip-add-locks --quick -t " + " > " + backup_path + "\\" + local_mysql.db_name + "_bak" ".sql"
 os.system(dump_cmd)

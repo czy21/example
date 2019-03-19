@@ -3,12 +3,13 @@ import os
 import sys
 
 sys.path.append("..")
-from default.basic_config import mysql_obj
+from default.basic_config import mysql
 from default.local_default import local_mysql, local_mysql_user
 
-# restore_db_cmd = mysql_restore_db(local_mysql.db_bak_name, local_mysql_user, local_mysql.db_name, local_mysql_user)
+source_dump_db = mysql(t_db=local_mysql.db_bak_name, t_user_param=local_mysql_user.t_user_param).obtain_dump_cmd()
 
 if __name__ == '__main__':
-    mysql_obj(t_host='localhost', t_port='3306', t_db='erp', t_user='root', t_pwd='sasa').update_release_config('109')
-    # restore_db_cmd.execute()
+    # local_mysql_user.restore_db(source_dump_db,False)
+    print(local_mysql_user.restore_db(source_dump_db, False))
+    # local_mysql_user.update_release_config('109')
     os.system("pause")
