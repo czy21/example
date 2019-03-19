@@ -6,6 +6,8 @@ from subprocess import Popen, PIPE
 
 from default import font_color
 from default.font_color import printWithColor
+from default.path_default import db_version_path
+from local.local_build_db import built_version_sql
 
 config_path = os.path.abspath("../conf")
 
@@ -59,7 +61,7 @@ class mysql:
         return "mysql " + "--database=" + self._t_db + self.t_user_param
 
     def obtain_dump_cmd(self):
-        return "mysqldump " + "--databases " + self._t_db + self.t_user_param
+        return "mysqldump " + self._t_db + self.t_user_param
 
     # 更新数据库版本号
     def update_release_config(self, version_value, execute=True):
@@ -91,8 +93,29 @@ class mysql:
     def restore_db(self, s_dump_cmd, execute=True):
         cmd = self.create_db(False) + " && " + s_dump_cmd + " | " + self.obtain_exec_cmd()
         if execute:
+            printWithColor('restoring ' + self._t_db, font_color.GREEN)
+            printWithColor(cmd, font_color.DARKSKYBLUE)
             os.system(cmd)
+            printWithColor('restored ' + self._t_db, font_color.GREEN)
         return cmd
+
+    # 升级数据库,并更新版本
+    def upgrade_db(self, exec_file_path, s_version_val, t_version_val=""):
+        phy_max_db_dir = max(os.listdir(db_version_path))
+        if t_version_val != "" and phy_max_db_dir[: -1] > s_version_val:
+            printWithColor('upgrading ' + self._t_db, font_color.GREEN)
+            cmd = self.obtain_exec_cmd() + mysql_import_sql_file(built_version_sql(t_version_val + "v"), os.path.basename(exec_file_path))
+            printWithColor(cmd, font_color.DARKSKYBLUE)
+            os.system(cmd)
+            printWithColor('upgraded ' + self._t_db, font_color.GREEN)
+            self.update_release_config(t_version_val)
+        elif phy_max_db_dir[: -1] > s_version_val:
+            printWithColor('upgrading ' + self._t_db, font_color.GREEN)
+            cmd = self.obtain_exec_cmd() + mysql_import_sql_file(built_version_sql(phy_max_db_dir), os.path.basename(exec_file_path))
+            printWithColor(cmd, font_color.DARKSKYBLUE)
+            os.system(cmd)
+            printWithColor('upgraded ' + self._t_db, font_color.GREEN)
+            self.update_release_config(phy_max_db_dir[: -1])
 
 
 # mysql备份压缩数据库
@@ -102,4 +125,4 @@ def mysqldump_contraction_db(t_db, t_user_param, bak_path):
 
 # 导入sql文件
 def mysql_import_sql_file(sql_file_name, log_file_name):
-    return "-vvv < " + sql_file_name + " > " + log_file_name + ".log"
+    return " -vvv < " + sql_file_name + " > " + log_file_name + ".log"
