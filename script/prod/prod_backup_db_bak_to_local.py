@@ -3,17 +3,16 @@ import os
 import sys
 
 sys.path.append("..")
-from default.basic_config import mysql_restore_db
-from default.local_default import local_mysql, local_mysql_user
-from default.prod_default import prod_mysql, prod_mysql_user
-from default import font_color
-from default.font_color import printWithColor
+from default.basic_config import mysql
+from default.local_default import local_mysql, local_mysql_user_param
+from default.prod_default import prod_mysql, prod_mysql_user_param
 
-restore_db_cmd = mysql_restore_db(prod_mysql.db_bak_name, prod_mysql_user, local_mysql.db_bak_name, local_mysql_user)
+
+def run():
+    source_dump_db = mysql(t_db=prod_mysql.db_bak_name, t_user_param=prod_mysql_user_param).obtain_dump_cmd()
+    mysql(t_db=local_mysql.db_bak_name, t_user_param=local_mysql_user_param).restore_db(source_dump_db)
+
 
 if __name__ == '__main__':
-    printWithColor('db restoring', font_color.GREEN)
-    printWithColor(restore_db_cmd, font_color.DARKSKYBLUE)
-    os.system(restore_db_cmd)
-    printWithColor('db restored', font_color.GREEN)
+    run()
     os.system("pause")
