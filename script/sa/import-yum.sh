@@ -3,13 +3,12 @@
 set -e
 
 # ali source
-# if [! -f "/etc/yum.repos.d/CentOS-Base.repo_bak"];then
-#     sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak
-# fi
-# sudo wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
-# sudo yum clean all
-# sudo yum makecache
-# sudo yum -y update
+if [ ! -f "/etc/yum.repos.d/CentOS-Base.repo_bak" ];then
+    sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak
+fi
+sudo wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+sudo yum clean all
+sudo yum makecache
 
 # mysql
 sudo bash -c 'echo -e "
