@@ -3,7 +3,10 @@
 # must as root
 set -e
 
-yum -y install deltarpm wget vim screen lsof telnet extundetele kernel-headers kernel-devel gcc
+# install tools
+yum -y install wget vim
+
+# edit sshd_config
 sed -i -r "s/ll='ls\s+-l/\0va/" /etc/profile.d/colorls.sh
 sed -i -r "s/\s*#\s*(%wheel\s+ALL=\(ALL\)\s+ALL)/\1/" /etc/sudoers
 sed -i -r "s/^\s*UseDNS\s+\w+/#\0/; s/^\s*PermitRootLogin\s+\w+/#\0/; s/^\s*PasswordAuthentication\s+\w+/#\0/; s/^\s*ClientAliveInterval\s+\w+/#\0/" /etc/ssh/sshd_config
@@ -14,18 +17,19 @@ PasswordAuthentication no
 ClientAliveInterval 30
 " >> /etc/ssh/sshd_config
 
-# ali source
-if [ ! -f "/etc/yum.repos.d/CentOS-Base.repo_bak" ];then
-    sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak
-fi
-sudo wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
-sudo yum clean all
-sudo yum makecache
+# use ali yum.repo
+# if [ ! -f "/etc/yum.repos.d/CentOS-Base.repo_bak" ];then
+#     sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak
+# fi
+# sudo wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+# sudo yum clean all
+# sudo yum makecache
 
 echo "
-
 export PATH=\$PATH:\$HOME/bin
 " >> /etc/bashrc
+
+# add first user
 useradd -m bruce
 usermod -aG wheel bruce
 passwd -d bruce
