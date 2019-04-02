@@ -1,9 +1,22 @@
 _temp/
+
+### IntelliJ IDEA ###
+*.iml
+
+### api ###
 target/
+
+### db ###
 backup/
+
+### web ###
 node_modules/
 dist/
+
+### python script ###
 /script/.idea/
 /script/sa/pubs/
 __pycache__/
+
+### all log ###
 *.log
