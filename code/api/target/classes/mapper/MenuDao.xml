@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.dao.MenuDao">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.team.entity.po.Menu">
+        <id column="MenuId" property="MenuId" />
+        <result column="AddedTime" property="AddedTime" />
+        <result column="ModifiedTime" property="ModifiedTime" />
+        <result column="AddedUser" property="AddedUser" />
+        <result column="ModifiedUser" property="ModifiedUser" />
+        <result column="ParentId" property="ParentId" />
+        <result column="MenuName" property="MenuName" />
+        <result column="Icon" property="Icon" />
+        <result column="Sort" property="Sort" />
+        <result column="Url" property="Url" />
+        <result column="IsMenu" property="IsMenu" />
+        <result column="Remark" property="Remark" />
+        <result column="Enabled" property="Enabled" />
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        AddedTime,
+        ModifiedTime,
+        AddedUser,
+        ModifiedUser,
+        MenuId
+        ParentId
+        MenuName
+        Icon
+        Sort
+        Url
+        IsMenu
+        Remark
+        Enabled
+    </sql>
+
+</mapper>
