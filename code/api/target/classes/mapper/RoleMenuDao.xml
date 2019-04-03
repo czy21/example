@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.dao.RoleMenuDao">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.team.entity.po.RoleMenu">
+        <id column="RoleMenuId" property="RoleMenuId"/>
+        <result column="AddedTime" property="AddedTime"/>
+        <result column="ModifiedTime" property="ModifiedTime"/>
+        <result column="AddedUser" property="AddedUser"/>
+        <result column="ModifiedUser" property="ModifiedUser"/>
+        <result column="RoleId" property="RoleId"/>
+        <result column="MenuId" property="MenuId"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        AddedTime,
+        ModifiedTime,
+        AddedUser,
+        ModifiedUser,
+        RoleMenuId
+        RoleId
+        MenuId
+    </sql>
+
+    <select id="getPermissionsByUserId" resultType="string" parameterType="string">
+        select distinct
+        m.Url
+        from sys_menu m,
+        sys_role_menu rm,
+        sys_user_role ur
+        where
+        m.MenuId=rm.MenuId
+        and m.IsMenu=false
+        and ur.RoleId=rm.RoleId
+        and ur.UserId=#{userId}
+    </select>
+    <select id="getMenusByUserId" resultType="com.team.entity.po.Menu" parameterType="string">
+        select distinct
+        m
+        from sys_menu m,
+        sys_role_menu rm,
+        sys_user_role ur
+        where
+        m.MenuId=rm.MenuId
+        and m.IsMenu=true
+        and ur.RoleId=rm.RoleId
+        and ur.UserId=#{userId}
+    </select>
+
+</mapper>
