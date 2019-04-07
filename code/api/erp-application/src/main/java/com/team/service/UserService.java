@@ -1,6 +1,7 @@
 package com.team.service;
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.core.universal.MybatisBaseService;
 import com.team.entity.dto.LoginDto;
 import com.team.entity.dto.PageDto;
@@ -32,5 +33,9 @@ public interface UserService extends MybatisBaseService<User> {
     List<Function> getFunctionsByRole(List<Long> roleIds);
 
     JSONObject login(LoginDto dto);
+
+    JSONObject register(LoginDto dto);
+
+    List<Function> getFunctionsByUser(Long userId);
 
 }

@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.core.universal.MybatisBaseServiceImpl;
 import com.team.entity.mybatis.system.RoleMenu;
 import com.team.exception.BusinessException;
-import com.team.exception.ErrorCode;
+import com.team.exception.BusinessErrorCode;
 import com.team.extension.ArrayExtension;
 import com.team.service.RoleMenuService;
 import com.team.service.RoleService;
@@ -30,7 +30,7 @@ public class RoleMenuServiceImpl extends MybatisBaseServiceImpl<RoleMenu> implem
     @Transactional
     public String insertOrUpdateRoleMenu(Long roleId, Long[] roleMenuIds) {
         if (StringUtils.isEmpty(roleId)) {
-            throw new BusinessException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
+            throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "角色Id不能为空");
         }
         QueryWrapper<RoleMenu> query = new QueryWrapper<>();
         query.lambda().eq(RoleMenu::getRoleId, roleId);
