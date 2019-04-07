@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.core.universal.MybatisBaseServiceImpl;
 import com.team.entity.mybatis.system.RoleFunction;
 import com.team.exception.BusinessException;
-import com.team.exception.ErrorCode;
+import com.team.exception.BusinessErrorCode;
 import com.team.extension.ArrayExtension;
 import com.team.service.RoleFunctionService;
 import com.team.service.RoleService;
@@ -28,7 +28,7 @@ public class RoleFunctionServiceImpl extends MybatisBaseServiceImpl<RoleFunction
     @Override
     public String insertOrUpdateRoleFunc(Long roleId, Long[] roleFuncIds) {
         if (StringUtils.isEmpty(roleId)) {
-            throw new BusinessException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
+            throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "角色Id不能为空");
         }
         QueryWrapper<RoleFunction> query = new QueryWrapper<>();
         query.lambda().eq(RoleFunction::getRoleId, roleId);

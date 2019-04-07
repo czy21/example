@@ -48,3 +48,6 @@ pagehelper:
   support-methods-arguments: true
   params: count=countSql
   page-size-zero: true  #pageSize为0时,不执行分页,返回全部结果
+jwt:
+  header: Authorization
+  token-prefix: "Bearer "

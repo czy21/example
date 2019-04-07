@@ -9,8 +9,8 @@ public class BusinessException extends RuntimeException {
         return errorCode;
     }
 
-    public BusinessException(com.team.exception.ErrorCode errorCode, String _message) {
+    public BusinessException(BusinessErrorCode businessErrorCode, String _message) {
         super(_message);
-        this.errorCode = errorCode.toString();
+        this.errorCode = businessErrorCode.toString();
     }
 }

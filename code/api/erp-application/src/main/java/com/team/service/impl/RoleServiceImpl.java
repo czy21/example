@@ -7,7 +7,7 @@ import com.team.entity.mybatis.system.Function;
 import com.team.entity.mybatis.system.Menu;
 import com.team.entity.mybatis.system.Role;
 import com.team.exception.BusinessException;
-import com.team.exception.ErrorCode;
+import com.team.exception.BusinessErrorCode;
 import com.team.repository.mybatis.system.FunctionRepository;
 import com.team.repository.mybatis.system.MenuRepository;
 import com.team.service.RoleFunctionService;
@@ -42,10 +42,10 @@ public class RoleServiceImpl extends MybatisBaseServiceImpl<Role> implements Rol
     @Override
     public RoleDto insertRole(RoleDto dto) {
         if (StringUtils.isEmpty(dto.getRoleName())) {
-            throw new BusinessException(ErrorCode.NAME_NO_NULL, "角色名称不能为空");
+            throw new BusinessException(BusinessErrorCode.NO_NULL_NAME, "角色名称不能为空");
         }
         if (super.SelectBy(Role::getRoleName, dto.getRoleName()) != null) {
-            throw new BusinessException(ErrorCode.NAME_EXIST, "角色名称已存在");
+            throw new BusinessException(BusinessErrorCode.EXIST_NAME, "角色名称已存在");
         }
         return roleMap.mapToDto(super.InsertAndGetEntity(roleMap.mapToEntity(dto)));
     }
@@ -53,10 +53,10 @@ public class RoleServiceImpl extends MybatisBaseServiceImpl<Role> implements Rol
     @Override
     public RoleDto editRole(RoleDto dto) {
         if (StringUtils.isEmpty(dto.getRoleId())) {
-            throw new BusinessException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
+            throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "角色Id不能为空");
         }
         if (StringUtils.isEmpty(dto.getRoleName())) {
-            throw new BusinessException(ErrorCode.NAME_NO_NULL, "角色名称不能为空");
+            throw new BusinessException(BusinessErrorCode.NO_NULL_NAME, "角色名称不能为空");
         }
         return roleMap.mapToDto(super.UpdateAndGetEntity(roleMap.mapToEntity(dto)));
     }
@@ -64,7 +64,7 @@ public class RoleServiceImpl extends MybatisBaseServiceImpl<Role> implements Rol
     @Override
     public List<Long> getMenusByRoleId(Long roleId) {
         if (StringUtils.isEmpty(roleId)) {
-            throw new BusinessException(ErrorCode.ID_NO_NULL, "角色Id不能为空");
+            throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "角色Id不能为空");
         }
         return menuRepository.getMenusByRoleId(roleId).stream().filter(t -> !t.getUrl().equals("#")).map(Menu::getMenuId).collect(Collectors.toList());
     }

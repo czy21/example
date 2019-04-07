@@ -10,5 +10,7 @@ spring:
       database: erp
   redis:
     password: team3059
+allowed-origin:
+  url: http://47.106.191.56:8090
 authentication:
   token-expire-time: 30

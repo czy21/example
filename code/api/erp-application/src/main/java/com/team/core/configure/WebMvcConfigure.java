@@ -3,6 +3,7 @@ package com.team.core.configure;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
 import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -22,6 +23,9 @@ import java.util.List;
 @Configuration
 public class WebMvcConfigure extends WebMvcConfigurationSupport {
 
+    @Value("${allowed-origin.url}")
+    private String url;
+
     /*
      * @author 陈昭宇
      * @description 配置跨域
@@ -33,8 +37,7 @@ public class WebMvcConfigure extends WebMvcConfigurationSupport {
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.addAllowedOrigin("http://localhost:8080");
-        corsConfiguration.addAllowedOrigin("http://47.106.191.56:8090");
+        corsConfiguration.addAllowedOrigin(url);
         corsConfiguration.addAllowedHeader("*");
         corsConfiguration.addAllowedMethod(HttpMethod.GET);
         corsConfiguration.addAllowedMethod(HttpMethod.OPTIONS);

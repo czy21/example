@@ -7,7 +7,7 @@ import com.team.entity.dto.PageDto;
 import com.team.entity.map.FunctionMap;
 import com.team.entity.mybatis.system.Function;
 import com.team.exception.BusinessException;
-import com.team.exception.ErrorCode;
+import com.team.exception.BusinessErrorCode;
 import com.team.model.SearchFunctionModel;
 import com.team.service.FunctionService;
 import org.springframework.stereotype.Service;
@@ -29,10 +29,10 @@ public class FunctionServiceImpl extends MybatisBaseServiceImpl<Function> implem
 
     private void verifyFunctionNameCode(FunctionDto dto) {
         if (StringUtils.isEmpty(dto.getFunctionName())) {
-            throw new BusinessException(ErrorCode.NAME_NO_NULL, "权限名称不能为空");
+            throw new BusinessException(BusinessErrorCode.NO_NULL_NAME, "权限名称不能为空");
         }
         if (StringUtils.isEmpty(dto.getFunctionCode())) {
-            throw new BusinessException(ErrorCode.VALUE_NO_NULL, "权限值不能为空");
+            throw new BusinessException(BusinessErrorCode.NO_NULL_VALUE, "权限值不能为空");
         }
     }
 
@@ -45,7 +45,7 @@ public class FunctionServiceImpl extends MybatisBaseServiceImpl<Function> implem
     @Override
     public FunctionDto editFunction(FunctionDto dto) {
         if (StringUtils.isEmpty(dto.getFunctionId())) {
-            throw new BusinessException(ErrorCode.ID_NO_NULL, "权限Id不能为空");
+            throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "权限Id不能为空");
         }
         verifyFunctionNameCode(dto);
         return functionMap.mapToDto(super.UpdateAndGetEntity(functionMap.mapToEntity(dto)));

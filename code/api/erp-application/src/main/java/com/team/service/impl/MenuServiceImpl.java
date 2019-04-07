@@ -7,7 +7,7 @@ import com.team.entity.dto.PageDto;
 import com.team.entity.map.MenuMap;
 import com.team.entity.mybatis.system.Menu;
 import com.team.exception.BusinessException;
-import com.team.exception.ErrorCode;
+import com.team.exception.BusinessErrorCode;
 import com.team.extension.MenuExtension;
 import com.team.model.SearchMenuModel;
 import com.team.service.MenuService;
@@ -31,16 +31,16 @@ public class MenuServiceImpl extends MybatisBaseServiceImpl<Menu> implements Men
     @Override
     public MenuDto insertMenu(MenuDto dto) {
         if (StringUtils.isEmpty(dto.getParentId())) {
-            throw new BusinessException(ErrorCode.ID_NO_NULL, "上级菜单Id不能为空");
+            throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "上级菜单Id不能为空");
         }
         if (StringUtils.isEmpty(dto.getMenuName())) {
-            throw new BusinessException(ErrorCode.NAME_NO_NULL, "菜单名称不能为空");
+            throw new BusinessException(BusinessErrorCode.NO_NULL_NAME, "菜单名称不能为空");
         }
         if (super.SelectBy(Menu::getMenuName, dto.getMenuName()) != null) {
-            throw new BusinessException(ErrorCode.NAME_EXIST, "菜单名称已存在");
+            throw new BusinessException(BusinessErrorCode.EXIST_NAME, "菜单名称已存在");
         }
         if (!dto.getUrl().equals("#") && super.SelectBy(Menu::getUrl, dto.getUrl()) != null) {
-            throw new BusinessException(ErrorCode.NAME_EXIST, "菜单地址已存在");
+            throw new BusinessException(BusinessErrorCode.EXIST_NAME, "菜单地址已存在");
         }
         QueryWrapper<Menu> countQuery = new QueryWrapper<>();
         countQuery.lambda().eq(Menu::getParentId, dto.getParentId());
@@ -51,10 +51,10 @@ public class MenuServiceImpl extends MybatisBaseServiceImpl<Menu> implements Men
     @Override
     public MenuDto editMenu(MenuDto dto) {
         if (StringUtils.isEmpty(dto.getMenuId())) {
-            throw new BusinessException(ErrorCode.ID_NO_NULL, "菜单Id不能为空");
+            throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "菜单Id不能为空");
         }
         if (StringUtils.isEmpty(dto.getParentId())) {
-            throw new BusinessException(ErrorCode.ID_NO_NULL, "上级菜单Id不能为空");
+            throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "上级菜单Id不能为空");
         }
         return menuMap.mapToDto(super.UpdateAndGetEntity(menuMap.mapToEntity(dto)));
     }

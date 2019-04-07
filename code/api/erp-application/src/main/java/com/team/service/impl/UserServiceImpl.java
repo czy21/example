@@ -12,16 +12,20 @@ import com.team.entity.mybatis.system.Function;
 import com.team.entity.mybatis.system.Role;
 import com.team.entity.mybatis.system.User;
 import com.team.exception.BusinessException;
-import com.team.exception.ErrorCode;
+import com.team.exception.BusinessErrorCode;
 import com.team.extension.MenuExtension;
 import com.team.model.SearchUserModel;
 import com.team.repository.mybatis.system.FunctionRepository;
 import com.team.repository.mybatis.system.MenuRepository;
 import com.team.repository.mybatis.system.RoleRepository;
-import com.team.service.RoleMenuService;
 import com.team.service.UserService;
 import com.team.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
@@ -40,29 +44,24 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
 
     @Resource
     private UserMap userMap;
-
-    @Resource
-    private RoleMenuService roleMenuService;
-
     @Resource
     private MenuMap menuMap;
-
     @Autowired
     private RoleRepository roleRepository;
-
     @Autowired
     private FunctionRepository functionRepository;
-
     @Autowired
     private MenuRepository menuRepository;
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
     @Override
     public UserDto insertDefaultPwd(UserDto dto) {
         if (StringUtils.isEmpty(dto.getUserName())) {
-            throw new BusinessException(ErrorCode.NAME_EXIST, "用户姓名不能为空");
+            throw new BusinessException(BusinessErrorCode.EXIST_NAME, "用户姓名不能为空");
         }
         if (super.SelectBy(User::getLoginName, dto.getLoginName()) != null) {
-            throw new BusinessException(ErrorCode.ACCOUNT_EXIST, "用户账号已存在");
+            throw new BusinessException(BusinessErrorCode.EXIST_USER, "用户账号已存在");
         }
         User user = userMap.mapToEntity(dto);
         user.setPassword("123456");
@@ -72,10 +71,10 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
     @Override
     public UserDto editUser(UserDto dto) {
         if (StringUtils.isEmpty(dto.getUserId())) {
-            throw new BusinessException(ErrorCode.ID_NO_NULL, "用户Id不能为空");
+            throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "用户Id不能为空");
         }
         if (StringUtils.isEmpty(dto.getUserName())) {
-            throw new BusinessException(ErrorCode.NAME_NO_NULL, "用户姓名不能为空");
+            throw new BusinessException(BusinessErrorCode.NO_NULL_NAME, "用户姓名不能为空");
         }
         return userMap.mapToDto(super.UpdateAndGetEntity(userMap.mapToEntity(dto)));
     }
@@ -83,7 +82,7 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
     @Override
     public Boolean modifiedUser(UserDto dto) {
         if (StringUtils.isEmpty(dto.getUserId())) {
-            throw new BusinessException(ErrorCode.ID_NO_NULL, "用户Id不能为空");
+            throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "用户Id不能为空");
         }
         return super.UpdateAndGetEntity(userMap.mapToEntity(dto)).getEnabled();
     }
@@ -105,12 +104,11 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
 
     @Override
     public JSONObject login(LoginDto dto) {
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(dto.getLoginName(), dto.getPassword()));
+        SecurityContextHolder.getContext().setAuthentication(authentication);
         User user = super.SelectBy(User::getLoginName, dto.getLoginName());
         if (ObjectUtils.isEmpty(user)) {
-            throw new BusinessException(ErrorCode.NO_USER, "用户不存在");
-        }
-        if (!user.getPassword().equals(dto.getPassword())) {
-            throw new BusinessException(ErrorCode.PASSWORD_ERROR, "密码错误");
+            throw new BusinessException(BusinessErrorCode.NO_USER, "用户不存在");
         }
         JSONObject json = new JSONObject();
         TokenDto token = new TokenDto();
@@ -120,5 +118,19 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
         token.setValue(JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));
         json.put("token", token);
         return json;
+    }
+
+    @Override
+    public JSONObject register(LoginDto dto) {
+        User user = super.SelectBy(User::getLoginName, dto.getLoginName());
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        user.setPassword(encoder.encode(dto.getPassword()));
+        super.Update(user);
+        return null;
+    }
+
+    @Override
+    public List<Function> getFunctionsByUser(Long userId) {
+        return functionRepository.getFunctionsByUserId(userId);
     }
 }
