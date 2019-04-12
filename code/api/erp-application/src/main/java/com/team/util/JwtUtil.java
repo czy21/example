@@ -8,8 +8,6 @@ import com.team.entity.mybatis.system.User;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
-import java.io.UnsupportedEncodingException;
-
 @Component
 public class JwtUtil {
 
@@ -37,13 +35,9 @@ public class JwtUtil {
     }
 
     public static String GenerateToken(String loginName, String password) {
-        try {
-            String token = JWT.create().withClaim("loginName", loginName).sign(Algorithm.HMAC256(password));
-            redisUtil.set(loginName, token, TOKEN_EXPIRE_TIME);
-            return token;
-        } catch (UnsupportedEncodingException e) {
-            return null;
-        }
+        String token = JWT.create().withClaim("loginName", loginName).sign(Algorithm.HMAC256(password));
+        redisUtil.set(loginName, token, TOKEN_EXPIRE_TIME);
+        return token;
     }
 
     public static boolean Verify(String token, String loginName, String password) {
