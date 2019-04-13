@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Component(value = "JwtUserDetailsServiceImpl")
+@Component
 public class JwtUserDetailsServiceImpl implements UserDetailsService {
 
     @Resource
