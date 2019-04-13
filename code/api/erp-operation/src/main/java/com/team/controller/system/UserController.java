@@ -41,14 +41,14 @@ public class UserController {
     @Pocket(entity = Role.class)
     @Pocket(entity = Department.class)
     @ApiOperation(value = "加载用户列表")
-    @PreAuthorize("hasAuthority('SearchUser')")
+    @PreAuthorize("hasAuthority('SearchUsers')")
     public PageDto<UserDto> Load(SearchUserModel search) {
         return userService.getUserPageListBy(search);
     }
 
     @PostMapping("search")
     @ApiOperation(value = "查询用户列表")
-    @PreAuthorize("hasAuthority('SearchUser')")
+    @PreAuthorize("hasAuthority('SearchUsers')")
     public PageDto<UserDto> Search(SearchUserModel search) {
         return userService.getUserPageListBy(search);
     }
