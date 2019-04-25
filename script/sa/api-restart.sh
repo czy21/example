@@ -1,6 +1,6 @@
 #!/bin/bash
-export JAVA_HOME=/usr/java/jdk1.8.0_191-amd64
-export JAVA=$JAVA_HOME/jre/bin/java
+export JAVA_HOME=/usr/java/jdk-12.0.1
+export JAVA=$JAVA_HOME/bin/java
 
 erp_pid=`ps -ef | grep java | grep erp- | grep -v grep | awk '{print $2}'`
 erp_version=`ps -ef | grep java | grep erp- | grep -v grep | awk '{print $10}'`
