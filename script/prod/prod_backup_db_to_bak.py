@@ -8,8 +8,8 @@ from default.prod_default import prod_mysql, prod_mysql_user_param
 
 
 def run():
-    source_dump_db = mysql(t_db=prod_mysql.db_bak_name, t_user_param=prod_mysql_user_param).obtain_dump_cmd()
-    mysql(t_db=prod_mysql.db_name, t_user_param=prod_mysql_user_param).restore_db(source_dump_db)
+    source_dump_db = mysql(t_db=prod_mysql.db_name, t_user_param=prod_mysql_user_param).obtain_dump_cmd()
+    mysql(t_db=prod_mysql.db_bak_name, t_user_param=prod_mysql_user_param).restore_db(source_dump_db)
 
 
 if __name__ == '__main__':

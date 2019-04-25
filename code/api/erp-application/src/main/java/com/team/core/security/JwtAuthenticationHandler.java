@@ -18,7 +18,7 @@ public class JwtAuthenticationHandler implements AuthenticationEntryPoint, Seria
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws IOException {
         String message = "";
         if (authException instanceof InsufficientAuthenticationException) {
-            message = "token validate fail";
+            message = "Token验证失败";
         }
         if (StringUtils.isEmpty(message)) {
             message = authException.getMessage();
