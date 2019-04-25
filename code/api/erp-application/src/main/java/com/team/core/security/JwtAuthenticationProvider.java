@@ -34,16 +34,16 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
                 User user = userService.SelectBy(User::getLoginName, loginName);
                 if (user != null) {
                     if (!passwordEncoder.matches(password, user.getPassword())) {
-                        throw new BadCredentialsException("password wrong");
+                        throw new BadCredentialsException("密码错误");
                     }
                 } else {
-                    throw new BadCredentialsException("user is not exist");
+                    throw new BadCredentialsException("该用户不存在");
                 }
             }
         } catch (BadCredentialsException e) {
             throw new BadCredentialsException(e.getMessage());
         } catch (NullPointerException e) {
-            throw new BadCredentialsException("loginName or password is not null");
+            throw new BadCredentialsException("用户名和密码不能为空");
         }
         return authentication;
     }

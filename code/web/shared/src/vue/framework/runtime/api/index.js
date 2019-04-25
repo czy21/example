@@ -12,23 +12,17 @@ export default {
       baseURL: root,
       timeout: 5000,
     });
-    service.interceptors.request.use(config => {
-        config.data = qs.stringify(config.data, {arrayFormat: 'brackets'});
-        config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
-        stub.ref.jsUtil.auth.getToken() && (config.headers['Authorization'] = stub.ref.jsUtil.auth.getToken().value)
-        return config;
+    service.interceptors.request.use(request => {
+        request.data = qs.stringify(request.data, {arrayFormat: 'brackets'});
+        request.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+        stub.ref.jsUtil.auth.getToken() && (request.headers['Authorization'] = stub.ref.jsUtil.auth.getToken().value)
+        return request;
       },
-      error => {
-        console.log('req' + error);
-        Promise.reject(error);
-      });
+      error => Promise.reject(error));
 
     service.interceptors.response.use(
       response => response,
-      error => {
-        console.log('res' + error);
-        Promise.reject(error)
-      });
+      error => Promise.reject(error));
 
     function apiAxios(method, url, params) {
       return new Promise((resolve, reject) => {
@@ -38,17 +32,14 @@ export default {
           data: method === 'POST' || method === 'PUT' ? params : null,
           params: method === 'GET' || method === 'DELETE' ? params : null
         }).then(res => {
-          if (!res.data.data.hasOwnProperty("errorCode")) {
-            res.data.pocket && stub.store.commit('SET_POCKET', res.data.pocket)
-            resolve(res.data)
-            return
-          }
-          stub.store.commit("SUBMIT_ERROR", res.data.data.message)
+          res.data.pocket && stub.store.commit('SET_POCKET', res.data.pocket);
+          return resolve(res.data)
         }, error => {
-          reject(error);
-        }).catch(error => {
-          reject(error)
-        })
+          if (error && error.response) {
+            stub.store.commit("SUBMIT_ERROR", error.response.data.status + ": " + error.response.data.message)
+          }
+          return reject(error)
+        }).catch(error => reject(error))
       })
     }
 
