@@ -1,5 +1,7 @@
 # !/usr/bin/env python
-import os, sys, shutil
+import os
+import shutil
+import sys
 
 sys.path.append("..")
 from default.path_default import operation_path
