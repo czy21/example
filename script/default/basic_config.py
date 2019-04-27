@@ -30,7 +30,7 @@ class ssh_config:
         self.user_name = cf.get(key, "user_name")
 
 
-class mysql_db_config:
+class mysql_config:
     def __init__(self, key):
         self.db_host = cf.get(key, "db_host")
         self.db_port = cf.get(key, "db_port")
@@ -40,7 +40,7 @@ class mysql_db_config:
         self.db_bak_name = cf.get(key, "db_bak_name")
 
 
-class mongo_db_config:
+class mongo_config:
     def __init__(self, key):
         self.db_host = cf.get(key, "db_host")
         self.db_port = cf.get(key, "db_port")
@@ -48,14 +48,19 @@ class mongo_db_config:
         self.db_bak_name = cf.get(key, "db_bak_name")
 
 
-class mysql:
+class mysql_handler:
     def __init__(self, t_host="", t_port="", t_user="", t_pwd="", t_user_param="", t_db=""):
         self._t_host = t_host
         self._t_port = t_port
         self._t_user = t_user
         self._t_db = t_db
         self._t_pwd = t_pwd
-        self.t_user_param = t_user_param if (t_user_param != "") else " --host=" + self._t_host + " --port=" + self._t_port + " --user=" + self._t_user + " --password=" + self._t_pwd
+        self.t_user_param = (t_user_param
+                             if t_user_param != "" else
+                             " --host=" + self._t_host +
+                             " --port=" + self._t_port +
+                             " --user=" + self._t_user +
+                             " --password=" + self._t_pwd)
 
     def obtain_exec_cmd(self):
         return "mysql " + "--database=" + self._t_db + self.t_user_param
@@ -84,9 +89,15 @@ class mysql:
 
     # 重新创建数据库
     def create_db(self, execute=True):
-        cmd = 'mysql' + self.t_user_param + " -e " + "\"drop database if exists " + self._t_db + "; create database if not exists " + self._t_db + " default charset utf8 collate utf8_general_ci;\""
+        cmd = 'mysql' + (self.t_user_param + " -e " +
+                         "\"drop database if exists " + self._t_db +
+                         "; create database if not exists " + self._t_db +
+                         " default charset utf8 collate utf8_general_ci;\"")
         if execute:
+            printWithColor('creating ' + self._t_db, font_color.GREEN)
+            printWithColor(cmd, font_color.DARKSKYBLUE)
             os.system(cmd)
+            printWithColor('created ' + self._t_db, font_color.GREEN)
         return cmd
 
     # 恢复源数据库至目标数据库
