@@ -21,7 +21,8 @@ const user = {
       stub.api.post("user/login", data).then(
         res => {
           stub.ref.jsUtil.auth.setToken(res.data.token);
-          stub.router.push("/home", window.location.reload())
+          stub.router.push("/home")
+          window.location.reload()
         }
       );
     },
