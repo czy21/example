@@ -18,12 +18,12 @@ ClientAliveInterval 30
 " >> /etc/ssh/sshd_config
 
 # use ali yum.repo
-# if [ ! -f "/etc/yum.repos.d/CentOS-Base.repo_bak" ];then
-#     sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak
-# fi
-# sudo wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
-# sudo yum clean all
-# sudo yum makecache
+if [ ! -f "/etc/yum.repos.d/CentOS-Base.repo_bak" ];then
+    sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo_bak
+fi
+wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo
+yum clean all
+yum makecache
 
 echo "
 export PATH=\$PATH:\$HOME/bin

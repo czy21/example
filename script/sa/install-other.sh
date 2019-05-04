@@ -2,10 +2,6 @@
 
 set -e
 
-# jdk
-sudo wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" https://download.oracle.com/otn-pub/java/jdk/12.0.1+12/69cfe15208a647278a19ef0990eea691/jdk-12.0.1_linux-x64_bin.rpm
-sudo rpm -ivh jdk-12.0.1_linux-x64_bin.rpm
-
 # mongo
 sudo yum -y install mongodb-org
 
@@ -50,7 +46,7 @@ sudo service mysqld start
 sudo wget http://download.redis.io/releases/redis-5.0.3.tar.gz -O - | tar -zxvf - -C /usr/local/
 sudo make MALLOC=libc -C /usr/local/redis-5.0.3
 sudo make install -C /usr/local/redis-5.0.3/src
-sudo mkdir /etc/redis 
+sudo mkdir /etc/redis
 sudo cp /usr/local/redis-5.0.3/redis.conf /etc/redis/6379.conf
 sudo sed -i -r "s/^\s*daemonize\s+no/daemonize yes/;s/^\s*# requirepass\s+foobared/requirepass team3059/;" /etc/redis/6379.conf
 sudo cp /usr/local/redis-5.0.3/utils/redis_init_script /etc/init.d/redis
