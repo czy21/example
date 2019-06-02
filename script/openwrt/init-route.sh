@@ -10,5 +10,5 @@ src/gz openwrt_dist http://openwrt-dist.sourceforge.net/packages/base/mipsel_24k
 src/gz openwrt_dist_luci http://openwrt-dist.sourceforge.net/packages/luci
 EOF
 opkg update
-opkg install luci-i18n-base-zh-cn openssh-client ChinaDNS luci-app-chinadns redsocks
+opkg install luci-i18n-base-zh-cn coreutils-nohup openssh-client ChinaDNS luci-app-chinadns redsocks
 reboot
