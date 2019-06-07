@@ -5,10 +5,13 @@ ash -c "set -e;echo ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC3nTRJ/aVb67l1xMaN36jm
 wget http://openwrt-dist.sourceforge.net/packages/openwrt-dist.pub -P /root/
 opkg-key add /root/openwrt-dist.pub
 rm /root/openwrt-dist.pub
+
+sed -i 's/openwrt.proxy.ustclug.org/downloads.openwrt.org/g' /etc/opkg/distfeeds.conf;
+
 tee /etc/opkg/customfeeds.conf <<-'EOF'
 src/gz openwrt_dist http://openwrt-dist.sourceforge.net/packages/base/mipsel_24kc
 src/gz openwrt_dist_luci http://openwrt-dist.sourceforge.net/packages/luci
 EOF
-opkg update
-opkg install openssh-client
+#opkg update
+#opkg install openssh-client
 #luci-i18n-base-zh-cn coreutils-nohup openssh-client ChinaDNS luci-app-chinadns redsocks
