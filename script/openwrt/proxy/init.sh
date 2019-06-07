@@ -16,4 +16,4 @@ ssh $1 "ash -c" \''/etc/init.d/ssh-socks5 enable;'\'
 #ssh $1 "ash -c" \''/etc/init.d/redsocks enable;'\'
 
 # reboot
-ssh $1 "ash -c" \''reboot;'\'
+#ssh $1 "ash -c" \''reboot;'\'
