@@ -12,6 +12,6 @@ tee /etc/opkg/customfeeds.conf <<-'EOF'
 src/gz openwrt_dist http://openwrt-dist.sourceforge.net/packages/base/mipsel_24kc
 src/gz openwrt_dist_luci http://openwrt-dist.sourceforge.net/packages/luci
 EOF
-#opkg update
+opkg update
 #opkg install openssh-client
 #luci-i18n-base-zh-cn coreutils-nohup openssh-client ChinaDNS luci-app-chinadns redsocks
