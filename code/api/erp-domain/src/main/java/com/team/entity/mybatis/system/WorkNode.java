@@ -13,33 +13,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.baidu.fsg.uid;
+package com.team.entity.mybatis.system;
 
-import com.baidu.fsg.uid.exception.UidGenerateException;
+import lombok.Data;
+
+import java.time.LocalDateTime;
 
 /**
- * Represents a unique id generator.
+ * Entity for M_WORKER_NODE
  *
  * @author yutianbao
  */
-public interface UidGenerator {
 
-    /**
-     * Get a unique ID
-     *
-     * @return UID
-     * @throws UidGenerateException
-     */
-    long getUID() throws UidGenerateException;
+@Data
+public class WorkNode {
 
-    /**
-     * Parse the UID into elements which are used to generate the UID. <br>
-     * Such as timestamp & workerId & sequence...
-     *
-     * @param uid
-     * @return Parsed info
-     */
-    String parseUID(long uid);
+    private long id;
 
+    private long sequenceValue;
+
+    private LocalDateTime launchDate;
+
+    private LocalDateTime addedTime;
+
+    private LocalDateTime modifiedTime;
 
 }

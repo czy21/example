@@ -1,0 +1,14 @@
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://localhost:3306/erp?&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true
+      username: root
+      password: sasa
+  data:
+    mongodb:
+      uri: mongodb://127.0.0.1:27017
+      database: erp
+allowed-origin:
+  url: http://localhost:8080
+authentication:
+  token-expire-time: 0

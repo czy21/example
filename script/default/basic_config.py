@@ -115,7 +115,8 @@ class mysql_handler:
         phy_max_db_dir = max(os.listdir(db_version_path))
         if t_version_val != "" and phy_max_db_dir[: -1] > s_version_val:
             printWithColor('upgrading ' + self._t_db, font_color.GREEN)
-            cmd = self.obtain_exec_cmd() + mysql_import_sql_file(built_version_sql(t_version_val + "v"), os.path.basename(exec_file_path))
+            cmd = self.obtain_exec_cmd() + mysql_import_sql_file(built_version_sql(t_version_val + "v"),
+                                                                 os.path.basename(exec_file_path))
             printWithColor(cmd, font_color.DARKSKYBLUE)
             os.system(cmd)
             printWithColor('upgraded ' + self._t_db, font_color.GREEN)
@@ -124,7 +125,8 @@ class mysql_handler:
             self.update_release_config(t_version_val)
         elif phy_max_db_dir[: -1] > s_version_val:
             printWithColor('upgrading ' + self._t_db, font_color.GREEN)
-            cmd = self.obtain_exec_cmd() + mysql_import_sql_file(built_version_sql(phy_max_db_dir), os.path.basename(exec_file_path))
+            cmd = self.obtain_exec_cmd() + mysql_import_sql_file(built_version_sql(phy_max_db_dir),
+                                                                 os.path.basename(exec_file_path))
             printWithColor(cmd, font_color.DARKSKYBLUE)
             os.system(cmd)
             printWithColor('upgraded ' + self._t_db, font_color.GREEN)

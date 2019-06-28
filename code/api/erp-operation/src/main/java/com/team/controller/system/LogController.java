@@ -1,6 +1,5 @@
 package com.team.controller.system;
 
-import com.team.configure.UidGenService;
 import com.team.core.annotations.NoLog;
 import com.team.entity.dto.LogDto;
 import com.team.entity.dto.PageDto;
@@ -8,7 +7,6 @@ import com.team.model.SeachLogModel;
 import com.team.service.LogService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,10 +41,5 @@ public class LogController {
     @PreAuthorize("hasAuthority('SearchLog')")
     public PageDto<LogDto> Search(SeachLogModel search) {
         return logService.getLogPageListBy(search);
-    }
-
-    @GetMapping("testUid")
-    public Object testUid() {
-        return UidGenService.getUid();
     }
 }
