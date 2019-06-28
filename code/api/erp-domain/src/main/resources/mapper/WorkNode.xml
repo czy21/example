@@ -8,18 +8,4 @@
 		<result column="added_time" property="addedTime"/>
 		<result column="modified_time" property="modifiedTime"/>
     </resultMap>
-
-    <insert id="addWorkerNode" useGeneratedKeys="true" keyProperty="id"
-            parameterType="com.team.entity.mybatis.system.WorkNode">
-		INSERT INTO sys_work_node
-		(launch_date,
-		sequence_value,
-		added_time,
-		modified_time)
-		VALUES (
-		#{launchDate},
-		#{sequenceValue},
-		NOW(),
-		NOW())
-	</insert>
 </mapper>
