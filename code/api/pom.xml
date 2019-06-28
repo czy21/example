@@ -5,7 +5,7 @@
 
     <groupId>team3059</groupId>
     <artifactId>erp</artifactId>
-    <version>108</version>
+    <version>110</version>
     <modules>
         <module>erp-application</module>
         <module>erp-domain</module>

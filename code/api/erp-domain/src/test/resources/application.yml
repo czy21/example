@@ -1,0 +1,53 @@
+server:
+  port: 8075
+spring:
+  profiles:
+    active: dev
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filter:
+        slf4j:
+          enabled: true
+        wall:
+          enabled: true
+        stat:
+          enabled: true
+          merge-sql: true
+          slow-sql-millis: 5000
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    timeout: 3600
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*.xml
+  type-aliases-package: com.team.entity.mybatis
+  type-aliases-super-type: com.team.entity.BaseEntity
+  global-config:
+    db-config:
+      id-type: id_worker
+      table-prefix: sys_
+      db-type: mysql
+    banner: false
+pagehelper:
+  auto-dialect: mysql # 指定数据库，不指定的话会默认自动检测数据库类型
+  reasonable: true    # 如果pageIndex<0是,查询第一页,如果pageIndex>pageSizes查询最后一页
+  support-methods-arguments: true
+  params: count=countSql
+  page-size-zero: true  #pageSize为0时,不执行分页,返回全部结果
+jwt:
+  header: Authorization
+  token-prefix: "Bearer "

@@ -15,7 +15,7 @@ def parse_max_target_table_id(source_sql_str):
         match_result = ''.join(re.findall(r"max_target_table_id{{(.+?)}}", cur_line, re.M))
         if match_result != '':
             max_sql = "(select ifnull((select max(" + match_result.split(",")[0] + ")from " + match_result.split(",")[1] + ")" \
-                      + ",(select wn.sequence_value from worker_node wn order by wn.modified_time desc limit 1)))"
+                      + ",(select wn.sequence_value from sys_work_node wn order by wn.modified_time desc limit 1)))"
             all_lines.append(re.sub(r"max_target_table_id{{" + match_result.split(",")[0] + "," + match_result.split(",")[1] + "}}", max_sql, cur_line))
         else:
             all_lines.append(cur_line)
