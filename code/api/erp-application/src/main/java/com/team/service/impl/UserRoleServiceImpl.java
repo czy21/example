@@ -3,13 +3,13 @@ package com.team.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.exception.BusinessErrorCode;
 import com.team.exception.BusinessException;
-import com.team.extension.ArrayExtension;
 import com.team.core.universal.MybatisBaseServiceImpl;
 import com.team.entity.mybatis.system.UserRole;
 import com.team.service.UserRoleService;
 import com.team.service.UserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
@@ -46,7 +46,7 @@ public class UserRoleServiceImpl extends MybatisBaseServiceImpl<UserRole> implem
     @Transactional
     public String insertOrUpdateUserRole(Long userId, Long[] userRoleIds) {
         super.mybatisBaseRepository.delete(queryByUserId(userId));
-        if (!ArrayExtension.isEmpty(userRoleIds)) {
+        if (!ObjectUtils.isEmpty(userRoleIds)) {
             Arrays.asList(userRoleIds).forEach(t -> {
                 UserRole userRole = new UserRole();
                 userRole.setUserId(userId);

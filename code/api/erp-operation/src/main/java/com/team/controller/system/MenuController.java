@@ -11,7 +11,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -20,8 +20,7 @@ import org.springframework.web.bind.annotation.*;
  * @Date 2018-10-15
  */
 @RestController
-@RequestMapping("api/menu")
-@Api(tags = "Menu", description = "菜单操作接口")
+@RequestMapping("menu")
 public class MenuController {
 
     @Autowired
@@ -29,29 +28,29 @@ public class MenuController {
 
     @GetMapping("load")
     @Pocket(entity = Menu.class, obtainTree = true)
-    @ApiOperation(value = "加载菜单列表")
-    @PreAuthorize("hasAuthority('SearchMenu')")
+
+    //@PreAuthorize("hasAuthority('SearchMenu')")
     public PageDto<MenuDto> Load(SearchMenuModel search) {
         return menuService.getMenuPageListBy(search);
     }
 
     @PostMapping("search")
-    @ApiOperation(value = "查询菜单列表")
-    @PreAuthorize("hasAuthority('SearchMenu')")
+
+    //@PreAuthorize("hasAuthority('SearchMenu')")
     public PageDto<MenuDto> Search(SearchMenuModel search) {
         return menuService.getMenuPageListBy(search);
     }
 
     @PostMapping("add")
-    @ApiOperation(value = "添加菜单信息")
-    @PreAuthorize("hasAuthority('AddMenu')")
+
+    //@PreAuthorize("hasAuthority('AddMenu')")
     public MenuDto Add(MenuDto dto) {
         return menuService.insertMenu(dto);
     }
 
     @PostMapping("edit")
-    @ApiOperation(value = "修改菜单信息")
-    @PreAuthorize("hasAuthority('EditMenu')")
+
+    //@PreAuthorize("hasAuthority('EditMenu')")
     public MenuDto Edit(MenuDto dto) {
         return menuService.editMenu(dto);
     }

@@ -3,12 +3,12 @@ package com.team.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.core.universal.MybatisBaseServiceImpl;
 import com.team.entity.mybatis.system.RoleFunction;
-import com.team.exception.BusinessException;
 import com.team.exception.BusinessErrorCode;
-import com.team.extension.ArrayExtension;
+import com.team.exception.BusinessException;
 import com.team.service.RoleFunctionService;
 import com.team.service.RoleService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
@@ -33,7 +33,7 @@ public class RoleFunctionServiceImpl extends MybatisBaseServiceImpl<RoleFunction
         QueryWrapper<RoleFunction> query = new QueryWrapper<>();
         query.lambda().eq(RoleFunction::getRoleId, roleId);
         super.mybatisBaseRepository.delete(query);
-        if (!ArrayExtension.isEmpty(roleFuncIds)) {
+        if (!ObjectUtils.isEmpty(roleFuncIds)) {
             Arrays.asList(roleFuncIds).forEach(t -> {
                 RoleFunction roleFunction = new RoleFunction();
                 roleFunction.setRoleId(roleId);

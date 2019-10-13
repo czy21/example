@@ -5,10 +5,10 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.team.entity.page.PageModel;
-import com.team.util.DateTimeUtil;
-import com.team.repository.mybatis.MybatisBaseRepository;
 import com.team.entity.BaseEntity;
+import com.team.entity.page.PageModel;
+import com.team.repository.mybatis.MybatisBaseRepository;
+import com.team.util.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.lang.reflect.ParameterizedType;
@@ -91,18 +91,14 @@ public class MybatisBaseServiceImpl<TEntity extends BaseEntity> implements Mybat
 
     @Override
     public List<TEntity> SelectListBy(QueryWrapper<TEntity> query) {
-        if (query == null) {
-            query = new QueryWrapper<>();
-        }
+        query = query == null ? new QueryWrapper<>() : query;
         query.lambda().orderByDesc(TEntity::getModifiedTime);
         return mybatisBaseRepository.selectList(query);
     }
 
     @Override
     public PageModel<TEntity> SelectPageListBy(Integer pageIndex, Integer pageSize, QueryWrapper<TEntity> query) {
-        if (query == null) {
-            query = new QueryWrapper<>();
-        }
+        query = query == null ? new QueryWrapper<>() : query;
         query.lambda().orderByDesc(TEntity::getModifiedTime);
         Page page = PageHelper.startPage(pageIndex, pageSize);
         mybatisBaseRepository.selectList(query);

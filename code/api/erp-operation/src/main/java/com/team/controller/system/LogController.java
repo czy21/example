@@ -8,7 +8,7 @@ import com.team.service.LogService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,8 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2018-09-24
  */
 @RestController
-@RequestMapping("api/log")
-@Api(tags = "Log", description = "日志操作接口")
+@RequestMapping("log")
 public class LogController {
 
     @Autowired
@@ -29,16 +28,16 @@ public class LogController {
 
     @NoLog
     @GetMapping("load")
-    @ApiOperation(value = "加载日志列表")
-    @PreAuthorize("hasAuthority('SearchLog')")
+
+    //@PreAuthorize("hasAuthority('SearchLog')")
     public PageDto<LogDto> Load(SeachLogModel search) {
         return logService.getLogPageListBy(search);
     }
 
     @NoLog
     @PostMapping("search")
-    @ApiOperation(value = "查询日志列表")
-    @PreAuthorize("hasAuthority('SearchLog')")
+
+    //@PreAuthorize("hasAuthority('SearchLog')")
     public PageDto<LogDto> Search(SeachLogModel search) {
         return logService.getLogPageListBy(search);
     }

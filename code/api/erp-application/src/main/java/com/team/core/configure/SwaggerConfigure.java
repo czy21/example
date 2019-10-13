@@ -27,7 +27,7 @@ public class SwaggerConfigure {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage(ProjectConstant.CONTROLLER_PACKAGE))
-                .paths(PathSelectors.regex("/api/(?!docs).*"))//过滤的接口
+                .paths(PathSelectors.regex("/(?!docs).*"))//过滤的接口
                 .build()
                 .apiInfo(apiInfo())
                 .securitySchemes(securitySchemes())

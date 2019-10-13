@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date 2018-10-15
  */
 @RestController
-@RequestMapping("api/company")
-@Api(tags = "Company", description = "公司操作接口")
+@RequestMapping("company")
+
 public class CompanyController {
 
 
