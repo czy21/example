@@ -11,13 +11,8 @@ import com.team.entity.mybatis.system.Role;
 import com.team.model.SearchUserModel;
 import com.team.service.UserRoleService;
 import com.team.service.UserService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
 
@@ -28,8 +23,7 @@ import java.util.List;
  * @date 2018-09-24
  */
 @RestController
-@RequestMapping("api/user")
-@Api(tags = "User", description = "用户操作接口")
+@RequestMapping("user")
 public class UserController {
 
     @Autowired
@@ -40,50 +34,50 @@ public class UserController {
     @GetMapping("load")
     @Pocket(entity = Role.class)
     @Pocket(entity = Department.class)
-    @ApiOperation(value = "加载用户列表")
-    @PreAuthorize("hasAuthority('SearchUser')")
+
+    //@PreAuthorize("hasAuthority('SearchUser')")
     public PageDto<UserDto> Load(SearchUserModel search) {
         return userService.getUserPageListBy(search);
     }
 
     @PostMapping("search")
-    @ApiOperation(value = "查询用户列表")
-    @PreAuthorize("hasAuthority('SearchUser')")
+
+    //@PreAuthorize("hasAuthority('SearchUser')")
     public PageDto<UserDto> Search(SearchUserModel search) {
         return userService.getUserPageListBy(search);
     }
 
     @PostMapping("add")
-    @ApiOperation(value = "添加用户信息")
-    @PreAuthorize("hasAuthority('AddUser')")
+
+    //@PreAuthorize("hasAuthority('AddUser')")
     public UserDto Add(UserDto dto) {
         return userService.insertDefaultPwd(dto);
     }
 
     @PostMapping("edit")
-    @ApiOperation(value = "修改用户信息")
-    @PreAuthorize("hasAuthority('EditUser')")
+
+    //@PreAuthorize("hasAuthority('EditUser')")
     public UserDto Edit(UserDto dto) {
         return userService.editUser(dto);
     }
 
     @PostMapping("modified")
-    @ApiOperation(value = "更改用户状态")
-    @PreAuthorize("hasAuthority('DisableUser')")
+
+    //@PreAuthorize("hasAuthority('DisableUser')")
     public Boolean Modified(UserDto dto) {
         return userService.modifiedUser(dto);
     }
 
     @PostMapping("userRoleDetails")
-    @ApiOperation(value = "获取用户角色")
-    @PreAuthorize("hasAuthority('AllotUserRole')")
+
+    //@PreAuthorize("hasAuthority('AllotUserRole')")
     public List<Long> UserRoleDetails(Long userId) {
         return userRoleService.getRolesByUserId(userId);
     }
 
     @PostMapping(value = "updateUserRole")
-    @ApiOperation(value = "更新用户角色")
-    @PreAuthorize("hasAuthority('AllotUserRole')")
+
+    //@PreAuthorize("hasAuthority('AllotUserRole')")
     public String updateUserRole(Long userId, @RequestParam(value = "userRoleIds[]", required = false) Long[] userRoleIds) {
         return userRoleService.insertOrUpdateUserRole(userId, userRoleIds);
     }
@@ -93,7 +87,7 @@ public class UserController {
         return userService.login(dto);
     }
 
-    @ApiIgnore
+
     @PostMapping("register")
     public JSONObject register(LoginDto dto) {
         return userService.register(dto);

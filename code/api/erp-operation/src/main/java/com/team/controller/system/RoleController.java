@@ -13,7 +13,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,8 +24,7 @@ import java.util.List;
  * @Date 2018-10-15
  */
 @RestController
-@RequestMapping("api/role")
-@Api(tags = "Role", description = "角色操作接口")
+@RequestMapping("role")
 public class RoleController {
 
     @Autowired
@@ -38,59 +37,59 @@ public class RoleController {
     private RoleMap roleMap;
 
     @GetMapping("load")
-    @ApiOperation(value = "加载角色列表")
+
     @Pocket(entity = Menu.class, obtainTree = true)
     @Pocket(entity = Function.class)
-    @PreAuthorize("hasAuthority('SearchRole')")
+    //@PreAuthorize("hasAuthority('SearchRole')")
     public PageDto<RoleDto> Load(int pageIndex, int pageSize) {
         return roleMap.mapToPageDto(roleService.SelectPageListBy(pageIndex, pageSize, null));
     }
 
     @PostMapping("search")
-    @ApiOperation(value = "查询角色列表")
-    @PreAuthorize("hasAuthority('SearchRole')")
+
+    //@PreAuthorize("hasAuthority('SearchRole')")
     public PageDto<RoleDto> Search(int pageIndex, int pageSize) {
         return roleMap.mapToPageDto(roleService.SelectPageListBy(pageIndex, pageSize, null));
     }
 
     @PostMapping("add")
-    @ApiOperation(value = "添加角色信息")
-    @PreAuthorize("hasAuthority('AddRole')")
+
+    //@PreAuthorize("hasAuthority('AddRole')")
     public RoleDto Add(RoleDto dto) {
         return roleService.insertRole(dto);
     }
 
     @PostMapping("edit")
-    @ApiOperation(value = "修改角色信息")
-    @PreAuthorize("hasAuthority('EditRole')")
+
+    //@PreAuthorize("hasAuthority('EditRole')")
     public RoleDto Edit(RoleDto dto) {
         return roleService.editRole(dto);
     }
 
     @PostMapping("roleMenuDetails")
-    @ApiOperation(value = "查询角色菜单")
-    @PreAuthorize("hasAuthority('AllotRoleMenu')")
+
+    //@PreAuthorize("hasAuthority('AllotRoleMenu')")
     public List<Long> RoleMenuDetails(Long roleId) {
         return roleService.getMenusByRoleId(roleId);
     }
 
     @PostMapping("updateRoleMenu")
-    @ApiOperation(value = "更新角色菜单")
-    @PreAuthorize("hasAuthority('AllotRoleMenu')")
+
+    //@PreAuthorize("hasAuthority('AllotRoleMenu')")
     public String updateRoleMenu(Long roleId, @RequestParam(value = "roleMenuIds[]", required = false) Long[] roleMenuIds) {
         return roleMenuService.insertOrUpdateRoleMenu(roleId, roleMenuIds);
     }
 
     @PostMapping("roleFuncDetails")
-    @ApiOperation(value = "查询角色权限")
-    @PreAuthorize("hasAuthority('AllotRoleFunc')")
+
+    //@PreAuthorize("hasAuthority('AllotRoleFunc')")
     public List<Long> RoleFuncDetails(Long roleId) {
         return roleService.getFunctionsByRoleId(roleId);
     }
 
     @PostMapping("updateRoleFunc")
-    @ApiOperation(value = "更新角色权限")
-    @PreAuthorize("hasAuthority('AllotRoleFunc')")
+
+    //@PreAuthorize("hasAuthority('AllotRoleFunc')")
     public String updateRoleFunc(Long roleId, @RequestParam(value = "roleFuncIds[]", required = false) Long[] roleFuncIds) {
         return roleService.updateRoleFuncByRoleId(roleId, roleFuncIds);
     }

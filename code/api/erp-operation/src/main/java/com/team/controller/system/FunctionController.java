@@ -10,7 +10,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
+
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2019-03-09
  */
 @RestController
-@RequestMapping("api/function")
-@Api(tags = "Function", description = "权限操作接口")
+@RequestMapping("function")
 public class FunctionController {
 
     @Autowired
@@ -31,29 +30,29 @@ public class FunctionController {
 
     @GetMapping("load")
     @Pocket(entity = Menu.class)
-    @ApiOperation(value = "加载权限列表")
-    @PreAuthorize("hasAuthority('SearchFunc')")
+
+    //@PreAuthorize("hasAuthority('SearchFunc')")
     public PageDto<FunctionDto> Load(SearchFunctionModel search) {
         return functionService.getFunctionPageListBy(search);
     }
 
     @PostMapping("search")
-    @ApiOperation(value = "查询权限列表")
-    @PreAuthorize("hasAuthority('SearchFunc')")
+
+    //@PreAuthorize("hasAuthority('SearchFunc')")
     public PageDto<FunctionDto> Search(SearchFunctionModel search) {
         return functionService.getFunctionPageListBy(search);
     }
 
     @PostMapping("add")
-    @ApiOperation(value = "添加权限信息")
-    @PreAuthorize("hasAuthority('AddFunc')")
+
+    //@PreAuthorize("hasAuthority('AddFunc')")
     public FunctionDto Add(FunctionDto dto) {
         return functionService.insertFunction(dto);
     }
 
     @PostMapping("edit")
-    @ApiOperation(value = "修改权限信息")
-    @PreAuthorize("hasAuthority('EditFunc')")
+
+    //@PreAuthorize("hasAuthority('EditFunc')")
     public FunctionDto Edit(FunctionDto dto) {
         return functionService.editFunction(dto);
     }

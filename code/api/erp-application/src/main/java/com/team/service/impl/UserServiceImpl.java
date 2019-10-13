@@ -11,8 +11,8 @@ import com.team.entity.map.UserMap;
 import com.team.entity.mybatis.system.Function;
 import com.team.entity.mybatis.system.Role;
 import com.team.entity.mybatis.system.User;
-import com.team.exception.BusinessException;
 import com.team.exception.BusinessErrorCode;
+import com.team.exception.BusinessException;
 import com.team.extension.MenuExtension;
 import com.team.model.SearchUserModel;
 import com.team.repository.mybatis.system.FunctionRepository;
@@ -21,11 +21,6 @@ import com.team.repository.mybatis.system.RoleRepository;
 import com.team.service.UserService;
 import com.team.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
@@ -52,8 +47,6 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
     private FunctionRepository functionRepository;
     @Autowired
     private MenuRepository menuRepository;
-    @Autowired
-    private AuthenticationManager authenticationManager;
 
     @Override
     public UserDto insertDefaultPwd(UserDto dto) {
@@ -104,8 +97,6 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
 
     @Override
     public JSONObject login(LoginDto dto) {
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(dto.getLoginName(), dto.getPassword()));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
         User user = super.SelectBy(User::getLoginName, dto.getLoginName());
         if (ObjectUtils.isEmpty(user)) {
             throw new BusinessException(BusinessErrorCode.NO_USER, "用户不存在");
@@ -123,8 +114,6 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
     @Override
     public JSONObject register(LoginDto dto) {
         User user = super.SelectBy(User::getLoginName, dto.getLoginName());
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-        user.setPassword(encoder.encode(dto.getPassword()));
         super.Update(user);
         return null;
     }

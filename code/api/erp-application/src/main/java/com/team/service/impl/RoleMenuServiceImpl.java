@@ -5,11 +5,11 @@ import com.team.core.universal.MybatisBaseServiceImpl;
 import com.team.entity.mybatis.system.RoleMenu;
 import com.team.exception.BusinessException;
 import com.team.exception.BusinessErrorCode;
-import com.team.extension.ArrayExtension;
 import com.team.service.RoleMenuService;
 import com.team.service.RoleService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
@@ -35,7 +35,7 @@ public class RoleMenuServiceImpl extends MybatisBaseServiceImpl<RoleMenu> implem
         QueryWrapper<RoleMenu> query = new QueryWrapper<>();
         query.lambda().eq(RoleMenu::getRoleId, roleId);
         super.mybatisBaseRepository.delete(query);
-        if (!ArrayExtension.isEmpty(roleMenuIds)) {
+        if (!ObjectUtils.isEmpty(roleMenuIds)) {
             Arrays.asList(roleMenuIds).forEach(t -> {
                 RoleMenu roleMenu = new RoleMenu();
                 roleMenu.setRoleId(roleId);

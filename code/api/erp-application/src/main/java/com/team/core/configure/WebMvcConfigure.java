@@ -15,24 +15,16 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
-public class WebMvcConfigure extends WebMvcConfigurationSupport {
+public class WebMvcConfigure implements WebMvcConfigurer {
 
     @Value("${allowed-origin.url}")
     private String url;
-
-    /*
-     * @author 陈昭宇
-     * @description 配置跨域
-     * @date 2018/12/27 16:15
-     * @param []
-     * @return org.springframework.web.filter.CorsFilter
-     */
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -44,17 +36,10 @@ public class WebMvcConfigure extends WebMvcConfigurationSupport {
         corsConfiguration.addAllowedMethod(HttpMethod.PUT);
         corsConfiguration.addAllowedMethod(HttpMethod.POST);
         corsConfiguration.addAllowedMethod(HttpMethod.DELETE);
-        source.registerCorsConfiguration("/api/**", corsConfiguration); // 对接口配置跨域设置
+        source.registerCorsConfiguration("/**", corsConfiguration); // 对接口配置跨域设置
         return new CorsFilter(source);
     }
 
-    /*
-     * @author 陈昭宇
-     * @description 忽略静态资源拦截
-     * @date 2018/12/27 16:16
-     * @param [registry]
-     * @return void
-     */
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler("swagger-ui.html")
@@ -63,35 +48,17 @@ public class WebMvcConfigure extends WebMvcConfigurationSupport {
                 .addResourceLocations("classpath:/META-INF/resources/webjars/");
         registry.addResourceHandler("/favicon.ico")
                 .addResourceLocations("classpath:/META-INF/resources/favicon.ico");
-        super.addResourceHandlers(registry);
     }
 
-    /*
-     * @author 陈昭宇
-     * @description 配置请求url大小写均可请求
-     * @date 2018/12/27 16:17
-     * @param []
-     * @return org.springframework.web.servlet.config.annotation.PathMatchConfigurer
-     */
     @Override
-    protected PathMatchConfigurer getPathMatchConfigurer() {
-        PathMatchConfigurer configure = super.getPathMatchConfigurer();
+    public void configurePathMatch(PathMatchConfigurer configurer) {
         AntPathMatcher matcher = new AntPathMatcher();
         matcher.setCaseSensitive(false);
-        configure.setPathMatcher(matcher);
-        return configure;
+        configurer.setPathMatcher(matcher);
     }
 
-    /*
-     * @author 陈昭宇
-     * @description 配置消息转换器(格式化)
-     * @date 2018/12/27 16:18
-     * @param [converters]
-     * @return void
-     */
     @Override
-    protected void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        super.configureMessageConverters(converters);
+    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
         FastJsonConfig fastJsonConfig = new FastJsonConfig();
         fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat);
