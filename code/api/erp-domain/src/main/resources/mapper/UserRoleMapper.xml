@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.team.mapper.RoleMenuRepository">
+<mapper namespace="com.team.mapper.UserRoleMapper">
     <!-- 通用查询映射结果 -->
-    <resultMap id="BaseResultMap" type="com.team.entity.mybatis.system.RoleMenu">
-        <id column="role_menu_id" property="roleMenuId" />
+    <resultMap id="BaseResultMap" type="com.team.entity.mybatis.system.UserRole">
+        <id column="user_role_id" property="userRoleId" />
         <result column="added_time" property="addedTime" />
         <result column="modified_time" property="modifiedTime" />
         <result column="added_user" property="addedUser" />
         <result column="modified_user" property="modifiedUser" />
+        <result column="user_id" property="userId" />
         <result column="role_id" property="roleId" />
-        <result column="menu_id" property="menuId" />
     </resultMap>
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
@@ -17,9 +17,9 @@
         modified_time,
         added_user,
         modified_user,
-        role_menu_id
+        user_role_id
+        user_id
         role_id
-        menu_id
     </sql>
 
 </mapper>

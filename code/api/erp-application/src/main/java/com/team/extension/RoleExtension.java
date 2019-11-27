@@ -1,7 +1,7 @@
 package com.team.extension;
 
 import com.team.model.SimpleItemModel;
-import com.team.repository.mybatis.system.RoleRepository;
+import com.team.mapper.RoleMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ import java.util.List;
 @Component
 public class RoleExtension {
 
-    private static RoleRepository _dao;
+    private static RoleMapper _dao;
 
-    public RoleExtension(RoleRepository dao) {
+    public RoleExtension(RoleMapper dao) {
         _dao = dao;
     }
 

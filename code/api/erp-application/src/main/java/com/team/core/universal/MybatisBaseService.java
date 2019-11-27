@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import com.team.entity.page.PageModel;
-import com.team.entity.BaseEntity;
+import com.team.entity.MybatisBaseEntity;
 
 import java.util.List;
 
@@ -13,7 +13,7 @@ import java.util.List;
  * @Author 陈昭宇
  * @Date 2018/7/26
  */
-public interface MybatisBaseService<TEntity extends BaseEntity> {
+public interface MybatisBaseService<TEntity extends MybatisBaseEntity> {
 
     /*
      * @Author 陈昭宇

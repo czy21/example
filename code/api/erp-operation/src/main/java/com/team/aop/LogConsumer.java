@@ -1,7 +1,7 @@
 package com.team.aop;
 
-import com.team.repository.mongo.system.LogRepository;
-import com.team.entity.mongo.Log;
+import com.team.repository.LogRepository;
+import com.team.entity.LogEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -53,11 +53,11 @@ public class LogConsumer implements Runnable {
     }
 
     public void execute() {
-        List<Log> logs = new ArrayList<>();
+        List<LogEntity> logs = new ArrayList<>();
         try {
             int size = 0;
             while (size < batchSize) {
-                Log log = auditLogQueue.poll();
+                LogEntity log = auditLogQueue.poll();
                 if (log == null) {
                     break;
                 }

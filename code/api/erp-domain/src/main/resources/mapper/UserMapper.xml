@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.mapper.UserMapper">
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.team.entity.mybatis.system.User">
+        <id column="user_id" property="userId"/>
+        <result column="added_time" property="addedTime"/>
+        <result column="modified_time" property="modifiedTime"/>
+        <result column="added_user" property="addedUser"/>
+        <result column="modified_user" property="modifiedUser"/>
+        <result column="login_name" property="loginName"/>
+        <result column="password" property="password"/>
+        <result column="user_name" property="userName"/>
+        <result column="email" property="email"/>
+        <result column="phone" property="phone"/>
+        <result column="is_header" property="isHeader"/>
+        <result column="department_id" property="departmentId"/>
+        <result column="enabled" property="enabled"/>
+    </resultMap>
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        added_time,
+        modified_time,
+        added_user,
+        modified_user,
+        user_id
+        login_name
+        password
+        user_name
+        email
+        phone
+        is_header
+        department_id
+        enabled
+    </sql>
+
+
+</mapper>

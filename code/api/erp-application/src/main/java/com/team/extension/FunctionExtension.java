@@ -1,7 +1,7 @@
 package com.team.extension;
 
 import com.team.model.SimpleItemModel;
-import com.team.repository.mybatis.system.FunctionRepository;
+import com.team.mapper.PermissionMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -9,9 +9,9 @@ import java.util.List;
 
 @Component
 public class FunctionExtension {
-    private static FunctionRepository _dao;
+    private static PermissionMapper _dao;
 
-    public FunctionExtension(FunctionRepository dao) {
+    public FunctionExtension(PermissionMapper dao) {
         _dao = dao;
     }
 

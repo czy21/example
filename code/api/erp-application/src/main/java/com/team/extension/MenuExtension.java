@@ -5,7 +5,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.team.entity.mybatis.system.Menu;
 import com.team.model.SimpleItemModel;
-import com.team.repository.mybatis.system.MenuRepository;
+import com.team.mapper.MenuRepository;
 import com.team.util.TreeUtil;
 import lombok.Data;
 import org.springframework.stereotype.Component;

@@ -1,15 +1,15 @@
 package com.team.core.universal;
 
-import com.team.entity.BaseEntity;
+import com.team.entity.MybatisBaseEntity;
 import com.team.entity.page.PageModel;
-import com.team.repository.mongo.MongoBaseRepository;
+import com.team.repository.mongobase.MongoBaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
-public class MongoBaseServiceImpl<TEntity extends BaseEntity> implements MongoBaseService<TEntity> {
+public class MongoBaseServiceImpl<TEntity extends MybatisBaseEntity> implements MongoBaseService<TEntity> {
 
     @Autowired
     protected MongoBaseRepository<TEntity, String> mongoRepository;
