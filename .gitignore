@@ -1,17 +1,14 @@
-### basic ###
-_temp/
-backup/
+# Idea #
 .idea
 *.iml
 *.log
 
-### api ###
+# Api #
 target/
 
-### web ###
+# Web #
 node_modules/
 dist/
 
-### script ###
-pubs/
-__pycache__/
+# Output #
+___output/
