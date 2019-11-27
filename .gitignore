@@ -12,3 +12,6 @@ dist/
 
 # Output #
 ___output/
+
+# Shell #
+__pycache__/
