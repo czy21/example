@@ -4,7 +4,7 @@ import com.team.core.universal.MongoBaseServiceImpl;
 import com.team.entity.dto.LogDto;
 import com.team.entity.dto.PageDto;
 import com.team.entity.map.LogMap;
-import com.team.entity.mongo.Log;
+import com.team.entity.LogEntity;
 import com.team.model.SeachLogModel;
 import com.team.service.LogService;
 import org.springframework.data.domain.Example;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 @Service
-public class LogServiceImpl extends MongoBaseServiceImpl<Log> implements LogService {
+public class LogServiceImpl extends MongoBaseServiceImpl<LogEntity> implements LogService {
 
     @Resource
     private LogMap logMap;
@@ -25,7 +25,7 @@ public class LogServiceImpl extends MongoBaseServiceImpl<Log> implements LogServ
         if (search.getAddedTimeSort() == null) {
             search.setAddedTimeSort("desc");
         }
-        Log log = new Log();
+        LogEntity log = new LogEntity();
         log.setDescription(search.getDescription());
         log.setMethod(search.getMethod());
         log.setExceptionCode(search.getExceptionCode());

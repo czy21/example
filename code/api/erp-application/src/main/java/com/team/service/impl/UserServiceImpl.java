@@ -15,9 +15,9 @@ import com.team.exception.BusinessErrorCode;
 import com.team.exception.BusinessException;
 import com.team.extension.MenuExtension;
 import com.team.model.SearchUserModel;
-import com.team.repository.mybatis.system.FunctionRepository;
-import com.team.repository.mybatis.system.MenuRepository;
-import com.team.repository.mybatis.system.RoleRepository;
+import com.team.mapper.PermissionMapper;
+import com.team.mapper.MenuRepository;
+import com.team.mapper.RoleMapper;
 import com.team.service.UserService;
 import com.team.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,9 +42,9 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
     @Resource
     private MenuMap menuMap;
     @Autowired
-    private RoleRepository roleRepository;
+    private RoleMapper roleRepository;
     @Autowired
-    private FunctionRepository functionRepository;
+    private PermissionMapper functionRepository;
     @Autowired
     private MenuRepository menuRepository;
 

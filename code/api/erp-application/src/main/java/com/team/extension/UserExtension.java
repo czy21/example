@@ -1,7 +1,7 @@
 package com.team.extension;
 
 import com.team.model.SimpleItemModel;
-import com.team.repository.mybatis.system.UserRepository;
+import com.team.mapper.UserMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -10,9 +10,9 @@ import java.util.List;
 @Component
 public class UserExtension  {
 
-    private static UserRepository _dao;
+    private static UserMapper _dao;
 
-    public UserExtension(UserRepository dao) {
+    public UserExtension(UserMapper dao) {
         _dao = dao;
     }
 

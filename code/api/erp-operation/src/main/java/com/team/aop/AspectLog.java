@@ -1,7 +1,7 @@
 package com.team.aop;
 
 import com.team.core.annotations.NoLog;
-import com.team.entity.mongo.Log;
+import com.team.entity.LogEntity;
 import com.team.exception.ServiceException;
 import com.team.util.DateTimeUtil;
 import com.team.util.HttpClientUtil;
@@ -58,8 +58,8 @@ public class AspectLog {
     public void doAfterReturning(JoinPoint joinPoint) {
         Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();
         if (!isNoLog(method) && isApiOperation(method)) {
-            Log sysLog = getSystemLogInit(joinPoint);
-            sysLog.setLogType(Log.logInfo);
+            LogEntity sysLog = getSystemLogInit(joinPoint);
+            sysLog.setLogType(LogEntity.logInfo);
             sysLog.setSpendTime((int) (System.currentTimeMillis() - startTime.get()));
             logQueue.add(sysLog);
         }
@@ -78,8 +78,8 @@ public class AspectLog {
             Method method = ((MethodSignature) p.getSignature()).getMethod();
             try {
                 if (!isNoLog(method) && isApiOperation(method)) {
-                    Log sysLog = getSystemLogInit(p);
-                    sysLog.setLogType(Log.logError);
+                    LogEntity sysLog = getSystemLogInit(p);
+                    sysLog.setLogType(LogEntity.logError);
                     sysLog.setExceptionCode(e.getClass().getName());
                     sysLog.setExceptionDetail(e.getMessage());
                     sysLog.setSpendTime((int) (System.currentTimeMillis() - startTime.get()));
@@ -125,8 +125,8 @@ public class AspectLog {
      * @param [joinPoint]
      * @return com.team.entity.mongo.Log
      */
-    private Log getSystemLogInit(JoinPoint joinPoint) {
-        Log sysLog = new Log();
+    private LogEntity getSystemLogInit(JoinPoint joinPoint) {
+        LogEntity sysLog = new LogEntity();
         try {
             String targetClassName = joinPoint.getTarget().getClass().getSimpleName();
             Method method = ((MethodSignature) joinPoint.getSignature()).getMethod();

@@ -8,8 +8,8 @@ import com.team.entity.mybatis.system.Menu;
 import com.team.entity.mybatis.system.Role;
 import com.team.exception.BusinessException;
 import com.team.exception.BusinessErrorCode;
-import com.team.repository.mybatis.system.FunctionRepository;
-import com.team.repository.mybatis.system.MenuRepository;
+import com.team.mapper.PermissionMapper;
+import com.team.mapper.MenuRepository;
 import com.team.service.RoleFunctionService;
 import com.team.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +35,7 @@ public class RoleServiceImpl extends MybatisBaseServiceImpl<Role> implements Rol
     @Resource
     private RoleFunctionService roleFunctionService;
     @Autowired
-    private FunctionRepository functionRepository;
+    private PermissionMapper functionRepository;
     @Autowired
     private MenuRepository menuRepository;
 
