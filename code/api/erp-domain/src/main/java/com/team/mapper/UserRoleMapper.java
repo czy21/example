@@ -1,7 +1,7 @@
 package com.team.mapper;
 
 import com.team.entity.UserRoleEntity;
-import com.team.mapper.base.MybatisBaseMapper;
+import com.team.infrastructure.MybatisBaseMapper;
 
 /**
  * @Description UserRole 数据访问层

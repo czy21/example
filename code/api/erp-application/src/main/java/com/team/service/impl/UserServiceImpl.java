@@ -92,7 +92,7 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
 
     @Override
     public List<Function> getFunctionsByRole(List<Long> roleIds) {
-        return functionRepository.getFunctionsByRoleIds(roleIds);
+        return functionRepository.selectPermissionByRoleIds(roleIds);
     }
 
     @Override
@@ -105,7 +105,7 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
         TokenDto token = new TokenDto();
         token.setUser(userMap.mapToAccountDto(user));
         token.setMenus(MenuExtension.createTreeMenus(menuMap.toMenuTree(menuRepository.getMenusByUserId(user.getUserId()))));
-        token.setPermissions(functionRepository.getFunctionsByUserId(user.getUserId()).stream().map(Function::getFunctionCode).collect(Collectors.toList()));
+        token.setPermissions(functionRepository.selectPermissionsByUserId(user.getUserId()).stream().map(Function::getFunctionCode).collect(Collectors.toList()));
         token.setValue(JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));
         json.put("token", token);
         return json;
@@ -120,6 +120,6 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements Use
 
     @Override
     public List<Function> getFunctionsByUser(Long userId) {
-        return functionRepository.getFunctionsByUserId(userId);
+        return functionRepository.selectPermissionsByUserId(userId);
     }
 }

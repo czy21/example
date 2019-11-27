@@ -1,7 +1,7 @@
 package com.team.mapper;
 
 import com.team.entity.DepartmentEntity;
-import com.team.mapper.base.MybatisBaseMapper;
+import com.team.infrastructure.MybatisBaseMapper;
 
 /**
  * @Description Department 数据访问层

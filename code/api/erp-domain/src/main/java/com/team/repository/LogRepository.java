@@ -1,7 +1,7 @@
 package com.team.repository;
 
 import com.team.entity.LogEntity;
-import com.team.repository.mongobase.MongoBaseRepository;
+import com.team.infrastructure.MongoBaseRepository;
 
 /**
  * @author 陈昭宇

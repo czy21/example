@@ -1,6 +1,6 @@
 package com.team.core.universal;
 
-import com.team.entity.MybatisBaseEntity;
+import com.team.infrastructure.MybatisBaseEntity;
 import com.team.entity.page.PageModel;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;

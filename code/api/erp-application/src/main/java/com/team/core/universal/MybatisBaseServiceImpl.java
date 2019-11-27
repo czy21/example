@@ -5,9 +5,9 @@ import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.team.entity.MybatisBaseEntity;
+import com.team.infrastructure.MybatisBaseEntity;
 import com.team.entity.page.PageModel;
-import com.team.mapper.base.MybatisBaseMapper;
+import com.team.infrastructure.MybatisBaseMapper;
 import com.team.util.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
