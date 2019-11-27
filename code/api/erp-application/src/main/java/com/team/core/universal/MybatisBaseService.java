@@ -4,7 +4,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import com.team.entity.page.PageModel;
-import com.team.entity.MybatisBaseEntity;
+import com.team.infrastructure.MybatisBaseEntity;
 
 import java.util.List;
 

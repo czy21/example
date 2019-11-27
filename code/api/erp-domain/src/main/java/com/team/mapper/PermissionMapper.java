@@ -1,8 +1,7 @@
 package com.team.mapper;
 
 import com.team.entity.PermissionEntity;
-import com.team.entity.mybatis.system.Function;
-import com.team.mapper.base.MybatisBaseMapper;
+import com.team.infrastructure.MybatisBaseMapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -14,7 +13,7 @@ import java.util.List;
  */
 public interface PermissionMapper extends MybatisBaseMapper<PermissionEntity> {
 
-    List<PermissionEntity> getFunctionsByRoleIds(@Param("roleIds") List<Long> roleIds);
+    List<PermissionEntity> selectPermissionByRoleIds(@Param("roleIds") List<String> roleIds);
 
-    List<PermissionEntity> getFunctionsByUserId(@Param("userId") Long userId);
+    List<PermissionEntity> selectPermissionsByUserId(@Param("userId") String userId);
 }

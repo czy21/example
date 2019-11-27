@@ -1,8 +1,7 @@
 package com.team.mapper;
 
 import com.team.entity.RoleEntity;
-import com.team.entity.mybatis.system.Role;
-import com.team.mapper.base.MybatisBaseMapper;
+import com.team.infrastructure.MybatisBaseMapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

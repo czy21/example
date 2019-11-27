@@ -1,5 +1,6 @@
 package com.team.entity;
 
+import com.team.infrastructure.MybatisBaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

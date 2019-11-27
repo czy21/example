@@ -73,7 +73,7 @@ public class RoleServiceImpl extends MybatisBaseServiceImpl<Role> implements Rol
     public List<Long> getFunctionsByRoleId(Long roleId) {
         List<Long> roleIds = new ArrayList<>();
         roleIds.add(roleId);
-        return functionRepository.getFunctionsByRoleIds(roleIds).stream().map(Function::getFunctionId).collect(Collectors.toList());
+        return functionRepository.selectPermissionByRoleIds(roleIds).stream().map(Function::getFunctionId).collect(Collectors.toList());
     }
 
     @Override
