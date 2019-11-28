@@ -2,8 +2,6 @@ package com.team.application.core.universal;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import com.team.application.model.page.PageModel;
 import com.team.domain.infrastructure.base.MybatisBaseEntity;
 import com.team.domain.infrastructure.base.MybatisBaseMapper;
@@ -77,9 +75,9 @@ public class MybatisBaseServiceImpl<TEntity extends MybatisBaseEntity> implement
     public PageModel<TEntity> selectAll(Integer pageIndex, Integer pageSize, QueryWrapper<TEntity> query) {
         query = query == null ? new QueryWrapper<>() : query;
         query.lambda().orderByDesc(TEntity::getCreatedDate);
-        Page page = PageHelper.startPage(pageIndex, pageSize);
         mybatisBaseRepository.selectList(query);
-        return PageModel.of(page);
+
+        return null;
     }
 
     @Override
