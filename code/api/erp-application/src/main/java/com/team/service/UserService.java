@@ -1,14 +1,13 @@
 package com.team.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.core.universal.MybatisBaseService;
-import com.team.entity.dto.LoginDto;
-import com.team.entity.dto.PageDto;
-import com.team.entity.dto.UserDto;
-import com.team.entity.mybatis.system.Function;
-import com.team.entity.mybatis.system.Role;
-import com.team.entity.mybatis.system.User;
+import com.team.domain.entity.PermissionEntity;
+import com.team.domain.entity.RoleEntity;
+import com.team.domain.entity.UserEntity;
+import com.team.entity.dto.LoginDTO;
+import com.team.entity.dto.PageDTO;
+import com.team.entity.dto.UserDTO;
 import com.team.model.SearchUserModel;
 
 import java.util.List;
@@ -18,24 +17,24 @@ import java.util.List;
  * @Author 陈昭宇
  * @Date 2018-10-15
  */
-public interface UserService extends MybatisBaseService<User> {
+public interface UserService extends MybatisBaseService<UserEntity> {
 
-    UserDto insertDefaultPwd(UserDto user);
+    UserDTO insertDefaultPwd(UserDTO user);
 
-    UserDto editUser(UserDto dto);
+    UserDTO editUser(UserDTO dto);
 
-    Boolean modifiedUser(UserDto dto);
+    Boolean modifiedUser(UserDTO dto);
 
-    PageDto<UserDto> getUserPageListBy(SearchUserModel search);
+    PageDTO<UserDTO> getUserPageListBy(SearchUserModel search);
 
-    List<Role> getRolesByLoginName(String loginName);
+    List<RoleEntity> getRolesByLoginName(String loginName);
 
-    List<Function> getFunctionsByRole(List<Long> roleIds);
+    List<PermissionEntity> getFunctionsByRole(List<String> roleIds);
 
-    JSONObject login(LoginDto dto);
+    JSONObject login(LoginDTO dto);
 
-    JSONObject register(LoginDto dto);
+    JSONObject register(LoginDTO dto);
 
-    List<Function> getFunctionsByUser(Long userId);
+    List<PermissionEntity> getFunctionsByUser(String userId);
 
 }

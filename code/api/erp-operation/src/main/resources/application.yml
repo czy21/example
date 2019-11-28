@@ -34,12 +34,11 @@ spring:
     timeout: 3600
 mybatis-plus:
   mapper-locations: classpath:/mapper/*.xml
-  type-aliases-package: com.team.entity.mybatis
-  type-aliases-super-type: com.team.infrastructure.MybatisBaseEntity
+  type-aliases-package: com.team.domain.entity
+  type-aliases-super-type: com.team.domain.infrastructure.MybatisBaseEntity
   global-config:
     db-config:
-      id-type: id_worker
-      table-prefix: sys_
+      id-type: uuid
       db-type: mysql
     banner: false
 pagehelper:

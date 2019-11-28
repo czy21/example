@@ -1,7 +1,7 @@
 package com.team.aop;
 
-import com.team.repository.LogRepository;
-import com.team.entity.LogEntity;
+import com.team.domain.repository.LogRepository;
+import com.team.domain.entity.LogEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

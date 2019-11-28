@@ -1,13 +1,12 @@
 package com.team.core.universal;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.team.infrastructure.MybatisBaseEntity;
 import com.team.entity.page.PageModel;
-import com.team.infrastructure.MybatisBaseMapper;
+import com.team.domain.infrastructure.MybatisBaseEntity;
+import com.team.domain.infrastructure.MybatisBaseMapper;
 import com.team.util.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -34,79 +33,73 @@ public class MybatisBaseServiceImpl<TEntity extends MybatisBaseEntity> implement
     }
 
     @Override
-    public Integer Insert(TEntity entity) {
-        entity.setAddedTime(DateTimeUtil.getCurrentDateTime());
-        entity.setModifiedTime(DateTimeUtil.getCurrentDateTime());
-        return mybatisBaseRepository.insert(entity);
+    public void insert(TEntity entity) {
+        entity.setCreatedDate(DateTimeUtil.getCurrentDateTime());
+        entity.setModifiedDate(DateTimeUtil.getCurrentDateTime());
+        mybatisBaseRepository.insert(entity);
     }
 
     @Override
-    public TEntity InsertAndGetEntity(TEntity entity) {
-        entity.setAddedTime(DateTimeUtil.getCurrentDateTime());
-        entity.setModifiedTime(DateTimeUtil.getCurrentDateTime());
+    public TEntity insertAndGet(TEntity entity) {
+        entity.setCreatedDate(DateTimeUtil.getCurrentDateTime());
+        entity.setModifiedDate(DateTimeUtil.getCurrentDateTime());
         mybatisBaseRepository.insert(entity);
         return entity;
     }
 
     @Override
-    public Integer Update(TEntity entity) {
-        entity.setModifiedTime(DateTimeUtil.getCurrentDateTime());
-        return mybatisBaseRepository.updateById(entity);
+    public void update(TEntity entity) {
+        entity.setModifiedDate(DateTimeUtil.getCurrentDateTime());
+        mybatisBaseRepository.updateById(entity);
     }
 
     @Override
-    public TEntity UpdateAndGetEntity(TEntity entity) {
-        entity.setModifiedTime(DateTimeUtil.getCurrentDateTime());
+    public TEntity updateAndGet(TEntity entity) {
+        entity.setModifiedDate(DateTimeUtil.getCurrentDateTime());
         mybatisBaseRepository.updateById(entity);
         return entity;
     }
 
     @Override
-    public Integer UpdateBy(TEntity entity, UpdateWrapper<TEntity> query) {
-        entity.setModifiedTime(DateTimeUtil.getCurrentDateTime());
-        return mybatisBaseRepository.update(entity, query);
-    }
-
-    @Override
-    public Integer DeleteById(Long id) {
+    public Integer deleteById(String id) {
         return mybatisBaseRepository.deleteById(id);
     }
 
     @Override
-    public Integer DeleteByIds(List<Long> ids) {
+    public Integer deleteByIds(List<String> ids) {
         return mybatisBaseRepository.deleteBatchIds(ids);
     }
 
     @Override
-    public TEntity SelectById(Long id) {
+    public TEntity selectOneById(String id) {
         return mybatisBaseRepository.selectById(id);
     }
 
     @Override
-    public TEntity SelectBy(SFunction<TEntity, ?> column, String value) {
+    public TEntity selectOne(SFunction<TEntity, ?> column, String value) {
         QueryWrapper<TEntity> query = new QueryWrapper<>();
         query.lambda().eq(column, value);
         return mybatisBaseRepository.selectOne(query.last("limit 1"));
     }
 
     @Override
-    public List<TEntity> SelectListBy(QueryWrapper<TEntity> query) {
+    public List<TEntity> selectAll(QueryWrapper<TEntity> query) {
         query = query == null ? new QueryWrapper<>() : query;
-        query.lambda().orderByDesc(TEntity::getModifiedTime);
+        query.lambda().orderByDesc(TEntity::getCreatedDate);
         return mybatisBaseRepository.selectList(query);
     }
 
     @Override
-    public PageModel<TEntity> SelectPageListBy(Integer pageIndex, Integer pageSize, QueryWrapper<TEntity> query) {
+    public PageModel<TEntity> selectAll(Integer pageIndex, Integer pageSize, QueryWrapper<TEntity> query) {
         query = query == null ? new QueryWrapper<>() : query;
-        query.lambda().orderByDesc(TEntity::getModifiedTime);
+        query.lambda().orderByDesc(TEntity::getCreatedDate);
         Page page = PageHelper.startPage(pageIndex, pageSize);
         mybatisBaseRepository.selectList(query);
         return PageModel.of(page);
     }
 
     @Override
-    public PageModel<TEntity> SelectPageList(Integer pageIndex, Integer pageSize, List<TEntity> list) {
+    public PageModel<TEntity> selectAll(Integer pageIndex, Integer pageSize, List<TEntity> list) {
         return PageModel.of(pageIndex, pageSize, list);
     }
 }

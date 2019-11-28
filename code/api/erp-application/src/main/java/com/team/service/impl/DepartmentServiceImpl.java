@@ -1,10 +1,11 @@
 package com.team.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.core.universal.MybatisBaseServiceImpl;
-import com.team.entity.dto.DepartmentDto;
-import com.team.entity.dto.PageDto;
-import com.team.entity.map.DepartmentMap;
-import com.team.entity.mybatis.system.Department;
+import com.team.domain.entity.DepartmentEntity;
+import com.team.entity.dto.DepartmentDTO;
+import com.team.entity.dto.PageDTO;
+import com.team.entity.map.DepartmentAutoMap;
 import com.team.exception.BusinessErrorCode;
 import com.team.exception.BusinessException;
 import com.team.model.SearchDepartmentModel;
@@ -20,18 +21,18 @@ import javax.annotation.Resource;
  * @Date 2018-10-15
  */
 @Service
-public class DepartmentServiceImpl extends MybatisBaseServiceImpl<Department> implements DepartmentService {
+public class DepartmentServiceImpl extends MybatisBaseServiceImpl<DepartmentEntity> implements DepartmentService {
 
     @Resource
-    private DepartmentMap departmentMap;
+    private DepartmentAutoMap departmentMap;
 
     @Override
-    public PageDto<DepartmentDto> getDepartmentPageListBy(SearchDepartmentModel search) {
-        return departmentMap.mapToPageDto(super.SelectPageListBy(search.getPageIndex(), search.getPageSize(), null));
+    public PageDTO<DepartmentDTO> getDepartmentPageListBy(SearchDepartmentModel search) {
+        return departmentMap.mapToPageDto(super.selectAll(search.getPageIndex(), search.getPageSize(), (QueryWrapper<DepartmentEntity>) null));
     }
 
     @Override
-    public DepartmentDto insertDepartment(DepartmentDto dto) {
+    public DepartmentDTO insertDepartment(DepartmentDTO dto) {
         if (StringUtils.isEmpty(dto.getParentId())) {
             throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "上级部门Id不能为空");
         }
@@ -41,15 +42,15 @@ public class DepartmentServiceImpl extends MybatisBaseServiceImpl<Department> im
         if (StringUtils.isEmpty(dto.getDepartmentName())) {
             throw new BusinessException(BusinessErrorCode.NO_NULL_NAME, "部门名称不能为空");
         }
-        if (super.SelectBy(Department::getDepartmentName, dto.getDepartmentName()) != null) {
+        if (super.selectOne(DepartmentEntity::getName, dto.getDepartmentName()) != null) {
             throw new BusinessException(BusinessErrorCode.EXIST_NAME, "部门名称已存在");
         }
 
-        return departmentMap.mapToDto(super.InsertAndGetEntity(departmentMap.mapToEntity(dto)));
+        return departmentMap.mapToDto(super.insertAndGet(departmentMap.mapToEntity(dto)));
     }
 
     @Override
-    public DepartmentDto editDepartment(DepartmentDto dto) {
+    public DepartmentDTO editDepartment(DepartmentDTO dto) {
         if (StringUtils.isEmpty(dto.getCompanyId())) {
             throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "公司Id不能为空");
         }
@@ -59,15 +60,6 @@ public class DepartmentServiceImpl extends MybatisBaseServiceImpl<Department> im
         if (StringUtils.isEmpty(dto.getDepartmentName())) {
             throw new BusinessException(BusinessErrorCode.NO_NULL_NAME, "上级部门Id不能为空");
         }
-        return departmentMap.mapToDto(super.UpdateAndGetEntity(departmentMap.mapToEntity(dto)));
-    }
-
-    @Override
-    public Boolean modifiedDepartment(DepartmentDto dto) {
-        if (StringUtils.isEmpty(dto.getDepartmentId())) {
-            throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "部门Id不能为空");
-        }
-        return super.UpdateAndGetEntity(departmentMap.mapToEntity(dto)).getEnabled();
-
+        return departmentMap.mapToDto(super.updateAndGet(departmentMap.mapToEntity(dto)));
     }
 }

@@ -1,10 +1,10 @@
 package com.team.service.impl;
 
 import com.team.core.universal.MongoBaseServiceImpl;
-import com.team.entity.dto.LogDto;
-import com.team.entity.dto.PageDto;
-import com.team.entity.map.LogMap;
-import com.team.entity.LogEntity;
+import com.team.entity.dto.LogDTO;
+import com.team.entity.dto.PageDTO;
+import com.team.entity.map.LogAutoMap;
+import com.team.domain.entity.LogEntity;
 import com.team.model.SeachLogModel;
 import com.team.service.LogService;
 import org.springframework.data.domain.Example;
@@ -18,10 +18,10 @@ import javax.annotation.Resource;
 public class LogServiceImpl extends MongoBaseServiceImpl<LogEntity> implements LogService {
 
     @Resource
-    private LogMap logMap;
+    private LogAutoMap logMap;
 
     @Override
-    public PageDto<LogDto> getLogPageListBy(SeachLogModel search) {
+    public PageDTO<LogDTO> getLogPageListBy(SeachLogModel search) {
         if (search.getAddedTimeSort() == null) {
             search.setAddedTimeSort("desc");
         }
@@ -33,13 +33,13 @@ public class LogServiceImpl extends MongoBaseServiceImpl<LogEntity> implements L
         log.setRequestIp(search.getRequestIp());
         log.setLogType(search.getLogType() == null ? null : !search.getLogType());
         ExampleMatcher matcher = ExampleMatcher.matching()
-                .withMatcher("description", match -> match.contains())
-                .withMatcher("method", match -> match.contains())
-                .withMatcher("exceptionDetail", match -> match.contains())
-                .withMatcher("exceptionCode", match -> match.contains())
-                .withMatcher("requestIp", match -> match.contains())
+                .withMatcher("description", ExampleMatcher.GenericPropertyMatcher::contains)
+                .withMatcher("method", ExampleMatcher.GenericPropertyMatcher::contains)
+                .withMatcher("exceptionDetail", ExampleMatcher.GenericPropertyMatcher::contains)
+                .withMatcher("exceptionCode", ExampleMatcher.GenericPropertyMatcher::contains)
+                .withMatcher("requestIp", ExampleMatcher.GenericPropertyMatcher::contains)
                 .withIgnoreCase();
 
-        return logMap.mapToPageDto(super.SelectPageListBy(search.getPageIndex(), search.getPageSize(), Example.of(log, matcher), Sort.Direction.fromString(search.getAddedTimeSort()), "addedTime"));
+        return logMap.mapToPageDto(super.findAll(search.getPageIndex(), search.getPageSize(), Example.of(log, matcher), Sort.Direction.fromString(search.getAddedTimeSort()), "addedTime"));
     }
 }
