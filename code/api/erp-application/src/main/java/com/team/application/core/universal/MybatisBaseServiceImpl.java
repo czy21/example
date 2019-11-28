@@ -7,10 +7,8 @@ import com.github.pagehelper.PageHelper;
 import com.team.application.model.page.PageModel;
 import com.team.domain.infrastructure.base.MybatisBaseEntity;
 import com.team.domain.infrastructure.base.MybatisBaseMapper;
-import com.team.application.util.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 /**
@@ -24,38 +22,24 @@ public class MybatisBaseServiceImpl<TEntity extends MybatisBaseEntity> implement
     @Autowired
     protected MybatisBaseMapper<TEntity> mybatisBaseRepository;
 
-    protected Class<TEntity> modelClass;
-
-
-    protected MybatisBaseServiceImpl() {
-        ParameterizedType pt = (ParameterizedType) this.getClass().getGenericSuperclass();
-        modelClass = (Class<TEntity>) pt.getActualTypeArguments()[0];
-    }
-
     @Override
     public void insert(TEntity entity) {
-        entity.setCreatedDate(DateTimeUtil.getCurrentDateTime());
-        entity.setModifiedDate(DateTimeUtil.getCurrentDateTime());
         mybatisBaseRepository.insert(entity);
     }
 
     @Override
     public TEntity insertAndGet(TEntity entity) {
-        entity.setCreatedDate(DateTimeUtil.getCurrentDateTime());
-        entity.setModifiedDate(DateTimeUtil.getCurrentDateTime());
         mybatisBaseRepository.insert(entity);
         return entity;
     }
 
     @Override
     public void update(TEntity entity) {
-        entity.setModifiedDate(DateTimeUtil.getCurrentDateTime());
         mybatisBaseRepository.updateById(entity);
     }
 
     @Override
     public TEntity updateAndGet(TEntity entity) {
-        entity.setModifiedDate(DateTimeUtil.getCurrentDateTime());
         mybatisBaseRepository.updateById(entity);
         return entity;
     }
