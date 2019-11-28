@@ -6,11 +6,11 @@ import org.springframework.data.repository.NoRepositoryBean;
 import java.util.Map;
 
 @NoRepositoryBean
-public interface MongoBaseRepository<TEntity, ID> extends MongoRepository<TEntity, ID> {
+public interface MongoBaseRepository<T, ID> extends MongoRepository<T, ID> {
 
-    TEntity update(ID id, TEntity t);
+    T update(ID id, T entity);
 
-    TEntity update(ID id, Map<String, Object> updateFieldMap);
+    T update(ID id, Map<String, Object> updateFieldMap);
 
 
 }
