@@ -1,5 +1,6 @@
 package com.team.application.model.page;
 
+import com.github.pagehelper.Page;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -18,6 +19,19 @@ public class PageModel<TEntity> implements Serializable {
 
     protected List<TEntity> list;
 
+
+    public PageModel(List<TEntity> list) {
+        this.list = list;
+        if (list instanceof Page) {
+            Page<TEntity> page = (Page<TEntity>) list;
+            this.pageIndex = page.getPageNum();
+            this.pageSize = page.getPageSize();
+            this.total = (int) page.getTotal();
+        } else {
+            this.total = list.size();
+        }
+    }
+
     public PageModel(org.springframework.data.domain.Page<TEntity> page) {
         this.pageIndex = page.getNumber() + 1;
         this.pageSize = page.getSize();
@@ -26,6 +40,7 @@ public class PageModel<TEntity> implements Serializable {
     }
 
     public PageModel(Integer pageIndex, Integer pageSize, List<TEntity> list) {
+        this(list);
         this.pageIndex = pageIndex;
         this.pageSize = pageSize;
         int pageCount = this.total / this.pageSize;
@@ -40,6 +55,13 @@ public class PageModel<TEntity> implements Serializable {
             toIndex = this.total;
         }
         this.list = list.subList(fromIndex, toIndex);
+    }
+
+    /*
+     * PageHelper分页
+     */
+    public static <TEntity> PageModel<TEntity> of(Page<TEntity> page) {
+        return new PageModel<>(page);
     }
 
     /*

@@ -1,8 +1,5 @@
 package com.team.application.configure;
 
-import com.alibaba.fastjson.serializer.SerializerFeature;
-import com.alibaba.fastjson.support.config.FastJsonConfig;
-import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,6 +9,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CommonsRequestLoggingFilter;
 import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -23,8 +21,18 @@ import java.util.List;
 @Configuration
 public class WebMvcConfigure implements WebMvcConfigurer {
 
+    @Bean
+    public CommonsRequestLoggingFilter requestLoggingFilter() {
+        CommonsRequestLoggingFilter loggingFilter = new CommonsRequestLoggingFilter();
+        loggingFilter.setIncludeQueryString(true);
+        loggingFilter.setIncludePayload(true);
+        loggingFilter.setMaxPayloadLength(64000);
+        return loggingFilter;
+    }
+
     @Value("${allowed-origin.url}")
     private String url;
+
     @Bean
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
@@ -36,7 +44,7 @@ public class WebMvcConfigure implements WebMvcConfigurer {
         corsConfiguration.addAllowedMethod(HttpMethod.PUT);
         corsConfiguration.addAllowedMethod(HttpMethod.POST);
         corsConfiguration.addAllowedMethod(HttpMethod.DELETE);
-        source.registerCorsConfiguration("/**", corsConfiguration); // 对接口配置跨域设置
+        source.registerCorsConfiguration("/**", corsConfiguration);
         return new CorsFilter(source);
     }
 
@@ -56,18 +64,18 @@ public class WebMvcConfigure implements WebMvcConfigurer {
         matcher.setCaseSensitive(false);
         configurer.setPathMatcher(matcher);
     }
-
-    @Override
-    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-        FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
-        FastJsonConfig fastJsonConfig = new FastJsonConfig();
-        fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat);
-        fastJsonConfig.setSerializerFeatures(SerializerFeature.BrowserCompatible);
-        fastJsonConfig.setDateFormat("yyyy-MM-dd HH:mm:ss");
-        List<MediaType> fastMediaTypes = new ArrayList<>();
-        fastMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
-        fastJsonHttpMessageConverter.setSupportedMediaTypes(fastMediaTypes);
-        fastJsonHttpMessageConverter.setFastJsonConfig(fastJsonConfig);
-        converters.add(fastJsonHttpMessageConverter);
-    }
+//
+//    @Override
+//    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+//        FastJsonHttpMessageConverter fastJsonHttpMessageConverter = new FastJsonHttpMessageConverter();
+//        FastJsonConfig fastJsonConfig = new FastJsonConfig();
+//        fastJsonConfig.setSerializerFeatures(SerializerFeature.PrettyFormat);
+//        fastJsonConfig.setSerializerFeatures(SerializerFeature.BrowserCompatible);
+//        fastJsonConfig.setDateFormat("yyyy-MM-dd HH:mm:ss");
+//        List<MediaType> fastMediaTypes = new ArrayList<>();
+//        fastMediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
+//        fastJsonHttpMessageConverter.setSupportedMediaTypes(fastMediaTypes);
+//        fastJsonHttpMessageConverter.setFastJsonConfig(fastJsonConfig);
+//        converters.add(fastJsonHttpMessageConverter);
+//    }
 }

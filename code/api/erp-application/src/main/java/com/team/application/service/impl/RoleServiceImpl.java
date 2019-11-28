@@ -1,15 +1,16 @@
 package com.team.application.service.impl;
 
 import com.team.application.core.universal.MybatisBaseServiceImpl;
-import com.team.domain.entity.PermissionEntity;
-import com.team.domain.entity.RoleEntity;
-import com.team.application.model.dto.RoleDTO;
-import com.team.application.model.automap.RoleAutoMap;
 import com.team.application.exception.BusinessErrorCode;
 import com.team.application.exception.BusinessException;
-import com.team.domain.mapper.PermissionMapper;
+import com.team.application.model.automap.RoleAutoMap;
+import com.team.application.model.dto.RoleDTO;
 import com.team.application.service.RolePermissionService;
 import com.team.application.service.RoleService;
+import com.team.domain.entity.PermissionEntity;
+import com.team.domain.entity.RoleEntity;
+import com.team.domain.mapper.PermissionMapper;
+import com.team.domain.mapper.RoleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -19,13 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * @Description Role 服务实现类
- * @Author 陈昭宇
- * @Date 2018-10-15
- */
 @Service
-public class RoleServiceImpl extends MybatisBaseServiceImpl<RoleEntity> implements RoleService {
+public class RoleServiceImpl extends MybatisBaseServiceImpl<RoleMapper, RoleEntity> implements RoleService {
 
     @Resource
     private RoleAutoMap roleMap;

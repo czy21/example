@@ -7,28 +7,28 @@ import com.team.domain.infrastructure.base.MybatisBaseEntity;
 
 import java.util.List;
 
-public interface MybatisBaseService<TEntity extends MybatisBaseEntity> {
+public interface MybatisBaseService<T extends MybatisBaseEntity> {
 
-    void insert(TEntity entity);
+    void insert(T entity);
 
-    TEntity insertAndGet(TEntity entity);
+    T insertAndGet(T entity);
 
-    void update(TEntity entity);
+    void update(T entity);
 
-    TEntity updateAndGet(TEntity entity);
+    T updateAndGet(T entity);
 
     Integer deleteById(String id);
 
     Integer deleteByIds(List<String> ids);
 
-    TEntity selectOneById(String id);
+    T selectOneById(String id);
 
-    TEntity selectOne(SFunction<TEntity, ?> column, String value);
+    T selectOne(SFunction<T, ?> column, String value);
 
-    List<TEntity> selectAll(QueryWrapper<TEntity> query);
+    List<T> selectAll(QueryWrapper<T> query);
 
-    PageModel<TEntity> selectAll(Integer pageIndex, Integer pageSize, QueryWrapper<TEntity> query);
+    PageModel<T> selectAll(Integer pageIndex, Integer pageSize, QueryWrapper<T> query);
 
-    PageModel<TEntity> selectAll(Integer pageIndex, Integer pageSize, List<TEntity> list);
+    PageModel<T> selectAll(Integer pageIndex, Integer pageSize, List<T> list);
 
 }
