@@ -1,8 +1,8 @@
 package com.team.service;
 
 import com.team.core.universal.MybatisBaseService;
-import com.team.entity.dto.RoleDto;
-import com.team.entity.mybatis.system.Role;
+import com.team.domain.entity.RoleEntity;
+import com.team.entity.dto.RoleDTO;
 
 import java.util.List;
 
@@ -11,16 +11,14 @@ import java.util.List;
  * @Author 陈昭宇
  * @Date 2018-10-15
  */
-public interface RoleService extends MybatisBaseService<Role> {
+public interface RoleService extends MybatisBaseService<RoleEntity> {
 
-    RoleDto insertRole(RoleDto dto);
+    RoleDTO insertRole(RoleDTO dto);
 
-    RoleDto editRole(RoleDto dto);
+    RoleDTO editRole(RoleDTO dto);
 
-    List<Long> getMenusByRoleId(Long roleId);
+    List<String> getFunctionsByRoleId(String roleId);
 
-    List<Long> getFunctionsByRoleId(Long roleId);
-
-    String updateRoleFuncByRoleId(Long roleId, Long[] roleFuncIds);
+    String updateRoleFuncByRoleId(String roleId, String[] roleFuncIds);
 
 }

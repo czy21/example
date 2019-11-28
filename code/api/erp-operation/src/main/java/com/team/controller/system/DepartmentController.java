@@ -1,11 +1,8 @@
 package com.team.controller.system;
 
 
-import com.team.core.annotations.Pocket;
-import com.team.entity.dto.DepartmentDto;
-import com.team.entity.dto.PageDto;
-import com.team.entity.mybatis.system.Company;
-import com.team.entity.mybatis.system.Department;
+import com.team.entity.dto.DepartmentDTO;
+import com.team.entity.dto.PageDTO;
 import com.team.model.SearchDepartmentModel;
 import com.team.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,39 +24,22 @@ public class DepartmentController {
     private DepartmentService departmentService;
 
     @GetMapping("load")
-    @Pocket(entity = Company.class)
-    @Pocket(entity = Department.class)
-
-    //@PreAuthorize("hasAuthority('SearchDepartment')")
-    public PageDto<DepartmentDto> Load(SearchDepartmentModel search) {
+    public PageDTO<DepartmentDTO> Load(SearchDepartmentModel search) {
         return departmentService.getDepartmentPageListBy(search);
     }
 
     @PostMapping("search")
-
-    //@PreAuthorize("hasAuthority('SearchDepartment')")
-    public PageDto<DepartmentDto> Search(SearchDepartmentModel search) {
+    public PageDTO<DepartmentDTO> Search(SearchDepartmentModel search) {
         return departmentService.getDepartmentPageListBy(search);
     }
 
     @PostMapping("add")
-
-    //@PreAuthorize("hasAuthority('AddDepartment')")
-    public DepartmentDto Add(DepartmentDto dto) {
+    public DepartmentDTO Add(DepartmentDTO dto) {
         return departmentService.insertDepartment(dto);
     }
 
     @PostMapping("edit")
-
-    //@PreAuthorize("hasAuthority('EditDepartment')")
-    public DepartmentDto Edit(DepartmentDto dto) {
+    public DepartmentDTO Edit(DepartmentDTO dto) {
         return departmentService.editDepartment(dto);
-    }
-
-    @PostMapping("modified")
-
-    //@PreAuthorize("hasAuthority('DisableDepartment')")
-    public Boolean Modified(DepartmentDto dto) {
-        return departmentService.modifiedDepartment(dto);
     }
 }

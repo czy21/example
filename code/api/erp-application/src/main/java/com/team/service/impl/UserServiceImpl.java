@@ -1,23 +1,21 @@
 package com.team.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.core.universal.MybatisBaseServiceImpl;
-import com.team.entity.dto.LoginDto;
-import com.team.entity.dto.PageDto;
-import com.team.entity.dto.TokenDto;
-import com.team.entity.dto.UserDto;
-import com.team.entity.map.MenuMap;
-import com.team.entity.map.UserMap;
-import com.team.entity.mybatis.system.Function;
-import com.team.entity.mybatis.system.Role;
-import com.team.entity.mybatis.system.User;
+import com.team.domain.entity.PermissionEntity;
+import com.team.domain.entity.RoleEntity;
+import com.team.domain.entity.UserEntity;
+import com.team.entity.dto.LoginDTO;
+import com.team.entity.dto.PageDTO;
+import com.team.entity.dto.TokenDTO;
+import com.team.entity.dto.UserDTO;
+import com.team.entity.map.UserAutoMap;
 import com.team.exception.BusinessErrorCode;
 import com.team.exception.BusinessException;
-import com.team.extension.MenuExtension;
+import com.team.domain.mapper.PermissionMapper;
+import com.team.domain.mapper.RoleMapper;
 import com.team.model.SearchUserModel;
-import com.team.mapper.PermissionMapper;
-import com.team.mapper.MenuRepository;
-import com.team.mapper.RoleMapper;
 import com.team.service.UserService;
 import com.team.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,91 +33,87 @@ import java.util.stream.Collectors;
  * @Date 2018-10-15
  */
 @Service
-public class UserServiceImpl extends MybatisBaseServiceImpl<User> implements UserService {
+public class UserServiceImpl extends MybatisBaseServiceImpl<UserEntity> implements UserService {
 
     @Resource
-    private UserMap userMap;
-    @Resource
-    private MenuMap menuMap;
+    private UserAutoMap userMap;
     @Autowired
     private RoleMapper roleRepository;
     @Autowired
     private PermissionMapper functionRepository;
-    @Autowired
-    private MenuRepository menuRepository;
 
     @Override
-    public UserDto insertDefaultPwd(UserDto dto) {
+    public UserDTO insertDefaultPwd(UserDTO dto) {
         if (StringUtils.isEmpty(dto.getUserName())) {
             throw new BusinessException(BusinessErrorCode.EXIST_NAME, "用户姓名不能为空");
         }
-        if (super.SelectBy(User::getLoginName, dto.getLoginName()) != null) {
+        if (super.selectOne(UserEntity::getLoginName, dto.getLoginName()) != null) {
             throw new BusinessException(BusinessErrorCode.EXIST_USER, "用户账号已存在");
         }
-        User user = userMap.mapToEntity(dto);
+        UserEntity user = userMap.mapToEntity(dto);
         user.setPassword("123456");
-        return userMap.mapToDto(super.InsertAndGetEntity(user));
+        return userMap.mapToDto(super.insertAndGet(user));
     }
 
     @Override
-    public UserDto editUser(UserDto dto) {
-        if (StringUtils.isEmpty(dto.getUserId())) {
+    public UserDTO editUser(UserDTO dto) {
+        if (StringUtils.isEmpty(dto.getId())) {
             throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "用户Id不能为空");
         }
         if (StringUtils.isEmpty(dto.getUserName())) {
             throw new BusinessException(BusinessErrorCode.NO_NULL_NAME, "用户姓名不能为空");
         }
-        return userMap.mapToDto(super.UpdateAndGetEntity(userMap.mapToEntity(dto)));
+        return userMap.mapToDto(super.updateAndGet(userMap.mapToEntity(dto)));
     }
 
     @Override
-    public Boolean modifiedUser(UserDto dto) {
-        if (StringUtils.isEmpty(dto.getUserId())) {
+    public Boolean modifiedUser(UserDTO dto) {
+        if (StringUtils.isEmpty(dto.getId())) {
             throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "用户Id不能为空");
         }
-        return super.UpdateAndGetEntity(userMap.mapToEntity(dto)).getEnabled();
+
+        return null;
     }
 
     @Override
-    public PageDto<UserDto> getUserPageListBy(SearchUserModel search) {
-        return userMap.mapToPageDto(super.SelectPageListBy(search.getPageIndex(), search.getPageSize(), null));
+    public PageDTO<UserDTO> getUserPageListBy(SearchUserModel search) {
+        return userMap.mapToPageDto(super.selectAll(search.getPageIndex(), search.getPageSize(), (QueryWrapper<UserEntity>) null));
     }
 
     @Override
-    public List<Role> getRolesByLoginName(String loginName) {
-        return roleRepository.getRolesByLoginName(loginName);
+    public List<RoleEntity> getRolesByLoginName(String loginName) {
+        return roleRepository.selectAllByLoginName(loginName);
     }
 
     @Override
-    public List<Function> getFunctionsByRole(List<Long> roleIds) {
-        return functionRepository.selectPermissionByRoleIds(roleIds);
+    public List<PermissionEntity> getFunctionsByRole(List<String> roleIds) {
+        return functionRepository.selectAllByRoleIds(roleIds);
     }
 
     @Override
-    public JSONObject login(LoginDto dto) {
-        User user = super.SelectBy(User::getLoginName, dto.getLoginName());
+    public JSONObject login(LoginDTO dto) {
+        UserEntity user = super.selectOne(UserEntity::getLoginName, dto.getLoginName());
         if (ObjectUtils.isEmpty(user)) {
             throw new BusinessException(BusinessErrorCode.NO_USER, "用户不存在");
         }
         JSONObject json = new JSONObject();
-        TokenDto token = new TokenDto();
+        TokenDTO token = new TokenDTO();
         token.setUser(userMap.mapToAccountDto(user));
-        token.setMenus(MenuExtension.createTreeMenus(menuMap.toMenuTree(menuRepository.getMenusByUserId(user.getUserId()))));
-        token.setPermissions(functionRepository.selectPermissionsByUserId(user.getUserId()).stream().map(Function::getFunctionCode).collect(Collectors.toList()));
+        token.setPermissions(functionRepository.selectAllByUserId(user.getId()).stream().map(PermissionEntity::getKey).collect(Collectors.toList()));
         token.setValue(JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));
         json.put("token", token);
         return json;
     }
 
     @Override
-    public JSONObject register(LoginDto dto) {
-        User user = super.SelectBy(User::getLoginName, dto.getLoginName());
-        super.Update(user);
+    public JSONObject register(LoginDTO dto) {
+        UserEntity user = super.selectOne(UserEntity::getLoginName, dto.getLoginName());
+        super.update(user);
         return null;
     }
 
     @Override
-    public List<Function> getFunctionsByUser(Long userId) {
-        return functionRepository.selectPermissionsByUserId(userId);
+    public List<PermissionEntity> getFunctionsByUser(String userId) {
+        return functionRepository.selectAllByUserId(userId);
     }
 }

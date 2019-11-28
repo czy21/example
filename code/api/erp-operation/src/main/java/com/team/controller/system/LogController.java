@@ -1,12 +1,10 @@
 package com.team.controller.system;
 
 import com.team.core.annotations.NoLog;
-import com.team.entity.dto.LogDto;
-import com.team.entity.dto.PageDto;
+import com.team.entity.dto.LogDTO;
+import com.team.entity.dto.PageDTO;
 import com.team.model.SeachLogModel;
 import com.team.service.LogService;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,7 +28,7 @@ public class LogController {
     @GetMapping("load")
 
     //@PreAuthorize("hasAuthority('SearchLog')")
-    public PageDto<LogDto> Load(SeachLogModel search) {
+    public PageDTO<LogDTO> Load(SeachLogModel search) {
         return logService.getLogPageListBy(search);
     }
 
@@ -38,7 +36,7 @@ public class LogController {
     @PostMapping("search")
 
     //@PreAuthorize("hasAuthority('SearchLog')")
-    public PageDto<LogDto> Search(SeachLogModel search) {
+    public PageDTO<LogDTO> Search(SeachLogModel search) {
         return logService.getLogPageListBy(search);
     }
 }

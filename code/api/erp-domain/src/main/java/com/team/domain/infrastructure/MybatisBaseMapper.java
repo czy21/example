@@ -1,0 +1,7 @@
+package com.team.domain.infrastructure;
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+
+public interface MybatisBaseMapper<TEntity> extends BaseMapper<TEntity> {
+
+}

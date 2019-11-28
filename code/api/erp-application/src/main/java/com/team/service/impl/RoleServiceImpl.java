@@ -1,16 +1,14 @@
 package com.team.service.impl;
 
 import com.team.core.universal.MybatisBaseServiceImpl;
-import com.team.entity.dto.RoleDto;
-import com.team.entity.map.RoleMap;
-import com.team.entity.mybatis.system.Function;
-import com.team.entity.mybatis.system.Menu;
-import com.team.entity.mybatis.system.Role;
-import com.team.exception.BusinessException;
+import com.team.domain.entity.PermissionEntity;
+import com.team.domain.entity.RoleEntity;
+import com.team.entity.dto.RoleDTO;
+import com.team.entity.map.RoleAutoMap;
 import com.team.exception.BusinessErrorCode;
-import com.team.mapper.PermissionMapper;
-import com.team.mapper.MenuRepository;
-import com.team.service.RoleFunctionService;
+import com.team.exception.BusinessException;
+import com.team.domain.mapper.PermissionMapper;
+import com.team.service.RolePermissionService;
 import com.team.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,57 +25,47 @@ import java.util.stream.Collectors;
  * @Date 2018-10-15
  */
 @Service
-public class RoleServiceImpl extends MybatisBaseServiceImpl<Role> implements RoleService {
+public class RoleServiceImpl extends MybatisBaseServiceImpl<RoleEntity> implements RoleService {
 
     @Resource
-    private RoleMap roleMap;
+    private RoleAutoMap roleMap;
 
     @Resource
-    private RoleFunctionService roleFunctionService;
+    private RolePermissionService roleFunctionService;
     @Autowired
     private PermissionMapper functionRepository;
-    @Autowired
-    private MenuRepository menuRepository;
 
     @Override
-    public RoleDto insertRole(RoleDto dto) {
+    public RoleDTO insertRole(RoleDTO dto) {
         if (StringUtils.isEmpty(dto.getRoleName())) {
             throw new BusinessException(BusinessErrorCode.NO_NULL_NAME, "角色名称不能为空");
         }
-        if (super.SelectBy(Role::getRoleName, dto.getRoleName()) != null) {
+        if (super.selectOne(RoleEntity::getName, dto.getRoleName()) != null) {
             throw new BusinessException(BusinessErrorCode.EXIST_NAME, "角色名称已存在");
         }
-        return roleMap.mapToDto(super.InsertAndGetEntity(roleMap.mapToEntity(dto)));
+        return roleMap.mapToDto(super.insertAndGet(roleMap.mapToEntity(dto)));
     }
 
     @Override
-    public RoleDto editRole(RoleDto dto) {
+    public RoleDTO editRole(RoleDTO dto) {
         if (StringUtils.isEmpty(dto.getRoleId())) {
             throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "角色Id不能为空");
         }
         if (StringUtils.isEmpty(dto.getRoleName())) {
             throw new BusinessException(BusinessErrorCode.NO_NULL_NAME, "角色名称不能为空");
         }
-        return roleMap.mapToDto(super.UpdateAndGetEntity(roleMap.mapToEntity(dto)));
+        return roleMap.mapToDto(super.updateAndGet(roleMap.mapToEntity(dto)));
     }
 
     @Override
-    public List<Long> getMenusByRoleId(Long roleId) {
-        if (StringUtils.isEmpty(roleId)) {
-            throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "角色Id不能为空");
-        }
-        return menuRepository.getMenusByRoleId(roleId).stream().filter(t -> !t.getUrl().equals("#")).map(Menu::getMenuId).collect(Collectors.toList());
-    }
-
-    @Override
-    public List<Long> getFunctionsByRoleId(Long roleId) {
-        List<Long> roleIds = new ArrayList<>();
+    public List<String> getFunctionsByRoleId(String roleId) {
+        List<String> roleIds = new ArrayList<>();
         roleIds.add(roleId);
-        return functionRepository.selectPermissionByRoleIds(roleIds).stream().map(Function::getFunctionId).collect(Collectors.toList());
+        return functionRepository.selectAllByRoleIds(roleIds).stream().map(PermissionEntity::getKey).collect(Collectors.toList());
     }
 
     @Override
-    public String updateRoleFuncByRoleId(Long roleId, Long[] roleFuncIds) {
+    public String updateRoleFuncByRoleId(String roleId, String[] roleFuncIds) {
         return roleFunctionService.insertOrUpdateRoleFunc(roleId, roleFuncIds);
     }
 

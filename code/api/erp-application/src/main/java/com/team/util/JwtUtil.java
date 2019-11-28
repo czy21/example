@@ -4,7 +4,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.team.entity.mybatis.system.User;
+import com.team.domain.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -24,13 +24,13 @@ public class JwtUtil {
         redisUtil = _redisUtil;
     }
 
-    private static User currentUser;
+    private static UserEntity currentUser;
 
-    public static User getCurrentUser() {
+    public static UserEntity getCurrentUser() {
         return currentUser;
     }
 
-    public static void setCurrentUser(User currentUser) {
+    public static void setCurrentUser(UserEntity currentUser) {
         JwtUtil.currentUser = currentUser;
     }
 

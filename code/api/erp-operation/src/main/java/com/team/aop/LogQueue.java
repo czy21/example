@@ -1,6 +1,6 @@
 package com.team.aop;
 
-import com.team.entity.LogEntity;
+import com.team.domain.entity.LogEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.BlockingQueue;

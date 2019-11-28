@@ -2,17 +2,17 @@ package com.team.controller.system;
 
 
 import com.alibaba.fastjson.JSONObject;
-import com.team.core.annotations.Pocket;
-import com.team.entity.dto.LoginDto;
-import com.team.entity.dto.PageDto;
-import com.team.entity.dto.UserDto;
-import com.team.entity.mybatis.system.Department;
-import com.team.entity.mybatis.system.Role;
+import com.team.entity.dto.LoginDTO;
+import com.team.entity.dto.PageDTO;
+import com.team.entity.dto.UserDTO;
 import com.team.model.SearchUserModel;
 import com.team.service.UserRoleService;
 import com.team.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -32,64 +32,43 @@ public class UserController {
     private UserRoleService userRoleService;
 
     @GetMapping("load")
-    @Pocket(entity = Role.class)
-    @Pocket(entity = Department.class)
-
-    //@PreAuthorize("hasAuthority('SearchUser')")
-    public PageDto<UserDto> Load(SearchUserModel search) {
+    public PageDTO<UserDTO> load(SearchUserModel search) {
         return userService.getUserPageListBy(search);
     }
 
     @PostMapping("search")
-
-    //@PreAuthorize("hasAuthority('SearchUser')")
-    public PageDto<UserDto> Search(SearchUserModel search) {
+    public PageDTO<UserDTO> search(SearchUserModel search) {
         return userService.getUserPageListBy(search);
     }
 
     @PostMapping("add")
-
-    //@PreAuthorize("hasAuthority('AddUser')")
-    public UserDto Add(UserDto dto) {
+    public UserDTO add(UserDTO dto) {
         return userService.insertDefaultPwd(dto);
     }
 
     @PostMapping("edit")
-
-    //@PreAuthorize("hasAuthority('EditUser')")
-    public UserDto Edit(UserDto dto) {
+    public UserDTO edit(UserDTO dto) {
         return userService.editUser(dto);
     }
 
     @PostMapping("modified")
-
-    //@PreAuthorize("hasAuthority('DisableUser')")
-    public Boolean Modified(UserDto dto) {
+    public Boolean modified(UserDTO dto) {
         return userService.modifiedUser(dto);
     }
 
     @PostMapping("userRoleDetails")
-
-    //@PreAuthorize("hasAuthority('AllotUserRole')")
-    public List<Long> UserRoleDetails(Long userId) {
+    public List<String> userRoleDetails(String userId) {
         return userRoleService.getRolesByUserId(userId);
     }
 
-    @PostMapping(value = "updateUserRole")
-
-    //@PreAuthorize("hasAuthority('AllotUserRole')")
-    public String updateUserRole(Long userId, @RequestParam(value = "userRoleIds[]", required = false) Long[] userRoleIds) {
-        return userRoleService.insertOrUpdateUserRole(userId, userRoleIds);
-    }
-
     @PostMapping("login")
-    public JSONObject Login(LoginDto dto) {
+    public JSONObject login(LoginDTO dto) {
         return userService.login(dto);
     }
 
 
     @PostMapping("register")
-    public JSONObject register(LoginDto dto) {
+    public JSONObject register(LoginDTO dto) {
         return userService.register(dto);
     }
 }

@@ -6,7 +6,6 @@ CREATE TABLE `ent_sys_user`  (
   `email` varchar(50) DEFAULT NULL COMMENT '用户邮箱',
   `department_id` varchar(36)  NOT NULL COMMENT '所属部门',
   ${{{TrackedColumns}}},
-  `remark` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`) ,
   INDEX `fk_User_Department`(`department_id`) ,
   CONSTRAINT `fk_User_Department` FOREIGN KEY (`department_id`) 

@@ -1,7 +1,7 @@
 package com.team.aop;
 
 import com.team.core.annotations.NoLog;
-import com.team.entity.LogEntity;
+import com.team.domain.entity.LogEntity;
 import com.team.exception.ServiceException;
 import com.team.util.DateTimeUtil;
 import com.team.util.HttpClientUtil;
@@ -134,7 +134,7 @@ public class AspectLog {
             sysLog.setMethod(targetClassName + "->" + method.getName());
             sysLog.setRequestIp(HttpClientUtil.getClientIp());
             sysLog.setOperator(JwtUtil.getCurrentUser());
-            sysLog.setAddedTime(DateTimeUtil.getCurrentDateTime());
+            sysLog.setCreatedDate(DateTimeUtil.getCurrentDateTime());
         } catch (Exception ex) {
             log.error("异常信息:{}", ex.getMessage());
         }

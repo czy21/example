@@ -1,9 +1,9 @@
 package com.team.service;
 
 import com.team.core.universal.MybatisBaseService;
-import com.team.entity.dto.DepartmentDto;
-import com.team.entity.dto.PageDto;
-import com.team.entity.mybatis.system.Department;
+import com.team.domain.entity.DepartmentEntity;
+import com.team.entity.dto.DepartmentDTO;
+import com.team.entity.dto.PageDTO;
 import com.team.model.SearchDepartmentModel;
 
 /**
@@ -11,13 +11,11 @@ import com.team.model.SearchDepartmentModel;
  * @Author 陈昭宇
  * @Date 2018-10-15
  */
-public interface DepartmentService extends MybatisBaseService<Department> {
+public interface DepartmentService extends MybatisBaseService<DepartmentEntity> {
 
-    PageDto<DepartmentDto> getDepartmentPageListBy(SearchDepartmentModel search);
+    PageDTO<DepartmentDTO> getDepartmentPageListBy(SearchDepartmentModel search);
 
-    DepartmentDto insertDepartment(DepartmentDto dto);
+    DepartmentDTO insertDepartment(DepartmentDTO dto);
 
-    DepartmentDto editDepartment(DepartmentDto dto);
-
-    Boolean modifiedDepartment(DepartmentDto dto);
+    DepartmentDTO editDepartment(DepartmentDTO dto);
 }

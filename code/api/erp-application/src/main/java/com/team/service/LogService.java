@@ -1,9 +1,9 @@
 package com.team.service;
 
 import com.team.core.universal.MongoBaseService;
-import com.team.entity.dto.LogDto;
-import com.team.entity.dto.PageDto;
-import com.team.entity.LogEntity;
+import com.team.domain.entity.LogEntity;
+import com.team.entity.dto.LogDTO;
+import com.team.entity.dto.PageDTO;
 import com.team.model.SeachLogModel;
 
 /**
@@ -13,7 +13,7 @@ import com.team.model.SeachLogModel;
  */
 public interface LogService extends MongoBaseService<LogEntity> {
 
-    PageDto<LogDto> getLogPageListBy(SeachLogModel seach);
+    PageDTO<LogDTO> getLogPageListBy(SeachLogModel seach);
 
 
 }
