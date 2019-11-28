@@ -1,7 +1,7 @@
 package com.team.domain.mapper;
 
 import com.team.domain.entity.RolePermissionEntity;
-import com.team.domain.infrastructure.MybatisBaseMapper;
+import com.team.domain.infrastructure.base.MybatisBaseMapper;
 
 /**
  * @author 陈昭宇

@@ -1,7 +1,7 @@
 package com.team.domain.mapper;
 
 import com.team.domain.entity.CompanyEntity;
-import com.team.domain.infrastructure.MybatisBaseMapper;
+import com.team.domain.infrastructure.base.MybatisBaseMapper;
 
 /**
  * @Description Company 数据访问层

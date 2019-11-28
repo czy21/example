@@ -1,4 +1,4 @@
-package com.team.domain.infrastructure;
+package com.team.domain.infrastructure.base;
 
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;

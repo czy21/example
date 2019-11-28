@@ -1,7 +1,7 @@
 package com.team.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.team.domain.infrastructure.MongoBaseEntity;
+import com.team.domain.infrastructure.base.MongoBaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.mongodb.core.mapping.Document;

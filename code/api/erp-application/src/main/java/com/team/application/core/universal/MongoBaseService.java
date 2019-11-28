@@ -1,7 +1,7 @@
 package com.team.application.core.universal;
 
 import com.team.application.model.page.PageModel;
-import com.team.domain.infrastructure.MongoBaseEntity;
+import com.team.domain.infrastructure.base.MongoBaseEntity;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Sort;
 

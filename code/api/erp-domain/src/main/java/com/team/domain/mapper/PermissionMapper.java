@@ -1,7 +1,7 @@
 package com.team.domain.mapper;
 
 import com.team.domain.entity.PermissionEntity;
-import com.team.domain.infrastructure.MybatisBaseMapper;
+import com.team.domain.infrastructure.base.MybatisBaseMapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

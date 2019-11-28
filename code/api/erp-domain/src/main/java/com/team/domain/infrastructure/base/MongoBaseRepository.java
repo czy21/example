@@ -1,4 +1,4 @@
-package com.team.domain.infrastructure;
+package com.team.domain.infrastructure.base;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.repository.NoRepositoryBean;

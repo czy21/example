@@ -4,7 +4,7 @@
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap"
                type="com.team.domain.entity.RoleEntity"
-               extends="com.team.domain.infrastructure.MybatisBaseMapper.BaseResultMap">
+               extends="com.team.domain.infrastructure.base.MybatisBaseMapper.BaseResultMap">
 
     </resultMap>
     <select id="selectAllByLoginName" resultType="com.team.domain.entity.RoleEntity">
