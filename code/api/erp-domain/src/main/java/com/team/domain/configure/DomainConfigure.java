@@ -1,6 +1,6 @@
 package com.team.domain.configure;
 
-import com.team.domain.infrastructure.MongoBaseRepositoryImpl;
+import com.team.domain.infrastructure.base.MongoBaseRepositoryImpl;
 import com.team.domain.mapper.UserMapper;
 import com.team.domain.repository.LogRepository;
 import org.mybatis.spring.annotation.MapperScan;

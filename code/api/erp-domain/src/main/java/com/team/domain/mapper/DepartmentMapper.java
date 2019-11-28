@@ -1,6 +1,6 @@
 package com.team.domain.mapper;
 
-import com.team.domain.infrastructure.MybatisBaseMapper;
+import com.team.domain.infrastructure.base.MybatisBaseMapper;
 import com.team.domain.entity.DepartmentEntity;
 
 /**

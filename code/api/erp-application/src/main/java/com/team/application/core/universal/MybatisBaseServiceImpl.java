@@ -5,8 +5,8 @@ import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.team.application.model.page.PageModel;
-import com.team.domain.infrastructure.MybatisBaseEntity;
-import com.team.domain.infrastructure.MybatisBaseMapper;
+import com.team.domain.infrastructure.base.MybatisBaseEntity;
+import com.team.domain.infrastructure.base.MybatisBaseMapper;
 import com.team.application.util.DateTimeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 

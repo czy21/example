@@ -1,6 +1,6 @@
 package com.team.domain.repository;
 
-import com.team.domain.infrastructure.MongoBaseRepository;
+import com.team.domain.infrastructure.base.MongoBaseRepository;
 import com.team.domain.entity.LogEntity;
 
 /**

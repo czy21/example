@@ -1,4 +1,4 @@
-package com.team.domain.infrastructure;
+package com.team.domain.infrastructure.base;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
