@@ -9,10 +9,7 @@ import com.team.application.model.vo.SearchUserModel;
 import com.team.application.service.UserRoleService;
 import com.team.application.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -42,12 +39,12 @@ public class UserController {
     }
 
     @PostMapping("add")
-    public UserDTO add(UserDTO dto) {
+    public UserDTO add(@RequestBody UserDTO dto) {
         return userService.insertDefaultPwd(dto);
     }
 
     @PostMapping("edit")
-    public UserDTO edit(UserDTO dto) {
+    public UserDTO edit(@RequestBody UserDTO dto) {
         return userService.editUser(dto);
     }
 
