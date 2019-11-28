@@ -2,11 +2,12 @@ package com.team.application.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.application.core.universal.MybatisBaseServiceImpl;
-import com.team.domain.entity.UserRoleEntity;
 import com.team.application.exception.BusinessErrorCode;
 import com.team.application.exception.BusinessException;
 import com.team.application.service.UserRoleService;
 import com.team.application.service.UserService;
+import com.team.domain.entity.UserRoleEntity;
+import com.team.domain.mapper.UserRoleMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.ObjectUtils;
@@ -16,14 +17,8 @@ import javax.annotation.Resource;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-
-/**
- * @Description UserRole 服务实现类
- * @Author 陈昭宇
- * @Date 2018-10-15
- */
 @Service
-public class UserRoleServiceImpl extends MybatisBaseServiceImpl<UserRoleEntity> implements UserRoleService {
+public class UserRoleServiceImpl extends MybatisBaseServiceImpl<UserRoleMapper, UserRoleEntity> implements UserRoleService {
 
     @Resource
     private UserService userService;
@@ -45,7 +40,7 @@ public class UserRoleServiceImpl extends MybatisBaseServiceImpl<UserRoleEntity> 
     @Override
     @Transactional
     public String insertOrUpdateUserRole(String userId, String[] userRoleIds) {
-        super.mybatisBaseRepository.delete(queryByUserId(userId));
+        super.baseMapper.delete(queryByUserId(userId));
         if (!ObjectUtils.isEmpty(userRoleIds)) {
             Arrays.asList(userRoleIds).forEach(t -> {
                 UserRoleEntity userRole = new UserRoleEntity();

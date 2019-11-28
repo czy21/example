@@ -1,8 +1,6 @@
 package com.team.operation.controller;
 
 
-import com.alibaba.fastjson.JSONObject;
-import com.team.application.model.dto.LoginDTO;
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.dto.UserDTO;
 import com.team.application.model.vo.SearchUserModel;
@@ -14,11 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-/**
- * @author 陈昭宇
- * @description User 前端控制器
- * @date 2018-09-24
- */
 @RestController
 @RequestMapping("user")
 public class UserController {
@@ -56,17 +49,6 @@ public class UserController {
     @PostMapping("userRoleDetails")
     public List<String> userRoleDetails(String userId) {
         return userRoleService.getRolesByUserId(userId);
-    }
-
-    @PostMapping("login")
-    public JSONObject login(LoginDTO dto) {
-        return userService.login(dto);
-    }
-
-
-    @PostMapping("register")
-    public JSONObject register(LoginDTO dto) {
-        return userService.register(dto);
     }
 }
 

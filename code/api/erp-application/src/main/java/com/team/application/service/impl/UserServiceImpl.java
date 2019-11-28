@@ -1,39 +1,29 @@
 package com.team.application.service.impl;
 
-import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.application.core.universal.MybatisBaseServiceImpl;
+import com.team.application.exception.BusinessErrorCode;
+import com.team.application.exception.BusinessException;
+import com.team.application.model.automap.UserAutoMap;
+import com.team.application.model.dto.PageDTO;
+import com.team.application.model.dto.UserDTO;
+import com.team.application.model.vo.SearchUserModel;
+import com.team.application.service.UserService;
 import com.team.domain.entity.PermissionEntity;
 import com.team.domain.entity.RoleEntity;
 import com.team.domain.entity.UserEntity;
-import com.team.application.model.dto.LoginDTO;
-import com.team.application.model.dto.PageDTO;
-import com.team.application.model.dto.TokenDTO;
-import com.team.application.model.dto.UserDTO;
-import com.team.application.model.automap.UserAutoMap;
-import com.team.application.exception.BusinessErrorCode;
-import com.team.application.exception.BusinessException;
 import com.team.domain.mapper.PermissionMapper;
 import com.team.domain.mapper.RoleMapper;
-import com.team.application.model.vo.SearchUserModel;
-import com.team.application.service.UserService;
-import com.team.application.util.JwtUtil;
+import com.team.domain.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.stream.Collectors;
 
-/**
- * @Description User 服务实现类
- * @Author 陈昭宇
- * @Date 2018-10-15
- */
 @Service
-public class UserServiceImpl extends MybatisBaseServiceImpl<UserEntity> implements UserService {
+public class UserServiceImpl extends MybatisBaseServiceImpl<UserMapper, UserEntity> implements UserService {
 
     @Resource
     private UserAutoMap userMap;
@@ -90,27 +80,27 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<UserEntity> implemen
         return functionRepository.selectAllByRoleIds(roleIds);
     }
 
-    @Override
-    public JSONObject login(LoginDTO dto) {
-        UserEntity user = super.selectOne(UserEntity::getLoginName, dto.getLoginName());
-        if (ObjectUtils.isEmpty(user)) {
-            throw new BusinessException(BusinessErrorCode.NO_USER, "用户不存在");
-        }
-        JSONObject json = new JSONObject();
-        TokenDTO token = new TokenDTO();
-        token.setUser(userMap.mapToAccountDto(user));
-        token.setPermissions(functionRepository.selectAllByUserId(user.getId()).stream().map(PermissionEntity::getKey).collect(Collectors.toList()));
-        token.setValue(JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));
-        json.put("token", token);
-        return json;
-    }
+//    @Override
+//    public JSONObject login(LoginDTO dto) {
+//        UserEntity user = super.selectOne(UserEntity::getLoginName, dto.getLoginName());
+//        if (ObjectUtils.isEmpty(user)) {
+//            throw new BusinessException(BusinessErrorCode.NO_USER, "用户不存在");
+//        }
+//        JSONObject json = new JSONObject();
+//        TokenDTO token = new TokenDTO();
+//        token.setUser(userMap.mapToAccountDto(user));
+//        token.setPermissions(functionRepository.selectAllByUserId(user.getId()).stream().map(PermissionEntity::getKey).collect(Collectors.toList()));
+//        token.setValue(JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));
+//        json.put("token", token);
+//        return json;
+//    }
 
-    @Override
-    public JSONObject register(LoginDTO dto) {
-        UserEntity user = super.selectOne(UserEntity::getLoginName, dto.getLoginName());
-        super.update(user);
-        return null;
-    }
+//    @Override
+//    public JSONObject register(LoginDTO dto) {
+//        UserEntity user = super.selectOne(UserEntity::getLoginName, dto.getLoginName());
+//        super.update(user);
+//        return null;
+//    }
 
     @Override
     public List<PermissionEntity> getFunctionsByUser(String userId) {

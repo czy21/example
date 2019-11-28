@@ -2,26 +2,22 @@ package com.team.application.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.application.core.universal.MybatisBaseServiceImpl;
-import com.team.domain.entity.PermissionEntity;
-import com.team.application.model.dto.PageDTO;
-import com.team.application.model.dto.PermissionDTO;
-import com.team.application.model.automap.PermissionAutoAutoMap;
 import com.team.application.exception.BusinessErrorCode;
 import com.team.application.exception.BusinessException;
+import com.team.application.model.automap.PermissionAutoAutoMap;
+import com.team.application.model.dto.PageDTO;
+import com.team.application.model.dto.PermissionDTO;
 import com.team.application.model.vo.SearchFunctionModel;
 import com.team.application.service.PermissionService;
+import com.team.domain.entity.PermissionEntity;
+import com.team.domain.mapper.PermissionMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 
-/**
- * @author 陈昭宇
- * @description Function 服务实现类
- * @date 2019-03-05
- */
 @Service
-public class PermissionServiceImpl extends MybatisBaseServiceImpl<PermissionEntity> implements PermissionService {
+public class PermissionServiceImpl extends MybatisBaseServiceImpl<PermissionMapper, PermissionEntity> implements PermissionService {
 
     @Resource
     private PermissionAutoAutoMap functionMap;

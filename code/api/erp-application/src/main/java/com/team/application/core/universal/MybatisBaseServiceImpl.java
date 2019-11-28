@@ -2,6 +2,8 @@ package com.team.application.core.universal;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 import com.team.application.model.page.PageModel;
 import com.team.domain.infrastructure.base.MybatisBaseEntity;
 import com.team.domain.infrastructure.base.MybatisBaseMapper;
@@ -9,79 +11,73 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-/**
- * @Description 业务逻辑层基类实现
- * @Author 陈昭宇
- * @Date 2018/7/26
- */
-@SuppressWarnings("unchecked")
-public class MybatisBaseServiceImpl<TEntity extends MybatisBaseEntity> implements MybatisBaseService<TEntity> {
+public class MybatisBaseServiceImpl<M extends MybatisBaseMapper<T>, T extends MybatisBaseEntity> implements MybatisBaseService<T> {
 
     @Autowired
-    protected MybatisBaseMapper<TEntity> mybatisBaseRepository;
+    protected M baseMapper;
 
     @Override
-    public void insert(TEntity entity) {
-        mybatisBaseRepository.insert(entity);
+    public void insert(T entity) {
+        baseMapper.insert(entity);
     }
 
     @Override
-    public TEntity insertAndGet(TEntity entity) {
-        mybatisBaseRepository.insert(entity);
+    public T insertAndGet(T entity) {
+        baseMapper.insert(entity);
         return entity;
     }
 
     @Override
-    public void update(TEntity entity) {
-        mybatisBaseRepository.updateById(entity);
+    public void update(T entity) {
+        baseMapper.updateById(entity);
     }
 
     @Override
-    public TEntity updateAndGet(TEntity entity) {
-        mybatisBaseRepository.updateById(entity);
+    public T updateAndGet(T entity) {
+        baseMapper.updateById(entity);
         return entity;
     }
 
     @Override
     public Integer deleteById(String id) {
-        return mybatisBaseRepository.deleteById(id);
+        return baseMapper.deleteById(id);
     }
 
     @Override
     public Integer deleteByIds(List<String> ids) {
-        return mybatisBaseRepository.deleteBatchIds(ids);
+        return baseMapper.deleteBatchIds(ids);
     }
 
     @Override
-    public TEntity selectOneById(String id) {
-        return mybatisBaseRepository.selectById(id);
+    public T selectOneById(String id) {
+        return baseMapper.selectById(id);
     }
 
     @Override
-    public TEntity selectOne(SFunction<TEntity, ?> column, String value) {
-        QueryWrapper<TEntity> query = new QueryWrapper<>();
+    public T selectOne(SFunction<T, ?> column, String value) {
+        QueryWrapper<T> query = new QueryWrapper<>();
         query.lambda().eq(column, value);
-        return mybatisBaseRepository.selectOne(query.last("limit 1"));
+        return baseMapper.selectOne(query.last("limit 1"));
     }
 
     @Override
-    public List<TEntity> selectAll(QueryWrapper<TEntity> query) {
+    public List<T> selectAll(QueryWrapper<T> query) {
         query = query == null ? new QueryWrapper<>() : query;
-        query.lambda().orderByDesc(TEntity::getCreatedDate);
-        return mybatisBaseRepository.selectList(query);
+        query.lambda().orderByDesc(T::getCreatedDate);
+        return baseMapper.selectList(query);
     }
 
     @Override
-    public PageModel<TEntity> selectAll(Integer pageIndex, Integer pageSize, QueryWrapper<TEntity> query) {
+    public PageModel<T> selectAll(Integer pageIndex, Integer pageSize, QueryWrapper<T> query) {
         query = query == null ? new QueryWrapper<>() : query;
-        query.lambda().orderByDesc(TEntity::getCreatedDate);
-        mybatisBaseRepository.selectList(query);
-
-        return null;
+        query.lambda().orderByDesc(T::getCreatedDate);
+        Page<T> page = PageHelper.startPage(pageIndex, pageSize);
+        baseMapper.selectList(query);
+        return PageModel.of(page);
     }
 
     @Override
-    public PageModel<TEntity> selectAll(Integer pageIndex, Integer pageSize, List<TEntity> list) {
+    public PageModel<T> selectAll(Integer pageIndex, Integer pageSize, List<T> list) {
         return PageModel.of(pageIndex, pageSize, list);
     }
 }

@@ -1,6 +1,5 @@
 package com.team.application.exception;
 
-import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 
 @Data
@@ -14,7 +13,8 @@ public class ErrorModel {
     }
 
     public static String toJSONString(Object code, String message) {
-        return JSONObject.toJSONString(new ErrorModel(code.toString(), message));
+//        return JSONObject.toJSONString(new ErrorModel(code.toString(), message));
+        return "";
     }
 
 

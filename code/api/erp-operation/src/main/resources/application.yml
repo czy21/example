@@ -27,3 +27,7 @@ pagehelper:
 jwt:
   header: Authorization
   token-prefix: "Bearer "
+logging:
+  level:
+    com.team.domain.mapper: debug
+    org.springframework.web.filter.CommonsRequestLoggingFilter: debug
