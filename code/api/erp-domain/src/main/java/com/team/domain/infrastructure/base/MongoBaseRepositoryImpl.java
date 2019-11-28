@@ -11,15 +11,15 @@ import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.util.Map;
 
-public class MongoBaseRepositoryImpl<TEntity, ID extends Serializable> extends SimpleMongoRepository<TEntity, ID> implements MongoBaseRepository<TEntity, ID> {
+public class MongoBaseRepositoryImpl<T, ID extends Serializable> extends SimpleMongoRepository<T, ID> implements MongoBaseRepository<T, ID> {
 
     protected final MongoOperations mongoOperations;
 
-    protected final MongoEntityInformation<TEntity, ID> entityInformation;
+    protected final MongoEntityInformation<T, ID> entityInformation;
 
-    private Class<TEntity> clazz;
+    private Class<T> clazz;
 
-    public MongoBaseRepositoryImpl(MongoEntityInformation<TEntity, ID> metadata, MongoOperations mongoOperations) {
+    public MongoBaseRepositoryImpl(MongoEntityInformation<T, ID> metadata, MongoOperations mongoOperations) {
         super(metadata, mongoOperations);
         this.mongoOperations = mongoOperations;
         this.entityInformation = metadata;
@@ -27,7 +27,7 @@ public class MongoBaseRepositoryImpl<TEntity, ID extends Serializable> extends S
     }
 
     @Override
-    public TEntity update(ID id, TEntity t) {
+    public T update(ID id, T entity) {
         Update update = new Update();
         Query query = new Query();
         query.addCriteria(new Criteria("_id").is(id));
@@ -35,7 +35,7 @@ public class MongoBaseRepositoryImpl<TEntity, ID extends Serializable> extends S
         for (Field filed : fields) {
             filed.setAccessible(true);
             try {
-                Object object = filed.get(t);
+                Object object = filed.get(entity);
                 if (object != null) {
                     update.set(filed.getName(), object);
                 }
@@ -48,7 +48,7 @@ public class MongoBaseRepositoryImpl<TEntity, ID extends Serializable> extends S
     }
 
     @Override
-    public TEntity update(ID id, Map<String, Object> updateFieldMap) {
+    public T update(ID id, Map<String, Object> updateFieldMap) {
         if (updateFieldMap != null && !updateFieldMap.isEmpty()) {
             Criteria criteria = new Criteria("_id").is(id);
             Update update = new Update();
