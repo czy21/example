@@ -1,0 +1,33 @@
+ext {
+    mapstructVersion = "1.3.1.Final"
+    lombokVersion = "1.18.10"
+    springBootVersion = "2.2.1.RELEASE"
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+    apply plugin: 'idea'
+
+    repositories {
+        mavenLocal()
+        maven {
+            url = 'http://repo.maven.apache.org/maven2'
+        }
+    }
+
+    group = 'com.team'
+    version = '110'
+
+    dependencies {
+        api "org.mapstruct:mapstruct:${mapstructVersion}"
+        annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+        api "org.projectlombok:lombok:${lombokVersion}"
+        annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+        testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = 'UTF-8'
+    }
+}
