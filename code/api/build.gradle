@@ -25,7 +25,7 @@ allprojects {
     version = '110'
 
     dependencies {
-        implementation "org.mapstruct:mapstruct:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}"
+        compile "org.mapstruct:mapstruct:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}"
         annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}"
         testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
     }
