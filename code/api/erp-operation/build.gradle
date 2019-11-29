@@ -1,7 +1,0 @@
-plugins {
-	id 'org.springframework.boot' version '2.2.1.RELEASE'
-}
-dependencies {
-    api project(':erp-domain')
-    api project(':erp-application')
-}
