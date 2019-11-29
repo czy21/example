@@ -10,14 +10,9 @@ allprojects {
     apply plugin: 'idea'
 
     repositories {
-        mavenLocal()
         maven {
             name "ali-maven"
             url "http://maven.aliyun.com/nexus/content/groups/public/"
-        }
-        maven {
-            name "jcenter"
-            url "https://maven.aliyun.com/repository/jcenter"
         }
     }
 
