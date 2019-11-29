@@ -4,7 +4,7 @@ ext {
     springBootVersion = "2.2.1.RELEASE"
 }
 
-subprojects {
+allprojects {
     apply plugin: 'java'
     apply plugin: 'java-library'
     apply plugin: 'idea'
@@ -12,7 +12,12 @@ subprojects {
     repositories {
         mavenLocal()
         maven {
-            url = 'http://repo.maven.apache.org/maven2'
+            name "ali-maven"
+            url "http://maven.aliyun.com/nexus/content/groups/public/"
+        }
+        maven {
+            name "jcenter"
+            url "https://maven.aliyun.com/repository/jcenter"
         }
     }
 
@@ -20,11 +25,9 @@ subprojects {
     version = '110'
 
     dependencies {
-        api "org.mapstruct:mapstruct:${mapstructVersion}"
-        annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
-        api "org.projectlombok:lombok:${lombokVersion}"
-        annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
-        testCompile "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
+        implementation "org.mapstruct:mapstruct:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}"
+        annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}", "org.projectlombok:lombok:${lombokVersion}"
+        testImplementation "org.springframework.boot:spring-boot-starter-test:${springBootVersion}"
     }
 
     tasks.withType(JavaCompile) {
