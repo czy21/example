@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.team.infrastructure.base.MybatisBaseMapper">
     <!-- 基类结果映射 -->
-    <resultMap id="BaseResultMap" type="com.team.infrastructure.base.MongoBaseEntity">
+    <resultMap id="BaseResultMap" type="com.team.infrastructure.base.MybatisBaseEntity">
         <id column="id" property="id"/>
         <result column="created_date" property="createdDate"/>
         <result column="created_user" property="createdUser"/>
