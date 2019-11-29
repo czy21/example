@@ -3,6 +3,15 @@
 *.iml
 *.log
 
+# Gradle #
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+
+# Build #
+build/
+
 # Api #
 target/
 
