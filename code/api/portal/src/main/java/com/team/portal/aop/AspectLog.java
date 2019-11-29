@@ -1,4 +1,4 @@
-package com.team.operation.aop;
+package com.team.portal.aop;
 
 import com.team.application.core.annotations.NoLog;
 import com.team.domain.entity.LogEntity;
@@ -25,7 +25,7 @@ public class AspectLog {
 
     ThreadLocal<Long> startTime = new ThreadLocal<>();
 
-    @Pointcut("execution(* com.team.operation.controller..*.*(..))")
+    @Pointcut("execution(* com.team.portal.controller..*.*(..))")
     public void excudeController() {
 
     }

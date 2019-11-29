@@ -1,4 +1,4 @@
-package com.team.operation.aop;
+package com.team.portal.aop;
 
 import com.team.domain.entity.LogEntity;
 import org.springframework.stereotype.Component;
