@@ -1,3 +1,7 @@
+plugins {
+    id 'com.team.gradle.common'
+}
+
 dependencies {
     api project(':domain')
     api project(':cooperated')

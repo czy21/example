@@ -15,15 +15,3 @@ gradlePlugin {
         }
     }
 }
-
-publishing {
-    repositories {
-        maven {
-            url "http://47.106.191.56:8081/repository/czy-repo/"
-            credentials {
-                username "admin"
-                password "Czy.20190815"
-            }
-        }
-    }
-}

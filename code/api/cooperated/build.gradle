@@ -1,6 +1,11 @@
-ext {
-    swagger2Version = '2.9.2'
+plugins {
+    id 'com.team.gradle.common'
 }
+
+ext {
+    springBootVersion = "2.1.5.RELEASE"
+}
+
 dependencies {
     api project(":infrastructure")
     api "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"

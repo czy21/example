@@ -1,3 +1,6 @@
+plugins {
+    id 'com.team.gradle.common'
+}
 
 dependencies {
     api project(':infrastructure')

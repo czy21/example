@@ -1,3 +1,11 @@
+plugins {
+    id 'com.team.gradle.common'
+}
+
+ext {
+    springBootVersion = "2.1.5.RELEASE"
+}
+
 dependencies {
     api "org.springframework.boot:spring-boot-starter-data-mongodb:${springBootVersion}"
     api "org.springframework.boot:spring-boot-starter-data-redis:${springBootVersion}"

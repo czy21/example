@@ -1,0 +1,4 @@
+rootProject.name = 'cooperated'
+
+include("infrastructure")
+project(":infrastructure").projectDir = file("../infrastructure")

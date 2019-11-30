@@ -1,0 +1,10 @@
+rootProject.name = 'application'
+
+include("domain")
+project(":domain").projectDir = file("../domain")
+
+include("cooperated")
+project(":cooperated").projectDir = file("../cooperated")
+
+include("infrastructure")
+project(":infrastructure").projectDir = file("../infrastructure")
