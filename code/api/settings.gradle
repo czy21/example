@@ -1,4 +1,8 @@
-include(':infrastructure')
-include(':domain')
-include(':application')
-include(':portal')
+rootProject.name = 'api'
+
+include(":infrastructure")
+include(":domain")
+include(":application")
+include(":portal")
+include(":cooperated")
+
