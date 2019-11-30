@@ -6,7 +6,7 @@ plugins {
     id 'idea'
 }
 
-group 'com.team.plugin'
+group 'com.team'
 version '1.0'
 
 sourceCompatibility = "11"
@@ -14,8 +14,8 @@ sourceCompatibility = "11"
 gradlePlugin {
     plugins {
         common {
-            id = 'com.team.plugin.common'
-            implementationClass = 'com.team.plugin.Common'
+            id = 'com.team.gradle.common'
+            implementationClass = 'com.team.gradle.Common'
         }
     }
 }

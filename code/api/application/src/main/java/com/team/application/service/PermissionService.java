@@ -1,6 +1,6 @@
 package com.team.application.service;
 
-import com.team.application.core.universal.MybatisBaseService;
+import com.team.application.base.MybatisBaseService;
 import com.team.domain.entity.PermissionEntity;
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.dto.PermissionDTO;
