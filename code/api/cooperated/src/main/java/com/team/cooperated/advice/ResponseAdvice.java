@@ -11,6 +11,10 @@ import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
+import java.time.LocalDateTime;
+import java.util.HashMap;
+import java.util.Map;
+
 @ControllerAdvice(assignableTypes = BaseController.class)
 public class ResponseAdvice implements ResponseBodyAdvice<Object> {
 
@@ -21,7 +25,10 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
 
     @Override
     public Object beforeBodyWrite(Object body, @NotNull MethodParameter returnType, @NotNull MediaType selectedContentType, @NotNull Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
-        return null;
+        Map<String, Object> result = new HashMap<>();
+        result.put(BaseController.RESPONSE_TIMESTAMP_KEY, LocalDateTime.now());
+        result.put(BaseController.RESPONSE_DATA_KEY, body);
+        return result;
     }
 
 }

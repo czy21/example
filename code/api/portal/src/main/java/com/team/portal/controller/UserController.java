@@ -6,6 +6,7 @@ import com.team.application.model.dto.UserDTO;
 import com.team.application.model.vo.SearchUserModel;
 import com.team.application.service.UserRoleService;
 import com.team.application.service.UserService;
+import com.team.cooperated.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("user")
-public class UserController {
+public class UserController extends BaseController {
 
     @Autowired
     private UserService userService;
