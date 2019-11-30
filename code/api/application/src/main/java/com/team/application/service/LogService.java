@@ -1,6 +1,6 @@
 package com.team.application.service;
 
-import com.team.application.core.universal.MongoBaseService;
+import com.team.application.base.MongoBaseService;
 import com.team.domain.entity.LogEntity;
 import com.team.application.model.dto.LogDTO;
 import com.team.application.model.dto.PageDTO;

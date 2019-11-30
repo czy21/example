@@ -1,4 +1,4 @@
-package com.team.domain.configure;
+package com.team.domain;
 
 import com.team.domain.mapper.UserMapper;
 import com.team.domain.repository.LogRepository;

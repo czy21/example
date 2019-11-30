@@ -1,4 +1,4 @@
-package com.team.application.core.universal;
+package com.team.application.base;
 
 import com.team.application.model.page.PageModel;
 import com.team.infrastructure.base.MongoBaseEntity;

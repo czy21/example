@@ -1,4 +1,4 @@
-package com.team.application.core.universal;
+package com.team.application.base;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
