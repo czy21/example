@@ -1,0 +1,29 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'groovy'
+    id 'maven-publish'
+}
+
+group = 'com.team'
+version = '1.0.0'
+
+gradlePlugin {
+    plugins {
+        simplePlugin {
+            id = 'com.team.gradle.common'
+            implementationClass = 'com.team.gradle.CommonPlugin'
+        }
+    }
+}
+
+publishing {
+    repositories {
+        maven {
+            url "http://47.106.191.56:8081/repository/czy-repo/"
+            credentials {
+                username "admin"
+                password "Czy.20190815"
+            }
+        }
+    }
+}
