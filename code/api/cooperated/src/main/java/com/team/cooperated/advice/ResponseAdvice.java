@@ -29,13 +29,14 @@ import java.util.stream.Collectors;
 @ControllerAdvice(assignableTypes = BaseController.class)
 public class ResponseAdvice implements ResponseBodyAdvice<Object> {
 
-    private static Map<String, PocketProvider> POCKET_CACHE = new ConcurrentHashMap<>();
+    private static Map<String, PocketProvider<?>> POCKET_CACHE = new ConcurrentHashMap<>();
 
     @Override
     public boolean supports(@NotNull MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
         return converterType.isAssignableFrom(MappingJackson2HttpMessageConverter.class);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public Object beforeBodyWrite(Object body, @NotNull MethodParameter returnType, @NotNull MediaType selectedContentType, @NotNull Class<? extends HttpMessageConverter<?>> selectedConverterType, @NotNull ServerHttpRequest request, @NotNull ServerHttpResponse response) {
         Map<String, Object> result = new HashMap<>();
@@ -46,7 +47,7 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
         WebApplicationContext ctx = RequestContextUtils.findWebApplicationContext(req);
 
         if (ctx != null) {
-            POCKET_CACHE = POCKET_CACHE.size() == 0 ? ctx.getBeansOfType(PocketProvider.class) : POCKET_CACHE;
+            POCKET_CACHE = POCKET_CACHE.size() == 0 ? ctx.getBeansOfType(PocketProvider.class).entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)) : POCKET_CACHE;
         }
 
         Map<String, Object> pocket = new HashMap<>();
@@ -82,8 +83,7 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
         return Optional.ofNullable(returnType.getMethodAnnotation(SpecialPocket.class))
                 .<Map<String, Object>>map(p -> Arrays.stream(p.value())
                         .flatMap(s ->
-                                POCKET_CACHE.entrySet()
-                                        .stream()
+                                POCKET_CACHE.entrySet().stream()
                                         .filter(t -> s.equals(t.getValue().getClass()))
                                         .map(t -> Map.of(t.getKey(), Optional.ofNullable(t.getValue().obtain()).orElseGet(ArrayList::new)))
                         ).collect(HashMap::new, HashMap::putAll, HashMap::putAll))

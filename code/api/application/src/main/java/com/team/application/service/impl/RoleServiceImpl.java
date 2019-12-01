@@ -1,8 +1,8 @@
 package com.team.application.service.impl;
 
 import com.team.application.base.MybatisBaseServiceImpl;
-import com.team.application.exception.BusinessErrorCode;
-import com.team.application.exception.BusinessException;
+import com.team.cooperated.exception.BusinessErrorCode;
+import com.team.cooperated.exception.BusinessException;
 import com.team.application.model.automap.RoleAutoMap;
 import com.team.application.model.dto.RoleDTO;
 import com.team.application.service.RolePermissionService;
