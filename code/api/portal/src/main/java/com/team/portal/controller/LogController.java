@@ -1,12 +1,10 @@
 package com.team.portal.controller;
 
-import com.team.application.core.annotations.NoLog;
 import com.team.application.model.dto.LogDTO;
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.vo.SeachLogModel;
 import com.team.application.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,19 +22,14 @@ public class LogController {
     @Autowired
     private LogService logService;
 
-    @NoLog
     @GetMapping("load")
 
-    //@PreAuthorize("hasAuthority('SearchLog')")
-    public PageDTO<LogDTO> Load(SeachLogModel search) {
+    public PageDTO<LogDTO> load(SeachLogModel search) {
         return logService.getLogPageListBy(search);
     }
 
-    @NoLog
     @PostMapping("search")
-
-    //@PreAuthorize("hasAuthority('SearchLog')")
-    public PageDTO<LogDTO> Search(SeachLogModel search) {
+    public PageDTO<LogDTO> search(SeachLogModel search) {
         return logService.getLogPageListBy(search);
     }
 }

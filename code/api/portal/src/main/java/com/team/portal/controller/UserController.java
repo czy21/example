@@ -12,6 +12,8 @@ import com.team.application.service.UserService;
 import com.team.cooperated.annotation.EnumPocket;
 import com.team.cooperated.annotation.SpecialPocket;
 import com.team.cooperated.controller.BaseController;
+import com.team.cooperated.exception.BusinessErrorCode;
+import com.team.cooperated.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -42,7 +44,11 @@ public class UserController extends BaseController {
 
     @GetMapping("load2")
     public PageDTO<UserDTO> load2(SearchUserModel search) {
-        return userService.getUserPageListBy(search);
+
+        throw new BusinessException(BusinessErrorCode.EXIST_NAME);
+
+
+//        return userService.getUserPageListBy(search);
     }
 
 

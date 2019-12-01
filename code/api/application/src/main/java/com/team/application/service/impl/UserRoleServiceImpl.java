@@ -2,8 +2,8 @@ package com.team.application.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.application.base.MybatisBaseServiceImpl;
-import com.team.application.exception.BusinessErrorCode;
-import com.team.application.exception.BusinessException;
+import com.team.cooperated.exception.BusinessErrorCode;
+import com.team.cooperated.exception.BusinessException;
 import com.team.application.service.UserRoleService;
 import com.team.application.service.UserService;
 import com.team.domain.entity.UserRoleEntity;
