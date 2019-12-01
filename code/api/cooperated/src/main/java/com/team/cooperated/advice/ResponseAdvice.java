@@ -52,7 +52,7 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
         Map<String, Object> pocket = new HashMap<>();
 
         Map<String, Object> specialPockets = resolveSpecialPocket(returnType);
-        Map<String, Object> enumPockets = resolveReturnEnumKeys(returnType);
+        Map<String, Object> enumPockets = resolveEnumPocket(returnType);
         if (specialPockets.size() > 0) {
             pocket.putAll(specialPockets);
         }
@@ -65,23 +65,21 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
         return result;
     }
 
-    private Map<String, Object> resolveReturnEnumKeys(MethodParameter returnType) {
-        return Optional.ofNullable(returnType.getAnnotatedElement().getAnnotation(EnumPocket.class))
-                .<Map<String, Object>>map(enumPocket -> Arrays.stream(enumPocket.value())
+    private Map<String, Object> resolveEnumPocket(MethodParameter returnType) {
+        return Optional.ofNullable(returnType.getMethodAnnotation(EnumPocket.class))
+                .<Map<String, Object>>map(e -> Arrays.stream(e.value())
                         .filter(s -> s.isEnum() && s.isAnnotationPresent(PocketName.class))
-                        .map(t -> Map.of(t.getDeclaredAnnotation(PocketName.class).value(), assembleEnumPocketValue(t)))
-                        .collect(HashMap::new, HashMap::putAll, HashMap::putAll)).orElse(Map.of());
-    }
-
-
-    public static List<SimpleItemModel<String>> assembleEnumPocketValue(Class<?> clazz) {
-        return Arrays.stream(clazz.getFields())
-                .map(c -> SimpleItemModel.of(c.isAnnotationPresent(Description.class) ? c.getDeclaredAnnotation(Description.class).label() : c.getName(), c.getName()))
-                .collect(Collectors.toList());
+                        .map(t -> {
+                            String key = t.getDeclaredAnnotation(PocketName.class).value();
+                            List<SimpleItemModel<String>> value = Arrays.stream(t.getFields())
+                                    .map(c -> SimpleItemModel.of(c.isAnnotationPresent(Description.class) ? c.getDeclaredAnnotation(Description.class).label() : c.getName(), c.getName()))
+                                    .collect(Collectors.toList());
+                            return Map.of(key, value);
+                        }).collect(HashMap::new, HashMap::putAll, HashMap::putAll)).orElse(Map.of());
     }
 
     private Map<String, Object> resolveSpecialPocket(MethodParameter returnType) {
-        return Optional.ofNullable(returnType.getAnnotatedElement().getAnnotation(SpecialPocket.class))
+        return Optional.ofNullable(returnType.getMethodAnnotation(SpecialPocket.class))
                 .<Map<String, Object>>map(p -> Arrays.stream(p.value())
                         .flatMap(s ->
                                 POCKET_CACHE.entrySet()
