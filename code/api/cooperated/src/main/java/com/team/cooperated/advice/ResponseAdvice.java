@@ -76,7 +76,7 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
 
     public static List<SimpleItemModel<String>> assembleEnumPocketValue(Class<?> clazz) {
         return Arrays.stream(clazz.getFields())
-                .map(c -> c.isAnnotationPresent(Description.class) ? SimpleItemModel.of(c.getDeclaredAnnotation(Description.class).label(), c.getName()) : SimpleItemModel.of(c.getName(), c.getName()))
+                .map(c -> SimpleItemModel.of(c.isAnnotationPresent(Description.class) ? c.getDeclaredAnnotation(Description.class).label() : c.getName(), c.getName()))
                 .collect(Collectors.toList());
     }
 
