@@ -3,6 +3,7 @@ package com.team.gradle
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.tasks.compile.JavaCompile
+import org.gradle.testfixtures.ProjectBuilder
 
 class CommonPlugin implements Plugin<Project> {
     void apply(Project p) {
@@ -18,5 +19,12 @@ class CommonPlugin implements Plugin<Project> {
         p.dependencies.add("compile", "org.projectlombok:lombok:1.18.10")
         p.dependencies.add("annotationProcessor", "org.projectlombok:lombok:1.18.10")
         p.dependencies.add("testImplementation", "org.springframework.boot:spring-boot-starter-test:2.1.5.RELEASE")
+    }
+
+    static void main(String[] args) {
+        Project project = ProjectBuilder.builder().build()
+        CommonPlugin plugin=new CommonPlugin();
+        plugin.apply(project)
+        print("aa")
     }
 }
