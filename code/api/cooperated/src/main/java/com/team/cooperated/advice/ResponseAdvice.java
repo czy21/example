@@ -7,7 +7,6 @@ import com.team.cooperated.annotation.SpecialPocket;
 import com.team.cooperated.controller.BaseController;
 import com.team.cooperated.model.simple.SimpleItemModel;
 import com.team.cooperated.pocket.PocketProvider;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -32,13 +31,13 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
     private static Map<String, PocketProvider<?>> POCKET_CACHE = new ConcurrentHashMap<>();
 
     @Override
-    public boolean supports(@NotNull MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
+    public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
         return converterType.isAssignableFrom(MappingJackson2HttpMessageConverter.class);
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public Object beforeBodyWrite(Object body, @NotNull MethodParameter returnType, @NotNull MediaType selectedContentType, @NotNull Class<? extends HttpMessageConverter<?>> selectedConverterType, @NotNull ServerHttpRequest request, @NotNull ServerHttpResponse response) {
+    public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
         Map<String, Object> result = new HashMap<>();
         result.put(BaseController.RESPONSE_TIMESTAMP_KEY, LocalDateTime.now());
         result.put(BaseController.RESPONSE_DATA_KEY, body);
