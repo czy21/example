@@ -4,6 +4,6 @@ import com.team.cooperated.model.simple.SimpleItemModel;
 
 import java.util.List;
 
-public interface PocketProvider {
-    List<SimpleItemModel> obtain();
+public interface PocketProvider<T> {
+    List<SimpleItemModel<T>> obtain();
 }
