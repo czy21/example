@@ -1,12 +1,12 @@
 package com.team.application.model.vo;
 
-import com.team.application.model.page.PageParams;
+import com.team.application.model.page.PageInput;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class SeachLogModel extends PageParams {
+public class SeachLogModel extends PageInput {
     private String description;
     private String method;
     private String requestIp;

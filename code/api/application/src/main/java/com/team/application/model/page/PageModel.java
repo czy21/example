@@ -11,13 +11,13 @@ public class PageModel<TEntity> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    protected Integer pageIndex;
+    private Integer pageIndex;
 
-    protected Integer pageSize;
+    private Integer pageSize;
 
-    protected Integer total;
+    private Integer total;
 
-    protected List<TEntity> list;
+    private List<TEntity> list;
 
 
     public PageModel(List<TEntity> list) {

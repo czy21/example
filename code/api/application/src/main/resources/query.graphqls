@@ -1,11 +1,32 @@
 type Query{
-    findAllUser(filter:String!):[User]!
+    userDetail(id:String!):User
 }
 
 type Mutation{
-    updateUser(input:UserInput):[User]
+    searchUser(input:PageUserInput):PageUserModel
 }
 
 input UserInput{
     loginName:String
+}
+
+input PageUserInput{
+    page:PageInput
+    filter:UserInput
+}
+
+input PageInput{
+    pageIndex:Int
+    pageSize:Int
+}
+
+type PageDTO{
+    pageIndex:Int
+    pageSize:Int
+    total:Int
+}
+
+type PageUserModel{
+    page:PageDTO
+    list:[User]
 }
