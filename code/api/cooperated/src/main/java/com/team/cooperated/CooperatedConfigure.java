@@ -48,20 +48,17 @@ public class CooperatedConfigure implements WebMvcConfigurer {
     public CorsFilter corsFilter() {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.addAllowedOrigin("*"); // 允许任何域名使用
-        corsConfiguration.addAllowedHeader("*"); // 允许任何头
-        corsConfiguration.addAllowedMethod("*"); // 允许任何方法（post、get等）
-        source.registerCorsConfiguration("/**", corsConfiguration); // 对接口配置跨域设置
+        corsConfiguration.addAllowedOrigin("*");
+        corsConfiguration.addAllowedHeader("*");
+        corsConfiguration.addAllowedMethod("*");
+        source.registerCorsConfiguration("/**", corsConfiguration);
         return new CorsFilter(source);
     }
 
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/webjars/**")
-                .addResourceLocations("classpath:/META-INF/resources/webjars/");
-        registry.addResourceHandler("/favicon.ico")
-                .addResourceLocations("classpath:/META-INF/resources/favicon.ico");
+        registry.addResourceHandler("/vendor/**", "/subscriptions/**").addResourceLocations("classpath:/static/vendor/");
     }
 
 

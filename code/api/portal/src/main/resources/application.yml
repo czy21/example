@@ -40,4 +40,3 @@ logging:
   level:
     com.team.domain.mapper: debug
     org.springframework.web.filter.CommonsRequestLoggingFilter: debug
-

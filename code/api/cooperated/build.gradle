@@ -4,6 +4,7 @@ plugins {
 
 ext {
     springBootVersion = "2.1.5.RELEASE"
+    graphqlVersion = "5.10.0"
 }
 
 dependencies {
@@ -11,4 +12,7 @@ dependencies {
     api "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
     api "org.apache.httpcomponents:httpclient:4.5.8"
     api "com.auth0:java-jwt:3.8.0"
+    api "com.graphql-java-kickstart:graphql-spring-boot-starter:${graphqlVersion}"
+    api "com.graphql-java-kickstart:graphiql-spring-boot-starter:${graphqlVersion}"
+    api "com.graphql-java-kickstart:voyager-spring-boot-starter:${graphqlVersion}"
 }

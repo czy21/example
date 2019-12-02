@@ -1,0 +1,3 @@
+type Query{
+    findAllUser(pageIndex:Int,PageSize:Int):[User]!
+}
