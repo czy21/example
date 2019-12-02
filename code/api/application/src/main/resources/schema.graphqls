@@ -2,3 +2,7 @@ type User{
     id:ID!
     loginName:String!
 }
+type pageCriera{
+    pageIndex:Int
+    pageSize:Int
+}
