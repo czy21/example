@@ -1,3 +1,11 @@
 type Query{
-    findAllUser(pageIndex:Int,PageSize:Int):[User]!
+    findAllUser(filter:String!):[User]!
+}
+
+type Mutation{
+    updateUser(input:UserInput):[User]
+}
+
+input UserInput{
+    loginName:String
 }
