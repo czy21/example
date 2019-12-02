@@ -26,12 +26,12 @@ public class ExceptionAdvice {
         private String code;
         private String message;
 
-        public ErrorModel(String code, String message) {
+        ErrorModel(String code, String message) {
             this.code = code;
             this.message = message;
         }
 
-        public static ErrorModel of(String code, String message) {
+        static ErrorModel of(String code, String message) {
             return new ErrorModel(code, message);
         }
 
