@@ -50,15 +50,8 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
         }
 
         Map<String, Object> pocket = new HashMap<>();
-
-        Map<String, Object> specialPockets = resolveSpecialPocket(returnType);
-        Map<String, Object> enumPockets = resolveEnumPocket(returnType);
-        if (specialPockets.size() > 0) {
-            pocket.putAll(specialPockets);
-        }
-        if (enumPockets.size() > 0) {
-            pocket.putAll(enumPockets);
-        }
+        pocket.putAll(resolveSpecialPocket(returnType));
+        pocket.putAll(resolveEnumPocket(returnType));
         if (pocket.size() > 0) {
             result.put(BaseController.RESPONSE_POCKET_KEY, pocket);
         }
