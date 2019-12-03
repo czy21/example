@@ -33,4 +33,9 @@ public class UserMutationResolver implements GraphQLMutationResolver, GraphQLQue
         return userMapper.selectList(null).get(0);
     }
 
+    public List<UserEntity> findAllUser() {
+        return userMapper.selectList(null);
+    }
+
+
 }

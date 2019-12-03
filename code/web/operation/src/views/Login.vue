@@ -1,6 +1,6 @@
 <template>
   <el-form :model="loginInfo" :rules="rules" ref="loginInfo" label-width="0px" class="login-container">
-    <h3 class="ms-title">ERP后台管理系统</h3>
+    <h3 class="ms-title">后台管理系统</h3>
     <el-form-item prop="loginName">
       <el-input v-model="loginInfo.loginName" placeholder="请输入账号"></el-input>
     </el-form-item>

@@ -19,11 +19,11 @@ export default [
     children: [
       ...system
     ],
-    beforeEnter(to, from, next) {
-      let token = stub.ref.jsUtil.auth.getToken()
-      !token && next({path: 'login'})
-      next()
-    }
+    // beforeEnter(to, from, next) {
+    //   let token = stub.ref.jsUtil.auth.getToken()
+    //   !token && next({path: 'login'})
+    //   next()
+    // }
   },
 ]
 
