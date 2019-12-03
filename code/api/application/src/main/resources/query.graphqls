@@ -4,6 +4,7 @@ type Query{
 
 type Mutation{
     searchUser(input:PageUserInput):PageUserModel
+    findAllUser:[User]
 }
 
 input UserInput{

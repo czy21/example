@@ -13,8 +13,8 @@ export default {
       timeout: 5000,
     });
     service.interceptors.request.use(request => {
-        request.data = qs.stringify(request.data, {arrayFormat: 'brackets'});
-        request.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+        // request.data = qs.stringify(request.data, {arrayFormat: 'brackets'});
+        // request.headers['Content-Type'] = 'application/x-www-form-urlencoded';
         stub.ref.jsUtil.auth.getToken() && (request.headers['Authorization'] = stub.ref.jsUtil.auth.getToken().value)
         return request;
       },
