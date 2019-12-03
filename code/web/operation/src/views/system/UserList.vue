@@ -223,16 +223,14 @@
         }
       },
 
-      recurice(obj, isArray) {
+      recurice(obj) {
         const _this = this;
-        return c.ref.linq.from(Object.entries(obj, false)).select(([k, v]) => {
-          if (Array.isArray(v)) {
-            return "[" + c.ref.linq.from(v).select(s => _this.recurice(v, true)).toArray().join() + "]"
-          }
-          return isArray ? "" : k + ":" + function (value) {
+        return c.ref.linq.from(Object.entries(obj)).select(([k, v]) => {
+          return k + ":" + function (value) {
             {
               if (typeof (value) === "object") {
-                return "{" + _this.recurice(value, false) + "}"
+                return "{" + _this.recurice(value) + "}"
+
               }
               return value
             }
@@ -254,7 +252,7 @@
             {name: "a"}
           ]
         }
-        console.log(this.recurice(input, false))
+        console.log(this.recurice(input))
         const pageStr = c.ref.linq.from(Object.entries(page)).select(([k, v]) => {
           return k + ":" + v
         }).toArray().join();
