@@ -13,7 +13,7 @@ input UserInput{
 
 input PageUserInput{
     page:PageInput
-    filter:UserInput
+    filter:[UserInput]
 }
 
 input PageInput{
