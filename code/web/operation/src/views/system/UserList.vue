@@ -222,43 +222,21 @@
             break;
         }
       },
-
-      recurice(obj) {
-        const _this = this;
-        return c.ref.linq.from(Object.entries(obj)).select(([k, v]) => {
-          return k + ":" + function (value) {
-            {
-              if (typeof (value) === "object") {
-                return "{" + _this.recurice(value) + "}"
-
-              }
-              return value
-            }
-          }(v)
-        }).toArray().join();
-
-      },
       search() {
-        const page = {
-          pageIndex: 1,
-          pageSize: 10
-        }
 
         const input = {
-          page: page,
-          age: 10,
-          person: [
-            {name: "a"},
-            {name: "a"}
+          page: {
+            pageIndex: 1,
+            pageSize: 10
+          },
+          filter: [
+            {
+              loginName: "wobuzhidao"
+            }
           ]
-        }
-        console.log(this.recurice(input))
-        const pageStr = c.ref.linq.from(Object.entries(page)).select(([k, v]) => {
-          return k + ":" + v
-        }).toArray().join();
-
+        };
         const query = `mutation{
-                          search:searchUser(input:{page:{${pageStr}}}){
+                          search:searchUser(input:${c.ref.jsUtil.ext.recursionObject(input)}){
                             page{
                               pageIndex
                               pageSize
