@@ -7,7 +7,6 @@ import graphql.servlet.core.GraphQLErrorHandler;
 import graphql.servlet.core.GraphQLObjectMapper;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -19,7 +18,7 @@ public class CustomGraphQLObjectMapper extends GraphQLObjectMapper {
     @Override
     public Map<String, Object> convertSanitizedExecutionResult(ExecutionResult executionResult, boolean includeData) {
         Map<String, Object> map = super.convertSanitizedExecutionResult(executionResult, includeData);
-        map.put(BaseController.RESPONSE_TIMESTAMP_KEY, new Date());
+        map.put(BaseController.RESPONSE_TIMESTAMP_KEY, LocalDateTime.now());
         return map;
     }
 }
