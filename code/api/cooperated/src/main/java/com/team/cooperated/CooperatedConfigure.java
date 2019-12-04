@@ -1,18 +1,10 @@
 package com.team.cooperated;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.fasterxml.jackson.databind.module.SimpleModule;
-import com.team.cooperated.handler.CustomGraphQLErrorHandler;
-import com.team.cooperated.json.LocalDateTimeDeserializer;
-import com.team.cooperated.json.LocalDateTimeSerializer;
-import graphql.servlet.core.GraphQLErrorHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
-import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.cors.CorsConfiguration;
@@ -24,7 +16,6 @@ import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Configuration
@@ -35,11 +26,6 @@ public class CooperatedConfigure implements WebMvcConfigurer {
 
     public CooperatedConfigure(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
-    }
-
-    @Bean
-    public GraphQLErrorHandler graphqlErrorhandler() {
-        return new CustomGraphQLErrorHandler();
     }
 
     @Bean
@@ -73,23 +59,7 @@ public class CooperatedConfigure implements WebMvcConfigurer {
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.removeIf(s -> s instanceof StringHttpMessageConverter);
         converters.removeIf(s -> s instanceof MappingJackson2HttpMessageConverter);
-        converters.add(mappingJackson2HttpMessageConverter());
-    }
-
-    /**
-     * 基于默认Jackson2ObjectMapperBuilder之上添加自定义序列化反序列化的配置
-     *
-     * @author bruce
-     */
-    private MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
-        objectMapper.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, true);
-        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
-        Jackson2ObjectMapperBuilder.json().configure(objectMapper);
-        SimpleModule customModule = new SimpleModule();
-        customModule.addSerializer(LocalDateTime.class, new LocalDateTimeSerializer());
-        customModule.addDeserializer(LocalDateTime.class, new LocalDateTimeDeserializer());
-        objectMapper.registerModule(customModule);
-        return new MappingJackson2HttpMessageConverter(objectMapper);
+        converters.add(new MappingJackson2HttpMessageConverter(objectMapper));
     }
 
     /**
