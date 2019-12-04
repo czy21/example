@@ -31,7 +31,6 @@ public class CooperatedConfigure implements WebMvcConfigurer {
         CommonsRequestLoggingFilter loggingFilter = new CommonsRequestLoggingFilter();
         loggingFilter.setIncludeQueryString(true);
         loggingFilter.setIncludePayload(true);
-        loggingFilter.setMaxPayloadLength(64000);
         return loggingFilter;
     }
 
