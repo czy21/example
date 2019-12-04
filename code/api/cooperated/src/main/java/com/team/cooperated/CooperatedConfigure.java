@@ -1,6 +1,7 @@
 package com.team.cooperated;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -22,11 +23,8 @@ import java.util.List;
 @EnableWebMvc
 public class CooperatedConfigure implements WebMvcConfigurer {
 
-    private final ObjectMapper objectMapper;
-
-    public CooperatedConfigure(ObjectMapper objectMapper) {
-        this.objectMapper = objectMapper;
-    }
+    @Autowired
+    private ObjectMapper objectMapper;
 
     @Bean
     public CommonsRequestLoggingFilter requestLoggingFilter() {
@@ -54,12 +52,11 @@ public class CooperatedConfigure implements WebMvcConfigurer {
         registry.addResourceHandler("/vendor/**", "/subscriptions/**").addResourceLocations("classpath:/static/vendor/");
     }
 
-
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
         converters.removeIf(s -> s instanceof StringHttpMessageConverter);
         converters.removeIf(s -> s instanceof MappingJackson2HttpMessageConverter);
-        converters.add(new MappingJackson2HttpMessageConverter(objectMapper));
+        converters.add(new MappingJackson2HttpMessageConverter(objectMapper.copy()));
     }
 
     /**
