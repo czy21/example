@@ -1,4 +1,4 @@
-package com.team.cooperated.handler;
+package com.team.cooperated.graphql;
 
 import graphql.ErrorClassification;
 import graphql.GraphQLError;
@@ -53,6 +53,11 @@ public class CustomGraphQLErrorHandler extends DefaultGraphQLErrorHandler {
         @Override
         public ErrorClassification getErrorType() {
             return null;
+        }
+
+        @Override
+        public Map<String, Object> toSpecification() {
+            return extensions;
         }
     }
 }

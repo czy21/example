@@ -28,6 +28,7 @@ public class ExceptionAdvice {
             errorModel.put("message", e.getMessage());
             result.put(BaseController.RESPONSE_ERROR_KEY, errorModel);
         }
+        e.printStackTrace();
         return result;
     }
 }
