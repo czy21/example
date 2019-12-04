@@ -1,6 +1,7 @@
 package com.team.cooperated;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.team.cooperated.json.LocalDateTimeDeserializer;
 import com.team.cooperated.json.LocalDateTimeSerializer;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
@@ -18,6 +19,7 @@ public class JacksonObjectMapperConfigure {
             builder.serializationInclusion(JsonInclude.Include.NON_NULL);
             builder.serializerByType(LocalDateTime.class, new LocalDateTimeSerializer());
             builder.deserializerByType(LocalDateTime.class, new LocalDateTimeDeserializer());
+            builder.featuresToEnable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
         };
     }
 }
