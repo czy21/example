@@ -2,44 +2,34 @@ package com.team.application.graphql;
 
 import com.coxautodev.graphql.tools.GraphQLMutationResolver;
 import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+import com.team.application.model.automap.UserAutoMap;
 import com.team.application.model.dto.PageDTO;
+import com.team.application.model.dto.UserDTO;
 import com.team.application.model.vo.PageUserInput;
-import com.team.cooperated.exception.BusinessErrorCode;
-import com.team.cooperated.exception.BusinessException;
-import com.team.domain.entity.UserEntity;
-import com.team.domain.mapper.UserMapper;
+import com.team.application.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.Map;
 
 @Component
 public class UserMutationResolver implements GraphQLMutationResolver, GraphQLQueryResolver {
 
-    private final UserMapper userMapper;
+    @Autowired
+    private UserService userService;
+    @Autowired
+    private UserAutoMap userAutoMap;
 
-    public UserMutationResolver(UserMapper userMapper) {
-        this.userMapper = userMapper;
+    public PageDTO<UserDTO> searchUser(PageUserInput input) {
+        return userService.getUserPageListBy(input.getPage(), input.getFilter());
     }
 
-    public PageDTO<UserEntity> searchUser(PageUserInput input) {
-//        UserEntity entity = new UserEntity();
-//        entity.setId("1");
-//        entity.setUserName("nishishei");
-//        PageDTO<UserEntity> dto = new PageDTO<>();
-//        dto.setPage(input.getPage());
-//        dto.setList(List.of(entity));
-//        return dto;
-
-        throw new BusinessException(BusinessErrorCode.EXIST_USER);
+    public UserDTO userDetail(String id) {
+        return userAutoMap.mapToDto(userService.selectOneById(null));
     }
 
-    public UserEntity userDetail(String id) {
-        return userMapper.selectList(null).get(0);
-    }
-
-    public List<UserEntity> findAllUser() {
-        return userMapper.selectList(null);
+    public List<UserDTO> findAllUser() {
+        return userAutoMap.mapToDtos(userService.selectAll(null));
     }
 
 

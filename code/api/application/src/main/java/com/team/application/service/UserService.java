@@ -3,7 +3,8 @@ package com.team.application.service;
 import com.team.application.base.MybatisBaseService;
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.dto.UserDTO;
-import com.team.application.model.vo.SearchUserModel;
+import com.team.application.model.page.PageInput;
+import com.team.application.model.vo.UserVO;
 import com.team.domain.entity.PermissionEntity;
 import com.team.domain.entity.RoleEntity;
 import com.team.domain.entity.UserEntity;
@@ -18,7 +19,7 @@ public interface UserService extends MybatisBaseService<UserEntity> {
 
     Boolean modifiedUser(UserDTO dto);
 
-    PageDTO<UserDTO> getUserPageListBy(SearchUserModel search);
+    PageDTO<UserDTO> getUserPageListBy(PageInput page, UserVO user);
 
     List<RoleEntity> getRolesByLoginName(String loginName);
 
