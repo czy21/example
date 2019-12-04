@@ -1,12 +1,11 @@
 import axios from 'axios'
-import qs from 'qs'
 
 export default {
   key: 'api',
   build(stub, deco = {}) {
 
     //配置API接口地址
-    const root = '/api'
+    const root = '/api';
 
     const service = axios.create({
       baseURL: root,
@@ -55,9 +54,17 @@ export default {
       },
       delete: (url, params) => {
         return apiAxios('DELETE', url, params)
+      },
+      graphql: {
+        get: (params) => {
+          return apiAxios('GET', 'graphql', params)
+        },
+        post: (params) => {
+          return apiAxios('POST', 'graphql', params)
+        }
       }
-    }
-    stub.ref.vue.prototype.$api = apiStub
+    };
+    stub.ref.vue.prototype.$api = apiStub;
     return apiStub
   }
 }

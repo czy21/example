@@ -255,7 +255,7 @@
           user: [],
           person: []
         };
-        this.$api.post("graphql", {query: query}).then(v => {
+        this.$api.graphql.post({query: query}).then(v => {
           Object.keys(p).forEach(s => {
             const value = v.data[s];
             p[s] = value !== undefined ? value : p[s]

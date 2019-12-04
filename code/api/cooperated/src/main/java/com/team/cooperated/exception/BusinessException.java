@@ -1,23 +1,41 @@
 package com.team.cooperated.exception;
 
 
-import org.apache.commons.lang3.StringUtils;
+import graphql.ErrorClassification;
+import graphql.GraphQLError;
+import graphql.language.SourceLocation;
 
-public class BusinessException extends RuntimeException {
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-    private String code;
+public class BusinessException extends RuntimeException implements GraphQLError {
 
-    public String getCode() {
-        return code;
-    }
+    private Map<String, Object> extensions = new HashMap<>();
 
     public BusinessException(BusinessErrorCode businessErrorCode, String message) {
-        super(StringUtils.isEmpty(message) ? businessErrorCode.getDefaultMessage() : message);
-        this.code = businessErrorCode.toString();
+        super(message);
+        extensions.put("code", businessErrorCode);
+        extensions.put("message", message);
     }
 
     public BusinessException(BusinessErrorCode businessErrorCode) {
-        this(businessErrorCode, null);
+        this(businessErrorCode, businessErrorCode.getDefaultMessage());
+    }
+
+    @Override
+    public Map<String, Object> getExtensions() {
+        return extensions;
+    }
+
+    @Override
+    public List<SourceLocation> getLocations() {
+        return null;
+    }
+
+    @Override
+    public ErrorClassification getErrorType() {
+        return null;
     }
 
 }
