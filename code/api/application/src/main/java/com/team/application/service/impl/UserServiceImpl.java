@@ -2,13 +2,14 @@ package com.team.application.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.application.base.MybatisBaseServiceImpl;
-import com.team.cooperated.exception.BusinessErrorCode;
-import com.team.cooperated.exception.BusinessException;
 import com.team.application.model.automap.UserAutoMap;
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.dto.UserDTO;
-import com.team.application.model.vo.SearchUserModel;
+import com.team.application.model.page.PageInput;
+import com.team.application.model.vo.UserVO;
 import com.team.application.service.UserService;
+import com.team.cooperated.exception.BusinessErrorCode;
+import com.team.cooperated.exception.BusinessException;
 import com.team.domain.entity.PermissionEntity;
 import com.team.domain.entity.RoleEntity;
 import com.team.domain.entity.UserEntity;
@@ -66,8 +67,8 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<UserMapper, UserEnti
     }
 
     @Override
-    public PageDTO<UserDTO> getUserPageListBy(SearchUserModel search) {
-        return userMap.mapToPageDto(super.selectAll(search.getPageIndex(), search.getPageSize(), (QueryWrapper<UserEntity>) null));
+    public PageDTO<UserDTO> getUserPageListBy(PageInput page, UserVO user) {
+        return userMap.mapToPageDto(super.selectAll(page.getPageIndex(), page.getPageSize(), (QueryWrapper<UserEntity>) null));
     }
 
     @Override

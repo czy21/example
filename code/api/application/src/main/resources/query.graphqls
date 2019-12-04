@@ -8,12 +8,12 @@ type Mutation{
 }
 
 input UserInput{
-    loginName:String
+    userName:String
 }
 
 input PageUserInput{
     page:PageInput
-    filter:[UserInput]
+    filter:UserInput
 }
 
 input PageInput{

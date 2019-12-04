@@ -44,7 +44,8 @@ public class UserController extends BaseController {
 
     @PostMapping("search")
     public PageDTO<UserDTO> search(SearchUserModel search) {
-        return userService.getUserPageListBy(search);
+//        return userService.getUserPageListBy(search);
+        return null;
     }
 
     @PostMapping("add")

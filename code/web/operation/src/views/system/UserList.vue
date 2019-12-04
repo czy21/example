@@ -2,9 +2,9 @@
   <div class="main-box">
     <div class="handle-box">
       <div class="search-box">
-        <el-form ref="searchForm" :inline="true" :model="searchModel" label-position="left" label-width="80px">
+        <el-form ref="searchForm" :inline="true" :model="filter" label-position="left" label-width="80px">
           <el-form-item label="姓名" prop="userName">
-            <el-input v-model="searchModel.userName"></el-input>
+            <el-input v-model="filter.userName"></el-input>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="search">搜索</el-button>
@@ -20,37 +20,20 @@
         <el-button type="primary">重置密码</el-button>
       </div>
     </div>
-    <!--    <div class="container">-->
-    <!--      &lt;!&ndash; 列表 &ndash;&gt;-->
-    <!--      <el-table :data="list" border highlight-current-row>-->
-    <!--        <el-table-column type="selection" prop="userId" width="55"></el-table-column>-->
-    <!--        <el-table-column prop="userName" label="用户姓名"></el-table-column>-->
-    <!--        <el-table-column prop="loginName" label="登录名称"></el-table-column>-->
-    <!--        <el-table-column prop="email" label="邮箱"></el-table-column>-->
-    <!--        <el-table-column prop="phone" label="电话"></el-table-column>-->
-    <!--        <el-table-column prop="isHeader" label="部门经理"></el-table-column>-->
-    <!--        <el-table-column label="操作" width="250">-->
-    <!--          <template slot-scope="scope">-->
-    <!--            <el-button @click="editUser('edit',scope.row)" :disabled="!$hasPermission('EditUser')">编辑</el-button>-->
-    <!--            <el-button type="primary" @click="allotRole('allot',scope.row)"-->
-    <!--                       :disabled="!$hasPermission('AllotUserRole')">分配角色-->
-    <!--            </el-button>-->
-    <!--            <el-button @click="modifiedUser(scope.row)"-->
-    <!--                       :class="scope.row.enabled ?'el-button&#45;&#45;danger':'el-button&#45;&#45;success'"-->
-    <!--                       :disabled="!$hasPermission('DisableUser')">-->
-    <!--              {{scope.row.enabled?'禁用':'启用'}}-->
-    <!--            </el-button>-->
-    <!--          </template>-->
-    <!--        </el-table-column>-->
-    <!--      </el-table>-->
-    <!--      <el-pagination class="pagination" background @current-change="handleIndexChange" @size-change="handleSizeChange"-->
-    <!--                     :current-page="searchModel && searchModel.pageIndex"-->
-    <!--                     :page-size="searchModel && searchModel.pageSize"-->
-    <!--                     :page-sizes="[20,50,100]"-->
-    <!--                     layout="total ,sizes, prev, pager, next, jumper"-->
-    <!--                     :total="searchModel && searchModel.total">-->
-    <!--      </el-pagination>-->
-    <!--    </div>-->
+    <div class="container">
+      <!-- 列表 -->
+      <el-table :data="list" border highlight-current-row>
+        <el-table-column type="selection" prop="id" width="55"/>
+        <el-table-column prop="userName" label="用户姓名"/>
+      </el-table>
+      <el-pagination class="pagination" background
+                     :current-page="pageResult.pageIndex"
+                     :page-size="pageResult.pageSize"
+                     :page-sizes="[20,50,100]"
+                     layout="total ,sizes, prev, pager, next, jumper"
+                     :total="pageResult.total">
+      </el-pagination>
+    </div>
 
     <!--    <el-dialog title="添加用户" :visible.sync="userAddShow" width="20%">-->
     <!--      <el-form ref="userAddForm" :rules="validationRules" :model="userAddForm" label-width="80px">-->
@@ -121,7 +104,6 @@
   import c from '@c'
 
   export default {
-    mixins: [c.mixins.list],
     name: "UserList",
     data() {
       return {
@@ -132,7 +114,20 @@
         userRoleShow: false,
         userAddForm: {},
         userEditForm: {},
-        userRoleIds: []
+        userRoleIds: [],
+        pageInput: {
+          pageIndex: 1,
+          pageSize: 20
+        },
+        pageResult: {
+          pageIndex: 1,
+          pageSize: 20,
+          total: 0
+        },
+        list: [],
+        filter: {
+          userName: ""
+        }
       };
     },
     computed: {
@@ -225,43 +220,37 @@
       search() {
 
         const input = {
-          page: {
-            pageIndex: 1,
-            pageSize: 10
-          },
-          filter: [
-            {
-              loginName: "wobuzhidao"
+          page: this.pageInput,
+          filter: this.filter
+        };
+        const operationName = "searchUser"
+        const query = `mutation ${operationName}($input:PageUserInput){
+                        result:searchUser(input:$input){
+                          page{
+                            pageIndex
+                            pageSize
+                            total
+                          }
+                          list {
+                            id,
+                            userName
+                          }
+                        }
+                      }`;
+        const variables = {
+          input: {
+            page: {
+              pageIndex: 1,
+              pageSize: 10
             }
-          ]
-        };
-        const query = `mutation{
-                          search:searchUser(input:${c.ref.jsUtil.ext.recursionObject(input)}){
-                            page{
-                              pageIndex
-                              pageSize
-                              total
-                            }
-                            list{
-                              userName
-                            }
-                          }
-                          user:findAllUser{
-                            label:userName
-                            value:id
-                          }
-                        }`;
-        let p = {
-          user: [],
-          person: []
-        };
-        this.$api.graphql.post({query: query}).then(v => {
-          Object.keys(p).forEach(s => {
-            const value = v.data[s];
-            p[s] = value !== undefined ? value : p[s]
-          })
+          }
+        }
+
+
+        this.$api.graphql.post({operationName: operationName, query: query, variables: variables}).then(v => {
+          this.list = v.data["result"].list;
+          this.pageResult = v.data["result"].page
         });
-        // console.log(p)
       },
     },
     mounted() {
