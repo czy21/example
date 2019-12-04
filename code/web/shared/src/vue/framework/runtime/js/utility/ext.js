@@ -20,7 +20,7 @@ export function buildBoundProxy(target, thisArg) {
 }
 
 /**
- * Checks if `value` is classified as an `Array` object.
+ * recursion Property For Object,actually is transform object to string and remove "" of property
  *
  * example1 = {
  *          page: {

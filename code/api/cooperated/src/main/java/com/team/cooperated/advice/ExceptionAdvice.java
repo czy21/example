@@ -2,12 +2,12 @@ package com.team.cooperated.advice;
 
 import com.team.cooperated.controller.BaseController;
 import com.team.cooperated.exception.BusinessException;
-import lombok.Data;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDateTime;
+import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
@@ -18,22 +18,16 @@ public class ExceptionAdvice {
 
     @ExceptionHandler(value = Exception.class)
     public Map<String, Object> exceptionHandler(Exception e) {
-        return Map.of(BaseController.RESPONSE_TIMESTAMP_KEY, LocalDateTime.now(), BaseController.RESPONSE_ERROR_KEY, ErrorModel.of((e instanceof BusinessException) ? ((BusinessException) e).getCode() : UN_KNOW_SERVER_ERROR, e.getMessage()));
-    }
-
-    @Data
-    private static class ErrorModel {
-        private String code;
-        private String message;
-
-        ErrorModel(String code, String message) {
-            this.code = code;
-            this.message = message;
+        Map<String, Object> result = new HashMap<>();
+        result.put(BaseController.RESPONSE_TIMESTAMP_KEY, LocalDateTime.now());
+        if (e instanceof BusinessException) {
+            result.put(BaseController.RESPONSE_ERROR_KEY, ((BusinessException) e).getExtensions());
+        } else {
+            Map<String, Object> errorModel = new HashMap<>();
+            errorModel.put("code", UN_KNOW_SERVER_ERROR);
+            errorModel.put("message", e.getMessage());
+            result.put(BaseController.RESPONSE_ERROR_KEY, errorModel);
         }
-
-        static ErrorModel of(String code, String message) {
-            return new ErrorModel(code, message);
-        }
-
+        return result;
     }
 }

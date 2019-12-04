@@ -4,8 +4,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.module.SimpleModule;
+import com.team.cooperated.handler.CustomGraphQLErrorHandler;
 import com.team.cooperated.json.LocalDateTimeDeserializer;
 import com.team.cooperated.json.LocalDateTimeSerializer;
+import graphql.servlet.core.GraphQLErrorHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -33,6 +35,11 @@ public class CooperatedConfigure implements WebMvcConfigurer {
 
     public CooperatedConfigure(ObjectMapper objectMapper) {
         this.objectMapper = objectMapper;
+    }
+
+    @Bean
+    public GraphQLErrorHandler graphqlErrorhandler() {
+        return new CustomGraphQLErrorHandler();
     }
 
     @Bean
