@@ -4,7 +4,7 @@
       <div class="search-box">
         <el-form ref="searchForm" :inline="true" :model="filter" label-position="left" label-width="80px">
           <el-form-item label="姓名" prop="userName">
-            <el-input v-model="filter.userName"></el-input>
+            <el-input v-model="filter.userName"/>
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="search">搜索</el-button>
@@ -101,7 +101,6 @@
 </template>
 
 <script>
-  import c from '@c'
 
   export default {
     name: "UserList",
@@ -125,9 +124,7 @@
           total: 0
         },
         list: [],
-        filter: {
-          userName: ""
-        }
+        filter: {}
       };
     },
     computed: {
@@ -218,13 +215,7 @@
         }
       },
       search() {
-
-        const input = {
-          page: this.pageInput,
-          filter: this.filter
-        };
-        const operationName = "searchUser"
-        const query = `mutation ${operationName}($input:PageUserInput){
+        const query = `mutation searchUser($input:PageUserInput){
                         result:searchUser(input:$input){
                           page{
                             pageIndex
@@ -239,15 +230,13 @@
                       }`;
         const variables = {
           input: {
-            page: {
-              pageIndex: 1,
-              pageSize: 10
-            }
+            page: this.pageInput,
+            filter: this.filter
           }
-        }
+        };
 
 
-        this.$api.graphql.post({operationName: operationName, query: query, variables: variables}).then(v => {
+        this.$api.graphql.post({query, variables}).then(v => {
           this.list = v.data["result"].list;
           this.pageResult = v.data["result"].page
         });
