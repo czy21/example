@@ -54,8 +54,7 @@ public class CooperatedConfigure implements WebMvcConfigurer {
 
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.removeIf(s -> s instanceof StringHttpMessageConverter);
-        converters.removeIf(s -> s instanceof MappingJackson2HttpMessageConverter);
+        converters.removeIf(s -> s instanceof StringHttpMessageConverter || s instanceof MappingJackson2HttpMessageConverter);
         converters.add(new MappingJackson2HttpMessageConverter(objectMapper.copy()));
     }
 
