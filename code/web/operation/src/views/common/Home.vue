@@ -1,10 +1,10 @@
 <template>
   <div class="wrapper">
-    <v-header></v-header>
-    <v-sidebar></v-sidebar>
+    <v-header/>
+    <v-sidebar/>
     <div class="main-container" :class="{'main-collapse':isCollapse}">
-      <tags-view></tags-view>
-      <v-content></v-content>
+      <tags-view/>
+      <v-content/>
     </div>
   </div>
 </template>
