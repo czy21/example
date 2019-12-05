@@ -27,15 +27,6 @@ pagehelper:
   params: count=countSql
   page-size-zero: true  #pageSize为0时,不执行分页,返回全部结果
 
-jwt:
-  header: Authorization
-  token-prefix: "Bearer "
-
-allowed-origin:
-  url: http://localhost:8080
-authentication:
-  token-expire-time: 0
-
 logging:
   level:
     com.team.domain.mapper: debug

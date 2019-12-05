@@ -1,16 +1,12 @@
 spring:
   datasource:
-    druid:
-      url: jdbc:mysql://localhost:3372/erp?&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true
-      username: root
-      password: Czy.101048
+    url: jdbc:mysql://localhost:3306/erp_java?&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true
+    username: root
+    password: ***REMOVED***
   data:
     mongodb:
-      uri: mongodb://localhost:3270
-      database: erp
-  redis:
-    password: team3059
-allowed-origin:
-  url: http://47.106.191.56:8090
-authentication:
-  token-expire-time: 30
+      uri: mongodb://127.0.0.1:27017
+      database: erp_java
+      username: admin
+      authentication-database: admin
+      password: ***REMOVED***
