@@ -14,7 +14,7 @@ import java.util.Map;
 @ResponseBody
 public class ExceptionAdvice {
 
-    private static final String UN_KNOW_SERVER_ERROR = "UN_KNOW_SERVER_ERROR";
+    public static final String UN_KNOW_SERVER_ERROR = "UN_KNOW_SERVER_ERROR";
 
     @ExceptionHandler(value = Exception.class)
     public Map<String, Object> exceptionHandler(Exception e) {

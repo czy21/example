@@ -1,10 +1,12 @@
 package com.team.cooperated.graphql;
 
+import com.team.cooperated.advice.ExceptionAdvice;
 import graphql.ErrorClassification;
 import graphql.GraphQLError;
 import graphql.language.SourceLocation;
 import graphql.servlet.core.DefaultGraphQLErrorHandler;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -18,7 +20,15 @@ public class CustomGraphQLErrorHandler extends DefaultGraphQLErrorHandler {
 
     public GraphQLError transform(GraphQLError error) {
         GraphQLErrorModel model = new GraphQLErrorModel(null);
-        model.setExtensions(error.getExtensions());
+        Map<String, Object> extensions = new LinkedHashMap<>(3);
+        extensions.put("path", error.getPath());
+        if (super.isClientError(error)) {
+            extensions.putAll(error.getExtensions());
+        } else {
+            extensions.put("code", ExceptionAdvice.UN_KNOW_SERVER_ERROR);
+            extensions.put("message", error.getMessage());
+        }
+        model.setExtensions(extensions);
         return model;
     }
 

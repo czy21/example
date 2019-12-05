@@ -16,9 +16,11 @@ import com.team.domain.entity.UserEntity;
 import com.team.domain.mapper.PermissionMapper;
 import com.team.domain.mapper.RoleMapper;
 import com.team.domain.mapper.UserMapper;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.UnsatisfiedServletRequestParameterException;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -68,7 +70,11 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<UserMapper, UserEnti
 
     @Override
     public PageDTO<UserDTO> getUserPageListBy(PageInput page, UserVO user) {
-        return userMap.mapToPageDto(super.selectAll(page.getPageIndex(), page.getPageSize(), (QueryWrapper<UserEntity>) null));
+        QueryWrapper<UserEntity> queryWrapper = new QueryWrapper<>();
+        if (ObjectUtils.isNotEmpty(user.getUserName())) {
+            queryWrapper.lambda().like(UserEntity::getUserName, user.getUserName());
+        }
+        return userMap.mapToPageDto(super.selectAll(page.getPageIndex(), page.getPageSize(), queryWrapper));
     }
 
     @Override
