@@ -13,7 +13,7 @@ public class JwtUtil {
 
     public static long TOKEN_EXPIRE_TIME;
 
-    @Value("${authentication.token-expire-time}")
+//    @Value("${authentication.token-expire-time}")
     public void setTokenExpireTime(long tokenExpireTime) {
         TOKEN_EXPIRE_TIME = tokenExpireTime;
     }
