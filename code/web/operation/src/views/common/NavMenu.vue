@@ -1,19 +1,19 @@
 <template>
   <div class="navMenu">
     <template v-for="model in menuTree">
-      <el-submenu v-if="model.children.length!=0"
+      <el-submenu v-if="model.children.length!==0"
                   :key="model.menuId"
                   :index="model.menuName">
         <template slot="title">
-          <svg-icon :icon-class="model.icon" :icon-size="iconSize"></svg-icon>
+          <svg-icon :icon-class="model.icon" :icon-size="iconSize"/>
           <span slot="title" v-if="!colltitle"> {{model.menuName}}</span>
         </template>
-        <NavMenu :menuTree="model.children" :iconSize="iconSize"></NavMenu>
+        <NavMenu :menuTree="model.children" :iconSize="iconSize"/>
       </el-submenu>
-      <el-menu-item v-if="model.children.length==0"
+      <el-menu-item v-if="model.children.length===0"
                     :key="model.menuId"
                     :index="model.url">
-        <svg-icon :icon-class="model.icon" :icon-size="iconSize"></svg-icon>
+        <svg-icon :icon-class="model.icon" :icon-size="iconSize"/>
         <span slot="title">{{model.menuName}}</span>
       </el-menu-item>
 

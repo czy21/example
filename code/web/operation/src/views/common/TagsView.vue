@@ -5,13 +5,13 @@
         <router-link :to="item.path" class="tags-li-title">
           {{item.title}}
         </router-link>
-        <span class="tags-li-icon" @click="closeTags(index)"><i class="el-icon-close"></i></span>
+        <span class="tags-li-icon" @click="closeTags(index)"><i class="el-icon-close"/></span>
       </li>
     </ul>
     <div class="tags-close-box">
       <el-dropdown @command="handleTags">
         <el-button type="primary">
-          标签选项<i class="el-icon-arrow-down el-icon--right"></i>
+          标签选项<i class="el-icon-arrow-down el-icon--right"/>
         </el-button>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item command="other">关闭其他</el-dropdown-item>
