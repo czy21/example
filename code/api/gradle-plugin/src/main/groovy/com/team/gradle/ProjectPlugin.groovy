@@ -5,7 +5,8 @@ import org.gradle.api.Project
 import org.gradle.api.tasks.compile.JavaCompile
 import org.gradle.testfixtures.ProjectBuilder
 
-class CommonPlugin implements Plugin<Project> {
+class ProjectPlugin implements Plugin<Project> {
+
     void apply(Project p) {
         p.apply plugin: 'java-library'
         p.apply plugin: 'idea'
@@ -23,7 +24,7 @@ class CommonPlugin implements Plugin<Project> {
 
     static void main(String[] args) {
         Project project = ProjectBuilder.builder().build()
-        CommonPlugin plugin=new CommonPlugin();
+        ProjectPlugin plugin = new ProjectPlugin();
         plugin.apply(project)
         print("aa")
     }

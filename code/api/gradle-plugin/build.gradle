@@ -9,9 +9,13 @@ version = '1.0.0'
 
 gradlePlugin {
     plugins {
-        simplePlugin {
-            id = 'com.team.gradle.common'
-            implementationClass = 'com.team.gradle.CommonPlugin'
+        project {
+            id = 'com.team.gradle.project'
+            implementationClass = 'com.team.gradle.ProjectPlugin'
+        }
+        deploy {
+            id = 'com.team.gradle.deploy'
+            implementationClass = 'com.team.gradle.DeployPlugin'
         }
     }
 }
