@@ -6,4 +6,4 @@ sys.path.append("../../");
 from shell.local import _env;
 from script.domain import api_source;
 
-api_source.build_extra_config()
+api_source.build_api()
