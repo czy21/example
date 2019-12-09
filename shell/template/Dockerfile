@@ -1,4 +1,4 @@
-From openjdk:11.0.4-jdk-slim
+FROM openjdk:11.0.4-jdk-slim
 VOLUME ["/home/erp/resources","/home/erp/log"]
 EXPOSE 8075
 ARG apiPath
