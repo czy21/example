@@ -1,0 +1,5 @@
+include("portal")
+include("application")
+include("cooperated")
+include("domain")
+include("infrastructure")

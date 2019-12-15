@@ -1,8 +1,8 @@
 plugins {
     id 'org.springframework.boot' version '2.1.5.RELEASE'
-    id 'com.team.gradle.project' version '1.0.0'
-    id 'com.team.gradle.deploy' version '1.0.0'
+    id 'com.team.gradle.deploy'
 }
+
 dependencies {
     api project(':application')
 }
