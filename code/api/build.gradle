@@ -1,0 +1,37 @@
+plugins {
+    id 'com.team.gradle.project' version '1.0.0'
+}
+ext {
+    springBootVersion = "2.1.5.RELEASE"
+}
+
+subprojects {
+    apply plugin: 'maven-publish'
+    apply plugin: 'com.team.gradle.project'
+    group = 'com.team'
+
+    repositories {
+        maven {
+            url "http://47.106.191.56:8081/repository/czy-repo/"
+            credentials {
+                username "admin"
+                password "Czy.20190815"
+            }
+        }
+        maven {
+            name "ali-maven"
+            url "http://maven.aliyun.com/nexus/content/groups/public/"
+        }
+    }
+    publishing {
+        repositories {
+            maven {
+                url "http://47.106.191.56:8081/repository/czy-repo/"
+                credentials {
+                    username "admin"
+                    password "Czy.20190815"
+                }
+            }
+        }
+    }
+}

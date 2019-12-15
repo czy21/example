@@ -1,9 +1,4 @@
-plugins {
-    id 'com.team.gradle.project'
-}
-
 ext {
-    springBootVersion = "2.1.5.RELEASE"
     graphqlVersion = "5.10.0"
 }
 

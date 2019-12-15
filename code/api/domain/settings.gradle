@@ -1,4 +1,0 @@
-rootProject.name = 'domain'
-
-include("infrastructure")
-project(":infrastructure").projectDir = file("../infrastructure")

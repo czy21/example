@@ -1,7 +1,3 @@
-plugins {
-    id 'com.team.gradle.project'
-}
-
 dependencies {
     api project(':infrastructure')
 }
