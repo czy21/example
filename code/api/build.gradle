@@ -6,32 +6,6 @@ ext {
 }
 
 subprojects {
-    apply plugin: 'maven-publish'
     apply plugin: 'com.team.gradle.project'
     group = 'com.team'
-
-    repositories {
-        maven {
-            url "http://47.106.191.56:8081/repository/czy-repo/"
-            credentials {
-                username "admin"
-                password "Czy.20190815"
-            }
-        }
-        maven {
-            name "ali-maven"
-            url "http://maven.aliyun.com/nexus/content/groups/public/"
-        }
-    }
-    publishing {
-        repositories {
-            maven {
-                url "http://47.106.191.56:8081/repository/czy-repo/"
-                credentials {
-                    username "admin"
-                    password "Czy.20190815"
-                }
-            }
-        }
-    }
 }
