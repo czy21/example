@@ -3,7 +3,9 @@ package com.team.portal.controller;
 
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.dto.UserDTO;
+import com.team.application.model.page.PageInput;
 import com.team.application.model.vo.SearchUserModel;
+import com.team.application.model.vo.UserVO;
 import com.team.application.pocket.EnumGender;
 import com.team.application.pocket.SpecialPerson;
 import com.team.application.pocket.SpecialWoman;
@@ -12,8 +14,6 @@ import com.team.application.service.UserService;
 import com.team.cooperated.annotation.EnumPocket;
 import com.team.cooperated.annotation.SpecialPocket;
 import com.team.cooperated.controller.BaseController;
-import com.team.cooperated.exception.BusinessErrorCode;
-import com.team.cooperated.exception.BusinessException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,8 +38,11 @@ public class UserController extends BaseController {
             SpecialWoman.class
     })
     public PageDTO<UserDTO> load(SearchUserModel search) {
-        throw new BusinessException(BusinessErrorCode.EXIST_USER);
-//        return userService.getUserPageListBy(search);
+//        throw new BusinessException(BusinessErrorCode.EXIST_USER);
+        PageInput pageInput = new PageInput();
+        pageInput.setPageIndex(1);
+        pageInput.setPageSize(10);
+        return userService.getUserPageListBy(pageInput, new UserVO());
     }
 
     @PostMapping("search")
