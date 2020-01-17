@@ -7,6 +7,7 @@ import com.team.cooperated.annotation.SpecialPocket;
 import com.team.cooperated.controller.BaseController;
 import com.team.cooperated.model.simple.SimpleItemModel;
 import com.team.cooperated.pocket.PocketProvider;
+import org.apache.commons.lang3.tuple.MutablePair;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -67,19 +68,22 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
                             List<SimpleItemModel<String>> value = Arrays.stream(t.getFields())
                                     .map(c -> SimpleItemModel.of(c.isAnnotationPresent(Description.class) ? c.getDeclaredAnnotation(Description.class).label() : c.getName(), c.getName()))
                                     .collect(Collectors.toList());
-                            return Map.of(key, value);
-                        }).collect(HashMap::new, HashMap::putAll, HashMap::putAll)).orElse(Map.of());
+                            return new MutablePair<>(key, value);
+                        })
+                        .filter(s -> s.getRight() != null)
+                        .collect(Collectors.toMap(MutablePair::getLeft, MutablePair::getRight))).get();
     }
 
     private Map<String, Object> resolveSpecialPocket(MethodParameter returnType) {
         return Optional.ofNullable(returnType.getMethodAnnotation(SpecialPocket.class))
                 .<Map<String, Object>>map(p -> Arrays.stream(p.value())
+                        .parallel()
                         .flatMap(s ->
                                 POCKET_CACHE.entrySet().stream()
                                         .filter(t -> s.equals(t.getValue().getClass()))
-                                        .map(t -> Map.of(t.getKey(), Optional.ofNullable(t.getValue().obtain()).orElseGet(ArrayList::new)))
-                        ).collect(HashMap::new, HashMap::putAll, HashMap::putAll))
-                .orElse(Map.of());
+                                        .map(t -> new MutablePair<>(t.getKey(), t.getValue().obtain())))
+                        .filter(s -> s.getRight() != null)
+                        .collect(Collectors.toMap(MutablePair::getLeft, MutablePair::getRight))).get();
     }
 
 }
