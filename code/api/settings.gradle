@@ -1,15 +1,7 @@
 pluginManagement {
     repositories {
         maven {
-            url "http://47.106.191.56:8081/repository/czy-repo/"
-            credentials {
-                username "admin"
-                password "Czy.20190815"
-            }
-        }
-        maven {
-            name "ali-maven"
-            url "http://maven.aliyun.com/nexus/content/groups/public/"
+            url "../gradle-plugin/build/repository/"
         }
     }
 }
