@@ -23,12 +23,16 @@ gradlePlugin {
 publishing {
     repositories {
         maven {
-            name "czy-repo"
+            name "czy"
             url "http://47.106.191.56:8081/repository/czy-repo/"
             credentials {
                 username "admin"
                 password "Czy.20190815"
             }
+        }
+        maven {
+            name "build"
+            url "./build/repository/"
         }
     }
 }
