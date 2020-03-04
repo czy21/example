@@ -15,6 +15,8 @@ public interface BaseAutoMap<TEntity, TDto> {
 
     List<TDto> mapToDtos(List<TEntity> entities);
 
+    List<TEntity> mapToEntities(List<TDto> dtos);
+
     @Mappings({
             @Mapping(source = "pageIndex", target = "page.pageIndex"),
             @Mapping(source = "pageSize", target = "page.pageSize"),

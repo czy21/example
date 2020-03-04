@@ -1,5 +1,0 @@
-type User{
-    id:String
-    loginName:String
-    userName:String
-}

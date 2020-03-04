@@ -38,7 +38,6 @@ public class UserController extends BaseController {
             SpecialWoman.class
     })
     public PageDTO<UserDTO> load(SearchUserModel search) {
-//        throw new BusinessException(BusinessErrorCode.EXIST_USER);
         PageInput pageInput = new PageInput();
         pageInput.setPageIndex(1);
         pageInput.setPageSize(10);

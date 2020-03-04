@@ -3,12 +3,9 @@ dependencies {
     api "org.springframework.boot:spring-boot-starter-data-mongodb:${springBootVersion}"
     api "org.springframework.boot:spring-boot-starter-data-redis:${springBootVersion}"
     api "org.springframework.boot:spring-boot-starter-aop:${springBootVersion}"
+    api "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
     api "org.apache.commons:commons-lang3:3.9"
     api "com.baomidou:mybatis-plus-boot-starter:3.1.0"
-    api("com.github.pagehelper:pagehelper-spring-boot-starter:1.2.10") {
-        exclude group: "org.mybatis.spring.boot", module: "mybatis-spring-boot-starter"
-        exclude group: "org.springframework.boot", module: "spring-boot-autoconfigure"
-        exclude group: "com.github.jsqlparser", module: "jsqlparser"
-    }
+    api("com.github.pagehelper:pagehelper-spring-boot-starter:1.2.10")
     api "mysql:mysql-connector-java:8.0.15"
 }

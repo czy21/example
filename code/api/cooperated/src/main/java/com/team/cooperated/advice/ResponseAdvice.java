@@ -47,7 +47,9 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
         WebApplicationContext ctx = RequestContextUtils.findWebApplicationContext(req);
 
         if (ctx != null) {
-            POCKET_CACHE = POCKET_CACHE.size() == 0 ? ctx.getBeansOfType(PocketProvider.class).entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue)) : POCKET_CACHE;
+            POCKET_CACHE = POCKET_CACHE.size() == 0
+                    ? ctx.getBeansOfType(PocketProvider.class).entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
+                    : POCKET_CACHE;
         }
 
         Map<String, Object> pocket = new HashMap<>();
@@ -66,7 +68,9 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
                         .map(t -> {
                             String key = t.getDeclaredAnnotation(PocketName.class).value();
                             List<SimpleItemModel<String>> value = Arrays.stream(t.getFields())
-                                    .map(c -> SimpleItemModel.of(c.isAnnotationPresent(Description.class) ? c.getDeclaredAnnotation(Description.class).label() : c.getName(), c.getName()))
+                                    .map(c -> SimpleItemModel.of(c.isAnnotationPresent(Description.class)
+                                            ? c.getDeclaredAnnotation(Description.class).label()
+                                            : c.getName(), c.getName()))
                                     .collect(Collectors.toList());
                             return new MutablePair<>(key, value);
                         })

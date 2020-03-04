@@ -1,13 +1,17 @@
-package com.team.domain.entity;
+package com.team.domain.model;
 
-import com.baomidou.mybatisplus.annotation.TableName;
 import com.team.infrastructure.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
-@TableName(value = "ent_sys_department")
+@Table(name = "ent_sys_department")
+@Entity
 public class DepartmentEntity extends BaseEntity {
     /**
      * 上级部门
@@ -19,8 +23,6 @@ public class DepartmentEntity extends BaseEntity {
      */
     private String name;
 
-    /**
-     * 所属公司
-     */
-    private String companyId;
+    @ManyToOne
+    private CompanyEntity company;
 }
