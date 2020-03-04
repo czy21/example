@@ -3,11 +3,11 @@ package com.team.application.base;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import com.team.application.model.page.PageModel;
-import com.team.infrastructure.base.MybatisBaseEntity;
+import com.team.infrastructure.base.BaseEntity;
 
 import java.util.List;
 
-public interface MybatisBaseService<T extends MybatisBaseEntity> {
+public interface MybatisBaseService<T extends BaseEntity> {
 
     void insert(T entity);
 

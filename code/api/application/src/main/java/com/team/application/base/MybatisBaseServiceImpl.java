@@ -5,13 +5,14 @@ import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.team.application.model.page.PageModel;
-import com.team.infrastructure.base.MybatisBaseEntity;
+import com.team.infrastructure.base.BaseEntity;
 import com.team.infrastructure.base.MybatisBaseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
+import java.util.Optional;
 
-public class MybatisBaseServiceImpl<M extends MybatisBaseMapper<T>, T extends MybatisBaseEntity> implements MybatisBaseService<T> {
+public class MybatisBaseServiceImpl<M extends MybatisBaseMapper<T>, T extends BaseEntity> implements MybatisBaseService<T> {
 
     @Autowired
     protected M baseMapper;
@@ -62,15 +63,19 @@ public class MybatisBaseServiceImpl<M extends MybatisBaseMapper<T>, T extends My
 
     @Override
     public List<T> selectAll(QueryWrapper<T> query) {
-        query = query == null ? new QueryWrapper<>() : query;
-        query.lambda().orderByDesc(T::getCreatedDate);
+        Optional.ofNullable(query)
+                .orElse(new QueryWrapper<>())
+                .lambda()
+                .orderByDesc(T::getCreatedDate);
         return baseMapper.selectList(query);
     }
 
     @Override
     public PageModel<T> selectAll(Integer pageIndex, Integer pageSize, QueryWrapper<T> query) {
-        query = query == null ? new QueryWrapper<>() : query;
-        query.lambda().orderByDesc(T::getCreatedDate);
+        Optional.ofNullable(query)
+                .orElse(new QueryWrapper<>())
+                .lambda()
+                .orderByDesc(T::getCreatedDate);
         Page<T> page = PageHelper.startPage(pageIndex, pageSize);
         baseMapper.selectList(query);
         return PageModel.of(page);

@@ -1,7 +1,7 @@
 package com.team.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
-import com.team.infrastructure.base.MongoBaseEntity;
+import com.team.infrastructure.base.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @Document(collection = "sys_log")
 @EqualsAndHashCode(callSuper = true)
-public class LogEntity extends MongoBaseEntity {
+public class LogEntity extends BaseEntity {
 
     /**
      * 日志信息描述

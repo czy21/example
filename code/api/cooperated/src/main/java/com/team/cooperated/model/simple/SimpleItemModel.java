@@ -12,7 +12,7 @@ public class SimpleItemModel<T> {
     private T value;
     private T parentValue;
     private Object extra;
-    private List<SimpleItemModel> children;
+    private List<SimpleItemModel<T>> children;
 
     private SimpleItemModel(String label, T value) {
         this.label = label;
