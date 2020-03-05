@@ -1,7 +1,9 @@
 package com.team.application.util;
 
+import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.ZoneOffset;
 
 /**
  * @author liugh
@@ -9,19 +11,19 @@ import java.time.format.DateTimeFormatter;
  */
 public class DateTimeUtil {
 
-    /**
-     * 私有化构造器，使得不能产生该类对象，类中所有的方法均为静态方法
-     */
-    private DateTimeUtil() {
+    public static Long toTimeStamp(LocalDateTime localDateTime) {
+        return localDateTime.toInstant(ZoneOffset.ofHours(8)).toEpochMilli();
     }
 
-    /**
-     * 把时间格式化成如：2002-08-03 08:26:16 格式的字符串
-     */
-    public final static String FMT_yyyyMMddHHmmss = "yyyy-MM-dd HH:mm:ss";
+    public static LocalDateTime toLocalDateTime(Long timeStamp) {
+        return Instant.ofEpochMilli(timeStamp).atZone(ZoneOffset.ofHours(8)).toLocalDateTime();
+    }
 
-    public static LocalDateTime getCurrentDateTime() {
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(FMT_yyyyMMddHHmmss);
-        return LocalDateTime.parse(dateTimeFormatter.format(LocalDateTime.now()), dateTimeFormatter);
+    public static Long toTimeStamp(LocalDate localDate) {
+        return localDate.atStartOfDay(ZoneOffset.ofHours(8)).toInstant().toEpochMilli();
+    }
+
+    public static LocalDate toLocalDate(Long timeStamp) {
+        return Instant.ofEpochMilli(timeStamp).atZone(ZoneOffset.ofHours(8)).toLocalDate();
     }
 }
