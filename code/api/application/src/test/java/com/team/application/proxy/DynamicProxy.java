@@ -4,11 +4,11 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-public class CarProxy implements InvocationHandler {
+public class DynamicProxy implements InvocationHandler {
 
     Object target;
 
-    public CarProxy(Object target) {
+    public DynamicProxy(Object target) {
         this.target = target;
     }
 
