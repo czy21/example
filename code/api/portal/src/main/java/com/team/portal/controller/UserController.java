@@ -4,6 +4,7 @@ package com.team.portal.controller;
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.dto.UserDTO;
 import com.team.application.model.page.PageInput;
+import com.team.application.model.vo.BaseImportVO;
 import com.team.application.model.vo.SearchUserModel;
 import com.team.application.model.vo.UserVO;
 import com.team.application.pocket.EnumGender;
@@ -17,6 +18,7 @@ import com.team.cooperated.controller.BaseController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -68,6 +70,12 @@ public class UserController extends BaseController {
     @PostMapping("userRoleDetails")
     public List<String> userRoleDetails(String userId) {
         return userRoleService.getRolesByUserId(userId);
+    }
+
+    @PostMapping(path = "import")
+    public Boolean userImport(BaseImportVO importVO) throws IOException {
+        userService.userImport(importVO);
+        return true;
     }
 }
 

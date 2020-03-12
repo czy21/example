@@ -75,7 +75,7 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
                             return new MutablePair<>(key, value);
                         })
                         .filter(s -> s.getRight() != null)
-                        .collect(Collectors.toMap(MutablePair::getLeft, MutablePair::getRight))).get();
+                        .collect(Collectors.toMap(MutablePair::getLeft, MutablePair::getRight))).orElse(new HashMap<>(0));
     }
 
     private Map<String, Object> resolveSpecialPocket(MethodParameter returnType) {
@@ -87,7 +87,7 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
                                         .filter(t -> s.equals(t.getValue().getClass()))
                                         .map(t -> new MutablePair<>(t.getKey(), t.getValue().obtain())))
                         .filter(s -> s.getRight() != null)
-                        .collect(Collectors.toMap(MutablePair::getLeft, MutablePair::getRight))).get();
+                        .collect(Collectors.toMap(MutablePair::getLeft, MutablePair::getRight))).orElse(new HashMap<>(0));
     }
 
 }

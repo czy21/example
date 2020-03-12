@@ -43,7 +43,7 @@ public class JpaTest {
     @Test
     public void add1() {
         List<DepartmentEntity> entities = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
             DepartmentEntity entity = new DepartmentEntity();
             entity.setId(UUID.randomUUID().toString());
             entity.setName("ceshi");
@@ -53,7 +53,7 @@ public class JpaTest {
             entity.setCompany(companyEntity);
         }
         System.out.println(DateTimeUtil.toTimeStamp(LocalDateTime.now()));
-        entities.forEach(s-> departmentRepository.save(s));
+//        entities.forEach(s-> departmentRepository.save(s));
         List<DepartmentEntity> saveEntity = departmentRepository.saveAll(entities);
 
 //        jdbcTemplate.batchUpdate("insert into ent_sys_department(id,name,company_id) values (?,?,?)", new BatchPreparedStatementSetter() {

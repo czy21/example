@@ -2,4 +2,5 @@ dependencies {
     api project(':domain')
     api project(':cooperated')
     api('cglib:cglib:3.3.0')
+    api('com.alibaba:easyexcel:2.1.6')
 }
