@@ -4,11 +4,13 @@ import com.team.application.base.MybatisBaseService;
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.dto.UserDTO;
 import com.team.application.model.page.PageInput;
+import com.team.application.model.vo.BaseImportVO;
 import com.team.application.model.vo.UserVO;
 import com.team.domain.entity.PermissionEntity;
 import com.team.domain.entity.RoleEntity;
 import com.team.domain.entity.UserEntity;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface UserService extends MybatisBaseService<UserEntity> {
@@ -30,5 +32,7 @@ public interface UserService extends MybatisBaseService<UserEntity> {
 //    JSONObject register(LoginDTO dto);
 
     List<PermissionEntity> getFunctionsByUser(String userId);
+
+    void userImport(BaseImportVO importVO) throws IOException;
 
 }

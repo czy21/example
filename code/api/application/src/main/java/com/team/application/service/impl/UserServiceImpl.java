@@ -1,11 +1,15 @@
 package com.team.application.service.impl;
 
+import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.team.application.base.MybatisBaseServiceImpl;
+import com.team.application.excel.UserListener;
 import com.team.application.model.automap.UserAutoMap;
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.dto.UserDTO;
+import com.team.application.model.dto.UserExcelDTO;
 import com.team.application.model.page.PageInput;
+import com.team.application.model.vo.BaseImportVO;
 import com.team.application.model.vo.UserVO;
 import com.team.application.service.UserService;
 import com.team.cooperated.exception.BusinessErrorCode;
@@ -20,9 +24,9 @@ import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.UnsatisfiedServletRequestParameterException;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.util.List;
 
 @Service
@@ -112,5 +116,10 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<UserMapper, UserEnti
     @Override
     public List<PermissionEntity> getFunctionsByUser(String userId) {
         return functionRepository.selectAllByUserId(userId);
+    }
+
+    @Override
+    public void userImport(BaseImportVO importVO) throws IOException {
+        EasyExcel.read(importVO.getFile().getInputStream(), UserExcelDTO.class, new UserListener());
     }
 }

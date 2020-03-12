@@ -41,6 +41,7 @@ logging:
   level:
     com.team.domain.mapper: debug
     org.springframework.web.filter.CommonsRequestLoggingFilter: debug
+    org.springframework.jdbc.core.JdbcTemplate: debug
 graphql:
   servlet:
     exception-handlers-enabled: true
