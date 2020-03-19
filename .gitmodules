@@ -1,3 +1,0 @@
-[submodule "script"]
-	path = script
-	url = ssh://git@gitee.com:czyhome/script.git
