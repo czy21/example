@@ -36,10 +36,10 @@ public class DepartmentServiceImpl extends MybatisBaseServiceImpl<DepartmentMapp
         if (StringUtils.isEmpty(dto.getCompanyId())) {
             throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "公司Id不能为空");
         }
-        if (StringUtils.isEmpty(dto.getDepartmentName())) {
+        if (StringUtils.isEmpty(dto.getName())) {
             throw new BusinessException(BusinessErrorCode.NO_NULL_NAME, "部门名称不能为空");
         }
-        if (super.selectOne(DepartmentEntity::getName, dto.getDepartmentName()) != null) {
+        if (super.selectOne(DepartmentEntity::getName, dto.getName()) != null) {
             throw new BusinessException(BusinessErrorCode.EXIST_NAME, "部门名称已存在");
         }
 
@@ -54,7 +54,7 @@ public class DepartmentServiceImpl extends MybatisBaseServiceImpl<DepartmentMapp
         if (StringUtils.isEmpty(dto.getParentId())) {
             throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "上级部门Id不能为空");
         }
-        if (StringUtils.isEmpty(dto.getDepartmentName())) {
+        if (StringUtils.isEmpty(dto.getName())) {
             throw new BusinessException(BusinessErrorCode.NO_NULL_NAME, "上级部门Id不能为空");
         }
         return departmentMap.mapToDto(super.updateAndGet(departmentMap.mapToEntity(dto)));

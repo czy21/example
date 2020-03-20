@@ -33,10 +33,10 @@ public class RoleServiceImpl extends MybatisBaseServiceImpl<RoleMapper, RoleEnti
 
     @Override
     public RoleDTO insertRole(RoleDTO dto) {
-        if (StringUtils.isEmpty(dto.getRoleName())) {
+        if (StringUtils.isEmpty(dto.getName())) {
             throw new BusinessException(BusinessErrorCode.NO_NULL_NAME, "角色名称不能为空");
         }
-        if (super.selectOne(RoleEntity::getName, dto.getRoleName()) != null) {
+        if (super.selectOne(RoleEntity::getName, dto.getName()) != null) {
             throw new BusinessException(BusinessErrorCode.EXIST_NAME, "角色名称已存在");
         }
         return roleMap.mapToDto(super.insertAndGet(roleMap.mapToEntity(dto)));
@@ -44,10 +44,10 @@ public class RoleServiceImpl extends MybatisBaseServiceImpl<RoleMapper, RoleEnti
 
     @Override
     public RoleDTO editRole(RoleDTO dto) {
-        if (StringUtils.isEmpty(dto.getRoleId())) {
+        if (StringUtils.isEmpty(dto.getId())) {
             throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "角色Id不能为空");
         }
-        if (StringUtils.isEmpty(dto.getRoleName())) {
+        if (StringUtils.isEmpty(dto.getName())) {
             throw new BusinessException(BusinessErrorCode.NO_NULL_NAME, "角色名称不能为空");
         }
         return roleMap.mapToDto(super.updateAndGet(roleMap.mapToEntity(dto)));
