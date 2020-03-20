@@ -14,6 +14,8 @@ spring:
     host: 127.0.0.1
     port: 6379
     timeout: 3600
+  jpa:
+    show-sql: true
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/*.xml

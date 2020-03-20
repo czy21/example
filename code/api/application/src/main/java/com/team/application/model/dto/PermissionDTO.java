@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class PermissionDTO {
 
-    private Long functionId;
+    private String functionId;
 
     private String functionCode;
 

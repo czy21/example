@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class MenuDTO {
-    private Long menuId;
-    private Long parentId;
-    private String menuName;
+    private String id;
+    private String parentId;
+    private String name;
     private String icon;
     private String url;
     private Integer sort;
