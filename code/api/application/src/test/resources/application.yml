@@ -6,19 +6,15 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.mysql.cj.jdbc.MysqlDataSource
-    url: jdbc:mysql://localhost:5306/erp_java?user=admin&password=***REMOVED***&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true
+    url: jdbc:mysql://localhost:3306/erp_java?user=root&password=sasa&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true
   data:
     mongodb:
-      uri: mongodb://admin:***REMOVED***@127.0.0.1:5017/erp_java?authSource=admin
+      uri: mongodb://127.0.0.1:27017/erp_java
   redis:
     host: 127.0.0.1
     port: 6379
     timeout: 3600
   jpa:
-    properties:
-      hibernate:
-        format_sql: false
-        use_sql_comments: true
     show-sql: true
 
 mybatis-plus:
@@ -41,7 +37,6 @@ logging:
   level:
     com.team.domain.mapper: debug
     org.springframework.web.filter.CommonsRequestLoggingFilter: debug
-    org.springframework.jdbc.core.JdbcTemplate: debug
 graphql:
   servlet:
     exception-handlers-enabled: true
