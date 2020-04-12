@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
@@ -45,19 +44,23 @@ public class BasicController {
     }
 
     @GetMapping("machineTest")
-    public void machineTest() throws Exception {
-        List<CompletableFuture<StateMachine<String, String>>> machineThreads = new ArrayList<>();
+    public void machineTest() {
 
-        List<StateMachine<String, String>> machines = new ArrayList<>();
-
-        for (int i = 1; i <= 6; i++) {
+        for (int i = 1; i <= 1000; i++) {
             String id = Integer.toString(i);
-            stateMachineService.releaseStateMachine(id);
-            StateMachine<String, String> machine = stateMachineService.acquireStateMachine(id);
-            machine.stop();
-            machine.start();
-            stateMachinePersister.persist(machine, id);
-            machines.add(machine);
+            CompletableFuture.supplyAsync(() -> {
+                stateMachineService.releaseStateMachine(id);
+                StateMachine<String, String> machine = stateMachineService.acquireStateMachine(id);
+                machine.stop();
+                machine.start();
+                try {
+                    stateMachinePersister.persist(machine, id);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                return machine;
+            });
+
         }
 
         System.out.println("a");

@@ -32,6 +32,6 @@ public class PersistLocal implements StateMachinePersist<String, String, String>
             return null;
         }
 
-        return new DefaultStateMachineContext<>(entity.getState(), null, null, null, null);
+        return new DefaultStateMachineContext<>(entity.getState(), null, null, null, null,entity.getId());
     }
 }
