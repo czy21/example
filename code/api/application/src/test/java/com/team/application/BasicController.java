@@ -4,6 +4,7 @@ import com.team.application.task.TaskParallel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.config.StateMachineFactory;
+import org.springframework.statemachine.persist.StateMachinePersister;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,6 +23,9 @@ public class BasicController {
     @Autowired
     private StateMachineFactory<String, String> stateMachineFactory;
 
+    @Autowired
+    private StateMachinePersister<String, String, String> stateMachinePersister;
+
     @GetMapping("parallelTest")
     public void taskParallelTest() throws InterruptedException {
 //        long startTime = System.currentTimeMillis();
@@ -37,19 +41,21 @@ public class BasicController {
     }
 
     @GetMapping("machineTest")
-    public void machineTest() {
+    public void machineTest() throws Exception {
         List<CompletableFuture<StateMachine<String, String>>> machineThreads = new ArrayList<>();
 
-        for (int i = 1; i <= 1000; i++) {
+        List<StateMachine<String, String>> machines = new ArrayList<>();
+
+        for (int i = 1; i <= 4; i++) {
             String id = Integer.toString(i);
-            CompletableFuture<StateMachine<String, String>> machineThread = CompletableFuture.supplyAsync(() -> {
-                StateMachine<String, String> machine = stateMachineFactory.getStateMachine(id);
-                machine.start();
-                machine.sendEvent("PROCESS");
-                return machine;
-            });
-            machineThreads.add(machineThread);
+            StateMachine<String, String> machine = stateMachinePersister.restore(stateMachineFactory.getStateMachine(id), id);
+            machine.stop();
+            machine.start();
+            stateMachinePersister.persist(machine, id);
+            machines.add(machine);
         }
+
+        System.out.println("a");
     }
 
 }

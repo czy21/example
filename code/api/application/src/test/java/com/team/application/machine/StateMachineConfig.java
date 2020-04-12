@@ -15,13 +15,17 @@
  */
 package com.team.application.machine;
 
+import com.team.domain.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.statemachine.StateMachinePersist;
 import org.springframework.statemachine.config.EnableStateMachineFactory;
 import org.springframework.statemachine.config.StateMachineConfigurerAdapter;
 import org.springframework.statemachine.config.builders.StateMachineStateConfigurer;
 import org.springframework.statemachine.config.builders.StateMachineTransitionConfigurer;
+import org.springframework.statemachine.persist.DefaultStateMachinePersister;
+import org.springframework.statemachine.persist.StateMachinePersister;
 
 @Configuration
 public class StateMachineConfig {
@@ -43,10 +47,10 @@ public class StateMachineConfig {
                 throws Exception {
             states
                     .withStates()
-                    .initial("PLACED")
-                    .state("PROCESSING")
-                    .state("SENT")
-                    .state("DELIVERED");
+                    .initial("1")
+                    .state("2")
+                    .state("3")
+                    .state("4");
         }
 
         @Override
@@ -54,16 +58,29 @@ public class StateMachineConfig {
                 throws Exception {
             transitions
                     .withExternal()
-                    .source("PLACED").target("PROCESSING")
-                    .event("PROCESS")
+                    .source("1").target("2")
                     .and()
                     .withExternal()
-                    .source("PROCESSING").target("SENT")
-                    .event("SEND")
+                    .source("2").target("3")
                     .and()
                     .withExternal()
-                    .source("SENT").target("DELIVERED")
-                    .event("DELIVER");
+                    .source("3").target("4");
         }
+    }
+
+
+    @Configuration
+    static class PersistConfig {
+
+        @Bean
+        public StateMachinePersister<String, String, String> machinePersister(StateMachinePersist<String, String, String> persist) {
+            return new DefaultStateMachinePersister<>(persist);
+        }
+
+        @Bean
+        public StateMachinePersist<String, String, String> machinePersist(OrderMapper orderMapper) {
+            return new PersistLocal(orderMapper);
+        }
+
     }
 }
