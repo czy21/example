@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.config.StateMachineFactory;
 import org.springframework.statemachine.persist.StateMachinePersister;
+import org.springframework.statemachine.service.StateMachineService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +27,9 @@ public class BasicController {
     @Autowired
     private StateMachinePersister<String, String, String> stateMachinePersister;
 
+    @Autowired
+    private StateMachineService<String, String> stateMachineService;
+
     @GetMapping("parallelTest")
     public void taskParallelTest() throws InterruptedException {
 //        long startTime = System.currentTimeMillis();
@@ -46,9 +50,10 @@ public class BasicController {
 
         List<StateMachine<String, String>> machines = new ArrayList<>();
 
-        for (int i = 1; i <= 4; i++) {
+        for (int i = 1; i <= 6; i++) {
             String id = Integer.toString(i);
-            StateMachine<String, String> machine = stateMachinePersister.restore(stateMachineFactory.getStateMachine(id), id);
+            stateMachineService.releaseStateMachine(id);
+            StateMachine<String, String> machine = stateMachineService.acquireStateMachine(id);
             machine.stop();
             machine.start();
             stateMachinePersister.persist(machine, id);

@@ -22,10 +22,13 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.statemachine.StateMachinePersist;
 import org.springframework.statemachine.config.EnableStateMachineFactory;
 import org.springframework.statemachine.config.StateMachineConfigurerAdapter;
+import org.springframework.statemachine.config.StateMachineFactory;
 import org.springframework.statemachine.config.builders.StateMachineStateConfigurer;
 import org.springframework.statemachine.config.builders.StateMachineTransitionConfigurer;
 import org.springframework.statemachine.persist.DefaultStateMachinePersister;
 import org.springframework.statemachine.persist.StateMachinePersister;
+import org.springframework.statemachine.service.DefaultStateMachineService;
+import org.springframework.statemachine.service.StateMachineService;
 
 @Configuration
 public class StateMachineConfig {
@@ -80,6 +83,11 @@ public class StateMachineConfig {
         @Bean
         public StateMachinePersist<String, String, String> machinePersist(OrderMapper orderMapper) {
             return new PersistLocal(orderMapper);
+        }
+
+        @Bean
+        public StateMachineService<String, String> stateMachineService(StateMachineFactory<String, String> stateMachineFactory, StateMachinePersist<String, String, String> persister) {
+            return new DefaultStateMachineService<>(stateMachineFactory, persister);
         }
 
     }
