@@ -15,80 +15,83 @@
  */
 package com.team.application.machine;
 
-import com.team.domain.mapper.OrderMapper;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.team.application.kind.RinseEvent;
+import com.team.application.kind.RinseNode;
+import org.springframework.aop.framework.ProxyFactoryBean;
+import org.springframework.aop.target.CommonsPool2TargetSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.StateMachinePersist;
-import org.springframework.statemachine.config.EnableStateMachineFactory;
-import org.springframework.statemachine.config.StateMachineConfigurerAdapter;
-import org.springframework.statemachine.config.StateMachineFactory;
-import org.springframework.statemachine.config.builders.StateMachineStateConfigurer;
-import org.springframework.statemachine.config.builders.StateMachineTransitionConfigurer;
-import org.springframework.statemachine.persist.DefaultStateMachinePersister;
-import org.springframework.statemachine.persist.StateMachinePersister;
-import org.springframework.statemachine.service.DefaultStateMachineService;
-import org.springframework.statemachine.service.StateMachineService;
+import org.springframework.statemachine.config.StateMachineBuilder;
+import org.springframework.statemachine.data.redis.RedisStateMachineContextRepository;
+import org.springframework.statemachine.data.redis.RedisStateMachinePersister;
+import org.springframework.statemachine.persist.RepositoryStateMachinePersist;
+
+import java.util.EnumSet;
 
 @Configuration
 public class StateMachineConfig {
 
     @Bean
-    public StateMachineLogListener stateMachineLogListener() {
-        return new StateMachineLogListener();
+    @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
+    public ProxyFactoryBean stateMachine() {
+        ProxyFactoryBean pfb = new ProxyFactoryBean();
+        pfb.setTargetSource(poolTargetSource());
+        return pfb;
     }
 
-    @Configuration
-    @EnableStateMachineFactory
-    public static class Config extends StateMachineConfigurerAdapter<String, String> {
-
-        @Autowired
-        private StateMachineLogListener stateMachineLogListener;
-
-        @Override
-        public void configure(StateMachineStateConfigurer<String, String> states)
-                throws Exception {
-            states
-                    .withStates()
-                    .initial("1")
-                    .state("2")
-                    .state("3")
-                    .state("4");
-        }
-
-        @Override
-        public void configure(StateMachineTransitionConfigurer<String, String> transitions)
-                throws Exception {
-            transitions
-                    .withExternal()
-                    .source("1").target("2")
-                    .and()
-                    .withExternal()
-                    .source("2").target("3")
-                    .and()
-                    .withExternal()
-                    .source("3").target("4");
-        }
+    @Bean
+    public CommonsPool2TargetSource poolTargetSource() {
+        CommonsPool2TargetSource pool = new CommonsPool2TargetSource();
+        pool.setMaxSize(3);
+        pool.setTargetBeanName("stateMachineTarget");
+        return pool;
     }
 
+    @Bean(name = "stateMachineTarget")
+    @Scope(scopeName = "prototype")
+    public StateMachine<RinseNode, RinseEvent> stateMachineTarget() throws Exception {
+        StateMachineBuilder.Builder<RinseNode, RinseEvent> builder = StateMachineBuilder.builder();
 
-    @Configuration
-    static class PersistConfig {
+        builder.configureConfiguration()
+                .withConfiguration()
+                .autoStartup(true);
 
-        @Bean
-        public StateMachinePersister<String, String, String> machinePersister(StateMachinePersist<String, String, String> persist) {
-            return new DefaultStateMachinePersister<>(persist);
-        }
+        builder.configureStates()
+                .withStates()
+                .initial(RinseNode.ONE)
+                .states(EnumSet.allOf(RinseNode.class));
 
-        @Bean
-        public StateMachinePersist<String, String, String> machinePersist(OrderMapper orderMapper) {
-            return new PersistLocal(orderMapper);
-        }
+        builder.configureTransitions()
+                .withExternal().source(RinseNode.ONE).target(RinseNode.TWO).event(RinseEvent.NORMAL)
+                .and()
+                .withExternal().source(RinseNode.TWO).target(RinseNode.THREE).event(RinseEvent.NORMAL)
+                .and()
+                .withExternal().source(RinseNode.THREE).target(RinseNode.FOUR).event(RinseEvent.NORMAL);
 
-        @Bean
-        public StateMachineService<String, String> stateMachineService(StateMachineFactory<String, String> stateMachineFactory, StateMachinePersist<String, String, String> persister) {
-            return new DefaultStateMachineService<>(stateMachineFactory, persister);
-        }
+        return builder.build();
+    }
 
+    @Bean
+    public RedisConnectionFactory redisConnectionFactory() {
+        return new JedisConnectionFactory();
+    }
+
+    @Bean
+    public StateMachinePersist<RinseNode, RinseEvent, String> stateMachinePersist(RedisConnectionFactory connectionFactory) {
+        RedisStateMachineContextRepository<RinseNode, RinseEvent> repository =
+                new RedisStateMachineContextRepository<>(connectionFactory);
+        return new RepositoryStateMachinePersist<>(repository);
+    }
+
+    @Bean
+    public RedisStateMachinePersister<RinseNode, RinseEvent> redisStateMachinePersister(
+            StateMachinePersist<RinseNode, RinseEvent, String> stateMachinePersist) {
+        return new RedisStateMachinePersister<>(stateMachinePersist);
     }
 }
