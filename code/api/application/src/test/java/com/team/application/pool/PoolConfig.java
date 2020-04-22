@@ -31,4 +31,5 @@ public class PoolConfig {
     public Counter counterTarget() {
         return new CounterImpl();
     }
+
 }

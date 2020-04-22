@@ -25,14 +25,17 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
+import org.springframework.statemachine.StateContext;
 import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.StateMachinePersist;
+import org.springframework.statemachine.action.Action;
 import org.springframework.statemachine.config.StateMachineBuilder;
 import org.springframework.statemachine.data.redis.RedisStateMachineContextRepository;
 import org.springframework.statemachine.data.redis.RedisStateMachinePersister;
 import org.springframework.statemachine.persist.RepositoryStateMachinePersist;
 
 import java.util.EnumSet;
+import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class StateMachineConfig {
@@ -69,13 +72,27 @@ public class StateMachineConfig {
                 .states(EnumSet.allOf(RinseNode.class));
 
         builder.configureTransitions()
-                .withExternal().source(RinseNode.ONE).target(RinseNode.TWO).event(RinseEvent.NORMAL)
+                .withExternal().source(RinseNode.ONE).target(RinseNode.TWO).action(action1()).event(RinseEvent.NORMAL)
                 .and()
                 .withExternal().source(RinseNode.TWO).target(RinseNode.THREE).event(RinseEvent.NORMAL)
                 .and()
                 .withExternal().source(RinseNode.THREE).target(RinseNode.FOUR).event(RinseEvent.NORMAL);
 
         return builder.build();
+    }
+
+    @Bean
+    public Action<RinseNode, RinseEvent> action1() {
+        return new Action<RinseNode, RinseEvent>() {
+            @Override
+            public void execute(StateContext<RinseNode, RinseEvent> context) {
+                try {
+                    TimeUnit.SECONDS.sleep(20);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        };
     }
 
     @Bean
