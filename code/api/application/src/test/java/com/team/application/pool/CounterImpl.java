@@ -1,9 +1,6 @@
 package com.team.application.pool;
 
 
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
 import javax.annotation.PostConstruct;
 import java.math.BigInteger;
 import java.security.SecureRandom;
