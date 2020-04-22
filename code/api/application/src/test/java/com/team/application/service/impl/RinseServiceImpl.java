@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class RinseServiceImpl implements RinseService {
 
-    @Autowired
+//    @Autowired
     private StateMachine<RinseNode, RinseEvent> stateMachine;
 
-    @Autowired
+//    @Autowired
     private StateMachinePersister<RinseNode, RinseEvent, String> stateMachinePersister;
 
     @Override
