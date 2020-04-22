@@ -17,8 +17,6 @@ package com.team.application.machine;
 
 import com.team.application.kind.RinseEvent;
 import com.team.application.kind.RinseNode;
-import org.springframework.aop.framework.ProxyFactoryBean;
-import org.springframework.aop.target.CommonsPool2TargetSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -35,30 +33,29 @@ import org.springframework.statemachine.data.redis.RedisStateMachinePersister;
 import org.springframework.statemachine.persist.RepositoryStateMachinePersist;
 
 import java.util.EnumSet;
-import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class StateMachineConfig {
 
-    @Bean
-    @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
-    public ProxyFactoryBean stateMachine() {
-        ProxyFactoryBean pfb = new ProxyFactoryBean();
-        pfb.setTargetSource(poolTargetSource());
-        return pfb;
-    }
-
-    @Bean
-    public CommonsPool2TargetSource poolTargetSource() {
-        CommonsPool2TargetSource pool = new CommonsPool2TargetSource();
-        pool.setMaxSize(2);
-        pool.setTargetBeanName("stateMachineTarget");
-        return pool;
-    }
+//    @Bean
+//    @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
+//    public ProxyFactoryBean stateMachine() {
+//        ProxyFactoryBean pfb = new ProxyFactoryBean();
+//        pfb.setTargetSource(poolTargetSource());
+//        return pfb;
+//    }
+//
+//    @Bean
+//    public CommonsPool2TargetSource poolTargetSource() {
+//        CommonsPool2TargetSource pool = new CommonsPool2TargetSource();
+//        pool.setMaxSize(2);
+//        pool.setTargetBeanName("stateMachineTarget");
+//        return pool;
+//    }
 
 
     @Bean(name = "stateMachineTarget")
-    @Scope(scopeName = "prototype")
+    @Scope(scopeName = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
     public StateMachine<RinseNode, RinseEvent> stateMachineTarget() throws Exception {
         StateMachineBuilder.Builder<RinseNode, RinseEvent> builder = StateMachineBuilder.builder();
 
@@ -86,11 +83,12 @@ public class StateMachineConfig {
         return new Action<RinseNode, RinseEvent>() {
             @Override
             public void execute(StateContext<RinseNode, RinseEvent> context) {
-                try {
-                    TimeUnit.SECONDS.sleep(20);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                System.out.println(Thread.currentThread().toString());
+//                try {
+//                    TimeUnit.SECONDS.sleep(20);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
             }
         };
     }

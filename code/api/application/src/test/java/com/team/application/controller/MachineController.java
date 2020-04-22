@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -19,8 +20,8 @@ public class MachineController {
     private RinseService rinseService;
 
     @PostMapping(path = "state")
-    public void match(@RequestBody MachineDTO dto) throws Exception {
-        rinseService.sendEvent(dto.getProcessId());
+    public Map<String,Object> match(@RequestBody MachineDTO dto) throws Exception {
+        return rinseService.sendEvent(dto.getProcessId());
     }
 
 }
