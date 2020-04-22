@@ -48,10 +48,11 @@ public class StateMachineConfig {
     @Bean
     public CommonsPool2TargetSource poolTargetSource() {
         CommonsPool2TargetSource pool = new CommonsPool2TargetSource();
-        pool.setMaxSize(3);
+        pool.setMaxSize(2);
         pool.setTargetBeanName("stateMachineTarget");
         return pool;
     }
+
 
     @Bean(name = "stateMachineTarget")
     @Scope(scopeName = "prototype")
