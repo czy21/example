@@ -20,9 +20,6 @@ import com.team.application.kind.RinseNode;
 import com.team.domain.mapper.OrderMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
-import org.springframework.statemachine.StateContext;
 import org.springframework.statemachine.StateMachinePersist;
 import org.springframework.statemachine.action.Action;
 import org.springframework.statemachine.config.EnableStateMachineFactory;
@@ -34,6 +31,7 @@ import org.springframework.statemachine.persist.DefaultStateMachinePersister;
 import org.springframework.statemachine.persist.StateMachinePersister;
 
 import java.util.EnumSet;
+import java.util.concurrent.TimeUnit;
 
 @Configuration
 @EnableStateMachineFactory
@@ -67,27 +65,14 @@ public class RinseStateMachine extends StateMachineConfigurerAdapter<RinseNode, 
 
     @Bean
     public Action<RinseNode, RinseEvent> action1() {
-        return new Action<RinseNode, RinseEvent>() {
-            @Override
-            public void execute(StateContext<RinseNode, RinseEvent> context) {
-//                try {
-////                    TimeUnit.SECONDS.sleep(20);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-                System.out.println(Thread.currentThread().toString());
-//                try {
-//                    TimeUnit.SECONDS.sleep(20);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
+        return context -> {
+            try {
+                TimeUnit.SECONDS.sleep(20);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+            System.out.println(Thread.currentThread().toString());
         };
-    }
-
-    @Bean
-    public RedisConnectionFactory redisConnectionFactory() {
-        return new JedisConnectionFactory();
     }
 
     @Bean
