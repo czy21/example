@@ -1,17 +1,17 @@
 package com.team.application.model;
 
-import com.team.application.kind.RinseEvent;
+import com.team.application.kind.RinseNode;
 
 public class MachineDTO {
-    private RinseEvent event;
+    private RinseNode node;
     private String processId;
 
-    public RinseEvent getEvent() {
-        return event;
+    public RinseNode getNode() {
+        return node;
     }
 
-    public void setEvent(RinseEvent event) {
-        this.event = event;
+    public void setNode(RinseNode node) {
+        this.node = node;
     }
 
     public String getProcessId() {

@@ -17,72 +17,64 @@ package com.team.application.machine;
 
 import com.team.application.kind.RinseEvent;
 import com.team.application.kind.RinseNode;
+import com.team.domain.mapper.OrderMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.statemachine.StateContext;
-import org.springframework.statemachine.StateMachine;
 import org.springframework.statemachine.StateMachinePersist;
 import org.springframework.statemachine.action.Action;
-import org.springframework.statemachine.config.StateMachineBuilder;
-import org.springframework.statemachine.data.redis.RedisStateMachineContextRepository;
-import org.springframework.statemachine.data.redis.RedisStateMachinePersister;
-import org.springframework.statemachine.persist.RepositoryStateMachinePersist;
+import org.springframework.statemachine.config.EnableStateMachineFactory;
+import org.springframework.statemachine.config.StateMachineConfigurerAdapter;
+import org.springframework.statemachine.config.builders.StateMachineConfigurationConfigurer;
+import org.springframework.statemachine.config.builders.StateMachineStateConfigurer;
+import org.springframework.statemachine.config.builders.StateMachineTransitionConfigurer;
+import org.springframework.statemachine.persist.DefaultStateMachinePersister;
+import org.springframework.statemachine.persist.StateMachinePersister;
 
 import java.util.EnumSet;
 
 @Configuration
-public class StateMachineConfig {
+@EnableStateMachineFactory
+public class RinseStateMachine extends StateMachineConfigurerAdapter<RinseNode, RinseEvent> {
 
-//    @Bean
-//    @Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
-//    public ProxyFactoryBean stateMachine() {
-//        ProxyFactoryBean pfb = new ProxyFactoryBean();
-//        pfb.setTargetSource(poolTargetSource());
-//        return pfb;
-//    }
-//
-//    @Bean
-//    public CommonsPool2TargetSource poolTargetSource() {
-//        CommonsPool2TargetSource pool = new CommonsPool2TargetSource();
-//        pool.setMaxSize(2);
-//        pool.setTargetBeanName("stateMachineTarget");
-//        return pool;
-//    }
-
-
-    @Bean(name = "stateMachineTarget")
-    @Scope(scopeName = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
-    public StateMachine<RinseNode, RinseEvent> stateMachineTarget() throws Exception {
-        StateMachineBuilder.Builder<RinseNode, RinseEvent> builder = StateMachineBuilder.builder();
-
-        builder.configureConfiguration()
+    @Override
+    public void configure(StateMachineConfigurationConfigurer<RinseNode, RinseEvent> config)
+            throws Exception {
+        config
                 .withConfiguration()
                 .autoStartup(true);
+    }
 
-        builder.configureStates()
-                .withStates()
-                .initial(RinseNode.ONE)
-                .states(EnumSet.allOf(RinseNode.class));
+    @Override
+    public void configure(StateMachineStateConfigurer<RinseNode, RinseEvent> states) throws Exception {
+        states.withStates()
+                .initial(RinseNode.ONE).
+                states(EnumSet.allOf(RinseNode.class));
+    }
 
-        builder.configureTransitions()
+    @Override
+    public void configure(StateMachineTransitionConfigurer<RinseNode, RinseEvent> transitions) throws Exception {
+        transitions
                 .withExternal().source(RinseNode.ONE).target(RinseNode.TWO).action(action1()).event(RinseEvent.NORMAL)
                 .and()
                 .withExternal().source(RinseNode.TWO).target(RinseNode.THREE).event(RinseEvent.NORMAL)
                 .and()
                 .withExternal().source(RinseNode.THREE).target(RinseNode.FOUR).event(RinseEvent.NORMAL);
-
-        return builder.build();
     }
+
 
     @Bean
     public Action<RinseNode, RinseEvent> action1() {
         return new Action<RinseNode, RinseEvent>() {
             @Override
             public void execute(StateContext<RinseNode, RinseEvent> context) {
+//                try {
+////                    TimeUnit.SECONDS.sleep(20);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
                 System.out.println(Thread.currentThread().toString());
 //                try {
 //                    TimeUnit.SECONDS.sleep(20);
@@ -99,15 +91,12 @@ public class StateMachineConfig {
     }
 
     @Bean
-    public StateMachinePersist<RinseNode, RinseEvent, String> stateMachinePersist(RedisConnectionFactory connectionFactory) {
-        RedisStateMachineContextRepository<RinseNode, RinseEvent> repository =
-                new RedisStateMachineContextRepository<>(connectionFactory);
-        return new RepositoryStateMachinePersist<>(repository);
+    public StateMachinePersist<RinseNode, RinseEvent, RinseNode> stateMachinePersist(OrderMapper orderMapper) {
+        return new PersistLocal(orderMapper);
     }
 
     @Bean
-    public RedisStateMachinePersister<RinseNode, RinseEvent> redisStateMachinePersister(
-            StateMachinePersist<RinseNode, RinseEvent, String> stateMachinePersist) {
-        return new RedisStateMachinePersister<>(stateMachinePersist);
+    public StateMachinePersister<RinseNode, RinseEvent, RinseNode> redisStateMachinePersister(StateMachinePersist<RinseNode, RinseEvent, RinseNode> stateMachinePersist) {
+        return new DefaultStateMachinePersister<>(stateMachinePersist);
     }
 }

@@ -1,12 +1,13 @@
 package com.team.application.machine;
 
-import com.team.domain.entity.OrderEntity;
+import com.team.application.kind.RinseEvent;
+import com.team.application.kind.RinseNode;
 import com.team.domain.mapper.OrderMapper;
 import org.springframework.statemachine.StateMachineContext;
 import org.springframework.statemachine.StateMachinePersist;
 import org.springframework.statemachine.support.DefaultStateMachineContext;
 
-public class PersistLocal implements StateMachinePersist<String, String, String> {
+public class PersistLocal implements StateMachinePersist<RinseNode, RinseEvent, RinseNode> {
 
     private OrderMapper orderMapper;
 
@@ -15,23 +16,11 @@ public class PersistLocal implements StateMachinePersist<String, String, String>
     }
 
     @Override
-    public void write(StateMachineContext<String, String> context, String contextObj) {
-        OrderEntity entity = orderMapper.selectById(contextObj);
-        if (entity == null) {
-            return;
-        }
-        entity.setState(context.getState());
-        orderMapper.updateById(entity);
+    public void write(StateMachineContext<RinseNode, RinseEvent> context, RinseNode contextObj) {
     }
 
     @Override
-    public StateMachineContext<String, String> read(String contextObj) {
-
-        OrderEntity entity = orderMapper.selectById(contextObj);
-        if (entity == null) {
-            return null;
-        }
-
-        return new DefaultStateMachineContext<>(entity.getState(), null, null, null, null,entity.getId());
+    public StateMachineContext<RinseNode, RinseEvent> read(RinseNode contextObj) {
+        return new DefaultStateMachineContext<>(contextObj, null, null, null);
     }
 }
