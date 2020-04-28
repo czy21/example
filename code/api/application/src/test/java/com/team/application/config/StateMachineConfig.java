@@ -13,10 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.team.application.machine;
+package com.team.application.config;
 
 import com.team.application.kind.RinseEvent;
 import com.team.application.kind.RinseNode;
+import com.team.application.machine.PersistLocal;
 import com.team.domain.mapper.OrderMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -35,7 +36,7 @@ import java.util.concurrent.TimeUnit;
 
 @Configuration
 @EnableStateMachineFactory
-public class RinseStateMachine extends StateMachineConfigurerAdapter<RinseNode, RinseEvent> {
+public class StateMachineConfig extends StateMachineConfigurerAdapter<RinseNode, RinseEvent> {
 
     @Override
     public void configure(StateMachineConfigurationConfigurer<RinseNode, RinseEvent> config)
