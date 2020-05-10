@@ -6,6 +6,7 @@ import com.team.application.model.dto.PageDTO;
 import com.team.application.model.vo.SearchDepartmentModel;
 import com.team.application.service.DepartmentService;
 import com.team.domain.repository.jpa.DepartmentRepository;
+import com.team.infrastructure.lock.DataLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;

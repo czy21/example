@@ -1,12 +1,12 @@
 package com.team.application;
 
 import com.team.application.task.TaskParallel;
+import com.team.infrastructure.lock.DataLock;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("basic")
@@ -27,6 +27,12 @@ public class BasicController {
 
         List<String> whats = List.of("1", "2", "3");
         whats.parallelStream().forEach(System.out::println);
+    }
+
+    @PostMapping(path = "match")
+    @DataLock(value = "#input.get('mm')")
+    public void Match(@RequestBody Map<String, Object> input) {
+        System.out.println("aa");
     }
 
 }
