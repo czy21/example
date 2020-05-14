@@ -1,0 +1,41 @@
+<div class="order_page">
+    <div class="select_list">
+        <div (click) = "order_type(0)" class="type">
+            <div class="select_font">全部</div>
+            <div *ngIf='type === 0' class="select_bar"></div>
+        </div>
+        <div (click) = "order_type(1)" class="type">
+            <div class="select_font">待拍摄</div>
+            <div *ngIf='type === 1' class="select_bar"></div>
+        </div>
+        <div (click) = "order_type(2)" class="type">
+            <div class="select_font">进行中</div>
+            <div *ngIf='type === 2' class="select_bar"></div>
+        </div>
+        <div (click) = "order_type(3)" class="type">
+            <div class="select_font">已完成</div>
+            <div *ngIf='type === 3' class="select_bar"></div>
+        </div>
+        <div (click) = "order_type(4)" class="type">
+            <div class="select_font">已关闭</div>
+            <div *ngIf='type === 4' class="select_bar"></div>
+        </div>
+    </div>
+    <!-- 订单 -->
+    <div class="order_main">
+        <div class="order" *ngFor="let item of order">
+            <div class="type_top"></div>
+            <div class="time_type">
+                <span>{{item.bookTime | date:'short'}}</span>
+                <span>{{checkState(item.paied)}}</span>
+            </div>
+            <div class="product">
+                <div class="pro_img"><img [src]="getPic(item.homePic)" alt=""></div>
+                <div class="pro_name">{{item.name}}</div>
+            </div>
+            <div class="price">
+                {{item.money | currency:'CNY':'symbol-narrow'}}
+            </div>
+        </div>
+    </div>
+</div>
