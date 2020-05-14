@@ -7,20 +7,21 @@
 </div>
 <div class="pro_main">
   <div class="bg_img">
-    <img src="../../assets/img/detail-bg.f30033c3.png" alt="" />
+    <img src="../../assets/img/detail-bg.f30033c3.png" alt=""/>
   </div>
   <div class="product_message">
     <div class="picture">
-      <img [src]="getPic(product.homePage)" alt="产品主图" />
+      <img [src]="getPic(product.homePage)" alt="产品主图"/>
+      <div class="name_price">
+        <h2 class="name_container">
+          {{product.name}}
+          <span class="price">{{ product.money }}</span>
+        </h2>
+      </div>
     </div>
-    <div class="name_price">
-      <span style="font-weight: bold; font-size: 18px;">{{
-        product.name
-      }}</span>
-      <span style="font-weight: bold; color: red;">{{ product.money }}</span>
-    </div>
+    <div style="height: 30px"></div>
     <div>
-      <img width="100%" src="../../assets/img/产品服务.png" alt="产品服务" />
+      <img width="100%" src="../../assets/img/产品服务.png" alt="产品服务"/>
     </div>
   </div>
 
@@ -35,14 +36,14 @@
     </div>
     <div *ngIf="productInfoFlag; else info">
       <div class="pro_intro_main">
-        <img *ngFor="let item of product.pages" [src]="getPic(item)" />
+        <img *ngFor="let item of product.pages" [src]="getPic(item)"/>
       </div>
     </div>
   </div>
 </div>
 
 <ng-template #info>
-  <img src="" alt="服务介绍" />
+  <img src="" alt="服务介绍"/>
 </ng-template>
 
 <div (click)="show_select = false" *ngIf="show_select" class="select_all"></div>
@@ -62,38 +63,45 @@
           </div>
     </div> -->
   <div class="sele_head">
-    <div class="sele_head_name">{{ product.name }}</div>
+    <h1 class="sele_head_name">{{ product.name }}</h1>
     <div class="sele_head_name_two">
       已选套餐：{{
-        cartService.order.productInfoId
-          ? cartService.order.productInfoId
-          : "未选择"
+      cartService.order.productInfoId
+        ? cartService.order.productInfoId
+        : "未选择"
       }}
     </div>
   </div>
-  <div class="pro_type">产品类型</div>
-  <div class="all_type">
-    <div
-      [ngClass]="{
+  <div class="submit_body">
+    <div class="part_main">
+      <header class="part_header">
+        <h2 class="product_title">产品类型</h2>
+      </header>
+      <div class="checkbox_group">
+        <div
+          [ngClass]="{
         type_main_active: seleType === item.id,
         type_main: seleType !== item.id
       }"
-      *ngFor="let item of product.infos"
-      (click)="selectProduct(item.id, item.price); seleType = item.id"
-    >
-      {{ item.name }}
+          *ngFor="let item of product.infos"
+          (click)="selectProduct(item.id, item.price); seleType = item.id"
+        >
+          {{ item.name }}
+        </div>
+      </div>
     </div>
   </div>
+
 </div>
 
 <div *ngIf="show_select" class="buy_first">
-  <div class="sum_price">
-    价格:
+  <p class="sum_price">
+    价格:&nbsp;
     <span class="all_money">
       <span class="yen_money">{{
         product.money | currency: "CNY":"symbol-narrow"
-      }}</span>
+        }}</span>
     </span>
-  </div>
+  </p>
   <button routerLink="/Adress" (click)="ByNext()">下一步</button>
 </div>
