@@ -1,4 +1,4 @@
-package com.team.application.util;
+package com.team.cooperated.util;
 
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;

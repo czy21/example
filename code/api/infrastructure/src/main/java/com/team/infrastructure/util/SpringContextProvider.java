@@ -1,4 +1,4 @@
-package com.team.application.util;
+package com.team.infrastructure.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;

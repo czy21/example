@@ -1,4 +1,4 @@
-package com.team.application.util;
+package com.team.infrastructure.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;
