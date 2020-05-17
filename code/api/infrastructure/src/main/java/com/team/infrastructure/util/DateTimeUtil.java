@@ -1,4 +1,4 @@
-package com.team.application.util;
+package com.team.infrastructure.util;
 
 import java.time.Instant;
 import java.time.LocalDate;

@@ -35,7 +35,7 @@ public class IncludeParser {
 
     public static String parse(String string, Map<String, Object> variables) {
         VariableTokenHandler handler = new VariableTokenHandler(variables);
-        GenericTokenParser parser = new GenericTokenParser("<%@", "%>", handler);
+        GenericTokenParser parser = new GenericTokenParser(PREFIX, SUFFIX, handler);
         String sql = parser.parse(string);
         if (sql.contains(PREFIX)) {
             return parse(sql, variables);
@@ -47,6 +47,7 @@ public class IncludeParser {
         ExpressionParser parser = new SpelExpressionParser();
         return parser.parseExpression(expression, templateParserContext);
     }
+
 
     private static class VariableTokenHandler implements TokenHandler {
         private final Map<String, Object> variables;
@@ -60,7 +61,7 @@ public class IncludeParser {
         public String handleToken(String content) {
             StandardEvaluationContext context = new StandardEvaluationContext(variables);
             context.addPropertyAccessor(mapAccessor);
-            return IncludeParser.getExpression(StringUtils.join("<%@", content, "%>")).getValue(context, String.class);
+            return getExpression(StringUtils.join(IncludeParser.PREFIX, content, IncludeParser.SUFFIX)).getValue(context, String.class);
         }
     }
 

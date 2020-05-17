@@ -1,6 +1,6 @@
 package com.team.application;
 
-import com.team.application.util.DateTimeUtil;
+import com.team.infrastructure.util.DateTimeUtil;
 import com.team.domain.model.CompanyEntity;
 import com.team.domain.model.DepartmentEntity;
 import com.team.domain.repository.jpa.CompanyRepository;
@@ -9,13 +9,9 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
