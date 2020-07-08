@@ -5,25 +5,24 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
-/**
- * @author liugh
- * @since on 2018/5/8.
- */
+
 public class DateTimeUtil {
 
+    private static final ZoneOffset ZONE_OFF_SET = ZoneOffset.ofHours(8);
+
     public static Long toTimeStamp(LocalDateTime localDateTime) {
-        return localDateTime.toInstant(ZoneOffset.ofHours(8)).toEpochMilli();
+        return localDateTime.toInstant(ZONE_OFF_SET).toEpochMilli();
     }
 
     public static LocalDateTime toLocalDateTime(Long timeStamp) {
-        return Instant.ofEpochMilli(timeStamp).atZone(ZoneOffset.ofHours(8)).toLocalDateTime();
+        return Instant.ofEpochMilli(timeStamp).atZone(ZONE_OFF_SET).toLocalDateTime();
     }
 
     public static Long toTimeStamp(LocalDate localDate) {
-        return localDate.atStartOfDay(ZoneOffset.ofHours(8)).toInstant().toEpochMilli();
+        return localDate.atStartOfDay(ZONE_OFF_SET).toInstant().toEpochMilli();
     }
 
     public static LocalDate toLocalDate(Long timeStamp) {
-        return Instant.ofEpochMilli(timeStamp).atZone(ZoneOffset.ofHours(8)).toLocalDate();
+        return Instant.ofEpochMilli(timeStamp).atZone(ZONE_OFF_SET).toLocalDate();
     }
 }
