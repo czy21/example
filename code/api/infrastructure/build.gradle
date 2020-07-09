@@ -11,6 +11,4 @@ dependencies {
     api "com.baomidou:mybatis-plus-boot-starter:3.1.0"
     api "com.github.pagehelper:pagehelper-spring-boot-starter:1.2.10"
     api "mysql:mysql-connector-java:8.0.15"
-    api "org.apache.httpcomponents:httpclient:4.5.3"
-    api 'com.alipay.sdk:alipay-sdk-java:4.10.49.ALL'
 }
