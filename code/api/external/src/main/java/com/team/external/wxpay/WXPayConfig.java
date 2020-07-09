@@ -1,4 +1,4 @@
-package com.team.infrastructure.wxpay;
+package com.team.external.wxpay;
 
 import java.io.InputStream;
 

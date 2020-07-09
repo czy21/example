@@ -1,4 +1,4 @@
-package com.team.infrastructure.wxpay;
+package com.team.external.wxpay;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;

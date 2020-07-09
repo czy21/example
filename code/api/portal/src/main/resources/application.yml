@@ -37,3 +37,22 @@ logging:
   level:
     com.team.domain.mapper: debug
     org.springframework.web.filter.CommonsRequestLoggingFilter: debug
+
+ali:
+  access-key:
+    id: 2222
+    secret: 12345679
+  pay:
+    public-key-file: ../../public-key-file
+    app-private-key-file: ../../app-private-key-file
+    app:
+      sample1:
+        app-id: 2016102900777119
+        scene: bar_code
+  oss:
+    example1:
+      end-point: www.baidu.com
+  sms:
+    example1:
+      sign-name: 测试名称
+      template-code: SMS_12345678
