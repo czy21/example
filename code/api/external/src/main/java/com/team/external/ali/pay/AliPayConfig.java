@@ -6,18 +6,14 @@ import java.util.Map;
 
 @Data
 public class AliPayConfig {
-    private KeyFile keyFile;
-    private Map<String, AliPayConfig> app;
+    private String publicKeyFile;
+    private String appPrivateKeyFile;
+    private Map<String, AppConfig> app;
 
     @Data
     public static class AppConfig {
         private String appId;
         private String scene;
-        private KeyFile keyFile;
-    }
-
-    @Data
-    public static class KeyFile {
         private String publicKeyFile;
         private String appPrivateKeyFile;
     }
