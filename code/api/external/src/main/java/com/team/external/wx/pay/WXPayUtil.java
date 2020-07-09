@@ -1,6 +1,6 @@
-package com.team.external.wxpay;
+package com.team.external.wx.pay;
 
-import com.team.external.wxpay.WXPayConstants.SignType;
+import com.team.external.wx.pay.WXPayConstants.SignType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.w3c.dom.Node;
