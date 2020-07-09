@@ -119,7 +119,7 @@ public class WXPayReport {
 
     private WXPayReport(final WXPayConfig config) {
         this.config = config;
-        reportMsgQueue = new LinkedBlockingQueue<String>(config.getReportQueueMaxSize());
+        reportMsgQueue = new LinkedBlockingQueue<>(config.getReportQueueMaxSize());
 
         // 添加处理线程
         executorService = Executors.newFixedThreadPool(config.getReportWorkerNum(), r -> {
