@@ -19,7 +19,7 @@ import java.util.Map;
 @Service
 public class AliPayServiceImpl implements AliPayService {
 
-    private final transient Map<String, AlipayClient> aliPayClients = new HashMap<>();
+    private final Map<String, AlipayClient> aliPayClients = new HashMap<>();
 
     @Autowired
     AliConfig aliConfig;
@@ -49,16 +49,17 @@ public class AliPayServiceImpl implements AliPayService {
     }
 
     public AlipayClient getAliPayClient(String payNode, AliPayConfig.AppConfig appConfig) {
-        AlipayClient client = aliPayClients.get(payNode);
-        if (client == null) {
-            client = new DefaultAlipayClient(
-                    "https://openapi.alipaydev.com/gateway.do",
-                    appConfig.getAppId(),
-                    appConfig.getAppPrivateKeyFile(),
-                    "json",
-                    "utf-8",
-                    appConfig.getPublicKeyFile(), "RSA2");
-            synchronized (aliPayClients) {
+        AlipayClient client;
+        synchronized (aliPayClients) {
+            client = aliPayClients.get(payNode);
+            if (client == null) {
+                client = new DefaultAlipayClient(
+                        "https://openapi.alipaydev.com/gateway.do",
+                        appConfig.getAppId(),
+                        appConfig.getAppPrivateKeyFile(),
+                        "json",
+                        "utf-8",
+                        appConfig.getPublicKeyFile(), "RSA2");
                 aliPayClients.put(payNode, client);
             }
         }
