@@ -26,29 +26,24 @@ public class AliPayServiceImpl implements AliPayService {
 
     @Override
     public AlipayTradePayResponse pay(String payNode, String tradeCode, String qrCode) {
-        AliPayConfig.AppConfig payAppConfig = aliConfig.getPay().getApp().get(payNode);
-        if (StringUtils.isEmpty(payAppConfig.getPublicKeyFile())) {
-            payAppConfig.setPublicKeyFile(aliConfig.getPay().getPublicKeyFile());
-        }
-        if (StringUtils.isEmpty(payAppConfig.getAppPrivateKeyFile())) {
-            payAppConfig.setAppPrivateKeyFile(aliConfig.getPay().getAppPrivateKeyFile());
-        }
+        AliPayConfig payConfig = aliConfig.getPay();
+        AliPayConfig.AppConfig appConfig = aliConfig.getPay().getApp().get(payNode);
         AlipayTradePayRequest request = new AlipayTradePayRequest();
         AlipayTradePayModel model = new AlipayTradePayModel();
         model.setOutTradeNo(tradeCode);
         model.setSubject("Iphone6 16G");
         model.setTotalAmount("100");
         model.setAuthCode(qrCode);
-        model.setScene(payAppConfig.getScene());
+        model.setScene(appConfig.getScene());
         request.setBizModel(model);
         try {
-            return getAliPayClient(payNode, payAppConfig).execute(request);
+            return getAliPayClient(payNode, payConfig, appConfig).execute(request);
         } catch (AlipayApiException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public AlipayClient getAliPayClient(String payNode, AliPayConfig.AppConfig appConfig) {
+    public AlipayClient getAliPayClient(String payNode, AliPayConfig payConfig, AliPayConfig.AppConfig appConfig) {
         AlipayClient client;
         synchronized (aliPayClients) {
             client = aliPayClients.get(payNode);
@@ -56,10 +51,10 @@ public class AliPayServiceImpl implements AliPayService {
                 client = new DefaultAlipayClient(
                         "https://openapi.alipaydev.com/gateway.do",
                         appConfig.getAppId(),
-                        appConfig.getAppPrivateKeyFile(),
+                        StringUtils.isEmpty(appConfig.getAppPrivateKeyFile()) ? payConfig.getAppPrivateKeyFile() : "",
                         "json",
                         "utf-8",
-                        appConfig.getPublicKeyFile(), "RSA2");
+                        StringUtils.isEmpty(appConfig.getPublicKeyFile()) ? payConfig.getPublicKeyFile() : "", "RSA2");
                 aliPayClients.put(payNode, client);
             }
         }
