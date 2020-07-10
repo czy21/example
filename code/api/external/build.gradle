@@ -1,7 +1,5 @@
 
 dependencies {
+    api project(':infrastructure')
     api 'com.alipay.sdk:alipay-sdk-java:4.10.49.ALL'
-    api "org.apache.httpcomponents:httpclient:4.5.3"
-    api "org.slf4j:slf4j-api:1.7.21"
-    api "org.springframework.boot:spring-boot-starter-aop:${springBootVersion}"
 }

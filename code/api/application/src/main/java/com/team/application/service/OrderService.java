@@ -7,7 +7,7 @@ import java.util.Map;
 
 public interface OrderService {
 
-    AlipayTradePayResponse pay(String qrCode);
+    AlipayTradePayResponse pay(String authCode);
 
     AlipayResponse queryOrderHistory(Map<String, Object> content);
 }
