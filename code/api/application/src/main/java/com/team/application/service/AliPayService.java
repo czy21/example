@@ -1,11 +1,11 @@
 package com.team.application.service;
 
 
-import com.alipay.api.response.AlipayTradePayResponse;
 import com.team.application.model.dto.PayDTO;
+import com.team.application.model.dto.PayResult;
 
 public interface AliPayService {
 
-    AlipayTradePayResponse pay(String payNode, PayDTO dto);
+    PayResult pay(String payNode, PayDTO dto);
 
 }

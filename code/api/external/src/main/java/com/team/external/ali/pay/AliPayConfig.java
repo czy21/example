@@ -8,6 +8,7 @@ import java.util.Map;
 public class AliPayConfig {
     private String publicKeyFile;
     private String appPrivateKeyFile;
+    private String serverUrl;
     private Map<String, AppConfig> app;
 
     @Data
@@ -16,6 +17,7 @@ public class AliPayConfig {
         private String scene;
         private String publicKeyFile;
         private String appPrivateKeyFile;
+        private String serverUrl;
     }
 }
 

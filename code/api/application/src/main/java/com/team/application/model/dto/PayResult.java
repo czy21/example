@@ -3,9 +3,8 @@ package com.team.application.model.dto;
 import lombok.Data;
 
 @Data
-public class PayDTO {
-    private String subject;
+public class PayResult {
     private String tradeNo;
-    private String authCode;
+    private String tradePlatformNo;
     private String totalAmount;
 }

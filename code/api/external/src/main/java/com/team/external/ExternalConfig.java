@@ -9,6 +9,7 @@ import org.springframework.util.StringUtils;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.Optional;
 
 @Configuration
 public class ExternalConfig {
@@ -17,6 +18,7 @@ public class ExternalConfig {
         payConfig.setPublicKeyFile(IOUtils.toString(ResourceUtils.getURL(ResourceUtils.CLASSPATH_URL_PREFIX + payConfig.getPublicKeyFile()), StandardCharsets.UTF_8));
         payConfig.setAppPrivateKeyFile(IOUtils.toString(ResourceUtils.getURL(ResourceUtils.CLASSPATH_URL_PREFIX + payConfig.getAppPrivateKeyFile()), StandardCharsets.UTF_8));
         for (AliPayConfig.AppConfig val : payConfig.getApp().values()) {
+            val.setServerUrl(Optional.ofNullable(val.getServerUrl()).orElse(payConfig.getServerUrl()));
             val.setPublicKeyFile(StringUtils.isEmpty(val.getPublicKeyFile()) ? payConfig.getPublicKeyFile() : IOUtils.toString(ResourceUtils.getURL(ResourceUtils.CLASSPATH_URL_PREFIX + payConfig.getPublicKeyFile()), StandardCharsets.UTF_8));
             val.setAppPrivateKeyFile(StringUtils.isEmpty(val.getAppPrivateKeyFile()) ? payConfig.getAppPrivateKeyFile() : IOUtils.toString(ResourceUtils.getURL(ResourceUtils.CLASSPATH_URL_PREFIX + payConfig.getAppPrivateKeyFile()), StandardCharsets.UTF_8));
         }

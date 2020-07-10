@@ -1,9 +1,7 @@
 package com.team.portal.controller;
 
-import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayResponse;
-import com.alipay.api.response.AlipayTradePayResponse;
-import com.fasterxml.jackson.core.JsonProcessingException;
+import com.team.application.model.dto.PayResult;
 import com.team.application.service.OrderService;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +17,7 @@ public class OrderController {
     OrderService orderService;
 
     @GetMapping(path = "pay")
-    public AlipayTradePayResponse pay(@RequestParam("authCode") String authCode) {
+    public PayResult pay(@RequestParam("authCode") String authCode) {
         return orderService.pay(authCode);
     }
 
