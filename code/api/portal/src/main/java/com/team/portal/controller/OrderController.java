@@ -19,12 +19,12 @@ public class OrderController {
     OrderService orderService;
 
     @GetMapping(path = "pay")
-    public AlipayTradePayResponse pay(@RequestParam("qrCode") String qrCode) throws AlipayApiException {
-        return orderService.pay(qrCode);
+    public AlipayTradePayResponse pay(@RequestParam("authCode") String authCode) {
+        return orderService.pay(authCode);
     }
 
     @PostMapping(path = "tradeQuery")
-    public AlipayResponse tradeQuery(@RequestBody Map<String, Object> content) throws JsonProcessingException, AlipayApiException {
+    public AlipayResponse tradeQuery(@RequestBody Map<String, Object> content) {
         return orderService.queryOrderHistory(content);
     }
 

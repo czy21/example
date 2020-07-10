@@ -2,6 +2,7 @@ package com.team.application.service.impl;
 
 import com.alipay.api.AlipayResponse;
 import com.alipay.api.response.AlipayTradePayResponse;
+import com.team.application.model.dto.PayDTO;
 import com.team.application.service.AliPayService;
 import com.team.application.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,13 @@ public class OrderServiceImpl implements OrderService {
     AliPayService aliPayService;
 
     @Override
-    public AlipayTradePayResponse pay(String qrCode) {
-        return aliPayService.pay("sample1", System.currentTimeMillis() + "", qrCode);
+    public AlipayTradePayResponse pay(String authCode) {
+        PayDTO dto = new PayDTO();
+        dto.setAuthCode(authCode);
+        dto.setOutTradeNo(System.currentTimeMillis() + "");
+        dto.setSubject("iphone 16G");
+        dto.setTotalAmount("1000");
+        return aliPayService.pay("sample1", dto);
     }
 
     @Override
