@@ -3,7 +3,7 @@ package com.team.application.model.dto;
 import lombok.Data;
 
 @Data
-public class PayResult {
+public class PayResponse {
     private String tradeNo;
     private String tradePlatformNo;
     private String totalAmount;

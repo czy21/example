@@ -1,7 +1,7 @@
 package com.team.portal.controller;
 
 import com.alipay.api.AlipayResponse;
-import com.team.application.model.dto.PayResult;
+import com.team.application.model.dto.PayResponse;
 import com.team.application.service.OrderService;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +17,7 @@ public class OrderController {
     OrderService orderService;
 
     @GetMapping(path = "pay")
-    public PayResult pay(@RequestParam("authCode") String authCode) {
+    public PayResponse pay(@RequestParam("authCode") String authCode) {
         return orderService.pay(authCode);
     }
 

@@ -4,10 +4,11 @@ import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.domain.AlipayTradePayModel;
+import com.alipay.api.domain.AlipayTradePrecreateModel;
 import com.alipay.api.request.AlipayTradePayRequest;
 import com.team.application.model.automap.PayAutoMap;
-import com.team.application.model.dto.PayDTO;
-import com.team.application.model.dto.PayResult;
+import com.team.application.model.dto.PayRequest;
+import com.team.application.model.dto.PayResponse;
 import com.team.application.service.AliPayService;
 import com.team.external.ali.model.AliConfig;
 import com.team.external.ali.pay.AliPayConfig;
@@ -29,7 +30,7 @@ public class AliPayServiceImpl implements AliPayService {
     PayAutoMap payAutoMap;
 
     @Override
-    public PayResult pay(String payNode, PayDTO dto) {
+    public PayResponse pay(String payNode, PayRequest dto) {
         AliPayConfig.AppConfig appConfig = aliConfig.getPay().getApp().get(payNode);
 
         AlipayTradePayModel model = payAutoMap.mapToModel(dto);
@@ -38,13 +39,19 @@ public class AliPayServiceImpl implements AliPayService {
         AlipayTradePayRequest request = new AlipayTradePayRequest();
         request.setBizModel(model);
         try {
-            return payAutoMap.mapToResponse(getAliPayClient(payNode, appConfig).execute(request));
+            return payAutoMap.mapToResponse(acquireAliPayClient(payNode, appConfig).execute(request));
         } catch (AlipayApiException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public AlipayClient getAliPayClient(String payNode, AliPayConfig.AppConfig appConfig) {
+    @Override
+    public PayResponse preCreate(String payNode, PayRequest request) {
+        AlipayTradePrecreateModel model = new AlipayTradePrecreateModel();
+        return null;
+    }
+
+    public AlipayClient acquireAliPayClient(String payNode, AliPayConfig.AppConfig appConfig) {
         AlipayClient client;
         synchronized (aliPayClients) {
             client = aliPayClients.get(payNode);

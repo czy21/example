@@ -1,13 +1,13 @@
 package com.team.application.service;
 
 import com.alipay.api.AlipayResponse;
-import com.team.application.model.dto.PayResult;
+import com.team.application.model.dto.PayResponse;
 
 import java.util.Map;
 
 public interface OrderService {
 
-    PayResult pay(String authCode);
+    PayResponse pay(String authCode);
 
     AlipayResponse queryOrderHistory(Map<String, Object> content);
 }
