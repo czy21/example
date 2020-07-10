@@ -45,6 +45,7 @@ ali:
   pay:
     public-key-file: ./alipay/ali-public
     app-private-key-file: ./alipay/app-private
+    server-url: https://openapi.alipaydev.com/gateway.do
     app:
       sample1:
         app-id: 2016102900777119

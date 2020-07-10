@@ -5,9 +5,9 @@ import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.domain.AlipayTradePayModel;
 import com.alipay.api.request.AlipayTradePayRequest;
-import com.alipay.api.response.AlipayTradePayResponse;
 import com.team.application.model.automap.PayAutoMap;
 import com.team.application.model.dto.PayDTO;
+import com.team.application.model.dto.PayResult;
 import com.team.application.service.AliPayService;
 import com.team.external.ali.model.AliConfig;
 import com.team.external.ali.pay.AliPayConfig;
@@ -29,7 +29,7 @@ public class AliPayServiceImpl implements AliPayService {
     PayAutoMap payAutoMap;
 
     @Override
-    public AlipayTradePayResponse pay(String payNode, PayDTO dto) {
+    public PayResult pay(String payNode, PayDTO dto) {
         AliPayConfig.AppConfig appConfig = aliConfig.getPay().getApp().get(payNode);
 
         AlipayTradePayModel model = payAutoMap.mapToModel(dto);
@@ -38,7 +38,7 @@ public class AliPayServiceImpl implements AliPayService {
         AlipayTradePayRequest request = new AlipayTradePayRequest();
         request.setBizModel(model);
         try {
-            return getAliPayClient(payNode, appConfig).execute(request);
+            return payAutoMap.mapToResponse(getAliPayClient(payNode, appConfig).execute(request));
         } catch (AlipayApiException e) {
             throw new RuntimeException(e);
         }
@@ -50,7 +50,7 @@ public class AliPayServiceImpl implements AliPayService {
             client = aliPayClients.get(payNode);
             if (client == null) {
                 client = new DefaultAlipayClient(
-                        "https://openapi.alipaydev.com/gateway.do",
+                        appConfig.getServerUrl(),
                         appConfig.getAppId(),
                         appConfig.getAppPrivateKeyFile(),
                         "json",
