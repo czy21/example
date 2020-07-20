@@ -15,11 +15,14 @@ import com.team.application.service.UserService;
 import com.team.cooperated.annotation.EnumPocket;
 import com.team.cooperated.annotation.SpecialPocket;
 import com.team.cooperated.controller.BaseController;
+import com.team.infrastructure.lock.DataLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
 @RestController
@@ -77,5 +80,13 @@ public class UserController extends BaseController {
         userService.userImport(importVO);
         return true;
     }
+
+    @PostMapping(path = "match")
+    @DataLock(value = "#input.get('mm')")
+    public void Match(@RequestBody Map<String, Object> input) throws InterruptedException {
+        Thread.sleep(10000);
+        System.out.println("aa");
+    }
+
 }
 

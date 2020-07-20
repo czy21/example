@@ -6,7 +6,7 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.LocalVariableTableParameterNameDiscoverer;
-import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
@@ -16,10 +16,10 @@ import java.lang.reflect.Method;
 
 @Aspect
 @Component
-public class DataAop {
+public class DataLockAop {
 
     @Autowired
-    private StringRedisTemplate redisTemplate;
+    private RedisTemplate<String, Object> redisTemplate;
 
     @Around("@annotation(dataLock)")
     public Object around(ProceedingJoinPoint point, DataLock dataLock) {
@@ -27,13 +27,14 @@ public class DataAop {
         Object[] args = point.getArgs();
         Method method = ((MethodSignature) point.getSignature()).getMethod();
         String key = parseKey(dataLock.value(), method, args);
-        RedisLock redisLock = new RedisLock("manualRinse", key, redisTemplate);
+        DataResolver dataResolver = new DefaultDataResolver();
+        RedisLock redisLock = new RedisLock("manualRinse", key, redisTemplate, dataResolver);
         boolean isLock = redisLock.lock();
         if (isLock) {
             try {
                 return point.proceed();
             } catch (Throwable e) {
-                e.printStackTrace();
+                throw new RuntimeException(e);
             } finally {
                 redisLock.unlock();
             }
