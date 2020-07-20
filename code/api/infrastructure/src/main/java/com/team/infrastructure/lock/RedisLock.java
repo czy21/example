@@ -1,7 +1,9 @@
 package com.team.infrastructure.lock;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.redis.core.StringRedisTemplate;
 
+import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 public class RedisLock {
@@ -33,12 +35,25 @@ public class RedisLock {
                     return true;
                 }
             }
-            Thread.sleep(30);
         } catch (Exception e) {
             throw new RuntimeException("locking error", e);
         }
         return false;
     }
+
+    public boolean lock() {
+        try {
+            if (this.redisClient.opsForValue().get(this.key) != null) {
+                throw new RuntimeException(StringUtils.join(this.key, "正在执行 请稍后"));
+            }
+            Boolean setLock = this.redisClient.opsForValue().setIfAbsent(this.key, "1");
+            this.lock = Optional.ofNullable(setLock).orElse(false);
+            return true;
+        } catch (Exception e) {
+            throw new RuntimeException("locking error", e);
+        }
+    }
+
 
     /**
      * 释放锁
@@ -47,9 +62,5 @@ public class RedisLock {
         if (this.lock) {
             redisClient.delete(key);
         }
-    }
-
-    public boolean isLock() {
-        return lock;
     }
 }

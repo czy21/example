@@ -13,4 +13,5 @@ dependencies {
     api "mysql:mysql-connector-java:8.0.15"
     api "org.apache.httpcomponents:httpclient:4.5.3"
     api 'commons-io:commons-io:2.6'
+    api 'org.apache.httpcomponents:httpclient:4.5.12'
 }

@@ -13,7 +13,6 @@ import org.springframework.expression.spel.support.StandardEvaluationContext;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
-import java.util.concurrent.TimeUnit;
 
 @Aspect
 @Component
@@ -23,23 +22,23 @@ public class DataAop {
     private StringRedisTemplate redisTemplate;
 
     @Around("@annotation(dataLock)")
-    public void around(ProceedingJoinPoint point, DataLock dataLock) {
+    public Object around(ProceedingJoinPoint point, DataLock dataLock) {
 
         Object[] args = point.getArgs();
         Method method = ((MethodSignature) point.getSignature()).getMethod();
         String key = parseKey(dataLock.value(), method, args);
         RedisLock redisLock = new RedisLock("manualRinse", key, redisTemplate);
-        boolean isLock = redisLock.lock(5, 5, TimeUnit.SECONDS);
+        boolean isLock = redisLock.lock();
         if (isLock) {
             try {
-                point.proceed();
+                return point.proceed();
             } catch (Throwable e) {
                 e.printStackTrace();
             } finally {
                 redisLock.unlock();
             }
         }
-
+        return null;
     }
 
     private String parseKey(String key, Method method, Object[] args) {
