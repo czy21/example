@@ -1,24 +1,32 @@
 package com.team.infrastructure.lock;
 
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
 
 public class RedisLock {
-    private String key;
     private boolean lock = false;
 
-    private final StringRedisTemplate redisClient;
+    private final RedisTemplate<String, Object> redisClient;
+
+    private DataResolver dataResolver;
+    private Object value;
+    private String key;
 
     /**
-     * @param purpose 锁前缀
-     * @param key     锁定的ID等东西
+     * @param prefix 锁前缀
+     * @param value  锁定的ID等东西
      */
-    public RedisLock(String purpose, String key, StringRedisTemplate redisClient) {
-        this.key = purpose + "_" + key + "_redis_lock";
+    public RedisLock(String prefix,
+                     Object value,
+                     RedisTemplate<String, Object> redisClient,
+                     DataResolver dataResolver) {
+        this.value = value;
+        this.dataResolver = dataResolver;
         this.redisClient = redisClient;
+        this.key = parseValue(prefix, value);
     }
 
     public boolean lock(long timeout, long expire, final TimeUnit unit) {
@@ -28,7 +36,7 @@ public class RedisLock {
             // 在timeout的时间范围内不断轮询锁
             while (System.currentTimeMillis() - beginTime < timeout) {
                 // 锁不存在的话，设置锁并设置锁过期时间，即加锁
-                Boolean setLock = this.redisClient.opsForValue().setIfAbsent(this.key, "1");
+                Boolean setLock = this.redisClient.opsForValue().setIfAbsent(key, "1");
                 if (setLock != null && setLock) {
                     this.redisClient.expire(key, expire, unit);
                     this.lock = true;
@@ -42,11 +50,11 @@ public class RedisLock {
     }
 
     public boolean lock() {
+        if (this.redisClient.hasKey(key) != null) {
+            throw new RuntimeException(StringUtils.join(key, " processing"));
+        }
         try {
-            if (this.redisClient.opsForValue().get(this.key) != null) {
-                throw new RuntimeException(StringUtils.join(this.key, "正在执行 请稍后"));
-            }
-            Boolean setLock = this.redisClient.opsForValue().setIfAbsent(this.key, "1");
+            Boolean setLock = this.redisClient.opsForValue().setIfAbsent(key, this.value);
             this.lock = Optional.ofNullable(setLock).orElse(false);
             return true;
         } catch (Exception e) {
@@ -63,4 +71,10 @@ public class RedisLock {
             redisClient.delete(key);
         }
     }
+
+
+    public String parseValue(String prefix, Object value) {
+        return StringUtils.join(prefix, dataResolver.encodeToIdentify(value));
+    }
+
 }
