@@ -1,5 +1,6 @@
 package com.team.infrastructure.lock;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.redis.core.RedisTemplate;
 
@@ -14,6 +15,7 @@ public class RedisLock {
     private DataResolver dataResolver;
     private Object value;
     private String key;
+    private ObjectMapper objectMapper;
 
     /**
      * @param prefix 锁前缀
@@ -22,10 +24,12 @@ public class RedisLock {
     public RedisLock(String prefix,
                      Object value,
                      RedisTemplate<String, Object> redisClient,
-                     DataResolver dataResolver) {
+                     DataResolver dataResolver,
+                     ObjectMapper objectMapper) {
         this.value = value;
         this.dataResolver = dataResolver;
         this.redisClient = redisClient;
+        this.objectMapper = objectMapper;
         this.key = parseValue(prefix, value);
     }
 
@@ -50,11 +54,11 @@ public class RedisLock {
     }
 
     public boolean lock() {
-        if (this.redisClient.hasKey(key) != null) {
+        if (Optional.ofNullable(this.redisClient.hasKey(key)).orElse(false)) {
             throw new RuntimeException(StringUtils.join(key, " processing"));
         }
         try {
-            Boolean setLock = this.redisClient.opsForValue().setIfAbsent(key, this.value);
+            Boolean setLock = this.redisClient.boundValueOps(key).setIfAbsent(objectMapper.writeValueAsString(value));
             this.lock = Optional.ofNullable(setLock).orElse(false);
             return true;
         } catch (Exception e) {
