@@ -1,5 +1,6 @@
 package com.team.infrastructure.lock;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -21,14 +22,17 @@ public class DataLockAop {
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
 
+    @Autowired
+    ObjectMapper objectMapper;
+
     @Around("@annotation(dataLock)")
     public Object around(ProceedingJoinPoint point, DataLock dataLock) {
 
         Object[] args = point.getArgs();
         Method method = ((MethodSignature) point.getSignature()).getMethod();
-        String key = parseKey(dataLock.value(), method, args);
+        Object value = parseValue(dataLock.value(), method, args);
         DataResolver dataResolver = new DefaultDataResolver();
-        RedisLock redisLock = new RedisLock("manualRinse", key, redisTemplate, dataResolver);
+        RedisLock redisLock = new RedisLock(dataLock.prefix(), value, redisTemplate, dataResolver, objectMapper);
         boolean isLock = redisLock.lock();
         if (isLock) {
             try {
@@ -42,7 +46,7 @@ public class DataLockAop {
         return null;
     }
 
-    private String parseKey(String key, Method method, Object[] args) {
+    private Object parseValue(String key, Method method, Object[] args) {
         LocalVariableTableParameterNameDiscoverer u = new LocalVariableTableParameterNameDiscoverer();
         String[] paraNameArr = u.getParameterNames(method);
 
@@ -54,6 +58,6 @@ public class DataLockAop {
         for (int i = 0; i < paraNameArr.length; i++) {
             context.setVariable(paraNameArr[i], args[i]);
         }
-        return parser.parseExpression(key).getValue(context, String.class);
+        return parser.parseExpression(key).getValue(context, Object.class);
     }
 }

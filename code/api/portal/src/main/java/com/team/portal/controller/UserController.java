@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 
 @RestController
@@ -82,7 +81,7 @@ public class UserController extends BaseController {
     }
 
     @PostMapping(path = "match")
-    @DataLock(value = "#input.get('mm')")
+    @DataLock(prefix = "manualRinse", value = "#input")
     public void Match(@RequestBody Map<String, Object> input) throws InterruptedException {
         Thread.sleep(10000);
         System.out.println("aa");

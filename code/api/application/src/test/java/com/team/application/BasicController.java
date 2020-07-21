@@ -30,7 +30,7 @@ public class BasicController {
     }
 
     @PostMapping(path = "match")
-    @DataLock(value = "#input.get('mm')")
+    @DataLock(prefix = "manualRinse", value = "#input")
     public void Match(@RequestBody Map<String, Object> input) {
         System.out.println("aa");
     }
