@@ -1,4 +1,5 @@
-package com.team.application.async;
+package com.team.application.async.depend;
+
 
 import com.jd.platform.async.callback.ICallback;
 import com.jd.platform.async.callback.IWorker;
@@ -7,6 +8,9 @@ import com.jd.platform.async.wrapper.WorkerWrapper;
 
 import java.util.Map;
 
+/**
+ * @author wuweifeng wrote on 2019-11-20.
+ */
 public class DeWorker implements IWorker<String, User>, ICallback<String, User> {
 
     @Override
