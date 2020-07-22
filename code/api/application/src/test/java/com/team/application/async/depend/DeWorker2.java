@@ -1,4 +1,4 @@
-package com.team.application.async;
+package com.team.application.async.depend;
 
 
 import com.jd.platform.async.callback.ICallback;
@@ -11,23 +11,23 @@ import java.util.Map;
 /**
  * @author wuweifeng wrote on 2019-11-20.
  */
-public class DeWorker1 implements IWorker<WorkResult<User>, User>, ICallback<WorkResult<User>, User> {
+public class DeWorker2 implements IWorker<WorkResult<User>, String>, ICallback<WorkResult<User>, String> {
 
     @Override
-    public User action(WorkResult<User> result, Map<String, WorkerWrapper> allWrappers) {
-        System.out.println("par1的入参来自于par0： " + result.getResult());
+    public String action(WorkResult<User> result, Map<String, WorkerWrapper> allWrappers) {
+        System.out.println("par2的入参来自于par1： " + result.getResult());
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return new User("user1");
+        return result.getResult().getName();
     }
 
 
     @Override
-    public User defaultValue() {
-        return new User("default User");
+    public String defaultValue() {
+        return "default";
     }
 
     @Override
@@ -36,8 +36,8 @@ public class DeWorker1 implements IWorker<WorkResult<User>, User>, ICallback<Wor
     }
 
     @Override
-    public void result(boolean success, WorkResult<User> param, WorkResult<User> workResult) {
-        System.out.println("worker1 的结果是：" + workResult.getResult());
+    public void result(boolean success, WorkResult<User> param, WorkResult<String> workResult) {
+        System.out.println("worker2 的结果是：" + workResult.getResult());
     }
 
 }
