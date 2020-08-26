@@ -15,10 +15,14 @@ class ProjectPlugin implements Plugin<Project> {
         p.tasks.withType(JavaCompile) {
             options.encoding = 'UTF-8'
         }
-        p.dependencies.add("compile", "org.mapstruct:mapstruct:1.3.1.Final")
+        p.dependencies.add("compileOnly", "org.mapstruct:mapstruct:1.3.1.Final")
         p.dependencies.add("annotationProcessor", "org.mapstruct:mapstruct-processor:1.3.1.Final")
-        p.dependencies.add("compile", "org.projectlombok:lombok:1.18.10")
+        p.dependencies.add("compileOnly", "org.projectlombok:lombok:1.18.10")
         p.dependencies.add("annotationProcessor", "org.projectlombok:lombok:1.18.10")
+        p.dependencies.add("testCompileOnly", "org.mapstruct:mapstruct:1.3.1.Final")
+        p.dependencies.add("testAnnotationProcessor", "org.mapstruct:mapstruct-processor:1.3.1.Final")
+        p.dependencies.add("testCompileOnly", "org.projectlombok:lombok:1.18.10")
+        p.dependencies.add("testAnnotationProcessor", "org.projectlombok:lombok:1.18.10")
         p.dependencies.add("testImplementation", "org.springframework.boot:spring-boot-starter-test:2.2.4.RELEASE")
     }
 
