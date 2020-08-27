@@ -1,4 +1,4 @@
-package com.team.application.proxy;
+package com.team.infrastructure.proxy;
 
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;

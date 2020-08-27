@@ -23,7 +23,7 @@ class ProjectPlugin implements Plugin<Project> {
         p.dependencies.add("testAnnotationProcessor", "org.mapstruct:mapstruct-processor:1.3.1.Final")
         p.dependencies.add("testCompileOnly", "org.projectlombok:lombok:1.18.10")
         p.dependencies.add("testAnnotationProcessor", "org.projectlombok:lombok:1.18.10")
-        p.dependencies.add("testImplementation", "org.springframework.boot:spring-boot-starter-test:2.2.4.RELEASE")
+        p.dependencies.add("testImplementation", "org.springframework.boot:spring-boot-starter-test:2.3.3.RELEASE")
     }
 
     static void main(String[] args) {

@@ -1,4 +1,4 @@
-package com.team.application.proxy;
+package com.team.infrastructure.proxy;
 
 public class CarImpl implements Car {
     @Override

@@ -1,4 +1,4 @@
-package com.team.application.proxy;
+package com.team.infrastructure.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
