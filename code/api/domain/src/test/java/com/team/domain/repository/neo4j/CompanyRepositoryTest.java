@@ -13,7 +13,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class CompanyRepositoryTest {
 
     @Autowired
-    CompanyRepository companyRepository;
+    CompanyNeo4jRepository companyRepository;
 
     @Test
     public void add() {
