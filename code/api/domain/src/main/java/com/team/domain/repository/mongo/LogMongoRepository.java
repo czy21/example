@@ -8,6 +8,6 @@ import com.team.infrastructure.base.MongoBaseRepository;
  * @description Log 数据访问层
  * @since 2018-10-28
  */
-public interface LogRepository extends MongoBaseRepository<LogEntity, String> {
+public interface LogMongoRepository extends MongoBaseRepository<LogEntity, String> {
 
 }

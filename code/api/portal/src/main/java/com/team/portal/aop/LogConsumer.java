@@ -1,6 +1,6 @@
 package com.team.portal.aop;
 
-import com.team.domain.repository.mongo.LogRepository;
+import com.team.domain.repository.mongo.LogMongoRepository;
 import com.team.domain.entity.LogEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class LogConsumer implements Runnable {
     private LogQueue auditLogQueue;
 
     @Autowired
-    private LogRepository logRepository;
+    private LogMongoRepository logRepository;
 
     public static final int DEFAULT_BATCH_SIZE = 64;
 

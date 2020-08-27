@@ -3,8 +3,8 @@ package com.team.application;
 import com.team.infrastructure.util.DateTimeUtil;
 import com.team.domain.model.CompanyEntity;
 import com.team.domain.model.DepartmentEntity;
-import com.team.domain.repository.jpa.CompanyRepository;
-import com.team.domain.repository.jpa.DepartmentRepository;
+import com.team.domain.repository.jpa.CompanyJpaRepository;
+import com.team.domain.repository.jpa.DepartmentJpaRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +22,10 @@ import java.util.UUID;
 public class JpaTest {
 
     @Autowired
-    CompanyRepository companyRepository;
+    CompanyJpaRepository companyRepository;
 
     @Autowired
-    DepartmentRepository departmentRepository;
+    DepartmentJpaRepository departmentRepository;
 
     @Autowired
     JdbcTemplate jdbcTemplate;
