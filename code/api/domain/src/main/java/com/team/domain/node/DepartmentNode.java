@@ -1,5 +1,6 @@
 package com.team.domain.node;
 
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,22 +9,20 @@ import org.neo4j.ogm.annotation.Id;
 import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Relationship;
 
-import java.util.List;
-
-
 @NoArgsConstructor
 @Getter
 @Setter
-@NodeEntity(label = "company")
-public class CompanyNode {
+@NodeEntity(label = "department")
+public class DepartmentNode {
     @Id
     @GeneratedValue
     private Long id;
     private String name;
-    @Relationship(type = "establish")
-    private List<DepartmentNode> departments;
+    private Long parentId;
+    @Relationship(type = "establish",direction = Relationship.INCOMING)
+    private CompanyNode company;
 
-    public CompanyNode(String name) {
+    public DepartmentNode(String name) {
         this.name = name;
     }
 }
