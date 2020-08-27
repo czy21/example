@@ -1,4 +1,4 @@
-package com.team.domain.configure;
+package com.team.domain.configuration;
 
 import com.team.domain.node.Actor;
 import com.team.domain.node.ActorRepository;
@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 
 @Configuration
-@EnableNeo4jRepositories(basePackageClasses = ActorRepository.class)
-@EntityScan(basePackageClasses = Actor.class)
-public class DomainConfigure {
+@EntityScan(basePackageClasses = {Actor.class})
+@EnableNeo4jRepositories(basePackageClasses = {ActorRepository.class})
+public class DomainConfigurationTest {
 
 }
