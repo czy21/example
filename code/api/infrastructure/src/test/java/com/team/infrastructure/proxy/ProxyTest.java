@@ -1,10 +1,5 @@
-package com.team.application;
+package com.team.infrastructure.proxy;
 
-
-import com.team.application.proxy.Car;
-import com.team.application.proxy.CarImpl;
-import com.team.application.proxy.CglibProxy;
-import com.team.application.proxy.DynamicProxy;
 
 public class ProxyTest {
 
