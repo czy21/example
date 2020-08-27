@@ -3,6 +3,7 @@ package com.team.domain.repository.neo4j;
 import com.team.domain.StartupApplicationTest;
 import com.team.domain.node.CompanyNode;
 import com.team.domain.node.DepartmentNode;
+import com.team.domain.node.UserNode;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,11 @@ public class CompanyNeo4jRepositoryTest {
         departmentNodes.add(department1);
         departmentNodes.add(department2);
         company1.setDepartments(departmentNodes);
+
+        List<UserNode> users = new ArrayList<>();
+        UserNode user1 = new UserNode("用户1");
+        users.add(user1);
+        department1.setUsers(users);
         companyRepository.save(company1);
     }
 
