@@ -1,10 +1,7 @@
-package com.team.domain;
+package com.team.domain.node;
 
 
-import com.team.domain.node.Actor;
-import com.team.domain.node.ActorRepository;
-import com.team.domain.node.Movie;
-import com.team.domain.node.Role;
+import com.team.domain.StartupApplicationTest;
 import org.apache.commons.lang3.tuple.MutablePair;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = StartupApplicationTest.class)
 @Transactional
 public class ActorRepositoryIntegrationTest {
     @SpringBootApplication

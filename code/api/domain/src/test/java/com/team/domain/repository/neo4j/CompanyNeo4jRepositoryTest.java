@@ -3,7 +3,7 @@ package com.team.domain.repository.neo4j;
 import com.team.domain.StartupApplicationTest;
 import com.team.domain.node.CompanyNode;
 import com.team.domain.node.DepartmentNode;
-import com.team.domain.node.UserNode;
+import com.team.domain.node.EmployeeNode;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +13,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = StartupApplicationTest.class)
 public class CompanyNeo4jRepositoryTest {
@@ -21,33 +23,37 @@ public class CompanyNeo4jRepositoryTest {
     CompanyNeo4jRepository companyRepository;
     @Autowired
     DepartmentNeo4jRepository departmentNeo4jRepository;
+    public static String companyName1 = "上海公司1";
+    public static String departmentName1 = "部门1";
+    public static String departmentName2 = "部门2";
+    public static String userName1 = "用户1";
 
     @Test
     public void add() {
-        CompanyNode company1 = new CompanyNode("上海公司1");
-        DepartmentNode department1 = new DepartmentNode("部门1");
-        DepartmentNode department2 = new DepartmentNode("部门2");
+        CompanyNode company1 = new CompanyNode(companyName1);
+        DepartmentNode department1 = new DepartmentNode(departmentName1);
+        DepartmentNode department2 = new DepartmentNode(departmentName2);
         List<DepartmentNode> departmentNodes = new ArrayList<>();
         departmentNodes.add(department1);
         departmentNodes.add(department2);
         company1.setDepartments(departmentNodes);
 
-        List<UserNode> users = new ArrayList<>();
-        UserNode user1 = new UserNode("用户1");
+        List<EmployeeNode> users = new ArrayList<>();
+        EmployeeNode user1 = new EmployeeNode(userName1);
         users.add(user1);
-        department1.setUsers(users);
+        department1.setEmployees(users);
         companyRepository.save(company1);
     }
 
     @Test
     public void selectCompany() {
-        CompanyNode node = companyRepository.findById((long) 106).orElse(null);
-        System.out.println("aaa");
+        CompanyNode company1 = companyRepository.findByName(companyName1, 2);
+        assertThat(company1).isNotNull();
     }
 
     @Test
     public void selectDepartment() {
-        DepartmentNode dept1 = departmentNeo4jRepository.findById(107L).orElse(null);
-        System.out.println("aaa");
+        DepartmentNode dept1 = departmentNeo4jRepository.findByName(departmentName1, 1);
+        assertThat(dept1).isNotNull();
     }
 }

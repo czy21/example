@@ -20,7 +20,7 @@ public class CompanyNode {
     @GeneratedValue
     private Long id;
     private String name;
-    @Relationship(type = "establish")
+    @Relationship(type = "HAS")
     private List<DepartmentNode> departments;
 
     public CompanyNode(String name) {

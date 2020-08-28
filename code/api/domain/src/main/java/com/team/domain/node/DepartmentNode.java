@@ -21,10 +21,10 @@ public class DepartmentNode {
     private Long id;
     private String name;
     private Long parentId;
-    @Relationship(type = "establish", direction = Relationship.INCOMING)
+    @Relationship(type = "HAS", direction = Relationship.INCOMING)
     private CompanyNode company;
-    @Relationship(type = "work")
-    private List<UserNode> users;
+    @Relationship(type = "HAS")
+    private List<EmployeeNode> employees;
 
     public DepartmentNode(String name) {
         this.name = name;
