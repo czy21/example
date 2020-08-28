@@ -4,6 +4,7 @@ import com.team.domain.StartupApplicationTest;
 import com.team.domain.node.CompanyNode;
 import com.team.domain.node.DepartmentNode;
 import com.team.domain.node.EmployeeNode;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +44,20 @@ public class CompanyNeo4jRepositoryTest {
         users.add(user1);
         department1.setEmployees(users);
         companyRepository.save(company1);
+    }
+
+    @Test
+    public void batchAdd() {
+        CompanyNode company2 = new CompanyNode(companyName1);
+        List<DepartmentNode> departments = new ArrayList<>();
+        for (int i = 1; i <= 1000; i++) {
+            DepartmentNode dept = new DepartmentNode(StringUtils.join("部门", i));
+            dept.setEmployees(List.of(new EmployeeNode(StringUtils.join("员工", i))));
+            departments.add(dept);
+        }
+        company2.setDepartments(departments);
+        companyRepository.save(company2);
+
     }
 
     @Test
