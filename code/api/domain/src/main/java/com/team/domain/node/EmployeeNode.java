@@ -12,15 +12,15 @@ import org.neo4j.ogm.annotation.Relationship;
 @Getter
 @Setter
 @NodeEntity(label = "user")
-public class UserNode {
+public class EmployeeNode {
     @Id
     @GeneratedValue
     private Long id;
     private String name;
-    @Relationship(type = "work", direction = Relationship.INCOMING)
+    @Relationship(type = "HAS", direction = Relationship.INCOMING)
     private DepartmentNode department;
 
-    public UserNode(String name) {
+    public EmployeeNode(String name) {
         this.name = name;
     }
 }
