@@ -11,7 +11,7 @@ import org.neo4j.ogm.annotation.Relationship;
 @NoArgsConstructor
 @Getter
 @Setter
-@NodeEntity(label = "user")
+@NodeEntity(label = "employee")
 public class EmployeeNode {
     @Id
     @GeneratedValue

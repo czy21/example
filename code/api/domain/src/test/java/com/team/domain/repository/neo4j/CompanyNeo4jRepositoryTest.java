@@ -50,7 +50,7 @@ public class CompanyNeo4jRepositoryTest {
     public void batchAdd() {
         CompanyNode company2 = new CompanyNode(companyName1);
         List<DepartmentNode> departments = new ArrayList<>();
-        for (int i = 1; i <= 1000; i++) {
+        for (int i = 1; i <= 20000; i++) {
             DepartmentNode dept = new DepartmentNode(StringUtils.join("部门", i));
             dept.setEmployees(List.of(new EmployeeNode(StringUtils.join("员工", i))));
             departments.add(dept);
