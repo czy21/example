@@ -5,6 +5,6 @@ import sys
 sys.path.append("../../")
 from shell.local import _env
 
-from script.domain.db_source import neo4j as neo4j_source
+from script.domain.source import mysql as mysql_source
 
-neo4j_source.rebuild_neo4j()
+mysql_source.rebuild_mysql()

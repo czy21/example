@@ -1,5 +1,5 @@
 # !/usr/bin/env python
-from script.domain.default import common as default_common,path as default_path
+from script.domain.default import common as default_common, path as default_path
 from script.utility import path as path_util
 
 default_common.param_main_db_name = "erp_java"
@@ -13,8 +13,8 @@ default_common.param_main_db_neo4j_user = "neo4j"
 default_common.param_main_db_neo4j_pass = "czy.1121"
 
 # api
-default_common.param_api_extra_config_template_name = path_util.pure_path_join(__file__, "template/build.extra.gradle")
-default_common.param_api_yml_override_template_name = path_util.pure_path_join(__file__, "template/application-override.yml")
+default_common.param_api_extra_config_template_name = path_util.pure_path_join(__file__, "../template/build.extra.gradle")
+default_common.param_api_yml_override_template_name = path_util.pure_path_join(__file__, "../template/application-override.yml")
 default_common.param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api, "portal")
 
 # db
