@@ -1,4 +1,4 @@
-# !/usr/bin/env python
+#!/usr/bin/env python3
 from script.domain.default import common as default_common, path as default_path
 from script.utility import path as path_util
 
