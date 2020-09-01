@@ -1,5 +1,4 @@
 # !/usr/bin/env python
-
 from shell import env_common
 
 env_common.default_common.param_main_db_host = "127.0.0.1"
