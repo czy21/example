@@ -4,3 +4,6 @@ spring:
   data:
     mongodb:
       uri: mongodb://admin:Czy.190815@127.0.0.1:5017/erp_java?authSource=admin
+    neo4j:
+      username: neo4j
+      password: Czy.190815

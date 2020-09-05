@@ -21,9 +21,9 @@ public class DepartmentNode {
     private Long id;
     private String name;
     private Long parentId;
-    @Relationship(type = "HAS", direction = Relationship.INCOMING)
+    @Relationship(type = "company_id")
     private CompanyNode company;
-    @Relationship(type = "HAS")
+    @Relationship(type = "department_id",direction = Relationship.INCOMING)
     private List<EmployeeNode> employees;
 
     public DepartmentNode(String name) {

@@ -17,7 +17,7 @@ public class EmployeeNode {
     @GeneratedValue
     private Long id;
     private String name;
-    @Relationship(type = "HAS", direction = Relationship.INCOMING)
+    @Relationship(type = "department_id")
     private DepartmentNode department;
 
     public EmployeeNode(String name) {
