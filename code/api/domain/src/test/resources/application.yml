@@ -12,13 +12,14 @@ spring:
       uri: mongodb://127.0.0.1:27017/erp_java
     neo4j:
       username: neo4j
-      password: czy.1121
+      password: ***REMOVED***
   redis:
     host: 127.0.0.1
     port: 6379
     timeout: 3600
   jpa:
     show-sql: true
+
 mybatis-plus:
   mapper-locations: classpath:/mapper/*.xml
   type-aliases-package: com.team.domain.entity
@@ -29,13 +30,12 @@ mybatis-plus:
     banner: false
 
 pagehelper:
-  reasonable: true    # 如果pageIndex<0是,查询第一页,如果pageIndex>pageSizes查询最后一页
+  reasonable: true
   support-methods-arguments: true
   params: count=countSql
-  page-size-zero: true  #pageSize为0时,不执行分页,返回全部结果
+  page-size-zero: true
 
 logging:
   level:
     com.team.domain.mapper: debug
     org.springframework.web.filter.CommonsRequestLoggingFilter: debug
-    org.neo4j.ogm: debug
