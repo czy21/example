@@ -17,6 +17,11 @@ spring:
     host: 127.0.0.1
     port: 6379
     timeout: 3600
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: root
+    password: root
   jpa:
     show-sql: true
 
