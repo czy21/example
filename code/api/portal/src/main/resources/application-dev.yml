@@ -7,3 +7,8 @@ spring:
     neo4j:
       username: neo4j
       password: ***REMOVED***
+  rabbitmq:
+    host: 192.168.110.140
+    username: root
+    password: root
+    port: 5672
