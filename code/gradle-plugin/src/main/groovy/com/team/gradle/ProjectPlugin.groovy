@@ -8,8 +8,14 @@ import org.gradle.testfixtures.ProjectBuilder
 class ProjectPlugin implements Plugin<Project> {
 
     void apply(Project p) {
-        p.apply plugin: 'java-library'
         p.apply plugin: 'idea'
+        p.apply plugin: 'java'
+        p.apply plugin: 'java-library'
+        p.apply plugin: 'org.springframework.boot'
+        p.apply plugin: 'io.spring.dependency-management'
+        p.bootJar {
+            enabled = false
+        }
         p.targetCompatibility = "11"
         p.sourceCompatibility = "11"
         p.tasks.withType(JavaCompile) {
