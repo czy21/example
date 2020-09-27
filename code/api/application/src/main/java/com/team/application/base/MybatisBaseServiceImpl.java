@@ -2,8 +2,6 @@ package com.team.application.base;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.support.SFunction;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
 import com.team.application.model.page.PageModel;
 import com.team.infrastructure.base.BaseEntity;
 import com.team.infrastructure.base.MybatisBaseMapper;
@@ -76,9 +74,10 @@ public class MybatisBaseServiceImpl<M extends MybatisBaseMapper<T>, T extends Ba
                 .orElse(new QueryWrapper<>())
                 .lambda()
                 .orderByDesc(T::getCreatedDate);
-        Page<T> page = PageHelper.startPage(pageIndex, pageSize);
+//        Page<T> page = PageHelper.startPage(pageIndex, pageSize);
         baseMapper.selectList(query);
-        return PageModel.of(page);
+//        return PageModel.of(page);
+        return PageModel.of(null);
     }
 
     @Override
