@@ -20,9 +20,7 @@ default_common.param_api_gradle_init_script_file_path = path_util.pure_path_join
 default_common.param_api_extra_config_template_name = path_util.pure_path_join(shell_path, "template", "build.extra.gradle")
 default_common.param_api_yml_override_template_name = path_util.pure_path_join(shell_path, "template", "application-override.yml")
 default_common.param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api, "portal")
-default_common.param_api_docker_gradle_command = list_util.arr_param_to_str(["sudo docker run --rm -u gradle",
-                                                                             "-v \"$HOME\":\"$HOME\"",
-                                                                             "gradle:jdk11"])
+default_common.param_api_docker_gradle_command = list_util.arr_param_to_str("sudo docker run --rm -u gradle -v \"$HOME\":\"$HOME\" gradle:jdk11")
 
 # db
 default_common.param_main_db_mysql_file_path = path_util.pure_path_join(default_common.param_main_db_mysql_file_path, "1_version")
