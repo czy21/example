@@ -1,0 +1,27 @@
+settingsEvaluated { settings ->
+    settings.pluginManagement {
+        resolutionStrategy {
+        }
+        repositories {
+			maven {
+				name "aliyun"
+				url "https://maven.aliyun.com/repository/public/"
+			}
+            gradlePluginPortal()
+        }
+    }
+}
+allprojects {
+    apply plugin: 'maven-publish'
+    repositories {
+			maven {
+				name "jd"
+				url "https://jitpack.io"
+
+			}
+			maven {
+				name "aliyun"
+				url "https://maven.aliyun.com/repository/public/"
+			}
+    }
+}
