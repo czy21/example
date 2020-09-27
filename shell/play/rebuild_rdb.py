@@ -3,7 +3,7 @@
 import sys
 
 sys.path.append("../../")
-from shell.local import _env
+from shell.play import _env
 
 from script.domain.source import mysql as mysql_source
 
