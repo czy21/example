@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 from script.domain.default import common as default_common, path as default_path
 from script.utility import path as path_util
+from script.utility import list as list_util
 
 default_common.param_main_db_name = "erp_java"
 default_common.param_main_db_bak_name = default_common.param_main_db_name + "_bak"
