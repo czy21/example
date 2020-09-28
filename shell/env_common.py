@@ -16,6 +16,9 @@ default_common.param_main_db_mysql_pass = default_common.param_main_db_mongo_pas
 default_common.param_main_db_neo4j_user = "neo4j"
 
 # api
+default_common.param_api_archive_file_name = "api.jar"
+default_common.param_api_output_resource_path = default_path.output_api_resource
+default_common.param_api_output_path = default_path.output_api
 default_common.param_api_gradle_init_script_file_path = path_util.pure_path_join(shell_path, "template", "init.gradle")
 default_common.param_api_extra_config_template_name = path_util.pure_path_join(shell_path, "template", "build.extra.gradle")
 default_common.param_api_yml_override_template_name = path_util.pure_path_join(shell_path, "template", "application-override.yml")
