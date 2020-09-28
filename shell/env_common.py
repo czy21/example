@@ -19,6 +19,7 @@ default_common.param_main_db_neo4j_user = "neo4j"
 default_common.param_api_archive_file_name = "api.jar"
 default_common.param_api_output_resource_path = default_path.output_api_resource
 default_common.param_api_output_path = default_path.output_api
+default_common.param_api_plugin_file_path = path_util.pure_path_join(default_path.project_plugin, "build.gradle")
 default_common.param_api_gradle_init_script_file_path = path_util.pure_path_join(shell_path, "template", "init.gradle")
 default_common.param_api_extra_config_template_name = path_util.pure_path_join(shell_path, "template", "build.extra.gradle")
 default_common.param_api_yml_override_template_name = path_util.pure_path_join(shell_path, "template", "application-override.yml")
