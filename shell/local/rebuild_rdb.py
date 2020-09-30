@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 
-import sys
+from shell import run
 
-sys.path.append("../../")
-from shell.local import _env
-
-from script.domain.source import mysql as mysql_source
-
-mysql_source.rebuild_mysql()
+run.exec_file({"script.domain.source.mysql": ["rebuild_mysql"]})

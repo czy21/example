@@ -9,6 +9,8 @@ shell_path = Path.cwd().parent
 default_common.param_main_db_name = "erp_java"
 default_common.param_main_db_bak_name = default_common.param_main_db_name + "_bak"
 
+param_env_suffix = ""
+
 # api
 default_common.param_api_archive_file_name = "api.jar"
 default_common.param_api_plugin_file_path = path_util.pure_path_join(default_path.project_plugin, "build.gradle")
@@ -27,8 +29,9 @@ default_common.param_api_docker_gradle_command = list_util.arr_param_to_str(
     ])
 
 # db
-default_common.param_main_db_mysql_user = default_common.param_main_db_mongo_user = default_common.param_main_db_neo4j_user = "admin"
+default_common.param_main_db_mysql_user = default_common.param_main_db_mongo_user = "admin"
 default_common.param_main_db_mysql_pass = default_common.param_main_db_mongo_pass = default_common.param_main_db_neo4j_pass = "***REMOVED***"
 
 default_common.param_main_db_mysql_file_path = path_util.pure_path_join(default_path.project_db, "mysql", "1_version")
+default_common.param_main_db_neo4j_user = "neo4j"
 default_common.param_main_db_neo4j_file_path = path_util.pure_path_join(default_path.project_db, "neo4j")
