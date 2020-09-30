@@ -2,6 +2,7 @@
 import importlib
 import sys
 from pathlib import Path
+
 from script.utility import log as log_util
 
 logger = log_util.Logger(__name__)
@@ -14,12 +15,4 @@ def exec_file(source_dict: {}):
     default_common_mod = importlib.import_module("script.domain.default.common")
     common_param = getattr(default_common_mod, "get_params")()
     logger.info(common_param)
-    for t in source_mod_files:
-        source_mod_file = t["module"].__file__
-        with open(source_mod_file, "rb") as f:
-            source_code = f.read()
-        exec_code = compile(source_code, source_mod_file, "exec")
-        scope = {}
-        exec(exec_code, scope)
-        for f in t["func"]:
-            scope.get(f, None)()
+    [getattr(i["module"], j)() for i in source_mod_files for j in i["func"]]
