@@ -10,7 +10,7 @@ class DeployPlugin implements Plugin<Project> {
             enabled = true
         }
         if (p.rootProject.hasProperty("extraConfig")) {
-            print("Loading extra config from \"${p.rootProject.extraConfig}\"")
+            print("> Loading extra config from \"${p.rootProject.extraConfig}\"")
             p.apply from: p.rootProject.extraConfig
         }
 
