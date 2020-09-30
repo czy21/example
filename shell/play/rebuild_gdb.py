@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
 
-import sys
+from shell import run
 
-sys.path.append("../../")
-from shell.play import _env
-
-from script.domain.source import neo4j as neo4j_source
-
-neo4j_source.rebuild_neo4j()
+run.exec_file({"script.domain.source.neo4j": ["rebuild_neo4j"]})

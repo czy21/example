@@ -1,10 +1,4 @@
 #!/usr/bin/env python3
+from shell import run
 
-import sys
-
-sys.path.append("../../")
-from shell.local import _env
-
-from script.domain.source import mysql as mysql_source
-
-# mysql_source.backup_mysql()
+run.exec_file({"script.domain.source.mysql": ["backup_mysql"]})
