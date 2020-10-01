@@ -5,9 +5,10 @@ from script.domain.default import common as default_common, path as default_path
 from script.utility import list as list_util
 from script.utility import path as path_util
 
+shell_path = Path.cwd().parent
+
 param_project_name = "erp"
 param_env_suffix = ""
-shell_path = Path.cwd().parent
 param_api_host_port = 8075
 
 # api
