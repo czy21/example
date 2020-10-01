@@ -2,7 +2,7 @@
 from pathlib import Path
 
 from script.domain.default import common as default_common, path as default_path
-from script.utility import list as list_util
+from script.utility import collection as list_util
 from script.utility import path as path_util
 
 shell_path = Path.cwd().parent
