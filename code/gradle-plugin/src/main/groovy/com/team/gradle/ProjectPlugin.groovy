@@ -16,7 +16,7 @@ class ProjectPlugin implements Plugin<Project> {
             apply plugin: 'org.springframework.boot'
             apply plugin: 'io.spring.dependency-management'
             bootJar {
-                enabled = false
+                mainClassName = "com.team.portal.StartupApplication"
             }
             compileJava {
                 sourceCompatibility = 11
