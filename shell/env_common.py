@@ -18,7 +18,10 @@ default_common.param_api_gradle_init_script_file_path = path_util.pure_path_join
 default_common.param_api_extra_config_template_name = path_util.pure_path_join(shell_path, "template", "build.extra.gradle")
 default_common.param_api_yml_override_template_name = path_util.pure_path_join(shell_path, "template", "application-override.yml")
 default_common.param_api_dockerfile_template_name = path_util.pure_path_join(shell_path, "template", "Dockerfile")
+default_common.param_api_compose_template_name = path_util.pure_path_join(shell_path, "template", "docker-compose-api.yml")
 default_common.param_api_dockerfile_output_file_path = default_path.output_api
+default_common.param_api_compose_output_file_path = default_path.output_api
+
 default_common.param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api, "portal")
 default_common.param_api_docker_gradle_command = list_util.arr_param_to_str(
     [
