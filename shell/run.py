@@ -16,5 +16,5 @@ def exec_file(source_dict: {}):
     common_param = getattr(default_common_mod, "get_params")()
     logger.info(common_param)
     default_path_module = importlib.import_module("script.domain.default.path")
-    getattr(default_path_module, "mkdir")()
+    getattr(default_path_module, "re_mkdir")()
     [getattr(i["module"], j)() for i in source_mod_files for j in i["func"]]
