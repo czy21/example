@@ -3,8 +3,8 @@ version: '3.7'
 services:
 
   api:
-    image: erp:${{{param_api_tag}}}
-    container_name: erp
+    image: ${{{param_project_name}}}:${{{param_api_tag}}}
+    container_name: ${{{param_project_name}}}
     ports:
       - ${{{param_api_host_port}}}:${{{param_api_container_port}}}
     volumes:
