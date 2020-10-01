@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 from shell import env_common
 
+env_common.param_env_suffix = "play"
+
 env_common.default_common.param_main_db_host = "127.0.0.1"
 
 # mysql
