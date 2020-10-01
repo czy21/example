@@ -3,10 +3,10 @@ version: '3.7'
 services:
 
   api:
-    image: ${{{param_project_name}}}:${{{param_api_tag}}}
-    container_name: ${{{param_project_name}}}
+    image: ${{{param_injected.param_project_name}}}:${{{param_api_tag}}}
+    container_name: ${{{param_injected.param_project_name}}}
     ports:
-      - ${{{param_api_host_port}}}:${{{param_api_container_port}}}
+      - ${{{param_injected.param_api_host_port}}}:${{{param_injected.param_api_container_port}}}
     volumes:
       - /data/volumes/api/resource/:/home/erp/resources/
       - /data/volumes/api/log/:/home/erp/log/
