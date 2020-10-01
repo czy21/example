@@ -43,4 +43,4 @@ default_common.param_main_db_neo4j_file_path = path_util.pure_path_join(default_
 def inject():
     default_common.param_main_db_name = "_".join([param_project_name, "java", param_env_suffix])
     default_common.param_main_db_bak_name = "_".join([default_common.param_main_db_name, "bak"])
-    default_common.param_injected = dict({k: v for k, v in globals().items() if isinstance(v, str) and k.startswith("param")})
+    default_common.param_injected = dict({k: v for k, v in globals().items() if k.startswith("param")})
