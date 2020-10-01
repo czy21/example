@@ -9,7 +9,7 @@ shell_path = Path.cwd().parent
 
 param_project_name = "erp"
 param_env_suffix = ""
-param_api_host_port = 8075
+param_api_host_port = param_api_container_port = 8075
 
 # api
 default_common.param_api_archive_file_name = "api.jar"
