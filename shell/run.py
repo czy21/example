@@ -13,6 +13,7 @@ def exec_file(source_dict: {}):
     action_env = Path(sys.argv[0])
     open("".join([action_env.as_posix(), ".log"]), 'w').close()
     env_module = importlib.import_module("".join(["shell.", action_env.cwd().stem, "._env"]))
+    getattr(getattr(env_module, "env_common"), "inject")()
     source_mod_files = [{"module": importlib.import_module(m), "func": f} for m, f in source_dict.items()]
     default_common_mod = importlib.import_module("script.domain.default.common")
     common_param = getattr(default_common_mod, "get_params")()
