@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import importlib
+import json
 import sys
 from pathlib import Path
 
@@ -9,12 +10,15 @@ logger = log_util.Logger(__name__)
 
 
 def exec_file(source_dict: {}):
-    action_env = Path(sys.argv[0]).cwd().stem
-    env_module = importlib.import_module("".join(["shell.", action_env, "._env"]))
+    action_env = Path(sys.argv[0])
+    with open("".join([action_env.as_posix(), ".log"]), 'r+') as file:
+        file.truncate(0)
+
+    env_module = importlib.import_module("".join(["shell.", action_env.cwd().stem, "._env"]))
     source_mod_files = [{"module": importlib.import_module(m), "func": f} for m, f in source_dict.items()]
     default_common_mod = importlib.import_module("script.domain.default.common")
     common_param = getattr(default_common_mod, "get_params")()
-    logger.info(common_param)
+    logger.info(json.dumps(common_param))
     default_path_module = importlib.import_module("script.domain.default.path")
     getattr(default_path_module, "re_mkdir")()
     [getattr(i["module"], j)() for i in source_mod_files for j in i["func"]]
