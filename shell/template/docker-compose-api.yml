@@ -3,7 +3,7 @@ version: '3.7'
 services:
 
   api:
-    image: ${{{param_injected['param_project_name']}}}:${{{param_injected['param_api_tag']}}}
+    image: ${{{param_injected['param_project_name']}}}:${{{param_injected['param_api_image_tag']}}}
     container_name: ${{{param_injected['param_project_name']}}}
     ports:
       - ${{{param_injected['param_api_host_port']}}}:${{{param_injected['param_api_container_port']}}}
