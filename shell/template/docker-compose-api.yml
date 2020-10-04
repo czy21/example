@@ -8,6 +8,6 @@ services:
     ports:
       - ${{{param_injected['param_api_host_port']}}}:${{{param_injected['param_api_container_port']}}}
     volumes:
-      - /data/volumes/api/resources/:/home/erp/resources/
-      - /data/volumes/api/log/:/home/erp/log/
+      - /data/volumes/api/resources/:/home/${{{param_injected['param_project_name']}}}/resources/
+      - /data/volumes/api/log/:/home/${{{param_injected['param_project_name']}}}/log/
     restart: always
