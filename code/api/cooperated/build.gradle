@@ -1,5 +1,5 @@
 dependencies {
     api project(":infrastructure")
-    api "org.springframework.boot:spring-boot-starter-web"
+    api "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
     api "com.auth0:java-jwt:3.8.0"
 }

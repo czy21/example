@@ -1,4 +1,10 @@
 plugins {
     id 'com.team.gradle.project' version '1.0.0'
-    id 'org.springframework.boot' version '2.3.4.RELEASE'
+}
+ext {
+    springBootVersion = '2.3.4.RELEASE'
+}
+subprojects {
+    apply plugin: 'com.team.gradle.project'
+    group = 'com.team'
 }
