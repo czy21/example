@@ -41,10 +41,7 @@ default_common.param_main_db_neo4j_user = "neo4j"
 default_common.param_main_db_neo4j_file_path = path_util.pure_path_join(default_path.project_db, "neo4j")
 
 
-def inject():
-    parser = argparse.ArgumentParser(description="Demo of argparse")
-    parser.add_argument('--param', nargs="+", default=[])
-    args = parser.parse_args()
+def inject(args):
     args_param_dict = dict({t.split("=")[0]: t.split("=")[1] for t in args.param})
     default_common.param_main_db_name = "_".join([param_project_name, "java", param_env_suffix])
     default_common.param_main_db_bak_name = "_".join([default_common.param_main_db_name, "bak"])
