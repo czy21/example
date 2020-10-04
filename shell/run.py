@@ -18,7 +18,7 @@ def exec_file(source_dict: {}):
 
     default_path_module = importlib.import_module("script.domain.default.path")
     if args.skip_rm_output:
-        getattr(default_path_module, "re_mkdir")()
+        getattr(default_path_module, "re_mkdir")(rm_output=True)
 
     # running action file
     action_env = Path(sys.argv[0])
