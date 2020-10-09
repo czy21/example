@@ -6,7 +6,7 @@ from script.domain.default import common as default_common, path as default_path
 from script.utility import collection as list_util
 from script.utility import path as path_util
 
-shell_path = Path.cwd().parent
+shell_path = path_util.pure_path_join(default_path.root_path, "shell")
 
 param_project_name = "erp"
 param_env_suffix = ""
