@@ -27,8 +27,8 @@ default_common.param_api_root_project_path = path_util.pure_path_join(default_pa
 default_common.param_api_docker_gradle_command = list_util.arr_param_to_str(
     [
         "sudo docker run --rm --user root",
-        "--volume \"$(cd \"$(dirname \"$0\")\"; pwd)\":\"$HOME\"",
-        "--volume \"$(cd \"$(dirname \"$0\")\"; pwd)\"/.gradle:/home/gradle/.gradle",
+        "--volume `$(cd \"$(dirname \"$0\")`; pwd)\":\"$HOME\"",
+        "--volume `$(cd \"$(dirname \"$0\")\"; pwd)`/.gradle:/home/gradle/.gradle",
         "gradle:jdk11"
     ])
 
