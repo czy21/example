@@ -15,7 +15,6 @@ def exec_file(source_dict: {}):
     parser = argparse.ArgumentParser()
     parser.add_argument('--param', nargs="+", default=[])
     parser.add_argument('--skip-rm-output', action="store_false")
-    parser.add_argument('--home', default="")
     args = parser.parse_args()
     default_path_module = importlib.import_module("script.domain.default.path")
     if args.skip_rm_output:
