@@ -9,12 +9,12 @@ import java.time.LocalDateTime;
 public class EntityMetadataHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
-        this.setInsertFieldValByName("createdDate", LocalDateTime.now(), metaObject);
-        this.setInsertFieldValByName("modifiedDate", LocalDateTime.now(), metaObject);
+        this.setFieldValByName("createdDate", LocalDateTime.now(), metaObject);
+        this.setFieldValByName("modifiedDate", LocalDateTime.now(), metaObject);
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
-        this.setInsertFieldValByName("modifiedDate", LocalDateTime.now(), metaObject);
+        this.setFieldValByName("modifiedDate", LocalDateTime.now(), metaObject);
     }
 }
