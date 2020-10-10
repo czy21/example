@@ -17,7 +17,6 @@ def exec_file(source_dict: {}):
     parser.add_argument('--skip-rm-output', action="store_false")
     parser.add_argument('--home', default="")
     args = parser.parse_args()
-    os.environ['PROJECT_HOME'] = args.home
     default_path_module = importlib.import_module("script.domain.default.path")
     if args.skip_rm_output:
         getattr(default_path_module, "re_mkdir")(rm_output=True)
