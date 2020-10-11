@@ -4,10 +4,10 @@ services:
 
   api:
     image: ${{{param_injected['param_project_name']}}}:${{{param_injected['param_api_image_tag']}}}
-    container_name: ${{{param_injected['param_project_name']}}}
+    container_name: ${{{param_injected['param_project_name']}}}_${{{param_injected['param_env_suffix']}}}
     ports:
       - ${{{param_injected['param_api_host_port']}}}:${{{param_injected['param_api_container_port']}}}
     volumes:
-      - /data/volumes/api/resources/:/home/${{{param_injected['param_project_name']}}}/resources/
-      - /data/volumes/api/log/:/home/${{{param_injected['param_project_name']}}}/log/
+      - /data/volumes/api_${{{param_injected['param_project_name']}}}_${{{param_injected['param_env_suffix']}}}/resources/:/home/${{{param_injected['param_project_name']}}}/resources/
+      - /data/volumes/api_${{{param_injected['param_project_name']}}}_${{{param_injected['param_env_suffix']}}}/log/:/home/${{{param_injected['param_project_name']}}}/log/
     restart: always

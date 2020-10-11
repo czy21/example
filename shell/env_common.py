@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-import argparse
-from pathlib import Path
 
 from script.domain.default import common as default_common, path as default_path
 from script.utility import collection as list_util
