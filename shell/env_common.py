@@ -31,6 +31,9 @@ default_common.param_api_docker_gradle_command = list_util.arr_param_to_str(
     ])
 
 # db
+default_common.param_main_db_mysql_host = "mysql"
+default_common.param_main_db_mongo_host = "mongo"
+default_common.param_main_db_neo4j_host = "neo4j"
 default_common.param_main_db_mysql_user = default_common.param_main_db_mongo_user = "admin"
 default_common.param_main_db_mysql_pass = default_common.param_main_db_mongo_pass = default_common.param_main_db_neo4j_pass = "***REMOVED***"
 
