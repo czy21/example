@@ -10,7 +10,6 @@ services:
     volumes:
       - /data/volumes/api_${{{param_injected['param_project_name']}}}_${{{param_injected['param_env_suffix']}}}/log/:/home/${{{param_injected['param_project_name']}}}/log/
     networks:
-      default:
-        external:
-          name: ${{{param_injected['param_project_name']}}}_${{{param_injected['param_env_suffix']}}}_default
+      ${{{param_injected['param_project_name']}}}_${{{param_injected['param_env_suffix']}}}_default:
+        external: true
     restart: always
