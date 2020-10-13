@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 
-@Configuration
+//@Configuration
 public class ExternalConfig {
     public ExternalConfig(AliConfig aliConfig) throws IOException {
         AliPayConfig payConfig = aliConfig.getPay();
