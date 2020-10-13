@@ -16,4 +16,5 @@ dependencies {
     api "com.baomidou:mybatis-plus-boot-starter:3.4.0"
     api "cglib:cglib:3.3.0"
     api 'com.gitee.jd-platform-opensource:asyncTool:V1.3-SNAPSHOT'
+    api 'javax.xml.bind:jaxb-api:2.3.0'
 }
