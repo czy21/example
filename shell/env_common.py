@@ -31,6 +31,8 @@ default_common.param_api_docker_gradle_command = list_util.arr_param_to_str(
     ])
 
 # db
+param_main_redis_host = "redis"
+param_main_rabbit_host = "rabbit"
 default_common.param_main_db_mysql_host = "mysql"
 default_common.param_main_db_mongo_host = "mongo"
 default_common.param_main_db_neo4j_host = "neo4j"

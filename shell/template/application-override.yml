@@ -6,3 +6,15 @@ spring:
   data:
     mongodb:
       uri: mongodb://${{{param_main_db_mongo_host}}}:${{{param_main_db_mongo_port}}}/${{{param_main_db_name}}}
+    neo4j:
+      username: neo4j
+      password: ***REMOVED***
+  redis:
+    host: ${{{param_injected['param_main_redis_host']}}}
+    port: 6379
+    timeout: 3600
+  rabbitmq:
+    host: ${{{param_injected['param_main_rabbit_host']}}}
+    port: 5672
+    username: root
+    password: root
