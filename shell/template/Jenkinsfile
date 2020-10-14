@@ -1,12 +1,20 @@
 pipeline {
     agent any
-    environment {
-       HOME = "${env.WORKSPACE}"
-    }
     stages {
-        stage('Build') {
+        stage('init') {
+            sh 'pip3 install -r script/requirements.txt'
+        }
+        stage('build_rdb') {
             steps {
-                sh 'sh shell/play/publish_all.sh --param param_api_image_tag=play'
+                sh 'sh shell/play/rebuild_rdb.sh'
+            }
+        }
+        stage('build_api') {
+            environment {
+                HOME = "${env.WORKSPACE}"
+            }
+            steps {
+                sh 'sh shell/play/build_api_image.sh --param param_api_image_tag=play'
             }
         }
     }
