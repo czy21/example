@@ -14,6 +14,9 @@ pipeline {
         stage('build') {
             failFast true
             parallel {
+                environment {
+                    project_param='--param param_api_image_tag="${image_tag}"'
+                }
                 stage('db') {
                     steps {
                         sh 'sh shell/"${env_shell}"/rebuild_rdb.sh --skip-rm-output'
@@ -21,7 +24,7 @@ pipeline {
                 }
                 stage('api') {
                     steps {
-                        sh 'sh shell/"${env_shell}"/build_api_image.sh --param param_api_image_tag="${image_tag}" --skip-rm-output'
+                        sh 'sh shell/"${env_shell}"/build_api_compose.sh ${project_param} --skip-rm-output'
                     }
                 }
                 stage('web') {
@@ -33,7 +36,7 @@ pipeline {
         }
         stage('deploy'){
             steps{
-                sh 'sh shell/"${env_shell}"/start_api.sh --param param_api_image_tag="${image_tag}" --skip-rm-output'
+                sh 'sh shell/"${env_shell}"/start_api_compose.sh ${project_param} --skip-rm-output'
             }
         }
     }
