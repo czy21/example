@@ -1,7 +1,5 @@
 stage('init') {
-    steps {
-        sh 'pip3 install -r script/requirements.txt'
-    }
+    sh 'pip3 install -r script/requirements.txt'
 }
 stage('build') {
     parallel db: {
