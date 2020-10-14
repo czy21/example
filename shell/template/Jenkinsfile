@@ -12,11 +12,11 @@ pipeline {
             }
         }
         stage('build') {
+            environment {
+                project_param='--param param_api_image_tag="${image_tag}"'
+            }
             failFast true
             parallel {
-                environment {
-                    project_param='--param param_api_image_tag="${image_tag}"'
-                }
                 stage('db') {
                     steps {
                         sh 'sh shell/"${env_shell}"/rebuild_rdb.sh --skip-rm-output'
