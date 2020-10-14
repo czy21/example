@@ -13,7 +13,7 @@ pipeline {
             steps{
                 parallel(
                     db:{
-                        sh 'sh shell/play/rebuild_rdb.sh'
+                        sh 'sleep 30s;sh shell/play/rebuild_rdb.sh'
                     },
                     api:{
                         sh 'sh shell/play/build_api_image.sh --param param_api_image_tag=play'
