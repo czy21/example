@@ -6,7 +6,6 @@ pipeline {
                 echo 'build'
                 echo $WORKSPACE
                 echo $HOME
-                echo `pwd`
             }
         }
         stage('Test'){
