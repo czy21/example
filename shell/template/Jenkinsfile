@@ -4,6 +4,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'build'
+                echo $WORKSPACE
+                echo $HOME
+                pwd
             }
         }
         stage('Test'){
