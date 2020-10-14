@@ -3,7 +3,6 @@ import argparse
 import importlib
 import json
 import sys
-import os
 from pathlib import Path
 
 from script.utility import log as log_util, basic as basic_util
