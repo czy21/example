@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh shell/play/publish_all.sh --param param_api_image_tag=play
+                sh 'shell/play/publish_all.sh --param param_api_image_tag=play'
             }
         }
     }
