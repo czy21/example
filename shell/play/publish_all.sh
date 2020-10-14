@@ -1,7 +1,6 @@
 #!/bin/bash
 
 python3 -c '
-
 #!/usr/bin/env python3
 import sys
 
@@ -12,6 +11,4 @@ run.exec_file({
 "script.domain.source.mysql": ["rebuild_mysql"],
 "script.domain.source.java": ["build_plugin", "build_api", "build_api_image","start_api_compose"]
 })
-'
-
-$@
+' $@
