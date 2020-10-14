@@ -10,10 +10,10 @@ pipeline {
             steps{
                 parallel(
                     db:{
-                        sh 'echo "build_db"'
+                        sh 'sh shell/play/rebuild_rdb.sh'
                     },
                     api:{
-                        sh 'echo "build_api"'
+                        sh 'sh shell/play/build_api_image.sh --param param_api_image_tag=play'
                     }
                 )
             }
