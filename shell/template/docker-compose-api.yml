@@ -3,6 +3,9 @@ version: '3.7'
 services:
 
   api:
+    build:
+      context: ${{{param_api_output_path}}}
+      dockerfile: ${{{param_api_dockerfile_output_file_path}}}
     image: ${{{param_injected['param_project_name']}}}:${{{param_injected['param_api_image_tag']}}}
     container_name: ${{{param_injected['param_project_name']}}}_${{{param_injected['param_env_suffix']}}}
     ports:
@@ -15,4 +18,3 @@ services:
 
 networks:
   ${{{param_injected['param_project_name']}}}_${{{param_injected['param_env_suffix']}}}_default:
-    external: true
