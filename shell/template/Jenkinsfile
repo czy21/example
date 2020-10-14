@@ -3,15 +3,38 @@ pipeline {
     stages {
         stage('init') {
             steps {
-                sh 'pip3 install -r script/requirements.txt'
+                sh 'pip3 install -r script/requirements.txt
+                    rm -rf ___output/
+                   '
             }
         }
-        stage('build_deploy') {
+        stage('build') {
             environment {
                 HOME = "${env.WORKSPACE}"
+                image_tag="play"
             }
-            steps {
-                sh 'sh shell/play/publish_all.sh --param param_api_image_tag=play'
+            failFast true
+            parallel {
+                stage('db') {
+                    steps {
+                        sh 'sh shell/play/rebuild_rdb.sh --skip-rm-output'
+                    }
+                }
+                stage('api') {
+                    steps {
+                        sh 'sh shell/play/build_api_image.sh --param param_api_image_tag='"${image_tag}"' --skip-rm-output'
+                    }
+                }
+                stage('web') {
+                    steps {
+                        sh 'echo "build_web"'
+                    }
+                }
+            }
+        }
+        stage('deploy'){
+            steps{
+                sh 'sh shell/play/start_api.sh --param param_api_image_tag=play --skip-rm-output'
             }
         }
     }
