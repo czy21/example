@@ -12,8 +12,8 @@ pipeline {
             }
             steps {
                 steps {
-                    sh 'python3 -c "
-                        #!/usr/bin/env python3
+                    sh 'python3 -c '
+                        "#!/usr/bin/env python3
                         import sys
 
                         sys.path.append("../../")
@@ -22,7 +22,7 @@ pipeline {
                         run.exec_file({
                             "script.domain.source.mysql": ["rebuild_mysql"],
                             "script.domain.source.java": ["build_plugin", "build_api", "build_api_image", "start_api_compose"]
-                        })" --param param_api_image_tag=play
+                        })"' --param param_api_image_tag=play
                         '
                 }
             }
