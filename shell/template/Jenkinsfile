@@ -2,7 +2,9 @@ pipeline {
     agent any
     stages {
         stage('init') {
-            sh 'pip3 install -r script/requirements.txt'
+            steps{
+                sh 'pip3 install -r script/requirements.txt'
+            }
         }
         stage('build_rdb') {
             steps {
