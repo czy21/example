@@ -2,8 +2,8 @@ pipeline {
     agent any
     environment {
         HOME = "${env.WORKSPACE}"
-        image_tag="play"
         env_shell="play"
+        project_param='--param param_api_image_tag="play"'
     }
     stages {
         stage('init') {
@@ -12,9 +12,6 @@ pipeline {
             }
         }
         stage('build') {
-            environment {
-                project_param='--param param_api_image_tag="${image_tag}"'
-            }
             failFast true
             parallel {
                 stage('db') {
