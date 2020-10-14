@@ -1,10 +1,10 @@
 pipeline {
     agent any
+    environment {
+        HOME = "${env.WORKSPACE}"
+        image_tag="play"
+    }
     stages {
-        environment {
-            HOME = "${env.WORKSPACE}"
-            image_tag="play"
-        }
         stage('init') {
             steps {
                 sh 'pip3 install -r script/requirements.txt && rm -rf ___output/'
