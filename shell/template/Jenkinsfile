@@ -11,9 +11,7 @@ pipeline {
                 HOME = "${env.WORKSPACE}"
             }
             steps {
-                steps {
-                    sh 'sh shell/local/publish_all.sh --param param_api_image_tag=play'
-                }
+                sh 'sh shell/local/publish_all.sh --param param_api_image_tag=play'
             }
         }
     }
