@@ -1,22 +1,17 @@
-pipeline {
-    agent any
-    stages {
-        stage('init') {
-            steps{
-                sh 'pip3 install -r script/requirements.txt'
-            }
+stage('init') {
+    steps {
+        sh 'pip3 install -r script/requirements.txt'
+    }
+}
+stage('build') {
+    parallel db: {
+        node('db') {
+            sh 'echo build db'
         }
-        stage('build') {
-            parallel db: {
-                node('db') {
-                    sh 'echo build db'
-                }
-            },
-            api: {
-                node('api') {
-                    sh 'echo build api'
-                }
-            }
+    },
+    api: {
+        node('api') {
+            sh 'echo build api'
         }
     }
 }
