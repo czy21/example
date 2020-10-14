@@ -16,8 +16,7 @@ def exec_file(source_dict: {}):
     parser.add_argument('--skip-rm-output', action="store_false")
     args = parser.parse_args()
     default_path_module = importlib.import_module("script.domain.default.path")
-    if args.skip_rm_output:
-        getattr(default_path_module, "re_mkdir")(rm_output=True)
+    getattr(default_path_module, "re_mkdir")(rm_output=args.skip_rm_output)
 
     # running action file
     action_env = Path(sys.argv[0])
