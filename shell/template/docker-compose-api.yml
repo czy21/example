@@ -18,3 +18,4 @@ services:
 
 networks:
   ${{{param_injected['param_project_name']}}}_${{{param_injected['param_env_suffix']}}}_default:
+    external: true
