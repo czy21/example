@@ -7,14 +7,16 @@ pipeline {
             }
         }
         stage('build') {
-            parallel(
-                db:{
-                    sh 'echo "build_db"'
-                },
-                api:{
-                    sh 'echo "build_api"'
-                }
-            )
+            steps{
+                parallel(
+                    db:{
+                        sh 'echo "build_db"'
+                    },
+                    api:{
+                        sh 'echo "build_api"'
+                    }
+                )
+            }
         }
     }
 }
