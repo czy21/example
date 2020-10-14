@@ -4,4 +4,4 @@ import sys
 sys.path.append("../../")
 from shell import run
 
-run.exec_file({"script.domain.source.mysql": ["backup_mysql"]})
+run.exec_file({"script.domain.source.java": ["start_api_compose"]})
