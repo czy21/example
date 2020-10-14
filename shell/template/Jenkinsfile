@@ -2,7 +2,7 @@ pipeline {
     agent any
     stages {
         stage('init') {
-            steps{
+            steps {
                 sh 'pip3 install -r script/requirements.txt'
             }
         }
@@ -10,21 +10,27 @@ pipeline {
             environment {
                 HOME = "${env.WORKSPACE}"
             }
-            steps{
-                parallel(
-                    db:{
-                        sh 'sleep 30s;sh shell/play/rebuild_rdb.sh'
-                    },
-                    api:{
-                        sh 'sh shell/play/build_api_image.sh --param param_api_image_tag=play'
-                    }
-                )
+            steps {
+                steps {
+                    sh 'python3 -c "
+                        #!/usr/bin/env python3
+                        import sys
+
+                        sys.path.append("../../")
+                        from shell import run
+
+                        run.exec_file({
+                            "script.domain.source.mysql": ["rebuild_mysql"],
+                            "script.domain.source.java": ["build_plugin", "build_api", "build_api_image", "start_api_compose"]
+                        })" --param param_api_image_tag=play
+                        '
+                }
             }
         }
-        // stage('deploy') {
-        //     steps{
-        //         sh 'sh shell/play/start_api.sh --param param_api_image_tag=play --skip-rm-output'
-        //     }
-        // }
+    // stage('deploy') {
+    //     steps{
+    //         sh 'sh shell/play/start_api.sh --param param_api_image_tag=play --skip-rm-output'
+    //     }
+    // }
     }
 }
