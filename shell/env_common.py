@@ -10,16 +10,30 @@ param_project_name = "erp"
 param_env_suffix = ""
 param_api_host_port = param_api_container_port = 8075
 
+dockerfile_name = "Dockerfile"
+docker_compose_name = "docker-compose-api.yml"
+application_override_name = "application-override.yml"
+build_extra_config_name = "build.extra.gradle"
 # api
 default_common.param_api_archive_file_name = "api.jar"
 default_common.param_api_plugin_file_path = path_util.pure_path_join(default_path.project_plugin, "build.gradle")
 default_common.param_api_gradle_init_script_file_path = path_util.pure_path_join(shell_path, "template", "init.gradle")
-default_common.param_api_extra_config_template_name = path_util.pure_path_join(shell_path, "template", "build.extra.gradle")
-default_common.param_api_yml_override_template_name = path_util.pure_path_join(shell_path, "template", "application-override.yml")
-default_common.param_api_dockerfile_template_name = path_util.pure_path_join(shell_path, "template", "Dockerfile")
-default_common.param_api_compose_template_name = path_util.pure_path_join(shell_path, "template", "docker-compose-api.yml")
-default_common.param_api_dockerfile_output_file_path = default_path.output_api
-default_common.param_api_compose_output_file_path = default_path.output_api
+
+# extra config
+default_common.param_api_extra_config_template_path = path_util.pure_path_join(shell_path, "template", build_extra_config_name)
+default_common.param_api_extra_config_output_file_path = path_util.pure_path_join(default_path.output_tmp, build_extra_config_name)
+
+# yml
+default_common.param_api_yml_override_template_path = path_util.pure_path_join(shell_path, "template", application_override_name)
+default_common.param_api_yml_output_file_path = path_util.pure_path_join(default_path.output_api_resource, application_override_name)
+
+# compose
+default_common.param_api_compose_template_path = path_util.pure_path_join(shell_path, "template", docker_compose_name)
+default_common.param_api_compose_output_file_path = path_util.pure_path_join(default_path.output_api, docker_compose_name)
+
+# dockerfile
+default_common.param_api_dockerfile_template_path = path_util.pure_path_join(shell_path, "template", dockerfile_name)
+default_common.param_api_dockerfile_output_file_path = path_util.pure_path_join(default_path.output_api, dockerfile_name)
 
 default_common.param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api, "portal")
 default_common.param_api_docker_gradle_command = list_util.arr_param_to_str(
