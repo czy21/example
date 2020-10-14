@@ -1,16 +1,16 @@
 pipeline {
     agent any
     stages {
+        environment {
+            HOME = "${env.WORKSPACE}"
+            image_tag="play"
+        }
         stage('init') {
             steps {
                 sh 'pip3 install -r script/requirements.txt && rm -rf ___output/'
             }
         }
         stage('build') {
-            environment {
-                HOME = "${env.WORKSPACE}"
-                image_tag="play"
-            }
             failFast true
             parallel {
                 stage('db') {
