@@ -6,17 +6,16 @@ pipeline {
                 sh 'pip3 install -r script/requirements.txt'
             }
         }
-        stage('build_rdb') {
-            steps {
-                sh 'sh shell/play/rebuild_rdb.sh'
-            }
-        }
-        stage('build_api') {
-            environment {
-                HOME = "${env.WORKSPACE}"
-            }
-            steps {
-                sh 'sh shell/play/build_api_image.sh --param param_api_image_tag=play'
+        stage('build') {
+            parallel db: {
+                node('db') {
+                    sh 'echo build db'
+                }
+            },
+            api: {
+                node('api') {
+                    sh 'echo build api'
+                }
             }
         }
     }
