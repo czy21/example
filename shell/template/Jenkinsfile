@@ -23,7 +23,7 @@ pipeline {
         }
         stage('deploy') {
             steps{
-                sh 'sh shell/play/start_api.sh --param param_api_image_tag=play --skip-rm-output'
+                sh 'sh shell/play/start_api.sh --param param_api_image_tag=play'
             }
         }
     }
