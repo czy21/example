@@ -1,21 +1,12 @@
 pipeline {
     agent any
+    environment {
+       HOME = "${env.WORKSPACE}"
+    }
     stages {
         stage('Build') {
             steps {
-                echo 'build'
-                echo $WORKSPACE
-                echo $HOME
-            }
-        }
-        stage('Test'){
-            steps {
-                echo 'Test'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploy'
+                sh shell/play/publish_all.sh --param param_api_image_tag=play
             }
         }
     }
