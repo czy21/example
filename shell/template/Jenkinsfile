@@ -20,7 +20,7 @@ pipeline {
                 }
                 stage('api') {
                     steps {
-                        sh 'sh shell/play/build_api_image.sh --param param_api_image_tag='"${image_tag}"' --skip-rm-output'
+                        sh 'sh shell/play/build_api_image.sh --param param_api_image_tag="${image_tag}" --skip-rm-output'
                     }
                 }
                 stage('web') {
@@ -32,7 +32,7 @@ pipeline {
         }
         stage('deploy'){
             steps{
-                sh 'sh shell/play/start_api.sh --param param_api_image_tag=play --skip-rm-output'
+                sh 'sh shell/play/start_api.sh --param param_api_image_tag="${image_tag}"--skip-rm-output'
             }
         }
     }
