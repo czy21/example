@@ -22,12 +22,12 @@ def exec_file(source_dict: {}):
     # running action file
     action_env = Path(args.context)
     print(action_env)
-    print(action_env.cwd())
-    print(action_env.cwd().stem)
+    print(action_env.parent)
+    print(action_env.parent.stem)
     # empty source log
     open("".join([action_env.as_posix(), ".log"]), 'w').close()
     # injected param to global
-    env_module = importlib.import_module("".join(["shell.", action_env.cwd().stem, "._env"]))
+    env_module = importlib.import_module("".join(["shell.", action_env.parent.stem, "._env"]))
     getattr(getattr(env_module, "env_common"), "inject")(args)
     source_mod_files = [{"module": importlib.import_module(m), "func": f} for m, f in source_dict.items()]
     default_common_mod = importlib.import_module("script.domain.default.common")
