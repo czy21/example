@@ -6,7 +6,7 @@ services:
     build:
       context: ${{{param_api_output_path}}}
       dockerfile: ${{{param_api_dockerfile_output_file_path}}}
-    image: ${{{param_injected['param_project_name']}}}:${{{param_injected['param_api_image_tag']}}}
+    image: ${{{param_api_image_tag}}}
     container_name: ${{{param_injected['param_project_name']}}}_${{{param_injected['param_env_suffix']}}}
     ports:
       - ${{{param_injected['param_api_host_port']}}}:${{{param_injected['param_api_container_port']}}}
