@@ -14,12 +14,13 @@ def exec_file(source_dict: {}):
     parser = argparse.ArgumentParser()
     parser.add_argument('--param', nargs="+", default=[])
     parser.add_argument('--skip-rm-output', action="store_false")
+    parser.add_argument('--context', default=sys.argv[0])
     args = parser.parse_args()
     default_path_module = importlib.import_module("script.domain.default.path")
     getattr(default_path_module, "re_mkdir")(rm_output=args.skip_rm_output)
 
     # running action file
-    action_env = Path(sys.argv[0])
+    action_env = Path(args.context)
     # empty source log
     open("".join([action_env.as_posix(), ".log"]), 'w').close()
     # injected param to global
