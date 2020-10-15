@@ -21,6 +21,9 @@ def exec_file(source_dict: {}):
 
     # running action file
     action_env = Path(args.context)
+    print(action_env)
+    print(action_env.cwd())
+    print(action_env.cwd().stem)
     # empty source log
     open("".join([action_env.as_posix(), ".log"]), 'w').close()
     # injected param to global
