@@ -20,10 +20,7 @@ def exec_file(source_dict: {}):
     getattr(default_path_module, "re_mkdir")(rm_output=args.skip_rm_output)
 
     # running action file
-    action_env = Path(args.context)
-    print(action_env)
-    print(action_env.parent)
-    print(action_env.parent.stem)
+    action_env = Path(args.context).absolute()
     # empty source log
     open("".join([action_env.as_posix(), ".log"]), 'w').close()
     # injected param to global
