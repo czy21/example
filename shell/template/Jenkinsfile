@@ -11,9 +11,6 @@ pipeline {
                 sh 'pip3 install -r script/requirements.txt && sh shell/"${env_shell}"/init.sh'
             }
         }
-        stage('build') {
-            failFast true
-            parallel {
                 stage('db') {
                     steps {
                         sh 'sh shell/"${env_shell}"/rebuild_rdb.sh --skip-rm-output'
@@ -29,8 +26,6 @@ pipeline {
                         sh 'echo "build_web"'
                     }
                 }
-            }
-        }
         stage('deploy'){
             steps{
                 sh 'sh shell/"${env_shell}"/start_api_compose.sh ${project_param} --skip-rm-output'
