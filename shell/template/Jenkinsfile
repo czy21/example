@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('init') {
             steps {
-                sh 'pip3 install -r script/requirements.txt && rm -rf ___output/'
+                sh 'pip3 install -r script/requirements.txt && sh shell/"${env_shell}"/init.sh'
             }
         }
         stage('build') {
