@@ -46,8 +46,7 @@ pipeline {
         }
         stage('deploy') {
             steps {
-                sh 'pip3 install -r script/requirements.txt && \
-                    python3 shell/run.py \
+                sh 'python3 shell/run.py \
                     --env shell/${env_shell}/_env.py \
                     --log-file deploy.log \
                     ${project_param} --skip-rm-output \
