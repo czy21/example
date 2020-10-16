@@ -8,34 +8,14 @@ pipeline {
     stages {
         stage('init') {
             steps {
-                sh 'pip3 install -r script/requirements.txt && python3 shell/"${env_shell}"/init.py ${project_param}'
-            }
-        }
-        stage('build_db') {
-            steps {
-                sh 'python3 shell/"${env_shell}"/build_rdb.py ${project_param} --skip-rm-output'
-            }
-        }
-        stage('build_api') {
-            steps {
-                sh 'python3 shell/"${env_shell}"/build_api.py ${project_param} --skip-rm-output'
-            }
-        }
-        stage('build_web') {
-            steps {
-                sh 'echo "build_web"'
-            }
-        }
-        stage('deploy_db'){
-            steps{
-                sh 'python3 shell/"${env_shell}"/recreate_rdb.py ${project_param} --skip-rm-output && \
-                    python3 shell/"${env_shell}"/exec_rdb.py ${project_param} --skip-rm-output \
-                    '
-            }
-        }
-        stage('deploy_api'){
-            steps{
-                sh 'python3 shell/"${env_shell}"/start_api_compose.py ${project_param} --skip-rm-output'
+                sh 'pip3 install -r script/requirements.txt && \
+                    python3 ../../shell/run.py \
+                    --env ../../shell/${env_shell}/_env.py \
+                    --log-file ensure_network.log \
+                    --cmd \' \
+                    from script.domain.source import java as java_source \
+                    java_source.ensure_network()
+                    \''
             }
         }
     }
