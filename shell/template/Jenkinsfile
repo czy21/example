@@ -12,7 +12,7 @@ pipeline {
                     python3 shell/run.py \
                     --env shell/${env_shell}/_env.py \
                     --log-file ensure_network.log \
-                    --cmd \'\
+                    --cmd \' \
                     from script.domain.source import java as java_source;java_source.ensure_network();\''
             }
         }
