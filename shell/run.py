@@ -20,11 +20,13 @@ def exec_file(source_dict: {}):
     getattr(default_path_module, "re_mkdir")(rm_output=args.skip_rm_output)
 
     # running action file
-    action_env = Path(args.context).absolute()
+    action_env = Path(args.context).resolve()
+    print(action_env)
+    print(action_env.parent.stem)
     # empty source log
     open("".join([action_env.as_posix(), ".log"]), 'w').close()
     # injected param to global
-    env_module = importlib.import_module("".join(["shell.", action_env.parent.stem, "._env"]))
+    env_module = importlib.import_module("".join(["shell.", action_env.stem, "._env"]))
     getattr(getattr(env_module, "env_common"), "inject")(args)
     source_mod_files = [{"module": importlib.import_module(m), "func": f} for m, f in source_dict.items()]
     default_common_mod = importlib.import_module("script.domain.default.common")
