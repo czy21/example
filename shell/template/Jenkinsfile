@@ -8,27 +8,34 @@ pipeline {
     stages {
         stage('init') {
             steps {
-                sh 'pip3 install -r script/requirements.txt && sh shell/"${env_shell}"/init.sh'
+                sh 'pip3 install -r script/requirements.txt && python3 shell/"${env_shell}"/init.sh ${project_param}'
             }
         }
-                stage('db') {
-                    steps {
-                        sh 'sh shell/"${env_shell}"/rebuild_rdb.sh --skip-rm-output'
-                    }
-                }
-                stage('api') {
-                    steps {
-                        sh 'sh shell/"${env_shell}"/build_api_compose.sh ${project_param} --skip-rm-output'
-                    }
-                }
-                stage('web') {
-                    steps {
-                        sh 'echo "build_web"'
-                    }
-                }
-        stage('deploy'){
+        stage('build_db') {
+            steps {
+                sh 'python3 shell/"${env_shell}"/build_rdb.py ${project_param} --skip-rm-output'
+            }
+        }
+        stage('build_api') {
+            steps {
+                sh 'python3 shell/"${env_shell}"/build_api.py ${project_param} --skip-rm-output'
+            }
+        }
+        stage('build_web') {
+            steps {
+                sh 'echo "build_web"'
+            }
+        }
+        stage('deploy_db'){
             steps{
-                sh 'sh shell/"${env_shell}"/start_api_compose.sh ${project_param} --skip-rm-output'
+                sh 'python3 shell/"${env_shell}"/recreate_rdb.py ${project_param} --skip-rm-output && \
+                    python3 shell/"${env_shell}"/exec_rdb.py ${project_param} --skip-rm-output \
+                    '
+            }
+        }
+        stage('deploy_api'){
+            steps{
+                sh 'python3 shell/"${env_shell}"/start_api_compose.py ${project_param} --skip-rm-output'
             }
         }
     }
