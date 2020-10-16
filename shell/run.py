@@ -14,19 +14,16 @@ def exec_file(source_dict: {}):
     parser = argparse.ArgumentParser()
     parser.add_argument('--param', nargs="+", default=[])
     parser.add_argument('--skip-rm-output', action="store_false")
-    parser.add_argument('--context', default=sys.argv[0])
     args = parser.parse_args()
     default_path_module = importlib.import_module("script.domain.default.path")
     getattr(default_path_module, "re_mkdir")(rm_output=args.skip_rm_output)
 
     # running action file
-    action_env = Path(args.context).resolve()
-    print(action_env)
-    print(action_env.parent.stem)
+    action_env = Path(sys.argv[0]).resolve().as_posix()
     # empty source log
-    open("".join([action_env.as_posix(), ".log"]), 'w').close()
+    open("".join([action_env, ".log"]), 'w').close()
     # injected param to global
-    env_module = importlib.import_module("".join(["shell.", action_env.stem, "._env"]))
+    env_module = importlib.import_module("".join(["shell.", Path(action_env).parent.stem, "._env"]))
     getattr(getattr(env_module, "env_common"), "inject")(args)
     source_mod_files = [{"module": importlib.import_module(m), "func": f} for m, f in source_dict.items()]
     default_common_mod = importlib.import_module("script.domain.default.common")
