@@ -27,7 +27,7 @@ def exec_file():
 
     log_file = log_util.parse_argv(sys.argv, "--log-file")
     if log_file != "":
-        open(env_path.joinpath("../", log_file).as_posix(), 'w').close()
+        open(env_path.joinpath("../", log_file).absolute().as_posix(), 'w').close()
 
     # empty source log
     default_path_module = importlib.import_module("script.domain.default.path")
