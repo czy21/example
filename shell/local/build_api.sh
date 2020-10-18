@@ -1,11 +1,12 @@
 #!/bin/bash
 
-env="local"
+cd $(cd "$(dirname "$0")"; pwd)
 
+env="local"
 
 python3 ../../shell/run.py \
 --env ../../shell/${env}/_env.py \
---log-file build_plugin.log \
+--log-file build_api.log \
 --cmd '
 from script.domain.source import java as java_source
 java_source.build_api()
