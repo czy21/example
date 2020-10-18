@@ -11,7 +11,7 @@ pipeline {
                 sh 'pip3 install -r script/requirements.txt && \
                     python3 shell/run.py \
                     --env shell/${env_shell}/_env.py \
-                    --log-file ensure_network.log \
+                    --log-file init.log \
                     ${project_param} \
                     --cmd \'from script.domain.source import java as java_source;java_source.ensure_network()\''
             }
