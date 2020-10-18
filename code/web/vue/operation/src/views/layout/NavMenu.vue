@@ -1,5 +1,5 @@
 <template>
-  <div class="navMenu">
+  <div>
     <template v-for="t in menuTree">
       <el-submenu v-if="t.children" :key="t.id" :data="t" :index="t.name">
         <template slot="title">
