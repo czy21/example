@@ -1,6 +1,6 @@
 <template>
   <el-container>
-    <el-aside>
+    <el-aside :class="{'main-collapse':isCollapse}">
       <el-menu :collapse="isCollapse" background-color="#304156" text-color="#bfcbd9" active-text-color="#409EFF"
                :default-active="getCurrentRoute"
                router>
@@ -9,7 +9,11 @@
       </el-menu>
     </el-aside>
     <el-container>
-      <el-header/>
+      <el-header>
+        <div class="collapse-btn" @click="collapseChange">
+          <i class="el-icon-menu" style="font-size: 20px;align-self: center"/>
+        </div>
+      </el-header>
       <el-main>
         <router-view></router-view>
       </el-main>
@@ -30,7 +34,7 @@ import menus from "@/menu";
 })
 export default class Home extends Vue {
   private get isCollapse() {
-    return false
+    return this.$store.getters.aside.collapse
   }
 
   private get getMenuTree() {
@@ -39,6 +43,10 @@ export default class Home extends Vue {
 
   private get getCurrentRoute() {
     return this.$route.path.replace('/', '');
+  }
+
+  public collapseChange(): void {
+    this.$store.dispatch("TOGGLE_ASIDE_ACTION")
   }
 }
 </script>
