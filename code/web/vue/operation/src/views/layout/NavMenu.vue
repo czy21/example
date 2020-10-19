@@ -21,8 +21,8 @@ import {Component, Prop, Vue} from "vue-property-decorator";
 
 @Component
 export default class NavMenu extends Vue {
-  @Prop({default: []}) private menuTree?: any
-  @Prop({default: false}) private collapse?: boolean
-  @Prop({default: "16px"}) private iconSize?: string
+  @Prop({default: () => []}) private menuTree?: any
+  @Prop({default: () => false}) private collapse?: boolean
+  @Prop({default: () => "16px"}) private iconSize?: string
 }
 </script>

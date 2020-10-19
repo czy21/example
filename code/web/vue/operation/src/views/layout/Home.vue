@@ -33,19 +33,19 @@ import menus from "@/menu";
   },
 })
 export default class Home extends Vue {
-  private get isCollapse() {
+  get isCollapse() {
     return this.$store.getters.aside.collapse
   }
 
-  private get getMenuTree() {
+  get getMenuTree() {
     return menus
   }
 
-  private get getCurrentRoute() {
+  get getCurrentRoute() {
     return this.$route.path.replace('/', '');
   }
 
-  public collapseChange(): void {
+  collapseChange(): void {
     this.$store.dispatch("TOGGLE_ASIDE_ACTION")
   }
 }
