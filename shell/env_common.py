@@ -48,6 +48,9 @@ default_common.param_api_docker_gradle_command = list_util.arr_param_to_str(
 default_common.param_api_network_containers = ["jenkins", "mysql", "mongo", "neo4j", "redis", "rabbitmq"]
 default_common.param_api_network_name = "erp_play_default"
 
+# web
+default_common.param_web_root_project_path = path_util.pure_path_join(default_path.project_code_web, "vue/operation")
+
 # db
 param_main_redis_host = "redis"
 param_main_rabbit_host = "rabbitmq"
