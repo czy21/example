@@ -1,7 +1,6 @@
 const resolve = dir => require('path').join(__dirname, dir);
 
 alias = {
-    "@": "src",
     "@c": "src/components",
     "@v": "src/views",
 }
