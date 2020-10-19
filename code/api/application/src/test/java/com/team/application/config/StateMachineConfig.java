@@ -18,7 +18,6 @@ package com.team.application.config;
 import com.team.application.kind.RinseEvent;
 import com.team.application.kind.RinseNode;
 import com.team.application.machine.PersistLocal;
-import com.team.domain.mapper.OrderMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.statemachine.StateMachinePersist;

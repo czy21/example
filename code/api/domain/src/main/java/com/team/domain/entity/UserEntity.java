@@ -12,7 +12,7 @@ public class UserEntity extends BaseEntity {
     /**
      * 用户账号
      */
-    private String loginName;
+    private String account;
 
     /**
      * 用户密码
@@ -28,9 +28,4 @@ public class UserEntity extends BaseEntity {
      * 用户邮箱
      */
     private String email;
-
-    /**
-     * 所属部门
-     */
-    private String departmentId;
 }

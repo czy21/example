@@ -14,11 +14,7 @@ import com.team.application.model.vo.UserVO;
 import com.team.application.service.UserService;
 import com.team.cooperated.exception.BusinessErrorCode;
 import com.team.cooperated.exception.BusinessException;
-import com.team.domain.entity.PermissionEntity;
-import com.team.domain.entity.RoleEntity;
 import com.team.domain.entity.UserEntity;
-import com.team.domain.mapper.PermissionMapper;
-import com.team.domain.mapper.RoleMapper;
 import com.team.domain.mapper.UserMapper;
 import org.apache.commons.lang3.ObjectUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,21 +30,13 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<UserMapper, UserEnti
 
     @Resource
     private UserAutoMap userMap;
-    @Autowired
-    private RoleMapper roleRepository;
-    @Autowired
-    private PermissionMapper functionRepository;
 
     @Override
     public UserDTO insertDefaultPwd(UserDTO dto) {
         if (StringUtils.isEmpty(dto.getUserName())) {
             throw new BusinessException(BusinessErrorCode.EXIST_NAME, "用户姓名不能为空");
         }
-        if (super.selectOne(UserEntity::getLoginName, dto.getLoginName()) != null) {
-            throw new BusinessException(BusinessErrorCode.EXIST_USER, "用户账号已存在");
-        }
         UserEntity user = userMap.mapToEntity(dto);
-        user.setPassword("123456");
         return userMap.mapToDto(super.insertAndGet(user));
     }
 
@@ -79,43 +67,6 @@ public class UserServiceImpl extends MybatisBaseServiceImpl<UserMapper, UserEnti
             queryWrapper.lambda().like(UserEntity::getUserName, user.getUserName());
         }
         return userMap.mapToPageDto(super.selectAll(page.getPageIndex(), page.getPageSize(), queryWrapper));
-    }
-
-    @Override
-    public List<RoleEntity> getRolesByLoginName(String loginName) {
-        return roleRepository.selectAllByLoginName(loginName);
-    }
-
-    @Override
-    public List<PermissionEntity> getFunctionsByRole(List<String> roleIds) {
-        return functionRepository.selectAllByRoleIds(roleIds);
-    }
-
-//    @Override
-//    public JSONObject login(LoginDTO dto) {
-//        UserEntity user = super.selectOne(UserEntity::getLoginName, dto.getLoginName());
-//        if (ObjectUtils.isEmpty(user)) {
-//            throw new BusinessException(BusinessErrorCode.NO_USER, "用户不存在");
-//        }
-//        JSONObject json = new JSONObject();
-//        TokenDTO token = new TokenDTO();
-//        token.setUser(userMap.mapToAccountDto(user));
-//        token.setPermissions(functionRepository.selectAllByUserId(user.getId()).stream().map(PermissionEntity::getKey).collect(Collectors.toList()));
-//        token.setValue(JwtUtil.GenerateToken(user.getLoginName(), user.getPassword()));
-//        json.put("token", token);
-//        return json;
-//    }
-
-//    @Override
-//    public JSONObject register(LoginDTO dto) {
-//        UserEntity user = super.selectOne(UserEntity::getLoginName, dto.getLoginName());
-//        super.update(user);
-//        return null;
-//    }
-
-    @Override
-    public List<PermissionEntity> getFunctionsByUser(String userId) {
-        return functionRepository.selectAllByUserId(userId);
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.team.application.machine;
 
 import com.team.application.kind.RinseEvent;
 import com.team.application.kind.RinseNode;
-import com.team.domain.mapper.OrderMapper;
 import org.springframework.statemachine.StateMachineContext;
 import org.springframework.statemachine.StateMachinePersist;
 import org.springframework.statemachine.support.DefaultStateMachineContext;
