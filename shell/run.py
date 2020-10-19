@@ -38,7 +38,7 @@ def exec_file():
     getattr(getattr(env_module, "env_common"), "inject")(args)
     default_common_mod = importlib.import_module("script.domain.default.common")
     common_param = getattr(default_common_mod, "get_params")()
-    logger.info(basic_util.action_formatter("params", json.dumps(common_param, sort_keys=True)))
+    logger.info(basic_util.action_formatter("params", json.dumps(common_param, sort_keys=True)), default_common_mod.__name__)
     if args.cmd:
         exec(args.cmd)
 
