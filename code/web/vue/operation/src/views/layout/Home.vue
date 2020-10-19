@@ -24,7 +24,7 @@
 
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator';
-import NavMenu from "@views/layout/NavMenu.vue"
+import NavMenu from "@v/layout/NavMenu.vue"
 import menus from "@/menu";
 
 @Component({

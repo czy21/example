@@ -7,12 +7,12 @@ const routes: Array<RouteConfig> = [
     {
         path: '/',
         name: 'Home',
-        component: () => import('@/views/layout/Home.vue'),
+        component: () => import('@v/layout/Home.vue'),
         children: [
             {
                 name: "人员管理",
                 path: "user",
-                component: () => import('@views/pages/user/index.vue')
+                component: () => import('@v/pages/user/index.vue')
             },
         ]
     },
