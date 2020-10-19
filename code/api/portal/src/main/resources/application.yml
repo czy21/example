@@ -10,20 +10,10 @@ spring:
   data:
     mongodb:
       uri: mongodb://127.0.0.1:27017/erp_java_local
-    neo4j:
-      username: neo4j
-      password: ***REMOVED***
   redis:
     host: 127.0.0.1
     port: 6379
     timeout: 3600
-  rabbitmq:
-    host: 127.0.0.1
-    port: 5672
-    username: root
-    password: root
-  jpa:
-    show-sql: true
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/*.xml
@@ -33,12 +23,6 @@ mybatis-plus:
     db-config:
       id-type: uuid
     banner: false
-
-pagehelper:
-  reasonable: true
-  support-methods-arguments: true
-  params: count=countSql
-  page-size-zero: true
 
 logging:
   level:

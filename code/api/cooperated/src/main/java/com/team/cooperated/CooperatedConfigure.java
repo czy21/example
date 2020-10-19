@@ -11,7 +11,6 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CommonsRequestLoggingFilter;
 import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
@@ -27,15 +26,6 @@ public class CooperatedConfigure implements WebMvcConfigurer {
 
     @Autowired
     private ObjectMapper objectMapper;
-
-//    @Bean
-//    public CommonsRequestLoggingFilter requestLoggingFilter() {
-//        CommonsRequestLoggingFilter loggingFilter = new CommonsRequestLoggingFilter();
-//        loggingFilter.setIncludeQueryString(true);
-//        loggingFilter.setIncludePayload(true);
-//        loggingFilter.setMaxPayloadLength(64000);
-//        return loggingFilter;
-//    }
 
     @Bean
     public CorsFilter corsFilter() {

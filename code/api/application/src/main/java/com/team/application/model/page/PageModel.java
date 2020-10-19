@@ -2,13 +2,10 @@ package com.team.application.model.page;
 
 import lombok.Data;
 
-import java.io.Serializable;
 import java.util.List;
 
 @Data
-public class PageModel<TEntity> implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class PageModel<TEntity> {
 
     private Integer pageIndex;
 

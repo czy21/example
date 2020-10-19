@@ -30,7 +30,9 @@ export default class UserIndex extends Vue {
   }
 
   search() {
-    console.log(this.$api.get())
+    this.$api.get("user/load").then(data => {
+
+    })
   }
 
   mounted() {

@@ -6,8 +6,6 @@ import com.team.application.model.dto.UserDTO;
 import com.team.application.model.page.PageInput;
 import com.team.application.model.vo.BaseImportVO;
 import com.team.application.model.vo.UserVO;
-import com.team.domain.entity.PermissionEntity;
-import com.team.domain.entity.RoleEntity;
 import com.team.domain.entity.UserEntity;
 
 import java.io.IOException;
@@ -22,16 +20,6 @@ public interface UserService extends MybatisBaseService<UserEntity> {
     Boolean modifiedUser(UserDTO dto);
 
     PageDTO<UserDTO> getUserPageListBy(PageInput page, UserVO user);
-
-    List<RoleEntity> getRolesByLoginName(String loginName);
-
-    List<PermissionEntity> getFunctionsByRole(List<String> roleIds);
-//
-//    JSONObject login(LoginDTO dto);
-//
-//    JSONObject register(LoginDTO dto);
-
-    List<PermissionEntity> getFunctionsByUser(String userId);
 
     void userImport(BaseImportVO importVO) throws IOException;
 
