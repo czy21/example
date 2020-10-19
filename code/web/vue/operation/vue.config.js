@@ -9,10 +9,8 @@ module.exports = {
                 alias: {
                     vue$: "vue/dist/vue.js",
                     "@": path.resolve(__dirname, "./src"),
-                    "@components": path.resolve(__dirname, "./src/components"),
-                    "@views": path.resolve(__dirname, "./src/views"),
-                    "@assets": path.resolve(__dirname, "./src/assets"),
-                    "@store": path.resolve(__dirname, "./src/store"),
+                    "@c": path.resolve(__dirname, "./src/components"),
+                    "@v": path.resolve(__dirname, "./src/views"),
                 }
             }
         });
