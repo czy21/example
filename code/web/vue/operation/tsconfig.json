@@ -21,6 +21,9 @@
       ],
       "@c/*": [
         "src/components/*"
+      ],
+      "@v/*": [
+        "src/views/*"
       ]
     },
     "lib": [
