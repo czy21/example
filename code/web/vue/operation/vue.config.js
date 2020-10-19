@@ -1,18 +1,9 @@
-const path = require("path");
+let webpackConfig = require('./webpack.config')
+
+let _ = require('lodash')
 
 module.exports = {
     configureWebpack: config => {
-        Object.assign(config, {
-            // 开发生产共同配置
-            resolve: {
-                extensions: [".js", ".vue", ".json", ".ts", ".tsx"],
-                alias: {
-                    vue$: "vue/dist/vue.js",
-                    "@": path.resolve(__dirname, "./src"),
-                    "@c": path.resolve(__dirname, "./src/components"),
-                    "@v": path.resolve(__dirname, "./src/views"),
-                }
-            }
-        });
+        Object.assign(config.resolve.alias, webpackConfig.resolve.alias)
     }
 };
