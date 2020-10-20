@@ -1,4 +1,4 @@
-import basic from './basic'
+import basic from '@/util/basic'
 
 const util = {
     basic
