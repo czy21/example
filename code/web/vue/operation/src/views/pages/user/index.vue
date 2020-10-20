@@ -37,7 +37,9 @@ export default class UserIndex extends Vue {
     //   console.log("ss")
     // })
 
-    this.$stub.helper.eui.inform("ss")
+    this.$stub.helper.eui.inform("ss",()=>{
+      console.log("ff")
+    })
 
   }
 
