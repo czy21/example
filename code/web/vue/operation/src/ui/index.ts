@@ -1,4 +1,4 @@
-import eui from './eui'
+import eui from '@/ui/eui'
 
 export interface EUI {
     inform(text: string, callback?: Function): void
