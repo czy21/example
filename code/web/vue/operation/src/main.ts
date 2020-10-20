@@ -4,13 +4,11 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import router from './router'
 import store from './store'
-import api from "./api"
-import helper from './helper'
+import stub from "./init"
 
 Vue.config.productionTip = false
 Vue.use(ElementUI, {size: 'mini'});
-Vue.prototype.$api = api
-Vue.prototype.$helper = helper
+Vue.prototype.$stub = stub
 new Vue({
     router,
     store,
