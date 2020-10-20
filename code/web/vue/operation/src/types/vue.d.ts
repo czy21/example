@@ -1,7 +1,9 @@
-import {api} from '@/api'
+import {API} from '@/api'
+import {Helper} from '@/helper'
 
 declare module 'vue/types/vue' {
     interface Vue {
-        $api: api
+        $api: API,
+        $helper: Helper
     }
 }
