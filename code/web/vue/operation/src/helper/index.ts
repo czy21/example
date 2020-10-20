@@ -1,5 +1,4 @@
-import {EUI} from "@/ui"
-import eui from '@/ui'
+import eui, {EUI} from '@/helper/eui'
 
 export interface Helper {
     eui: EUI
