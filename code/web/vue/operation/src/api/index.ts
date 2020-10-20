@@ -65,7 +65,7 @@ export default {
 }
 
 
-export interface api {
+export interface API {
     get(url: string, param?: any): Promise<any>
 
     post(url: string, param?: any): Promise<any>
