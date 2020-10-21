@@ -1,14 +1,13 @@
 <template>
   <div>
-    <Form :model="userForm" :columns="formColumns" :rules="editRules"/>
-    <List :data="userList" :columns="listColumns"/>
+    <List :table="table" :table-columns="tableColumnsMet"/>
   </div>
 </template>
 
 <script lang="ts">
 import {Component, Provide, Vue} from 'vue-property-decorator';
-import List, {Column as ListColumn} from '@c/List.vue'
-import Form, {Column as FormColumn} from '@c/Form.vue'
+import List from '@c/List.vue'
+import Form from '@c/Form.vue'
 
 @Component({
   components: {
@@ -16,9 +15,21 @@ import Form, {Column as FormColumn} from '@c/Form.vue'
     Form
   }
 })
+
 export default class UserIndex extends Vue {
-  @Provide() userList: Array<any> = []
+  @Provide() userList: Array<any> = [{name: "ss"}]
   @Provide() userForm: Object = {}
+  @Provide() table: Object = {}
+  @Provide() tableColumnsMet: Object[] = [
+    {
+      prop: "name",
+      label: "姓名"
+    },
+    {
+      prop: "age",
+      label: "年龄"
+    },
+  ]
 
   get editRules() {
     return {
@@ -27,32 +38,6 @@ export default class UserIndex extends Vue {
         {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
       ],
     }
-  }
-
-  get formColumns(): Array<FormColumn> {
-    return [
-      {
-        prop: "name",
-        label: "姓名"
-      },
-      {
-        prop: "age",
-        label: "年龄"
-      }
-    ]
-  }
-
-  get listColumns(): Array<ListColumn> {
-    return [
-      {
-        prop: "name",
-        label: "姓名"
-      },
-      {
-        prop: "age",
-        label: "年龄"
-      }
-    ]
   }
 
   search() {

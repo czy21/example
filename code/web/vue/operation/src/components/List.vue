@@ -1,8 +1,8 @@
 <template>
   <div>
-    <el-table :data="data">
-      <template v-for="t in columns">
-        <el-table-column :label="t.label" :width="t.width">
+    <el-table v-bind="table">
+      <template v-for="t in tableColumns">
+        <el-table-column v-bind="t">
           <template slot-scope="scope">
             {{ scope.row[t.prop] }}
           </template>
@@ -14,17 +14,17 @@
 
 <script lang="ts">
 import {Component, Prop, Vue} from 'vue-property-decorator';
+import {Table, TableColumn as ELTableColumn} from "element-ui";
 
-export interface Column {
-  prop: string
-  label: string
-  width?: string
+export interface TableColumn extends ELTableColumn {
+  children: ELTableColumn
 }
 
 @Component
 export default class List extends Vue {
-  @Prop({default: () => []}) private data?: Array<any>;
-  @Prop({default: () => []}) private columns!: Array<Column>
+  @Prop({default: () => new Table()}) private table!: Table
+  @Prop({default: () => new Array<TableColumn>()}) private tableColumns?: Array<TableColumn>
+
 }
 
 
