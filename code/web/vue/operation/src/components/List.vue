@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import {Component, Prop, Vue} from 'vue-property-decorator';
-import {Table, TableColumn as ELTableColumn} from "element-ui";
+import {Table as ElTable, TableColumn as ELTableColumn} from "element-ui";
 
 export interface TableColumn extends ELTableColumn {
   children: ELTableColumn
@@ -22,7 +22,7 @@ export interface TableColumn extends ELTableColumn {
 
 @Component
 export default class List extends Vue {
-  @Prop({default: () => new Table()}) private table!: Table
+  @Prop({default: () => new ElTable()}) private table!: ElTable
   @Prop({default: () => new Array<TableColumn>()}) private tableColumns?: Array<TableColumn>
 
 }
