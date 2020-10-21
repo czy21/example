@@ -1,22 +1,48 @@
 <template>
   <div>
-    <List :data="userList" :columns="columns"/>
+    <Form :model="userForm" :columns="formColumns" :rules="editRules"/>
+    <List :data="userList" :columns="listColumns"/>
   </div>
 </template>
 
 <script lang="ts">
 import {Component, Provide, Vue} from 'vue-property-decorator';
-import List, {Column} from '@c/List.vue'
+import List, {Column as ListColumn} from '@c/List.vue'
+import Form, {Column as FormColumn} from '@c/Form.vue'
 
 @Component({
   components: {
-    List
+    List,
+    Form
   }
 })
 export default class UserIndex extends Vue {
   @Provide() userList: Array<any> = []
+  @Provide() userForm: Object = {}
 
-  get columns(): Array<Column> {
+  get editRules() {
+    return {
+      name: [
+        {required: true, message: '请输入活动名称', trigger: 'blur'},
+        {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
+      ],
+    }
+  }
+
+  get formColumns(): Array<FormColumn> {
+    return [
+      {
+        prop: "name",
+        label: "姓名"
+      },
+      {
+        prop: "age",
+        label: "年龄"
+      }
+    ]
+  }
+
+  get listColumns(): Array<ListColumn> {
     return [
       {
         prop: "name",
@@ -30,16 +56,6 @@ export default class UserIndex extends Vue {
   }
 
   search() {
-    // this.$api.get("user/load").then((data:any) => {
-    //   console.log(data)
-    // })
-    // this.$helper.eui.inform("hello",()=>{
-    //   console.log("ss")
-    // })
-
-    this.$stub.helper.eui.inform("你是谁", () => {
-      console.log("ff")
-    })
 
   }
 
