@@ -1,30 +1,29 @@
 <template>
-  <div>
-    <el-form :model="model" :rules="rules" :label-width="width">
-      <template v-for="t in columns">
-        <el-form-item :label="t.label" :prop="t.name">
-          <el-input v-model="model[t]"></el-input>
-        </el-form-item>
-      </template>
-    </el-form>
-  </div>
+  <el-form v-bind="getForm">
+    <template v-for="t in getFormItems">
+      <el-form-item v-bind="t">
+        <el-input v-model="getForm.model[t]"></el-input>
+      </el-form-item>
+    </template>
+  </el-form>
 </template>
 
 <script lang="ts">
 import {Component, Prop, Vue} from 'vue-property-decorator';
-
-export interface Column {
-  prop: string
-  label: string
-  width?: string
-}
+import {Form as ElForm, FormItem as ElFormItem} from "element-ui";
 
 @Component
 export default class Form extends Vue {
-  @Prop({default: () => []}) private columns!: Array<Column>
-  @Prop({default: () => {}}) private model!: Object;
-  @Prop({default: () => {}}) private rules?: Object;
-  @Prop({default: () => "100px"}) private width?: String;
+  @Prop({default: {}}) private form!: ElForm
+  @Prop({default: []}) private formItems!: ElFormItem[];
+
+  get getForm() {
+    return Object.assign({"label-width": "50px"}, this.form)
+  }
+
+  get getFormItems() {
+    return this.formItems.map(s => Object.assign({style: "width:360px"}, s))
+  }
 }
 
 

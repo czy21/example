@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Form :form="userForm" :form-items="userFormItemsMet"/>
     <List :table="table" :table-columns="tableColumnsMet"/>
   </div>
 </template>
@@ -17,9 +18,21 @@ import Form from '@c/Form.vue'
 })
 
 export default class UserIndex extends Vue {
-  @Provide() userList: Array<any> = [{name: "ss"}]
-  @Provide() userForm: Object = {}
-  @Provide() table: Object = {}
+  @Provide() userForm: Object = {
+    model: {},
+    size: "mini"
+    // "label-width": "50px"
+  }
+  @Provide() userFormItemsMet: Object = [
+    {
+      label: "姓名",
+    }
+  ]
+
+
+  @Provide() table: Object = {
+    data: [{name: "ss"}]
+  }
   @Provide() tableColumnsMet: Object[] = [
     {
       prop: "name",
@@ -29,6 +42,19 @@ export default class UserIndex extends Vue {
       prop: "age",
       label: "年龄"
     },
+    {
+      label: "操作",
+      fixed: "right",
+      actions: [
+        {
+          label: "详情",
+          type: "text",
+          func: (row: any) => {
+
+          },
+        }
+      ]
+    }
   ]
 
   get editRules() {
@@ -41,7 +67,7 @@ export default class UserIndex extends Vue {
   }
 
   search() {
-
+    // this.$stub.helper.eui.inform("ni")
   }
 
   mounted() {
