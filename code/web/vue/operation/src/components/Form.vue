@@ -10,12 +10,11 @@
 
 <script lang="ts">
 import {Component, Prop, Vue} from 'vue-property-decorator';
-import {Form as ElForm, FormItem as ElFormItem} from "element-ui";
 
 @Component
 export default class Form extends Vue {
-  @Prop({default: {}}) private form!: ElForm
-  @Prop({default: []}) private formItems!: ElFormItem[];
+  @Prop({default: {}}) private form!: Object
+  @Prop({default: []}) private formItems!: Object[];
 
   get getForm() {
     return Object.assign({"label-width": "50px"}, this.form)

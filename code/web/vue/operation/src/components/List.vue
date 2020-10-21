@@ -15,22 +15,11 @@
 
 <script lang="ts">
 import {Component, Prop, Vue} from 'vue-property-decorator';
-import {Table as ElTable, TableColumn as ELTableColumn} from "element-ui";
-
-export interface Action {
-  func: Function
-  label: String
-}
-
-export interface TableColumn extends ELTableColumn {
-  actions: Action[],
-  children: ELTableColumn
-}
 
 @Component
 export default class List extends Vue {
-  @Prop({default: {}}) private table!: ElTable
-  @Prop({default: []}) private tableColumns?: Array<TableColumn>
+  @Prop({default: {}}) private table!: Object
+  @Prop({default: []}) private tableColumns?: Object[]
 
 }
 
