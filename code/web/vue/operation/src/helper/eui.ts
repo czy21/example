@@ -6,9 +6,17 @@ let _ = require('lodash')
 
 export interface EUI {
     inform(text: string, callback?: Function): void
+
+    warn(text: string, callback?: Function): void
+
+    validateForm(vm: any, target: string): boolean
+
+    confirm(text: string, successCallback?: Function, cancelCallback?: Function): void
+
+    actWithValidation(vm: any, target: Array<String> | String, callback?: Function): void
 }
 
-const inform = function (text: string, callback: Function) {
+const inform = function (text: string, callback?: Function) {
     MessageBox.alert(text, '提示', {
         type: 'info',
         dangerouslyUseHTMLString: true,
@@ -18,7 +26,7 @@ const inform = function (text: string, callback: Function) {
     })
 }
 
-const warn = function (text: string, callback: Function) {
+const warn = function (text: string, callback?: Function) {
     MessageBox.alert(text, '警告', {
         type: 'warning',
         dangerouslyUseHTMLString: true,
@@ -28,7 +36,7 @@ const warn = function (text: string, callback: Function) {
     })
 }
 
-const confirm = function (text: string, successCallback: Function, cancelCallback: Function) {
+const confirm = function (text: string, successCallback?: Function, cancelCallback?: Function) {
     MessageBox.confirm(text, '提示', {
         dangerouslyUseHTMLString: true,
         confirmButtonText: '确定',
@@ -41,23 +49,23 @@ const confirm = function (text: string, successCallback: Function, cancelCallbac
     })
 }
 
-// const validateForm = function (target) {
-//     let res = false
-//     this.$refs[target].validate(valid => {
-//         res = valid
-//     })
-//     return res
-// }
-//
-// const actWithValidation = function (targets, callback) {
-//     if (!stub.ref.lodash.isArray(targets)) {
-//         targets = [targets]
-//     }
-//     let valid = stub.ref.lodash.every(targets, v => {
-//         return validateForm.apply(this, [v])
-//     })
-//     valid ? util.basic.callIfExists(callback) : warn.apply(this, ['请检查输入的参数再执行操作'])
-// }
+const validateForm = function (vm: any, target: string) {
+    let res = false
+    vm.$refs[target].validate((valid: boolean) => {
+        res = valid
+    })
+    return res
+}
 
-export default {inform, warn, confirm}
+const actWithValidation = function (vm: any, target: Array<String> | String, callback?: Function) {
+
+    let targets = _.isString(target) ? new Array(target) : target
+
+    let valid = _.every(targets, (v: string) => {
+        return validateForm(vm, v)
+    })
+    valid ? util.basic.callIfExists(callback) : warn("请检查输入的参数再执行操作")
+}
+
+export default {inform, warn, confirm, validateForm, actWithValidation}
 
