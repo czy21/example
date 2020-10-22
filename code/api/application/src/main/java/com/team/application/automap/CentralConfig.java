@@ -1,4 +1,4 @@
-package com.team.application.model.automap;
+package com.team.application.automap;
 
 import org.mapstruct.MapperConfig;
 import org.mapstruct.ReportingPolicy;

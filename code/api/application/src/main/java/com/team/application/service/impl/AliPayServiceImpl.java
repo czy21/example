@@ -6,7 +6,7 @@ import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.domain.AlipayTradePayModel;
 import com.alipay.api.domain.AlipayTradePrecreateModel;
 import com.alipay.api.request.AlipayTradePayRequest;
-import com.team.application.model.automap.PayAutoMap;
+import com.team.application.automap.PayAutoMap;
 import com.team.application.model.dto.PayRequest;
 import com.team.application.model.dto.PayResponse;
 import com.team.application.service.AliPayService;

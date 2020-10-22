@@ -8,7 +8,6 @@ import lombok.EqualsAndHashCode;
 @Data
 public class UserDTO extends BaseDTO {
     private String account;
-    private String password;
     private String userName;
     private String email;
 }

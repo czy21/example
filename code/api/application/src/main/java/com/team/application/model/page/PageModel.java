@@ -1,5 +1,6 @@
 package com.team.application.model.page;
 
+
 import lombok.Data;
 
 import java.util.List;
@@ -7,25 +8,21 @@ import java.util.List;
 @Data
 public class PageModel<TEntity> {
 
-    private Integer pageIndex;
+    private long pageIndex;
 
-    private Integer pageSize;
+    private long pageSize;
 
-    private Integer total;
+    private long total;
 
     private List<TEntity> list;
 
 
-    public PageModel(List<TEntity> list) {
-        this.list = list;
-//        if (list instanceof Page) {
-//            Page<TEntity> page = (Page<TEntity>) list;
-//            this.pageIndex = page.getPageNum();
-//            this.pageSize = page.getPageSize();
-//            this.total = (int) page.getTotal();
-//        } else {
-//            this.total = list.size();
-//        }
+    public PageModel(com.baomidou.mybatisplus.extension.plugins.pagination.Page<TEntity> page) {
+        this.list = page.getRecords();
+        this.pageIndex = page.getCurrent();
+        this.pageSize = page.getSize();
+        this.total = page.getTotal();
+        this.total = list.size();
     }
 
     public PageModel(org.springframework.data.domain.Page<TEntity> page) {
@@ -36,12 +33,12 @@ public class PageModel<TEntity> {
     }
 
     public PageModel(Integer pageIndex, Integer pageSize, List<TEntity> list) {
-        this(list);
+        this.list = list;
         this.pageIndex = pageIndex;
         this.pageSize = pageSize;
-        int pageCount = this.total / this.pageSize;
-        int fromIndex = pageSize * (pageIndex - 1);
-        int toIndex = fromIndex + pageSize;
+        long pageCount = this.total / this.pageSize;
+        long fromIndex = pageSize * (pageIndex - 1);
+        long toIndex = fromIndex + pageSize;
         if (toIndex > this.total) {
             toIndex = this.total;
         }
@@ -50,15 +47,15 @@ public class PageModel<TEntity> {
             fromIndex = pageCount + 1;
             toIndex = this.total;
         }
-        this.list = list.subList(fromIndex, toIndex);
+        this.list = list.subList((int) fromIndex, (int) toIndex);
     }
 
     /*
-     * PageHelper分页
+     * Mybatis Plus分页
      */
-//    public static <TEntity> PageModel<TEntity> of(Page<TEntity> page) {
-//        return new PageModel<>(page);
-//    }
+    public static <TEntity> PageModel<TEntity> of(com.baomidou.mybatisplus.extension.plugins.pagination.Page<TEntity> page) {
+        return new PageModel<>(page);
+    }
 
     /*
      * Mongo分页

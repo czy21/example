@@ -1,4 +1,4 @@
-package com.team.application.model.automap;
+package com.team.application.automap;
 
 import com.alipay.api.domain.AlipayTradePayModel;
 import com.alipay.api.response.AlipayTradePayResponse;

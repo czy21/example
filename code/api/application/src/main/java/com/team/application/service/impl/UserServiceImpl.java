@@ -1,76 +1,32 @@
 package com.team.application.service.impl;
 
-import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.team.application.base.MybatisBaseServiceImpl;
-import com.team.application.excel.UserListener;
-import com.team.application.model.automap.UserAutoMap;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.team.application.automap.UserAutoMap;
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.dto.UserDTO;
-import com.team.application.model.dto.UserExcelDTO;
-import com.team.application.model.page.PageInput;
-import com.team.application.model.vo.BaseImportVO;
-import com.team.application.model.vo.UserVO;
+import com.team.application.model.page.PageModel;
+import com.team.application.model.vo.SearchVO;
 import com.team.application.service.UserService;
-import com.team.cooperated.exception.BusinessErrorCode;
-import com.team.cooperated.exception.BusinessException;
 import com.team.domain.entity.UserEntity;
 import com.team.domain.mapper.UserMapper;
-import org.apache.commons.lang3.ObjectUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
-import java.io.IOException;
-import java.util.List;
 
 @Service
-public class UserServiceImpl extends MybatisBaseServiceImpl<UserMapper, UserEntity> implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> implements UserService {
 
     @Resource
-    private UserAutoMap userMap;
+    UserAutoMap userAutoMap;
 
     @Override
-    public UserDTO insertDefaultPwd(UserDTO dto) {
-        if (StringUtils.isEmpty(dto.getUserName())) {
-            throw new BusinessException(BusinessErrorCode.EXIST_NAME, "用户姓名不能为空");
-        }
-        UserEntity user = userMap.mapToEntity(dto);
-        return userMap.mapToDto(super.insertAndGet(user));
-    }
-
-    @Override
-    public UserDTO editUser(UserDTO dto) {
-        if (StringUtils.isEmpty(dto.getId())) {
-            throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "用户Id不能为空");
-        }
-        if (StringUtils.isEmpty(dto.getUserName())) {
-            throw new BusinessException(BusinessErrorCode.NO_NULL_NAME, "用户姓名不能为空");
-        }
-        return userMap.mapToDto(super.updateAndGet(userMap.mapToEntity(dto)));
-    }
-
-    @Override
-    public Boolean modifiedUser(UserDTO dto) {
-        if (StringUtils.isEmpty(dto.getId())) {
-            throw new BusinessException(BusinessErrorCode.NO_NULL_ID, "用户Id不能为空");
-        }
-
-        return null;
-    }
-
-    @Override
-    public PageDTO<UserDTO> getUserPageListBy(PageInput page, UserVO user) {
+    public PageDTO<UserDTO> findByPage(SearchVO<UserDTO> search) {
+        Page<UserEntity> page = new Page<>(search.getPage().getPageIndex(), search.getPage().getPageSize());
         QueryWrapper<UserEntity> queryWrapper = new QueryWrapper<>();
-        if (ObjectUtils.isNotEmpty(user.getUserName())) {
-            queryWrapper.lambda().like(UserEntity::getUserName, user.getUserName());
-        }
-        return userMap.mapToPageDto(super.selectAll(page.getPageIndex(), page.getPageSize(), queryWrapper));
-    }
-
-    @Override
-    public void userImport(BaseImportVO importVO) throws IOException {
-        EasyExcel.read(importVO.getFile().getInputStream(), UserExcelDTO.class, new UserListener());
+        queryWrapper.lambda()
+                .orderByDesc(UserEntity::getCreatedDate);
+        return userAutoMap.mapToPageDto(PageModel.of(super.page(page, queryWrapper)));
     }
 }
