@@ -6,30 +6,27 @@ export default class Form extends Vue {
   @Prop({default: {}}) private form!: Object
   @Prop({default: []}) private formItems!: Object[];
 
-  @Provide() formDefault: Object = {
-    "label-width": "50px"
-  }
-  @Provide() formItemDefault: Object = {
-    style: "width:360px",
-    component: (form: any, item: any) => this.input(form, item)
-  }
-
   input(form: any, item: any) {
-    return (<el-input {...{attrs: {model: form.model[item.prop]}}}/>)
+    return (<el-input vModel_trim={form.model[item.prop]}/>)
   }
 
   render(h: any) {
     return (
-        <el-form {...{attrs: Object.assign(this.formDefault, this.form)}}>
+        <el-form {...{
+          attrs: Object.assign({
+            "label-width": "50px"
+          }, this.form)
+        }}>
           {
-            this.formItems.map(s => Object.assign(this.formItemDefault, s))
-                ?.map((s: any) => {
-                  return (
-                      <el-form-item {...{attrs: s}}>
-                        {s.component(this.form, s)}
-                      </el-form-item>
-                  )
-                })
+            this.formItems.map(s => {
+              return Object.assign({func: () => this.input(this.form, s)}, s)
+            }).map((s: any) => {
+              return (
+                  <el-form-item {...{attrs: s}}>
+                    {s.func(this.form, s)}
+                  </el-form-item>
+              )
+            })
           }
         </el-form>
     )

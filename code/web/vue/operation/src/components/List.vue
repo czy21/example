@@ -18,7 +18,7 @@ export default class List extends Vue {
                           <span>
                             {scope.row[t.prop]}
                             {t.actions?.map((a: any) => {
-                              return (<el-button {...{attrs: a, on: {click: () => a.func(scope)}}}>{a.label}</el-button>)
+                              return (<el-button {...{ on: {click: () => a.func(scope)}}}>{a.label}</el-button>)
                             })}
                           </span>
                       )
