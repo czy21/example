@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Form :form="userForm" :form-items="userFormItemsMet"/>
-    <List :table="table" :table-columns="tableColumnsMet"/>
+    <Form :form=form :form-items=configUserFormItemsMet></Form>
+    <List :table=table :table-columns=configTableColumnsMet></List>
   </div>
 </template>
 
@@ -18,20 +18,9 @@ import Form from '@c/Form.vue'
 })
 
 export default class UserIndex extends Vue {
-  @Provide() userForm: Object = {
-    model: {},
-  }
-  @Provide() userFormItemsMet: Object = [
-    {
-      label: "姓名",
-      prop: "name",
-    }
-  ]
-
-  @Provide() table: Object = {
-    data: [{name: "ss"}]
-  }
-  @Provide() tableColumnsMet: Object[] = [
+  @Provide() form: Object = {model: {}}
+  @Provide() table: Object = {data: [{name: "你是谁"}]}
+  @Provide() configTableColumnsMet: Object[] = [
     {
       prop: "name",
       label: "姓名"
@@ -47,29 +36,37 @@ export default class UserIndex extends Vue {
         {
           label: "详情",
           type: "text",
-          func: (row: any) => {
-
-          },
+          func: (scope: any) => this.detail(scope.row)
         }
       ]
     }
   ]
-
-  get editRules() {
-    return {
-      name: [
-        {required: true, message: '请输入活动名称', trigger: 'blur'},
-        {min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur'}
-      ],
+  @Provide() configUserFormItemsMet: Object[] = [
+    {
+      label: "姓名",
+      prop: "name",
+    },
+    {
+      label: "确定",
+      func: (form: any, action: any) => this.submit(form, action)
     }
+  ]
+
+  detail(row: any) {
+    console.log(row.name)
   }
 
-  search() {
-    // this.$stub.helper.eui.inform("ni")
+  submit(form: any, action: any) {
+    return <el-button {...{
+      on: {
+        click: () => {
+          console.log(form.model.name)
+        }
+      }
+    }}>{action.label}</el-button>
   }
 
   mounted() {
-    this.search()
   }
 
 }
