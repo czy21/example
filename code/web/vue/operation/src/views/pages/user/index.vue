@@ -47,9 +47,12 @@ export default class UserIndex extends Vue {
       prop: "name",
     },
     {
-      label: "确定",
-      type: "action",
-      func: (form: any, action: any) => this.submit(form, action)
+      actions: [
+        {
+          label: "确定",
+          func: (form: any, action: any) => this.submit(form, action)
+        }
+      ]
     }
   ]
 
@@ -58,7 +61,7 @@ export default class UserIndex extends Vue {
   }
 
   submit(form: any, action: any) {
-    console.log(form.model,action)
+    console.log(form.model, action)
   }
 
   mounted() {
