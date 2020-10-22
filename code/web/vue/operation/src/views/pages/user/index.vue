@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang="tsx">
 import {Component, Provide, Vue} from 'vue-property-decorator';
 import List from '@c/List.vue'
 import Form from '@c/Form.vue'
@@ -20,15 +20,13 @@ import Form from '@c/Form.vue'
 export default class UserIndex extends Vue {
   @Provide() userForm: Object = {
     model: {},
-    size: "mini"
-    // "label-width": "50px"
   }
   @Provide() userFormItemsMet: Object = [
     {
       label: "姓名",
+      prop: "name",
     }
   ]
-
 
   @Provide() table: Object = {
     data: [{name: "ss"}]
