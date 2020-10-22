@@ -24,6 +24,7 @@ export default class UserIndex extends Vue {
     {prop: "userName", label: "姓名"},
     {prop: "account", label: "账号"},
     {prop: "email", label: "邮箱"},
+    {prop: "department.name", label: "部门"},
     {label: "操作", fixed: "right", actions: [{label: "详情", type: "text", func: (scope: any) => this.detail(scope.row)}]}
   ]
   @Provide() configUserFormItemsMet: Object[] = [
