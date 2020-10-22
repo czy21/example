@@ -2,13 +2,16 @@
   <el-form v-bind="getForm">
     <template v-for="t in getFormItems">
       <el-form-item v-bind="t">
-        <el-input v-model="getForm.model[t]"></el-input>
+        <template v-if="!t.type">
+          <el-input v-model="getForm.model[t]" v-on="t.attrs"/>
+        </template>
       </el-form-item>
     </template>
+    <slot/>
   </el-form>
 </template>
 
-<script lang="ts">
+<script lang="tsx">
 import {Component, Prop, Vue} from 'vue-property-decorator';
 
 @Component
