@@ -15,6 +15,7 @@ target/
 # Web #
 node_modules/
 dist/
+yarn.lock
 
 # Output #
 ___output/
