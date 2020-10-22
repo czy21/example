@@ -13,7 +13,7 @@
   </el-table>
 </template>
 
-<script lang="ts">
+<script lang="tsx">
 import {Component, Prop, Vue} from 'vue-property-decorator';
 
 @Component
