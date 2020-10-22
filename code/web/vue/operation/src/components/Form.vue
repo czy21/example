@@ -22,8 +22,12 @@ export default class Form extends Vue {
               return Object.assign({func: () => this.input(this.form, s)}, s)
             }).map((s: any) => {
               return (
-                  s.type === 'action'
-                      ? <el-form-item>{<el-button {...{on: {click: () => s.func(this.form, s)}}}>{s.label}</el-button>}</el-form-item>
+                  s.actions && s.actions
+                      ? <el-form-item>
+                        {
+                          s.actions.map((a: any) => <el-button {...{on: {click: () => a.func(this.form, a)}}}>{a.label}</el-button>)
+                        }
+                      </el-form-item>
                       : <el-form-item {...{attrs: s}}>{s.func(this.form, s)}</el-form-item>
               )
             })
