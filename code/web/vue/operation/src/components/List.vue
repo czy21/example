@@ -1,26 +1,34 @@
-<template>
-  <el-table v-bind="table">
-    <template v-for="t in tableColumns">
-      <el-table-column v-bind="t">
-        <template slot-scope="scope">
-          {{ scope.row[t.prop] }}
-          <template v-for="a in t.actions">
-            <el-button @click="a.func(scope)" v-bind="a">{{ a.label }}</el-button>
-          </template>
-        </template>
-      </el-table-column>
-    </template>
-  </el-table>
-</template>
-
 <script lang="tsx">
 import {Component, Prop, Vue} from 'vue-property-decorator';
 
 @Component
 export default class List extends Vue {
   @Prop({default: {}}) private table!: Object
-  @Prop({default: []}) private tableColumns?: Object[]
+  @Prop({default: []}) private tableColumns!: Object[]
 
+  render(h: any) {
+    return (
+        <el-table {...{attrs: this.table}}>
+          {
+            this.tableColumns.map((t: any) => {
+              return (
+                  <el-table-column {...{attrs: t}}>
+                    {
+                      (scope: any) => (
+                          <span>
+                            {scope.row[t.prop]}
+                            {t.actions?.map((a: any) => {
+                              return (<el-button {...{attrs: a, on: {click: () => a.func(scope)}}}>{a.label}</el-button>)
+                            })}
+                          </span>
+                      )
+                    }
+                  </el-table-column>
+              )
+            })
+          }
+        </el-table>)
+  }
 }
 
 
