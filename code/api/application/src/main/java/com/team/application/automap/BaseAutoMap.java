@@ -1,4 +1,4 @@
-package com.team.application.model.automap;
+package com.team.application.automap;
 
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.page.PageModel;

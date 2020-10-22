@@ -1,6 +1,6 @@
 CREATE TABLE `ent_sys_user`  (
   `id` varchar(36)  NOT NULL,
-  `login_name` varchar(50)  NOT NULL COMMENT '用户账号',
+  `account` varchar(50)  NOT NULL COMMENT '用户账号',
   `password` varchar(100)  NULL DEFAULT NULL COMMENT '用户密码',
   `user_name` varchar(50)  NOT NULL COMMENT '用户姓名',
   `email` varchar(50) DEFAULT NULL COMMENT '用户邮箱',

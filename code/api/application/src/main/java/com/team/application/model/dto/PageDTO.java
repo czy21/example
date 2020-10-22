@@ -1,12 +1,12 @@
 package com.team.application.model.dto;
 
-import com.team.application.model.page.PageInput;
+import com.team.application.model.vo.PageVO;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
 public class PageDTO<TEntity> {
-    private PageInput page;
+    private PageVO page;
     private List<TEntity> list;
 }
