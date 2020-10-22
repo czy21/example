@@ -1,5 +1,4 @@
 import axios, {Method} from 'axios'
-import qs from 'qs'
 
 //配置API接口地址
 const root = 'api'
@@ -10,8 +9,6 @@ const service = axios.create({
     withCredentials: true
 });
 service.interceptors.request.use(config => {
-        // config.data = qs.stringify(config.data);
-        // config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
         return config;
     },
     error => {
