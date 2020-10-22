@@ -19,7 +19,7 @@ export default class Form extends Vue {
         }}>
           {
             this.formItems.map(s => {
-              return Object.assign({func: () => this.input(this.form, s)}, s)
+              return Object.assign({func: () => this.input(this.form, s), style: "width:280px"}, s)
             }).map((s: any) => {
               return (
                   s.actions && s.actions
