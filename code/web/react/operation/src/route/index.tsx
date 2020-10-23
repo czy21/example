@@ -1,5 +1,6 @@
 import A from "../view/A";
 import B from "../view/B";
+import User from "@v/user"
 import {ContactsOutlined, SettingOutlined} from '@ant-design/icons';
 import React from "react"
 
@@ -23,6 +24,12 @@ const routes: RouteModel[] = [
         path: "/b",
         icon: <ContactsOutlined/>,
         component: B,
+    },
+    {
+        name: "用户管理",
+        path: "/user",
+        icon: <ContactsOutlined/>,
+        component: User,
     }
 ];
 export default routes
