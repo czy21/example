@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 
-const root = 'api';
+const root = '/api';
 
 
 enum Method {

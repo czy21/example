@@ -1,20 +1,6 @@
 import React from "react";
-import {Table} from "antd";
-
-const dataSource = [
-    {
-        key: '1',
-        name: '胡彦斌',
-        age: 32,
-        address: '西湖区湖底公园1号',
-    },
-    {
-        key: '2',
-        name: '胡彦祖',
-        age: 42,
-        address: '西湖区湖底公园1号',
-    },
-];
+import {Button, Table} from "antd";
+import api from "@/api"
 
 const columns = [
     {
@@ -34,9 +20,17 @@ const columns = [
     },
 ];
 
+let load = () => {
+    api.get("user/load").then(data=>{
+        console.log(data)
+    })
+}
+
 export default class Index extends React.Component<any, any> {
 
+
     render() {
-        return <Table dataSource={dataSource} columns={columns} />;
+        // return <Table dataSource={this.state.list} columns={columns}/>;
+        return <Button onClick={load}>加载</Button>
     }
 }
