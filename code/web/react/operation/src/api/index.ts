@@ -1,8 +1,7 @@
 import axios from 'axios'
 
 
-//配置API接口地址
-const root = '/api';
+const root = 'api';
 
 
 enum Method {
