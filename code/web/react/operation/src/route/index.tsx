@@ -1,5 +1,5 @@
-import A from "../page/A";
-import B from "../page/B";
+import A from "../view/A";
+import B from "../view/B";
 import {ContactsOutlined, SettingOutlined} from '@ant-design/icons';
 import React from "react"
 

@@ -1,10 +1,10 @@
-const CracoLessPlugin = require('craco-less');
-const CracoAlias = require("craco-alias");
+const cracoLessPlugin = require('craco-less');
+const cracoAliasPlugin = require("craco-alias");
 
 module.exports = {
     plugins: [
         {
-            plugin: CracoLessPlugin,
+            plugin: cracoLessPlugin,
             options: {
                 lessLoaderOptions: {
                     lessOptions: {
@@ -14,7 +14,7 @@ module.exports = {
             },
         },
         {
-            plugin: CracoAlias,
+            plugin: cracoAliasPlugin,
             options: {
                 source: "tsconfig",
                 baseUrl: ".",

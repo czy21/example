@@ -1,9 +1,9 @@
 import React from 'react';
-import {Provider} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
-import Home from "@/layout/Home";
 import {createStore} from "redux";
+import {Provider} from "react-redux";
 import rootReducer from "@/redux/reducer";
+import Home from "@v/layout/Home";
 
 const store = createStore(rootReducer);
 
