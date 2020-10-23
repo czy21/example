@@ -2,7 +2,7 @@ import React from "react";
 import {Layout, Menu,} from "antd";
 import {connect} from "react-redux";
 import {mapStateToProps} from './Header'
-import routes, {RouteModel} from '../route'
+import routes, {RouteModel} from '../../route'
 import {Link} from "react-router-dom";
 
 const AntdSider = Layout.Sider;

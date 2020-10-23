@@ -1,5 +1,5 @@
 import 'antd/dist/antd.less'
-import '../assets/less/Home.less'
+import '../../assets/less/Home.less'
 import React from "react";
 import {Layout} from 'antd';
 import Sider from './Sider'
