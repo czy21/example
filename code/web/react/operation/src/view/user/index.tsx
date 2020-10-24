@@ -21,7 +21,7 @@ const columns = [
 ];
 
 let load = () => {
-    api.post("user/search",{}).then(data=>{
+    api.post("user/search", {}).then(data => {
         console.log(data)
     })
 }
