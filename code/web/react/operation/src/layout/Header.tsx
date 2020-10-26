@@ -2,7 +2,7 @@ import React from "react";
 import {MenuFoldOutlined, MenuUnfoldOutlined} from '@ant-design/icons';
 import {Layout} from "antd";
 import {connect} from "react-redux";
-import toggleAction from '../../redux/action/Toggle'
+import toggleAction from '@/redux/action/Toggle'
 
 const AntdHeader = Layout.Header;
 
