@@ -1,7 +1,7 @@
 import React from "react";
 import {Layout, Menu,} from "antd";
 import {connect} from "react-redux";
-import {mapStateToProps} from './Header'
+import {mapStateToProps} from '@/layout/Header'
 import menus from "@/menu";
 import {Link} from "react-router-dom";
 
