@@ -4,6 +4,7 @@ module.exports = {
     configureWebpack: config => {
         Object.assign(config.resolve.alias, webpackConfig.resolve.alias)
     },
+    outputDir: "build",
     devServer: {
         host: "localhost",
         port: 3000,
