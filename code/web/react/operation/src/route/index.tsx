@@ -1,5 +1,5 @@
-import A from "../view/A";
-import B from "../view/B";
+import A from "@v/A";
+import B from "@v/B";
 import User from "@v/user"
 import {RouteConfig} from "react-router-config";
 
