@@ -1,12 +1,12 @@
 const Action = {
     Collapse: () => {
-        return {type: "Collapse"}
+        return {type: Action.Collapse.name}
     }
 }
 
 const Home = (state: any = {collapsed: false}, action: any) => {
     switch (action.type) {
-        case 'Collapse':
+        case Action.Collapse.name:
             return Object.assign({}, state, {collapsed: !state.collapsed});
         default:
             return state
