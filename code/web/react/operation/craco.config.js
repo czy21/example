@@ -1,5 +1,6 @@
 const cracoLessPlugin = require('craco-less');
 const cracoAliasPlugin = require("craco-alias");
+const webpackConfigPlugin = require("./webpack.config")
 
 module.exports = {
     plugins: [
@@ -20,6 +21,7 @@ module.exports = {
                 baseUrl: ".",
                 tsConfigPath: "./tsconfig.extend.json",
             }
-        }
+        },
+        {plugin: webpackConfigPlugin, options: {preText: "Will log the webpack config:"}}
     ],
 };
