@@ -49,7 +49,7 @@ default_common.param_api_network_containers = ["jenkins", "mysql", "mongo", "neo
 default_common.param_api_network_name = "erp_play_default"
 
 # web
-default_common.param_web_root_project_path = path_util.pure_path_join(default_path.project_code_web, "vue/operation")
+default_common.param_web_root_project_path = path_util.pure_path_join(default_path.project_code_web, "react/operation")
 
 # db
 param_main_redis_host = "redis"
