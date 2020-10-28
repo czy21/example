@@ -1,4 +1,4 @@
-import {ContactsOutlined, SettingOutlined} from '@ant-design/icons';
+import {ContactsOutlined} from '@ant-design/icons';
 import React from "react"
 
 export interface MenuModel {
@@ -9,16 +9,6 @@ export interface MenuModel {
 }
 
 const menus: MenuModel[] = [
-    {
-        name: "FlatA",
-        path: "/system",
-        icon: <SettingOutlined/>,
-    },
-    {
-        name: "FlatB",
-        path: "/b",
-        icon: <ContactsOutlined/>,
-    },
     {
         name: "用户管理",
         path: "/user",
