@@ -15,6 +15,7 @@ dockerfile_name = "Dockerfile"
 docker_compose_name = "docker-compose-api.yml"
 application_override_name = "application-override.yml"
 build_extra_config_name = "build.extra.gradle"
+cp_static = "cp_static.sh"
 # api
 default_common.param_api_archive_file_name = "api.jar"
 default_common.param_api_plugin_file_path = path_util.pure_path_join(default_path.project_plugin, "build.gradle")
@@ -51,7 +52,9 @@ default_common.param_api_network_name = "erp_play_default"
 
 # web
 default_common.param_web_root_project_path = path_util.pure_path_join(default_path.project_code_web, "react/operation")
-default_common.param_web_cp_template_path = path_util.pure_path_join(shell_path, "template", "cp_static.sh")
+
+default_common.param_web_cp_template_path = path_util.pure_path_join(shell_path, "template", cp_static)
+default_common.param_web_cp_output_file_path = path_util.pure_path_join(default_path.output_tmp, cp_static)
 
 # db
 param_main_redis_host = "redis"
