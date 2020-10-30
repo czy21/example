@@ -51,7 +51,7 @@ default_common.param_api_network_name = "erp_play_default"
 
 # web
 default_common.param_web_root_project_path = path_util.pure_path_join(default_path.project_code_web, "react/operation")
-default_common.param_web_cp_template_path = path_util.pure_path_join(shell_path, "template", "cp_static")
+default_common.param_web_cp_template_path = path_util.pure_path_join(shell_path, "template", "cp_static.sh")
 
 # db
 param_main_redis_host = "redis"
