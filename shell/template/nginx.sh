@@ -5,3 +5,5 @@ docker exec -i ${{{param_injected['param_web_container_name']}}} rm -rf /root/${
 docker cp ${{{param_web_output_path}}} ${{{param_injected['param_web_container_name']}}}:/root/${project_name}/
 
 cp -r ${{{param_web_nginx_output_file_path}}} /data/config/nginx/conf.d/
+
+docker exec -i ${{{param_injected['param_web_container_name']}}} nginx -s reload
