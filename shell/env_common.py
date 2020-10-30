@@ -9,6 +9,7 @@ shell_path = path_util.pure_path_join(default_path.root_path, "shell")
 param_project_name = "erp"
 param_env_suffix = ""
 param_api_host_port = param_api_container_port = 8075
+param_web_container_name = "nginx"
 
 dockerfile_name = "Dockerfile"
 docker_compose_name = "docker-compose-api.yml"
@@ -50,6 +51,7 @@ default_common.param_api_network_name = "erp_play_default"
 
 # web
 default_common.param_web_root_project_path = path_util.pure_path_join(default_path.project_code_web, "react/operation")
+default_common.param_web_cp_template_path = path_util.pure_path_join(shell_path, "template", "cp_static")
 
 # db
 param_main_redis_host = "redis"
