@@ -49,7 +49,7 @@ default_common.param_api_docker_gradle_command = list_util.arr_param_to_str(
     ])
 
 # network
-default_common.param_api_network_containers = ["jenkins", "mysql", "mongo", "neo4j", "redis", "rabbitmq"]
+default_common.param_api_network_containers = ["jenkins", "mysql", "mongo", "neo4j", "redis", "rabbitmq","nginx"]
 default_common.param_api_network_name = "erp_play_default"
 
 # web
