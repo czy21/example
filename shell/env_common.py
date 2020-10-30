@@ -15,7 +15,9 @@ dockerfile_name = "Dockerfile"
 docker_compose_name = "docker-compose-api.yml"
 application_override_name = "application-override.yml"
 build_extra_config_name = "build.extra.gradle"
-cp_static = "cp_static.sh"
+cp_static = "nginx.sh"
+nginx_conf = "nginx.conf"
+
 # api
 default_common.param_api_archive_file_name = "api.jar"
 default_common.param_api_plugin_file_path = path_util.pure_path_join(default_path.project_plugin, "build.gradle")
@@ -55,6 +57,7 @@ default_common.param_web_root_project_path = path_util.pure_path_join(default_pa
 
 default_common.param_web_cp_template_path = path_util.pure_path_join(shell_path, "template", cp_static)
 default_common.param_web_cp_output_file_path = path_util.pure_path_join(default_path.output_tmp, cp_static)
+default_common.param_web_nginx_template_path = path_util.pure_path_join(shell_path, "template", nginx_conf)
 
 # db
 param_main_redis_host = "redis"
@@ -74,4 +77,7 @@ def inject(args):
     args_param_dict = dict({t.split("=")[0]: t.split("=")[1] for t in args.param})
     default_common.param_main_db_name = "_".join([param_project_name, "java", param_env_suffix])
     default_common.param_main_db_bak_name = "_".join([default_common.param_main_db_name, "bak"])
+
+    default_common.param_web_nginx_output_file_path = path_util.pure_path_join(default_path.output_tmp, "_".join([param_project_name, param_env_suffix]) + ".conf")
+
     default_common.param_injected = dict(dict({k: v for k, v in globals().items() if k.startswith("param")}).items(), **args_param_dict)
