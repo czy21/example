@@ -54,7 +54,8 @@ pipeline {
                     --env shell/${env_shell}/_env.py \
                     --log-file deploy.log \
                     ${project_param} --skip-rm-output \
-                    --cmd \'from script.domain.source import java as java_source,mysql as mysql_source;java_source.down_container();mysql_source.recreate();mysql_source.exec();java_source.start_api_compose()\''
+                    --cmd \'from script.domain.source import java as java_source,mysql as mysql_source;java_source.down_container();mysql_source.recreate();mysql_source.exec();java_source.start_api_compose()\'\
+                    && sh ___output/tmp/cp_static.sh'
             }
         }
     }
