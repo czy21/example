@@ -43,7 +43,7 @@ pipeline {
                             --env shell/${env_shell}/_env.py \
                             --log-file build_web.log \
                             ${project_param} --skip-rm-output \
-                            --cmd \'from script.domain.source import web as web_source;web_source.build_web();web_source.build_cp_shell();\''
+                            --cmd \'from script.domain.source import web as web_source;web_source.build_web();web_source.build_cp_shell();web_source.build_nginx();\''
                     }
                 }
             }
