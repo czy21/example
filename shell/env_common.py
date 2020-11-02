@@ -49,7 +49,7 @@ default_common.param_api_docker_gradle_command = list_util.arr_param_to_str(
     ])
 
 # network
-default_common.param_api_network_containers = ["jenkins", "mysql", "mongo", "neo4j", "redis", "rabbitmq","nginx"]
+default_common.param_api_network_containers = ["jenkins", "mysql", "mongo", "neo4j", "redis", "rabbitmq", "nginx"]
 default_common.param_api_network_name = "erp_play_default"
 
 # web
@@ -58,6 +58,9 @@ default_common.param_web_root_project_path = path_util.pure_path_join(default_pa
 default_common.param_web_cp_template_path = path_util.pure_path_join(shell_path, "template", cp_static)
 default_common.param_web_cp_output_file_path = path_util.pure_path_join(default_path.output_tmp, cp_static)
 default_common.param_web_nginx_template_path = path_util.pure_path_join(shell_path, "template", nginx_conf)
+
+default_common.param_web_env_template_path = path_util.pure_path_join(shell_path, "template", "react.app.env")
+default_common.param_web_env_path = path_util.pure_path_join(default_path.project_code_web, "react/operation/.env")
 
 # db
 param_main_redis_host = "redis"
