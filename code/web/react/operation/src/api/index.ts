@@ -9,7 +9,7 @@ enum Method {
 }
 
 const service = axios.create({
-    baseURL: process.env.REACT_APP_API_ROOT ?? '/api',
+    baseURL: '/api',
     timeout: 5000,
 });
 service.interceptors.request.use(request => {
