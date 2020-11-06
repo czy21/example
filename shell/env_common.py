@@ -78,8 +78,12 @@ default_common.param_main_db_neo4j_file_path = path_util.pure_path_join(default_
 
 def inject(args):
     args_param_dict = dict({t.split("=")[0]: t.split("=")[1] for t in args.param})
-    default_common.param_main_db_name = "_".join([param_project_name, "java", param_env_suffix])
-    default_common.param_main_db_bak_name = "_".join([default_common.param_main_db_name, "bak"])
+    default_common.param_main_db_name = "_".join([param_project_name, "java", param_env_suffix]) \
+        if default_common.param_main_db_name == "" \
+        else default_common.param_main_db_name
+    default_common.param_main_db_bak_name = "_".join([default_common.param_main_db_name, "bak"]) \
+        if default_common.param_main_db_bak_name == "" \
+        else default_common.param_main_db_bak_name
 
     default_common.param_web_nginx_output_file_path = path_util.pure_path_join(default_path.output_tmp, "_".join([param_project_name, param_env_suffix]) + ".conf")
 
