@@ -1,7 +1,6 @@
 package com.team.application;
 
 import com.team.application.task.TaskParallel;
-import com.team.infrastructure.lock.DataLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,7 +29,6 @@ public class BasicController {
     }
 
     @PostMapping(path = "match")
-    @DataLock(prefix = "manualRinse", value = "#input")
     public void Match(@RequestBody Map<String, Object> input) {
         System.out.println("aa");
     }
