@@ -37,8 +37,8 @@ public class IncludeParserTest {
     }
 
     @Test
-    public void test(List<String> seq) {
-//        List<String> seq = List.of("a","b");
+    public void test() {
+        List<String> seq = List.of("a", "b","c");
 
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < seq.size(); i++) {
