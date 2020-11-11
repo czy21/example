@@ -11,6 +11,8 @@ import com.team.application.service.UserService;
 import com.team.cooperated.annotation.EnumPocket;
 import com.team.cooperated.annotation.SpecialPocket;
 import com.team.cooperated.controller.BaseController;
+import com.team.domain.mapper.InstitutionMappingMapper;
+import com.team.domain.mapper.SaleFormatMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,11 @@ public class UserController extends BaseController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    SaleFormatMapper saleFormatMapper;
+    @Autowired
+    InstitutionMappingMapper institutionMappingMapper;
 
     @GetMapping(path = "load")
     @EnumPocket(value = {
@@ -37,6 +44,7 @@ public class UserController extends BaseController {
 
     @PostMapping(path = "search")
     public PageDTO<UserDTO> search(@RequestBody SearchVO<UserDTO> search) {
+
         return userService.findByPage(search);
     }
 
