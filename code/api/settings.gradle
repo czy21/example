@@ -1,7 +1,12 @@
 pluginManagement {
     repositories {
         maven {
-            url "../gradle-plugin/build/repository/"
+            name "czy"
+            url "http://nexus.frp.czy-app.com/repository/czy-repo/"
+            credentials {
+                username "admin"
+                password "Czy.20201120"
+            }
         }
     }
 }
