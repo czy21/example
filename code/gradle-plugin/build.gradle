@@ -24,10 +24,10 @@ publishing {
     repositories {
         maven {
             name "czy"
-            url "http://47.106.191.56:8081/repository/czy-repo/"
+            url "http://nexus.frp.czy-app.com/repository/czy-repo/"
             credentials {
                 username "admin"
-                password "Czy.20190815"
+                password "Czy.20201120"
             }
         }
         maven {
