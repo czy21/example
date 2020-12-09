@@ -14,4 +14,7 @@ dependencies {
     api 'com.gitee.jd-platform-opensource:asyncTool:V1.3-SNAPSHOT'
     api 'javax.xml.bind:jaxb-api:2.3.0'
     api 'org.apache.lucene:lucene-core:4.0.0'
+    api('org.apache.storm:storm-core:2.2.0') {
+        exclude group: 'org.apache.logging.log4j'
+    }
 }
