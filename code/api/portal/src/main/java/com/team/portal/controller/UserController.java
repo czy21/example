@@ -11,8 +11,12 @@ import com.team.application.service.UserService;
 import com.team.cooperated.annotation.EnumPocket;
 import com.team.cooperated.annotation.SpecialPocket;
 import com.team.cooperated.controller.BaseController;
+import com.team.portal.kafka.Foo1;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 
 @RestController
@@ -22,6 +26,9 @@ public class UserController extends BaseController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    private KafkaTemplate<Object, Object> template;
 
     @GetMapping(path = "load")
     @EnumPocket(value = {
@@ -39,6 +46,14 @@ public class UserController extends BaseController {
     public PageDTO<UserDTO> search(@RequestBody SearchVO<UserDTO> search) {
 
         return userService.findByPage(search);
+    }
+
+
+    @PostMapping(path = "publish")
+    public Map<String, String> sendMessage(@RequestBody Map<String, String> param) {
+        template.send("topic1", new Foo1(param.get("message")));
+
+        return Map.of("name", "czy");
     }
 
 }
