@@ -4,7 +4,6 @@ dependencies {
     api "org.springframework.boot:spring-boot-starter-data-redis:${springBootVersion}"
     api "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
     api "org.springframework.kafka:spring-kafka:2.6.4"
-//    api "org.apache.kafka:kafka-clients:2.7.0"
     api "org.apache.commons:commons-pool2:2.8.1"
     api "org.apache.commons:commons-lang3:3.11"
     api 'org.apache.httpcomponents:httpclient:4.5.12'
@@ -15,8 +14,4 @@ dependencies {
     api "cglib:cglib:3.3.0"
     api 'com.gitee.jd-platform-opensource:asyncTool:V1.3-SNAPSHOT'
     api 'javax.xml.bind:jaxb-api:2.3.0'
-    api 'org.apache.lucene:lucene-core:4.0.0'
-    api('org.apache.storm:storm-core:2.2.0') {
-        exclude group: 'org.apache.logging.log4j'
-    }
 }
