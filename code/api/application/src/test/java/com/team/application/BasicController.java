@@ -1,6 +1,5 @@
 package com.team.application;
 
-import com.team.application.storm.numcount.LocalStorm;
 import com.team.application.task.TaskParallel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,12 +27,6 @@ public class BasicController {
 
         List<String> whats = List.of("1", "2", "3");
         whats.parallelStream().forEach(System.out::println);
-    }
-
-    @GetMapping(path = "match")
-    public void Match() throws Exception {
-        LocalStorm.startStorm();
-//        System.out.println("ss");
     }
 
 }
