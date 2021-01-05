@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -50,10 +51,11 @@ public class UserController extends BaseController {
 
 
     @PostMapping(path = "publish")
-    public Map<String, String> sendMessage(@RequestBody Map<String, String> param) {
+    public Map<String, Object> sendMessage(@RequestBody Map<String, String> param) {
         template.send("topic1", new Foo1(param.get("message")));
-
-        return Map.of("name", "czy");
+        Map<String, Object> ret = new HashMap<>();
+        ret.put("name", "czy");
+        return ret;
     }
 
 }
