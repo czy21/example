@@ -38,5 +38,4 @@ public class Foo1 {
     public void setFoo(String foo) {
         this.foo = foo;
     }
-
 }
