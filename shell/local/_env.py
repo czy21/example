@@ -5,8 +5,10 @@ from shell import env_common
 main_db_host = "127.0.0.1"
 
 env_common.param_env_suffix = "local"
-env_common.default_common.param_main_db_mysql_host = main_db_host
+env_common.default_common.param_main_db_mysql_host = "std003-internal.softium.cn"
 env_common.default_common.param_main_db_mysql_port = "3306"
+env_common.default_common.param_main_db_mysql_user = "root"
+env_common.default_common.param_main_db_mysql_pass = "123456@TM"
 
 # mongo
 env_common.default_common.param_main_db_mongo_host = main_db_host
