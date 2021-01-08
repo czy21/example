@@ -15,14 +15,13 @@ spring:
     port: 6379
     timeout: 3600
   kafka:
-    bootstrap-servers: 192.168.247.140:9092
-    consumer:
-      bootstrap-servers: 192.168.247.140:9092
-      auto-offset-reset: earliest
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    bootstrap-servers: 192.168.91.140:9092
     producer:
-      bootstrap-servers: 192.168.247.140:9092
+      bootstrap-servers: 192.168.91.140:9092
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      bootstrap-servers: 192.168.91.140:9092
+      group-id: consumers
 
 mybatis-plus:
   mapper-locations: classpath:/mapper/*.xml
