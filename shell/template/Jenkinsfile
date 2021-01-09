@@ -31,7 +31,7 @@ pipeline {
                     --env shell/${env_shell}/_env.py \
                     --log-file build_api.log \
                     ${project_param} --skip-rm-output \
-                    --cmd \'from script.domain.source import java as java_source;java_source.build_plugin();java_source.build_api();java_source.build_api_compose()\''
+                    --cmd \'from script.domain.source import java as java_source;java_source.build_api();java_source.build_api_compose()\''
             }
         }
         stage('build_web') {
