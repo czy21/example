@@ -3,25 +3,41 @@ settingsEvaluated { settings ->
         resolutionStrategy {
         }
         repositories {
-			maven {
-				name "aliyun"
-				url "https://maven.aliyun.com/repository/public/"
-			}
             gradlePluginPortal()
         }
     }
 }
+
 allprojects {
     apply plugin: 'maven-publish'
+	publishing {
+		repositories {
+			maven {
+				name "czyRelease"
+				url "http://nexus.frp.czy-app.com/repository/maven-releases/"
+				credentials {
+					username "admin"
+					password "Czy.20201120"
+				}
+			}
+		}
+	}
     repositories {
-        maven {
-            name "jd"
-            url "https://jitpack.io"
-
-        }
-        maven {
-            name "aliyun"
-            url "https://maven.aliyun.com/repository/public/"
-        }
+		maven {
+			name "czyRelease"
+			url "http://nexus.frp.czy-app.com/repository/maven-releases/"
+			credentials {
+				username "admin"
+				password "Czy.20201120"
+			}
+		}
+		maven {
+			name "ali"
+			url "https://maven.aliyun.com/repository/public/"
+		}
+		maven {
+			name "jd"
+			url "https://jitpack.io"
+		}
     }
 }
