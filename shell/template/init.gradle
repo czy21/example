@@ -14,14 +14,14 @@ settingsEvaluated { settings ->
 allprojects {
     apply plugin: 'maven-publish'
     repositories {
-			maven {
-				name "jd"
-				url "https://jitpack.io"
+        maven {
+            name "jd"
+            url "https://jitpack.io"
 
-			}
-			maven {
-				name "aliyun"
-				url "https://maven.aliyun.com/repository/public/"
-			}
+        }
+        maven {
+            name "aliyun"
+            url "https://maven.aliyun.com/repository/public/"
+        }
     }
 }
