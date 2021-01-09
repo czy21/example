@@ -23,7 +23,7 @@ gradlePlugin {
 publishing {
     repositories {
         maven {
-            name "czy"
+            name "czyPlugin"
             url "http://nexus.frp.czy-app.com/repository/czy-repo/"
             credentials {
                 username "admin"

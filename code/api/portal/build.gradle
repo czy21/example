@@ -6,3 +6,21 @@ plugins {
 dependencies {
     api project(':application')
 }
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+        }
+    }
+    repositories {
+        maven {
+            name "czyRelease"
+            url "http://192.168.2.4:8081/repository/maven-releases/"
+            credentials {
+                username "admin"
+                password "Czy.20201120"
+            }
+        }
+    }
+}
