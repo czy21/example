@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
@@ -26,13 +27,14 @@ class InfrastructureConfigure {
         return template;
     }
 
-}
+    @Component
+    public static class EntityAuditing implements AuditorAware<LocalDateTime> {
+        @Override
+        public Optional<LocalDateTime> getCurrentAuditor() {
+            return Optional.of(LocalDateTime.now());
+        }
 
-@Configuration
-class EntityAuditing implements AuditorAware<LocalDateTime> {
-    @Override
-    public Optional<LocalDateTime> getCurrentAuditor() {
-        return Optional.of(LocalDateTime.now());
     }
 
 }
+

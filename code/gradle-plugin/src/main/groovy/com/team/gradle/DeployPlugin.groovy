@@ -10,6 +10,5 @@ class DeployPlugin implements Plugin<Project> {
             print("> Loading extra config from \"${p.rootProject.extraConfig}\"")
             p.apply from: p.rootProject.extraConfig
         }
-
     }
 }
