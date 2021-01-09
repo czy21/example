@@ -15,6 +15,9 @@ class ProjectPlugin implements Plugin<Project> {
         p.tasks.withType(JavaCompile) {
             options.encoding = 'UTF-8'
         }
+        p.bootJar {
+            enabled = false
+        }
         p.dependencies.add("compileOnly", "org.mapstruct:mapstruct:1.3.1.Final")
         p.dependencies.add("annotationProcessor", "org.mapstruct:mapstruct-processor:1.3.1.Final")
         p.dependencies.add("compileOnly", "org.projectlombok:lombok:1.18.10")
