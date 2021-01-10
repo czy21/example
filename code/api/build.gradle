@@ -8,4 +8,11 @@ subprojects {
     apply plugin: 'com.team.gradle.project'
     group = 'com.team'
     version = '0.0.1-RELEASE'
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+            }
+        }
+    }
 }
