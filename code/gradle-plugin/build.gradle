@@ -24,7 +24,7 @@ publishing {
     repositories {
         maven {
             name "czyPlugin"
-            url "http://nexus.frp.czy-app.com/repository/czy-repo/"
+            url "http://192.168.2.4:8081/repository/czy-repo/"
             credentials {
                 username "admin"
                 password "Czy.20201120"
