@@ -8,8 +8,6 @@ services:
       dockerfile: ${{{param_api_dockerfile_output_file_path}}}
     image: ${{{param_api_image}}}
     container_name: ${{{param_injected['param_project_name']}}}_${{{param_injected['param_env_suffix']}}}
-    ports:
-      - ${{{param_injected['param_api_host_port']}}}:${{{param_injected['param_api_container_port']}}}
     volumes:
       - /data/volumes/${{{param_injected['param_project_name']}}}_${{{param_injected['param_env_suffix']}}}/api/log/:/home/${{{param_injected['param_project_name']}}}/log/
     networks:
