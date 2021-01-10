@@ -18,3 +18,20 @@ spring:
     port: 5672
     username: root
     password: root
+  kafka:
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: consumers
+    streams:
+      application-id: kafka-streams-demo
+      properties:
+        default:
+          key:
+            serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+          value:
+            serde: org.springframework.kafka.support.serializer.JsonSerde
+        spring:
+          json:
+            trusted:
+              packages: com.team.portal.kafka
