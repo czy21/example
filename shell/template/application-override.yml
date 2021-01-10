@@ -19,9 +19,12 @@ spring:
     username: root
     password: root
   kafka:
+    bootstrap-servers: 127.0.0.1:9092
     producer:
+      bootstrap-servers: 127.0.0.1:9092
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     consumer:
+      bootstrap-servers: 127.0.0.1:9092
       group-id: consumers
     streams:
       application-id: kafka-streams-demo
