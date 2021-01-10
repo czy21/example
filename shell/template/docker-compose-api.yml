@@ -2,7 +2,7 @@ version: '3.7'
 
 services:
 
-  api:
+  ${{{param_injected['param_project_name']}}}:
     build:
       context: ${{{param_api_output_path}}}
       dockerfile: ${{{param_api_dockerfile_output_file_path}}}
