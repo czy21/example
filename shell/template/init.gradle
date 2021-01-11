@@ -4,7 +4,7 @@ settingsEvaluated { settings ->
         }
         repositories {
             maven {
-                name "czyRelease"
+                name "czyPublic"
                 url "http://nexus.frp.czy-app.com/repository/maven-public/"
                 credentials {
                     username "admin"
@@ -32,7 +32,7 @@ allprojects {
 	}
     repositories {
 		maven {
-			name "czyRelease"
+			name "czyPublic"
 			url "http://nexus.frp.czy-app.com/repository/maven-public/"
 			credentials {
 				username "admin"
