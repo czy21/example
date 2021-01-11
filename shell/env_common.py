@@ -80,6 +80,7 @@ def inject(args):
     qualify_project_env = "_".join([param_project_name, param_env_suffix])
     globals()["param_main_db_name"] = param_main_db_name = qualify_project_env
     globals()["param_main_db_bak_name"] = param_main_db_bak_name = "_".join([param_main_db_name, "bak"])
-    globals()["param_web_nginx_output_file_path"] = param_web_nginx_output_file_path = path_util.pure_path_join(default_path.output_tmp, qualify_project_env + ".conf")
+    globals()["param_web_nginx_env_file_name"] = param_web_nginx_env_file_name = qualify_project_env + ".conf"
+    globals()["param_web_nginx_output_file_path"] = param_web_nginx_output_file_path = path_util.pure_path_join(default_path.output_tmp, param_web_nginx_env_file_name)
 
     default_common.param_injected = dict(dict({k: v for k, v in globals().items() if k.startswith("param")}).items(), **args_param_dict)
