@@ -3,6 +3,14 @@ settingsEvaluated { settings ->
         resolutionStrategy {
         }
         repositories {
+            maven {
+                name "czyRelease"
+                url "http://192.168.2.4:8081/repository/maven-public/"
+                credentials {
+                    username "admin"
+                    password "Czy.20201120"
+                }
+            }
             gradlePluginPortal()
         }
     }
@@ -25,7 +33,7 @@ allprojects {
     repositories {
 		maven {
 			name "czyRelease"
-			url "http://192.168.2.4:8081/repository/maven-releases/"
+			url "http://192.168.2.4:8081/repository/maven-public/"
 			credentials {
 				username "admin"
 				password "Czy.20201120"
