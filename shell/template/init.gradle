@@ -14,7 +14,7 @@ allprojects {
 		repositories {
 			maven {
 				name "czyRelease"
-				url "http://nexus.frp.czy-app.com/repository/maven-releases/"
+				url "http://192.168.2.4:8081/repository/maven-releases/"
 				credentials {
 					username "admin"
 					password "Czy.20201120"
@@ -25,7 +25,7 @@ allprojects {
     repositories {
 		maven {
 			name "czyRelease"
-			url "http://nexus.frp.czy-app.com/repository/maven-releases/"
+			url "http://192.168.2.4:8081/repository/maven-releases/"
 			credentials {
 				username "admin"
 				password "Czy.20201120"
