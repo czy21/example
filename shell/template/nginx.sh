@@ -6,4 +6,4 @@ docker cp ${{{param_web_output_path}}} ${{{param_web_container_name}}}:/root/${p
 
 docker cp ${{{param_web_nginx_output_file_path}}} ${{{param_web_container_name}}}:/etc/nginx/conf.d/
 
-docker exec -i ${{{param_web_container_name}}} nginx -s reload
+docker exec -i ${{{param_web_container_name}}} nginx -c /etc/nginx/conf.d/${{{param_web_nginx_env_file_name}}} -s reload
