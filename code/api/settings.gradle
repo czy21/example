@@ -1,15 +1,3 @@
-pluginManagement {
-    repositories {
-        maven {
-            name "czyPlugin"
-            url "http://192.168.2.4:8081/repository/czy-repo/"
-            credentials {
-                username "admin"
-                password "Czy.20201120"
-            }
-        }
-    }
-}
 
 include("portal")
 include("application")
