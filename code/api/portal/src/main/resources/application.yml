@@ -6,21 +6,21 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.mysql.cj.jdbc.MysqlDataSource
-    url: jdbc:mysql://localhost:3306/erp_java_local?user=admin&password=***REMOVED***&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true
+    url: jdbc:mysql://192.168.2.4:3306/erp_java_local?user=admin&password=***REMOVED***&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true
   data:
     mongodb:
-      uri: mongodb://127.0.0.1:27017/erp_java_local
+      uri: mongodb://192.168.2.4:27017/erp_java_local
   redis:
-    host: 127.0.0.1
+    host: 192.168.2.4
     port: 6379
     timeout: 3600
   kafka:
-    bootstrap-servers: 192.168.247.140:9092
+    bootstrap-servers: 192.168.2.4:9092
     producer:
-      bootstrap-servers: 192.168.247.140:9092
+      bootstrap-servers: 192.168.2.4:9092
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     consumer:
-      bootstrap-servers: 192.168.247.140:9092
+      bootstrap-servers: 192.168.2.4:9092
       group-id: consumers
     streams:
       application-id: kafka-streams-demo
@@ -29,7 +29,8 @@ spring:
           key:
             serde: org.apache.kafka.common.serialization.Serdes$StringSerde
           value:
-            serde: org.springframework.kafka.support.serializer.JsonSerde
+            serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+            deserializer: org.apache.kafka.common.serialization.LongDeserializer
         spring:
           json:
             trusted:

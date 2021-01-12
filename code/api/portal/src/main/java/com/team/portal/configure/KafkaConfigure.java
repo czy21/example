@@ -1,12 +1,10 @@
 package com.team.portal.configure;
 
 
-import com.team.portal.kafka.MessageEvent;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.kstream.KStream;
-import org.apache.kafka.streams.kstream.Materialized;
 import org.apache.kafka.streams.kstream.Produced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +12,9 @@ import org.springframework.kafka.annotation.EnableKafkaStreams;
 import org.springframework.kafka.support.converter.RecordMessageConverter;
 import org.springframework.kafka.support.converter.StringJsonMessageConverter;
 import org.springframework.scheduling.annotation.EnableScheduling;
+
+import java.util.Arrays;
+import java.util.Locale;
 
 @Configuration
 @EnableKafkaStreams
@@ -32,11 +33,15 @@ public class KafkaConfigure {
     @Bean
     public KStream<String, Long> kStream(StreamsBuilder builder) {
 
-        KStream<String, Long> stream = builder.<String, MessageEvent>stream("my-topic")
-                .groupBy((k, v) -> v.getName())
-                .count(Materialized.as("counts-store"))
+        KStream<String, String> textLine = builder.stream("my-topic");
+
+        KStream<String, Long> stream = textLine
+                .flatMapValues(v -> Arrays.asList(v.toLowerCase(Locale.getDefault()).split(" ")))
+                .groupBy((k, v) -> v)
+                .count()
                 .toStream();
         stream.to("another-topic", Produced.with(Serdes.String(), Serdes.Long()));
+
         return stream;
     }
 
