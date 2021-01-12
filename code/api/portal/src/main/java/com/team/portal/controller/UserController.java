@@ -11,9 +11,16 @@ import com.team.application.service.UserService;
 import com.team.cooperated.annotation.EnumPocket;
 import com.team.cooperated.annotation.SpecialPocket;
 import com.team.cooperated.controller.BaseController;
+import org.apache.kafka.streams.KafkaStreams;
+import org.apache.kafka.streams.StreamsBuilder;
+import org.apache.kafka.streams.state.QueryableStoreTypes;
+import org.apache.kafka.streams.state.ReadOnlyKeyValueStore;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.kafka.config.StreamsBuilderFactoryBean;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 
 @RestController
@@ -25,9 +32,14 @@ public class UserController extends BaseController {
     UserService userService;
 
     @Autowired
-    private KafkaTemplate<Object, Object> template;
-    @Autowired
     KafkaTemplate<String, String> kafkaTemplate;
+
+    @Autowired
+    StreamsBuilderFactoryBean streamsBuilderFactoryBean;
+
+
+    @Autowired
+    StreamsBuilder streamsBuilder;
 
     @GetMapping(path = "load")
     @EnumPocket(value = {
@@ -46,6 +58,11 @@ public class UserController extends BaseController {
 
         return userService.findByPage(search);
     }
+
+//    @PostMapping(path = "getStreamCount")
+//    public Map<String, Object> getStreamCount() {
+//
+//    }
 
 }
 
