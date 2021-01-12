@@ -3,9 +3,11 @@ package com.team.portal.configure;
 
 import com.team.portal.kafka.MessageEvent;
 import org.apache.kafka.clients.admin.NewTopic;
-import org.apache.kafka.streams.KeyValue;
+import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.kstream.KStream;
+import org.apache.kafka.streams.kstream.Materialized;
+import org.apache.kafka.streams.kstream.Produced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafkaStreams;
@@ -28,12 +30,13 @@ public class KafkaConfigure {
     }
 
     @Bean
-    public KStream<String, MessageEvent> kStream(StreamsBuilder streamsBuilder) { //2
-        KStream<String, MessageEvent> stream = streamsBuilder.stream("my-topic");//3
-        stream.map((key, value) -> {
-            value.setName(value.getName().toUpperCase());
-            return new KeyValue<>(key, value); //4
-        }).to("another-topic"); //5
+    public KStream<String, Long> kStream(StreamsBuilder builder) {
+
+        KStream<String, Long> stream = builder.<String, MessageEvent>stream("my-topic")
+                .groupBy((k, v) -> v.getName())
+                .count(Materialized.as("counts-store"))
+                .toStream();
+        stream.to("another-topic", Produced.with(Serdes.String(), Serdes.Long()));
         return stream;
     }
 
