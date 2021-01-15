@@ -30,7 +30,7 @@ spring:
             serde: org.apache.kafka.common.serialization.Serdes$StringSerde
           value:
             serde: org.apache.kafka.common.serialization.Serdes$StringSerde
-            deserializer: org.apache.kafka.common.serialization.LongDeserializer
+#            deserializer: org.apache.kafka.common.serialization.LongDeserializer
         spring:
           json:
             trusted:
