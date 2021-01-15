@@ -46,7 +46,7 @@ param_api_docker_gradle_command = list_util.arr_param_to_str(
     ])
 
 # network
-param_api_network_containers = ["jenkins", "mysql", "mongo", "neo4j", "redis", "rabbitmq", "nginx","zookeeper","broker1"]
+param_api_network_containers = ["jenkins", "mysql", "mongo", "neo4j", "redis", "rabbitmq", "nginx", "zookeeper", "broker1"]
 param_api_network_name = "erp_play_default"
 
 # web
@@ -76,11 +76,10 @@ param_main_db_neo4j_file_path = path_util.pure_path_join(default_path.project_db
 
 
 def inject(args):
-    args_param_dict = dict({t.split("=")[0]: t.split("=")[1] for t in args.param})
     qualify_project_env = "_".join([param_project_name, param_env_suffix])
-    globals()["param_main_db_name"] = param_main_db_name = qualify_project_env
-    globals()["param_main_db_bak_name"] = param_main_db_bak_name = "_".join([param_main_db_name, "bak"])
-    globals()["param_web_nginx_env_file_name"] = param_web_nginx_env_file_name = qualify_project_env + ".conf"
-    globals()["param_web_nginx_output_file_path"] = param_web_nginx_output_file_path = path_util.pure_path_join(default_path.output_tmp, param_web_nginx_env_file_name)
-
-    default_common.param_injected = dict(dict({k: v for k, v in globals().items() if k.startswith("param")}).items(), **args_param_dict)
+    param_main_db_name = qualify_project_env
+    param_main_db_bak_name = "_".join([param_main_db_name, "bak"])
+    param_web_nginx_env_file_name = qualify_project_env + ".conf"
+    param_web_nginx_output_file_path = path_util.pure_path_join(default_path.output_tmp, param_web_nginx_env_file_name)
+    for k, v in dict({k: v for k, v in locals().items() if k.startswith("param")}).items():
+        globals()[k] = v
