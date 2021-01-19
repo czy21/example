@@ -3,7 +3,6 @@ package com.team.portal.configure;
 
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.common.serialization.Serdes;
-import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.Produced;
@@ -13,9 +12,6 @@ import org.springframework.kafka.annotation.EnableKafkaStreams;
 import org.springframework.kafka.support.converter.RecordMessageConverter;
 import org.springframework.kafka.support.converter.StringJsonMessageConverter;
 import org.springframework.scheduling.annotation.EnableScheduling;
-
-import java.util.Arrays;
-import java.util.Locale;
 
 @Configuration
 @EnableKafkaStreams
@@ -32,17 +28,15 @@ public class KafkaConfigure {
     }
 
     @Bean
-    public KStream<String, String> kStream(StreamsBuilder builder) {
+    public KStream<String, Long> kStream(StreamsBuilder builder) {
 
         KStream<String, String> textLine = builder.stream("my-topic");
 
-        KStream<String, String> stream = textLine
-                .flatMapValues(v -> Arrays.asList(v.toLowerCase(Locale.getDefault()).split(" ")))
+        KStream<String, Long> stream = textLine
                 .groupBy((k, v) -> v)
                 .count()
-                .mapValues((k, v) -> v.toString())
                 .toStream();
-        stream.to("another-topic", Produced.with(Serdes.String(), Serdes.String()));
+        stream.to("another-topic", Produced.with(Serdes.String(), Serdes.Long()));
 
         return stream;
     }
