@@ -11,10 +11,7 @@ import com.team.application.service.UserService;
 import com.team.cooperated.annotation.EnumPocket;
 import com.team.cooperated.annotation.SpecialPocket;
 import com.team.cooperated.controller.BaseController;
-import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsBuilder;
-import org.apache.kafka.streams.state.QueryableStoreTypes;
-import org.apache.kafka.streams.state.ReadOnlyKeyValueStore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.config.StreamsBuilderFactoryBean;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -59,10 +56,10 @@ public class UserController extends BaseController {
         return userService.findByPage(search);
     }
 
-//    @PostMapping(path = "getStreamCount")
-//    public Map<String, Object> getStreamCount() {
-//
-//    }
+    @PostMapping(path = "publicMsg")
+    public void publicMsg(@RequestBody Map<String, Object> input) {
+        kafkaTemplate.send(input.get("topic").toString(), input.get("msg").toString());
+    }
 
 }
 

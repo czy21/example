@@ -19,8 +19,13 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @EnableScheduling
 public class KafkaConfigure {
     @Bean
-    NewTopic topic() {
+    NewTopic confirmTopic() {
         return new NewTopic("confirm-topic", 1, (short) 1);
+    }
+
+    @Bean
+    NewTopic myTopic() {
+        return new NewTopic("my-topic", 1, (short) 1);
     }
 
     @Bean
