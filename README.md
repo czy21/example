@@ -1,11 +1,23 @@
-# ERP管理系统
+# DEMO后台管理系统
 
-线上地址:47.106.191.56:8090 账号:test 密码:123456
-
-#### 项目介绍
-
-基于SSM和Vue前后分离的ERP管理系统
-
-#### 目前已有功能:
-
-用户管理 角色管理 菜单管理 部门管理 权限管理 日志管理
+## 工程结构
+``` 
+DEMO
+├── code
+├    ├── api -- SpringBoot后端API
+|    |
+├    ├── gradle-plugin -- Gradle发布构建插件
+|    |
+├    ├── web/react -- 前端工程
+|    |
+├── db
+├    ├── mysql -- mysql初始化脚本 
+|    |
+├    ├── neo4j -- 图数据库初始化脚本
+|    |
+├── shell -- 构建、打包、发布 By 环境 (Py Shell)
+|    |
+├    ├── local -- 本地构建
+|    |
+├    ├── play  -- Linux(CentOS_8)下构建并结合Jenkins作为主要发布流程工具
+```
