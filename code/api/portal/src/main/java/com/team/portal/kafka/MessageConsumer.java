@@ -7,15 +7,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class MessageConsumer {
 
-    @KafkaListener(topics = {"my-topic"})
+//    @KafkaListener(topics = {"my-topic"})
 //    @SendTo("confirm-topic")
-    public String consume(ConsumerRecord<String, String> event) {
-        System.out.println("consume => " + event);
-        return "接收到了:" + event.toString();
-    }
+//    public void consume(ConsumerRecord<String, String> event) {
+//        System.out.println("consume => " + event);
+//    }
 
 
-    @KafkaListener(topics = {"another-topic"},properties = {
+    @KafkaListener(topics = {"another-topic"}, properties = {
             "key.deserializer=org.apache.kafka.common.serialization.StringDeserializer",
             "value.deserializer=org.apache.kafka.common.serialization.LongDeserializer"
     })
