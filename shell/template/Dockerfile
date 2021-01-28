@@ -1,5 +1,5 @@
 FROM openjdk:16-alpine
-VOLUME ["/home/erp/resources","/home/erp/log"]
+VOLUME ["/home/${{{param_project_name}}}/resources","/home/${{{param_project_name}}}/log"]
 EXPOSE ${{{param_api_container_port}}}
 COPY ./api.jar /home/${{{param_project_name}}}/
 COPY ./resources/ /home/${{{param_project_name}}}/resources/
