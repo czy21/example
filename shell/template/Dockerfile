@@ -1,4 +1,4 @@
-FROM openjdk:11-jdk-alpine
+FROM openjdk:11.0.4-jdk-alpine
 VOLUME ["/home/erp/resources","/home/erp/log"]
 EXPOSE ${{{param_api_container_port}}}
 COPY ./api.jar /home/${{{param_project_name}}}/
