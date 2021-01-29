@@ -15,12 +15,12 @@ spring:
     port: 6379
     timeout: 3600
   kafka:
-    bootstrap-servers: 192.168.2.4:9092
+    bootstrap-servers: 192.168.247.140:9092,192.168.247.140:9093
     producer:
-      bootstrap-servers: 192.168.2.4:9092
+      bootstrap-servers: 192.168.247.140:9092,192.168.247.140:9093
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     consumer:
-      bootstrap-servers: 192.168.2.4:9092
+      bootstrap-servers: 192.168.247.140:9092,192.168.247.140:9093
       group-id: consumers
     streams:
       application-id: kafka-streams-demo
