@@ -17,12 +17,11 @@ spring:
   kafka:
     bootstrap-servers: 192.168.247.140:9092,192.168.247.140:9093
     producer:
-      bootstrap-servers: 192.168.247.140:9092,192.168.247.140:9093
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     consumer:
-      bootstrap-servers: 192.168.247.140:9092,192.168.247.140:9093
       group-id: consumers
     streams:
+      bootstrap-servers: 192.168.247.140:9092,192.168.247.140:9093
       application-id: kafka-streams-demo
       properties:
         default:
