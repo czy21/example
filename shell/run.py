@@ -39,12 +39,11 @@ def exec_file():
 
     env_common_mod = env_pwd_mod.env_common
     env_common_mod.__dict__.update(dict({k: v for k, v in env_pwd_mod.__dict__.items() if k.startswith("param")}).items(), **args_param_dict)
-    getattr(env_common_mod, "inject")(args)
-
+    #
     default_common_mod = importlib.import_module("script.domain.default.common")
     default_common_mod.__dict__.update(dict({k: v for k, v in env_common_mod.__dict__.items() if k.startswith("param")}))
-    common_param = getattr(default_common_mod, "get_params")()
-    logger.info(basic_util.action_formatter("params", json.dumps(common_param, sort_keys=True)), default_common_mod.__name__)
+    default_common_param = dict({k: v for k, v in default_common_mod.__dict__.items() if k.startswith("param")})
+    logger.info(basic_util.action_formatter("params", json.dumps(default_common_param, sort_keys=True)), default_common_mod.__name__)
     if args.cmd:
         exec(args.cmd)
 
