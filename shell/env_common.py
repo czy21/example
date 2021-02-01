@@ -7,7 +7,6 @@ from script.utility import path as path_util
 shell_path = path_util.pure_path_join(default_path.root_path, "shell")
 
 param_project_name = "erp"
-param_env_suffix = ""
 param_api_host_port = param_api_container_port = 8080
 param_web_container_name = "nginx"
 
@@ -73,13 +72,3 @@ param_main_db_mysql_pass = param_main_db_mongo_pass = param_main_db_neo4j_pass =
 param_main_db_mysql_file_path = path_util.pure_path_join(default_path.project_db, "mysql", "1_version")
 param_main_db_neo4j_user = "neo4j"
 param_main_db_neo4j_file_path = path_util.pure_path_join(default_path.project_db, "neo4j")
-
-
-def inject(args):
-    qualify_project_env = "_".join([param_project_name, param_env_suffix])
-    param_main_db_name = qualify_project_env
-    param_main_db_bak_name = "_".join([param_main_db_name, "bak"])
-    param_web_nginx_env_file_name = qualify_project_env + ".conf"
-    param_web_nginx_output_file_path = path_util.pure_path_join(default_path.output_tmp, param_web_nginx_env_file_name)
-    for k, v in dict({k: v for k, v in locals().items() if k.startswith("param")}).items():
-        globals()[k] = v
