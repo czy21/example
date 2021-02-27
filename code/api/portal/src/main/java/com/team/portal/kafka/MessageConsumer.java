@@ -1,7 +1,5 @@
 package com.team.portal.kafka;
 
-import org.apache.kafka.clients.consumer.ConsumerRecord;
-import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -14,11 +12,11 @@ public class MessageConsumer {
 //    }
 
 
-    @KafkaListener(topics = {"another-topic"}, properties = {
-            "key.deserializer=org.apache.kafka.common.serialization.StringDeserializer",
-            "value.deserializer=org.apache.kafka.common.serialization.LongDeserializer"
-    })
-    public void consumeAnother(ConsumerRecord<String, String> event) {
-        System.out.println("another-topic => " + event);
-    }
+//    @KafkaListener(topics = {"another-topic"}, properties = {
+//            "key.deserializer=org.apache.kafka.common.serialization.StringDeserializer",
+//            "value.deserializer=org.apache.kafka.common.serialization.LongDeserializer"
+//    })
+//    public void consumeAnother(ConsumerRecord<String, String> event) {
+//        System.out.println("another-topic => " + event);
+//    }
 }
