@@ -2,5 +2,6 @@ dependencies {
     api project(':domain')
     api project(':cooperated')
     api project(':external')
-    api('com.alibaba:easyexcel:2.2.6')
+    api 'org.apache.dubbo:dubbo-spring-boot-starter:2.7.8'
+    api 'com.alibaba:easyexcel:2.2.6'
 }
