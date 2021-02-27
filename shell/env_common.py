@@ -35,7 +35,7 @@ dockerfile_name = "Dockerfile"
 param_api_dockerfile_template_path = path_util.pure_path_join(default_path.script_template, dockerfile_name)
 param_api_dockerfile_output_file_path = path_util.pure_path_join(default_path.output_api, dockerfile_name)
 
-param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api, "portal")
+param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api)
 param_api_docker_gradle_command = list_util.arr_param_to_str(
     [
         "sudo docker run --rm --user root",
@@ -45,7 +45,7 @@ param_api_docker_gradle_command = list_util.arr_param_to_str(
     ])
 
 # network
-param_api_network_containers = ["jenkins", "mysql", "mongo", "neo4j", "redis", "rabbitmq", "nginx", "zookeeper", "broker1","broker2"]
+param_api_network_containers = ["jenkins", "mysql", "mongo", "neo4j", "redis", "rabbitmq", "nginx"]
 param_api_network_name = "erp_play_default"
 
 # web
