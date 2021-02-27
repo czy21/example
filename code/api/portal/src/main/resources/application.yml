@@ -36,7 +36,7 @@ spring:
               packages: com.team.portal.kafka
 
 mybatis-plus:
-  mapper-locations: classpath:/mapper/*.xml
+  mapper-locations: classpath*:mapper/**/**.xml
   type-aliases-package: com.team.domain.entity
   type-aliases-super-type: com.team.infrastructure.base.BaseEntity
   global-config:
