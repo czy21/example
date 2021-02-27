@@ -1,6 +1,8 @@
 server:
   port: 8080
 spring:
+  application:
+    name: erp
   profiles:
     active: override
   datasource:
@@ -49,7 +51,6 @@ logging:
     com.team.domain.mapper: debug
     org.springframework.web.filter.CommonsRequestLoggingFilter: debug
     org.springframework.jdbc.core: debug
-
 ali:
   access-key:
     id: 2222
@@ -69,3 +70,13 @@ ali:
     example1:
       sign-name: 测试名称
       template-code: SMS_12345678
+dubbo:
+  scan:
+    base-packages: com.team.application.provider.service.impl
+  application:
+    name: ${spring.application.name}
+  protocol:
+    name: dubbo
+    port: 12345
+  registry:
+    address: N/A
