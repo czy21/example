@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8082
 spring:
   application:
     name: erp
@@ -77,6 +77,9 @@ dubbo:
     name: ${spring.application.name}
   protocol:
     name: dubbo
-    port: 12345
+    port: -1
   registry:
-    address: N/A
+    address: zookeeper://192.168.2.4:2181
+    file: ${user.home}/dubbo-cache/${spring.application.name}/dubbo.cache
+  config-center:
+    timeout: 20000
