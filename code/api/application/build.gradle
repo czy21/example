@@ -3,5 +3,8 @@ dependencies {
     api project(':cooperated')
     api project(':external')
     api 'org.apache.dubbo:dubbo-spring-boot-starter:2.7.8'
+    api("org.apache.dubbo:dubbo-dependencies-zookeeper:2.7.8") {
+        exclude group: "org.slf4j", module: "slf4j-log4j12"
+    }
     api 'com.alibaba:easyexcel:2.2.6'
 }
