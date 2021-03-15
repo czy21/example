@@ -4,7 +4,7 @@ import com.team.application.provider.service.DemoService;
 import org.apache.dubbo.config.annotation.DubboService;
 import org.springframework.beans.factory.annotation.Value;
 
-@DubboService(version = "1.0.0",interfaceName = "erp.DemoService")
+@DubboService(version = "1.0.0")
 public class DemoServiceImpl implements DemoService {
     @Value("${dubbo.application.name}")
     private String serviceName;
