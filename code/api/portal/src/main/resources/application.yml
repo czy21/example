@@ -8,12 +8,12 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.mysql.cj.jdbc.MysqlDataSource
-    url: jdbc:mysql://192.168.2.4:3306/erp_java_local?user=admin&password=***REMOVED***&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true
+    url: jdbc:mysql://192.168.2.11:3306/erp_java_local?user=admin&password=***REMOVED***&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true
   data:
     mongodb:
-      uri: mongodb://192.168.2.4:27017/erp_java_local
+      uri: mongodb://192.168.2.11:27017/erp_java_local
   redis:
-    host: 192.168.2.4
+    host: 192.168.2.11
     port: 6379
     timeout: 3600
   kafka:
@@ -80,6 +80,6 @@ dubbo:
     port: -1
   registry:
     protocol: zookeeper
-    address: 192.168.2.4:2181,192.168.2.4:2182,192.168.2.4:2183
+    address: 192.168.2.11:2181,192.168.2.11:2182,192.168.2.11:2183
     timeout: 60000
     file: ${user.home}/dubbo-cache/${spring.application.name}/dubbo.cache
