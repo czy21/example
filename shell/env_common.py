@@ -45,7 +45,7 @@ param_api_docker_gradle_command = list_util.arr_param_to_str(
     ])
 
 # network
-param_api_network_containers = ["jenkins", "mysql", "mongo", "redis", "rabbitmq", "nginx"]
+param_api_network_containers = []
 param_api_network_name = "erp_play_default"
 
 # web
