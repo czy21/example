@@ -36,13 +36,6 @@ param_api_dockerfile_template_path = path_util.pure_path_join(default_path.scrip
 param_api_dockerfile_output_file_path = path_util.pure_path_join(default_path.output_api, dockerfile_name)
 
 param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api)
-param_api_docker_gradle_command = list_util.arr_param_to_str(
-    [
-        "sudo docker run --rm --user root",
-        "--volume \"$HOME\":\"$HOME\"",
-        "--volume \"$HOME\"/.gradle:/home/gradle/.gradle",
-        "gradle:jdk11"
-    ])
 
 # network
 param_api_network_containers = ["jenkins", "mysql", "mongo", "redis", "rabbitmq", "nginx"]

@@ -23,4 +23,4 @@ param_main_db_mongo_port = "27017"
 # neo4j
 param_main_db_neo4j_host = main_db_host
 param_main_db_neo4j_port = "7687"
-param_api_docker_gradle_command = ""
+param_api_docker_gradle_command = False
