@@ -10,7 +10,8 @@ python3 ../../shell/run.py \
 --param param_api_image=erp:test \
 --cmd '
 from script.domain.source import java as java_source
-java_source.ensure_network()
-java_source.build_api()
+#java_source.ensure_network()
+#java_source.build_api()
 java_source.build_api_compose()
+java_source.start_api_compose()
 '
