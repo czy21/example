@@ -1,6 +1,7 @@
 CREATE TABLE `ent_sys_material` (
   `id` varchar(36) NOT NULL,
-  `name` varchar(200) NOT NULL COMMENT '唯一文件名(uuid.*)',
+  `name` varchar(200) NOT NULL COMMENT '原始文件名称',
+  `path` varchar(200) NOT NULL COMMENT '唯一文件名(uuid.*)',
   `kind` varchar(200) NOT NULL COMMENT '文件类型',
   `material_target_key` varchar(100) NOT NULL COMMENT '文件存储目标Key',
   ${{{TrackedColumns}}},
