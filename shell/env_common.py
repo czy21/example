@@ -22,8 +22,8 @@ param_api_extra_config_output_file_path = path_util.pure_path_join(default_path.
 
 # yml
 application_override_name = "application-override.yml"
-param_api_yml_override_template_path = path_util.pure_path_join(shell_path, "template", application_override_name)
-param_api_yml_output_file_path = path_util.pure_path_join(default_path.output_api_resource, application_override_name)
+param_api_config_override_template_path = path_util.pure_path_join(shell_path, "template", application_override_name)
+param_api_config_output_file_path = path_util.pure_path_join(default_path.output_api_resource, application_override_name)
 
 # compose
 docker_compose_name = "docker-compose-api.yml"
