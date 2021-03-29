@@ -12,7 +12,7 @@ param_web_nginx_env_file_name = qualify_project_env + ".conf"
 param_web_nginx_output_file_path = path_util.pure_path_join(default_path.output_tmp, param_web_nginx_env_file_name)
 
 # mysql
-main_db_host = "192.168.247.140"
+main_db_host = "192.168.168.140"
 param_main_db_mysql_host = main_db_host
 param_main_db_mysql_port = "3306"
 
