@@ -13,7 +13,7 @@ pipeline {
                     --env shell/${env_shell}/_env.py \
                     --log-file init.log \
                     ${project_param} \
-                    --cmd \'from script.domain.source import java as java_source;java_source.ensure_network()\''
+                    --cmd \'from script.domain.source import base as base_source;base_source.ensure_network()\''
             }
         }
         stage('build_db') {
@@ -49,7 +49,7 @@ pipeline {
                     --env shell/${env_shell}/_env.py \
                     --log-file deploy.log \
                     ${project_param} --skip-rm-output \
-                    --cmd \'from script.domain.source import java as java_source,mysql as mysql_source;java_source.down_container();mysql_source.recreate();mysql_source.exec();java_source.start_api_compose()\'\
+                    --cmd \'from script.domain.source import base as base_source,java as java_source,mysql as mysql_source;base_source.down_container();mysql_source.recreate();mysql_source.exec();base_source.start_api_compose()\'\
                     && sh ___output/tmp/nginx.sh'
             }
         }
