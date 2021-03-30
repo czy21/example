@@ -14,7 +14,7 @@ param_web_container_name = "nginx"
 param_api_archive_file_name = "api.jar"
 param_api_plugin_file_path = path_util.pure_path_join(default_path.project_plugin, "build.gradle")
 param_api_gradle_init_script_file_path = path_util.pure_path_join(default_path.script_template, "init.gradle")
-param_api_resource_output_path = path_util.pure_path_join(default_path.output_api, "resource")
+param_api_resource_output_path = path_util.pure_path_join(default_path.output_api, "resources")
 
 # extra config
 gradle_extra_config_name = "build.extra.gradle"
