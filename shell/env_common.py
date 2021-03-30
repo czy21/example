@@ -17,23 +17,29 @@ param_api_gradle_init_script_file_path = path_util.pure_path_join(default_path.s
 
 # extra config
 build_extra_config_name = "build.extra.gradle"
-param_api_extra_config_template_path = path_util.pure_path_join(default_path.script_template, build_extra_config_name)
-param_api_extra_config_output_file_path = path_util.pure_path_join(default_path.output_tmp, build_extra_config_name)
+param_api_template_extra_config_file_path = path_util.pure_path_join(default_path.script_template, build_extra_config_name)
+param_api_output_extra_config_file_path = path_util.pure_path_join(default_path.output_tmp, build_extra_config_name)
 
-# yml
-application_override_name = "application-override.yml"
-param_api_config_override_template_path = path_util.pure_path_join(shell_path, "template", application_override_name)
-param_api_config_output_file_path = path_util.pure_path_join(default_path.output_api_resource, application_override_name)
+# api_config
+api_config_name = "application-override.yml"
+api_template_config_file_path = path_util.pure_path_join(shell_path, "template", api_config_name)
+api_output_config_file_path = path_util.pure_path_join(default_path.output_api_resource, api_config_name)
 
 # compose
-docker_compose_name = "docker-compose-api.yml"
-param_api_compose_template_path = path_util.pure_path_join(default_path.script_template, docker_compose_name)
-param_api_compose_output_file_path = path_util.pure_path_join(default_path.output_api, docker_compose_name)
+api_compose_name = "docker-compose-api.yml"
+api_template_compose_file_path = path_util.pure_path_join(default_path.script_template, api_compose_name)
+param_api_output_compose_file_path = path_util.pure_path_join(default_path.output_api, api_compose_name)
 
 # dockerfile
 dockerfile_name = "Dockerfile"
-param_api_dockerfile_template_path = path_util.pure_path_join(default_path.script_template, dockerfile_name)
-param_api_dockerfile_output_file_path = path_util.pure_path_join(default_path.output_api, dockerfile_name)
+api_template_dockerfile_file_path = path_util.pure_path_join(default_path.script_template, dockerfile_name)
+param_api_output_dockerfile_file_path = path_util.pure_path_join(default_path.output_api, dockerfile_name)
+
+param_template_output_dict = {
+    api_template_config_file_path: api_output_config_file_path,
+    api_template_compose_file_path: param_api_output_compose_file_path,
+    api_template_dockerfile_file_path: param_api_output_dockerfile_file_path
+}
 
 param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api)
 
