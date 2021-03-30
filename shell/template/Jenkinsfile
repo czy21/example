@@ -3,7 +3,7 @@ pipeline {
     environment {
         HOME = "${env.WORKSPACE}"
         env_shell="play"
-        project_param='--param param_api_image=erp:play'
+        project_param='--param param_api_image=erp:play param_api_network_name=erp_play_default'
     }
     stages {
         stage('init') {
