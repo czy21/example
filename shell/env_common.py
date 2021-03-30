@@ -14,13 +14,12 @@ param_web_container_name = "nginx"
 param_api_archive_file_name = "api.jar"
 param_api_plugin_file_path = path_util.pure_path_join(default_path.project_plugin, "build.gradle")
 param_api_gradle_init_script_file_path = path_util.pure_path_join(default_path.script_template, "init.gradle")
+param_api_resource_output_path = path_util.pure_path_join(default_path.output_api, "resource")
 
 # extra config
 gradle_extra_config_name = "build.extra.gradle"
 param_api_gradle_extra_config_template_path = path_util.pure_path_join(default_path.script_template, gradle_extra_config_name)
 param_api_gradle_extra_config_output_path = path_util.pure_path_join(default_path.output_tmp, gradle_extra_config_name)
-
-param_api_resource_output_path = path_util.pure_path_join(default_path.output_api, "resource")
 
 # api_config
 api_config_name = "application-override.yml"
@@ -29,8 +28,8 @@ param_api_config_file_output_path = path_util.pure_path_join(param_api_resource_
 
 # compose
 api_compose_name = "docker-compose-api.yml"
-api_compose_template_path = path_util.pure_path_join(default_path.script_template, api_compose_name)
-param_api_compose_output_path = path_util.pure_path_join(default_path.output_api, api_compose_name)
+api_compose_file_template_path = path_util.pure_path_join(default_path.script_template, api_compose_name)
+param_api_compose_file_output_path = path_util.pure_path_join(default_path.output_api, api_compose_name)
 
 # dockerfile
 dockerfile_name = "Dockerfile"
@@ -39,7 +38,7 @@ param_api_dockerfile_output_path = path_util.pure_path_join(default_path.output_
 
 param_template_output_dict = {
     api_config_file_template_path: param_api_config_file_output_path,
-    api_compose_template_path: param_api_compose_output_path,
+    api_compose_file_template_path: param_api_compose_file_output_path,
     api_dockerfile_template_path: param_api_dockerfile_output_path
 }
 
