@@ -3,12 +3,13 @@ import argparse
 import importlib
 import io
 import json
+import operator
 import sys
 from pathlib import Path
 
 sys.path.append(Path(__file__).joinpath("../../").resolve().as_posix())
-
 from script.utility import log as log_util, basic as basic_util, path as path_util
+import configparser
 
 logger = log_util.Logger(__name__)
 
@@ -33,27 +34,26 @@ def exec_file():
     # empty source log
     default_path_module = importlib.import_module("script.domain.default.path")
     getattr(default_path_module, "re_mkdir")(rm_output=args.init_output)
-    print(args.init_output)
 
     # injected param to global
     env_pwd_mod = importlib.import_module("".join(["shell.", env_stem, "._env"]))
+    env_common_mod = env_pwd_mod.env_common
+    default_common_mod = importlib.import_module("script.domain.default.common")
+    env_output_json = path_util.pure_path_join(getattr(default_path_module, "output"), "env.json")
+    env_cfg = configparser.ConfigParser()
     if args.init_output:
-        env_common_mod = env_pwd_mod.env_common
         env_common_mod.__dict__.update(dict({k: v for k, v in env_pwd_mod.__dict__.items() if k.startswith("param")}).items(), **args_param_dict)
-        default_common_mod = importlib.import_module("script.domain.default.common")
         default_common_mod.__dict__.update(dict({k: v for k, v in env_common_mod.__dict__.items() if k.startswith("param")}))
-        default_common_param = dict({k: v for k, v in default_common_mod.__dict__.items() if k.startswith("param")})
-        output_env = path_util.pure_path_join(getattr(default_path_module, "output"), "env.py")
-        with io.open(output_env, "w+", encoding="utf-8", newline="\n") as target_output:
-            for k, v in default_common_param.items():
-                target_output.write("=".join([k, v]))
-        logger.info(basic_util.action_formatter("params", json.dumps(default_common_param, sort_keys=True)), default_common_mod.__name__)
-        print("init")
+        env_cfg['param'] = default_common_param = dict({k: v for k, v in default_common_mod.__dict__.items() if k.startswith("param")})
+        env_json = json.dumps(default_common_param, sort_keys=True, indent=2)
+        with io.open(env_output_json, "w+", encoding="utf-8") as f:
+            f.write(env_json)
+        logger.info(basic_util.action_formatter("params", env_json), default_common_mod.__name__)
     else:
-        print("no init")
+        with io.open(env_output_json, 'r') as f:
+            default_common_mod.__dict__.update(json.load(f))
     if args.cmd:
-        print("sff")
-        # exec(args.cmd)
+        exec(args.cmd)
 
 
 if __name__ == '__main__':
