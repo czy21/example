@@ -11,6 +11,8 @@ param_main_db_bak_name = "_".join([param_main_db_name, "bak"])
 param_web_nginx_env_file_name = qualify_project_env + ".conf"
 param_web_nginx_output_file_path = path_util.pure_path_join(default_path.output_tmp, param_web_nginx_env_file_name)
 
+param_api_network_name = "_".join([env_common.param_project_name, param_env_suffix, "default"])
+
 # mysql
 param_main_db_mysql_port = "3306"
 
