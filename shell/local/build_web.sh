@@ -4,7 +4,7 @@ cd $(cd "$(dirname "$0")"; pwd)
 
 env="local"
 
-python3 ../../shell/run.py \
+python3 ../../script/run.py \
 --env ../../shell/${env}/_env.py \
 --log-file build_web.log \
 --cmd '
