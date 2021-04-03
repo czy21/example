@@ -58,13 +58,6 @@ param_web_nginx_template_path = path_util.pure_path_join(shell_path, "template",
 param_web_env_template_path = path_util.pure_path_join(shell_path, "template", "react.app.env")
 param_web_env_path = path_util.pure_path_join(default_path.project_code_web, "react/operation/.env")
 
-# db
-param_main_redis_host = "redis"
-param_main_rabbit_host = "rabbitmq"
-
-param_main_db_mysql_host = "mysql"
-param_main_db_mongo_host = "mongo"
-param_main_db_neo4j_host = "neo4j"
 param_main_db_mysql_user = param_main_db_mongo_user = "admin"
 param_main_db_mysql_pass = param_main_db_mongo_pass = param_main_db_neo4j_pass = "***REMOVED***"
 

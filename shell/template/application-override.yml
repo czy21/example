@@ -11,13 +11,14 @@ spring:
       password: ***REMOVED***
   redis:
     host: ${{{param_main_redis_host}}}
-    port: 6379
+    port: ${{{param_main_redis_port}}}
+    password: ${{{param_main_redis_pass}}}
     timeout: 3600
   rabbitmq:
     host: ${{{param_main_rabbit_host}}}
-    port: 5672
-    username: root
-    password: root
+    port: ${{{param_main_rabbit_port}}}
+    username: ${{{param_main_rabbit_user}}}
+    password: ${{{param_main_rabbit_pass}}}
   kafka:
     bootstrap-servers: broker1:9092,broker2:9092
     producer:
