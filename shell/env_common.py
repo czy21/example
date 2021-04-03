@@ -45,7 +45,7 @@ param_template_output_dict = {
 param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api)
 
 # network
-param_api_network_containers = ["jenkins", "mysql", "mongo", "redis", "rabbitmq", "nginx"]
+param_api_network_containers = ["jenkins", "nginx"]
 
 # web
 cp_static = "nginx.sh"
