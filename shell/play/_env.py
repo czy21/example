@@ -18,6 +18,7 @@ db_host = "192.168.2.3"
 # redis
 param_main_redis_host = db_host
 param_main_redis_port = "6379"
+param_main_redis_pass = "***REMOVED***"
 
 # rabbitmq
 param_main_rabbit_host = db_host
