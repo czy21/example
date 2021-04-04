@@ -3,7 +3,7 @@ from shell import env_common
 from script.domain.default import path as default_path
 from script.utility import path as path_util
 
-param_env_suffix = "local"
+param_env_suffix = "play"
 
 qualify_project_env = "_".join([env_common.param_project_name, param_env_suffix])
 param_main_db_name = qualify_project_env

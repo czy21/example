@@ -24,19 +24,8 @@ import java.util.Map;
 @RequestMapping("user")
 public class UserController extends BaseController {
 
-
     @Autowired
     UserService userService;
-
-//    @Autowired
-//    KafkaTemplate<String, String> kafkaTemplate;
-
-//    @Autowired
-//    StreamsBuilderFactoryBean streamsBuilderFactoryBean;
-
-
-//    @Autowired
-//    StreamsBuilder streamsBuilder;
 
     @GetMapping(path = "load")
     @EnumPocket(value = {
@@ -55,11 +44,6 @@ public class UserController extends BaseController {
 
         return userService.findByPage(search);
     }
-
-//    @PostMapping(path = "publicMsg")
-//    public void publicMsg(@RequestBody Map<String, Object> input) {
-//        kafkaTemplate.send(input.get("topic").toString(), input.get("msg").toString());
-//    }
 
 }
 
