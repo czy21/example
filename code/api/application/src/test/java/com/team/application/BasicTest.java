@@ -18,7 +18,7 @@ public class BasicTest {
     public void tOne() {
 
         TestEntity t = new TestEntity();
-        t.name = "nishishei";
+        t.name = "shei";
 
         System.out.println("a");
 
