@@ -13,14 +13,6 @@ spring:
     username: root
     password: root
     port: 5672
-  kafka:
-    bootstrap-servers: 192.168.168.140:9092,192.168.168.140:9093
-    producer:
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-    consumer:
-      group-id: consumers
-    streams:
-      bootstrap-servers: 192.168.168.140:9092,192.168.168.140:9093
 
 dubbo:
   registry:
