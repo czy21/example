@@ -13,7 +13,7 @@ param_web_nginx_output_file_path = path_util.pure_path_join(default_path.output_
 
 param_api_network_name = "_".join([env_common.param_project_name, param_env_suffix, "default"])
 
-db_host = "192.168.2.3"
+db_host = "192.168.2.8"
 
 # redis
 param_main_redis_host = db_host
