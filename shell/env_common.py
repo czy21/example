@@ -10,6 +10,9 @@ param_project_name = "erp"
 param_api_host_port = param_api_container_port = 8080
 param_web_container_name = "nginx"
 
+# volume
+param_docker_data = "/volume1/docker-data"
+
 # api
 param_api_archive_file_name = "api.jar"
 param_api_plugin_file_path = path_util.pure_path_join(default_path.project_plugin, "build.gradle")
