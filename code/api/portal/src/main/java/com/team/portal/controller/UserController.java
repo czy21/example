@@ -11,32 +11,16 @@ import com.team.application.service.UserService;
 import com.team.cooperated.annotation.EnumPocket;
 import com.team.cooperated.annotation.SpecialPocket;
 import com.team.cooperated.controller.BaseController;
-import org.apache.kafka.streams.StreamsBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.config.StreamsBuilderFactoryBean;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 
 @RestController
 @RequestMapping("user")
 public class UserController extends BaseController {
 
-
     @Autowired
     UserService userService;
-
-//    @Autowired
-//    KafkaTemplate<String, String> kafkaTemplate;
-
-//    @Autowired
-//    StreamsBuilderFactoryBean streamsBuilderFactoryBean;
-
-
-//    @Autowired
-//    StreamsBuilder streamsBuilder;
 
     @GetMapping(path = "load")
     @EnumPocket(value = {
@@ -55,11 +39,6 @@ public class UserController extends BaseController {
 
         return userService.findByPage(search);
     }
-
-//    @PostMapping(path = "publicMsg")
-//    public void publicMsg(@RequestBody Map<String, Object> input) {
-//        kafkaTemplate.send(input.get("topic").toString(), input.get("msg").toString());
-//    }
 
 }
 

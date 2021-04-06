@@ -11,31 +11,11 @@ spring:
       password: ***REMOVED***
   redis:
     host: ${{{param_main_redis_host}}}
-    port: 6379
+    port: ${{{param_main_redis_port}}}
+    password: ${{{param_main_redis_pass}}}
     timeout: 3600
   rabbitmq:
     host: ${{{param_main_rabbit_host}}}
-    port: 5672
-    username: root
-    password: root
-  kafka:
-    bootstrap-servers: broker1:9092,broker2:9092
-    producer:
-      bootstrap-servers: broker1:9092,broker2:9092
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-    consumer:
-      bootstrap-servers: broker1:9092,broker2:9092
-      group-id: consumers
-    streams:
-      bootstrap-servers: broker1:9092,broker2:9092
-      application-id: kafka-streams-demo
-      properties:
-        default:
-          key:
-            serde: org.apache.kafka.common.serialization.Serdes$StringSerde
-          value:
-            serde: org.springframework.kafka.support.serializer.JsonSerde
-        spring:
-          json:
-            trusted:
-              packages: com.team.portal.kafka
+    port: ${{{param_main_rabbit_port}}}
+    username: ${{{param_main_rabbit_user}}}
+    password: ${{{param_main_rabbit_pass}}}
