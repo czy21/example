@@ -10,8 +10,7 @@ param_project_name = "erp"
 param_api_host_port = param_api_container_port = 8080
 param_web_container_name = "nginx"
 
-# volume
-param_docker_data = "/volume1/docker-data"
+param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api)
 
 # api
 param_api_archive_file_name = "api.jar"
@@ -45,7 +44,7 @@ param_template_output_dict = {
     api_dockerfile_template_path: param_api_dockerfile_output_path
 }
 
-param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api)
+
 
 # network
 param_api_network_containers = ["jenkins", "nginx"]
