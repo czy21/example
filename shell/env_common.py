@@ -16,6 +16,11 @@ param_api_plugin_file_path = path_util.pure_path_join(default_path.project_plugi
 param_api_gradle_init_script_file_path = path_util.pure_path_join(default_path.script_template, "init.gradle")
 param_api_resource_output_path = path_util.pure_path_join(default_path.output_api, "resources")
 
+# jmx config name
+param_api_jmv_config_name = "jmx-config.yml"
+api_jmx_config_template_path = path_util.pure_path_join(default_path.script_template, param_api_jmv_config_name)
+api_jmx_config_output_path = path_util.pure_path_join(param_api_resource_output_path, param_api_jmv_config_name)
+
 # extra config
 gradle_extra_config_name = "build.extra.gradle"
 param_api_gradle_extra_config_template_path = path_util.pure_path_join(default_path.script_template, gradle_extra_config_name)
@@ -39,7 +44,8 @@ param_api_dockerfile_output_path = path_util.pure_path_join(default_path.output_
 param_template_output_dict = {
     api_config_file_template_path: param_api_config_file_output_path,
     api_compose_file_template_path: param_api_compose_file_output_path,
-    api_dockerfile_template_path: param_api_dockerfile_output_path
+    api_dockerfile_template_path: param_api_dockerfile_output_path,
+    api_jmx_config_template_path: api_jmx_config_output_path
 }
 
 param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api)
