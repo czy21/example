@@ -10,6 +10,8 @@ param_project_name = "erp"
 param_api_host_port = param_api_container_port = 8080
 param_web_container_name = "nginx"
 
+param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api)
+
 # api
 param_api_archive_file_name = "api.jar"
 param_api_plugin_file_path = path_util.pure_path_join(default_path.project_plugin, "build.gradle")
@@ -48,7 +50,7 @@ param_template_output_dict = {
     api_jmx_config_template_path: api_jmx_config_output_path
 }
 
-param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api)
+
 
 # network
 param_api_network_containers = ["jenkins", "nginx"]
