@@ -19,6 +19,7 @@ param_api_gradle_init_script_file_path = path_util.pure_path_join(default_path.s
 param_api_resource_output_path = path_util.pure_path_join(default_path.output_api, "resources")
 
 # jmx config name
+param_api_jmx_port = 3010
 param_api_jmv_config_name = "jmx-config.yml"
 api_jmx_config_template_path = path_util.pure_path_join(default_path.script_template, param_api_jmv_config_name)
 api_jmx_config_output_path = path_util.pure_path_join(param_api_resource_output_path, param_api_jmv_config_name)
@@ -49,8 +50,6 @@ param_template_output_dict = {
     api_dockerfile_template_path: param_api_dockerfile_output_path,
     api_jmx_config_template_path: api_jmx_config_output_path
 }
-
-
 
 # network
 param_api_network_containers = ["jenkins", "nginx"]
