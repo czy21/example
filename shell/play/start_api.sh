@@ -2,13 +2,13 @@
 
 cd $(cd "$(dirname "$0")"; pwd)
 
-env="local"
+env="play"
 
 python3 ../../script/run.py \
 --env ../../shell/${env}/_env.py \
 --init \
 --log-file start_api.log \
---param param_api_image=erp:local \
+--param param_api_image=erp:play \
 --cmd '
 from script.domain.source import base as base_source,java as java_source;
 java_source.build_api()
