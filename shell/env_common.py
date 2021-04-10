@@ -10,14 +10,8 @@ param_project_name = "erp"
 param_api_host_port = param_api_container_port = 8080
 param_web_container_name = "nginx"
 
-param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api)
-
 script_template_java = path_util.pure_path_join(default_path.script_template, "java")
-
-# api
-param_api_archive_file_name = "api.jar"
-param_api_gradle_plugin_file_path = path_util.pure_path_join(default_path.project_plugin, "build.gradle")
-param_api_gradle_init_script_file_path = path_util.pure_path_join(default_path.script_template, "init.gradle")
+param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api)
 param_api_resource_output_path = path_util.pure_path_join(default_path.output_api, "resources")
 
 # compose
@@ -26,7 +20,6 @@ api_compose_file_template_path = path_util.pure_path_join(default_path.script_te
 param_api_compose_file_output_path = path_util.pure_path_join(default_path.output_api, api_compose_name)
 
 # jmx config name
-param_api_jmx_port = 3010
 param_api_jmv_config_name = "jmx-config.yml"
 api_jmx_config_template_path = path_util.pure_path_join(script_template_java, param_api_jmv_config_name)
 api_jmx_config_output_path = path_util.pure_path_join(param_api_resource_output_path, param_api_jmv_config_name)
@@ -52,9 +45,6 @@ param_template_output_dict = {
     api_dockerfile_template_path: param_api_dockerfile_output_path,
     api_jmx_config_template_path: api_jmx_config_output_path
 }
-
-# network
-param_api_network_containers = ["jenkins", "nginx"]
 
 # web
 cp_static = "nginx.sh"
