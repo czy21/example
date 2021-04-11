@@ -35,7 +35,7 @@ public class MaterialUtil {
 
     private static String transToUrlPath(Path path) {
         return ObjectUtils.isNotEmpty(path.toString())
-                ? StringUtils.replace(StringUtils.replace(path.toString(), WINDOWS_PATH_SEPARATOR, LINUX_PATH_SEPARATOR), "//", LINUX_PATH_SEPARATOR)
+                ? StringUtils.replace(StringUtils.replace(path.toFile().getPath(), WINDOWS_PATH_SEPARATOR, LINUX_PATH_SEPARATOR), "//", LINUX_PATH_SEPARATOR)
                 : "";
     }
 
@@ -49,6 +49,7 @@ public class MaterialUtil {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+
         return transToUrlPath(Path.of(first, more));
     }
 
