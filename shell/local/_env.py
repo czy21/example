@@ -5,22 +5,23 @@ from script.utility import path as path_util
 
 param_env_suffix = "local"
 
-qualify_project_env = "_".join([env_common.param_project_name, param_env_suffix])
-param_main_db_name = qualify_project_env
-param_main_db_bak_name = "_".join([param_main_db_name, "bak"])
-param_web_nginx_env_file_name = qualify_project_env + ".conf"
-param_web_nginx_output_file_path = path_util.pure_path_join(default_path.output_tmp, param_web_nginx_env_file_name)
+db_host = "192.168.2.3"
+
+# redis
+param_main_redis_host = db_host
+param_main_redis_port = "6379"
+param_main_redis_pass = "***REMOVED***"
 
 # mysql
-main_db_host = "192.168.2.3"
-param_main_db_mysql_host = main_db_host
+param_main_db_mysql_host = db_host
 param_main_db_mysql_port = "3306"
 
 # mongo
-param_main_db_mongo_host = main_db_host
+param_main_db_mongo_host = db_host
 param_main_db_mongo_port = "27017"
 
 # neo4j
-param_main_db_neo4j_host = main_db_host
+param_main_db_neo4j_host = db_host
 param_main_db_neo4j_port = "7687"
+
 param_api_docker_gradle_command = False

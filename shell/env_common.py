@@ -6,7 +6,6 @@ from script.utility import path as path_util
 
 shell_path = path_util.pure_path_join(default_path.root_path, "shell")
 
-param_project_name = "erp"
 param_api_host_port = param_api_container_port = 8080
 param_web_container_name = "nginx"
 
@@ -45,17 +44,6 @@ param_template_output_dict = {
     api_dockerfile_template_path: param_api_dockerfile_output_path,
     api_jmx_config_template_path: api_jmx_config_output_path
 }
-
-# web
-cp_static = "nginx.sh"
-nginx_conf = "nginx.conf"
-param_web_root_project_path = path_util.pure_path_join(default_path.project_code_web, "react/operation")
-param_web_cp_template_path = path_util.pure_path_join(shell_path, "template", cp_static)
-param_web_cp_output_file_path = path_util.pure_path_join(default_path.output_tmp, cp_static)
-param_web_nginx_template_path = path_util.pure_path_join(shell_path, "template", nginx_conf)
-
-param_web_env_template_path = path_util.pure_path_join(shell_path, "template", "react.app.env")
-param_web_env_path = path_util.pure_path_join(default_path.project_code_web, "react/operation/.env")
 
 param_main_db_mysql_user = param_main_db_mongo_user = "admin"
 param_main_db_mysql_pass = param_main_db_mongo_pass = param_main_db_neo4j_pass = "***REMOVED***"
