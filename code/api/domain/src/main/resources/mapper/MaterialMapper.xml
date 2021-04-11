@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.domain.mapper.MaterialMapper">
+    <sql id="MaterialTargetColumns">
+        `key`,root_url,root_path,target_kind
+    </sql>
+
+    <sql id="MaterialColumns">
+        id,name,path,kind,material_target_key,created_date,created_user,modified_date,modified_user
+    </sql>
+
+    <insert id="insertMaterial">
+        INSERT INTO ent_sys_material
+        (<include refid="MaterialColumns"/>)
+        values (#{id},#{name},#{path},#{kind},#{materialTarget.key},now(),NULL,now(),NULL)
+    </insert>
+
+    <select id="selectMaterialTargetByKey" resultType="com.team.domain.entity.MaterialTargetEntity">
+        SELECT
+        <include refid="MaterialTargetColumns"/>
+        FROM ent_sys_material_target mt
+        where mt.`key`=#{key}
+    </select>
+</mapper>
