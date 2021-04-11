@@ -1,5 +1,6 @@
 package com.team.application;
 
+import org.springframework.amqp.core.Queue;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -19,6 +20,11 @@ public class ApplicationConfig {
         Jackson2JsonRedisSerializer<Object> serializer = new Jackson2JsonRedisSerializer<>(Object.class);
         stringListRedisTemplate.setDefaultSerializer(serializer);
         return stringListRedisTemplate;
+    }
+
+    @Bean
+    public Queue fileResolve() {
+        return new Queue("fileResolve");
     }
 
 }

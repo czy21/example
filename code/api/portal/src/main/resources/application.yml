@@ -21,6 +21,8 @@ spring:
     multipart:
       max-request-size: 100MB
       max-file-size: 100MB
+  rabbitmq:
+    addresses: root:***REMOVED***@192.168.2.3:5672
 
 mybatis-plus:
   mapper-locations: classpath*:mapper/**/**.xml
