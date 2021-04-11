@@ -3,10 +3,10 @@ pipeline {
     environment {
         HOME = "${env.WORKSPACE}"
         env_shell="play"
-        project_param='--param param_project_name=erp-file-resolve \
-                               param_api_image=erp-file-resolve:play \
+        project_param='--param param_project_name=erp_file_resolve \
+                               param_api_image=erp_file_resolve:play \
                                param_api_module_name=file-resolve \
-                               param_api_source_share_dir=erp-portal/data \
+                               param_api_source_share_dir=erp_portal_play/data \
                                param_api_dest_share_dir=data'
     }
     stages {
@@ -34,8 +34,7 @@ pipeline {
                 sh 'python3 script/run.py \
                     --env shell/${env_shell}/_env.py \
                     --log-file deploy.log \
-                    --cmd \'from script.domain.source import base as base_source,java as java_source;base_source.down_container();base_source.start_api_compose()\'\
-                    && sh ___output/tmp/nginx.sh'
+                    --cmd \'from script.domain.source import base as base_source,java as java_source;base_source.down_container();base_source.start_api_compose()\''
             }
         }
     }
