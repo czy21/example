@@ -1,0 +1,8 @@
+plugins {
+    id 'com.team.gradle.deploy'
+    id 'org.springframework.boot' version '2.3.4.RELEASE'
+}
+
+dependencies {
+    api project(':application')
+}

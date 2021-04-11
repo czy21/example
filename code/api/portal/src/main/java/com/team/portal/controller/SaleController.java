@@ -31,9 +31,8 @@ public class SaleController extends BaseController {
 
     @PostMapping(path = "upload")
     public MaterialVO upload(FileVO fileVO) throws IOException {
-
-//        rabbitTemplate.convertAndSend(queue.getName(), "");
-
-        return materialService.upload(fileVO, "DEFAULT");
+        MaterialVO materialVO = materialService.upload(fileVO, "DEFAULT");
+        rabbitTemplate.convertAndSend(queue.getName(), materialVO);
+        return materialVO;
     }
 }
