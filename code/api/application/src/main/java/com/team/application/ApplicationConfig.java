@@ -1,8 +1,6 @@
 package com.team.application;
 
 import org.springframework.amqp.core.Queue;
-import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
-import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
@@ -24,12 +22,6 @@ public class ApplicationConfig {
         stringListRedisTemplate.setDefaultSerializer(serializer);
         return stringListRedisTemplate;
     }
-
-    @Bean
-    public MessageConverter jsonMessageConverter() {
-        return new Jackson2JsonMessageConverter();
-    }
-
     @Bean
     public Queue fileResolve() {
         return new Queue(FILE_RESOLVE_QUEUE);

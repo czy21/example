@@ -1,13 +1,14 @@
-package com.team.fileresolve.configure;
+package com.team.fileresolve.receiver;
 
+import com.alibaba.fastjson.JSONObject;
 import com.team.application.ApplicationConfig;
+import com.team.application.model.vo.MaterialVO;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.rabbit.listener.RabbitListenerContainerFactory;
-import org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.amqp.SimpleRabbitListenerContainerFactoryConfigurer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -18,15 +19,18 @@ public class FileResolveReceiver {
     RabbitTemplate rabbitTemplate;
 
     @Bean
-    public RabbitListenerContainerFactory<SimpleMessageListenerContainer> fileResolveListenerContainerFactory(ConnectionFactory rabbitConnectionFactory) {
+    public SimpleRabbitListenerContainerFactory fileContainerFactory(
+            SimpleRabbitListenerContainerFactoryConfigurer configurer,
+            ConnectionFactory connectionFactory) {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
-        factory.setConnectionFactory(rabbitConnectionFactory);
-        factory.setPrefetchCount(2);
+        factory.setPrefetchCount(10);
+        configurer.configure(factory, connectionFactory);
         return factory;
     }
 
-    @RabbitListener(queues = ApplicationConfig.FILE_RESOLVE_QUEUE, containerFactory = "fileResolveListenerContainerFactory")
+    @RabbitListener(queues = ApplicationConfig.FILE_RESOLVE_QUEUE, containerFactory = "fileContainerFactory")
     public void receive(String message) {
+        MaterialVO materialVO = JSONObject.parseObject(message, MaterialVO.class);
         System.out.println(message);
     }
 
