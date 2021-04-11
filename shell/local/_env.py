@@ -5,6 +5,10 @@ from script.utility import path as path_util
 
 param_env_suffix = "local"
 
+qualify_project_env = "_".join([env_common.param_project_name, param_env_suffix])
+param_main_db_name = qualify_project_env
+param_main_db_bak_name = "_".join([param_main_db_name, "bak"])
+
 db_host = "192.168.2.3"
 
 # redis
