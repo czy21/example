@@ -17,14 +17,6 @@ pipeline {
                     --cmd \'from script.domain.source import base as base_source;\''
             }
         }
-        stage('build_db') {
-            steps {
-                sh 'python3 script/run.py \
-                    --env shell/${env_shell}/_env.py \
-                    --log-file build_db.log \
-                    --cmd \'from script.domain.source import mysql as mysql_source;mysql_source.assemble()\''
-            }
-        }
         stage('build_api') {
             steps {
                 sh 'python3 script/run.py \
@@ -46,7 +38,7 @@ pipeline {
                 sh 'python3 script/run.py \
                     --env shell/${env_shell}/_env.py \
                     --log-file deploy.log \
-                    --cmd \'from script.domain.source import base as base_source,java as java_source,mysql as mysql_source;base_source.down_container();mysql_source.recreate();mysql_source.exec();base_source.start_api_compose()\'\
+                    --cmd \'from script.domain.source import base as base_source,java as java_source;base_source.down_container();base_source.start_api_compose()\'\
                     && sh ___output/tmp/nginx.sh'
             }
         }
