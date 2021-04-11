@@ -6,6 +6,8 @@ from script.utility import path as path_util
 
 shell_path = path_util.pure_path_join(default_path.root_path, "shell")
 
+param_project_name="erp"
+
 param_api_host_port = param_api_container_port = 8080
 param_web_container_name = "nginx"
 

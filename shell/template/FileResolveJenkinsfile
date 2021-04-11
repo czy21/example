@@ -3,10 +3,9 @@ pipeline {
     environment {
         HOME = "${env.WORKSPACE}"
         env_shell="play"
-        project_param='--param param_project_name=erp_file_resolve \
-                               param_api_image=erp_file_resolve:play \
-                               param_api_module_name=file-resolve \
-                               param_api_source_share_dir=erp_portal_play/data \
+        project_param='--param param_api_image=erp_file_resolve:play \
+                               param_api_module_name=file_resolve \
+                               param_api_source_share_dir=portal/data \
                                param_api_dest_share_dir=data'
     }
     stages {
