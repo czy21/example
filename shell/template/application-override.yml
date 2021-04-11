@@ -15,7 +15,4 @@ spring:
     password: ${{{param_main_redis_pass}}}
     timeout: 3600
   rabbitmq:
-    host: ${{{param_main_rabbit_host}}}
-    port: ${{{param_main_rabbit_port}}}
-    username: ${{{param_main_rabbit_user}}}
-    password: ${{{param_main_rabbit_pass}}}
+    addresses: ${{{param_main_rabbitmq_address}}}
