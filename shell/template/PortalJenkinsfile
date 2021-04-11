@@ -3,8 +3,7 @@ pipeline {
     environment {
         HOME = "${env.WORKSPACE}"
         env_shell="play"
-        project_param='--param param_project_name=erp_portal \
-                               param_api_image=erp_portal:play \
+        project_param='--param param_api_image=erp_portal:play \
                                param_api_module_name=portal \
                                param_api_source_share_dir=erp_portal_play/data \
                                param_api_dest_share_dir=data'
