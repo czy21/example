@@ -16,5 +16,6 @@ python3 ../../script/run.py \
 from script.domain.source import base as base_source,java as java_source
 java_source.build_api()
 base_source.build_template_dict()
-
+base_source.down_container();
+base_source.start_api_compose()
 '
