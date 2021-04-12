@@ -11,7 +11,7 @@ python3 ../../script/run.py \
 --param param_api_image=erp_portal:local \
         param_api_module_name=portal \
         param_api_source_share_dir=portal/data \
-        param_api_dest_share_dir=data
+        param_api_dest_share_dir=data \
 --cmd '
 from script.domain.source import base as base_source,java as java_source
 java_source.build_api()
