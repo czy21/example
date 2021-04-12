@@ -15,12 +15,13 @@ import java.util.*;
 @Slf4j
 public class FileListener extends AnalysisEventListener<Map<String, Object>> {
 
+    public static final String FILE_LISTENER_REDIS_KEY = "data-collect-file";
+
     private static final int BATCH_COUNT = 3000;
     private List<Map<String, Object>> list = new ArrayList<>();
     private Map<String, Map<Integer, String>> head = new HashMap<>();
     private RedisTemplate<String, Map<String, Object>> stringListRedisTemplate;
     private FileColumnMappingRepository fileColumnMappingRepository;
-    private boolean haveError = false;
     private FileColumnMappingEntity fileColumnMappingEntity;
 
     public FileListener(RedisTemplate<String, Map<String, Object>> stringListRedisTemplate,
@@ -71,7 +72,7 @@ public class FileListener extends AnalysisEventListener<Map<String, Object>> {
 
     private void persistent() {
         if (CollectionUtils.isNotEmpty(list)) {
-            stringListRedisTemplate.opsForList().leftPushAll("1", list);
+            stringListRedisTemplate.opsForList().leftPushAll(FILE_LISTENER_REDIS_KEY, list);
         }
     }
 }
