@@ -1,7 +1,8 @@
 package com.team.application.config;
 
-import com.team.application.batch.mapper.SaleRowMapper;
 import com.team.domain.entity.SaleEntity;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.batch.MyBatisPagingItemReader;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
@@ -9,9 +10,8 @@ import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
-import org.springframework.batch.item.database.JdbcPagingItemReader;
-import org.springframework.batch.item.database.Order;
-import org.springframework.batch.item.database.support.MySqlPagingQueryProvider;
+import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
+import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
@@ -19,9 +19,6 @@ import org.springframework.core.task.TaskExecutor;
 
 import javax.sql.DataSource;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 @Configuration
 @EnableBatchProcessing
@@ -37,44 +34,26 @@ public class BatchConfig {
     }
 
     @Bean
-    public ItemReader<SaleEntity> read(DataSource dataSource) {
-        JdbcPagingItemReader<SaleEntity> pagingItemReader = new JdbcPagingItemReader<>();
-        pagingItemReader.setDataSource(dataSource);
+    public ItemReader<SaleEntity> read(SqlSessionFactory sqlSessionFactory) {
+        MyBatisPagingItemReader<SaleEntity> pagingItemReader = new MyBatisPagingItemReader<>();
+        pagingItemReader.setParameterValues(new HashMap<>());
         pagingItemReader.setPageSize(100000);
-        pagingItemReader.setRowMapper(new SaleRowMapper());
-        MySqlPagingQueryProvider queryProvider = new MySqlPagingQueryProvider();
-        queryProvider.setSelectClause(List.of(
-                "id",
-                "from_institution_code as fromInstitutionCode",
-                "from_institution_name as fromInstitutionName",
-//                "from_institution_code_format as fromInstitutionCodeFormat",
-                "to_institution_code as toInstitutionCode",
-                "to_institution_name as toInstitutionName",
-//                "to_institution_code_format as toInstitutionCodeFormat",
-                "product_code as productCode",
-                "product_name as productName",
-                "product_spec as productSpec",
-//                "product_code_format as productCodeFormat",
-                "product_unit as productUnit"
-//                "product_unit_format as productUnitFormat"
-        ).stream().map(t -> "bf." + t).collect(Collectors.joining(",")));
-        queryProvider.setFromClause("from ent_sfl_inspect_sale bf");
-        pagingItemReader.setQueryProvider(queryProvider);
-
-        Map<String, Order> sortKeys = new HashMap<>();
-        sortKeys.put("id", Order.ASCENDING);
-        queryProvider.setSortKeys(sortKeys);
-
+        pagingItemReader.setSqlSessionFactory(sqlSessionFactory);
+        pagingItemReader.setQueryId("com.team.domain.mapper.SaleMapper.selectByPage");
         return pagingItemReader;
     }
 
     @Bean
-    public ItemWriter<SaleEntity> writer() {
-        return items -> {
-            for (SaleEntity item : items) {
-                System.out.println(item);
-            }
-        };
+    public ItemWriter<SaleEntity> writer(DataSource dataSource) {
+        JdbcBatchItemWriter<SaleEntity> writer = new JdbcBatchItemWriter<>();
+        writer.setDataSource(dataSource);
+        writer.setSql(
+                "insert into ent_sfl_inspect_sale_1"
+                        + "(id,from_institution_code,from_institution_name,to_institution_code,to_institution_name,product_code,product_name,product_spec,product_unit) values"
+                        + "(:id,:fromInstitutionCode,:fromInstitutionName,:toInstitutionCode,:toInstitutionName,:productCode,:productName,:productSpec,:productUnit) ");
+        writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());
+
+        return writer;
     }
 
     @Bean
@@ -93,7 +72,7 @@ public class BatchConfig {
                 .<SaleEntity, SaleEntity>chunk(100000)
                 .reader(reader)
                 .writer(writer)
-//                .taskExecutor(taskExecutor)
+                .taskExecutor(taskExecutor)
                 .build();
     }
 
