@@ -63,7 +63,7 @@ public class SaleController extends BaseController {
 
     @PostMapping(path = "submitJob")
     public Map<String, Object> submitJob() throws Exception {
-        JobParameters jobParameters = new JobParametersBuilder().addString("path", "1.xlsx").addDate("date", new Date()).toJobParameters();
+        JobParameters jobParameters = new JobParametersBuilder().addString("tableName", "ent_sfl_inspect_sale").addDate("date", new Date()).toJobParameters();
         jobLauncher.run(rinseJob, jobParameters);
         return Map.of();
 
