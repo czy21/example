@@ -9,6 +9,10 @@ import com.team.cooperated.controller.BaseController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobParameters;
+import org.springframework.batch.core.JobParametersBuilder;
+import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Map;
 
 @RequestMapping(path = "sale")
@@ -50,5 +55,19 @@ public class SaleController extends BaseController {
     public Map<String, Object> redisTest() {
         return Map.of();
     }
+
+    @Autowired
+    JobLauncher jobLauncher;
+    @Autowired
+    Job rinseJob;
+
+    @PostMapping(path = "submitJob")
+    public Map<String, Object> submitJob() throws Exception {
+        JobParameters jobParameters = new JobParametersBuilder().addString("path", "1.xlsx").addDate("date", new Date()).toJobParameters();
+        jobLauncher.run(rinseJob, jobParameters);
+        return Map.of();
+
+    }
+
 
 }
