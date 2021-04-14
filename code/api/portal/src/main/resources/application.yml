@@ -9,7 +9,6 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.mysql.cj.jdbc.MysqlDataSource
     url: jdbc:mysql://192.168.2.3:3306/erp_local?user=admin&password=***REMOVED***&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true
-    initialization-mode: always
   data:
     mongodb:
       uri: mongodb://admin:***REMOVED***@192.168.2.3:27017/erp_local?authSource=admin
@@ -25,7 +24,6 @@ spring:
   rabbitmq:
     addresses: root:***REMOVED***@192.168.2.3:5672
   batch:
-    initialize-schema: always
     job:
       enabled: false
 

@@ -1,7 +1,9 @@
 package com.team.application.config;
 
 import com.team.domain.entity.SaleEntity;
+import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.mybatis.spring.batch.builder.MyBatisBatchItemWriterBuilder;
 import org.mybatis.spring.batch.builder.MyBatisPagingItemReaderBuilder;
 import org.springframework.batch.core.Job;
@@ -51,7 +53,7 @@ public class BatchConfig {
     @Bean
     public ItemWriter<SaleEntity> writer(SqlSessionFactory sqlSessionFactory) {
         return new MyBatisBatchItemWriterBuilder<SaleEntity>()
-                .sqlSessionFactory(sqlSessionFactory)
+                .sqlSessionTemplate(new SqlSessionTemplate(sqlSessionFactory, ExecutorType.BATCH))
                 .statementId("com.team.domain.mapper.SaleMapper.insert")
                 .build();
     }
