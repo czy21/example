@@ -2,6 +2,7 @@ package com.team.application.config;
 
 import com.team.domain.entity.SaleEntity;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.batch.MyBatisBatchItemWriter;
 import org.mybatis.spring.batch.MyBatisPagingItemReader;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -10,14 +11,11 @@ import org.springframework.batch.core.configuration.annotation.JobBuilderFactory
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
-import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
-import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
 
-import javax.sql.DataSource;
 import java.util.HashMap;
 
 @Configuration
@@ -39,20 +37,15 @@ public class BatchConfig {
         pagingItemReader.setParameterValues(new HashMap<>());
         pagingItemReader.setPageSize(100000);
         pagingItemReader.setSqlSessionFactory(sqlSessionFactory);
-        pagingItemReader.setQueryId("com.team.domain.mapper.SaleMapper.selectByPage");
+        pagingItemReader.setQueryId("com.team.domain.mapper.SaleMapper.selectAllByPage");
         return pagingItemReader;
     }
 
     @Bean
-    public ItemWriter<SaleEntity> writer(DataSource dataSource) {
-        JdbcBatchItemWriter<SaleEntity> writer = new JdbcBatchItemWriter<>();
-        writer.setDataSource(dataSource);
-        writer.setSql(
-                "insert into ent_sfl_inspect_sale_1"
-                        + "(id,from_institution_code,from_institution_name,to_institution_code,to_institution_name,product_code,product_name,product_spec,product_unit) values"
-                        + "(:id,:fromInstitutionCode,:fromInstitutionName,:toInstitutionCode,:toInstitutionName,:productCode,:productName,:productSpec,:productUnit) ");
-        writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<>());
-
+    public ItemWriter<SaleEntity> writer(SqlSessionFactory sqlSessionFactory) {
+        MyBatisBatchItemWriter<SaleEntity> writer = new MyBatisBatchItemWriter<>();
+        writer.setSqlSessionFactory(sqlSessionFactory);
+        writer.setStatementId("com.team.domain.mapper.SaleMapper.insert");
         return writer;
     }
 
