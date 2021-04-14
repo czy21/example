@@ -26,5 +26,4 @@ public class ApplicationConfig {
     public Queue fileResolve() {
         return new Queue(FILE_RESOLVE_QUEUE);
     }
-
 }
