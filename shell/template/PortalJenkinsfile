@@ -33,7 +33,7 @@ pipeline {
                 sh 'python3 script/run.py \
                     --env shell/${env_shell}/_env.py \
                     --log-file deploy.log \
-                    --cmd \'from script.domain.source import base as base_source,java as java_source;base_source.down_container();java_source.copy_config()\''
+                    --cmd \'from script.domain.source import base as base_source,java as java_source;java_source.copy_config()\''
             }
         }
     }
