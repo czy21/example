@@ -26,6 +26,9 @@ spring:
   batch:
     job:
       enabled: false
+  kafka:
+    consumer:
+      auto-offset-reset: earliest
 
 mybatis-plus:
   mapper-locations: classpath*:mapper/**/**.xml
