@@ -3,7 +3,7 @@ pipeline {
     environment {
         HOME = "${env.WORKSPACE}"
         env_shell="play"
-        source_mount="erp_play_portal"
+        source_mount="/volume1/docker-data/erp_play_portal"
     }
     stages {
         stage('init') {
