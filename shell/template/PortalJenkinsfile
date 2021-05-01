@@ -3,10 +3,7 @@ pipeline {
     environment {
         HOME = "${env.WORKSPACE}"
         env_shell="play"
-        project_param='--param param_api_image=erp_portal:play \
-                               param_api_module_name=portal \
-                               param_api_source_share_dir=portal/data \
-                               param_api_dest_share_dir=data'
+        source_mount="erp_play_portal"
     }
     stages {
         stage('init') {
@@ -16,7 +13,11 @@ pipeline {
                     --env shell/${env_shell}/_env.py \
                     --init \
                     --log-file init.log \
-                    ${project_param}'
+                    --param param_api_image=erp_portal:play \
+                            param_api_module_name=portal \
+                            param_api_config_path=${source_mount}/config \
+                            param_api_data_path=${source_mount}/data \
+                            param_api_log_path=${source_mount}/log'
             }
         }
         stage('build_api') {
@@ -32,7 +33,7 @@ pipeline {
                 sh 'python3 script/run.py \
                     --env shell/${env_shell}/_env.py \
                     --log-file deploy.log \
-                    --cmd \'from script.domain.source import base as base_source,java as java_source;base_source.down_container();base_source.start_api_compose()\''
+                    --cmd \'from script.domain.source import base as base_source,java as java_source;base_source.down_container();java_source.copy_config();base_source.start_api_compose()\''
             }
         }
     }

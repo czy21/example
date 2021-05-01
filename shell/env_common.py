@@ -13,7 +13,7 @@ param_web_container_name = "nginx"
 
 script_template_java = path_util.pure_path_join(default_path.script_template, "java")
 param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api)
-param_api_resource_output_path = path_util.pure_path_join(default_path.output_api, "resources")
+param_api_config_output_path = path_util.pure_path_join(default_path.output_api, "config")
 
 # compose
 api_compose_name = "docker-compose-api.yml"
@@ -23,7 +23,7 @@ param_api_compose_file_output_path = path_util.pure_path_join(default_path.outpu
 # jmx config name
 param_api_jmv_config_name = "jmx-config.yml"
 api_jmx_config_template_path = path_util.pure_path_join(script_template_java, param_api_jmv_config_name)
-api_jmx_config_output_path = path_util.pure_path_join(param_api_resource_output_path, param_api_jmv_config_name)
+api_jmx_config_output_path = path_util.pure_path_join(param_api_config_output_path, param_api_jmv_config_name)
 
 # extra config
 gradle_extra_config_name = "build.extra.gradle"
@@ -33,7 +33,7 @@ param_api_gradle_extra_config_output_path = path_util.pure_path_join(default_pat
 # api_config
 api_config_name = "application-override.yml"
 api_config_file_template_path = path_util.pure_path_join(shell_path, "template", api_config_name)
-param_api_config_file_output_path = path_util.pure_path_join(param_api_resource_output_path, api_config_name)
+param_api_config_file_output_path = path_util.pure_path_join(param_api_config_output_path, api_config_name)
 
 # dockerfile
 dockerfile_name = "Dockerfile"
