@@ -27,8 +27,11 @@ spring:
     job:
       enabled: false
   kafka:
+    bootstrap-servers: 192.168.2.3:9092,192.168.247.140:9093
+    producer:
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     consumer:
-      auto-offset-reset: earliest
+      group-id: consumers
 
 mybatis-plus:
   mapper-locations: classpath*:mapper/**/**.xml
