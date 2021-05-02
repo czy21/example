@@ -1,29 +1,50 @@
 package com.team.application;
 
-import org.springframework.amqp.core.Queue;
+import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
-
-import java.util.Map;
+import org.springframework.kafka.annotation.EnableKafka;
+import org.springframework.kafka.config.TopicBuilder;
+import org.springframework.kafka.core.KafkaOperations;
+import org.springframework.kafka.listener.DeadLetterPublishingRecoverer;
+import org.springframework.kafka.listener.SeekToCurrentErrorHandler;
+import org.springframework.kafka.support.converter.RecordMessageConverter;
+import org.springframework.kafka.support.converter.StringJsonMessageConverter;
+import org.springframework.util.backoff.FixedBackOff;
 
 @Configuration
+@EnableKafka
 public class ApplicationConfig {
 
-    public static final String FILE_RESOLVE_QUEUE = "fileResolve";
+    public static final String SPI_FILE_TOPIC = "spiFileTopic";
+    public static final String SPI_DATA_TOPIC = "spiDataTopic";
 
     @Bean
-    public RedisTemplate<String, Map<String, Object>> stringListRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
-        RedisTemplate<String, Map<String, Object>> stringListRedisTemplate = new RedisTemplate<>();
-        stringListRedisTemplate.setConnectionFactory(redisConnectionFactory);
-        Jackson2JsonRedisSerializer<Object> serializer = new Jackson2JsonRedisSerializer<>(Object.class);
-        stringListRedisTemplate.setDefaultSerializer(serializer);
-        return stringListRedisTemplate;
+    NewTopic materialTopic() {
+        return TopicBuilder.name(SPI_FILE_TOPIC)
+                .partitions(1)
+                .replicas(1)
+                .build();
     }
+
     @Bean
-    public Queue fileResolve() {
-        return new Queue(FILE_RESOLVE_QUEUE);
+    NewTopic spiDataTopic() {
+        return TopicBuilder.name(SPI_DATA_TOPIC)
+                .partitions(1)
+                .replicas(1)
+                .build();
     }
+
+    @Bean
+    public SeekToCurrentErrorHandler errorHandler(KafkaOperations<Object, Object> template) {
+        return new SeekToCurrentErrorHandler(
+                new DeadLetterPublishingRecoverer(template), new FixedBackOff(1000L, 2));
+    }
+
+    @Bean
+    public RecordMessageConverter converter() {
+        return new StringJsonMessageConverter();
+    }
+
+
 }
