@@ -26,7 +26,7 @@ public class UserController extends BaseController {
     @Autowired
     UserService userService;
     @Autowired
-    KafkaTemplate<String, String> kafkaTemplate;
+    KafkaTemplate<String, Map<String, Object>> kafkaTemplate;
 
     @GetMapping(path = "load")
     @EnumPocket(value = {
@@ -48,8 +48,9 @@ public class UserController extends BaseController {
 
     @PostMapping(path = "send")
     public Map<String, Object> send() {
-        ProducerRecord<String, String> msg = new ProducerRecord<>("topic1", "Precision Products", "France");
-        kafkaTemplate.send();
+        ProducerRecord<String, Map<String, Object>> msg = new ProducerRecord<>("topic1", Map.of("name", "陈昭宇"));
+        kafkaTemplate.send(msg);
+        return Map.of();
     }
 
 }
