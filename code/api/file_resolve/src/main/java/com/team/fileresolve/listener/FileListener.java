@@ -2,31 +2,26 @@ package com.team.fileresolve.listener;
 
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
+import com.team.application.ApplicationConfig;
 import com.team.domain.mongo.entity.FileColumnMappingEntity;
 import com.team.domain.mongo.repository.FileColumnMappingRepository;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.collections4.CollectionUtils;
-import org.apache.commons.lang3.ObjectUtils;
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.kafka.core.KafkaTemplate;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Map;
 
 @Slf4j
 public class FileListener extends AnalysisEventListener<Map<String, Object>> {
 
-    public static final String FILE_LISTENER_REDIS_KEY = "data-collect-file";
+    Map<String, Map<Integer, String>> head = new HashMap<>();
+    KafkaTemplate<String, Map<String, Object>> kafkaTemplate;
+    FileColumnMappingRepository fileColumnMappingRepository;
+    FileColumnMappingEntity fileColumnMappingEntity;
 
-    private static final int BATCH_COUNT = 3000;
-    private List<Map<String, Object>> list = new ArrayList<>();
-    private Map<String, Map<Integer, String>> head = new HashMap<>();
-    private RedisTemplate<String, Map<String, Object>> stringListRedisTemplate;
-    private FileColumnMappingRepository fileColumnMappingRepository;
-    private FileColumnMappingEntity fileColumnMappingEntity;
-
-    public FileListener(RedisTemplate<String, Map<String, Object>> stringListRedisTemplate,
+    public FileListener(KafkaTemplate<String, Map<String, Object>> kafkaTemplate,
                         FileColumnMappingRepository fileColumnMappingRepository) {
-        this.stringListRedisTemplate = stringListRedisTemplate;
+        this.kafkaTemplate = kafkaTemplate;
         this.fileColumnMappingRepository = fileColumnMappingRepository;
     }
 
@@ -40,39 +35,28 @@ public class FileListener extends AnalysisEventListener<Map<String, Object>> {
     @Override
     public void invoke(Map<String, Object> data, AnalysisContext context) {
         head.get(context.readSheetHolder().getSheetName()).forEach((k, v) -> data.put(v, data.remove(k)));
-        List<String> error_msgs = new ArrayList<>();
-
-        for (var f : fileColumnMappingEntity.getFields()) {
-            for (var v : Optional.ofNullable(f.getValidators()).orElse(new ArrayList<>())) {
-                String header = f.getHeader();
-                Object cellValue = data.get(header);
-                boolean v_required = (boolean) v.getOrDefault("required", false);
-                String v_message = (String) v.getOrDefault("message", "");
-                String v_type = (String) v.get("type");
-                if (v_required && ObjectUtils.isEmpty(cellValue)) {
-                    error_msgs.add(v_message);
-                    break;
-                }
-            }
-        }
-        data.put("error", error_msgs.size() > 0 ? StringUtils.join(",", error_msgs) : null);
-        list.add(data);
-        if (list.size() >= BATCH_COUNT) {
-            persistent();
-            list.clear();
-        }
+        kafkaTemplate.send(ApplicationConfig.SPI_DATA_TOPIC, data);
+//        List<String> error_msgs = new ArrayList<>();
+//
+//        for (var f : fileColumnMappingEntity.getFields()) {
+//            for (var v : Optional.ofNullable(f.getValidators()).orElse(new ArrayList<>())) {
+//                String header = f.getHeader();
+//                Object cellValue = data.get(header);
+//                boolean v_required = (boolean) v.getOrDefault("required", false);
+//                String v_message = (String) v.getOrDefault("message", "");
+//                String v_type = (String) v.get("type");
+//                if (v_required && ObjectUtils.isEmpty(cellValue)) {
+//                    error_msgs.add(v_message);
+//                    break;
+//                }
+//            }
+//        }
+//        data.put("error", error_msgs.size() > 0 ? StringUtils.join(",", error_msgs) : null);
     }
 
     @Override
     public void doAfterAllAnalysed(AnalysisContext context) {
-        persistent();
         log.info("所有数据解析完成！");
     }
 
-
-    private void persistent() {
-        if (CollectionUtils.isNotEmpty(list)) {
-            stringListRedisTemplate.opsForList().leftPushAll(FILE_LISTENER_REDIS_KEY, list);
-        }
-    }
 }
