@@ -24,7 +24,7 @@ spring:
   rabbitmq:
     addresses: root:***REMOVED***@192.168.2.3:5672
   kafka:
-    bootstrap-servers: 192.168.2.3:9092,192.168.2.3:9093
+    bootstrap-servers: 192.168.2.21:9092,192.168.2.21:9093
     producer:
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
