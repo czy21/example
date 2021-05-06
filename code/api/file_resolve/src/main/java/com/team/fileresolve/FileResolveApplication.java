@@ -1,4 +1,4 @@
-package com.team.portal;
+package com.team.fileresolve;
 
 
 import org.springframework.boot.SpringApplication;
@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 @SpringBootApplication
-public class StartupApplication {
+public class FileResolveApplication {
     public static void main(String[] args) {
-        SpringApplication.run(StartupApplication.class, args);
+        SpringApplication.run(FileResolveApplication.class, args);
     }
 }
