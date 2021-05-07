@@ -50,7 +50,7 @@ param_template_output_dict = {
 param_main_db_mysql_user = param_main_db_mongo_user = "admin"
 param_main_db_mysql_pass = param_main_db_mongo_pass = param_main_db_neo4j_pass = "***REMOVED***"
 
-db_host = "192.168.2.3"
+db_host = "192.168.2.23"
 
 # rabbitmq
 param_main_rabbitmq_address = "root:***REMOVED***@" + db_host + ":5672"
