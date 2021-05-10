@@ -26,6 +26,7 @@ spring:
   batch:
     job:
       enabled: false
+    initialize-schema: always
   kafka:
     bootstrap-servers: 192.168.2.21:9092,192.168.2.21:9093
     producer:

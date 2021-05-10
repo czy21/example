@@ -36,22 +36,6 @@ public class FileListener extends AnalysisEventListener<Map<String, Object>> {
     public void invoke(Map<String, Object> data, AnalysisContext context) {
         head.get(context.readSheetHolder().getSheetName()).forEach((k, v) -> data.put(v, data.remove(k)));
         kafkaTemplate.send(ApplicationConfig.SPI_DATA_TOPIC, data);
-//        List<String> error_msgs = new ArrayList<>();
-//
-//        for (var f : fileColumnMappingEntity.getFields()) {
-//            for (var v : Optional.ofNullable(f.getValidators()).orElse(new ArrayList<>())) {
-//                String header = f.getHeader();
-//                Object cellValue = data.get(header);
-//                boolean v_required = (boolean) v.getOrDefault("required", false);
-//                String v_message = (String) v.getOrDefault("message", "");
-//                String v_type = (String) v.get("type");
-//                if (v_required && ObjectUtils.isEmpty(cellValue)) {
-//                    error_msgs.add(v_message);
-//                    break;
-//                }
-//            }
-//        }
-//        data.put("error", error_msgs.size() > 0 ? StringUtils.join(",", error_msgs) : null);
     }
 
     @Override
