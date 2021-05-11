@@ -63,7 +63,10 @@ public class BatchConfig {
 
     @Bean
     public ItemWriter<Map<String, Object>> writer(SqlSessionFactory sqlSessionFactory) {
-        return items -> items.forEach(t -> kafkaTemplate.send(ApplicationConfig.SPI_DATA_TOPIC, t));
+        return items -> items.forEach(t -> {
+            t.put("sqlCommand", "UPDATE");
+            kafkaTemplate.send(ApplicationConfig.SPI_DATA_TOPIC, t);
+        });
     }
 
     @Bean
