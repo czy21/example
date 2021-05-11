@@ -35,6 +35,7 @@ public class FileListener extends AnalysisEventListener<Map<String, Object>> {
     @Override
     public void invoke(Map<String, Object> data, AnalysisContext context) {
         head.get(context.readSheetHolder().getSheetName()).forEach((k, v) -> data.put(v, data.remove(k)));
+        data.put("sqlCommand", "INSERT");
         kafkaTemplate.send(ApplicationConfig.SPI_DATA_TOPIC, data);
     }
 
