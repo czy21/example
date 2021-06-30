@@ -1,14 +1,9 @@
 pipeline {
-  agent {
-    node {
-      label 'build'
-    }
-
-  }
+  agent none
   stages {
-    stage('error') {
+    stage('build') {
       steps {
-        sh 'echo \'aaa\''
+        sh 'echo a'
       }
     }
 
