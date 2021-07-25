@@ -1,10 +1,6 @@
 server:
   port: 8080
 spring:
-  application:
-    name: erp
-  profiles:
-    active: override
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.mysql.cj.jdbc.MysqlDataSource
