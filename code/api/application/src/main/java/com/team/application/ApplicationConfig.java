@@ -12,8 +12,8 @@ import org.springframework.kafka.support.converter.RecordMessageConverter;
 import org.springframework.kafka.support.converter.StringJsonMessageConverter;
 import org.springframework.util.backoff.FixedBackOff;
 
-@Configuration
-@EnableKafka
+//@Configuration
+//@EnableKafka
 public class ApplicationConfig {
 
     public static final String SPI_FILE_TOPIC = "spiFileTopic";
