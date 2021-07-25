@@ -13,4 +13,4 @@ EXPOSE 8080
 ENTRYPOINT ["java",\
 "-jar",\
 "/home/app/api.jar",\
-"--spring.config.location=file:/home/app/config/,classpath:/"]
+"--spring.config.location=file:/home/app/config/"]
