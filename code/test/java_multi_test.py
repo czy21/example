@@ -53,7 +53,7 @@ if __name__ == '__main__':
     print('MainThread %s is running...' % threading.current_thread().name)
     result = []
     with ThreadPoolExecutor(16) as executor:
-        for data in executor.map(user_update, range(10)):
+        for data in executor.map(user_update, range(5001)):
             result.append(data)
     for t in result:
         print(t)
