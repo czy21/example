@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.domain.mapper.StockMapper">
+
+    <select id="reduce">
+        update ent_stock s
+        set s.count = s.count - 1
+        where s.id = #{id}
+    </select>
+</mapper>
