@@ -30,7 +30,7 @@ def detail(x):
 
 def user_update(x):
     start_time = datetime.datetime.now()
-    r = requests.post(url="http://127.0.0.1:8080/stock/sale",
+    r = requests.post(url="http://192.168.2.21:8075/stock/sale",
                       data=json.dumps({
                           "id": "2f5aa878-352d-49a9-a18e-188449e9e649"
                       }),
