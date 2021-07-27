@@ -6,15 +6,19 @@ import com.team.application.model.dto.StockDTO;
 import com.team.application.service.StockService;
 import com.team.domain.entity.StockEntity;
 import com.team.domain.mapper.StockMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
 
+@Slf4j
 @Service
 public class StockServiceImpl extends ServiceImpl<StockMapper, StockEntity> implements StockService {
 
@@ -46,6 +50,7 @@ public class StockServiceImpl extends ServiceImpl<StockMapper, StockEntity> impl
         QueryWrapper<StockEntity> queryWrapper = new QueryWrapper<>();
         try {
             lock.lock();
+            log.info(dto.getUserId() + " " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss SSS")));
             StockEntity stock = stockMapper.selectById(po.getId());
             if (stock == null) {
                 throw new RuntimeException(StringUtils.join(List.of("该商品不存在"), " "));
