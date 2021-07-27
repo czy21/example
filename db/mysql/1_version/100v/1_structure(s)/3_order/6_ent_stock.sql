@@ -4,4 +4,4 @@ CREATE TABLE `ent_stock`  (
   `count` bigint  NULL DEFAULT NULL COMMENT '库存',
   ${{{TrackedColumns}}},
   PRIMARY KEY (`id`)
-) COMMENT='用户表';
+) COMMENT='库存';

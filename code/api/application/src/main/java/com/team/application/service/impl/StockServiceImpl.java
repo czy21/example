@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.team.application.model.dto.StockDTO;
 import com.team.application.service.StockService;
 import com.team.domain.entity.StockEntity;
+import com.team.domain.entity.StockLogEntity;
+import com.team.domain.mapper.StockLogMapper;
 import com.team.domain.mapper.StockMapper;
+import com.team.infrastructure.util.DateTimeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RLock;
@@ -14,7 +17,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
 
@@ -26,6 +28,8 @@ public class StockServiceImpl extends ServiceImpl<StockMapper, StockEntity> impl
     StockMapper stockMapper;
     @Autowired
     RedissonClient redissonClient;
+    @Autowired
+    StockLogMapper stockLogMapper;
 
     @Override
     public void add(StockDTO dto) {
@@ -46,11 +50,10 @@ public class StockServiceImpl extends ServiceImpl<StockMapper, StockEntity> impl
         StockEntity po = new StockEntity();
         po.setId(dto.getId());
         String lockKey = StringUtils.join(List.of("lock", dto.getId()), ":");
-        RLock lock = redissonClient.getLock(lockKey);
-        QueryWrapper<StockEntity> queryWrapper = new QueryWrapper<>();
+        log.info(StringUtils.join(List.of(dto.getUserId(), "enter", dto.getSubmitDate()), " "));
+        RLock lock = redissonClient.getFairLock(lockKey);
         try {
             lock.lock();
-            log.info(dto.getUserId() + " " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss SSS")));
             StockEntity stock = stockMapper.selectById(po.getId());
             if (stock == null) {
                 throw new RuntimeException(StringUtils.join(List.of("该商品不存在"), " "));
@@ -58,6 +61,12 @@ public class StockServiceImpl extends ServiceImpl<StockMapper, StockEntity> impl
             if (stock.getCount() == 0) {
                 throw new RuntimeException(StringUtils.join(List.of(stock.getName(), "库存不足"), " "));
             }
+            StockLogEntity sl = new StockLogEntity();
+            sl.setStockId(po.getId());
+            sl.setUserId(dto.getUserId());
+            sl.setCreatedDate(dto.getSubmitDate());
+            sl.setModifiedDate(LocalDateTime.now());
+            stockLogMapper.insert(sl);
             stockMapper.reduce(po);
         } finally {
             lock.unlock();

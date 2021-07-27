@@ -33,10 +33,13 @@ def user_detail(x):
 def stock_reduce(x):
     user_id = str(x + 1)
     start_time = datetime.datetime.now()
+    start_timestamp = int(start_time.timestamp() * 1000000)
+    print(start_timestamp)
     r = requests.post(url="{}/stock/sale".format(api_host),
                       data=json.dumps({
                           "id": "2f5aa878-352d-49a9-a18e-188449e9e649",
-                          "userId": user_id
+                          "userId": user_id,
+                          "submitDate": start_timestamp
                       }),
                       headers={
                           'Content-Type': 'application/json'
@@ -58,7 +61,7 @@ if __name__ == '__main__':
     print('MainThread %s is running...' % threading.current_thread().name)
     result = []
     with ThreadPoolExecutor(16) as executor:
-        for data in executor.map(stock_reduce, range(10)):
+        for data in executor.map(stock_reduce, range(1)):
             result.append(data)
     p = list(sorted(result, key=lambda x: x["start_time"]))
     for t in p:
