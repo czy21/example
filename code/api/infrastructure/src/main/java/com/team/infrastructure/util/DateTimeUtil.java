@@ -1,9 +1,7 @@
 package com.team.infrastructure.util;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
+import java.time.*;
+import java.time.temporal.ChronoUnit;
 
 
 public class DateTimeUtil {
@@ -15,7 +13,11 @@ public class DateTimeUtil {
     }
 
     public static LocalDateTime toLocalDateTime(Long timeStamp) {
-        return Instant.ofEpochMilli(timeStamp).atZone(ZONE_OFF_SET).toLocalDateTime();
+        String tStr = timeStamp.toString();
+        if (tStr.length() == 16) {
+            return LocalDateTime.ofInstant(Instant.ofEpochMilli(timeStamp / 1_000).plus(timeStamp % 1_000, ChronoUnit.MICROS), ZoneId.systemDefault());
+        }
+        return LocalDateTime.ofInstant(Instant.ofEpochMilli(timeStamp), ZoneId.systemDefault());
     }
 
     public static Long toTimeStamp(LocalDate localDate) {

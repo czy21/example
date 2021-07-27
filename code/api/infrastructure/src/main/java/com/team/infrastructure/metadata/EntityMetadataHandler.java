@@ -7,14 +7,29 @@ import java.time.LocalDateTime;
 
 
 public class EntityMetadataHandler implements MetaObjectHandler {
+
+    public final static String CREATE_DATE_NAME = "createdDate";
+    public final static String MODIFIED_DATE_NAME = "modifiedDate";
+
     @Override
     public void insertFill(MetaObject metaObject) {
-        this.setFieldValByName("createdDate", LocalDateTime.now(), metaObject);
-        this.setFieldValByName("modifiedDate", LocalDateTime.now(), metaObject);
+        LocalDateTime nowTime = LocalDateTime.now();
+        Object createDate = this.getFieldValByName(CREATE_DATE_NAME, metaObject);
+        if (createDate == null) {
+            this.setFieldValByName(CREATE_DATE_NAME, nowTime, metaObject);
+        }
+        Object modifiedDate = this.getFieldValByName(MODIFIED_DATE_NAME, metaObject);
+        if (modifiedDate == null) {
+            this.setFieldValByName(MODIFIED_DATE_NAME, nowTime, metaObject);
+        }
     }
 
     @Override
     public void updateFill(MetaObject metaObject) {
-        this.setFieldValByName("modifiedDate", LocalDateTime.now(), metaObject);
+        LocalDateTime nowTime = LocalDateTime.now();
+        Object modifiedDate = this.getFieldValByName(MODIFIED_DATE_NAME, metaObject);
+        if (modifiedDate == null) {
+            this.setFieldValByName(MODIFIED_DATE_NAME, nowTime, metaObject);
+        }
     }
 }

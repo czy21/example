@@ -3,15 +3,17 @@ package com.team.cooperated.json;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.team.infrastructure.util.DateTimeUtil;
 
 import java.io.IOException;
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneOffset;
+import java.util.Calendar;
 
 public class LocalDateTimeDeserializer extends JsonDeserializer<LocalDateTime> {
     @Override
     public LocalDateTime deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
-        return Instant.ofEpochMilli(p.getLongValue()).atZone(ZoneOffset.ofHours(8)).toLocalDateTime();
+        Calendar c= Calendar.getInstance();
+        c.setTimeInMillis(p.getLongValue());
+        return DateTimeUtil.toLocalDateTime(p.getLongValue());
     }
 }

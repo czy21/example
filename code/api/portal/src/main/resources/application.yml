@@ -43,12 +43,12 @@ mybatis-plus:
       id-type: uuid
     banner: false
 
-#logging:
-#  level:
-#    com.team.domain.mapper: debug
-#    org.springframework.web.filter.CommonsRequestLoggingFilter: debug
-#    org.springframework.jdbc.core: debug
-#    org.springframework.data.mongodb.core: debug
+logging:
+  level:
+    com.team.domain.mapper: debug
+    org.springframework.web.filter.CommonsRequestLoggingFilter: debug
+    org.springframework.jdbc.core: debug
+    org.springframework.data.mongodb.core: debug
 
 ali:
   access-key:
