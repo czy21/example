@@ -6,9 +6,11 @@ from concurrent.futures import ThreadPoolExecutor
 
 import requests
 
+api_host = "http://127.0.0.1:8080"
 
-def detail(x):
-    r = requests.post(url="http://192.168.2.21:8076/user/detail",
+
+def user_detail(x):
+    r = requests.post(url="{}/user/detail".format(api_host),
                       data=json.dumps({
                           "id": "2f5aa878-352d-49a9-a18e-188449e9e649"
                       }),
@@ -28,23 +30,26 @@ def detail(x):
     return map
 
 
-def user_update(x):
+def stock_reduce(x):
+    user_id = str(x + 1)
     start_time = datetime.datetime.now()
-    r = requests.post(url="http://192.168.2.21:8075/stock/sale",
+    r = requests.post(url="{}/stock/sale".format(api_host),
                       data=json.dumps({
-                          "id": "2f5aa878-352d-49a9-a18e-188449e9e649"
+                          "id": "2f5aa878-352d-49a9-a18e-188449e9e649",
+                          "userId": user_id
                       }),
                       headers={
                           'Content-Type': 'application/json'
                       })
     end_time = datetime.datetime.now()
-    current_user = str(x + 1)
     request_time = str((end_time - start_time).microseconds / 1000) + "ms"
     response_data = r.json()
     map = {
-        "user": current_user,
+        "userId": user_id,
+        "response_data": response_data,
+        "start_time": start_time.strftime('%Y-%m-%d %H:%M:%S %f'),
+        "end_time": end_time.strftime('%Y-%m-%d %H:%M:%S %f'),
         "request_time": request_time,
-        "response_data": response_data
     }
     return map
 
@@ -53,8 +58,9 @@ if __name__ == '__main__':
     print('MainThread %s is running...' % threading.current_thread().name)
     result = []
     with ThreadPoolExecutor(16) as executor:
-        for data in executor.map(user_update, range(5001)):
+        for data in executor.map(stock_reduce, range(10)):
             result.append(data)
-    for t in result:
+    p = list(sorted(result, key=lambda x: x["start_time"]))
+    for t in p:
         print(t)
     print('MainThread %s ended.' % threading.current_thread().name)

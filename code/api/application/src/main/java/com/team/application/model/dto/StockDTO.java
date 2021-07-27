@@ -10,4 +10,5 @@ public class StockDTO extends BaseDTO {
     private String id;
     private String name;
     private Long count;
+    private String userId;
 }
