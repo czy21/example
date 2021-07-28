@@ -4,12 +4,13 @@ dependencies {
     api "org.springframework.boot:spring-boot-starter-data-jpa:${springBootVersion}"
     api "org.springframework.boot:spring-boot-starter-amqp:${springBootVersion}"
     api "org.springframework.boot:spring-boot-starter-batch:${springBootVersion}"
-    api 'org.redisson:redisson-spring-boot-starter:3.16.0'
+    api('org.redisson:redisson-spring-boot-starter:3.16.0') {
+        exclude group: "org.springframework.boot", module: "spring-boot-starter-web"
+    }
     api "org.springframework.kafka:spring-kafka:2.7.0"
     api "org.apache.commons:commons-pool2:2.8.1"
     api "org.apache.commons:commons-lang3:3.11"
     api 'org.apache.httpcomponents:httpclient:4.5.12'
-    api "redis.clients:jedis:3.3.0"
     api 'commons-io:commons-io:2.7'
     api "mysql:mysql-connector-java:8.0.21"
     api "com.baomidou:mybatis-plus-boot-starter:3.4.0"
