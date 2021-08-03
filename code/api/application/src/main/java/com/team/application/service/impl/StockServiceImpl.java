@@ -8,13 +8,14 @@ import com.team.domain.entity.StockEntity;
 import com.team.domain.entity.StockLogEntity;
 import com.team.domain.mapper.StockLogMapper;
 import com.team.domain.mapper.StockMapper;
-import com.team.infrastructure.util.DateTimeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
