@@ -7,6 +7,9 @@ dependencies {
     api('org.redisson:redisson-spring-boot-starter:3.16.0') {
         exclude group: "org.springframework.boot", module: "spring-boot-starter-web"
     }
+    api ('org.apache.hbase:hbase-client:2.3.6'){
+        exclude group: "org.slf4j", module: "slf4j-log4j12"
+    }
     api "org.springframework.kafka:spring-kafka:2.7.0"
     api "org.apache.commons:commons-pool2:2.8.1"
     api "org.apache.commons:commons-lang3:3.11"
