@@ -2,6 +2,6 @@ package com.team.application.service;
 
 public interface SaleService {
 
-    void migrateToHBase();
+    void migrateToHBase(PersistService persistService);
 
 }
