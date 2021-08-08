@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.math.BigDecimal;
+
 @EqualsAndHashCode(callSuper = true)
 @Data
 @ToString(callSuper = true)
@@ -21,7 +23,13 @@ public class SaleEntity extends BaseEntity {
     private String productName;
     private String productSpec;
     private String productCodeFormat;
+    private String productBatch;
+    private BigDecimal productPrice;
+    private BigDecimal productQuantity;
+    private BigDecimal productAmount;
+    private String producer;
     private String productUnit;
     private String productUnitFormat;
+    private String productQuantityFormat;
 
 }

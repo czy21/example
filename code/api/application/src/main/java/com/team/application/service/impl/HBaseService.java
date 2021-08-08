@@ -2,6 +2,7 @@ package com.team.application.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.Cell;
 import org.apache.hadoop.hbase.CellUtil;
@@ -41,9 +42,15 @@ public class HBaseService {
 
     public void createTable(String tableName, List<String> columnFamily) {
         try (Admin admin = connection.getAdmin()) {
-            List<ColumnFamilyDescriptor> cfDescriptor = columnFamily.stream().map(e -> ColumnFamilyDescriptorBuilder.newBuilder(Bytes.toBytes(e)).build()).collect(Collectors.toList());
-            TableDescriptor tableDescriptor = TableDescriptorBuilder.newBuilder(TableName.valueOf(tableName)).setColumnFamilies(cfDescriptor).build();
-            if (admin.tableExists(TableName.valueOf(tableName))) {
+            TableName tn = TableName.valueOf(tableName);
+            List<ColumnFamilyDescriptor> cf = columnFamily.stream()
+                    .map(ColumnFamilyDescriptorBuilder::of)
+                    .collect(Collectors.toList());
+            TableDescriptor tableDescriptor = TableDescriptorBuilder
+                    .newBuilder(tn)
+                    .setColumnFamilies(cf)
+                    .build();
+            if (admin.tableExists(tn)) {
                 log.warn("table {} is exists!", tableName);
             } else {
                 admin.createTable(tableDescriptor);
@@ -54,21 +61,31 @@ public class HBaseService {
         }
     }
 
-    public void save(String tableName, String rowKey, Map<String, Map<String, String>> data) {
+    public void save(String tableName, String rowKey, Map<String, Map<String, Object>> data) {
+        saveAll(tableName, List.of(MutablePair.of(rowKey, data)));
+    }
+
+    public void saveAll(String tableName, List<MutablePair<String, Map<String, Map<String, Object>>>> datas) {
         try {
-            Table table = connection.getTable(TableName.valueOf(tableName));
-            Put put = new Put(Bytes.toBytes(rowKey));
-            data.entrySet().forEach(e -> e.getValue().entrySet().forEach(ee -> {
-                put.addColumn(Bytes.toBytes(e.getKey()), Bytes.toBytes(ee.getKey()), Bytes.toBytes(ee.getValue()));
-            }));
-            table.put(put);
+            TableName tn = TableName.valueOf(tableName);
+            Table table = connection.getTable(tn);
+            List<Put> puts = datas.stream()
+                    .map(t -> {
+                        Put put = new Put(Bytes.toBytes(t.left));
+                        t.right.forEach((fk, fv) ->
+                                fv.forEach((ck, cv) -> put.addColumn(Bytes.toBytes(fk), Bytes.toBytes(ck), Bytes.toBytes(cv.toString())))
+                        );
+                        return put;
+                    }).collect(Collectors.toList());
+            table.put(puts);
         } catch (Exception e) {
             log.error("", e);
         }
     }
 
-    public Map<String, String> get(String tableName, String rowKey) {
-        Map<String, String> map = new HashMap<>();
+
+    public Map<String, Object> get(String tableName, String rowKey) {
+        Map<String, Object> map = new HashMap<>();
         try {
             Table table = connection.getTable(TableName.valueOf(tableName));
             Get get = new Get(Bytes.toBytes(rowKey));

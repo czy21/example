@@ -5,6 +5,7 @@ import com.team.application.ApplicationConfig;
 import com.team.application.model.vo.FileVO;
 import com.team.application.model.vo.MaterialVO;
 import com.team.application.service.MaterialService;
+import com.team.application.service.SaleService;
 import com.team.cooperated.controller.BaseController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -37,6 +38,14 @@ public class SaleController extends BaseController {
     @Autowired
     KafkaTemplate<String, Object> kafkaTemplate;
 
+    @Autowired
+    JobLauncher jobLauncher;
+    @Autowired
+    Job rinseJob;
+
+    @Autowired
+    SaleService saleService;
+
     @PostMapping(path = "upload")
     public MaterialVO upload(FileVO fileVO) throws IOException {
         MaterialVO materialVO = materialService.upload(fileVO, "DEFAULT");
@@ -49,18 +58,17 @@ public class SaleController extends BaseController {
         return Map.of();
     }
 
-    @Autowired
-    JobLauncher jobLauncher;
-    @Autowired
-    Job rinseJob;
-
     @PostMapping(path = "submitJob")
     public Map<String, Object> submitJob() throws Exception {
         JobParameters jobParameters = new JobParametersBuilder().addString("tableName", "ent_sfl_inspect_sale").addDate("date", new Date()).toJobParameters();
         jobLauncher.run(rinseJob, jobParameters);
         return Map.of();
-
     }
 
+    @PostMapping(path = "migrateToHBase")
+    public Map<String, Object> migrateToHBase() {
+        saleService.migrateToHBase();
+        return Map.of("status", "success");
+    }
 
 }
