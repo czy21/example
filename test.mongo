@@ -1,0 +1,3 @@
+
+
+db.met_hbase_table.find().forEach(printjson);

@@ -56,5 +56,6 @@ db_host = "192.168.2.23"
 param_main_rabbitmq_address = "root:***REMOVED***@" + db_host + ":5672"
 
 param_main_db_mysql_file_path = path_util.pure_path_join(default_path.project_db, "mysql", "1_version")
+param_main_db_mongo_file_path = path_util.pure_path_join(default_path.project_db, "mongo", "1_version")
 param_main_db_neo4j_user = "neo4j"
 param_main_db_neo4j_file_path = path_util.pure_path_join(default_path.project_db, "neo4j")
