@@ -5,6 +5,7 @@ import com.team.application.ApplicationConfig;
 import com.team.application.model.vo.FileVO;
 import com.team.application.model.vo.MaterialVO;
 import com.team.application.service.MaterialService;
+import com.team.application.service.PersistService;
 import com.team.application.service.SaleService;
 import com.team.cooperated.controller.BaseController;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +15,7 @@ import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,9 +67,23 @@ public class SaleController extends BaseController {
         return Map.of();
     }
 
+    @Autowired
+    @Qualifier(value = "hbasePersistServiceImpl")
+    PersistService hbasePersistService;
+
+    @Autowired
+    @Qualifier(value = "mysqlPersistServiceImpl")
+    PersistService mysqlPersistService;
+
     @PostMapping(path = "migrateToHBase")
     public Map<String, Object> migrateToHBase() {
-        saleService.migrateToHBase();
+        saleService.migrateToHBase(hbasePersistService);
+        return Map.of("status", "success");
+    }
+
+    @PostMapping(path = "migrateToMysql")
+    public Map<String, Object> migrateToMysql() {
+        saleService.migrateToHBase(mysqlPersistService);
         return Map.of("status", "success");
     }
 

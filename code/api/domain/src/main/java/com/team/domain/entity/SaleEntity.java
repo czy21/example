@@ -7,12 +7,14 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @EqualsAndHashCode(callSuper = true)
 @Data
 @ToString(callSuper = true)
 @TableName(value = "ent_sfl_inspect_sale")
 public class SaleEntity extends BaseEntity {
+    private LocalDateTime saleDate;
     private String fromInstitutionCode;
     private String fromInstitutionName;
     private String fromInstitutionCodeFormat;
