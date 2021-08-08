@@ -6,3 +6,9 @@ plugins {
 dependencies {
     api project(':application')
 }
+
+if (project.rootProject.hasProperty("extraConfig")) {
+    def extraConfig = project.rootProject.extraConfig
+    print("> Loading extra config from \"${extraConfig}\"")
+    project.apply from: "${extraConfig}"
+}
