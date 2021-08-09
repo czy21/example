@@ -9,6 +9,7 @@ import org.apache.hadoop.hbase.CellUtil;
 import org.apache.hadoop.hbase.NamespaceDescriptor;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.*;
+import org.apache.hadoop.hbase.filter.FirstKeyOnlyFilter;
 import org.apache.hadoop.hbase.util.Bytes;
 
 import java.io.IOException;
@@ -87,7 +88,9 @@ public class HBaseService {
         int rowCount = 0;
         try {
             Table table = connection.getTable(TableName.valueOf(tableName));
-            var rs = table.getScanner(new Scan());
+            var scan = new Scan();
+            scan.setFilter(new FirstKeyOnlyFilter());
+            var rs = table.getScanner(scan);
             for (Result ret : rs) {
                 rowCount += ret.size();
             }
