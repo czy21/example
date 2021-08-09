@@ -26,7 +26,6 @@ spring:
       max-lifetime: 1800000
       connection-test-query: select 1
       connection-timeout: 30000
-
   data:
     mongodb:
       uri: mongodb://${db-user}:${db-pass}@${db-host}:27017/erp_local?authSource=${db-user}
@@ -35,7 +34,6 @@ spring:
     port: 6379
     timeout: 3600
     password: ${db-pass}
-
   servlet:
     multipart:
       max-request-size: 100MB
@@ -45,6 +43,7 @@ spring:
   batch:
     job:
       enabled: false
+migrate-batch-number: 100000
 hbase:
   zookeeper:
     quorum: 192.168.2.21:2181

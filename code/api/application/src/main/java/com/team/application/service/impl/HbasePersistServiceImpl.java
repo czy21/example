@@ -2,20 +2,18 @@ package com.team.application.service.impl;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.team.application.annotation.ProcessMonitor;
 import com.team.application.service.PersistService;
 import com.team.application.service.TableMetadataService;
 import com.team.domain.entity.SaleEntity;
 import com.team.domain.mongo.entity.TableMetadataEntity;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Duration;
-import java.time.LocalDateTime;
 import java.util.*;
 
 @Slf4j
@@ -37,12 +35,13 @@ public class HbasePersistServiceImpl implements PersistService {
     @Autowired
     TableMetadataService tableMetadataService;
 
+    @ProcessMonitor
     @SneakyThrows
     @Override
-    public void persist(List<SaleEntity> sales) {
+    public void persist(List<SaleEntity> maps, SaleServiceImpl.MigrateContext context) {
         TableMetadataEntity metadata = tableMetadataService.findOne(NAMESPACE, TABLE_NAME);
         List<MutablePair<String, Map<String, Map<String, Object>>>> datas = new ArrayList<>();
-        for (var t : sales) {
+        for (var t : maps) {
             Map<String, Object> flatValue = objectMapper.readValue(objectMapper.writeValueAsString(t), new TypeReference<>() {
             });
             Map<String, Map<String, Object>> data = metadata.getColumnFamily().entrySet().stream()
@@ -55,11 +54,6 @@ public class HbasePersistServiceImpl implements PersistService {
                     .collect(HashMap::new, Map::putAll, Map::putAll);
             datas.add(MutablePair.of(t.getId(), data));
         }
-        LocalDateTime startTime = LocalDateTime.now();
         hBaseService.saveAll(NAMESPACE + ":" + TABLE_NAME, datas);
-        LocalDateTime endTime = LocalDateTime.now();
-        var timeout = Duration.between(startTime, endTime).toSeconds();
-        log.info(StringUtils.join(List.of(StringUtils.join(List.of(metadata.getNamespace(), metadata.getTableName()), ":"), sales.size(), timeout), " "));
-
     }
 }

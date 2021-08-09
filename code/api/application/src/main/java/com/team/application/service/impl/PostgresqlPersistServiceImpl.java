@@ -6,11 +6,11 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateTimeDeserializer;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
+import com.team.application.annotation.ProcessMonitor;
 import com.team.application.service.PersistService;
 import com.team.domain.entity.SaleEntity;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -67,17 +66,16 @@ public class PostgresqlPersistServiceImpl implements PersistService {
             "product_quantity_format"
     };
 
+    @ProcessMonitor
     @SneakyThrows
     @Override
-    public void persist(List<SaleEntity> sales) {
+    public void persist(List<SaleEntity> sales, SaleServiceImpl.MigrateContext context) {
         List<String> columns = Arrays.stream(SALE_COLUMNS).collect(Collectors.toCollection(LinkedList::new));
         String values = IntStream.range(0, columns.size()).mapToObj(t -> "?").collect(Collectors.joining(","));
         objectMapper.setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
-
         List<Map<String, Object>> maps = objectMapper.readValue(objectMapper.writeValueAsString(sales), new TypeReference<>() {
         });
         String tableName = "ent_sale_1";
-        LocalDateTime startTime = LocalDateTime.now();
         jdbcTemplate.batchUpdate("insert into " + tableName + "(" + String.join(",", columns) + ")" + "values(" + values + ")",
                 new BatchPreparedStatementSetter() {
                     @Override
@@ -95,8 +93,5 @@ public class PostgresqlPersistServiceImpl implements PersistService {
                         return maps.size();
                     }
                 });
-        LocalDateTime endTime = LocalDateTime.now();
-        var timeout = Duration.between(startTime, endTime).toSeconds();
-        log.info(StringUtils.join(List.of(tableName, sales.size(), timeout), " "));
     }
 }
