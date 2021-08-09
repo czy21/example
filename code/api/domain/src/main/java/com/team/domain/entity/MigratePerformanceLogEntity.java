@@ -12,9 +12,10 @@ import java.math.BigDecimal;
 @TableName(value = "ent_migrate_performance_log")
 public class MigratePerformanceLogEntity extends BaseEntity {
     private String target;
-    private int count;
+    private int tableCount;
+    private int batchCount;
+    private String batchId;
     private String durationUnit;
     private BigDecimal duration;
     private int sequence;
-    private String batchId;
 }

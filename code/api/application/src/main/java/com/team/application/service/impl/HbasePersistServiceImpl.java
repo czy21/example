@@ -35,6 +35,11 @@ public class HbasePersistServiceImpl implements PersistService {
     @Autowired
     TableMetadataService tableMetadataService;
 
+    @Override
+    public int count() {
+        return hBaseService.count(NAMESPACE + ":" + TABLE_NAME);
+    }
+
     @ProcessMonitor
     @SneakyThrows
     @Override

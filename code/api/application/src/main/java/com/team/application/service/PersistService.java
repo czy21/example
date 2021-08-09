@@ -6,5 +6,7 @@ import com.team.domain.entity.SaleEntity;
 import java.util.List;
 
 public interface PersistService {
+    int count();
+
     void persist(List<SaleEntity> maps, SaleServiceImpl.MigrateContext context);
 }

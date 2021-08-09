@@ -12,14 +12,6 @@ import org.springframework.context.annotation.Configuration;
 public class PortalConfiguration {
 
 
-    @Value("${hbase.zookeeper.quorum}")
-    private String zookeeper;
 
-    @Bean
-    public HBaseService config() {
-        org.apache.hadoop.conf.Configuration config = HBaseConfiguration.create();
-        config.set("hbase.zookeeper.quorum",zookeeper);
-        return new HBaseService(config);
-    }
 
 }
