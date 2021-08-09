@@ -51,13 +51,14 @@ public class HbasePersistServiceImpl implements PersistService {
             });
             Map<String, Map<String, Object>> data = metadata.getColumnFamily().entrySet().stream()
                     .map(p -> Map.<String, Map<String, Object>>of(
-                            p.getKey(),
-                            p.getValue().stream()
-                                    .map(r -> Optional.ofNullable(flatValue.get(r)).map(o -> Map.of(r, o)).orElse(Map.of()))
-                                    .collect(HashMap::new, Map::putAll, Map::putAll))
+                                    p.getKey(),
+                                    p.getValue().stream()
+                                            .map(r -> Optional.ofNullable(flatValue.get(r)).map(o -> Map.of(r, o)).orElse(Map.of()))
+                                            .collect(HashMap::new, Map::putAll, Map::putAll)
+                            )
                     )
                     .collect(HashMap::new, Map::putAll, Map::putAll);
-            datas.add(MutablePair.of(t.getId(), data));
+            datas.add(MutablePair.of(UUID.randomUUID().toString().replace("-", ""), data));
         }
         hBaseService.saveAll(NAMESPACE + ":" + TABLE_NAME, datas);
     }
