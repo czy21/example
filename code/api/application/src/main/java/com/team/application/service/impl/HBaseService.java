@@ -83,6 +83,19 @@ public class HBaseService {
         }
     }
 
+    public int count(String tableName) {
+        int rowCount = 0;
+        try {
+            Table table = connection.getTable(TableName.valueOf(tableName));
+            var rs = table.getScanner(new Scan());
+            for (Result ret : rs) {
+                rowCount += ret.size();
+            }
+        } catch (Exception e) {
+            log.error("", e);
+        }
+        return rowCount;
+    }
 
     public Map<String, Object> get(String tableName, String rowKey) {
         Map<String, Object> map = new HashMap<>();

@@ -1,6 +1,7 @@
 package com.team.application.aspect;
 
 import com.team.application.annotation.ProcessMonitor;
+import com.team.application.service.PersistService;
 import com.team.application.service.impl.SaleServiceImpl;
 import com.team.domain.entity.MigratePerformanceLogEntity;
 import com.team.domain.entity.SaleEntity;
@@ -26,17 +27,21 @@ public class ProcessorAspect {
 
     @Around(value = "@annotation(processMonitor) && args(maps,context)")
     public void doAround(ProceedingJoinPoint joinPoint, ProcessMonitor processMonitor, List<SaleEntity> maps, SaleServiceImpl.MigrateContext context) throws Throwable {
+        PersistService p = (PersistService) joinPoint.getTarget();
+        MigratePerformanceLogEntity migrateEntity = new MigratePerformanceLogEntity();
+        migrateEntity.setTableCount(p.count());
+        migrateEntity.setTarget(joinPoint.getSignature().getDeclaringType().getSimpleName());
+        migrateEntity.setBatchCount(maps.size());
+        migrateEntity.setDurationUnit("s");
+        migrateEntity.setSequence(context.getSequence());
+        migrateEntity.setBatchId(context.getBatchId());
         StopWatch watch = new StopWatch();
         watch.start();
         joinPoint.proceed();
         watch.stop();
-        MigratePerformanceLogEntity migrateEntity = new MigratePerformanceLogEntity();
-        migrateEntity.setTarget(joinPoint.getSignature().getDeclaringType().getSimpleName());
-        migrateEntity.setCount(maps.size());
-        migrateEntity.setDurationUnit("s");
         migrateEntity.setDuration(BigDecimal.valueOf(watch.getTotalTimeSeconds()));
-        migrateEntity.setSequence(context.getSequence());
-        migrateEntity.setBatchId(context.getBatchId());
         migratePerformanceLogMapper.insert(migrateEntity);
     }
+
+
 }

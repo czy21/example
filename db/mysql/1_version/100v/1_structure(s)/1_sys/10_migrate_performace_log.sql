@@ -1,7 +1,8 @@
 CREATE TABLE `ent_migrate_performance_log`  (
   `id` varchar(36)  NOT NULL,
   `target` varchar(100) NULL,
-  `count` int null,
+  `table_count` int null,
+  `batch_count` int null,
   `duration_unit` varchar(100) null,
   `duration`  decimal(19,9) null,
   `sequence` int null,
@@ -12,3 +13,5 @@ CREATE TABLE `ent_migrate_performance_log`  (
                           `modified_user` varchar(36) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) COMMENT='迁移性能日志';
+
+--   ${{{TrackedColumns}}},

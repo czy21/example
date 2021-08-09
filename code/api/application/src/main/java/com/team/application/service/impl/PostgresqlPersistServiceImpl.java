@@ -66,6 +66,13 @@ public class PostgresqlPersistServiceImpl implements PersistService {
             "product_quantity_format"
     };
 
+    public static final String TABLE_NAME = "ent_sale_1";
+
+    @Override
+    public int count() {
+        return jdbcTemplate.queryForObject("select count(0) from " + TABLE_NAME, Integer.class);
+    }
+
     @ProcessMonitor
     @SneakyThrows
     @Override
@@ -75,8 +82,7 @@ public class PostgresqlPersistServiceImpl implements PersistService {
         objectMapper.setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
         List<Map<String, Object>> maps = objectMapper.readValue(objectMapper.writeValueAsString(sales), new TypeReference<>() {
         });
-        String tableName = "ent_sale_1";
-        jdbcTemplate.batchUpdate("insert into " + tableName + "(" + String.join(",", columns) + ")" + "values(" + values + ")",
+        jdbcTemplate.batchUpdate("insert into " + TABLE_NAME + "(" + String.join(",", columns) + ")" + "values(" + values + ")",
                 new BatchPreparedStatementSetter() {
                     @Override
                     public void setValues(PreparedStatement ps, int i) throws SQLException {

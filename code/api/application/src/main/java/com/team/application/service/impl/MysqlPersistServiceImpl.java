@@ -11,16 +11,13 @@ import com.team.application.service.PersistService;
 import com.team.domain.entity.SaleEntity;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -66,6 +63,14 @@ public class MysqlPersistServiceImpl implements PersistService {
             "product_unit_format",
             "product_quantity_format"
     };
+
+    public static final String TABLE_NAME = "ent_sale_1";
+
+    @Override
+    public int count() {
+        return jdbcTemplate.queryForObject("select count(0) from " + TABLE_NAME, Integer.class);
+    }
+
     @ProcessMonitor
     @SneakyThrows
     @Override
@@ -75,8 +80,7 @@ public class MysqlPersistServiceImpl implements PersistService {
         objectMapper.setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
         List<Map<String, Object>> maps = objectMapper.readValue(objectMapper.writeValueAsString(sales), new TypeReference<>() {
         });
-        String tableName = "ent_sale_1";
-        jdbcTemplate.batchUpdate("insert into " + tableName + "(" + String.join(",", columns) + ")" + "values(" + values + ")",
+        jdbcTemplate.batchUpdate("insert into " + TABLE_NAME + "(" + String.join(",", columns) + ")" + "values(" + values + ")",
                 new BatchPreparedStatementSetter() {
                     @Override
                     public void setValues(PreparedStatement ps, int i) throws SQLException {
