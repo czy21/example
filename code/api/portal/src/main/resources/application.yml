@@ -6,15 +6,27 @@ server:
   port: 8080
 spring:
   datasource:
-    type: com.zaxxer.hikari.HikariDataSource
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://${db-host}:3306/erp_local?user=${db-user}&password=${db-pass}&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true&rewriteBatchedStatements=true
-    hikari:
+    primary:
+      type: com.zaxxer.hikari.HikariDataSource
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://${db-host}:3306/erp_local?user=${db-user}&password=${db-pass}&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true&rewriteBatchedStatements=true
       minimum-idle: 5
       maximum-pool-size: 20
       max-lifetime: 1800000
       connection-test-query: select 1
       connection-timeout: 30000
+    second:
+      type: com.zaxxer.hikari.HikariDataSource
+      driver-class-name: org.postgresql.Driver
+      jdbc-url: jdbc:postgresql://${db-host}:5432/erp_local
+      username: postgres
+      password: ${db-pass}
+      minimum-idle: 5
+      maximum-pool-size: 20
+      max-lifetime: 1800000
+      connection-test-query: select 1
+      connection-timeout: 30000
+
   data:
     mongodb:
       uri: mongodb://${db-user}:${db-pass}@${db-host}:27017/erp_local?authSource=${db-user}
