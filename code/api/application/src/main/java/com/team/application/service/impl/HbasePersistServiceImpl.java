@@ -37,8 +37,7 @@ public class HbasePersistServiceImpl implements PersistService {
 
     @Override
     public int count() {
-//        return hBaseService.count(NAMESPACE + ":" + TABLE_NAME);
-        return 0;
+        return hBaseService.count(NAMESPACE + ":" + TABLE_NAME);
     }
 
     @ProcessMonitor

@@ -51,4 +51,11 @@ public class HBaseController extends BaseController {
         return hBaseService.get(HbasePersistServiceImpl.NAMESPACE + ":" + HbasePersistServiceImpl.TABLE_NAME, "1");
     }
 
+
+    @PostMapping(path = "countSale")
+    public Map<String,Object> countSale(){
+        var count=hBaseService.count(HbasePersistServiceImpl.NAMESPACE + ":" + HbasePersistServiceImpl.TABLE_NAME);
+        return Map.of("count",count);
+    }
+
 }
