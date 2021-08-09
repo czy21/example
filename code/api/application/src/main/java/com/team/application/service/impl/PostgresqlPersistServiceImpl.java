@@ -12,6 +12,7 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -27,9 +28,10 @@ import java.util.stream.IntStream;
 
 @Slf4j
 @Service
-public class MysqlPersistServiceImpl implements PersistService {
+public class PostgresqlPersistServiceImpl implements PersistService {
 
     @Autowired
+    @Qualifier("secondJdbcTemplate")
     JdbcTemplate jdbcTemplate;
     static ObjectMapper objectMapper = new ObjectMapper();
 
@@ -84,7 +86,7 @@ public class MysqlPersistServiceImpl implements PersistService {
                         for (int j = 0; j < columns.size(); j++) {
                             String c = columns.get(j);
                             Object value = t.get(c);
-                            ps.setObject(j + 1, c.equals("id") ? UUID.randomUUID().toString().replace("-","") : value);
+                            ps.setObject(j + 1, c.equals("id") ? UUID.randomUUID().toString() : value);
                         }
                     }
 

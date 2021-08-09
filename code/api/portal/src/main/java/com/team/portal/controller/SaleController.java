@@ -75,6 +75,10 @@ public class SaleController extends BaseController {
     @Qualifier(value = "mysqlPersistServiceImpl")
     PersistService mysqlPersistService;
 
+    @Autowired
+    @Qualifier(value = "postgresqlPersistServiceImpl")
+    PersistService postgresqlPersistService;
+
     @PostMapping(path = "migrateToHBase")
     public Map<String, Object> migrateToHBase() {
         saleService.migrateToHBase(hbasePersistService);
@@ -86,5 +90,12 @@ public class SaleController extends BaseController {
         saleService.migrateToHBase(mysqlPersistService);
         return Map.of("status", "success");
     }
+
+    @PostMapping(path = "migrateToPostgresql")
+    public Map<String, Object> migrateToPostgresql() {
+        saleService.migrateToHBase(postgresqlPersistService);
+        return Map.of("status", "success");
+    }
+
 
 }
