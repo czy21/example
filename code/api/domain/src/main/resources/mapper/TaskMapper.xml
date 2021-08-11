@@ -29,5 +29,13 @@
         </where>
     </update>
 
+    <select id="selectOne" resultType="com.team.domain.dto.TaskDo">
+        select
+         *
+        from ent_task t
+        <where>
+            t.code = #{query.code} and t.batch_id = #{query.batchId}
+        </where>
+    </select>
 
 </mapper>

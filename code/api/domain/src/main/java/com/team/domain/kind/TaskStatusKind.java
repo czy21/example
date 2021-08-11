@@ -4,6 +4,7 @@ public enum TaskStatusKind {
     STARTED("已开始"),
     EXECUTING("执行中"),
     FINISHED("已完成"),
+    TERMINATED("已终止"),
     FAIL("失败");
 
     private String label;

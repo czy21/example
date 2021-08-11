@@ -9,6 +9,7 @@ import com.team.domain.kind.TaskStatusKind;
 import com.team.domain.mapper.TaskLogMapper;
 import com.team.domain.mapper.TaskMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.kafka.common.protocol.types.Field;
 import org.springframework.aop.framework.Advised;
 import org.springframework.aop.support.AopUtils;
 import org.springframework.beans.factory.ObjectProvider;
@@ -20,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Slf4j
@@ -55,30 +57,33 @@ public class MigrateSchedule {
         List<TaskDo> taskResult = taskMapper.selectList(queryTask);
         if (taskResult.size() > 0) {
             var p = taskResult.get(0);
-            TaskEntity updateStatus = new TaskEntity();
-            updateStatus.setCode(p.getCode());
-            updateStatus.setBatchId(p.getBatchId());
+            TaskEntity codeBatch = TaskEntity.of(p.getCode(), p.getBatchId());
+
             PersistService service = persistServiceMap.get(p.getCode());
             try {
                 if (p.getFinishedCount() < p.getExecuteCount()) {
                     var loop = IntStream.rangeClosed(1, (p.getExecuteCount() - p.getFinishedCount()));
-                    updateStatus.setStatus(TaskStatusKind.EXECUTING.name());
-                    taskMapper.updateOne(updateStatus);
-                    loop.forEach(i -> {
-                        saleService.migrateToHBase(service);
+                    codeBatch.setStatus(TaskStatusKind.EXECUTING.name());
+                    taskMapper.updateOne(codeBatch);
+                    for (String i : loop.mapToObj(Integer::toString).collect(Collectors.toList())) {
+                        saleService.migrateToPersist(service);
                         TaskLogEntity tlEntity = new TaskLogEntity();
                         tlEntity.setCode(p.getCode());
                         tlEntity.setBatchId(p.getBatchId());
                         taskLogMapper.insert(tlEntity);
-                    });
+                        codeBatch.setStatus(null);
+                        if (taskMapper.selectOne(codeBatch).getStatus().equals(TaskStatusKind.TERMINATED.name())) {
+                            break;
+                        }
+                    }
                 }
             } catch (Exception e) {
-                updateStatus.setStatus(TaskStatusKind.FAIL.name());
-                taskMapper.updateOne(updateStatus);
+                codeBatch.setStatus(TaskStatusKind.FAIL.name());
+                taskMapper.updateOne(codeBatch);
                 throw e;
             }
-            updateStatus.setStatus(TaskStatusKind.FINISHED.name());
-            taskMapper.updateOne(updateStatus);
+            codeBatch.setStatus(TaskStatusKind.FINISHED.name());
+            taskMapper.updateOne(codeBatch);
         }
         log.info("migrate task ===========================================================================");
     }
