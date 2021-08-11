@@ -50,7 +50,7 @@ public class SaleServiceImpl implements SaleService {
     }
 
     @Override
-    public void migrateToHBase(PersistService persistService) {
+    public void migrateToPersist(PersistService persistService) {
         String batchId = UUID.randomUUID().toString().replace("-", "");
         int seq = 0;
         List<SaleEntity> sales = new ArrayList<>();

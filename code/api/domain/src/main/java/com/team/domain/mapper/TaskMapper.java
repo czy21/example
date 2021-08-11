@@ -10,4 +10,5 @@ public interface TaskMapper {
 
     List<TaskDo> selectList(@Param("query") TaskEntity query);
     void updateOne(@Param("query") TaskEntity query);
+    TaskDo selectOne(@Param("query") TaskEntity query);
 }

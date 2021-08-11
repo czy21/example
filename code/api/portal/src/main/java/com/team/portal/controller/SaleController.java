@@ -81,19 +81,19 @@ public class SaleController extends BaseController {
 
     @PostMapping(path = "migrateToHBase")
     public Map<String, Object> migrateToHBase() {
-        saleService.migrateToHBase(hbasePersistService);
+        saleService.migrateToPersist(hbasePersistService);
         return Map.of("status", "success");
     }
 
     @PostMapping(path = "migrateToMysql")
     public Map<String, Object> migrateToMysql() {
-        saleService.migrateToHBase(mysqlPersistService);
+        saleService.migrateToPersist(mysqlPersistService);
         return Map.of("status", "success");
     }
 
     @PostMapping(path = "migrateToPostgresql")
     public Map<String, Object> migrateToPostgresql() {
-        saleService.migrateToHBase(postgresqlPersistService);
+        saleService.migrateToPersist(postgresqlPersistService);
         return Map.of("status", "success");
     }
 
