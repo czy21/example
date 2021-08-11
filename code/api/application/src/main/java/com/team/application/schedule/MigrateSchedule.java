@@ -58,23 +58,28 @@ public class MigrateSchedule {
             TaskEntity updateStatus = new TaskEntity();
             updateStatus.setCode(p.getCode());
             updateStatus.setBatchId(p.getBatchId());
-
             PersistService service = persistServiceMap.get(p.getCode());
-            if (p.getFinishedCount() < p.getExecuteCount()) {
-                var loop = IntStream.rangeClosed(1, (p.getExecuteCount() - p.getFinishedCount()));
-                updateStatus.setStatus(TaskStatusKind.EXECUTING.name());
+            try {
+                if (p.getFinishedCount() < p.getExecuteCount()) {
+                    var loop = IntStream.rangeClosed(1, (p.getExecuteCount() - p.getFinishedCount()));
+                    updateStatus.setStatus(TaskStatusKind.EXECUTING.name());
+                    taskMapper.updateOne(updateStatus);
+                    loop.forEach(i -> {
+                        saleService.migrateToHBase(service);
+                        TaskLogEntity tlEntity = new TaskLogEntity();
+                        tlEntity.setCode(p.getCode());
+                        tlEntity.setBatchId(p.getBatchId());
+                        taskLogMapper.insert(tlEntity);
+                    });
+                }
+            } catch (Exception e) {
+                updateStatus.setStatus(TaskStatusKind.FAIL.name());
                 taskMapper.updateOne(updateStatus);
-                loop.forEach(i -> {
-                    saleService.migrateToHBase(service);
-                    TaskLogEntity tlEntity = new TaskLogEntity();
-                    tlEntity.setCode(p.getCode());
-                    tlEntity.setBatchId(p.getBatchId());
-                    taskLogMapper.insert(tlEntity);
-                });
+                throw e;
             }
             updateStatus.setStatus(TaskStatusKind.FINISHED.name());
             taskMapper.updateOne(updateStatus);
         }
-        log.info(Thread.currentThread().toString());
+        log.info("migrate task ===========================================================================");
     }
 }
