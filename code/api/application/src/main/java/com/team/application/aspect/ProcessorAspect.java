@@ -11,6 +11,7 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
@@ -25,11 +26,14 @@ public class ProcessorAspect {
     @Autowired
     MigratePerformanceLogMapper migratePerformanceLogMapper;
 
+    @Value("${migrate.is-count}")
+    boolean migrateIsCount;
+
     @Around(value = "@annotation(processMonitor) && args(maps,context)")
     public void doAround(ProceedingJoinPoint joinPoint, ProcessMonitor processMonitor, List<SaleEntity> maps, SaleServiceImpl.MigrateContext context) throws Throwable {
         PersistService p = (PersistService) joinPoint.getTarget();
         MigratePerformanceLogEntity migrateEntity = new MigratePerformanceLogEntity();
-        migrateEntity.setTableCount(p.count());
+        migrateEntity.setTableCount(migrateIsCount ? p.count() : 0);
         migrateEntity.setTarget(joinPoint.getSignature().getDeclaringType().getSimpleName());
         migrateEntity.setBatchCount(maps.size());
         migrateEntity.setDurationUnit("s");
