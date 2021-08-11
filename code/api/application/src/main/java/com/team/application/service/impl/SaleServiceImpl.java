@@ -28,7 +28,7 @@ public class SaleServiceImpl implements SaleService {
     @Autowired
     SqlSessionFactory sqlSessionFactory;
 
-    @Value("${migrate-batch-number}")
+    @Value("${migrate.batch-number}")
     int migrateBatchNumber;
 
     @Data
