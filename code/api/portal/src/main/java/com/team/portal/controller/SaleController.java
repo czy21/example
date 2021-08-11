@@ -97,5 +97,10 @@ public class SaleController extends BaseController {
         return Map.of("status", "success");
     }
 
+    @PostMapping(path = "svcTest")
+    public Map<String, Object> svcTest() {
+        log.info("this is svc");
+        return Map.of("status", "success");
+    }
 
 }
