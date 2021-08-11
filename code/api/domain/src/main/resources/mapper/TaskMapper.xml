@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.domain.mapper.TaskMapper">
+    <select id="selectList" resultType="com.team.domain.dto.TaskDo">
+        select
+         t.code,
+         t.batch_id,
+         t.status,
+         t.execute_count,
+         count(tl.id) finished_count
+        from ent_task t
+        left join ent_task_log tl on tl.code = t.code
+                                 and tl.batch_id = tl.batch_id
+        <where>
+            <if test="query.status != null and query.status != ''">
+                t.status = #{query.status}
+            </if>
+        </where>
+        group by t.code,t.batch_id,t.execute_count
+    </select>
+
+    <update id="updateOne">
+        update ent_task t
+        set t.status = #{query.status}
+        <where>
+            t.code = #{query.code} and t.batch_id = #{query.batchId}
+        </where>
+    </update>
+
+
+</mapper>
