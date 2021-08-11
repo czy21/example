@@ -3,7 +3,8 @@ package com.team.domain.kind;
 public enum TaskStatusKind {
     STARTED("已开始"),
     EXECUTING("执行中"),
-    FINISHED("已完成");
+    FINISHED("已完成"),
+    FAIL("失败");
 
     private String label;
 
