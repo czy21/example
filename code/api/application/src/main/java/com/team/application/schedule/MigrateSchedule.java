@@ -66,15 +66,15 @@ public class MigrateSchedule {
                     codeBatch.setStatus(TaskStatusKind.EXECUTING.name());
                     taskMapper.updateOne(codeBatch);
                     for (String i : loop.mapToObj(Integer::toString).collect(Collectors.toList())) {
+                        if (taskMapper.selectOne(codeBatch).getStatus().equals(TaskStatusKind.TERMINATED.name())) {
+                            break;
+                        }
                         saleService.migrateToPersist(service);
                         TaskLogEntity tlEntity = new TaskLogEntity();
                         tlEntity.setCode(p.getCode());
                         tlEntity.setBatchId(p.getBatchId());
                         taskLogMapper.insert(tlEntity);
                         codeBatch.setStatus(null);
-                        if (taskMapper.selectOne(codeBatch).getStatus().equals(TaskStatusKind.TERMINATED.name())) {
-                            break;
-                        }
                     }
                 }
             } catch (Exception e) {
