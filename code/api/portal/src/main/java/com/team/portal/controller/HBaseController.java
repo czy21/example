@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -58,4 +59,12 @@ public class HBaseController extends BaseController {
         return Map.of("count",count);
     }
 
+    @PostMapping(path = "testp")
+    public Map<String,Object> testP(){
+        var m=new HashMap<String,Object>();
+        m.put("name","sss");
+        m.put("age",null);
+
+        return m;
+    }
 }

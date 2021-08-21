@@ -43,6 +43,11 @@ spring:
   batch:
     job:
       enabled: false
+  elasticsearch:
+    rest:
+      uris: http://192.168.2.21:9200
+      username: admin
+      password: elasticsearch
 migrate:
   is-count: false
   batch-number: 100000

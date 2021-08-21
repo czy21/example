@@ -68,6 +68,7 @@ public class MysqlPersistServiceImpl implements PersistService {
 
     @Override
     public int count() {
+        Set<String> s = new LinkedHashSet<>();
         return jdbcTemplate.queryForObject("select count(0) from " + TABLE_NAME, Integer.class);
     }
 
