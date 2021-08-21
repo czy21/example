@@ -14,7 +14,6 @@ import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilde
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.http.converter.StringHttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.util.AntPathMatcher;
@@ -57,8 +56,10 @@ public class CooperatedConfigure implements WebMvcConfigurer {
 
     @Override
     public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.removeIf(s -> s instanceof StringHttpMessageConverter || s instanceof MappingJackson2HttpMessageConverter);
-        converters.add(new MappingJackson2HttpMessageConverter(objectMapper.copy()));
+        converters.stream()
+                .filter(t -> t instanceof MappingJackson2HttpMessageConverter)
+                .findFirst()
+                .ifPresent(httpMessageConverter -> ((MappingJackson2HttpMessageConverter) httpMessageConverter).setObjectMapper(objectMapper.copy()));
     }
 
     /**

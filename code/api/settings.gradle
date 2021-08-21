@@ -1,4 +1,3 @@
-
 include("portal")
 include("file_resolve")
 include("application")
