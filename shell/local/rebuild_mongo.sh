@@ -10,8 +10,8 @@ python3 ../../script/run.py \
 --init \
 --log-file ${sh_name}.log \
 --cmd '
-from script.domain.source import mongo as mongo_source
-mongo_source.assemble()
-#mongo_source.recreate()
-mongo_source.exec()
+from script.domain.source import mongo as db_source
+db_source.assemble()
+db_source.recreate()
+db_source.execute()
 '
