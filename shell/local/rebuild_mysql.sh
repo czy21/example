@@ -10,8 +10,8 @@ python3 ../../script/run.py \
 --init \
 --log-file ${sh_name}.log \
 --cmd '
-from script.domain.source import mysql as mysql_source
-mysql_source.assemble()
-mysql_source.recreate()
-mysql_source.exec()
+from script.domain.source import mysql as db_source
+db_source.assemble()
+db_source.recreate()
+db_source.execute()
 '

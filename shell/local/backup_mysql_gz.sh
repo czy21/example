@@ -9,6 +9,6 @@ python3 ../../script/run.py \
 --env ../../shell/${env}/_env.py \
 --log-file ${sh_name}.log \
 --cmd '
-from script.domain.source import mysql as mysql_source
-mysql_source.backup_gz()
+from script.domain.source import mysql as db_source
+db_source.backup_gz()
 '
