@@ -10,5 +10,5 @@ python3 ../../script/run.py \
 --log-file ${sh_name}.log \
 --cmd '
 from script.domain.source import mysql as mysql_source
-mysql_source.recover_mysql_gz()
+mysql_source.restore_gz()
 '
