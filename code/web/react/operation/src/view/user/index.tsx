@@ -1,24 +1,6 @@
 import React from "react";
-import {Button, Table} from "antd";
+import {Button} from "antd";
 import api from "@/api"
-
-const columns = [
-    {
-        title: '姓名',
-        dataIndex: 'name',
-        key: 'name',
-    },
-    {
-        title: '年龄',
-        dataIndex: 'age',
-        key: 'age',
-    },
-    {
-        title: '住址',
-        dataIndex: 'address',
-        key: 'address',
-    },
-];
 
 let load = () => {
     // console.log(process.env)
