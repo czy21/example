@@ -1,15 +1,15 @@
 #!/bin/bash
 
-cd $(cd "$(dirname "$0")"; pwd)
+dir=$(cd "$(dirname "$0")"; pwd)
+source ${dir}/../env_common.sh
 
-env="local"
-
-python3 ../../script/run.py \
---env ../../shell/${env}/_env.py \
---log-file build_web.log \
+python3 ${run_py} --env ${env_py} \
+--init \
+--log-file ${sh_name}.log \
+--param param_api_module_name=portal \
 --cmd '
 from script.domain.source import web as web_source
 web_source.build_web()
-web_source.build_cp_shell()
-web_source.build_nginx()
+#web_source.build_cp_shell()
+#web_source.build_nginx()
 '

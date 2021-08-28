@@ -1,12 +1,9 @@
 #!/bin/bash
 
-cd $(cd "$(dirname "$0")"; pwd)
-sh_name="$(basename ${0%.*})"
+dir=$(cd "$(dirname "$0")"; pwd)
+source ${dir}/../env_common.sh
 
-env="local"
-
-python3 ../../script/run.py \
---env ../../shell/${env}/_env.py \
+python3 ${run_py} --env ${env_py} \
 --init \
 --log-file ${sh_name}.log \
 --cmd '
