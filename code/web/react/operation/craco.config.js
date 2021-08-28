@@ -4,7 +4,7 @@ const webpackConfigPlugin = require("./webpack.config")
 
 module.exports = {
     eslint: {
-        enable: false
+        enable: process.env.NODE_ENV === "development",
     },
     plugins: [
         {
