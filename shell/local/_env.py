@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 from shell import env_common
-from script.domain.default import path as default_path
-from script.utility import path as path_util
 
 param_env_suffix = "local"
 
@@ -27,5 +25,3 @@ param_main_db_mongo_port = "27017"
 # neo4j
 param_main_db_neo4j_host = db_host
 param_main_db_neo4j_port = "7687"
-
-param_api_docker_gradle_command = False
