@@ -3,6 +3,7 @@ package com.team.application.service.impl;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.team.application.annotation.ProcessMonitor;
+import com.team.application.service.HBaseService;
 import com.team.application.service.PersistService;
 import com.team.application.service.TableMetadataService;
 import com.team.domain.entity.SaleEntity;
@@ -22,7 +23,7 @@ public class HbasePersistServiceImpl implements PersistService {
     @Autowired
     SqlSessionFactory sqlSessionFactory;
 
-    @Autowired
+    @Autowired(required = false)
     HBaseService hBaseService;
 
     public static final String NAMESPACE = "bg_demo";
