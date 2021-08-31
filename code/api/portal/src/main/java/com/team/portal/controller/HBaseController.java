@@ -1,7 +1,7 @@
 package com.team.portal.controller;
 
 import com.team.application.service.TableMetadataService;
-import com.team.application.service.impl.HBaseService;
+import com.team.application.service.HBaseService;
 import com.team.application.service.impl.HbasePersistServiceImpl;
 import com.team.cooperated.controller.BaseController;
 import com.team.domain.mongo.entity.TableMetadataEntity;
@@ -22,7 +22,7 @@ import java.util.Map;
 @RequestMapping(path = "hbase")
 public class HBaseController extends BaseController {
 
-    @Autowired
+    @Autowired(required = false)
     private HBaseService hBaseService;
 
     @Autowired
