@@ -9,9 +9,5 @@ dependencyManagement {
     }
 }
 dependencies {
-    api("org.springframework.boot:spring-boot-starter-web:${springBootVersion}") {
-        exclude group: "org.springframework.boot", module: "spring-boot-starter-tomcat"
-    }
-    api("org.springframework.boot:spring-boot-starter-undertow:${springBootVersion}")
     api "org.springframework.cloud:spring-cloud-starter-netflix-eureka-server"
 }
