@@ -5,6 +5,8 @@ db-pass: Czy.190815
 server:
   port: 8080
 spring:
+  application:
+    name: portal
   datasource:
     primary:
       type: com.zaxxer.hikari.HikariDataSource
