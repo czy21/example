@@ -11,6 +11,7 @@ spring:
     nacos:
       discovery:
         server-addr: nacos.internal-home.com:80
+        namespace: dev
   datasource:
     primary:
       type: com.zaxxer.hikari.HikariDataSource
