@@ -10,7 +10,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: nacos.internal-home.com
+        server-addr: nacos.internal-home.com:80
   datasource:
     primary:
       type: com.zaxxer.hikari.HikariDataSource
