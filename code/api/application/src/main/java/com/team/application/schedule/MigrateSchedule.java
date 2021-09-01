@@ -50,7 +50,7 @@ public class MigrateSchedule {
         }
     }
 
-    @Scheduled(fixedDelay = 5000)
+//    @Scheduled(fixedDelay = 5000)
     public void migrateJob() {
         TaskEntity queryTask = new TaskEntity();
         queryTask.setStatus(TaskStatusKind.STARTED.name());
