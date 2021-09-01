@@ -7,3 +7,4 @@ include("infrastructure")
 include("external")
 
 include("eureka")
+include("config")
