@@ -6,7 +6,6 @@ dependencies {
     api project(':application')
     api 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
     api 'org.springframework.cloud:spring-cloud-starter-consul-config'
-    api 'org.springframework.cloud:spring-cloud-starter-consul-bus'
 }
 
 if (project.rootProject.hasProperty("extraConfig")) {
