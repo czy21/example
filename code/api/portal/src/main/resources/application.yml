@@ -7,6 +7,10 @@ server:
 spring:
   application:
     name: portal
+  cloud:
+    nacos:
+      discovery:
+        server-addr: nacos.internal-home.com
   datasource:
     primary:
       type: com.zaxxer.hikari.HikariDataSource
@@ -91,7 +95,7 @@ ali:
     example1:
       sign-name: 测试名称
       template-code: SMS_12345678
-eureka:
-  client:
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://192.168.2.21:8761/eureka/
