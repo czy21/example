@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RefreshScope
 public class ConfigController {
 
-//    @Value("${l}")
-//    private String l;
-//
-//    @RequestMapping("/get")
-//    public String get() {
-//        return l;
-//    }
+    @Value("${gender}")
+    private String gender;
+
+    @RequestMapping("/get")
+    public String get() {
+        return gender;
+    }
 }

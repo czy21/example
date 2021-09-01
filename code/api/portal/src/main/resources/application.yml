@@ -7,11 +7,16 @@ server:
 spring:
   application:
     name: portal
+  config:
+    import: consul:consul.internal-home.com:80
   cloud:
-    nacos:
-      discovery:
-        server-addr: nacos.internal-home.com:80
-        namespace: dev
+    consul:
+      host: consul.internal-home.com
+      port: 80
+      config:
+        format: yaml
+        prefixes: config
+        default-context: portal
   datasource:
     primary:
       type: com.zaxxer.hikari.HikariDataSource
