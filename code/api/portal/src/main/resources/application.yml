@@ -96,7 +96,7 @@ ali:
     example1:
       sign-name: 测试名称
       template-code: SMS_12345678
-#eureka:
-#  client:
-#    service-url:
-#      defaultZone: http://192.168.2.21:8761/eureka/
+eureka:
+  client:
+    service-url:
+      defaultZone: http://192.168.2.21:8761/eureka/
