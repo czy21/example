@@ -20,6 +20,5 @@ spring:
         prefixes: ${ENV_NAME}
         default-context: ${spring.application.name}
         enabled: true
-      enabled: true
   profiles:
     active: local
