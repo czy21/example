@@ -4,7 +4,6 @@ plugins {
 
 dependencies {
     api project(':application')
-    api 'org.springframework.cloud:spring-cloud-starter-consul-config'
 }
 
 if (project.rootProject.hasProperty("extraConfig")) {
