@@ -1,10 +1,8 @@
 server:
   port: 8080
-  servlet:
-    context-path: /portal
 spring:
   application:
-    name: portal
+    name: gateway
   config:
     import: consul:consul.internal-home.com:80
   cloud:
