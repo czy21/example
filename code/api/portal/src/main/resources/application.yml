@@ -14,5 +14,8 @@ spring:
         prefixes: dev
         default-context: ${spring.application.name}
         enabled: false
+      discovery:
+        prefer-ip-address: true
+        instance
   profiles:
     active: local

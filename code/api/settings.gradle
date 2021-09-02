@@ -5,6 +5,3 @@ include("cooperated")
 include("domain")
 include("infrastructure")
 include("external")
-
-include("eureka")
-include("config")
