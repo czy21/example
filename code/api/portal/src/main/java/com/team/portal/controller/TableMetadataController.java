@@ -2,7 +2,7 @@ package com.team.portal.controller;
 
 import com.team.application.service.TableMetadataService;
 import com.team.cooperated.controller.BaseController;
-import com.team.domain.mongo.entity.TableMetadataEntity;
+import com.team.domain.mongo.entity.HBaseTableMetadataEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +21,7 @@ public class TableMetadataController extends BaseController {
     TableMetadataService tableMetadataService;
 
     @PostMapping(path = "findAll")
-    public TableMetadataEntity findAll() {
+    public HBaseTableMetadataEntity findAll() {
         return tableMetadataService.findOne("big_demo", "sale");
     }
 
