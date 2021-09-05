@@ -1,0 +1,52 @@
+db.met_table.insertMany(
+    [
+        {
+            "tableName": "ent_user",
+            "columns": [
+                {
+                    "name": "name",
+                    "type": "String",
+                    "desc": "机构名称"
+                },
+                {
+                    "name": "provinceCode",
+                    "type": "String",
+                    "desc": "省份编码"
+                },
+                {
+                    "name": "provinceName",
+                    "type": "String",
+                    "desc": "省份名称"
+                }
+            ]
+        },
+    ]
+);
+db.met_table_extension.insertMany(
+    [
+        {
+            "tableName": "ent_user",
+            "tenantId": "1",
+            "columns": [
+                {
+                    "name": "age",
+                    "type": "String",
+                    "desc": "年龄"
+                },
+            ]
+        },
+        {
+            "tableName": "ent_user",
+            "tenantId": "2",
+            "columns": [
+                {
+                    "name": "gender",
+                    "type": "String",
+                    "desc": "性别"
+                },
+            ]
+        },
+    ]
+);
+
+
