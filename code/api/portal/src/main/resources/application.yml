@@ -3,8 +3,8 @@ server:
 spring:
   application:
     name: portal
-#  config:
-#    import: consul:consul.internal-home.com:80
+  config:
+    import: consul:consul.internal-home.com:80
   cloud:
     consul:
       host: consul.internal-home.com
@@ -13,6 +13,9 @@ spring:
         format: yaml
         prefixes: dev
         default-context: ${spring.application.name}
-        enabled: false
-  profiles:
-    active: local
+        enabled: true
+      discovery:
+        health-check-critical-timeout: 10s
+         
+#  profiles:
+#    active: local
