@@ -7,7 +7,7 @@ import com.team.application.service.HBaseService;
 import com.team.application.service.PersistService;
 import com.team.application.service.TableMetadataService;
 import com.team.domain.entity.SaleEntity;
-import com.team.domain.mongo.entity.TableMetadataEntity;
+import com.team.domain.mongo.entity.HBaseTableMetadataEntity;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.MutablePair;
@@ -45,7 +45,7 @@ public class HbasePersistServiceImpl implements PersistService {
     @SneakyThrows
     @Override
     public void persist(List<SaleEntity> maps, SaleServiceImpl.MigrateContext context) {
-        TableMetadataEntity metadata = tableMetadataService.findOne(NAMESPACE, TABLE_NAME);
+        HBaseTableMetadataEntity metadata = tableMetadataService.findOne(NAMESPACE, TABLE_NAME);
         List<MutablePair<String, Map<String, Map<String, Object>>>> datas = new ArrayList<>();
         for (var t : maps) {
             Map<String, Object> flatValue = objectMapper.readValue(objectMapper.writeValueAsString(t), new TypeReference<>() {

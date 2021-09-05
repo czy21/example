@@ -4,7 +4,7 @@ import com.team.application.service.TableMetadataService;
 import com.team.application.service.HBaseService;
 import com.team.application.service.impl.HbasePersistServiceImpl;
 import com.team.cooperated.controller.BaseController;
-import com.team.domain.mongo.entity.TableMetadataEntity;
+import com.team.domain.mongo.entity.HBaseTableMetadataEntity;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,7 +36,7 @@ public class HBaseController extends BaseController {
 
     @PostMapping(path = "createTable")
     public Map<String, Object> createTable(@RequestBody Map<String, Object> input) {
-        TableMetadataEntity entity = tableMetadataService.findOne(HbasePersistServiceImpl.NAMESPACE, HbasePersistServiceImpl.TABLE_NAME);
+        HBaseTableMetadataEntity entity = tableMetadataService.findOne(HbasePersistServiceImpl.NAMESPACE, HbasePersistServiceImpl.TABLE_NAME);
         hBaseService.createTable(StringUtils.join(List.of(entity.getNamespace(), entity.getTableName()), ":"), new ArrayList<>(entity.getColumnFamily().keySet()));
         return Map.of("status", "success");
     }

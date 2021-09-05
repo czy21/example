@@ -22,7 +22,7 @@ const columns = [
 
 let load = () => {
     // console.log(process.env)
-    api.post("user/search", {}).then(data => {
+    api.post("portal/user/search", {}).then(data => {
         console.log(data)
     })
 }
