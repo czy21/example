@@ -9,9 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @EqualsAndHashCode(callSuper = true)
 @Data
 @Document(collection = "ent_institution")
-public class InstitutionEntity extends ExtensionModel {
+public class UserEntity extends ExtensionModel {
     private String id;
     private String name;
-    @Field("tenant_id")
     private String tenantId;
 }

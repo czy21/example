@@ -22,4 +22,12 @@ public class DynamicModelController {
         String tenantId = (String) input.get("tenantId");
         return institutionRepository.findByTenantId(tenantId);
     }
+
+    @PostMapping(path = "save")
+    public List<?> save(@RequestBody Map<String, Object> input) {
+
+        institutionRepository.save()
+        return institutionRepository.findByTenantId(tenantId);
+    }
+
 }

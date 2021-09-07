@@ -1,10 +1,10 @@
 package com.team.domain.mongo.repository;
 
-import com.team.domain.mongo.entity.InstitutionEntity;
+import com.team.domain.mongo.entity.UserEntity;
 import com.team.infrastructure.base.MongoBaseRepository;
 
 import java.util.List;
 
-public interface InstitutionRepository extends MongoBaseRepository<InstitutionEntity, String> {
-    List<InstitutionEntity> findByTenantId(String tenantId);
+public interface InstitutionRepository extends MongoBaseRepository<UserEntity, String> {
+    List<UserEntity> findByTenantId(String tenantId);
 }
