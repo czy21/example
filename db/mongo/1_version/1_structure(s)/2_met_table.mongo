@@ -1,7 +1,7 @@
 db.met_table.insertMany(
     [
         {
-            "tableName": "ent_user",
+            "name": "ent_user",
             "columns": [
                 {
                     "name": "name",
@@ -25,26 +25,26 @@ db.met_table.insertMany(
 db.met_table_extension.insertMany(
     [
         {
-            "tableName": "ent_user",
-            "tenantId": "1",
+            "name": "ent_user",
             "columns": [
                 {
                     "name": "age",
                     "type": "String",
                     "desc": "年龄"
                 },
-            ]
+            ],
+            "tenantId": "1"
         },
         {
-            "tableName": "ent_user",
-            "tenantId": "2",
+            "name": "ent_user",
             "columns": [
                 {
                     "name": "gender",
                     "type": "String",
                     "desc": "性别"
                 },
-            ]
+            ],
+            "tenantId": "2"
         },
     ]
 );

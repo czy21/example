@@ -1,4 +1,4 @@
-package com.team.domain.dynamic;
+package com.team.domain.listener;
 
 import com.team.domain.mongo.entity.ExtensionModel;
 import lombok.extern.slf4j.Slf4j;
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 @Component
 @Slf4j
-public class BeforeConvertListener extends AbstractMongoEventListener<Object> {
+public class DynamicExtensionMongoListener extends AbstractMongoEventListener<Object> {
 
     @Autowired
     MongoTemplate mongoTemplate;
