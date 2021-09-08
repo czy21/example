@@ -16,6 +16,5 @@ spring:
         enabled: true
       discovery:
         health-check-critical-timeout: 10s
-         
 #  profiles:
 #    active: local
