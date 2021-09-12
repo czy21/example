@@ -2,7 +2,7 @@ package com.team.fileresolve.listener;
 
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
-import com.team.application.ApplicationConfig;
+import com.team.application.config.QueueConfig;
 import com.team.domain.mongo.entity.FileColumnMappingEntity;
 import com.team.domain.mongo.repository.FileColumnMappingRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -37,7 +37,7 @@ public class FileListener extends AnalysisEventListener<Map<String, Object>> {
         data.put("sqlCommand", "INSERT");
         data.put("businessType", context.readSheetHolder().getSheetName());
         head.get(context.readSheetHolder().getSheetName()).forEach((k, v) -> data.put(v, data.remove(k)));
-        kafkaTemplate.send(ApplicationConfig.SPI_DATA_TOPIC, data);
+        kafkaTemplate.send(QueueConfig.SPI_DATA_TOPIC, data);
     }
 
     @Override

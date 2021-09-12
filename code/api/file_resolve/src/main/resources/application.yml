@@ -2,74 +2,17 @@ server:
   port: 8080
 spring:
   application:
-    name: erp
-  profiles:
-    active: override
-  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    type: com.mysql.cj.jdbc.MysqlDataSource
-    url: jdbc:mysql://192.168.2.23:3306/erp_local?user=admin&password=***REMOVED***&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true
-  data:
-    mongodb:
-      uri: mongodb://admin:***REMOVED***@192.168.2.23:27017/erp_local?authSource=admin
-  redis:
-    host: 192.168.2.23
-    port: 6379
-    timeout: 3600
-    password: ***REMOVED***
-  servlet:
-    multipart:
-      max-request-size: 100MB
-      max-file-size: 100MB
-  rabbitmq:
-    addresses: root:***REMOVED***@192.168.2.23:5672
-  kafka:
-    bootstrap-servers: 192.168.2.21:9092,192.168.2.21:9093
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
-      batch-size: 20000
-    consumer:
-      group-id: consumers
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-
-  batch:
-    job:
-      enabled: false
-
-mybatis-plus:
-  mapper-locations: classpath*:mapper/**/**.xml
-  type-aliases-package: com.team.domain.entity
-  type-aliases-super-type: com.team.infrastructure.base.BaseEntity
-  global-config:
-    db-config:
-      id-type: uuid
-    banner: false
-
-logging:
-  level:
-    com.team.domain.mapper: debug
-    org.springframework.web.filter.CommonsRequestLoggingFilter: debug
-    org.springframework.jdbc.core: debug
-    org.springframework.data.mongodb.core: debug
-
-ali:
-  access-key:
-    id: 2222
-    secret: 12345679
-  pay:
-    public-key-file: ./alipay/ali-public
-    app-private-key-file: ./alipay/app-private
-    server-url: https://openapi.alipaydev.com/gateway.do
-    app:
-      sample1:
-        app-id: 2016102900777119
-        scene: bar_code
-  oss:
-    example1:
-      end-point: www.baidu.com
-  sms:
-    example1:
-      sign-name: 测试名称
-      template-code: SMS_12345678
+    name: file-resolve
+  config:
+    import: consul:consul.cluster2.com:80
+  cloud:
+    consul:
+      host: consul.internal-home.com
+      port: 80
+      config:
+        format: yaml
+        prefixes: dev
+        default-context: ${spring.application.name}
+        enabled: true
+#  profiles:
+#    active: local

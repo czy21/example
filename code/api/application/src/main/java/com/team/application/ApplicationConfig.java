@@ -12,8 +12,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @Configuration
 public class ApplicationConfig {
 
-    public static final String SPI_FILE_TOPIC = "spiFileTopic";
-    public static final String SPI_DATA_TOPIC = "spiDataTopic";
     @Value("${hbase.zookeeper.quorum}")
     private String zookeeper;
 

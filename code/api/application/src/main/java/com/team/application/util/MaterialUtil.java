@@ -1,5 +1,6 @@
 package com.team.application.util;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.ObjectUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.http.client.utils.URIBuilder;
@@ -27,7 +28,7 @@ public class MaterialUtil {
             subDirs.addAll(0, dirs.subList(1, dirs.size()));
         }
         File file = Path.of(dir[0], subDirs.toArray(new String[]{})).toFile().getAbsoluteFile();
-//        FileUtils.forceMkdirParent(file);
+        FileUtils.forceMkdirParent(file);
         return file;
     }
 

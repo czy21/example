@@ -2,7 +2,7 @@ package com.team.fileresolve.receiver;
 
 import com.alibaba.excel.EasyExcel;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.team.application.ApplicationConfig;
+import com.team.application.config.QueueConfig;
 import com.team.application.model.vo.MaterialVO;
 import com.team.application.util.MaterialUtil;
 import com.team.domain.entity.MaterialEntity;
@@ -30,8 +30,8 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
-public class FileResolveReceiver {
+//@Component
+public class KafkaReceiver {
 
     @Autowired
     RabbitTemplate rabbitTemplate;
@@ -64,17 +64,12 @@ public class FileResolveReceiver {
         return factory;
     }
 
-    @KafkaListener(topics = ApplicationConfig.SPI_FILE_TOPIC, containerFactory = "kafkaListenerContainerFactory")
+    @KafkaListener(topics = QueueConfig.SPI_FILE_TOPIC, containerFactory = "kafkaListenerContainerFactory")
     public void materialTopicReceive(MaterialVO materialvo) throws IOException {
         MaterialEntity materialEntity = materialMapper.selectById(materialvo.getUid());
         File f = MaterialUtil.getFile(materialEntity.getPath(), materialEntity.getMaterialTarget().getRootPath());
         EasyExcel.read(f, new FileListener(kafkaTemplate, fileColumnMappingRepository)).sheet().doRead();
     }
-
-//    @KafkaListener(topics = ApplicationConfig.SPI_DATA_TOPIC)
-//    public void spiDataTopicReceive(List<Map<String, Object>> datas) {
-//        System.out.println(datas.size());
-//    }
 
 
 }
