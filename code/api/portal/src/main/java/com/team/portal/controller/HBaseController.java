@@ -28,36 +28,36 @@ public class HBaseController extends BaseController {
     @Autowired
     private TableMetadataService tableMetadataService;
 
-    @PostMapping(path = "createNamespace")
-    public Map<String, Object> createNamespace() {
-        hBaseService.createNamespace(HbasePersistServiceImpl.NAMESPACE);
-        return Map.of("status", "success");
-    }
-
-    @PostMapping(path = "createTable")
-    public Map<String, Object> createTable(@RequestBody Map<String, Object> input) {
-        HBaseTableMetadataEntity entity = tableMetadataService.findOne(HbasePersistServiceImpl.NAMESPACE, HbasePersistServiceImpl.TABLE_NAME);
-        hBaseService.createTable(StringUtils.join(List.of(entity.getNamespace(), entity.getTableName()), ":"), new ArrayList<>(entity.getColumnFamily().keySet()));
-        return Map.of("status", "success");
-    }
-
-    @PostMapping(path = "save")
-    public Map<String, Object> save() {
-        hBaseService.save(HbasePersistServiceImpl.NAMESPACE + ":" + HbasePersistServiceImpl.TABLE_NAME, "1", Map.of("name", Map.of("1", "陈", "2", "昭宇0")));
-        return Map.of("status", "success");
-    }
-
-    @PostMapping(path = "get")
-    public Map<String, Object> get() {
-        return hBaseService.get(HbasePersistServiceImpl.NAMESPACE + ":" + HbasePersistServiceImpl.TABLE_NAME, "1");
-    }
-
-
-    @PostMapping(path = "countSale")
-    public Map<String,Object> countSale(){
-        var count=hBaseService.count(HbasePersistServiceImpl.NAMESPACE + ":" + HbasePersistServiceImpl.TABLE_NAME);
-        return Map.of("count",count);
-    }
+//    @PostMapping(path = "createNamespace")
+//    public Map<String, Object> createNamespace() {
+//        hBaseService.createNamespace(HbasePersistServiceImpl.NAMESPACE);
+//        return Map.of("status", "success");
+//    }
+//
+//    @PostMapping(path = "createTable")
+//    public Map<String, Object> createTable(@RequestBody Map<String, Object> input) {
+//        HBaseTableMetadataEntity entity = tableMetadataService.findOne(HbasePersistServiceImpl.NAMESPACE, HbasePersistServiceImpl.TABLE_NAME);
+//        hBaseService.createTable(StringUtils.join(List.of(entity.getNamespace(), entity.getTableName()), ":"), new ArrayList<>(entity.getColumnFamily().keySet()));
+//        return Map.of("status", "success");
+//    }
+//
+//    @PostMapping(path = "save")
+//    public Map<String, Object> save() {
+//        hBaseService.save(HbasePersistServiceImpl.NAMESPACE + ":" + HbasePersistServiceImpl.TABLE_NAME, "1", Map.of("name", Map.of("1", "陈", "2", "昭宇0")));
+//        return Map.of("status", "success");
+//    }
+//
+//    @PostMapping(path = "get")
+//    public Map<String, Object> get() {
+//        return hBaseService.get(HbasePersistServiceImpl.NAMESPACE + ":" + HbasePersistServiceImpl.TABLE_NAME, "1");
+//    }
+//
+//
+//    @PostMapping(path = "countSale")
+//    public Map<String,Object> countSale(){
+//        var count=hBaseService.count(HbasePersistServiceImpl.NAMESPACE + ":" + HbasePersistServiceImpl.TABLE_NAME);
+//        return Map.of("count",count);
+//    }
 
     @PostMapping(path = "testp")
     public Map<String,Object> testP(){

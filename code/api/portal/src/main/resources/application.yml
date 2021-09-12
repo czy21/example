@@ -14,7 +14,6 @@ spring:
         prefixes: dev
         default-context: ${spring.application.name}
         enabled: true
-      discovery:
-        health-check-critical-timeout: 10s
+
 #  profiles:
 #    active: local
