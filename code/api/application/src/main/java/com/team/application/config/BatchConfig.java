@@ -1,11 +1,6 @@
 package com.team.application.config;
 
-import com.team.application.ApplicationConfig;
-import com.team.domain.entity.SaleEntity;
-import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.mybatis.spring.SqlSessionTemplate;
-import org.mybatis.spring.batch.builder.MyBatisBatchItemWriterBuilder;
 import org.mybatis.spring.batch.builder.MyBatisPagingItemReaderBuilder;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
@@ -15,20 +10,15 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
-import org.springframework.batch.item.KeyValueItemWriter;
-import org.springframework.batch.item.kafka.KafkaItemWriter;
-import org.springframework.batch.item.kafka.builder.KafkaItemWriterBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.task.SimpleAsyncTaskExecutor;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.kafka.core.KafkaTemplate;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @Configuration
@@ -65,7 +55,7 @@ public class BatchConfig {
     public ItemWriter<Map<String, Object>> writer(SqlSessionFactory sqlSessionFactory) {
         return items -> items.forEach(t -> {
             t.put("sqlCommand", "UPDATE");
-            kafkaTemplate.send(ApplicationConfig.SPI_DATA_TOPIC, t);
+            kafkaTemplate.send(QueueConfig.SPI_DATA_TOPIC, t);
         });
     }
 

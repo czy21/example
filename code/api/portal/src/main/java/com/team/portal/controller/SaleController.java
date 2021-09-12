@@ -1,7 +1,7 @@
 package com.team.portal.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.team.application.ApplicationConfig;
+import com.team.application.config.QueueConfig;
 import com.team.application.model.vo.FileVO;
 import com.team.application.model.vo.MaterialVO;
 import com.team.application.service.MaterialService;
@@ -39,25 +39,26 @@ public class SaleController extends BaseController {
     ObjectMapper objectMapper;
     @Autowired
     KafkaTemplate<String, Object> kafkaTemplate;
-
     @Autowired
     JobLauncher jobLauncher;
     @Autowired
     Job rinseJob;
-
     @Autowired
     SaleService saleService;
 
-    @PostMapping(path = "upload")
-    public MaterialVO upload(FileVO fileVO) throws IOException {
+    @PostMapping(path = "uploadByKafka")
+    public MaterialVO uploadByKafka(FileVO fileVO) throws IOException {
         MaterialVO materialVO = materialService.upload(fileVO, "DEFAULT");
-        kafkaTemplate.send(ApplicationConfig.SPI_FILE_TOPIC, materialVO);
+        kafkaTemplate.send(QueueConfig.SPI_FILE_TOPIC, materialVO);
         return materialVO;
     }
 
-    @PostMapping(path = "redisTest")
-    public Map<String, Object> redisTest() {
-        return Map.of();
+    @PostMapping(path = "uploadByRabbit")
+    public MaterialVO uploadByRabbit(FileVO fileVO) throws IOException {
+        MaterialVO materialVO = materialService.upload(fileVO, "DEFAULT");
+//        kafkaTemplate.send(QueueConfig.SPI_FILE_TOPIC, materialVO);
+        rabbitTemplate.convertAndSend(QueueConfig.SPI_FILE_TOPIC, "hello");
+        return materialVO;
     }
 
     @PostMapping(path = "submitJob")
