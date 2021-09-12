@@ -2,6 +2,7 @@ package com.team.fileresolve.receiver;
 
 import com.alibaba.excel.EasyExcel;
 import com.team.application.config.QueueConfig;
+import com.team.application.model.vo.MaterialVO;
 import com.team.application.util.MaterialUtil;
 import com.team.domain.entity.MaterialEntity;
 import com.team.domain.mapper.MaterialMapper;
@@ -19,7 +20,7 @@ public class RabbitReceiver {
     MaterialMapper materialMapper;
 
     @RabbitListener(queues = QueueConfig.SPI_FILE_TOPIC)
-    public void receive(String message) {
+    public void receive(MaterialVO materialVO) {
         System.out.println("aaa");
 //        MaterialEntity materialEntity = materialMapper.selectById(materialvo.getUid());
 //        File f = MaterialUtil.getFile(materialEntity.getPath(), materialEntity.getMaterialTarget().getRootPath());

@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 @Data
-@Document(collection = "ent_file_column_mapping")
+@Document(collection = "met_file_column_mapping")
 public class FileColumnMappingEntity {
     private String id;
     private String tableName;

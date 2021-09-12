@@ -56,8 +56,7 @@ public class SaleController extends BaseController {
     @PostMapping(path = "uploadByRabbit")
     public MaterialVO uploadByRabbit(FileVO fileVO) throws IOException {
         MaterialVO materialVO = materialService.upload(fileVO, "DEFAULT");
-//        kafkaTemplate.send(QueueConfig.SPI_FILE_TOPIC, materialVO);
-        rabbitTemplate.convertAndSend(QueueConfig.SPI_FILE_TOPIC, "hello");
+        rabbitTemplate.convertAndSend(QueueConfig.SPI_FILE_TOPIC, materialVO);
         return materialVO;
     }
 
