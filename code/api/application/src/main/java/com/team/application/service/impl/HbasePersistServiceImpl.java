@@ -38,7 +38,8 @@ public class HbasePersistServiceImpl implements PersistService {
 
     @Override
     public int count() {
-        return hBaseService.count(NAMESPACE + ":" + TABLE_NAME);
+//        return hBaseService.count(NAMESPACE + ":" + TABLE_NAME);
+        return 0;
     }
 
     @ProcessMonitor
@@ -61,6 +62,6 @@ public class HbasePersistServiceImpl implements PersistService {
                     .collect(HashMap::new, Map::putAll, Map::putAll);
             datas.add(MutablePair.of(UUID.randomUUID().toString().replace("-", ""), data));
         }
-        hBaseService.saveAll(NAMESPACE + ":" + TABLE_NAME, datas);
+//        hBaseService.saveAll(NAMESPACE + ":" + TABLE_NAME, datas);
     }
 }
