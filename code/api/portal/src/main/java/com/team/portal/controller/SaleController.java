@@ -10,6 +10,7 @@ import com.team.application.service.SaleService;
 import com.team.cooperated.controller.BaseController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
@@ -56,6 +57,7 @@ public class SaleController extends BaseController {
     @PostMapping(path = "uploadByRabbit")
     public MaterialVO uploadByRabbit(FileVO fileVO) throws IOException {
         MaterialVO materialVO = materialService.upload(fileVO, "DEFAULT");
+        rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
         rabbitTemplate.convertAndSend(QueueConfig.SPI_FILE_TOPIC, materialVO);
         return materialVO;
     }
