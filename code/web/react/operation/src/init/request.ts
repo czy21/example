@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-
 enum Method {
     GET = "GET",
     POST = "POST",
@@ -50,5 +49,3 @@ export default {
         return apiAxios(Method.DELETE, url, params)
     }
 };
-
-

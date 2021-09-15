@@ -1,7 +1,10 @@
-import * as ref from '@/init/ref'
+import * as ref from '@/init/reference'
 import {default as util} from '@/util'
+import {default as api} from '@/init/request'
 
-export default {
+const stub = {
+    api,
     ref,
     util
 }
+export default stub
