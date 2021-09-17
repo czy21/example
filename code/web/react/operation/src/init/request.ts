@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-
 enum Method {
     GET = "GET",
     POST = "POST",
@@ -48,18 +47,5 @@ export default {
     },
     delete: (url: string, params?: any) => {
         return apiAxios(Method.DELETE, url, params)
-    },
-    graphql: {
-        get: (params: any) => {
-            return apiAxios(Method.GET, 'graphql', params)
-        },
-        post: (params: any) => {
-            return apiAxios(Method.POST, 'graphql', params)
-        }
-    },
-    test: (name: string) => {
-        return name
     }
 };
-
-
