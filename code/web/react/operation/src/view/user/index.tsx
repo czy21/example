@@ -1,10 +1,9 @@
 import React from "react";
 import {Button, Table} from "antd";
-import api from "@/api"
 import stub from "@/init";
 
 
-const records=[]
+const records: any = []
 
 let load = () => {
     // console.log(process.env)
