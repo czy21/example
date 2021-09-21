@@ -11,14 +11,15 @@ const service = axios.create({
     baseURL: '/api',
     timeout: 5000,
 });
-service.interceptors.request.use(request => {
-        return request;
-    },
-    error => Promise.reject(error));
+service.interceptors.request.use(
+    request => request,
+    error => Promise.reject(error)
+);
 
 service.interceptors.response.use(
     response => response,
-    error => Promise.reject(error));
+    error => Promise.reject(error)
+);
 
 function apiAxios(method: Method, url: string, params: any) {
     return new Promise((resolve, reject) => {
