@@ -7,7 +7,7 @@ const records: any = []
 
 let load = () => {
     // console.log(process.env)
-    api.post("portal/user/search", {}).then(data => {
+    stub.api.post("portal/user/search", {}).then(data => {
         console.log(data)
     })
 }
