@@ -61,7 +61,7 @@ if __name__ == '__main__':
     print('MainThread %s is running...' % threading.current_thread().name)
     result = []
     with ThreadPoolExecutor(16) as executor:
-        for data in executor.map(stock_reduce, range(1)):
+        for data in executor.map(stock_reduce, range(15)):
             result.append(data)
     p = list(sorted(result, key=lambda x: x["start_time"]))
     for t in p:
