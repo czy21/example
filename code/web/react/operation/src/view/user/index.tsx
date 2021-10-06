@@ -7,9 +7,9 @@ const records: any = []
 
 let load = () => {
     // console.log(process.env)
-    // api.post("portal/user/search", {}).then(data => {
-    //     console.log(data)
-    // })
+    stub.api.post("portal/user/search", {}).then(data => {
+        console.log(data)
+    })
 }
 
 export default class Index extends React.Component<any, any> {
