@@ -2,7 +2,7 @@ server:
   port: 8080
 spring:
   application:
-    name: gateway
+    name: erp-gateway
   config:
     import: consul:consul.cluster2.com:80
   cloud:
@@ -11,6 +11,5 @@ spring:
         format: yaml
         prefixes: ${ENV_NAME}
         default-context: ${spring.application.name}
-        enabled: true
   profiles:
     active: local

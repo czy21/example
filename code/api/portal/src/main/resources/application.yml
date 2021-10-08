@@ -7,10 +7,7 @@ spring:
     import: consul:consul.cluster2.com:80
   cloud:
     consul:
-      host: consul.internal-home.com
-      port: 80
       config:
         format: yaml
-        prefixes: dev
+        prefixes: ${ENV_NAME}
         default-context: ${spring.application.name}
-        enabled: true
