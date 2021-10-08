@@ -14,6 +14,3 @@ spring:
         prefixes: dev
         default-context: ${spring.application.name}
         enabled: true
-
-#  profiles:
-#    active: local
