@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 import java.util.Map;
 
+@RefreshScope
 @RestController
 @RequestMapping("user")
 public class UserController extends BaseController {
@@ -75,6 +76,14 @@ public class UserController extends BaseController {
         parametersBuilder.addDate("commitDate", new Date());
         jobLauncher.run(rinseJob, parametersBuilder.toJobParameters());
         return Map.of();
+    }
+
+    @Value("${a}")
+    private String a;
+
+    @GetMapping(path = "yamlTest")
+    public Map<String,Object> yamlTest(){
+        return Map.of("a",a);
     }
 
 }
