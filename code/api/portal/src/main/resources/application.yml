@@ -6,10 +6,10 @@ spring:
   cloud:
     consul:
       config:
+        acl-token: 7e6ce9c4-99ff-bffd-e05b-bef52c207fd8
         format: YAML
         prefixes:
           - "dev-erp-common"
-          - "dev-erp-portal"
-        acl-token: 7e6ce9c4-99ff-bffd-e05b-bef52c207fd8
+          - "dev-${spring.application.name}"
   profiles:
     active: local
