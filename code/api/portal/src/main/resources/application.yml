@@ -8,6 +8,8 @@ spring:
       config:
         format: YAML
         prefixes:
-          - "${ENV_NAME}-${spring.application.name}"
+          - "dev-erp-common"
+          - "dev-erp-portal"
+        acl-token: 7e6ce9c4-99ff-bffd-e05b-bef52c207fd8
   profiles:
     active: local
