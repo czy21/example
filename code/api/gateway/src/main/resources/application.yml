@@ -6,7 +6,7 @@ spring:
   cloud:
     consul:
       config:
-        acl-token: 7e6ce9c4-99ff-bffd-e05b-bef52c207fd8
+        acl-token: 995c639f-ee48-f6e3-c6bc-ae5332e93b7f
         format: YAML
         prefixes:
           - "dev-${spring.application.name}"
