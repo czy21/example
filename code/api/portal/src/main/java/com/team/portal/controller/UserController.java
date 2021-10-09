@@ -78,13 +78,5 @@ public class UserController extends BaseController {
         return Map.of();
     }
 
-    @Value("${a}")
-    private String a;
-
-    @GetMapping(path = "yamlTest")
-    public Map<String,Object> yamlTest(){
-        return Map.of("a",a);
-    }
-
 }
 
