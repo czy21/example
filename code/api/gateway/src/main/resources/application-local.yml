@@ -1,8 +1,2 @@
-#spring:
-#  cloud:
-#    gateway:
-#      routes:
-#        - id: portal
-#          uri: http://localhost:8080
-#          predicates:
-#            - Path=/portal/**
+server:
+  port: 8090

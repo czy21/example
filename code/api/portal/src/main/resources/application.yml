@@ -1,5 +1,3 @@
-server:
-  port: 8080
 spring:
   application:
     name: erp-portal
@@ -10,5 +8,6 @@ spring:
       config:
         format: YAML
         prefixes:
-          - "dev-erp-common"
-          - "dev-${spring.application.name}"
+          - "${ENV_NAME}-${spring.application.name}"
+  profiles:
+    active: local
