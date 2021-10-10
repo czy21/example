@@ -1,10 +1,10 @@
 spring:
   application:
     name: erp-portal
+  config:
+    import: optional:consulconsul.cluster2.com:80
   cloud:
     consul:
-      host: consul.cluster2.com
-      port: 80
       config:
         acl-token: anonymous
         format: YAML
