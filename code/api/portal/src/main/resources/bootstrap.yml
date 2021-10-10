@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: erp-portal
+  cloud:
+    consul:
+      host: consul.cluster2.com
+      port: 80
+      config:
+        acl-token: anonymous
+        format: YAML
+        prefixes:
+          - "dev-erp-common"
+          - "dev-erp-portal"
+  profiles:
+    active: local

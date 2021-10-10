@@ -1,12 +1,12 @@
 spring:
   application:
     name: erp-gateway
-  config:
-    import: consul:consul.cluster2.com:80
   cloud:
     consul:
+      host: consul.cluster2.com
+      port: 80
       config:
-        acl-token: 995c639f-ee48-f6e3-c6bc-ae5332e93b7f
+        acl-token: anonymous
         format: YAML
         prefixes:
           - "dev-${spring.application.name}"
