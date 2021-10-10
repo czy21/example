@@ -6,6 +6,7 @@ plugins {
 subprojects {
     apply plugin: 'java-library'
     apply plugin: 'idea'
+    apply plugin: 'maven-publish'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
     group = 'com.team'
@@ -42,6 +43,17 @@ subprojects {
         testCompileOnly "org.projectlombok:lombok:1.18.10"
         testAnnotationProcessor "org.projectlombok:lombok:1.18.10"
         testImplementation "org.springframework.boot:spring-boot-starter-test:2.3.3.RELEASE"
+    }
 
+    jar {
+        enabled = false
+    }
+
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                artifact bootJar
+            }
+        }
     }
 }

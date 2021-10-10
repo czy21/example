@@ -1,3 +1,4 @@
 dependencies {
     api 'org.springframework.cloud:spring-cloud-starter-gateway'
 }
+bootJar.enabled = true
