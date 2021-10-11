@@ -44,15 +44,11 @@ subprojects {
         testAnnotationProcessor "org.projectlombok:lombok:1.18.10"
         testImplementation "org.springframework.boot:spring-boot-starter-test:2.3.3.RELEASE"
     }
-
-    jar {
-        enabled = false
-    }
-
     publishing {
         publications {
             mavenJava(MavenPublication) {
-                artifact bootJar
+                jar.archiveClassifier = ""
+                from components.java
             }
         }
     }
