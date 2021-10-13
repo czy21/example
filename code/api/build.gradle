@@ -47,7 +47,6 @@ subprojects {
     publishing {
         publications {
             mavenJava(MavenPublication) {
-                jar.archiveClassifier = ""
                 from components.java
             }
         }
