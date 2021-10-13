@@ -33,7 +33,7 @@ public class MQController {
         rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
         log.info(StringUtils.join(List.of("==========", start), " "));
         IntStream.rangeClosed(start, end).forEach(t -> {
-            rabbitTemplate.convertAndSend(QueueConfig.ThroughputTest1_TOPIC, Map.of("id",t);
+            rabbitTemplate.convertAndSend(QueueConfig.ThroughputTest1_TOPIC, Map.of("id",t));
         });
         log.info(StringUtils.join(List.of("==========", end), " "));
         return Map.of("start", start, "end", end);
