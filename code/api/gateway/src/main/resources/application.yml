@@ -2,7 +2,7 @@ spring:
   application:
     name: erp-gateway
   config:
-    import: optional:consul:consul.cluster2.com:80
+    import: optional:consul:consul.cluster.com:80
   cloud:
     consul:
       config:
