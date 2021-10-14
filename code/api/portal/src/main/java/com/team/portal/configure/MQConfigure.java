@@ -18,6 +18,7 @@ import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.annotation.EnableKafka;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 @Configuration
+@EnableKafka
 @Slf4j
 public class MQConfigure {
 
