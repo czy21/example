@@ -7,11 +7,6 @@ CREATE TABLE `ent_migrate_performance_log`  (
   `duration`  decimal(19,9) null,
   `sequence` int null,
   `batch_id` varchar(36) null,
-`created_date` TIMESTAMP(6) DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
-                          `created_user` varchar(36) DEFAULT NULL,
-                          `modified_date` TIMESTAMP(6) DEFAULT CURRENT_TIMESTAMP(6) ON UPDATE CURRENT_TIMESTAMP(6),
-                          `modified_user` varchar(36) DEFAULT NULL,
+  ${{{TrackedColumns}}},
   PRIMARY KEY (`id`)
 ) COMMENT='迁移性能日志';
-
---   ${{{TrackedColumns}}},
