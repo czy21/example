@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class QueueConfig {
 
-    public static final String SPI_FILE_TOPIC = "spiFileTopic1";
+    public static final String SPI_FILE_TOPIC = "spiFileTopic";
     public static final String SPI_DATA_TOPIC = "spiDataTopic";
     public static final String ThroughputTest1_TOPIC = "ThroughputTest1";
 
