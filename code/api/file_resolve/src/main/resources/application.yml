@@ -1,18 +1,15 @@
-server:
-  port: 8080
 spring:
   application:
-    name: file-resolve
+    name: erp-file-resolve
   config:
-    import: consul:consul.cluster2.com:80
+    import: optional:consul:consul.cluster.com:80
   cloud:
     consul:
-      host: consul.internal-home.com
-      port: 80
       config:
-        format: yaml
-        prefixes: dev
-        default-context: ${spring.application.name}
-        enabled: true
-#  profiles:
-#    active: local
+        acl-token: anonymous
+        format: YAML
+        prefixes:
+          - "dev-erp-common"
+          - "dev-erp-portal"
+  profiles:
+    active: local
