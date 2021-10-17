@@ -33,38 +33,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Configuration
-@EnableKafka
 @Slf4j
 public class MQConfigure {
-
-    @Autowired
-    ObjectMapper objectMapper;
-    @Autowired
-    RabbitTemplate rabbitTemplate;
-
-
-    @Bean
-    public MessageConverter jsonMessageConverter() {
-        return new Jackson2JsonMessageConverter();
-    }
-
-    @Bean
-    public RecordMessageConverter converter() {
-        return new StringJsonMessageConverter();
-    }
-
-    @RabbitListener(queues = QueueConfig.ThroughputTest1_TOPIC, concurrency = "1", ackMode = "MANUAL")
-    public void ThroughputTest1_TOPIConsumer(Map<String, Object> data, Message message, Channel channel) throws IOException {
-//        messages.add(data);
-        log.info(objectMapper.writeValueAsString(data));
-//        log.info(""+messages.size());
-        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
-    }
-
-
-    @KafkaListener(groupId = "fileGroup", topics = QueueConfig.SPI_FILE_TOPIC)
-    public void materialTopicReceive(Map<String, Object> message) throws IOException {
-        log.info(message.toString());
-    }
 
 }

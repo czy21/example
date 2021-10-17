@@ -6,6 +6,7 @@ import com.team.application.config.QueueConfig;
 import com.team.domain.mongo.entity.FileColumnMappingEntity;
 import com.team.domain.mongo.repository.FileColumnMappingRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.kafka.core.KafkaTemplate;
 
 import java.util.HashMap;
@@ -15,13 +16,12 @@ import java.util.Map;
 public class FileListener extends AnalysisEventListener<Map<String, Object>> {
 
     Map<String, Map<Integer, String>> head = new HashMap<>();
-    KafkaTemplate<String, Map<String, Object>> kafkaTemplate;
+    RabbitTemplate rabbitTemplate;
     FileColumnMappingRepository fileColumnMappingRepository;
     FileColumnMappingEntity fileColumnMappingEntity;
 
-    public FileListener(KafkaTemplate<String, Map<String, Object>> kafkaTemplate,
-                        FileColumnMappingRepository fileColumnMappingRepository) {
-        this.kafkaTemplate = kafkaTemplate;
+    public FileListener(RabbitTemplate rabbitTemplate,FileColumnMappingRepository fileColumnMappingRepository) {
+        this.rabbitTemplate=rabbitTemplate;
         this.fileColumnMappingRepository = fileColumnMappingRepository;
     }
 
@@ -36,8 +36,9 @@ public class FileListener extends AnalysisEventListener<Map<String, Object>> {
     public void invoke(Map<String, Object> data, AnalysisContext context) {
         data.put("sqlCommand", "INSERT");
         data.put("businessType", context.readSheetHolder().getSheetName());
+
         head.get(context.readSheetHolder().getSheetName()).forEach((k, v) -> data.put(v, data.remove(k)));
-        kafkaTemplate.send(QueueConfig.SPI_DATA_TOPIC, data);
+        rabbitTemplate.convertAndSend(QueueConfig.SPI_DATA_TOPIC, data);
     }
 
     @Override

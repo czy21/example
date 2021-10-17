@@ -1,6 +1,8 @@
 package com.team.application.config;
 
 import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
+import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -9,7 +11,6 @@ public class QueueConfig {
 
     public static final String SPI_FILE_TOPIC = "spiFileTopic";
     public static final String SPI_DATA_TOPIC = "spiDataTopic";
-    public static final String ThroughputTest1_TOPIC = "ThroughputTest1";
 
     @Bean
     public Queue spiFileTopic() {
@@ -22,5 +23,7 @@ public class QueueConfig {
     }
 
     @Bean
-    public Queue ThroughputTest1(){return new Queue(ThroughputTest1_TOPIC, true);}
+    public MessageConverter jsonMessageConverter() {
+        return new Jackson2JsonMessageConverter();
+    }
 }
