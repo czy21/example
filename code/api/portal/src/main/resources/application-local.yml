@@ -2,6 +2,6 @@ server:
   port: 8080
 spring:
   kafka:
-    bootstrap-servers: ${db-host}:9092
+    bootstrap-servers: ${db-host}:9092,${db-host}:9093
     producer:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
