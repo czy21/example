@@ -62,7 +62,7 @@ public class MQConfigure {
     }
 
 
-    @KafkaListener(topics = QueueConfig.SPI_FILE_TOPIC)
+    @KafkaListener(topics = QueueConfig.SPI_FILE_TOPIC,concurrency = "5")
     public void materialTopicReceive(Map<String,Object> message) throws IOException {
         log.info(message.toString());
     }

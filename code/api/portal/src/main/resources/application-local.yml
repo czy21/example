@@ -5,5 +5,6 @@ spring:
     bootstrap-servers: 192.168.2.25:9092,192.168.2.25:9093,192.168.2.25:9094
     producer:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      batch-size: 20000
     consumer:
       group-id: consumers

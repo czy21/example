@@ -44,7 +44,9 @@ public class MQController {
 
     @GetMapping(path = "kafkaTest1")
     public Map<String, Object> kafkaTest1(@RequestParam("start") Integer start, @RequestParam("end") Integer end) {
-        kafkaTemplate.send(QueueConfig.SPI_FILE_TOPIC, Map.of("name","hello"));
+        log.info(StringUtils.join(List.of("==========", start), " "));
+        IntStream.rangeClosed(start, end).forEach(t -> kafkaTemplate.send(QueueConfig.SPI_FILE_TOPIC, Map.of("name",t)));
+        log.info(StringUtils.join(List.of("==========", end), " "));
         return Map.of("start", start, "end", end);
     }
 
