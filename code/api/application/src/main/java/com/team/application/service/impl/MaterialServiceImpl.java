@@ -4,19 +4,20 @@ import com.team.application.model.dto.MaterialDTO;
 import com.team.application.model.vo.FileVO;
 import com.team.application.model.vo.MaterialVO;
 import com.team.application.service.MaterialService;
-import com.team.application.util.MaterialUtil;
 import com.team.application.util.MultipartFileUtil;
 import com.team.domain.entity.MaterialEntity;
 import com.team.domain.entity.MaterialTargetEntity;
 import com.team.domain.mapper.MaterialMapper;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
@@ -55,18 +56,20 @@ public class MaterialServiceImpl implements MaterialService {
                 break;
             case LOCAL:
                 String currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                materialEntity.setPath(MaterialUtil.ofPath(currentTime, dto.getPath()));
-                File desc = MaterialUtil.getFile(dto.getPath(), fileTarget.getRootPath(), currentTime);
-                FileOutputStream outputStream = new FileOutputStream(desc);
-                inputStream.transferTo(outputStream);
-                inputStream.close();
-                outputStream.close();
+                String relativePath = Path.of(currentTime, dto.getPath()).toString();
+                File f = FileUtils.getFile(fileTarget.getRootUrl(), fileTarget.getRootPath(), relativePath);
+                FileUtils.forceMkdirParent(f);
+                FileUtils.copyToFile(inputStream, f);
+                materialEntity.setPath(FilenameUtils.separatorsToUnix(relativePath));
                 break;
             default:
                 return null;
         }
         materialMapper.insertMaterial(materialEntity);
-        return new MaterialVO(materialEntity.getName(), MaterialUtil.ofPath(materialEntity.getMaterialTarget().getRootUrl(), materialEntity.getPath()), materialEntity.getId());
+        return new MaterialVO(materialEntity.getName(),
+                FilenameUtils.separatorsToUnix(Path.of(materialEntity.getMaterialTarget().getRootUrl(), fileTarget.getRootPath(), materialEntity.getPath()).toString()),
+                materialEntity.getId()
+        );
     }
 
 }

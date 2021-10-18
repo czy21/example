@@ -47,17 +47,9 @@ public class SaleController extends BaseController {
     @Autowired
     SaleService saleService;
 
-    @PostMapping(path = "uploadByKafka")
-    public MaterialVO uploadByKafka(FileVO fileVO) throws IOException {
-        MaterialVO materialVO = materialService.upload(fileVO, "DEFAULT");
-        kafkaTemplate.send(QueueConfig.SPI_FILE_TOPIC, materialVO);
-        return materialVO;
-    }
-
-    @PostMapping(path = "uploadByRabbit")
+    @PostMapping(path = "upload")
     public MaterialVO uploadByRabbit(FileVO fileVO) throws IOException {
         MaterialVO materialVO = materialService.upload(fileVO, "DEFAULT");
-        rabbitTemplate.setMessageConverter(new Jackson2JsonMessageConverter());
         rabbitTemplate.convertAndSend(QueueConfig.SPI_FILE_TOPIC, materialVO);
         return materialVO;
     }
