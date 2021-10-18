@@ -6,7 +6,7 @@ pluginManagement {
 }
 
 include("portal")
-include("file_resolve")
+include("file-resolve")
 include("application")
 include("cooperated")
 include("domain")
