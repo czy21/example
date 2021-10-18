@@ -1,7 +1,7 @@
 db.met_file_column_mapping.insertMany(
     [
         {
-            "tableName": "ent_sfl_inspect_sale",
+            "tableName": "ent_sale",
             "businessType": "SD",
             "fields": [
                 {

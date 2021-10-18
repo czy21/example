@@ -4,6 +4,7 @@ package com.team.domain.mongo.entity;
 import lombok.Data;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
@@ -22,8 +23,6 @@ public class FileColumnMappingEntity {
         private String column;
         private String header;
         private Integer index;
-        private String tableName;
-        private String businessType;
         private List<Map<String, Object>> validators;
     }
 }
