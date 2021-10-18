@@ -8,6 +8,7 @@ import org.apache.http.client.utils.URIBuilder;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,19 +20,6 @@ public class MaterialUtil {
     public static final String WINDOWS_PATH_SEPARATOR = "\\";
 
     public static final String URL_REGEX = "[a-zA-z]+://[^\\s]*";
-
-    public static File getFile(String fileName, String... dir) throws IOException {
-        List<String> dirs = Arrays.asList(dir);
-        List<String> subDirs = new ArrayList<>();
-        subDirs.add(fileName);
-        if (dirs.size() > 1) {
-            subDirs.addAll(0, dirs.subList(1, dirs.size()));
-        }
-        File file = Path.of(dir[0], subDirs.toArray(new String[]{})).toFile().getAbsoluteFile();
-        FileUtils.forceMkdirParent(file);
-        return file;
-    }
-
 
     private static String transToUrlPath(Path path) {
         return ObjectUtils.isNotEmpty(path.toString())
