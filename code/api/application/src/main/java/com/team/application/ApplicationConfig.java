@@ -11,9 +11,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @Configuration
 public class ApplicationConfig {
 
-    @Value("${hbase.zookeeper.quorum}")
-    private String zookeeper;
-
 //    @Bean
 //    public HBaseService hbaseService() {
 //        org.apache.hadoop.conf.Configuration config = HBaseConfiguration.create();

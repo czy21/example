@@ -10,6 +10,6 @@ spring:
         format: YAML
         prefixes:
           - "dev-erp-common"
-          - "dev-erp-portal"
+          - "dev-erp-file-resolve"
   profiles:
     active: local
