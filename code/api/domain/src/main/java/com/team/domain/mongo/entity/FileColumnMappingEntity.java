@@ -21,6 +21,9 @@ public class FileColumnMappingEntity {
         private String key;
         private String column;
         private String header;
+        private Integer index;
+        private String tableName;
+        private String businessType;
         private List<Map<String, Object>> validators;
     }
 }
