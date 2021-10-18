@@ -2,13 +2,18 @@ package com.team.fileresolve.listener;
 
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
+import com.team.application.automap.RowAutoMap;
 import com.team.application.config.QueueConfig;
+import com.team.application.kind.SqlKind;
+import com.team.application.model.RowModel;
+import com.team.domain.entity.MaterialEntity;
 import com.team.domain.mongo.entity.FileColumnMappingEntity;
 import com.team.domain.mongo.repository.FileColumnMappingRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.tuple.MutablePair;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -17,48 +22,61 @@ import java.util.stream.Collectors;
 @Slf4j
 public class FileListener extends AnalysisEventListener<Map<Integer, Object>> {
 
-    Map<String, Map<String, FileColumnMappingEntity.Field>> columnMetadata = new ConcurrentHashMap<>();
     RabbitTemplate rabbitTemplate;
     FileColumnMappingRepository fileColumnMappingRepository;
+    RowAutoMap rowAutoMap;
+    MaterialEntity materialEntity;
+    Map<String, MutablePair<FileColumnMappingEntity, Map<String, FileColumnMappingEntity.Field>>> columnMetadata = new ConcurrentHashMap<>();
 
-    public FileListener(RabbitTemplate rabbitTemplate, FileColumnMappingRepository fileColumnMappingRepository) {
+    public FileListener(RabbitTemplate rabbitTemplate,
+                        FileColumnMappingRepository fileColumnMappingRepository,
+                        RowAutoMap rowAutoMap,
+                        MaterialEntity materialEntity) {
         this.rabbitTemplate = rabbitTemplate;
         this.fileColumnMappingRepository = fileColumnMappingRepository;
+        this.rowAutoMap = rowAutoMap;
+        this.materialEntity = materialEntity;
+
     }
 
     @Override
     public void invokeHeadMap(Map<Integer, String> headMap, AnalysisContext context) {
         String currentSheet = context.readSheetHolder().getSheetName();
         var fe = fileColumnMappingRepository.findByBusinessTypeEquals(currentSheet);
-        columnMetadata.put(currentSheet, fe.getFields().stream().collect(Collectors.toMap(FileColumnMappingEntity.Field::getKey, t -> {
-            t.setBusinessType(currentSheet);
-            t.setTableName(fe.getTableName());
+        columnMetadata.put(currentSheet, MutablePair.of(fe, fe.getFields().stream().collect(Collectors.toMap(FileColumnMappingEntity.Field::getKey, t -> {
             headMap.entrySet().stream().filter(p -> p.getValue().equals(t.getHeader()))
                     .findFirst()
                     .ifPresent(h -> t.setIndex(h.getKey()));
             return t;
-        })));
+        }))));
     }
 
     @Override
     public void invoke(Map<Integer, Object> data, AnalysisContext context) {
         String businessType = context.readSheetHolder().getSheetName();
-        String sqlCommand = "INSERT";
+        Integer rowIndex = context.readRowHolder().getRowIndex();
+        var fileTableMeta = columnMetadata.get(businessType).getKey();
+        var fileFieldMeta = columnMetadata.get(businessType).getValue();
 
-        var msg = columnMetadata.get(businessType).entrySet().stream()
-                .map(t -> {
-                    Map<String, Object> obj = new HashMap<>();
-                    obj.put("businessType", businessType);
-                    obj.put("sqlCommand", sqlCommand);
-                    obj.put("tableName", t.getValue().getTableName());
-                    Integer colIndex = Optional.ofNullable(t.getValue().getIndex()).orElse(null);
+        RowModel rowModel = new RowModel();
+        rowModel.setTableName(fileTableMeta.getTableName());
+        rowModel.setBusinessType(fileTableMeta.getBusinessType());
+        rowModel.setSqlKind(SqlKind.INSERT);
+        rowModel.setFileId(materialEntity.getId());
+        rowModel.setIndex(rowIndex);
+
+        Map<String, RowModel.ColModel> rowData = fileFieldMeta.values().stream()
+                .map(f -> {
+                    RowModel.ColModel col = rowAutoMap.mapToDto(f);
+                    Integer colIndex = Optional.ofNullable(f.getIndex()).orElse(null);
                     if (colIndex != null) {
                         Object cellValue = data.get(colIndex);
-                        obj.put(t.getKey(), cellValue);
+                        col.setValue(cellValue);
                     }
-                    return obj;
-                }).collect(HashMap::new, Map::putAll, Map::putAll);
-        rabbitTemplate.convertAndSend(QueueConfig.SPI_DATA_TOPIC, msg);
+                    return col;
+                }).collect(Collectors.toMap(RowModel.ColModel::getKey, t -> t, (n, n2) -> n2, LinkedHashMap::new));
+        rowModel.setData(rowData);
+        rabbitTemplate.convertAndSend(QueueConfig.SPI_DATA_TOPIC, rowModel);
     }
 
     @Override
