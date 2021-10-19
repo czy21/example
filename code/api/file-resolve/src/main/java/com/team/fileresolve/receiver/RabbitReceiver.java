@@ -24,6 +24,7 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.MessageConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
@@ -76,13 +77,15 @@ public class RabbitReceiver {
 
     @Bean
     public SimpleRabbitListenerContainerFactory batchListenerFactory(ConnectionFactory connectionFactory,
-                                                                     @Qualifier("jsonMessageConverter") MessageConverter messageConverter) {
+                                                                     @Qualifier("jsonMessageConverter") MessageConverter messageConverter,
+                                                                     @Value("${spi.batch-size}")Integer batchSize,
+                                                                     @Value("${spi.consumer-size}")Integer consumerSize) {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
         factory.setBatchListener(true);
         factory.setConsumerBatchEnabled(true);
-        factory.setBatchSize(2000);
-        factory.setConcurrentConsumers(3);
+        factory.setBatchSize(batchSize);
+        factory.setConcurrentConsumers(consumerSize);
         factory.setMessageConverter(messageConverter);
         return factory;
     }
