@@ -14,6 +14,8 @@ import com.team.domain.mongo.repository.FileColumnMappingRepository;
 import com.team.fileresolve.listener.FileListener;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.tuple.MutablePair;
+import org.apache.commons.lang3.tuple.Pair;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
@@ -24,7 +26,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.core.HashOperations;
-import org.springframework.data.redis.hash.Jackson2HashMapper;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -32,9 +34,14 @@ import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 @Slf4j
 @Component
@@ -74,7 +81,8 @@ public class RabbitReceiver {
         factory.setConnectionFactory(connectionFactory);
         factory.setBatchListener(true);
         factory.setConsumerBatchEnabled(true);
-        factory.setBatchSize(10000);
+        factory.setBatchSize(2000);
+        factory.setConcurrentConsumers(3);
         factory.setMessageConverter(messageConverter);
         return factory;
     }
@@ -82,46 +90,36 @@ public class RabbitReceiver {
     @SneakyThrows
     @RabbitListener(queues = QueueConfig.SPI_DATA_TOPIC, containerFactory = "batchListenerFactory")
     public void rowData(List<RowModel> rows) {
-        Jackson2HashMapper jackson2HashMapper = new Jackson2HashMapper(false);
-        rows.forEach(t -> {
-            Map<String, Object> mappedHash = jackson2HashMapper.toHash(t);
-            hashOperations.putAll(UUID.randomUUID().toString(), mappedHash);
+        var gRows = rows.stream().collect(Collectors.groupingBy(RowModel::getBusinessType, Collectors.toList()));
+        gRows.forEach((key, value) -> {
+            var tableMeta = value.get(0);
+            List<MutablePair<String, String>> columns =
+                    Stream.concat(
+                            Stream.of(MutablePair.of("id", "id")),
+                            tableMeta.getData().values().stream().map(t -> MutablePair.of(t.getKey(), t.getColumn()))
+                    ).collect(Collectors.toList());
+
+            String values = IntStream.rangeClosed(1, columns.size()).mapToObj(p -> "?").collect(Collectors.joining(","));
+            jdbcTemplate.batchUpdate(
+                    "insert into " + tableMeta.getTableName() + "(" + columns.stream().map(Pair::getValue).collect(Collectors.joining(",")) + ") values(" + values + ")",
+                    new BatchPreparedStatementSetter() {
+                        @Override
+                        public void setValues(PreparedStatement ps, int i) throws SQLException {
+                            var t = value.get(i).getData();
+                            for (int j = 0; j < columns.size(); j++) {
+                                String c = columns.get(j).getKey();
+                                Object value = Optional.ofNullable(t.get(c)).map(RowModel.ColModel::getValue).orElse(null);
+                                ps.setObject(j + 1, c.equals("id") ? UUID.randomUUID().toString().replace("-", "") : value);
+                            }
+                        }
+
+                        @Override
+                        public int getBatchSize() {
+                            return value.size();
+                        }
+                    }
+            );
         });
     }
-
-//    @SneakyThrows
-//    @RabbitListener(queues = QueueConfig.SPI_DATA_TOPIC, containerFactory = "batchListenerFactory")
-//    public void rowData(List<RowModel> rows) {
-//        var gRows = rows.stream().collect(Collectors.groupingBy(RowModel::getBusinessType, Collectors.toList()));
-//        gRows.forEach((key, value) -> {
-//            var tableMeta = value.get(0);
-//            List<MutablePair<String, String>> columns =
-//                    Stream.concat(
-//                            Stream.of(MutablePair.of("id", "id")),
-//                            tableMeta.getData().values().stream().map(t -> MutablePair.of(t.getKey(), t.getColumn()))
-//                    ).collect(Collectors.toList());
-//
-//            String values = IntStream.rangeClosed(1, columns.size()).mapToObj(p -> "?").collect(Collectors.joining(","));
-//            jdbcTemplate.batchUpdate(
-//                    "insert into " + tableMeta.getTableName() + "(" + columns.stream().map(Pair::getValue).collect(Collectors.joining(",")) + ") values(" + values + ")",
-//                    new BatchPreparedStatementSetter() {
-//                        @Override
-//                        public void setValues(PreparedStatement ps, int i) throws SQLException {
-//                            var t = value.get(i).getData();
-//                            for (int j = 0; j < columns.size(); j++) {
-//                                String c = columns.get(j).getKey();
-//                                Object value = Optional.ofNullable(t.get(c)).map(RowModel.ColModel::getValue).orElse(null);
-//                                ps.setObject(j + 1, c.equals("id") ? UUID.randomUUID().toString().replace("-", "") : value);
-//                            }
-//                        }
-//
-//                        @Override
-//                        public int getBatchSize() {
-//                            return value.size();
-//                        }
-//                    }
-//            );
-//        });
-//    }
 
 }
