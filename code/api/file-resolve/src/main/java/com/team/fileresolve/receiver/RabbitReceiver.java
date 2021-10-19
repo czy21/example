@@ -78,6 +78,8 @@ public class RabbitReceiver {
         factory.setBatchSize(20000);
         factory.setAcknowledgeMode(AcknowledgeMode.MANUAL);
         factory.setMessageConverter(messageConverter);
+        factory.setPrefetchCount(20000);
+        factory.setConcurrentConsumers(5);
         return factory;
     }
 
