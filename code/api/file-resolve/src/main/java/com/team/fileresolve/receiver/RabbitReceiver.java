@@ -16,7 +16,6 @@ import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.commons.lang3.tuple.Pair;
-import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
@@ -75,17 +74,16 @@ public class RabbitReceiver {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
         factory.setBatchListener(true);
+        factory.setConsumerBatchEnabled(true);
         factory.setBatchSize(5000);
-        factory.setAcknowledgeMode(AcknowledgeMode.MANUAL);
+        factory.setConcurrentConsumers(3);
         factory.setMessageConverter(messageConverter);
-        factory.setPrefetchCount(5000);
-        factory.setConcurrentConsumers(5);
         return factory;
     }
 
     @SneakyThrows
     @RabbitListener(queues = QueueConfig.SPI_DATA_TOPIC, containerFactory = "batchListenerFactory")
-    public void rowData(List<RowModel> rows, Message message, Channel channel) {
+    public void rowData(List<RowModel> rows) {
         var gRows = rows.stream().collect(Collectors.groupingBy(RowModel::getBusinessType, Collectors.toList()));
         gRows.forEach((key, value) -> {
             var tableMeta = value.get(0);
@@ -115,9 +113,7 @@ public class RabbitReceiver {
                         }
                     }
             );
-
         });
-        channel.basicAck(message.getMessageProperties().getDeliveryTag(), true);
     }
 
 }
