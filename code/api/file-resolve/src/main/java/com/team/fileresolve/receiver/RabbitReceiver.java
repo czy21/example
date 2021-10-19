@@ -75,8 +75,7 @@ public class RabbitReceiver {
         factory.setConnectionFactory(connectionFactory);
         factory.setBatchListener(true);
         factory.setConsumerBatchEnabled(true);
-        factory.setBatchSize(5000);
-        factory.setConcurrentConsumers(3);
+        factory.setBatchSize(10000);
         factory.setMessageConverter(messageConverter);
         return factory;
     }
