@@ -117,7 +117,7 @@ public class RabbitReceiver {
             );
 
         });
-        channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
+        channel.basicAck(message.getMessageProperties().getDeliveryTag(), true);
     }
 
 }
