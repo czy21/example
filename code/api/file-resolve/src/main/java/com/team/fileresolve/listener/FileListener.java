@@ -3,7 +3,6 @@ package com.team.fileresolve.listener;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
 import com.team.application.automap.RowAutoMap;
-import com.team.application.config.QueueConfig;
 import com.team.application.kind.SqlKind;
 import com.team.application.model.RowModel;
 import com.team.domain.entity.MaterialEntity;
@@ -76,7 +75,7 @@ public class FileListener extends AnalysisEventListener<Map<Integer, Object>> {
                     return col;
                 }).collect(Collectors.toMap(RowModel.ColModel::getKey, t -> t, (n, n2) -> n2, LinkedHashMap::new));
         rowModel.setData(rowData);
-        rabbitTemplate.convertAndSend(QueueConfig.SPI_DATA_TOPIC, rowModel);
+//        rabbitTemplate.convertAndSend(QueueConfig.SPI_DATA_TOPIC, rowModel);
     }
 
     @Override
