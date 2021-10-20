@@ -61,6 +61,7 @@ public class RabbitReceiver {
     @Autowired
     RepositoryMapper repositoryMapper;
     @Autowired
+    @Qualifier("secondJdbcTemplate")
     JdbcTemplate jdbcTemplate;
 
     @Resource(name = "redisTemplate")

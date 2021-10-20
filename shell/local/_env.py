@@ -18,6 +18,10 @@ param_main_redis_pass = "***REMOVED***"
 param_main_db_mysql_host = db_host
 param_main_db_mysql_port = "3306"
 
+# pgsql
+param_main_db_pgsql_host = db_host
+param_main_db_pgsql_port = "5432"
+
 # mongo
 param_main_db_mongo_host = db_host
 param_main_db_mongo_port = "27017"
