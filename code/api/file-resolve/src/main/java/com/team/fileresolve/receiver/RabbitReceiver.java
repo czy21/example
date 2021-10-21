@@ -95,8 +95,8 @@ public class RabbitReceiver {
     @RabbitListener(queues = QueueConfig.SPI_DATA_TOPIC, containerFactory = "batchListenerFactory")
     public void rowData(List<RowModel> rows) {
         var gRows = rows.stream().collect(Collectors.groupingBy(RowModel::getBusinessType, Collectors.toList()));
-        gRows.forEach((key, value) -> {
-            var tableMeta = value.get(0);
+        gRows.forEach((k, v) -> {
+            var tableMeta = v.get(0);
             List<MutablePair<String, String>> columns =
                     Stream.concat(
                             Stream.of(MutablePair.of("id", "id")),
@@ -109,17 +109,17 @@ public class RabbitReceiver {
                     new BatchPreparedStatementSetter() {
                         @Override
                         public void setValues(PreparedStatement ps, int i) throws SQLException {
-                            var t = value.get(i).getData();
+                            var t = v.get(i).getData();
                             for (int j = 0; j < columns.size(); j++) {
                                 String c = columns.get(j).getKey();
                                 Object value = Optional.ofNullable(t.get(c)).map(RowModel.ColModel::getValue).orElse(null);
-                                ps.setObject(j + 1, c.equals("id") ? UUID.randomUUID().toString().replace("-", "") : value);
+                                ps.setObject(j + 1,  c.equals("id") ? UUID.randomUUID().toString() : value);
                             }
                         }
 
                         @Override
                         public int getBatchSize() {
-                            return value.size();
+                            return v.size();
                         }
                     }
             );

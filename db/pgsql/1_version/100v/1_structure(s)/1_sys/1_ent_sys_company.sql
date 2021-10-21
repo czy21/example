@@ -1,7 +1,7 @@
 
 CREATE TABLE ent_sale  (
   id varchar(36)  NOT NULL,
-  order_date date NULL DEFAULT NULL,
+  order_date varchar(100) NULL DEFAULT NULL,
   from_institution_code varchar(100)  NULL DEFAULT NULL ,
   from_institution_name varchar(100)  NULL DEFAULT NULL ,
   to_institution_code varchar(100)  NULL DEFAULT NULL ,
@@ -10,10 +10,10 @@ CREATE TABLE ent_sale  (
   product_name varchar(100)  NULL DEFAULT NULL ,
   product_spec varchar(100)  NULL DEFAULT NULL ,
   product_unit varchar(100)  NULL DEFAULT NULL ,
-  product_quantity decimal(19, 6) NULL DEFAULT NULL ,
+  product_quantity varchar(100) NULL DEFAULT NULL ,
   product_batch_number varchar(100)  NULL DEFAULT NULL ,
-  product_price decimal(19, 6) NULL DEFAULT NULL ,
-  product_amount decimal(19, 6) NULL DEFAULT NULL ,
+  product_price varchar(100) NULL DEFAULT NULL ,
+  product_amount varchar(100) NULL DEFAULT NULL ,
   created_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
   created_user varchar(36)  NULL DEFAULT NULL,
   modified_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
