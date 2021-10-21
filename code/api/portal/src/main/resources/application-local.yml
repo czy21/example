@@ -5,3 +5,9 @@ spring:
     bootstrap-servers: ${db-host}:9092,${db-host}:9093,${db-host}:9094
     producer:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  session:
+    store-type: redis
+  redis:
+    host: 192.168.2.25
+    port: 6379
+    password: ***REMOVED***

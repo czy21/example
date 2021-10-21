@@ -16,6 +16,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.scheduling.annotation.EnableAsync;
+import org.springframework.session.Session;
+import org.springframework.session.SessionRepository;
+import org.springframework.session.config.annotation.web.http.EnableSpringHttpSession;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -29,9 +32,11 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Configuration
+//@EnableRedisHttpSession
+@EnableSpringHttpSession
 @EnableWebMvc
 @EnableAsync
+@Configuration
 public class CooperatedConfigure implements WebMvcConfigurer {
 
     @Autowired
@@ -91,6 +96,31 @@ public class CooperatedConfigure implements WebMvcConfigurer {
             @Override
             public String deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
                 return StringUtils.trim(p.getValueAsString());
+            }
+        };
+    }
+
+    @Bean
+    public SessionRepository<?> customSessionRepository() {
+        return new SessionRepository<Session>() {
+            @Override
+            public Session createSession() {
+                return null;
+            }
+
+            @Override
+            public void save(Session session) {
+
+            }
+
+            @Override
+            public Session findById(String id) {
+                return null;
+            }
+
+            @Override
+            public void deleteById(String id) {
+
             }
         };
     }
