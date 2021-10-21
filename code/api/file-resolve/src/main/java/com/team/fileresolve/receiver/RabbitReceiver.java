@@ -38,6 +38,7 @@ import java.nio.file.Paths;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -94,6 +95,7 @@ public class RabbitReceiver {
     @SneakyThrows
     @RabbitListener(queues = QueueConfig.SPI_DATA_TOPIC, containerFactory = "batchListenerFactory")
     public void rowData(List<RowModel> rows) {
+        Map.of()
         var gRows = rows.stream().collect(Collectors.groupingBy(RowModel::getBusinessType, Collectors.toList()));
         gRows.forEach((k, v) -> {
             var tableMeta = v.get(0);
