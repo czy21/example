@@ -19,6 +19,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.session.Session;
 import org.springframework.session.SessionRepository;
 import org.springframework.session.config.annotation.web.http.EnableSpringHttpSession;
+import org.springframework.session.web.http.HttpSessionIdResolver;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -28,6 +29,8 @@ import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -124,5 +127,26 @@ public class CooperatedConfigure implements WebMvcConfigurer {
             }
         };
     }
+
+    @Bean
+    public HttpSessionIdResolver httpSessionIdResolver(){
+        return new HttpSessionIdResolver() {
+            @Override
+            public List<String> resolveSessionIds(HttpServletRequest request) {
+                return null;
+            }
+
+            @Override
+            public void setSessionId(HttpServletRequest request, HttpServletResponse response, String sessionId) {
+
+            }
+
+            @Override
+            public void expireSession(HttpServletRequest request, HttpServletResponse response) {
+
+            }
+        };
+    }
+
 
 }
