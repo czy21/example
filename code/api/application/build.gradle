@@ -1,6 +1,7 @@
 dependencies {
     api project(':domain')
-    api project(':cooperated')
     api project(':external')
+    api project(':cooperated')
+    api project(':security')
     api 'com.alibaba:easyexcel:2.2.6'
 }

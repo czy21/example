@@ -20,14 +20,10 @@ public class ExceptionAdvice {
     public Map<String, Object> exceptionHandler(Exception e) {
         Map<String, Object> result = new HashMap<>();
         result.put(BaseController.RESPONSE_TIMESTAMP_KEY, LocalDateTime.now());
-        if (e instanceof BusinessException) {
-            result.put(BaseController.RESPONSE_ERROR_KEY, ((BusinessException) e).getExtensions());
-        } else {
-            Map<String, Object> errorModel = new HashMap<>();
-            errorModel.put("code", UN_KNOW_SERVER_ERROR);
-            errorModel.put("message", e.getMessage());
-            result.put(BaseController.RESPONSE_ERROR_KEY, errorModel);
-        }
+        Map<String, Object> error = new HashMap<>();
+        error.put("code", e instanceof BusinessException ? ((BusinessException) e).getCode() : UN_KNOW_SERVER_ERROR);
+        error.put("message", e.getMessage());
+        result.put(BaseController.RESPONSE_ERROR_KEY, error);
         e.printStackTrace();
         return result;
     }
