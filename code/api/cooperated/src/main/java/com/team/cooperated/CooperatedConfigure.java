@@ -1,45 +1,27 @@
 package com.team.cooperated;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.DeserializationContext;
-import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.SerializationFeature;
-import com.team.cooperated.json.LocalDateTimeDeserializer;
-import com.team.cooperated.json.LocalDateTimeSerializer;
-import org.apache.commons.lang3.StringUtils;
+import com.team.cooperated.configure.JacksonConfigure;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.session.Session;
-import org.springframework.session.SessionRepository;
-import org.springframework.session.config.annotation.web.http.EnableSpringHttpSession;
-import org.springframework.session.web.http.HttpSessionIdResolver;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.config.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.List;
 
-//@EnableRedisHttpSession
-@EnableSpringHttpSession
 @EnableWebMvc
 @EnableAsync
 @Configuration
+@Import(JacksonConfigure.class)
 public class CooperatedConfigure implements WebMvcConfigurer {
 
     @Autowired
@@ -81,72 +63,5 @@ public class CooperatedConfigure implements WebMvcConfigurer {
         matcher.setCaseSensitive(false);
         configurer.setPathMatcher(matcher);
     }
-
-
-    @Bean
-    public Jackson2ObjectMapperBuilderCustomizer jackson2ObjectMapperBuilderCustomizer() {
-        return builder -> {
-            builder.serializationInclusion(JsonInclude.Include.NON_NULL);
-            builder.serializerByType(LocalDateTime.class, new LocalDateTimeSerializer());
-            builder.deserializerByType(LocalDateTime.class, new LocalDateTimeDeserializer());
-            builder.deserializerByType(String.class, stringStdScalarDeserializer());
-            builder.featuresToEnable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
-        };
-    }
-
-    public JsonDeserializer<String> stringStdScalarDeserializer() {
-        return new JsonDeserializer<>() {
-            @Override
-            public String deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
-                return StringUtils.trim(p.getValueAsString());
-            }
-        };
-    }
-
-    @Bean
-    public SessionRepository<?> customSessionRepository() {
-        return new SessionRepository<Session>() {
-            @Override
-            public Session createSession() {
-                return null;
-            }
-
-            @Override
-            public void save(Session session) {
-
-            }
-
-            @Override
-            public Session findById(String id) {
-                return null;
-            }
-
-            @Override
-            public void deleteById(String id) {
-
-            }
-        };
-    }
-
-    @Bean
-    public HttpSessionIdResolver httpSessionIdResolver(){
-        return new HttpSessionIdResolver() {
-            @Override
-            public List<String> resolveSessionIds(HttpServletRequest request) {
-                return null;
-            }
-
-            @Override
-            public void setSessionId(HttpServletRequest request, HttpServletResponse response, String sessionId) {
-
-            }
-
-            @Override
-            public void expireSession(HttpServletRequest request, HttpServletResponse response) {
-
-            }
-        };
-    }
-
 
 }
