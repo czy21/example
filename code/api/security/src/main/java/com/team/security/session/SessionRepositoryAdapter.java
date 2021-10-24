@@ -1,10 +1,11 @@
 package com.team.security.session;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.redis.core.StringRedisTemplate;
-import org.springframework.session.MapSession;
 import org.springframework.session.Session;
 import org.springframework.session.SessionRepository;
 
@@ -23,19 +24,27 @@ public class SessionRepositoryAdapter implements SessionRepository<Session> {
     @Override
     public Session createSession() {
         log.debug("session create");
-        throw new RuntimeException("请登录");
+        return null;
     }
 
+    @SneakyThrows
     @Override
     public void save(Session session) {
         log.debug("session save: " + session.toString());
+        redisTemplate.opsForValue().set(StringUtils.join(new String[]{"s", session.getId()}, ":"), objectMapper.writeValueAsString(session));
     }
 
+    @SneakyThrows
     @Override
     public Session findById(String id) {
-        var session = new MapSession(id);
-        log.debug(StringUtils.join(new String[]{"session findById =>" + id, "value =>" + session.toString()}, " "));
-        return session;
+        var stringSession = redisTemplate.opsForValue().get(StringUtils.join(new String[]{"s", id}, ":"));
+        MapSession mapSession = null;
+        if (StringUtils.isNotEmpty(stringSession)) {
+            mapSession = objectMapper.readValue(stringSession, new TypeReference<>() {
+            });
+        }
+        log.debug(StringUtils.join(new String[]{"session findById =>" + id, "value =>" + mapSession}, " "));
+        return mapSession;
     }
 
     @Override

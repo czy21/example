@@ -2,16 +2,15 @@ package com.team.cooperated.advice;
 
 import com.team.cooperated.controller.BaseController;
 import com.team.cooperated.exception.BusinessException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.util.NestedServletException;
 
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
-@ControllerAdvice
-@ResponseBody
+@RestControllerAdvice
 public class ExceptionAdvice {
 
     public static final String UN_KNOW_SERVER_ERROR = "UN_KNOW_SERVER_ERROR";
@@ -27,4 +26,5 @@ public class ExceptionAdvice {
         e.printStackTrace();
         return result;
     }
+
 }
