@@ -31,6 +31,7 @@ subprojects {
             mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
             mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
         }
+
         dependencies {
             dependency "org.apache.commons:commons-pool2:${apacheCommonPool2Version}"
             dependency "org.apache.commons:commons-lang3:${apacheCommonLang3Version}"
@@ -58,6 +59,7 @@ subprojects {
 
         testImplementation "org.springframework.boot:spring-boot-starter-test"
     }
+
     publishing {
         publications {
             mavenJava(MavenPublication) {
