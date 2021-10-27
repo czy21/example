@@ -1,7 +1,7 @@
 package com.team.cooperated;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.team.cooperated.configure.JacksonConfigure;
+import com.team.infrastructure.json.JacksonConfigure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -23,7 +23,6 @@ import java.util.List;
 @EnableWebMvc
 @EnableAsync
 @Configuration
-@Import(JacksonConfigure.class)
 public class CooperatedConfigure implements WebMvcConfigurer {
 
     @Autowired

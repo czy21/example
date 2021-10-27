@@ -1,4 +1,4 @@
-package com.team.cooperated.json;
+package com.team.infrastructure.json;
 
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
