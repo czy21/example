@@ -1,4 +1,4 @@
-package kind;
+package com.team.infrastructure.exception;
 
 public interface ExceptionMessage {
 

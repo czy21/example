@@ -20,12 +20,6 @@ import javax.sql.DataSource;
 @MapperScan(basePackageClasses = {UserMapper.class})
 @EnableMongoRepositories(basePackageClasses = {FileColumnMappingRepository.class},repositoryBaseClass = MongoBaseRepositoryImpl.class)
 public class DomainConfiguration {
-    @Bean
-    public PaginationInterceptor paginationInterceptor() {
-        PaginationInterceptor paginationInterceptor = new PaginationInterceptor();
-        paginationInterceptor.setLimit(-1);
-        return paginationInterceptor;
-    }
 
     @Primary
     @Bean(name = "primaryDS")
