@@ -1,6 +1,6 @@
 package com.team.security.exception;
 
-import kind.ExceptionMessage;
+import com.team.infrastructure.exception.ExceptionMessage;
 
 public enum SessionErrorKind implements ExceptionMessage {
     COOKIE_VALUE_IS_NULL("cookie_value_is_null", "请登录");

@@ -1,7 +1,7 @@
 package com.team.cooperated.exception;
 
 
-import kind.ExceptionMessage;
+import com.team.infrastructure.exception.ExceptionMessage;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

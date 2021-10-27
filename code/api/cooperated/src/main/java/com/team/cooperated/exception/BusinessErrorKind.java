@@ -1,8 +1,8 @@
 package com.team.cooperated.exception;
 
-import kind.ExceptionMessage;
+import com.team.infrastructure.exception.ExceptionMessage;
 
-public enum BusinessErrorCode implements ExceptionMessage {
+public enum BusinessErrorKind implements ExceptionMessage {
     NO_EXIST_USER("no_exist_user", "用户不存在"),
     NO_LOGIN("NO_LOGIN", "请登录"),
     LOGIN_TIMEOUT("LOGIN_TIMEOUT", "登录超时,请重新登录"),
@@ -15,7 +15,7 @@ public enum BusinessErrorCode implements ExceptionMessage {
     String code;
     String message;
 
-    BusinessErrorCode(String code, String message) {
+    BusinessErrorKind(String code, String message) {
         this.code = code;
         this.message = message;
     }
