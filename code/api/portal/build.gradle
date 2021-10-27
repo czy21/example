@@ -4,5 +4,4 @@ plugins{
 
 dependencies {
     api project(':application')
-    api "com.meditrusthealth:fast-common-core:2.4.0-SNAPSHOT"
 }
