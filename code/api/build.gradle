@@ -16,7 +16,7 @@ ext.os = org.gradle.internal.os.OperatingSystem.current()
 logger.lifecycle("os type: " + ext.os.name)
 
 def checkGitCommand() {
-    def gitIsExists = ext.os.isWindows() ? "where" : "which" + " git'".execute().text.trim()
+    def gitIsExists = ext.os.isWindows() ? "where" : "which" + " git".execute().text.trim()
     if (gitIsExists == "") {
         logger.warn("git command not exists")
         return false
