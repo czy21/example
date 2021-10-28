@@ -12,20 +12,11 @@ ext {
     lombokMapstructBindingVersion = "0.2.0"
 }
 
-ext.os = org.gradle.internal.os.OperatingSystem.current()
-logger.lifecycle("os type: " + ext.os.name)
-
-def checkGitCommand() {
-    def gitIsExists = ext.os.isWindows() ? "where" : "which" + " git".execute().text.trim()
-    if (gitIsExists == "") {
-        logger.warn("git command not exists")
-        return false
-    }
-    return true
-}
-
-def getGitUserName() {
-    return checkGitCommand() ? "git config user.name".execute().text.trim() : ""
+def gitCommand = ((org.gradle.internal.os.OperatingSystem.current().isWindows() ? "where" : "which") + " git").execute().text.trim()
+if (gitCommand == "") {
+    logger.warn("git command not exists")
+} else {
+    System.setProperty("GIT_USERNAME", (gitCommand + " config user.name").execute().text.trim())
 }
 
 subprojects {
@@ -42,6 +33,7 @@ subprojects {
     tasks.withType(JavaCompile) {
         options.encoding('UTF-8')
     }
+
 
     dependencyManagement {
         imports {
@@ -81,12 +73,14 @@ subprojects {
         useJUnitPlatform()
     }
 
+
     jar {
         manifest {
             attributes(
-                    "Built-By": getGitUserName()
+                    "Built-By": System.getProperty("GIT_USERNAME", "")
             )
         }
+
         into("META-INF/maven/${project.group}/${project.name}") {
             from { generatePomFileForMavenJavaPublication }
             rename 'pom-default.xml', 'pom.xml'
