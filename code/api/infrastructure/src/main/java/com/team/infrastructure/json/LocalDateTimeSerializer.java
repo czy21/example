@@ -1,4 +1,4 @@
-package com.team.cooperated.json;
+package com.team.infrastructure.json;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.JsonSerializer;
