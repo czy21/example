@@ -11,6 +11,20 @@ ext {
     lombokVersion = "1.18.16"
     lombokMapstructBindingVersion = "0.2.0"
 }
+
+def checkGitCommand() {
+    def gitIsExists = "where git".execute().text.trim()
+    if (gitIsExists == "") {
+        logger.warn("git command not exists")
+        return false
+    }
+    return true
+}
+
+def getGitUserName() {
+    return checkGitCommand() ? "git config user.name".execute().text.trim() : ""
+}
+
 subprojects {
     apply plugin: 'java-library'
     apply plugin: 'idea'
@@ -62,6 +76,18 @@ subprojects {
 
     test {
         useJUnitPlatform()
+    }
+
+    jar {
+        manifest {
+            attributes(
+                    "Built-By": getGitUserName()
+            )
+        }
+        into("META-INF/maven/${project.group}/${project.name}") {
+            from { generatePomFileForMavenJavaPublication }
+            rename 'pom-default.xml', 'pom.xml'
+        }
     }
 
     publishing {
