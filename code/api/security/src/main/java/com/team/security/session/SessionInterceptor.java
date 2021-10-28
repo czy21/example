@@ -1,6 +1,6 @@
 package com.team.security.session;
 
-import com.team.cooperated.exception.BusinessErrorCode;
+import com.team.cooperated.exception.BusinessErrorKind;
 import com.team.cooperated.exception.BusinessException;
 import com.team.security.annotation.Anonymous;
 import com.team.security.annotation.Login;
@@ -36,7 +36,7 @@ public class SessionInterceptor implements HandlerInterceptor {
         }
         boolean hasSession = request.getSession(false) == null;
         if (hasSession) {
-            throw new BusinessException(BusinessErrorCode.LOGIN_TIMEOUT);
+            throw new BusinessException(BusinessErrorKind.LOGIN_TIMEOUT);
         }
         return HandlerInterceptor.super.preHandle(request, response, handler);
     }
