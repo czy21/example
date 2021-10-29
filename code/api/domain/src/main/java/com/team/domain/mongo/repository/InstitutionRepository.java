@@ -1,7 +1,7 @@
 package com.team.domain.mongo.repository;
 
 import com.team.domain.mongo.entity.UserEntity;
-import com.team.infrastructure.base.MongoBaseRepository;
+import com.team.infrastructure.entity.MongoBaseRepository;
 
 import java.util.List;
 

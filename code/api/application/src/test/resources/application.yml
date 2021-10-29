@@ -21,7 +21,7 @@ spring:
 mybatis-plus:
   mapper-locations: classpath:/mapper/*.xml
   type-aliases-package: com.team.domain.entity
-  type-aliases-super-type: com.team.infrastructure.base.BaseEntity
+  type-aliases-super-type: com.team.infrastructure.entity.BaseEntity
   global-config:
     db-config:
       id-type: uuid

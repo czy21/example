@@ -12,6 +12,7 @@ import com.team.domain.mapper.MaterialMapper;
 import com.team.domain.mapper.RepositoryMapper;
 import com.team.domain.mongo.repository.FileColumnMappingRepository;
 import com.team.fileresolve.listener.FileListener;
+import com.team.infrastructure.annotation.DS;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.MutablePair;
@@ -61,7 +62,6 @@ public class RabbitReceiver {
     @Autowired
     RepositoryMapper repositoryMapper;
     @Autowired
-    @Qualifier("secondJdbcTemplate")
     JdbcTemplate jdbcTemplate;
 
     @Resource(name = "redisTemplate")
@@ -91,6 +91,7 @@ public class RabbitReceiver {
         return factory;
     }
 
+    @DS("ds1")
     @SneakyThrows
     @RabbitListener(queues = QueueConfig.SPI_DATA_TOPIC, containerFactory = "batchListenerFactory")
     public void rowData(List<RowModel> rows) {

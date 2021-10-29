@@ -10,6 +10,7 @@ ext {
     mapstructVersion = "1.4.2.Final"
     lombokVersion = "1.18.16"
     lombokMapstructBindingVersion = "0.2.0"
+//    dynamicDataSourceVersion="3.4.1"
 }
 
 def gitCommand = ((org.gradle.internal.os.OperatingSystem.current().isWindows() ? "where" : "which") + " git").execute().text.trim()
@@ -49,6 +50,7 @@ subprojects {
             dependency "org.mapstruct:mapstruct-processor:${mapstructVersion}"
             dependency "org.projectlombok:lombok:${lombokVersion}"
             dependency "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
+//            dependency "com.baomidou:dynamic-datasource-spring-boot-starter:${dynamicDataSourceVersion}"
         }
     }
 
