@@ -4,20 +4,20 @@ import com.team.infrastructure.annotation.DS;
 import lombok.SneakyThrows;
 
 public class DynamicDataSourceContext implements AutoCloseable {
-    private static final ThreadLocal<String> datasourceKey = new ThreadLocal<>();
+    private static final ThreadLocal<String> key = new ThreadLocal<>();
 
     @SneakyThrows
-    public static String getDataSourceKey() {
-        String key = datasourceKey.get();
+    public static String get() {
+        String key = DynamicDataSourceContext.key.get();
         return key == null ? (String) DS.class.getMethod("value").getDefaultValue() : key;
     }
 
     public static void put(String key) {
-        datasourceKey.set(key);
+        DynamicDataSourceContext.key.set(key);
     }
 
     @Override
     public void close() {
-        datasourceKey.remove();
+        key.remove();
     }
 }
