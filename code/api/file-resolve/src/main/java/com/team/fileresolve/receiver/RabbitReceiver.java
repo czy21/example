@@ -13,6 +13,7 @@ import com.team.domain.mapper.RepositoryMapper;
 import com.team.domain.mongo.repository.FileColumnMappingRepository;
 import com.team.fileresolve.listener.FileListener;
 import com.team.infrastructure.annotation.DS;
+import com.team.infrastructure.datasource.DynamicDataSourceContext;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.MutablePair;
@@ -91,7 +92,6 @@ public class RabbitReceiver {
         return factory;
     }
 
-    @DS("ds1")
     @SneakyThrows
     @RabbitListener(queues = QueueConfig.SPI_DATA_TOPIC, containerFactory = "batchListenerFactory")
     public void rowData(List<RowModel> rows) {
@@ -105,6 +105,7 @@ public class RabbitReceiver {
                     ).collect(Collectors.toList());
 
             String values = IntStream.rangeClosed(1, columns.size()).mapToObj(p -> "?").collect(Collectors.joining(","));
+            DynamicDataSourceContext.put("ds1");
             jdbcTemplate.batchUpdate(
                     "insert into " + tableMeta.getTableName() + "(" + columns.stream().map(Pair::getValue).collect(Collectors.joining(",")) + ") values(" + values + ")",
                     new BatchPreparedStatementSetter() {
