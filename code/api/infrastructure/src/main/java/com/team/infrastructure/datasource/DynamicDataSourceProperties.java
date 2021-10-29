@@ -5,6 +5,7 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
 
@@ -12,5 +13,5 @@ import java.util.Properties;
 @Component
 @ConfigurationProperties(prefix = "spring.datasource.dynamic")
 public class DynamicDataSourceProperties {
-    private Map<String, HikariConfig> datasource;
+    private LinkedHashMap<String, HikariConfig> datasource;
 }

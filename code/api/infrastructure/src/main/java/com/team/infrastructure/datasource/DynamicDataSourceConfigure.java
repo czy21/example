@@ -20,7 +20,11 @@ public class DynamicDataSourceConfigure {
         dsMap = dynamicDataSourceProperties.getDatasource()
                 .entrySet()
                 .stream()
-                .map(t -> Map.of(t.getKey(), new HikariDataSource(t.getValue())))
+                .map(t -> {
+                    t.getValue().setPoolName(String.join(" ", new String[]{"datasource", "=>", t.getKey()}));
+                    var ds = new HikariDataSource(t.getValue());
+                    return Map.of(t.getKey(), ds);
+                })
                 .collect(HashMap::new, Map::putAll, Map::putAll);
     }
 
@@ -33,7 +37,6 @@ public class DynamicDataSourceConfigure {
         String master = (String) DS.class.getDeclaredMethod("value").getDefaultValue();
         if (!dsMap.containsKey(master)) {
             log.warn("master datasource is null");
-
         }
         rds.setDefaultTargetDataSource(dsMap.get(master));
         return rds;
