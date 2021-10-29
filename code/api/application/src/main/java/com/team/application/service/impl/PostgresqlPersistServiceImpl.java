@@ -9,10 +9,10 @@ import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
 import com.team.application.annotation.ProcessMonitor;
 import com.team.application.service.PersistService;
 import com.team.domain.entity.SaleEntity;
+import com.team.infrastructure.annotation.DS;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,6 @@ import java.util.stream.IntStream;
 public class PostgresqlPersistServiceImpl implements PersistService {
 
     @Autowired
-    @Qualifier("secondJdbcTemplate")
     JdbcTemplate jdbcTemplate;
     static ObjectMapper objectMapper = new ObjectMapper();
 
@@ -68,11 +67,13 @@ public class PostgresqlPersistServiceImpl implements PersistService {
 
     public static final String TABLE_NAME = "ent_sale_1";
 
+    @DS("ds1")
     @Override
     public int count() {
         return jdbcTemplate.queryForObject("select count(0) from " + TABLE_NAME, Integer.class);
     }
 
+    @DS("ds1")
     @ProcessMonitor
     @SneakyThrows
     @Override
