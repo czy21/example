@@ -9,7 +9,7 @@ dependencies {
     api('org.redisson:redisson-spring-boot-starter:3.16.0') {
         exclude group: "org.springframework.boot", module: "spring-boot-starter-web"
     }
-
+    api "ru.yandex.clickhouse:clickhouse-jdbc"
     api "com.fasterxml.jackson.core:jackson-databind"
     api "org.springframework.kafka:spring-kafka:2.7.7"
     api 'org.apache.httpcomponents:httpclient:4.5.12'
