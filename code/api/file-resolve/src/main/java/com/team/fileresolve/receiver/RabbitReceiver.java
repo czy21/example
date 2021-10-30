@@ -125,6 +125,7 @@ public class RabbitReceiver {
             sqlSession.insert("com.team.domain.mapper.RepositoryMapper.insert", param);
         });
         sqlSession.commit();
+        sqlSession.close();
     }
 
     private void jdbcTemplateInsert(List<RowModel> rows, RowModel tableMeta, List<MutablePair<String, String>> columns) {
