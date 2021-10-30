@@ -22,6 +22,10 @@ param_main_db_mysql_port = "3306"
 param_main_db_pgsql_host = db_host
 param_main_db_pgsql_port = "5432"
 
+# pgsql
+param_main_db_cksql_host = db_host
+param_main_db_cksql_port = "9004"
+
 # mongo
 param_main_db_mongo_host = db_host
 param_main_db_mongo_port = "27017"
