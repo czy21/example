@@ -32,7 +32,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.redis.core.HashOperations;
-import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -40,11 +39,11 @@ import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 @Slf4j
@@ -126,29 +125,6 @@ public class RabbitReceiver {
         });
         sqlSession.commit();
         sqlSession.close();
-    }
-
-    private void jdbcTemplateInsert(List<RowModel> rows, RowModel tableMeta, List<MutablePair<String, String>> columns) {
-        String values = IntStream.rangeClosed(1, columns.size()).mapToObj(p -> "?").collect(Collectors.joining(","));
-        jdbcTemplate.batchUpdate(
-                "insert into " + tableMeta.getTableName() + "(" + columns.stream().map(Pair::getValue).collect(Collectors.joining(",")) + ") values(" + values + ")",
-                new BatchPreparedStatementSetter() {
-                    @Override
-                    public void setValues(PreparedStatement ps, int i) throws SQLException {
-                        var t = rows.get(i).getData();
-                        for (int j = 0; j < columns.size(); j++) {
-                            String c = columns.get(j).getKey();
-                            Object value = Optional.ofNullable(t.get(c)).map(RowModel.ColModel::getValue).orElse(null);
-                            ps.setObject(j + 1, c.equals("id") ? UUID.randomUUID().toString() : value);
-                        }
-                    }
-
-                    @Override
-                    public int getBatchSize() {
-                        return rows.size();
-                    }
-                }
-        );
     }
 
 }

@@ -15,4 +15,7 @@ public interface RepositoryMapper {
 
     @Update("${sql}")
     void insert(Map<String, Object> param);
+
+    @Select(value = "${sql}")
+    List<Map<String, Object>> select();
 }
