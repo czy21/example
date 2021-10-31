@@ -104,7 +104,7 @@ public class RabbitReceiver {
                             Stream.of(MutablePair.of("id", "id")),
                             tableMeta.getData().values().stream().map(t -> MutablePair.of(t.getKey(), t.getColumn()))
                     ).collect(Collectors.toList());
-//            DynamicDataSourceContext.put("ds1");
+            DynamicDataSourceContext.put("ds1");
             mybatisInsert(v, tableMeta, columns);
         });
     }
