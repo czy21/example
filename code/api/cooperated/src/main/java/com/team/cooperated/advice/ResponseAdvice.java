@@ -1,13 +1,13 @@
 package com.team.cooperated.advice;
 
 import com.team.cooperated.annotation.Description;
-import com.team.cooperated.annotation.EnumPocket;
-import com.team.cooperated.annotation.PocketName;
-import com.team.cooperated.annotation.SpecialPocket;
+import com.team.cooperated.annotation.EnumOption;
+import com.team.cooperated.annotation.OptionName;
+import com.team.cooperated.annotation.SpecialOption;
 import com.team.cooperated.controller.BaseController;
 import com.team.cooperated.model.simple.SimpleItemModel;
-import com.team.cooperated.pocket.Option;
-import com.team.cooperated.pocket.PocketProvider;
+import com.team.cooperated.option.Option;
+import com.team.cooperated.option.OptionProvider;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 @ControllerAdvice(assignableTypes = BaseController.class)
 public class ResponseAdvice implements ResponseBodyAdvice<Object>, ApplicationContextAware {
 
-    private Map<String, PocketProvider<?>> pocketCache = new ConcurrentHashMap<>();
+    private Map<String, OptionProvider<?>> optionCache = new ConcurrentHashMap<>();
 
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
@@ -43,20 +43,20 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object>, ApplicationCo
         result.put(BaseController.RESPONSE_DATA_KEY, body);
 
         Map<String, Object> pocket = new HashMap<>();
-        pocket.putAll(resolveSpecialPocket(returnType));
-        pocket.putAll(resolveEnumPocket(returnType));
+        pocket.putAll(resolveSpecialOption(returnType));
+        pocket.putAll(resolveEnumOption(returnType));
         if (pocket.size() > 0) {
-            result.put(BaseController.RESPONSE_POCKET_KEY, pocket);
+            result.put(BaseController.RESPONSE_OPTION_KEY, pocket);
         }
         return result;
     }
 
-    private Map<String, Object> resolveEnumPocket(MethodParameter returnType) {
-        return Optional.ofNullable(returnType.getMethodAnnotation(EnumPocket.class))
+    private Map<String, Object> resolveEnumOption(MethodParameter returnType) {
+        return Optional.ofNullable(returnType.getMethodAnnotation(EnumOption.class))
                 .<Map<String, Object>>map(e -> Arrays.stream(e.value())
-                        .filter(s -> s.isEnum() && s.isAnnotationPresent(PocketName.class))
+                        .filter(s -> s.isEnum() && s.isAnnotationPresent(OptionName.class))
                         .collect(HashMap::new, (m, n) -> {
-                            String key = n.getDeclaredAnnotation(PocketName.class).value();
+                            String key = n.getDeclaredAnnotation(OptionName.class).value();
                             List<SimpleItemModel<?>> value;
                             if (Arrays.stream(n.getInterfaces()).anyMatch(i -> i == Option.class)) {
                                 value = Arrays.stream(n.getEnumConstants())
@@ -76,12 +76,12 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object>, ApplicationCo
                         }, Map::putAll)).orElse(new HashMap<>());
     }
 
-    private Map<String, Object> resolveSpecialPocket(MethodParameter returnType) {
-        return Optional.ofNullable(returnType.getMethodAnnotation(SpecialPocket.class))
+    private Map<String, Object> resolveSpecialOption(MethodParameter returnType) {
+        return Optional.ofNullable(returnType.getMethodAnnotation(SpecialOption.class))
                 .<Map<String, Object>>map(p -> Arrays.stream(p.value())
                         .collect(
                                 HashMap::new,
-                                (m, n) -> pocketCache.entrySet().stream().filter(t -> t.getValue().getClass().equals(n)).forEach(t -> m.put(t.getKey(), t.getValue().obtain())),
+                                (m, n) -> optionCache.entrySet().stream().filter(t -> t.getValue().getClass().equals(n)).forEach(t -> m.put(t.getKey(), t.getValue().obtain())),
                                 Map::putAll))
                 .orElse(new HashMap<>());
     }
@@ -89,9 +89,9 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object>, ApplicationCo
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        pocketCache = applicationContext.getBeansOfType(PocketProvider.class).entrySet().stream().collect(
+        optionCache = applicationContext.getBeansOfType(OptionProvider.class).entrySet().stream().collect(
                 HashMap::new,
-                (m, n) -> m.put(Optional.ofNullable(n.getValue().getClass().getAnnotation(PocketName.class)).map(PocketName::value).orElse(n.getKey()), n.getValue()),
+                (m, n) -> m.put(Optional.ofNullable(n.getValue().getClass().getAnnotation(OptionName.class)).map(OptionName::value).orElse(n.getKey()), n.getValue()),
                 Map::putAll
         );
     }

@@ -1,10 +1,10 @@
-package com.team.application.pocket;
+package com.team.application.option;
 
 import com.team.cooperated.annotation.Description;
-import com.team.cooperated.annotation.PocketName;
+import com.team.cooperated.annotation.OptionName;
 
-@PocketName(value = "gender")
-public enum EnumGender  {
+@OptionName(value = "gender")
+public enum GenderKind {
     @Description(label = "男")
     MALE,
     @Description(label = "女")
