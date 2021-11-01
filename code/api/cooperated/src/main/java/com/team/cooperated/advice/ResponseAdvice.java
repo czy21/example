@@ -6,6 +6,7 @@ import com.team.cooperated.annotation.PocketName;
 import com.team.cooperated.annotation.SpecialPocket;
 import com.team.cooperated.controller.BaseController;
 import com.team.cooperated.model.simple.SimpleItemModel;
+import com.team.cooperated.pocket.Option;
 import com.team.cooperated.pocket.PocketProvider;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -56,11 +57,21 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object>, ApplicationCo
                         .filter(s -> s.isEnum() && s.isAnnotationPresent(PocketName.class))
                         .collect(HashMap::new, (m, n) -> {
                             String key = n.getDeclaredAnnotation(PocketName.class).value();
-                            List<SimpleItemModel<String>> value = Arrays.stream(n.getFields())
-                                    .map(c -> SimpleItemModel.of(c.isAnnotationPresent(Description.class)
-                                            ? c.getDeclaredAnnotation(Description.class).label()
-                                            : c.getName(), c.getName()))
-                                    .collect(Collectors.toList());
+                            List<SimpleItemModel<?>> value;
+                            if (Arrays.stream(n.getInterfaces()).anyMatch(i -> i == Option.class)) {
+                                value = Arrays.stream(n.getEnumConstants())
+                                        .map(c -> {
+                                            var o = (Option<?>) c;
+                                            return SimpleItemModel.of(o.getLabel(), o.getValue());
+                                        })
+                                        .collect(Collectors.toList());
+                            } else {
+                                value = Arrays.stream(n.getFields())
+                                        .map(c -> SimpleItemModel.of(c.isAnnotationPresent(Description.class)
+                                                ? c.getDeclaredAnnotation(Description.class).label()
+                                                : c.getName(), c.getName()))
+                                        .collect(Collectors.toList());
+                            }
                             m.put(key, value);
                         }, Map::putAll)).orElse(new HashMap<>());
     }
