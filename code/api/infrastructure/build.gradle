@@ -11,7 +11,6 @@ dependencies {
     }
     api "ru.yandex.clickhouse:clickhouse-jdbc"
     api "com.fasterxml.jackson.core:jackson-databind"
-    api "org.springframework.kafka:spring-kafka:2.7.7"
     api 'org.apache.httpcomponents:httpclient:4.5.12'
     api "mysql:mysql-connector-java:8.0.21"
     api 'org.postgresql:postgresql:42.2.23'
