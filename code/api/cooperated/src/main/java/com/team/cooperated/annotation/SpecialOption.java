@@ -1,6 +1,6 @@
 package com.team.cooperated.annotation;
 
-import com.team.cooperated.pocket.PocketProvider;
+import com.team.cooperated.option.OptionProvider;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -9,6 +9,6 @@ import java.lang.annotation.Target;
 
 @Target({ElementType.TYPE, ElementType.METHOD})
 @Retention(value = RetentionPolicy.RUNTIME)
-public @interface SpecialPocket {
-    Class<? extends PocketProvider<?>>[] value();
+public @interface SpecialOption {
+    Class<? extends OptionProvider<?>>[] value();
 }

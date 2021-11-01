@@ -4,24 +4,20 @@ package com.team.portal.controller;
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.dto.UserDTO;
 import com.team.application.model.vo.SearchVO;
-import com.team.application.pocket.EnumGender;
-import com.team.application.pocket.SpecialPerson;
-import com.team.application.pocket.SpecialWoman;
+import com.team.application.option.GenderKind;
+import com.team.application.option.SpecialPerson;
+import com.team.application.option.SpecialWoman;
+import com.team.application.option.YesNoKind;
 import com.team.application.service.UserService;
-import com.team.cooperated.annotation.EnumPocket;
-import com.team.cooperated.annotation.SpecialPocket;
+import com.team.cooperated.annotation.EnumOption;
+import com.team.cooperated.annotation.SpecialOption;
 import com.team.cooperated.controller.BaseController;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersBuilder;
-import org.springframework.batch.core.JobParametersInvalidException;
 import org.springframework.batch.core.launch.JobLauncher;
-import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
-import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
-import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.*;
@@ -46,10 +42,11 @@ public class UserController extends BaseController {
 
 
     @GetMapping(path = "load")
-    @EnumPocket(value = {
-            EnumGender.class,
+    @EnumOption(value = {
+            GenderKind.class,
+            YesNoKind.class
     })
-    @SpecialPocket(value = {
+    @SpecialOption(value = {
             SpecialPerson.class,
             SpecialWoman.class
     })
