@@ -7,30 +7,27 @@ import com.team.cooperated.annotation.SpecialPocket;
 import com.team.cooperated.controller.BaseController;
 import com.team.cooperated.model.simple.SimpleItemModel;
 import com.team.cooperated.pocket.PocketProvider;
-import org.apache.commons.lang3.tuple.MutablePair;
+import org.springframework.beans.BeansException;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.http.converter.smile.MappingJackson2SmileHttpMessageConverter;
 import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
-import org.springframework.http.server.ServletServerHttpRequest;
 import org.springframework.web.bind.annotation.ControllerAdvice;
-import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
-import org.springframework.web.servlet.support.RequestContextUtils;
 
-import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 @ControllerAdvice(assignableTypes = BaseController.class)
-public class ResponseAdvice implements ResponseBodyAdvice<Object> {
+public class ResponseAdvice implements ResponseBodyAdvice<Object>, ApplicationContextAware {
 
-    private static Map<String, PocketProvider<?>> POCKET_CACHE = new ConcurrentHashMap<>();
+    private Map<String, PocketProvider<?>> pocketCache = new ConcurrentHashMap<>();
 
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
@@ -43,15 +40,6 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
         Map<String, Object> result = new HashMap<>();
         result.put(BaseController.RESPONSE_TIMESTAMP_KEY, LocalDateTime.now());
         result.put(BaseController.RESPONSE_DATA_KEY, body);
-
-        HttpServletRequest req = ((ServletServerHttpRequest) request).getServletRequest();
-        WebApplicationContext ctx = RequestContextUtils.findWebApplicationContext(req);
-
-        if (ctx != null) {
-            POCKET_CACHE = POCKET_CACHE.size() == 0
-                    ? ctx.getBeansOfType(PocketProvider.class).entrySet().stream().collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue))
-                    : POCKET_CACHE;
-        }
 
         Map<String, Object> pocket = new HashMap<>();
         pocket.putAll(resolveSpecialPocket(returnType));
@@ -66,29 +54,34 @@ public class ResponseAdvice implements ResponseBodyAdvice<Object> {
         return Optional.ofNullable(returnType.getMethodAnnotation(EnumPocket.class))
                 .<Map<String, Object>>map(e -> Arrays.stream(e.value())
                         .filter(s -> s.isEnum() && s.isAnnotationPresent(PocketName.class))
-                        .map(t -> {
-                            String key = t.getDeclaredAnnotation(PocketName.class).value();
-                            List<SimpleItemModel<String>> value = Arrays.stream(t.getFields())
+                        .collect(HashMap::new, (m, n) -> {
+                            String key = n.getDeclaredAnnotation(PocketName.class).value();
+                            List<SimpleItemModel<String>> value = Arrays.stream(n.getFields())
                                     .map(c -> SimpleItemModel.of(c.isAnnotationPresent(Description.class)
                                             ? c.getDeclaredAnnotation(Description.class).label()
                                             : c.getName(), c.getName()))
                                     .collect(Collectors.toList());
-                            return new MutablePair<>(key, value);
-                        })
-                        .filter(s -> s.getRight() != null)
-                        .collect(Collectors.toMap(MutablePair::getLeft, MutablePair::getRight))).orElse(new HashMap<>(0));
+                            m.put(key, value);
+                        }, Map::putAll)).orElse(new HashMap<>());
     }
 
     private Map<String, Object> resolveSpecialPocket(MethodParameter returnType) {
         return Optional.ofNullable(returnType.getMethodAnnotation(SpecialPocket.class))
                 .<Map<String, Object>>map(p -> Arrays.stream(p.value())
-                        .parallel()
-                        .flatMap(s ->
-                                POCKET_CACHE.entrySet().stream()
-                                        .filter(t -> s.equals(t.getValue().getClass()))
-                                        .map(t -> new MutablePair<>(t.getKey(), t.getValue().obtain())))
-                        .filter(s -> s.getRight() != null)
-                        .collect(Collectors.toMap(MutablePair::getLeft, MutablePair::getRight))).orElse(new HashMap<>(0));
+                        .collect(
+                                HashMap::new,
+                                (m, n) -> pocketCache.entrySet().stream().filter(t -> t.getValue().getClass().equals(n)).forEach(t -> m.put(t.getKey(), t.getValue().obtain())),
+                                Map::putAll))
+                .orElse(new HashMap<>());
     }
 
+
+    @Override
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+        pocketCache = applicationContext.getBeansOfType(PocketProvider.class).entrySet().stream().collect(
+                HashMap::new,
+                (m, n) -> m.put(Optional.ofNullable(n.getValue().getClass().getAnnotation(PocketName.class)).map(PocketName::value).orElse(n.getKey()), n.getValue()),
+                Map::putAll
+        );
+    }
 }
