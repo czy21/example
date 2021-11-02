@@ -7,21 +7,22 @@ import org.mapstruct.Mappings;
 
 import java.util.List;
 
-public interface BaseAutoMap<TEntity, TDto> {
+public interface BaseAutoMap<S, T> {
 
-    TDto mapToDto(TEntity entity);
+    T mapToTarget(S entity);
 
-    TEntity mapToEntity(TDto dto);
+    S mapToSource(T dto);
 
-    List<TDto> mapToDtos(List<TEntity> entities);
+    List<T> mapToTargets(List<S> entities);
 
-    List<TEntity> mapToEntities(List<TDto> dtos);
+    List<S> mapToSources(List<T> dtos);
 
-    @Mappings({
+    @Mappings(value = {
             @Mapping(source = "pageIndex", target = "page.pageIndex"),
             @Mapping(source = "pageSize", target = "page.pageSize"),
-            @Mapping(source = "total", target = "page.total")})
-    PageDTO<TDto> mapToPageDto(PageModel<TEntity> pageModel);
+            @Mapping(source = "total", target = "page.total")
+    })
+    PageDTO<T> mapToPageTarget(PageModel<S> pageModel);
 
 
 }
