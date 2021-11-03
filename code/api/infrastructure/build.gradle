@@ -1,3 +1,9 @@
+ext {
+    mysqlConnectorVersion = "8.0.21"
+    postgresVersion = "42.2.23"
+    mybatisPlusVersion = "3.4.0"
+}
+
 dependencies {
     api "org.springframework.boot:spring-boot-autoconfigure"
     api "org.springframework.boot:spring-boot-starter-aop"
@@ -6,15 +12,12 @@ dependencies {
     api "org.springframework.boot:spring-boot-starter-data-elasticsearch"
     api "org.springframework.boot:spring-boot-starter-amqp"
     api "org.springframework.boot:spring-boot-starter-batch"
-    api('org.redisson:redisson-spring-boot-starter:3.16.0') {
-        exclude group: "org.springframework.boot", module: "spring-boot-starter-web"
-    }
+    api "org.redisson:redisson-spring-boot-starter"
     api "ru.yandex.clickhouse:clickhouse-jdbc"
     api "com.fasterxml.jackson.core:jackson-databind"
-    api 'org.apache.httpcomponents:httpclient:4.5.12'
-    api "mysql:mysql-connector-java:8.0.21"
-    api 'org.postgresql:postgresql:42.2.23'
-    api "com.baomidou:mybatis-plus-boot-starter:3.4.0"
+    api "mysql:mysql-connector-java:${mysqlConnectorVersion}"
+    api "org.postgresql:postgresql:${postgresVersion}"
+    api "com.baomidou:mybatis-plus-boot-starter:${mybatisPlusVersion}"
     api "cglib:cglib:3.3.0"
-    api 'javax.xml.bind:jaxb-api:2.3.0'
+    api "javax.xml.bind:jaxb-api:2.3.0"
 }
