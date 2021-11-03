@@ -27,6 +27,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
         QueryWrapper<UserEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda()
                 .orderByDesc(UserEntity::getCreatedDate);
-        return userAutoMap.mapToPageDto(PageModel.of(super.page(page, queryWrapper)));
+        return userAutoMap.mapToPageTarget(PageModel.of(super.page(page, queryWrapper)));
     }
 }
