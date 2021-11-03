@@ -10,7 +10,8 @@ ext {
     mapstructVersion = "1.4.2.Final"
     lombokVersion = "1.18.16"
     lombokMapstructBindingVersion = "0.2.0"
-    clickhouseVersion="0.3.1"
+    clickhouseVersion = "0.3.1"
+    redissonVersion = "3.16.4"
 }
 
 def gitCommand = ((org.gradle.internal.os.OperatingSystem.current().isWindows() ? "where" : "which") + " git").execute().text.trim()
@@ -37,6 +38,9 @@ subprojects {
 
 
     dependencyManagement {
+        generatedPomCustomization {
+            enabled = false
+        }
         imports {
             mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
             mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
@@ -51,6 +55,9 @@ subprojects {
             dependency "org.projectlombok:lombok:${lombokVersion}"
             dependency "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
             dependency "ru.yandex.clickhouse:clickhouse-jdbc:${clickhouseVersion}"
+            dependency("org.redisson:redisson-spring-boot-starter:${redissonVersion}") {
+                exclude "org.springframework.boot:spring-boot-starter-web"
+            }
         }
     }
 
