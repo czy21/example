@@ -5,7 +5,7 @@ sh_name="$(basename ${0%.*})"
 
 env="local"
 
-python3 ../../script/run.py \
+python3 -B ../../script/run.py \
 --env ../../shell/${env}/_env.py \
 --log-file ${sh_name}.log \
 --cmd '
