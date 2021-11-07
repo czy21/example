@@ -7,6 +7,6 @@ python3 -B ${run_py} --env ${env_py} \
 --init \
 --log-file ${sh_name}.log \
 --cmd '
-from script.domain.source import mysql as db_source
+from script.domain.source import pgsql as db_source
 db_source.backup_gz()
 '
