@@ -7,7 +7,7 @@ qualify_project_env = "_".join([env_common.param_project_name, param_env_suffix]
 param_main_db_name = qualify_project_env
 param_main_db_bak_name = "_".join([param_main_db_name, "bak"])
 
-db_host = "192.168.2.25"
+db_host = "192.168.2.19"
 
 # redis
 param_main_redis_host = db_host
@@ -20,10 +20,10 @@ param_main_db_mysql_port = "3306"
 
 # pgsql
 param_main_db_pgsql_host = db_host
-param_main_db_pgsql_port = "5432"
+param_main_db_pgsql_port = "5436"
 
 # cksql
-param_main_db_cksql_host = db_host
+param_main_db_cksql_host = "192.168.2.25"
 param_main_db_cksql_port = "9004"
 
 # mongo
