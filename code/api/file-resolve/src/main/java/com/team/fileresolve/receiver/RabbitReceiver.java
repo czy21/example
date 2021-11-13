@@ -116,6 +116,7 @@ public class RabbitReceiver {
         sql.INTO_VALUES(columns.stream().map(t -> StringUtils.join(List.of("#{", t.getKey(), "}"), "")).collect(Collectors.toList()).toArray(new String[]{}));
         String sqlStatement = sql.toString();
         var sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH);
+        DynamicDataSourceContext.put("ds2");
         rows.forEach(t -> {
             Map<String, Object> param = t.getData().entrySet().stream()
                     .collect(HashMap::new, (m, v) -> m.put(v.getKey(), v.getValue().getValue()), Map::putAll);
