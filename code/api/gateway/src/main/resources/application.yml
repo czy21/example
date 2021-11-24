@@ -9,6 +9,6 @@ spring:
         acl-token: anonymous
         format: YAML
         prefixes:
-          - "dev-${spring.application.name}"
+          - "dev-erp-gateway"
   profiles:
     active: local
