@@ -2,19 +2,29 @@ package com.team.infrastructure.aspect;
 
 import com.team.infrastructure.annotation.DS;
 import com.team.infrastructure.datasource.DynamicDataSourceContext;
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.annotation.Around;
+import lombok.extern.slf4j.Slf4j;
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
+
+import java.text.MessageFormat;
 
 @Aspect
 @Component
+@Slf4j
 public class RoutingDataSourceAspect {
 
-    @Around("@annotation(ds)")
-    public Object switchDS(ProceedingJoinPoint joinPoint, DS ds) throws Throwable {
+    @Before("@annotation(ds)")
+    public void before(JoinPoint joinPoint, DS ds) {
         String key = ds.value();
         DynamicDataSourceContext.put(key);
-        return joinPoint.proceed();
+        log.debug(MessageFormat.format("switch ds to {0}", key));
+    }
+
+    @After("@annotation(ds)")
+    public void after(JoinPoint joinPoint, DS ds) throws Exception {
+        DynamicDataSourceContext.put((String) DS.class.getMethod("value").getDefaultValue());
     }
 }
