@@ -19,5 +19,4 @@ dependencies {
     api "org.postgresql:postgresql:${postgresVersion}"
     api "com.baomidou:mybatis-plus-boot-starter:${mybatisPlusVersion}"
     api "cglib:cglib:3.3.0"
-    api "javax.xml.bind:jaxb-api:2.3.0"
 }
