@@ -1,6 +1,5 @@
-package com.team.infrastructure.base;
+package com.team.infrastructure.entity;
 
-import com.team.infrastructure.base.MongoBaseRepository;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;

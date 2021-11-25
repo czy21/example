@@ -1,9 +1,9 @@
-package com.team.cooperated.pocket;
+package com.team.cooperated.option;
 
 import com.team.cooperated.model.simple.SimpleItemModel;
 
 import java.util.List;
 
-public interface PocketProvider<T> {
+public interface OptionProvider<T> {
     List<SimpleItemModel<T>> obtain();
 }

@@ -45,17 +45,6 @@ public class DynamicModelController {
     }
 
 
-    @Bean
-    public Encoder feignEncoder(MappingJackson2HttpMessageConverter httpMessageConverter){
-        ObjectFactory<HttpMessageConverters> convertersObjectFactory=()->new HttpMessageConverters(httpMessageConverter);
-        return new SpringEncoder(convertersObjectFactory);
-    }
-    @Bean
-    public Decoder feignDecoder(MappingJackson2HttpMessageConverter httpMessageConverter){
-        ObjectFactory<HttpMessageConverters> convertersObjectFactory=()->new HttpMessageConverters(httpMessageConverter);
-        return new SpringDecoder(convertersObjectFactory);
-    }
-
     @Autowired
     Encoder feignEncoder;
     @Autowired

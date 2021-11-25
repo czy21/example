@@ -1,4 +1,4 @@
-package com.team.infrastructure.base;
+package com.team.infrastructure.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;

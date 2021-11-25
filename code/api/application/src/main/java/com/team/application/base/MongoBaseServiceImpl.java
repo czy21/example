@@ -1,8 +1,8 @@
 package com.team.application.base;
 
 import com.team.application.model.page.PageModel;
-import com.team.infrastructure.base.BaseEntity;
-import com.team.infrastructure.base.MongoBaseRepository;
+import com.team.infrastructure.entity.BaseEntity;
+import com.team.infrastructure.entity.MongoBaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;

@@ -14,10 +14,7 @@ CREATE TABLE ent_sale  (
   product_batch_number varchar(100)  NULL DEFAULT NULL ,
   product_price varchar(100) NULL DEFAULT NULL ,
   product_amount varchar(100) NULL DEFAULT NULL ,
-  created_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-  created_user varchar(36)  NULL DEFAULT NULL,
-  modified_date TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
-  modified_user varchar(36)  NULL DEFAULT NULL,
+  ${{{TrackedColumns}}},
   PRIMARY KEY (id)
  );
 
