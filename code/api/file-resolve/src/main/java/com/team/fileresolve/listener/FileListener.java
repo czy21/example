@@ -67,7 +67,7 @@ public class FileListener extends AnalysisEventListener<Map<Integer, Object>> {
 
         Map<String, RowModel.ColModel> rowData = fileFieldMeta.values().stream()
                 .map(f -> {
-                    RowModel.ColModel col = rowAutoMap.mapToDto(f);
+                    RowModel.ColModel col = rowAutoMap.mapToTarget(f);
                     Integer colIndex = Optional.ofNullable(f.getIndex()).orElse(null);
                     if (colIndex != null) {
                         Object cellValue = data.get(colIndex);

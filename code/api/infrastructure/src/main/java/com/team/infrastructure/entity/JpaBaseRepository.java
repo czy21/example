@@ -1,4 +1,4 @@
-package com.team.infrastructure.base;
+package com.team.infrastructure.entity;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;

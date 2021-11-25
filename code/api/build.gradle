@@ -3,14 +3,23 @@ plugins {
     id 'io.spring.dependency-management' apply false
 }
 ext {
-    springCloudVersion = "2020.0.3"
     apacheCommonLang3Version = "3.11"
     apacheCommonPool2Version = "2.8.1"
     apacheCommonIOVersion = "2.7"
     mapstructVersion = "1.4.2.Final"
     lombokVersion = "1.18.16"
     lombokMapstructBindingVersion = "0.2.0"
+    clickhouseVersion = "0.3.1"
+    redissonVersion = "3.16.4"
 }
+
+def gitCommand = ((org.gradle.internal.os.OperatingSystem.current().isWindows() ? "where" : "which") + " git").execute().text.trim()
+if (gitCommand == "") {
+    logger.warn("git command not exists")
+} else {
+    System.setProperty("GIT_USERNAME", (gitCommand + " config user.name").execute().text.trim())
+}
+
 subprojects {
     apply plugin: 'java-library'
     apply plugin: 'idea'
@@ -26,7 +35,11 @@ subprojects {
         options.encoding('UTF-8')
     }
 
+
     dependencyManagement {
+        generatedPomCustomization {
+            enabled = false
+        }
         imports {
             mavenBom org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES
             mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
@@ -40,6 +53,10 @@ subprojects {
             dependency "org.mapstruct:mapstruct-processor:${mapstructVersion}"
             dependency "org.projectlombok:lombok:${lombokVersion}"
             dependency "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
+            dependency "ru.yandex.clickhouse:clickhouse-jdbc:${clickhouseVersion}"
+            dependency("org.redisson:redisson-spring-boot-starter:${redissonVersion}") {
+                exclude "org.springframework.boot:spring-boot-starter-web"
+            }
         }
     }
 
@@ -62,6 +79,20 @@ subprojects {
 
     test {
         useJUnitPlatform()
+    }
+
+
+    jar {
+        manifest {
+            attributes(
+                    "Built-By": System.getProperty("GIT_USERNAME", "")
+            )
+        }
+
+        into("META-INF/maven/${project.group}/${project.name}") {
+            from { generatePomFileForMavenJavaPublication }
+            rename 'pom-default.xml', 'pom.xml'
+        }
     }
 
     publishing {

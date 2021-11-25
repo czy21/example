@@ -1,7 +1,7 @@
 package com.team.domain.dto;
 
 
-import com.team.infrastructure.base.BaseEntity;
+import com.team.infrastructure.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

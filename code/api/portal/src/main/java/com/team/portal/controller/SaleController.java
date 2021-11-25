@@ -10,14 +10,12 @@ import com.team.application.service.SaleService;
 import com.team.cooperated.controller.BaseController;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,8 +36,6 @@ public class SaleController extends BaseController {
     RabbitTemplate rabbitTemplate;
     @Autowired
     ObjectMapper objectMapper;
-    @Autowired
-    KafkaTemplate<String, Object> kafkaTemplate;
     @Autowired
     JobLauncher jobLauncher;
     @Autowired

@@ -1,6 +1,7 @@
 package com.team.cooperated;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.team.cooperated.feign.FeignConfigure;
 import com.team.infrastructure.json.JacksonConfigure;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -23,6 +24,7 @@ import java.util.List;
 @EnableWebMvc
 @EnableAsync
 @Configuration
+@Import(value = FeignConfigure.class)
 public class CooperatedConfigure implements WebMvcConfigurer {
 
     @Autowired
