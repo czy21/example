@@ -1,16 +1,18 @@
-# Idea #
-.idea
-*.iml
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
 *.log
 
-# Gradle #
-.gradle/
-
-# Build #
-build/
-
-# Api #
-target/
+# Idea #
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
 
 # Web #
 node_modules/
