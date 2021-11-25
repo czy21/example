@@ -3,7 +3,6 @@ plugins {
     id 'io.spring.dependency-management' apply false
 }
 ext {
-    springCloudVersion = "2020.0.3"
     apacheCommonLang3Version = "3.11"
     apacheCommonPool2Version = "2.8.1"
     apacheCommonIOVersion = "2.7"
