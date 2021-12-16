@@ -10,5 +10,5 @@ python3 -B ${run_py} --env ${env_py} \
 from script.domain.source import mssql as db_source
 db_source.assemble()
 db_source.recreate()
-#db_source.execute()
+db_source.execute()
 '
