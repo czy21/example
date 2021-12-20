@@ -20,7 +20,7 @@ param_main_db_mysql_port = "3306"
 
 # pgsql
 param_main_db_pgsql_host = db_host
-param_main_db_pgsql_port = "5436"
+param_main_db_pgsql_port = "5432"
 
 # mssql
 param_main_db_mssql_host = db_host
