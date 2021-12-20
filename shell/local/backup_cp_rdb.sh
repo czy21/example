@@ -11,4 +11,5 @@ python3 -B ../../script/run.py \
 --cmd '
 from script.domain.source import mysql as mysql_source
 mysql_source.backup_mysql()
-'
+' \
+$@

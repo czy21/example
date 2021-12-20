@@ -9,4 +9,5 @@ python3 -B ${run_py} --env ${env_py} \
 --cmd '
 from script.domain.source import mysql as db_source
 db_source.backup_gz()
-'
+' \
+$@

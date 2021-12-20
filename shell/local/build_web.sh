@@ -12,4 +12,5 @@ from script.domain.source import web as web_source
 web_source.build_web()
 #web_source.build_cp_shell()
 #web_source.build_nginx()
-'
+' \
+$@
