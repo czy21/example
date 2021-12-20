@@ -11,4 +11,5 @@ from script.domain.source import mongo as db_source
 db_source.assemble()
 db_source.recreate()
 db_source.execute()
-'
+' \
+$@
