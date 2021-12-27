@@ -1,5 +1,5 @@
 ext {
-    mysqlConnectorVersion = "8.0.21"
+    mysqlConnectorVersion = "8.0.27"
     postgresVersion = "42.2.23"
     mybatisPlusVersion = "3.4.0"
 }

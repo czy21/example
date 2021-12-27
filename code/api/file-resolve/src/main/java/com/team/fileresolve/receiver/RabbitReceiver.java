@@ -105,7 +105,7 @@ public class RabbitReceiver {
         SQL sql = new SQL();
         sql.INSERT_INTO(tableMeta.getTableName());
         sql.INTO_COLUMNS(columns.stream().map(Pair::getValue).collect(Collectors.toList()).toArray(new String[]{}));
-        sql.INTO_VALUES(columns.stream().map(t -> StringUtils.join(List.of("#{", t.getKey(), "}"), "")).collect(Collectors.toList()).toArray(new String[]{}));
+        sql.INTO_VALUES(columns.stream().map(t -> StringUtils.join(List.of(t.getValue().equals("id") ? "$" : "#" + "{", t.getKey(), "}"), "")).collect(Collectors.toList()).toArray(new String[]{}));
         String sqlStatement = sql.toString();
         var sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH, TransactionIsolationLevel.NONE);
         rows.forEach(t -> {
