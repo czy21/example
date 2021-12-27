@@ -20,6 +20,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.TransactionIsolationLevel;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
@@ -41,7 +42,6 @@ import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -78,10 +78,7 @@ public class RabbitReceiver {
     }
 
     @Bean
-    public SimpleRabbitListenerContainerFactory batchListenerFactory(ConnectionFactory connectionFactory,
-                                                                     @Qualifier("jsonMessageConverter") MessageConverter messageConverter,
-                                                                     @Value("${spi.batch-size}") Integer batchSize,
-                                                                     @Value("${spi.consumer-size}") Integer consumerSize) {
+    public SimpleRabbitListenerContainerFactory batchListenerFactory(ConnectionFactory connectionFactory, @Qualifier("jsonMessageConverter") MessageConverter messageConverter, @Value("${spi.batch-size}") Integer batchSize, @Value("${spi.consumer-size}") Integer consumerSize) {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
         factory.setBatchListener(true);
@@ -98,11 +95,7 @@ public class RabbitReceiver {
         var gRows = rows.stream().collect(Collectors.groupingBy(RowModel::getBusinessType, Collectors.toList()));
         gRows.forEach((k, v) -> {
             var tableMeta = v.get(0);
-            List<MutablePair<String, String>> columns =
-                    Stream.concat(
-                            Stream.of(MutablePair.of("id", "id")),
-                            tableMeta.getData().values().stream().map(t -> MutablePair.of(t.getKey(), t.getColumn()))
-                    ).collect(Collectors.toList());
+            List<MutablePair<String, String>> columns = Stream.concat(Stream.of(MutablePair.of("id", "id")), tableMeta.getData().values().stream().map(t -> MutablePair.of(t.getKey(), t.getColumn()))).collect(Collectors.toList());
 //            DynamicDataSourceContext.put("ds1");
             mybatisInsert(v, tableMeta, columns);
         });
@@ -114,15 +107,15 @@ public class RabbitReceiver {
         sql.INTO_COLUMNS(columns.stream().map(Pair::getValue).collect(Collectors.toList()).toArray(new String[]{}));
         sql.INTO_VALUES(columns.stream().map(t -> StringUtils.join(List.of("#{", t.getKey(), "}"), "")).collect(Collectors.toList()).toArray(new String[]{}));
         String sqlStatement = sql.toString();
-        var sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH);
+        var sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH, TransactionIsolationLevel.NONE);
         rows.forEach(t -> {
-            Map<String, Object> param = t.getData().entrySet().stream()
-                    .collect(HashMap::new, (m, v) -> m.put(v.getKey(), v.getValue().getValue()), Map::putAll);
+            Map<String, Object> param = t.getData().entrySet().stream().collect(HashMap::new, (m, v) -> m.put(v.getKey(), v.getValue().getValue()), Map::putAll);
             param.put("sql", sqlStatement);
-            param.put("id", UUID.randomUUID().toString());
+            param.put("id", "replace(uuid(),'-','')");
             sqlSession.insert("com.team.domain.mapper.RepositoryMapper.insert", param);
         });
         sqlSession.commit();
+        sqlSession.clearCache();
         sqlSession.close();
     }
 
