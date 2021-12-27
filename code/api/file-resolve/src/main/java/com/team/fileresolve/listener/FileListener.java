@@ -15,7 +15,6 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
@@ -68,7 +67,7 @@ public class FileListener extends AnalysisEventListener<Map<Integer, Object>> {
         Map<String, RowModel.ColModel> rowData = fileFieldMeta.values().stream()
                 .map(f -> {
                     RowModel.ColModel col = rowAutoMap.mapToTarget(f);
-                    Integer colIndex = Optional.ofNullable(f.getIndex()).orElse(null);
+                    Integer colIndex = f.getIndex();
                     if (colIndex != null) {
                         Object cellValue = data.get(colIndex);
                         col.setValue(cellValue);
