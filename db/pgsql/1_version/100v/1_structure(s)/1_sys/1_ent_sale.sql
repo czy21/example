@@ -1,7 +1,7 @@
 
 CREATE TABLE ent_sale  (
   id varchar(36)  NOT NULL,
-  order_date varchar(100) NULL DEFAULT NULL,
+  order_date timestamp (6) NULL DEFAULT NULL,
   from_institution_code varchar(100)  NULL DEFAULT NULL ,
   from_institution_name varchar(100)  NULL DEFAULT NULL ,
   to_institution_code varchar(100)  NULL DEFAULT NULL ,
