@@ -105,13 +105,12 @@ public class RabbitReceiver {
         SQL sql = new SQL();
         sql.INSERT_INTO(tableMeta.getTableName());
         sql.INTO_COLUMNS(columns.stream().map(Pair::getValue).collect(Collectors.toList()).toArray(new String[]{}));
-        sql.INTO_VALUES(columns.stream().map(t -> StringUtils.join(List.of((t.getValue().equals("id") ? "$" : "#") + "{", t.getKey(), "}"), "")).collect(Collectors.toList()).toArray(new String[]{}));
+        sql.INTO_VALUES(columns.stream().map(t -> t.getValue().equals("id") ? "replace(uuid(),'-','')" : StringUtils.join(List.of("#{", t.getKey(), "}"), "")).collect(Collectors.toList()).toArray(new String[]{}));
         String sqlStatement = sql.toString();
         var sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH, TransactionIsolationLevel.NONE);
         rows.forEach(t -> {
             Map<String, Object> param = t.getData().entrySet().stream().collect(HashMap::new, (m, v) -> m.put(v.getKey(), v.getValue().getValue()), Map::putAll);
             param.put("sql", sqlStatement);
-            param.put("id", "replace(uuid(),'-','')");
             sqlSession.insert("com.team.domain.mapper.RepositoryMapper.insert", param);
         });
         sqlSession.commit();
