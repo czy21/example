@@ -13,6 +13,6 @@ CREATE TABLE ent_sale  (
   product_batch_number varchar(100) NULL DEFAULT NULL ,
   product_price decimal(19,6) NULL DEFAULT NULL ,
   product_amount decimal(19,6) NULL DEFAULT NULL ,
-  ${{{TrackedColumns}}},
+  {{ TrackedColumns }},
   PRIMARY KEY ([id])
 );

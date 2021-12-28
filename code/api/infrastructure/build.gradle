@@ -14,7 +14,6 @@ dependencies {
     api "ru.yandex.clickhouse:clickhouse-jdbc"
     api "com.fasterxml.jackson.core:jackson-databind"
     api "mysql:mysql-connector-java"
-    api "com.microsoft.sqlserver:mssql-jdbc"
     api "org.postgresql:postgresql"
     api "com.baomidou:mybatis-plus-boot-starter:${mybatisPlusVersion}"
     api "cglib:cglib:3.3.0"

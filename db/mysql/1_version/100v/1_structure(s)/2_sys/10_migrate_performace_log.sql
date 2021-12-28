@@ -7,6 +7,6 @@ CREATE TABLE `ent_migrate_performance_log`  (
   `duration`  decimal(19,9) null,
   `sequence` int null,
   `batch_id` varchar(36) null,
-  ${{{TrackedColumns}}},
+  {{ TrackedColumns }},
   PRIMARY KEY (`id`)
 ) COMMENT='迁移性能日志';

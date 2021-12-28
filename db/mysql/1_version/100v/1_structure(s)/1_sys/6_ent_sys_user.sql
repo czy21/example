@@ -5,7 +5,7 @@ CREATE TABLE `ent_sys_user`  (
   `user_name` varchar(50)  NOT NULL COMMENT '用户姓名',
   `email` varchar(50) DEFAULT NULL COMMENT '用户邮箱',
   `department_id` varchar(36)  NOT NULL COMMENT '所属部门',
-  ${{{TrackedColumns}}},
+  {{ TrackedColumns }},
   PRIMARY KEY (`id`) ,
   INDEX `fk_User_Department`(`department_id`) ,
   CONSTRAINT `fk_User_Department` FOREIGN KEY (`department_id`) 
