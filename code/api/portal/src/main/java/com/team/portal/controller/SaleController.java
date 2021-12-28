@@ -45,7 +45,7 @@ public class SaleController extends BaseController {
     SaleService saleService;
 
     @PostMapping(path = "upload")
-    public MaterialVO uploadByRabbit(FileVO fileVO, @RequestParam("ds") String dataSource) throws IOException {
+    public MaterialVO uploadByRabbit(FileVO fileVO, @RequestParam(value = "ds", required = false) String dataSource) throws IOException {
         MaterialVO materialVO = materialService.upload(fileVO, "DEFAULT");
         materialVO.setTargetDataSource(dataSource);
         rabbitTemplate.convertAndSend(QueueConfig.SPI_FILE_TOPIC, materialVO);
