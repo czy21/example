@@ -1,6 +1,4 @@
 ext {
-    mysqlConnectorVersion = "8.0.27"
-    postgresVersion = "42.2.23"
     mybatisPlusVersion = "3.4.0"
 }
 
@@ -15,8 +13,9 @@ dependencies {
     api "org.redisson:redisson-spring-boot-starter"
     api "ru.yandex.clickhouse:clickhouse-jdbc"
     api "com.fasterxml.jackson.core:jackson-databind"
-    api "mysql:mysql-connector-java:${mysqlConnectorVersion}"
-    api "org.postgresql:postgresql:${postgresVersion}"
+    api "mysql:mysql-connector-java"
+    api "com.microsoft.sqlserver:mssql-jdbc"
+    api "org.postgresql:postgresql"
     api "com.baomidou:mybatis-plus-boot-starter:${mybatisPlusVersion}"
     api "cglib:cglib:3.3.0"
 }
