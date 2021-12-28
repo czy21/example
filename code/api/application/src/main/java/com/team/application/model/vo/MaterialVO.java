@@ -11,4 +11,5 @@ public class MaterialVO {
     private String name;
     private String url;
     private String uid;
+    private String targetDataSource;
 }

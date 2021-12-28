@@ -1,7 +1,6 @@
 package com.team.application.model;
 
 import com.team.application.kind.SqlKind;
-import com.team.domain.mongo.entity.FileColumnMappingEntity;
 import lombok.Data;
 
 import java.util.Map;

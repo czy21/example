@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
@@ -44,8 +45,9 @@ public class SaleController extends BaseController {
     SaleService saleService;
 
     @PostMapping(path = "upload")
-    public MaterialVO uploadByRabbit(FileVO fileVO) throws IOException {
+    public MaterialVO uploadByRabbit(FileVO fileVO, @RequestParam("ds") String dataSource) throws IOException {
         MaterialVO materialVO = materialService.upload(fileVO, "DEFAULT");
+        materialVO.setTargetDataSource(dataSource);
         rabbitTemplate.convertAndSend(QueueConfig.SPI_FILE_TOPIC, materialVO);
         return materialVO;
     }
