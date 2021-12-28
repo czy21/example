@@ -12,6 +12,7 @@ import com.team.domain.mapper.MaterialMapper;
 import com.team.domain.mapper.RepositoryMapper;
 import com.team.domain.mongo.repository.FileColumnMappingRepository;
 import com.team.fileresolve.listener.FileListener;
+import com.team.infrastructure.datasource.DynamicDataSourceContext;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -91,7 +92,7 @@ public class RabbitReceiver {
         gRows.forEach((k, v) -> {
             var tableMeta = v.get(0);
             List<MutablePair<String, String>> columns = Stream.concat(Stream.of(MutablePair.of("id", "id")), tableMeta.getData().values().stream().map(t -> MutablePair.of(t.getKey(), t.getColumn()))).collect(Collectors.toList());
-//            DynamicDataSourceContext.put("ds1");
+            DynamicDataSourceContext.put("ds2");
             mybatisInsert(v, tableMeta, columns);
         });
     }
@@ -100,7 +101,7 @@ public class RabbitReceiver {
         SQL sql = new SQL();
         sql.INSERT_INTO(tableMeta.getTableName());
         sql.INTO_COLUMNS(columns.stream().map(Pair::getValue).collect(Collectors.toList()).toArray(new String[]{}));
-        sql.INTO_VALUES(columns.stream().map(t -> t.getValue().equals("id") ? "replace(uuid(),'-','')" : StringUtils.join(List.of("#{", t.getKey(), "}"), "")).collect(Collectors.toList()).toArray(new String[]{}));
+        sql.INTO_VALUES(columns.stream().map(t -> t.getValue().equals("id") ? "replace(newid(),'-','')" : StringUtils.join(List.of("#{", t.getKey(), "}"), "")).collect(Collectors.toList()).toArray(new String[]{}));
         String sqlStatement = sql.toString();
         var sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH, TransactionIsolationLevel.NONE);
         rows.forEach(t -> {
