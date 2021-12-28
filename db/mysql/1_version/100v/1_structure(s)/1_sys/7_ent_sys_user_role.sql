@@ -2,7 +2,7 @@ CREATE TABLE `ent_sys_user_role`  (
   `id` varchar(36)  NOT NULL,
   `user_id` varchar(36)  NOT NULL,
   `role_id` varchar(36)  NOT NULL,
-  ${{{TrackedColumns}}},
+  {{ TrackedColumns }},
   PRIMARY KEY (`id`) ,
   INDEX `fk_UserRole_Role`(`role_id`) ,
   INDEX `fk_UserRole_User`(`user_id`) ,
