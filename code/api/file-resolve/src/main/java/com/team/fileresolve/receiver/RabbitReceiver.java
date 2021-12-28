@@ -31,11 +31,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.redis.core.HashOperations;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -65,15 +63,12 @@ public class RabbitReceiver {
     JdbcTemplate jdbcTemplate;
     @Autowired
     SqlSessionFactory sqlSessionFactory;
-    @Resource(name = "redisTemplate")
-    HashOperations<String, String, Object> hashOperations;
-
 
     @RabbitListener(queues = QueueConfig.SPI_FILE_TOPIC, concurrency = "1", ackMode = "MANUAL")
     public void file(MaterialVO materialVO, Message message, Channel channel) throws IOException {
         MaterialEntity me = materialMapper.selectById(materialVO.getUid());
         File f = Paths.get(me.getMaterialTarget().getRootUrl(), me.getMaterialTarget().getRootPath(), me.getPath()).toFile();
-        EasyExcel.read(f, new FileListener(rt, fmr, rowAutoMap, me)).sheet().doRead();
+        EasyExcel.read(f, new FileListener(rt, fmr, rowAutoMap, me, materialVO)).sheet().doRead();
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
     }
 

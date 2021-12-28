@@ -6,6 +6,7 @@ import com.team.application.automap.RowAutoMap;
 import com.team.application.config.QueueConfig;
 import com.team.application.kind.SqlKind;
 import com.team.application.model.RowModel;
+import com.team.application.model.vo.MaterialVO;
 import com.team.domain.entity.MaterialEntity;
 import com.team.domain.mongo.entity.FileColumnMappingEntity;
 import com.team.domain.mongo.repository.FileColumnMappingRepository;
@@ -25,16 +26,19 @@ public class FileListener extends AnalysisEventListener<Map<Integer, Object>> {
     FileColumnMappingRepository fileColumnMappingRepository;
     RowAutoMap rowAutoMap;
     MaterialEntity materialEntity;
+    MaterialVO materialVO;
     Map<String, MutablePair<FileColumnMappingEntity, Map<String, FileColumnMappingEntity.Field>>> columnMetadata = new ConcurrentHashMap<>();
 
     public FileListener(RabbitTemplate rabbitTemplate,
                         FileColumnMappingRepository fileColumnMappingRepository,
                         RowAutoMap rowAutoMap,
-                        MaterialEntity materialEntity) {
+                        MaterialEntity materialEntity,
+                        MaterialVO materialVO) {
         this.rabbitTemplate = rabbitTemplate;
         this.fileColumnMappingRepository = fileColumnMappingRepository;
         this.rowAutoMap = rowAutoMap;
         this.materialEntity = materialEntity;
+        this.materialVO = materialVO;
 
     }
 
@@ -73,7 +77,8 @@ public class FileListener extends AnalysisEventListener<Map<Integer, Object>> {
                         col.setValue(cellValue);
                     }
                     return col;
-                }).collect(Collectors.toMap(RowModel.ColModel::getKey, t -> t, (n, n2) -> n2, LinkedHashMap::new));
+                }).collect(LinkedHashMap::new, (m, t) -> m.put(t.getKey(), t), Map::putAll);
+
         rowModel.setData(rowData);
         rabbitTemplate.convertAndSend(QueueConfig.SPI_DATA_TOPIC, rowModel);
     }
