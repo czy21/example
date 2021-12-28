@@ -12,4 +12,10 @@ public class MaterialVO {
     private String url;
     private String uid;
     private String targetDataSource;
+
+    public MaterialVO(String name, String url, String uid) {
+        this.name = name;
+        this.url = url;
+        this.uid = uid;
+    }
 }
