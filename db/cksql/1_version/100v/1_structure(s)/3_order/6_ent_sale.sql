@@ -16,4 +16,4 @@ create table ent_sale
     product_amount        Nullable(String) comment '金额'
 ) ENGINE =MergeTree()
 PRIMARY KEY id
-PARTITION BY order_date;
+PARTITION BY toYYYYMM(order_date);
