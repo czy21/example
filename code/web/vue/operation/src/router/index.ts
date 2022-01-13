@@ -14,6 +14,11 @@ const routes: Array<RouteConfig> = [
                 path: "user",
                 component: () => import('@v/pages/user/index.vue')
             },
+            {
+                name: "菜单管理",
+                path: "menu",
+                component: () => import('@v/pages/menu/index.vue')
+            },
         ]
     },
 ]
