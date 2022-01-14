@@ -58,8 +58,8 @@ public class MaterialServiceImpl implements MaterialService {
                 String currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
                 String relativePath = Path.of(currentTime, dto.getPath()).toString();
                 File f = FileUtils.getFile(fileTarget.getRootUrl(), fileTarget.getRootPath(), relativePath);
-                FileUtils.forceMkdirParent(f);
-                FileUtils.copyToFile(inputStream, f);
+                FileUtils.forceMkdir(f);
+                FileUtils.copyInputStreamToFile(inputStream, f);
                 materialEntity.setPath(FilenameUtils.separatorsToUnix(relativePath));
                 break;
             default:
