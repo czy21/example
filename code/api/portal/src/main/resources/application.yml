@@ -10,7 +10,5 @@ spring:
         prefixes:
           - "dev-erp-common"
           - "dev-erp-portal"
-      discovery:
-        instance-id: ${spring.application.name}
   profiles:
     active: local
