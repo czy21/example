@@ -10,5 +10,6 @@ public class PortalApplication {
     public static void main(String[] args) {
         SpringApplication app = new SpringApplication(PortalApplication.class);
         app.setAllowCircularReferences(true);
+        app.run(args);
     }
 }
