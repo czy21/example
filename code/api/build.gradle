@@ -3,11 +3,11 @@ plugins {
     id 'io.spring.dependency-management' apply false
 }
 ext {
-    apacheCommonLang3Version = "3.11"
-    apacheCommonPool2Version = "2.8.1"
-    apacheCommonIOVersion = "2.7"
+    apacheCommonLang3Version = "3.12.0"
+    apacheCommonPool2Version = "2.11.1"
+    apacheCommonIOVersion = "2.11.0"
+    apacheCommonsCollectionVersion = "4.4"
     mapstructVersion = "1.4.2.Final"
-    lombokVersion = "1.18.16"
     lombokMapstructBindingVersion = "0.2.0"
     clickhouseVersion = "0.3.1"
     redissonVersion = "3.16.4"
@@ -49,9 +49,9 @@ subprojects {
             dependency "org.apache.commons:commons-pool2:${apacheCommonPool2Version}"
             dependency "org.apache.commons:commons-lang3:${apacheCommonLang3Version}"
             dependency "commons-io:commons-io:${apacheCommonIOVersion}"
+            dependency "org.apache.commons:commons-collections4:${apacheCommonsCollectionVersion}"
             dependency "org.mapstruct:mapstruct:${mapstructVersion}"
             dependency "org.mapstruct:mapstruct-processor:${mapstructVersion}"
-            dependency "org.projectlombok:lombok:${lombokVersion}"
             dependency "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
             dependency "ru.yandex.clickhouse:clickhouse-jdbc:${clickhouseVersion}"
             dependency("org.redisson:redisson-spring-boot-starter:${redissonVersion}") {
@@ -62,12 +62,14 @@ subprojects {
 
     dependencies {
         implementation 'org.springframework.cloud:spring-cloud-starter-consul-config'
+        implementation 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
         implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
         implementation 'io.github.openfeign:feign-jackson'
 
         implementation "org.apache.commons:commons-pool2"
         implementation "org.apache.commons:commons-lang3"
         implementation 'commons-io:commons-io'
+        implementation 'org.apache.commons:commons-collections4'
 
         implementation "org.mapstruct:mapstruct", "org.projectlombok:lombok"
         annotationProcessor "org.mapstruct:mapstruct-processor", "org.projectlombok:lombok", "org.projectlombok:lombok-mapstruct-binding"

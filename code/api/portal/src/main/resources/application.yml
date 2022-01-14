@@ -6,10 +6,11 @@ spring:
   cloud:
     consul:
       config:
-        acl-token: anonymous
         format: YAML
         prefixes:
           - "dev-erp-common"
           - "dev-erp-portal"
+      discovery:
+        instance-id: ${spring.application.name}
   profiles:
     active: local
