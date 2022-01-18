@@ -10,7 +10,7 @@ const store = createStore(rootReducer);
 function App() {
     return (
         <Provider store={store}>
-            <BrowserRouter basename={"/circler/"}>
+            <BrowserRouter basename={"/erp/"}>
                 <Home/>
             </BrowserRouter>
         </Provider>
