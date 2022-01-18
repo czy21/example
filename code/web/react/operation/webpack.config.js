@@ -6,7 +6,9 @@ module.exports = {
         // console.log(JSON.stringify(webpackConfig, null, 4))
 
         // Always return the config object.
-        webpackConfig.output.publicPath = "/erp/"
+        if (process.env.NODE_ENV === 'production') {
+            webpackConfig.output.publicPath = "/erp/"
+        }
 
         return webpackConfig;
     }
