@@ -3,6 +3,7 @@ let webpackConfig = require('./webpack.config')
 module.exports = {
     configureWebpack: config => {
         Object.assign(config.resolve.alias, webpackConfig.resolve.alias)
+        config.output.publicPath = "/erp/"
     },
     outputDir: "build",
     devServer: {
