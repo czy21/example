@@ -5,7 +5,7 @@ Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
     {
-        path: process.env.BASE_URL,
+        path: '/',
         name: 'Home',
         component: () => import('@v/layout/Home.vue'),
         children: [
@@ -26,7 +26,6 @@ const routes: Array<RouteConfig> = [
 
 const router = new VueRouter({
     mode: 'history',
-    base: process.env.BASE_URL,
     routes
 })
 
