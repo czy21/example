@@ -1,2 +1,2 @@
 FROM nginx:1.20
-COPY ./build/ /usr/share/nginx/web/
+COPY ./dist/ /usr/share/nginx/web/

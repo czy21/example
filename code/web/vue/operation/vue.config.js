@@ -3,9 +3,8 @@ let webpackConfig = require('./webpack.config')
 module.exports = {
     configureWebpack: config => {
         Object.assign(config.resolve.alias, webpackConfig.resolve.alias)
-        console.log(process.env.BASE_URL)
+        console.log(config)
     },
-    outputDir: "build",
     devServer: {
         host: "localhost",
         port: 3000,
@@ -20,5 +19,5 @@ module.exports = {
             }
         },
     },
-    publicPath: process.env.BASE_URL
+    publicPath: process.env.NODE_ENV === 'production' ? '/erp/' : '/'
 };
