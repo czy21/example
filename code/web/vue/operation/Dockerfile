@@ -1,2 +1,2 @@
-FROM nginx:1.20
-COPY ./dist/ /usr/share/nginx/web/
+FROM nginx:1.21.5-alpine
+COPY ./build/ /usr/share/nginx/web/
