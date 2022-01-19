@@ -8,9 +8,10 @@ import Home from "@/layout/Home";
 const store = createStore(rootReducer);
 
 function App() {
+    console.log(process.env.BASE_URL)
     return (
         <Provider store={store}>
-            <BrowserRouter basename={process.env.BASE_URL}>
+            <BrowserRouter basename={process.env.BASE_URL??"/react/"}>
                 <Home/>
             </BrowserRouter>
         </Provider>
