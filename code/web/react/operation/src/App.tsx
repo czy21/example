@@ -10,7 +10,7 @@ const store = createStore(rootReducer);
 function App() {
     return (
         <Provider store={store}>
-            <BrowserRouter basename={"/erp/"}>
+            <BrowserRouter basename={process.env.BASE_URL}>
                 <Home/>
             </BrowserRouter>
         </Provider>
