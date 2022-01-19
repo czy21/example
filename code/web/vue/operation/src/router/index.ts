@@ -5,7 +5,7 @@ Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
     {
-        path: '/',
+        path: process.env.BASE_URL,
         name: 'Home',
         component: () => import('@v/layout/Home.vue'),
         children: [
