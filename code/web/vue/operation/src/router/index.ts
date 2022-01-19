@@ -5,7 +5,7 @@ Vue.use(VueRouter)
 
 const routes: Array<RouteConfig> = [
     {
-        path: '/',
+        path: '/erp/',
         name: 'Home',
         component: () => import('@v/layout/Home.vue'),
         children: [
