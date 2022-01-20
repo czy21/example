@@ -17,6 +17,7 @@ out/
 # Web #
 node_modules/
 dist/
+deploy_versions/
 
 # Output #
 ___output/
