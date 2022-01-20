@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import VueRouter, {RouteConfig} from 'vue-router'
+import Home from '@v/layout/Home.vue'
+import User from '@v/pages/user/index.vue'
+import Menu from '@v/pages/menu/index.vue'
 
 Vue.use(VueRouter)
 
@@ -7,17 +10,17 @@ const routes: Array<RouteConfig> = [
     {
         path: '/',
         name: 'Home',
-        component: () => import('@v/layout/Home.vue'),
+        component: Home,
         children: [
             {
                 name: "人员管理",
                 path: "user",
-                component: () => import('@v/pages/user/index.vue')
+                component: User
             },
             {
                 name: "菜单管理",
                 path: "menu",
-                component: () => import('@v/pages/menu/index.vue')
+                component: Menu
             },
         ]
     },
