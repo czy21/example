@@ -25,6 +25,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -61,7 +62,7 @@ public class MaterialServiceImpl implements MaterialService {
         switch (me.getMaterialTarget().getTargetKind()) {
             case OSS:
                 try {
-                    ossClient.put(me.getPath(), fileStream, me.getMaterialTarget().getRootPath());
+                    ossClient.put(me.getPath(), fileStream, me.getMaterialTarget().getRootPath(), Map.of("fileName", me.getName()));
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
