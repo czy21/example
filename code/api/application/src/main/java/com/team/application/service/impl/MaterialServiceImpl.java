@@ -8,15 +8,18 @@ import com.team.application.util.MultipartFileUtil;
 import com.team.domain.entity.MaterialEntity;
 import com.team.domain.entity.MaterialTargetEntity;
 import com.team.domain.mapper.MaterialMapper;
+import com.team.infrastructure.oss.OSSClient;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.validator.routines.UrlValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 import java.nio.file.Path;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -28,9 +31,12 @@ public class MaterialServiceImpl implements MaterialService {
 
     @Autowired
     MaterialMapper materialMapper;
+    @Autowired
+    OSSClient ossClient;
 
+    @Transactional
     @Override
-    public MaterialVO upload(FileVO fileVO, String targetKey) throws IOException {
+    public MaterialVO upload(FileVO fileVO, String targetKey) throws Exception {
         MaterialDTO materialDTO = new MaterialDTO();
         materialDTO.setName(fileVO.getFile().getOriginalFilename());
         materialDTO.setPath(MultipartFileUtil.generateFileName(fileVO.getFile()));
@@ -39,7 +45,7 @@ public class MaterialServiceImpl implements MaterialService {
     }
 
 
-    private MaterialVO singleFileStore(MaterialDTO dto, InputStream inputStream, String targetKey) throws IOException {
+    private MaterialVO singleFileStore(MaterialDTO dto, InputStream fileStream, String targetKey) throws Exception {
         Assert.notNull(targetKey, "file_target_key not null");
         MaterialTargetEntity fileTarget = Optional.ofNullable(materialMapper.selectMaterialTargetByKey(targetKey)).orElse(new MaterialTargetEntity());
         Assert.notNull(fileTarget.getKey(), "file.targetKey_no_exist");
@@ -49,26 +55,32 @@ public class MaterialServiceImpl implements MaterialService {
         materialEntity.setName(dto.getName());
         materialEntity.setKind(dto.getMediaType());
         materialEntity.setMaterialTarget(fileTarget);
+        String currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String filePath = FilenameUtils.separatorsToUnix(Path.of(currentTime, dto.getPath()).toString());
+        materialEntity.setPath(filePath);
         switch (fileTarget.getTargetKind()) {
             case OSS:
-                materialEntity.setPath(dto.getPath());
-//                AliBasicHelper.OSS_SERVICE.obtain(materialEntity.getMaterialTarget().getRootPath()).uploadFile(materialEntity.getPath(), inputStream);
+                try {
+                    ossClient.upload(filePath, fileStream, materialEntity.getMaterialTarget().getRootPath());
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
                 break;
             case LOCAL:
-                String currentTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-                String relativePath = Path.of(currentTime, dto.getPath()).toString();
-                File f = FileUtils.getFile(fileTarget.getRootUrl(), fileTarget.getRootPath(), relativePath);
+                File f = FileUtils.getFile(fileTarget.getRootUrl(), fileTarget.getRootPath(), filePath);
                 FileUtils.forceMkdir(f);
-                FileUtils.copyInputStreamToFile(inputStream, f);
-                materialEntity.setPath(FilenameUtils.separatorsToUnix(relativePath));
+                FileUtils.copyInputStreamToFile(fileStream, f);
                 break;
             default:
                 return null;
         }
         materialMapper.insertMaterial(materialEntity);
-        return new MaterialVO(materialEntity.getName(),
-                FilenameUtils.separatorsToUnix(Path.of(materialEntity.getMaterialTarget().getRootUrl(), fileTarget.getRootPath(), materialEntity.getPath()).toString()),
-                materialEntity.getId()
+        boolean isUrl = UrlValidator.getInstance().isValid(materialEntity.getMaterialTarget().getRootUrl());
+        return new MaterialVO(
+                materialEntity.getId(),
+                materialEntity.getName(),
+                isUrl ? new URI(materialEntity.getMaterialTarget().getRootUrl()).resolve(FilenameUtils.separatorsToUnix(Path.of(fileTarget.getRootPath(), materialEntity.getPath()).toString())).toString()
+                        : FilenameUtils.separatorsToUnix(Path.of(materialEntity.getMaterialTarget().getRootUrl(), fileTarget.getRootPath(), materialEntity.getPath()).toString())
         );
     }
 

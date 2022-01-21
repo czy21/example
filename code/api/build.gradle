@@ -11,6 +11,9 @@ ext {
     lombokMapstructBindingVersion = "0.2.0"
     clickhouseVersion = "0.3.1"
     redissonVersion = "3.16.4"
+    minioVersion = "8.2.0"
+    mybatisPlusVersion = "3.5.0"
+    apacheCommonValidatorVersion = "1.7"
 }
 
 def gitCommand = ((org.gradle.internal.os.OperatingSystem.current().isWindows() ? "where" : "which") + " git").execute().text.trim()
@@ -50,6 +53,7 @@ subprojects {
             dependency "org.apache.commons:commons-lang3:${apacheCommonLang3Version}"
             dependency "commons-io:commons-io:${apacheCommonIOVersion}"
             dependency "org.apache.commons:commons-collections4:${apacheCommonsCollectionVersion}"
+            dependency "commons-validator:commons-validator:${apacheCommonValidatorVersion}"
             dependency "org.mapstruct:mapstruct:${mapstructVersion}"
             dependency "org.mapstruct:mapstruct-processor:${mapstructVersion}"
             dependency "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
@@ -57,6 +61,9 @@ subprojects {
             dependency("org.redisson:redisson-spring-boot-starter:${redissonVersion}") {
                 exclude "org.springframework.boot:spring-boot-starter-web"
             }
+            dependency "io.minio:minio:${minioVersion}"
+            dependency "com.baomidou:mybatis-plus-boot-starter:${mybatisPlusVersion}"
+
         }
     }
 
@@ -69,11 +76,14 @@ subprojects {
         implementation "org.apache.commons:commons-lang3"
         implementation 'commons-io:commons-io'
         implementation 'org.apache.commons:commons-collections4'
+        implementation 'commons-validator:commons-validator'
 
         implementation "org.mapstruct:mapstruct", "org.projectlombok:lombok"
         annotationProcessor "org.mapstruct:mapstruct-processor", "org.projectlombok:lombok", "org.projectlombok:lombok-mapstruct-binding"
         testImplementation "org.mapstruct:mapstruct", "org.projectlombok:lombok"
         testAnnotationProcessor "org.mapstruct:mapstruct-processor", "org.projectlombok:lombok", "org.projectlombok:lombok-mapstruct-binding"
+
+        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
         testImplementation "org.springframework.boot:spring-boot-starter-test"
     }

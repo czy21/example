@@ -26,6 +26,6 @@ public class MultipartFileUtil {
      */
     public static String generateFileName(MultipartFile file) {
         String extension = getExtension(file);
-        return UUID.randomUUID().toString() + (ObjectUtils.isEmpty(extension) ? "" : "." + extension);
+        return UUID.randomUUID() + (ObjectUtils.isEmpty(extension) ? "" : "." + extension);
     }
 }

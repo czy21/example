@@ -12,3 +12,9 @@ spring:
           - "dev-erp-portal"
   profiles:
     active: local
+
+oss:
+  minio:
+    endpoint: http://minio.cluster.com
+    access-key: admin
+    secret-key: ***REMOVED***
