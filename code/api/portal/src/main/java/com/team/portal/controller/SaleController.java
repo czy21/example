@@ -1,6 +1,7 @@
 package com.team.portal.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.team.application.config.QueueConfig;
 import com.team.application.model.vo.FileVO;
 import com.team.application.model.vo.MaterialVO;
 import com.team.application.service.MaterialService;
