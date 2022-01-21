@@ -76,8 +76,8 @@ subprojects {
 
         implementation "org.apache.commons:commons-pool2"
         implementation "org.apache.commons:commons-lang3"
-        implementation "commons-io:commons-io"
         implementation "org.apache.commons:commons-collections4"
+        implementation "commons-io:commons-io"
         implementation "commons-validator:commons-validator"
 
         implementation "org.mapstruct:mapstruct", "org.projectlombok:lombok"
