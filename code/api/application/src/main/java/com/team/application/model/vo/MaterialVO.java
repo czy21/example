@@ -13,7 +13,7 @@ public class MaterialVO {
     private String uid;
     private String targetDataSource;
 
-    public MaterialVO(String name, String url, String uid) {
+    public MaterialVO(String uid,String name, String url) {
         this.name = name;
         this.url = url;
         this.uid = uid;

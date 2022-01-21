@@ -1,9 +1,9 @@
 package com.team.infrastructure;
 
 import com.team.infrastructure.datasource.DynamicDataSourceConfigure;
-import com.team.infrastructure.datasource.RoutingDataSource;
 import com.team.infrastructure.json.JacksonConfigure;
 import com.team.infrastructure.metadata.EntityMetadataHandler;
+import com.team.infrastructure.oss.OSSConfigure;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,14 +14,15 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.stereotype.Component;
 
-import javax.sql.DataSource;
 import java.time.LocalDateTime;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 @Configuration
-@Import({JacksonConfigure.class, DynamicDataSourceConfigure.class})
+@Import({
+        JacksonConfigure.class,
+        DynamicDataSourceConfigure.class,
+        OSSConfigure.class
+})
 class InfrastructureConfigure {
     @Bean
     @ConditionalOnMissingBean

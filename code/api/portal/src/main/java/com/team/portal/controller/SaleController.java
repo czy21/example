@@ -1,7 +1,6 @@
 package com.team.portal.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.team.application.config.QueueConfig;
 import com.team.application.model.vo.FileVO;
 import com.team.application.model.vo.MaterialVO;
 import com.team.application.service.MaterialService;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
 import java.util.Date;
 import java.util.Map;
 
@@ -45,10 +43,10 @@ public class SaleController extends BaseController {
     SaleService saleService;
 
     @PostMapping(path = "upload")
-    public MaterialVO uploadByRabbit(FileVO fileVO, @RequestParam(value = "ds", required = false) String dataSource) throws IOException {
-        MaterialVO materialVO = materialService.upload(fileVO, "DEFAULT");
+    public MaterialVO uploadByRabbit(FileVO fileVO, @RequestParam(value = "ds", required = false) String dataSource) throws Exception {
+        MaterialVO materialVO = materialService.upload(fileVO, "OSS");
         materialVO.setTargetDataSource(dataSource);
-        rabbitTemplate.convertAndSend(QueueConfig.SPI_FILE_TOPIC, materialVO);
+//        rabbitTemplate.convertAndSend(QueueConfig.SPI_FILE_TOPIC, materialVO);
         return materialVO;
     }
 
