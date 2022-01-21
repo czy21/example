@@ -7,6 +7,7 @@ ext {
     apacheCommonPool2Version = "2.11.1"
     apacheCommonIOVersion = "2.11.0"
     apacheCommonsCollectionVersion = "4.4"
+    apacheCommonValidatorVersion = "1.7"
     mapstructVersion = "1.4.2.Final"
     lombokMapstructBindingVersion = "0.2.0"
     clickhouseVersion = "0.3.1"
@@ -14,7 +15,6 @@ ext {
     minioVersion = "8.2.0"
     okhttpVersion="4.9.3"
     mybatisPlusVersion = "3.5.0"
-    apacheCommonValidatorVersion = "1.7"
 }
 
 def gitCommand = ((org.gradle.internal.os.OperatingSystem.current().isWindows() ? "where" : "which") + " git").execute().text.trim()
@@ -70,15 +70,15 @@ subprojects {
     }
 
     dependencies {
-        implementation 'org.springframework.cloud:spring-cloud-starter-consul-config'
-        implementation 'org.springframework.cloud:spring-cloud-starter-openfeign'
-        implementation 'io.github.openfeign:feign-jackson'
+        implementation "org.springframework.cloud:spring-cloud-starter-consul-config"
+        implementation "org.springframework.cloud:spring-cloud-starter-openfeign"
+        implementation "io.github.openfeign:feign-jackson"
 
         implementation "org.apache.commons:commons-pool2"
         implementation "org.apache.commons:commons-lang3"
-        implementation 'commons-io:commons-io'
-        implementation 'org.apache.commons:commons-collections4'
-        implementation 'commons-validator:commons-validator'
+        implementation "commons-io:commons-io"
+        implementation "org.apache.commons:commons-collections4"
+        implementation "commons-validator:commons-validator"
 
         implementation "org.mapstruct:mapstruct", "org.projectlombok:lombok"
         annotationProcessor "org.mapstruct:mapstruct-processor", "org.projectlombok:lombok", "org.projectlombok:lombok-mapstruct-binding"
