@@ -8,6 +8,6 @@ public class OSSConfigure {
 
     @Bean
     public OSSClient ossClient(OSSProperties properties) {
-        return new DefaultOSSClient(properties.getMinio());
+        return new MinioOSSClient(properties.getMinio());
     }
 }

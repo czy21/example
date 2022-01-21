@@ -7,11 +7,13 @@ import com.team.application.automap.RowAutoMap;
 import com.team.application.config.QueueConfig;
 import com.team.application.model.RowModel;
 import com.team.application.model.vo.MaterialVO;
+import com.team.application.service.MaterialService;
 import com.team.domain.entity.MaterialEntity;
 import com.team.domain.mapper.MaterialMapper;
 import com.team.domain.mapper.RepositoryMapper;
 import com.team.domain.mongo.repository.FileColumnMappingRepository;
 import com.team.fileresolve.listener.FileListener;
+import com.team.infrastructure.oss.OSSClient;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -34,9 +36,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Paths;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -63,12 +63,16 @@ public class RabbitReceiver {
     JdbcTemplate jdbcTemplate;
     @Autowired
     SqlSessionFactory sqlSessionFactory;
+    @Autowired
+    OSSClient ossClient;
+    @Autowired
+    MaterialService materialService;
 
     @RabbitListener(queues = QueueConfig.SPI_FILE_TOPIC, concurrency = "1", ackMode = "MANUAL")
-    public void file(MaterialVO materialVO, Message message, Channel channel) throws IOException {
+    public void file(MaterialVO materialVO, Message message, Channel channel) throws Exception {
         MaterialEntity me = materialMapper.selectById(materialVO.getUid());
-        File f = Paths.get(me.getMaterialTarget().getRootUrl(), me.getMaterialTarget().getRootPath(), me.getPath()).toFile();
-        EasyExcel.read(f, new FileListener(rt, fmr, rowAutoMap, me, materialVO)).sheet().doRead();
+        InputStream inputStream = materialService.getStreamBy(me);
+        EasyExcel.read(inputStream, new FileListener(rt, fmr, rowAutoMap, me, materialVO)).sheet().doRead();
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
     }
 
