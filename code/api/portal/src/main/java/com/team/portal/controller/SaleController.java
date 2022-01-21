@@ -1,6 +1,7 @@
 package com.team.portal.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.team.application.config.QueueConfig;
 import com.team.application.model.vo.FileVO;
 import com.team.application.model.vo.MaterialVO;
 import com.team.application.service.MaterialService;
@@ -46,7 +47,7 @@ public class SaleController extends BaseController {
     public MaterialVO uploadByRabbit(FileVO fileVO, @RequestParam(value = "ds", required = false) String dataSource) throws Exception {
         MaterialVO materialVO = materialService.upload(fileVO, "OSS");
         materialVO.setTargetDataSource(dataSource);
-//        rabbitTemplate.convertAndSend(QueueConfig.SPI_FILE_TOPIC, materialVO);
+        rabbitTemplate.convertAndSend(QueueConfig.SPI_FILE_TOPIC, materialVO);
         return materialVO;
     }
 
