@@ -1,7 +1,7 @@
 package com.team.application.util;
 
 import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang3.ObjectUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.UUID;
@@ -26,6 +26,6 @@ public class MultipartFileUtil {
      */
     public static String generateFileName(MultipartFile file) {
         String extension = getExtension(file);
-        return UUID.randomUUID() + (ObjectUtils.isEmpty(extension) ? "" : "." + extension);
+        return UUID.randomUUID() + (StringUtils.isEmpty(extension) ? "" : "." + extension);
     }
 }

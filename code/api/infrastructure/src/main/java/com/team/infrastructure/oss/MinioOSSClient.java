@@ -1,30 +1,31 @@
 package com.team.infrastructure.oss;
 
+import io.minio.GetObjectArgs;
 import io.minio.MinioClient;
 import io.minio.PutObjectArgs;
 
 import java.io.InputStream;
 
-public class DefaultOSSClient implements OSSClient {
+public class MinioOSSClient implements OSSClient {
 
-    private MinioClient client;
+    private final MinioClient client;
 
-    public DefaultOSSClient(OSSProperties.MinioProperties properties) {
+    public MinioOSSClient(OSSProperties.MinioProperties properties) {
         client = MinioClient.builder()
                 .endpoint(properties.getEndpoint())
                 .credentials(properties.getAccessKey(), properties.getSecretKey())
                 .build();
-
     }
 
     @Override
-    public void upload(String objectName, InputStream fileStream, String bucketName) throws Exception {
+    public void put(String objectName, InputStream fileStream, String bucketName) throws Exception {
         PutObjectArgs args = PutObjectArgs.builder().bucket(bucketName).object(objectName).stream(fileStream, fileStream.available(), -1).build();
         client.putObject(args);
     }
 
-//    @Override
-//    public void upload(InputStream inputStream, String bucketName) {
-//        UploadObjectArgs.builder().bucket(bucketName).object().filename().build();
-//    }
+    @Override
+    public InputStream get(String objectName, String bucketName) throws Exception {
+        GetObjectArgs args = GetObjectArgs.builder().bucket(bucketName).object(objectName).build();
+        return client.getObject(args);
+    }
 }
