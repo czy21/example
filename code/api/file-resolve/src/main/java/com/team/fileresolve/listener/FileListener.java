@@ -53,12 +53,16 @@ public class FileListener extends AnalysisEventListener<Map<Integer, Object>> {
     public void invokeHeadMap(Map<Integer, String> headMap, AnalysisContext context) {
         String currentSheet = context.readSheetHolder().getSheetName();
         var fe = fileColumnMappingRepository.findByBusinessTypeEquals(currentSheet);
-        columnMetadata.put(currentSheet, MutablePair.of(fe, fe.getFields().stream().collect(Collectors.toMap(FileColumnMappingEntity.Field::getKey, t -> {
-            headMap.entrySet().stream().filter(p -> p.getValue().equals(t.getHeader()))
-                    .findFirst()
-                    .ifPresent(h -> t.setIndex(h.getKey()));
-            return t;
-        }))));
+        columnMetadata.put(currentSheet, MutablePair.of(fe,
+                fe.getFields().stream()
+                        .collect(Collectors.toMap(FileColumnMappingEntity.Field::getKey,
+                                t -> {
+                                    headMap.entrySet().stream()
+                                            .filter(p -> p.getValue().equals(t.getHeader()))
+                                            .findFirst()
+                                            .ifPresent(h -> t.setIndex(h.getKey()));
+                                    return t;
+                                }))));
     }
 
     @Override
@@ -86,9 +90,7 @@ public class FileListener extends AnalysisEventListener<Map<Integer, Object>> {
                     return col;
                 }).collect(LinkedHashMap::new, (m, t) -> m.put(t.getKey(), t), Map::putAll);
         rowModel.setData(rowData);
-        ObjectRecord<String, RowModel> record = StreamRecords.newRecord().in(QueueConfig.SPI_DATA_TOPIC).ofObject(rowModel);
-        redisTemplate.opsForStream().add(record);
-//        rabbitTemplate.convertAndSend(QueueConfig.SPI_DATA_TOPIC, rowModel);
+        rabbitTemplate.convertAndSend(QueueConfig.SPI_DATA_TOPIC, rowModel);
     }
 
     @Override

@@ -82,7 +82,10 @@ public class RabbitReceiver {
     }
 
     @Bean
-    public SimpleRabbitListenerContainerFactory batchListenerFactory(ConnectionFactory connectionFactory, @Qualifier("jsonMessageConverter") MessageConverter messageConverter, @Value("${spi.batch-size}") Integer batchSize, @Value("${spi.consumer-size}") Integer consumerSize) {
+    public SimpleRabbitListenerContainerFactory batchListenerFactory(ConnectionFactory connectionFactory,
+                                                                     @Qualifier("jsonMessageConverter") MessageConverter messageConverter,
+                                                                     @Value("${spi.batch-size}") Integer batchSize,
+                                                                     @Value("${spi.consumer-size}") Integer consumerSize) {
         SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
         factory.setConnectionFactory(connectionFactory);
         factory.setBatchListener(true);
