@@ -10,7 +10,6 @@ import com.team.application.model.vo.MaterialVO;
 import com.team.application.service.MaterialService;
 import com.team.domain.entity.MaterialEntity;
 import com.team.domain.mapper.MaterialMapper;
-import com.team.domain.mapper.RepositoryMapper;
 import com.team.domain.mongo.repository.FileColumnMappingRepository;
 import com.team.fileresolve.listener.FileListener;
 import com.team.infrastructure.oss.OSSClient;
@@ -33,7 +32,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.data.redis.connection.RedisConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.io.InputStream;
@@ -58,21 +58,26 @@ public class RabbitReceiver {
     @Autowired
     RowAutoMap rowAutoMap;
     @Autowired
-    RepositoryMapper repositoryMapper;
-    @Autowired
-    JdbcTemplate jdbcTemplate;
-    @Autowired
     SqlSessionFactory sqlSessionFactory;
     @Autowired
     OSSClient ossClient;
     @Autowired
     MaterialService materialService;
+    @Autowired
+    RedisTemplate<String, RowModel> redisTemplate;
+
+    @Bean
+    public RedisTemplate<String, RowModel> rowModelRedisTemplate(RedisConnectionFactory redisConnectionFactory) {
+        RedisTemplate<String, RowModel> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(redisConnectionFactory);
+        return redisTemplate;
+    }
 
     @RabbitListener(queues = QueueConfig.SPI_FILE_TOPIC, concurrency = "1", ackMode = "MANUAL")
     public void file(MaterialVO materialVO, Message message, Channel channel) throws Exception {
         MaterialEntity me = materialMapper.selectById(materialVO.getUid());
         InputStream inputStream = materialService.getStreamBy(me);
-        EasyExcel.read(inputStream, new FileListener(rt, fmr, rowAutoMap, me, materialVO)).sheet().doRead();
+        EasyExcel.read(inputStream, new FileListener(rt, redisTemplate, fmr, rowAutoMap, me, materialVO)).sheet().doRead();
         channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
     }
 
