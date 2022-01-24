@@ -13,6 +13,10 @@ import com.team.domain.mongo.repository.FileColumnMappingRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.MutablePair;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.data.redis.connection.stream.ObjectRecord;
+import org.springframework.data.redis.connection.stream.StreamRecords;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.hash.Jackson2HashMapper;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -23,6 +27,7 @@ import java.util.stream.Collectors;
 public class FileListener extends AnalysisEventListener<Map<Integer, Object>> {
 
     RabbitTemplate rabbitTemplate;
+    RedisTemplate<String, RowModel> redisTemplate;
     FileColumnMappingRepository fileColumnMappingRepository;
     RowAutoMap rowAutoMap;
     MaterialEntity materialEntity;
@@ -30,11 +35,13 @@ public class FileListener extends AnalysisEventListener<Map<Integer, Object>> {
     Map<String, MutablePair<FileColumnMappingEntity, Map<String, FileColumnMappingEntity.Field>>> columnMetadata = new ConcurrentHashMap<>();
 
     public FileListener(RabbitTemplate rabbitTemplate,
+                        RedisTemplate<String, RowModel> redisTemplate,
                         FileColumnMappingRepository fileColumnMappingRepository,
                         RowAutoMap rowAutoMap,
                         MaterialEntity materialEntity,
                         MaterialVO materialVO) {
         this.rabbitTemplate = rabbitTemplate;
+        this.redisTemplate = redisTemplate;
         this.fileColumnMappingRepository = fileColumnMappingRepository;
         this.rowAutoMap = rowAutoMap;
         this.materialEntity = materialEntity;
@@ -46,12 +53,16 @@ public class FileListener extends AnalysisEventListener<Map<Integer, Object>> {
     public void invokeHeadMap(Map<Integer, String> headMap, AnalysisContext context) {
         String currentSheet = context.readSheetHolder().getSheetName();
         var fe = fileColumnMappingRepository.findByBusinessTypeEquals(currentSheet);
-        columnMetadata.put(currentSheet, MutablePair.of(fe, fe.getFields().stream().collect(Collectors.toMap(FileColumnMappingEntity.Field::getKey, t -> {
-            headMap.entrySet().stream().filter(p -> p.getValue().equals(t.getHeader()))
-                    .findFirst()
-                    .ifPresent(h -> t.setIndex(h.getKey()));
-            return t;
-        }))));
+        columnMetadata.put(currentSheet, MutablePair.of(fe,
+                fe.getFields().stream()
+                        .collect(Collectors.toMap(FileColumnMappingEntity.Field::getKey,
+                                t -> {
+                                    headMap.entrySet().stream()
+                                            .filter(p -> p.getValue().equals(t.getHeader()))
+                                            .findFirst()
+                                            .ifPresent(h -> t.setIndex(h.getKey()));
+                                    return t;
+                                }))));
     }
 
     @Override
@@ -78,7 +89,6 @@ public class FileListener extends AnalysisEventListener<Map<Integer, Object>> {
                     }
                     return col;
                 }).collect(LinkedHashMap::new, (m, t) -> m.put(t.getKey(), t), Map::putAll);
-
         rowModel.setData(rowData);
         rabbitTemplate.convertAndSend(QueueConfig.SPI_DATA_TOPIC, rowModel);
     }
