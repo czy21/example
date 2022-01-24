@@ -13,6 +13,7 @@ import com.team.domain.mapper.MaterialMapper;
 import com.team.domain.mapper.RepositoryMapper;
 import com.team.domain.mongo.repository.FileColumnMappingRepository;
 import com.team.fileresolve.listener.FileListener;
+import com.team.infrastructure.datasource.DynamicDataSourceContext;
 import com.team.infrastructure.oss.OSSClient;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -95,7 +96,7 @@ public class RabbitReceiver {
         gRows.forEach((k, v) -> {
             var tableMeta = v.get(0);
             List<MutablePair<String, String>> columns = Stream.concat(Stream.of(MutablePair.of("id", "id")), tableMeta.getData().values().stream().map(t -> MutablePair.of(t.getKey(), t.getColumn()))).collect(Collectors.toList());
-//            DynamicDataSourceContext.put("ds1");
+            DynamicDataSourceContext.put("ds1");
             mybatisInsert(v, tableMeta, columns);
         });
     }
