@@ -16,10 +16,8 @@ import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.redis.core.StringRedisTemplate;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.Map;
@@ -88,10 +86,18 @@ public class SaleController extends BaseController {
         return Map.of("status", "success");
     }
 
-    @PostMapping(path = "svcTest")
-    public Map<String, Object> svcTest() {
-        log.info("this is svc");
+    @Autowired
+    StringRedisTemplate stringRedisTemplate;
+
+    @PostMapping(path = "redisTestPut")
+    public Map<String, Object> redisTestPut(@RequestBody Map<String, Object> param) {
+        stringRedisTemplate.opsForValue().set((String) param.get("id"), (String) param.get("value"));
         return Map.of("status", "success");
+    }
+
+    @PostMapping(path = "redisTestGet")
+    public Map<String, Object> redisTestGet(@RequestParam("key") String key) {
+        return Map.of("value", stringRedisTemplate.opsForValue().get(key));
     }
 
 }
