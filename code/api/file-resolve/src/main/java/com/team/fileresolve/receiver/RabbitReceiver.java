@@ -115,15 +115,15 @@ public class RabbitReceiver {
         sql.INTO_COLUMNS(columns.stream().map(Pair::getValue).collect(Collectors.toList()).toArray(new String[]{}));
         sql.INTO_VALUES(columns.stream().map(t -> t.getValue().equals("id") ? "uuid_generate_v4()" : StringUtils.join(List.of("#{", t.getKey(), "}"), "")).collect(Collectors.toList()).toArray(new String[]{}));
         String sqlStatement = sql.toString();
-        var sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH, TransactionIsolationLevel.NONE);
-        rows.forEach(t -> {
-            Map<String, Object> param = t.getData().entrySet().stream().collect(HashMap::new, (m, v) -> m.put(v.getKey(), v.getValue().getValue()), Map::putAll);
-            param.put("sql", sqlStatement);
-            sqlSession.insert("com.team.domain.mapper.RepositoryMapper.insert", param);
-        });
-        sqlSession.commit();
-        sqlSession.clearCache();
-        sqlSession.close();
+        try (var sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH, TransactionIsolationLevel.NONE)) {
+            rows.forEach(t -> {
+                Map<String, Object> param = t.getData().entrySet().stream().collect(HashMap::new, (m, v) -> m.put(v.getKey(), v.getValue().getValue()), Map::putAll);
+                param.put("sql", sqlStatement);
+                sqlSession.insert("com.team.domain.mapper.RepositoryMapper.insert", param);
+            });
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
