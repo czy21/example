@@ -14,8 +14,6 @@ import org.redisson.api.RLock;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -65,8 +63,8 @@ public class StockServiceImpl extends ServiceImpl<StockMapper, StockEntity> impl
             StockLogEntity sl = new StockLogEntity();
             sl.setStockId(po.getId());
             sl.setUserId(dto.getUserId());
-            sl.setCreatedDate(dto.getSubmitDate());
-            sl.setModifiedDate(LocalDateTime.now());
+            sl.setCreateTime(dto.getSubmitDate());
+            sl.setUpdateTime(LocalDateTime.now());
             stockLogMapper.insert(sl);
             stockMapper.reduce(po);
         } finally {

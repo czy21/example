@@ -26,7 +26,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
         Page<UserEntity> page = new Page<>(search.getPage().getPageIndex(), search.getPage().getPageSize());
         QueryWrapper<UserEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.lambda()
-                .orderByDesc(UserEntity::getCreatedDate);
+                .orderByDesc(UserEntity::getCreateTime);
         return userAutoMap.mapToPageTarget(PageModel.of(super.page(page, queryWrapper)));
     }
 }
