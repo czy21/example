@@ -4,8 +4,7 @@ dependencies {
         exclude group: "org.springframework.boot", module: "spring-boot-starter-tomcat"
     }
     api("org.springframework.boot:spring-boot-starter-undertow")
-    api "com.auth0:java-jwt:3.8.0"
     api 'org.springframework.boot:spring-boot-starter-actuator'
     api 'io.micrometer:micrometer-registry-prometheus:latest.release'
-    api 'com.alibaba:easyexcel:3.0.5'
+    api 'com.alibaba:easyexcel'
 }
