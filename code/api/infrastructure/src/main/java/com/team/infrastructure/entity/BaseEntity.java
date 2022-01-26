@@ -24,13 +24,13 @@ public class BaseEntity {
 
     @TableField(fill = FieldFill.INSERT)
     @CreatedDate
-    private LocalDateTime createdDate;
+    private LocalDateTime createTime;
 
     @TableField(fill = FieldFill.INSERT_UPDATE)
     @LastModifiedDate
-    private LocalDateTime modifiedDate;
+    private LocalDateTime updateTime;
 
-    private String createdUser;
+    private String createUser;
 
-    private String modifiedUser;
+    private String UpdateUser;
 }
