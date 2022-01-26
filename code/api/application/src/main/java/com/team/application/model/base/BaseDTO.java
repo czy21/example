@@ -9,11 +9,11 @@ public class BaseDTO {
 
     private String id;
 
-    private LocalDateTime createdDate;
+    private LocalDateTime createTime;
 
-    private LocalDateTime modifiedDate;
+    private LocalDateTime updateTime;
 
-    private String createdUser;
+    private String createUser;
 
-    private String modifiedUser;
+    private String updateUser;
 }

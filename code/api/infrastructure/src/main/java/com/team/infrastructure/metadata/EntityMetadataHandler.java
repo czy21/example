@@ -18,8 +18,8 @@ public class EntityMetadataHandler implements MetaObjectHandler {
         if (createDate == null) {
             this.setFieldValByName(CREATE_TIME_FIELD, nowTime, metaObject);
         }
-        Object modifiedDate = this.getFieldValByName(UPDATE_TIME_FIELD, metaObject);
-        if (modifiedDate == null) {
+        Object updateTime = this.getFieldValByName(UPDATE_TIME_FIELD, metaObject);
+        if (updateTime == null) {
             this.setFieldValByName(UPDATE_TIME_FIELD, nowTime, metaObject);
         }
     }
@@ -27,8 +27,8 @@ public class EntityMetadataHandler implements MetaObjectHandler {
     @Override
     public void updateFill(MetaObject metaObject) {
         LocalDateTime nowTime = LocalDateTime.now();
-        Object modifiedDate = this.getFieldValByName(UPDATE_TIME_FIELD, metaObject);
-        if (modifiedDate == null) {
+        Object updateTime = this.getFieldValByName(UPDATE_TIME_FIELD, metaObject);
+        if (updateTime == null) {
             this.setFieldValByName(UPDATE_TIME_FIELD, nowTime, metaObject);
         }
     }
