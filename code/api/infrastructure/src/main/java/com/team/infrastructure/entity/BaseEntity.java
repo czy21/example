@@ -29,8 +29,7 @@ public class BaseEntity {
     @TableField(fill = FieldFill.INSERT_UPDATE)
     @LastModifiedDate
     private LocalDateTime updateTime;
-
     private String createUser;
-
-    private String UpdateUser;
+    private String updateUser;
+    private Boolean deleted;
 }
