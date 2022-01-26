@@ -121,6 +121,7 @@ public class RabbitReceiver {
                 param.put("sql", sqlStatement);
                 sqlSession.insert("com.team.domain.mapper.RepositoryMapper.insert", param);
             });
+            sqlSession.commit();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
