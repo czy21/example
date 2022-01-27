@@ -94,6 +94,10 @@ subprojects {
 
         annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 
+        implementation "org.springframework.boot:spring-boot-starter-actuator"
+        implementation "io.micrometer:micrometer-registry-prometheus"
+        implementation "io.github.mweirauch:micrometer-jvm-extras"
+
         testImplementation "org.springframework.boot:spring-boot-starter-test"
     }
 
