@@ -6,7 +6,6 @@ import io.github.mweirauch.micrometer.jvm.extras.ProcessMemoryMetrics;
 import io.github.mweirauch.micrometer.jvm.extras.ProcessThreadMetrics;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCustomizer;
 import org.springframework.boot.actuate.autoconfigure.metrics.MetricsProperties;
 import org.springframework.context.annotation.Bean;
@@ -25,8 +24,6 @@ import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @EnableWebMvc
 @EnableAsync
@@ -77,12 +74,6 @@ public class CooperatedConfigure implements WebMvcConfigurer {
     @Bean
     MeterRegistryCustomizer<MeterRegistry> meterRegistryCustomizer(MetricsProperties metricsProperties) {
         return (registry) -> {
-            String[] tags = metricsProperties.getTags()
-                    .entrySet().stream()
-                    .flatMap(t -> Stream.of(t.getKey(), t.getValue()))
-                    .collect(Collectors.toList())
-                    .toArray(new String[]{});
-            registry.config().commonTags(tags);
             new ProcessMemoryMetrics().bindTo(registry);
             new ProcessThreadMetrics().bindTo(registry);
         };
