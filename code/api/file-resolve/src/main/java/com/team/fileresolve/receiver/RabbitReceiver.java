@@ -74,7 +74,7 @@ public class RabbitReceiver {
         return redisTemplate;
     }
 
-    @RabbitListener(queues = QueueConfig.SPI_FILE_TOPIC, concurrency = "1", ackMode = "MANUAL")
+    @RabbitListener(queues = QueueConfig.SPI_FILE_TOPIC, concurrency = "3", ackMode = "MANUAL")
     public void file(MaterialVO materialVO, Message message, Channel channel) throws Exception {
         MaterialEntity me = materialMapper.selectById(materialVO.getUid());
         InputStream inputStream = materialService.getStreamBy(me);
