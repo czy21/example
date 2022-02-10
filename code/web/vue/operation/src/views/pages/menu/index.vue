@@ -8,7 +8,7 @@
         ref="tree"
     >
     </el-tree>
-    <el-button @click="setSelectedTree">选中</el-button>
+    <el-button @click="setSelectedTree">设置选中</el-button>
     <el-button @click="getSelectedTree">获取选中</el-button>
   </div>
 </template>
@@ -75,7 +75,7 @@ export default class UserIndex extends Vue {
 
   getSelectedTree() {
     const ref: any = this.$refs.tree
-    console.log(ref.getCheckedKeys())
+    console.log(ref.getCheckedKeys(true))
   }
 
   detail(row: any) {
