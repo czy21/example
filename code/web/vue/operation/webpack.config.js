@@ -1,8 +1,8 @@
 const resolve = dir => require('path').join(__dirname, dir);
 
 alias = {
-    "@c": "src/components",
-    "@v": "src/views",
+    "@c": "src/component",
+    "@v": "src/view",
 }
 
 module.exports = {
