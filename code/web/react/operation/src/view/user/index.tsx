@@ -5,6 +5,7 @@ import stub from "@/init";
 const records: any = []
 
 let load = () => {
+
     // console.log(process.env)
     stub.api.post("erp-portal/user/search", {}).then(data => {
         console.log(data)
