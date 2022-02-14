@@ -17,6 +17,7 @@
 import {Component, Provide, Vue} from 'vue-property-decorator';
 import List from '@c/List.vue'
 import Form from '@c/Form.vue'
+import {ElTree} from "element-ui/types/tree";
 
 @Component({
   components: {

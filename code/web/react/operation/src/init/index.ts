@@ -1,10 +1,11 @@
-import * as ref from '@/init/reference'
-import {default as util} from '@/util'
-import {default as api} from '@/init/request'
+import ref from '@/init/reference'
+import api from '@/init/request'
+import util from '@/util'
 
 const stub = {
     api,
     ref,
     util
 }
+
 export default stub
