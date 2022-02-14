@@ -1,5 +1,5 @@
-import {ContactsOutlined} from '@ant-design/icons';
 import React from "react"
+import stub from "@/init";
 
 export interface MenuModel {
     name: string,
@@ -12,12 +12,12 @@ const menus: MenuModel[] = [
     {
         name: "用户管理",
         path: "/user",
-        icon: <ContactsOutlined/>,
+        icon: <stub.ref.icon.ContactsOutlined/>,
     },
     {
         name: "菜单管理",
         path: "/menu",
-        icon: <ContactsOutlined/>,
+        icon: <stub.ref.icon.ContactsOutlined/>,
     }
 ];
 export default menus
