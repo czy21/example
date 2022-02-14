@@ -12,11 +12,9 @@ const config = {
   sourceRoot: 'src',
   outputRoot: 'dist',
   alias: {
+    '@': path.resolve(__dirname, '..', 'src'),
     '@c': path.resolve(__dirname, '..', 'src/component'),
-    '@v': path.resolve(__dirname, '..', 'src/view'),
-    // '@/utils': path.resolve(__dirname, '..', 'src/utils'),
-    // '@/package': path.resolve(__dirname, '..', 'package.json'),
-    // '@/project': path.resolve(__dirname, '..', 'project.config.json'),
+    '@v': path.resolve(__dirname, '..', 'src/view')
   },
   plugins: [],
   defineConstants: {},
