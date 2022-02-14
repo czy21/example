@@ -1,11 +1,13 @@
+import ref, {Ref} from './reference'
+import api, {API} from './request'
 import helper, {Helper} from "@/helper";
-import api, {API} from "@/api";
 
 export interface Stub {
     api: API,
-    helper: Helper
+    helper: Helper,
+    ref: Ref
 }
 
 export default {
-    api, helper
+    api, helper, ref
 }

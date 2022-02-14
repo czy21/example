@@ -12,12 +12,12 @@ const routes: Array<RouteConfig> = [
             {
                 name: "人员管理",
                 path: "user",
-                component: () => import('@v/pages/user/index.vue')
+                component: () => import('@v/page/user/index.vue')
             },
             {
                 name: "菜单管理",
                 path: "menu",
-                component: () => import('@v/pages/menu/index.vue')
+                component: () => import('@v/page/menu/index.vue')
             },
         ]
     },
