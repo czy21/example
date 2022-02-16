@@ -7,10 +7,10 @@ const routes: RouteConfig[] = [
         path: "/user",
         component: User,
     },
-    {
-        path: "/menu",
-        component: Menu,
-    }
+    // {
+    //     path: "/menu",
+    //     component: Menu,
+    // }
 
 ];
 export default routes
