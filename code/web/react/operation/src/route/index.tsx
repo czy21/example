@@ -1,5 +1,5 @@
 import User from "@v/user"
-import Menu from "@v/user/initMenu"
+// import Menu from "@v/user/initMenu"
 import {RouteConfig} from "react-router-config";
 
 const routes: RouteConfig[] = [
