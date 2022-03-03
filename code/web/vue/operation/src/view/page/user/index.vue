@@ -41,7 +41,7 @@ export default class UserIndex extends Vue {
   }
 
   search() {
-    this.$stub.api.post("user/search", {}).then((s: any) => {
+    this.$stub.api.post("erp-portal/user/search", {}).then((s: any) => {
       this.table.data = s.data.list
     })
   }
