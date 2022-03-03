@@ -28,11 +28,8 @@ function apiAxios(method: Method, url: string, params: any) {
             url: url,
             data: method === 'POST' || method === 'PUT' ? params : null,
             params: method === 'GET' || method === 'DELETE' ? params : null
-        }).then(res => {
-            return resolve(res.data)
-        }, error => {
-            return reject(error)
-        }).catch(error => reject(error))
+        }).then(res => resolve(res), error => reject(error))
+            .catch(error => reject(error))
     })
 }
 

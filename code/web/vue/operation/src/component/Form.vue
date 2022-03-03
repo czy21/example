@@ -5,6 +5,7 @@ import {Component, Prop, Provide, Vue} from 'vue-property-decorator';
 export default class Form extends Vue {
   @Prop({default: {}}) private form!: Object
   @Prop({default: []}) private formItems!: Object[];
+  @Prop({default: []}) private actions!: Object[];
 
   input(form: any, item: any) {
     return (<el-input vModel_trim={form.model[item.prop]}/>)

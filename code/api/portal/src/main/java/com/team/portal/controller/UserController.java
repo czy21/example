@@ -21,6 +21,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -76,6 +77,14 @@ public class UserController extends BaseController {
         String filename = URLEncoder.encode("你好", StandardCharsets.UTF_8.toString()) + ".xlsx";
         return CompletableFuture.supplyAsync(() -> downloadExcel(institutionMappingListExportDTOS, UserExportDTO.class, filename));
     }
+
+
+    @PostMapping(path = "upload")
+    public CompletableFuture<ResponseEntity<byte[]>> upload(MultipartFile file, Map<String, Object> param) throws Exception {
+        String filename = URLEncoder.encode("模板", StandardCharsets.UTF_8.toString()) + ".xlsx";
+        return CompletableFuture.supplyAsync(() -> downloadExcel(List.of(), UserExportDTO.class, filename));
+    }
+
 
 }
 
