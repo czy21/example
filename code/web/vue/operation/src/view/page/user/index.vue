@@ -1,7 +1,7 @@
 <template>
   <div>
-    <Form :form="form" :form-items="configUserFormItemsMet"/>
-    <List :table="table" :table-columns="configTableColumnsMet"/>
+    <Form :form="form" :form-items="userSearchFormItemMet"/>
+    <List :table="table" :table-columns="userTableColumnsMet"/>
   </div>
 </template>
 
@@ -21,14 +21,14 @@ import {AxiosResponse} from "axios";
 export default class UserIndex extends Vue {
   @Provide() form: Object = {model: {}}
   @Provide() table: any = {data: []}
-  @Provide() configTableColumnsMet: Object[] = [
+  @Provide() userTableColumnsMet: Object[] = [
     {prop: "userName", label: "姓名"},
     {prop: "account", label: "账号"},
     {prop: "email", label: "邮箱"},
     {prop: "department.name", label: "部门"},
     {label: "操作", fixed: "right", actions: [{label: "详情", type: "text", func: (scope: any) => this.detail(scope.row)}]}
   ]
-  @Provide() configUserFormItemsMet: Object[] = [
+  @Provide() userSearchFormItemMet: Object[] = [
     {label: "姓名", prop: "name"},
     {
       actions: [
@@ -52,9 +52,16 @@ export default class UserIndex extends Vue {
     console.log(form.model, action)
   }
 
+  upload(form: any) {
+    this.$stub.api.post("erp-portal/user/upload", form)
+        .then(res => {
+          console.log(res)
+        })
+  }
+
   export(form: any, action: any) {
     this.$stub.api.post("erp-portal/user/export", form, {responseType: "blob"})
-        .then(res => {
+        .then((res) => {
           this.$stub.helper.util.basic.downloadFile(res)
         })
   }

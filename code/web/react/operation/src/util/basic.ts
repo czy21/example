@@ -1,3 +1,5 @@
+import {AxiosResponse} from "axios";
+
 const urlPattern = /^(http:\/\/?)([0-9a-z.]+)(:[0-9]+)?([/0-9a-z.-]+)?(\?[0-9a-z&=]+)?(#[0-9-a-z]+)?/i
 
 interface URI {
@@ -18,4 +20,14 @@ export function matchUrl(url: string): URI {
         "port": ret[3],
         "path": ret[4]
     }
+}
+
+export function downloadFile(res: AxiosResponse, fileName?: string) {
+    let url = URL.createObjectURL(res.data)
+    const a = document.createElement('a')
+    a.style.display = 'none'
+    a.download = decodeURIComponent(res.headers?.filename ?? fileName)
+    a.href = url
+    a.click()
+    URL.revokeObjectURL(url);
 }
