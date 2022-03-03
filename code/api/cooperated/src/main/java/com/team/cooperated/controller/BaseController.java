@@ -22,7 +22,6 @@ public class BaseController {
         return downloadExcel(data,head,fileName,null);
     }
 
-
     protected ResponseEntity<byte[]> downloadExcel(byte[] bytes, String fileName) {
         return responseEntity(bytes, httpHeaders(fileName), HttpStatus.OK);
     }

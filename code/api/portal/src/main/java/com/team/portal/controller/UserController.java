@@ -24,9 +24,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -75,8 +72,8 @@ public class UserController extends BaseController {
 
     @PostMapping(path = "export")
     public CompletableFuture<ResponseEntity<byte[]>> export() throws Exception {
-        List<UserExportDTO> institutionMappingListExportDTOS = new ArrayList<>();
-        String filename = URLEncoder.encode("hello", StandardCharsets.UTF_8.toString()) + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMdd")) + ".xlsx";
+        List<UserExportDTO> institutionMappingListExportDTOS = List.of(UserExportDTO.builder().name("你好").build());
+        String filename = URLEncoder.encode("你好", StandardCharsets.UTF_8.toString()) + ".xlsx";
         return CompletableFuture.supplyAsync(() -> downloadExcel(institutionMappingListExportDTOS, UserExportDTO.class, filename));
     }
 
