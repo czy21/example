@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, {AxiosRequestConfig} from 'axios'
 
 enum Method {
     GET = "GET",
@@ -21,42 +21,42 @@ service.interceptors.response.use(
     error => Promise.reject(error)
 );
 
-function apiAxios(method: Method, url: string, params: any) {
+function apiAxios(method: Method, url: string, params: any, config?: AxiosRequestConfig) {
     return new Promise((resolve, reject) => {
         service({
             method: method,
             url: url,
-            data: method === 'POST' || method === 'PUT' ? params : null,
-            params: method === 'GET' || method === 'DELETE' ? params : null
-        }).then(res => {
-            return resolve(res.data)
-        }, error => {
-            return reject(error)
-        }).catch(error => reject(error))
+            data: method === Method.POST || method === Method.PUT ? params : null,
+            params: method === Method.GET || method === Method.DELETE ? params : null,
+            ...config
+        }).then((res) => {
+            resolve(res)
+        }, error => reject(error))
+            .catch(error => reject(error))
     })
 }
 
 export default {
-    get: (url: string, params?: any) => {
-        return apiAxios(Method.GET, url, params)
+    get: (url: string, params?: any, config?: AxiosRequestConfig) => {
+        return apiAxios(Method.GET, url, params, config)
     },
-    post: (url: string, params?: any) => {
-        return apiAxios(Method.POST, url, params)
+    post: (url: string, params?: any, config?: AxiosRequestConfig) => {
+        return apiAxios(Method.POST, url, params, config)
     },
-    put: (url: string, params?: any) => {
-        return apiAxios(Method.PUT, url, params)
+    put: (url: string, params?: any, config?: AxiosRequestConfig) => {
+        return apiAxios(Method.PUT, url, params, config)
     },
-    delete: (url: string, params?: any) => {
-        return apiAxios(Method.DELETE, url, params)
+    delete: (url: string, params?: any, config?: AxiosRequestConfig) => {
+        return apiAxios(Method.DELETE, url, params, config)
     }
 };
 
 export interface API {
-    get(url: string, param?: any): Promise<any>
+    get(url: string, param?: any, config?: AxiosRequestConfig): Promise<any>
 
-    post(url: string, param?: any): Promise<any>
+    post(url: string, param?: any, config?: AxiosRequestConfig): Promise<any>
 
-    put(url: string, param?: any): Promise<any>
+    put(url: string, param?: any, config?: AxiosRequestConfig): Promise<any>
 
-    delete(url: string, param?: any): Promise<any>
+    delete(url: string, param?: any, config?: AxiosRequestConfig): Promise<any>
 }

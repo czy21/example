@@ -14,10 +14,10 @@ const menus: MenuModel[] = [
         path: "/user",
         icon: <stub.ref.icon.ContactsOutlined/>,
     },
-    // {
-    //     name: "菜单管理",
-    //     path: "/menu",
-    //     icon: <stub.ref.icon.ContactsOutlined/>,
-    // }
+    {
+        name: "菜单管理",
+        path: "/menu",
+        icon: <stub.ref.icon.ContactsOutlined/>,
+    }
 ];
 export default menus

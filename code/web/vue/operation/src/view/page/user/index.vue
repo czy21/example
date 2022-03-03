@@ -9,6 +9,7 @@
 import {Component, Provide, Vue} from 'vue-property-decorator';
 import List from '@c/List.vue'
 import Form from '@c/Form.vue'
+import {AxiosResponse} from "axios";
 
 @Component({
   components: {
@@ -29,7 +30,18 @@ export default class UserIndex extends Vue {
   ]
   @Provide() configUserFormItemsMet: Object[] = [
     {label: "姓名", prop: "name"},
-    {actions: [{label: "确定", func: (form: any, action: any) => this.submit(form, action)}]}
+    {
+      actions: [
+        {
+          label: "确定",
+          func: (form: any, action: any) => this.submit(form, action)
+        },
+        {
+          label: "导出",
+          func: (form: any, action: any) => this.export(form, action)
+        }
+      ]
+    }
   ]
 
   detail(row: any) {
@@ -40,10 +52,18 @@ export default class UserIndex extends Vue {
     console.log(form.model, action)
   }
 
+  export(form: any, action: any) {
+    this.$stub.api.post("erp-portal/user/export", form, {responseType: "blob"})
+        .then(res => {
+          this.$stub.helper.util.basic.downloadFile(res)
+        })
+  }
+
   search() {
-    this.$stub.api.post("erp-portal/user/search", {}).then((s: any) => {
-      this.table.data = s.data.list
-    })
+    this.$stub.api.post("erp-portal/user/search", {})
+        .then((s: AxiosResponse) => {
+          this.table.data = s.data.data.list
+        })
   }
 
   mounted() {
