@@ -1,5 +1,6 @@
 import React from "react";
 import stub from "@/init";
+import Table from 'frontend-framework/lib/table'
 
 
 const records: any = []
@@ -15,6 +16,7 @@ let load = () => {
 export default class Index extends React.Component<any, any> {
     render() {
         // return <Table dataSource={this.state.list} columns={columns}/>;
-        return <stub.ref.antd.Button onClick={load}>加载</stub.ref.antd.Button>
+        // return <stub.ref.antd.Button onClick={load}>加载</stub.ref.antd.Button>
+        return Table
     }
 }
