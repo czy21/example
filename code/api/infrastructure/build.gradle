@@ -10,6 +10,7 @@ dependencies {
     api "org.redisson:redisson-spring-boot-starter"
     api "ru.yandex.clickhouse:clickhouse-jdbc"
     api "com.fasterxml.jackson.core:jackson-databind"
+    api "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
     api "mysql:mysql-connector-java"
     api "org.postgresql:postgresql"
     api "com.baomidou:mybatis-plus-boot-starter"
