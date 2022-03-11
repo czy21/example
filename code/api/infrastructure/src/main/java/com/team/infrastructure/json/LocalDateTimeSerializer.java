@@ -16,21 +16,29 @@ public class LocalDateTimeSerializer extends JsonSerializer<LocalDateTime> imple
 
     public static LocalDateTimeSerializer INSTANCE = new LocalDateTimeSerializer();
 
-    private DateTimeFormatter formatter;
+    private final DateTimeFormatter formatter;
+    private final boolean useTimeStamp;
 
     public LocalDateTimeSerializer() {
+        this(true, null);
     }
 
     public LocalDateTimeSerializer(DateTimeFormatter formatter) {
+        this(false, formatter);
+    }
+
+    public LocalDateTimeSerializer(boolean useTimeStamp, DateTimeFormatter formatter) {
+        this.useTimeStamp = useTimeStamp;
         this.formatter = formatter;
     }
 
     @Override
     public void serialize(LocalDateTime value, JsonGenerator gen, SerializerProvider provider) throws IOException {
-        if (formatter != null) {
-            gen.writeString(value.format(formatter));
-        } else {
+        if (useTimeStamp) {
             gen.writeNumber(DateTimeUtil.toTimeStamp(value));
+        }
+        else {
+            gen.writeString(value.format(formatter));
         }
     }
 
@@ -39,6 +47,9 @@ public class LocalDateTimeSerializer extends JsonSerializer<LocalDateTime> imple
         if (property != null) {
             JsonFormat.Value format = prov.getAnnotationIntrospector().findFormat(property.getMember());
             if (format != null) {
+                if (format.getShape().isNumeric()) {
+                    return new LocalDateTimeSerializer();
+                }
                 if (format.hasPattern()) {
                     return new LocalDateTimeSerializer(DateTimeFormatter.ofPattern(format.getPattern()));
                 }
