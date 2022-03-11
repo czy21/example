@@ -1,7 +1,6 @@
 package com.team.portal.controller;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.dto.UserDTO;
 import com.team.application.model.vo.SearchVO;
@@ -14,7 +13,6 @@ import com.team.cooperated.annotation.EnumOption;
 import com.team.cooperated.annotation.SpecialOption;
 import com.team.cooperated.controller.BaseController;
 import com.team.portal.model.UserExportDTO;
-import lombok.Data;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
@@ -27,8 +25,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -88,29 +84,6 @@ public class UserController extends BaseController {
         String filename = URLEncoder.encode("模板", StandardCharsets.UTF_8.toString()) + ".xlsx";
         return CompletableFuture.supplyAsync(() -> downloadExcel(List.of(), UserExportDTO.class, filename));
     }
-
-    @Data
-    public static class TestDTO {
-        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-        private LocalDateTime birthday;
-        private LocalDate birth;
-        private LocalDateTime startTime;
-    }
-
-    @PostMapping(path = "testTime")
-    public TestDTO testTime(@RequestBody TestDTO param) {
-        if (param.getBirth() == null) {
-            param.setBirth(LocalDate.now());
-        }
-        if (param.getBirthday() == null) {
-            param.setBirthday(LocalDateTime.now());
-        }
-//        if (param.getStartTime() == null) {
-//            param.setStartTime(LocalDateTime.now());
-//        }
-        return param;
-    }
-
 
 }
 
