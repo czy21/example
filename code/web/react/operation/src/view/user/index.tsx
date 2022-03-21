@@ -1,6 +1,6 @@
 import React from "react";
 import stub from "@/init";
-import {Table} from '@fra'
+import {Button} from '@fra'
 
 
 const records: any = []
@@ -46,11 +46,12 @@ const InstanceList: React.FC<any> = (props: any) => {
 
     return (
         <div>
-            <Table
-                columns={columns}
-                list={data.list}
-                page={data.page}
-            />
+            {/*<Table*/}
+            {/*    columns={columns}*/}
+            {/*    list={data.list}*/}
+            {/*    page={data.page}*/}
+            {/*/>*/}
+            <Button label={"aa"}/>
         </div>
     )
 
