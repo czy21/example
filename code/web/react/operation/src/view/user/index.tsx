@@ -1,6 +1,6 @@
 import React from "react";
 import stub from "@/init";
-import {Button} from '@fra'
+import {Table} from '@fra'
 
 
 const records: any = []
@@ -45,14 +45,11 @@ const InstanceList: React.FC<any> = (props: any) => {
     const [instanceAddVisible, setInstanceAddVisible] = stub.ref.react.useState<boolean>(false);
 
     return (
-        <div>
-            {/*<Table*/}
-            {/*    columns={columns}*/}
-            {/*    list={data.list}*/}
-            {/*    page={data.page}*/}
-            {/*/>*/}
-            <Button label={"aa"}/>
-        </div>
+        <Table
+            columns={columns}
+            list={data.list}
+            page={data.page}
+        />
     )
 
 }
