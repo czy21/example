@@ -39,7 +39,8 @@ const InstanceList: React.FC<any> = (props: any) => {
 
     const handleSearch = (q?: any) => {
         setQuery(q)
-        stub.api.post("db/instance/search", stub.ref.lodash.omit(q, "total")).then((t: any) => setData(t.data))
+        setData({"list":[{"name":"czy"}]})
+        // stub.api.post("db/instance/search", stub.ref.lodash.omit(q, "total")).then((t: any) => setData(t.data))
     }
 
     const [instanceAddVisible, setInstanceAddVisible] = stub.ref.react.useState<boolean>(false);
