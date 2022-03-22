@@ -1,6 +1,6 @@
 import React from "react";
 import stub from "@/init";
-import {Table} from '@fra'
+import {Table, Filter} from 'share-react'
 
 
 const records: any = []
@@ -39,14 +39,30 @@ const InstanceList: React.FC<any> = (props: any) => {
 
     const handleSearch = (q?: any) => {
         setQuery(q)
-        setData({"list":[{"name":"czy"}]})
+        setData({"list": [{"name": "czy"}]})
         // stub.api.post("db/instance/search", stub.ref.lodash.omit(q, "total")).then((t: any) => setData(t.data))
     }
-
+    const filter = (
+        <Filter
+            filters={[
+                {
+                    "key": "name",
+                    "label": "名称"
+                },
+                {
+                    "key": "address",
+                    "label": "地址"
+                },
+            ]}
+            onSearch={handleSearch}
+            page={data.page}
+        />
+    )
     const [instanceAddVisible, setInstanceAddVisible] = stub.ref.react.useState<boolean>(false);
 
     return (
         <Table
+            filter={filter}
             columns={columns}
             list={data.list}
             page={data.page}
