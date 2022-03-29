@@ -12,7 +12,7 @@
         "src/view/*"
       ],
       "@fra": [
-        "node_modules/frontend-framework"
+        "node_modules/share-react"
       ]
     }
   }
