@@ -104,7 +104,7 @@ public class SaleController extends BaseController {
     @PostMapping(path = "redisQueuePush")
     public Map<String, Object> redisQueuePush(@RequestBody Map<String, Object> param) throws JsonProcessingException {
         String json = objectMapper.writeValueAsString(param);
-        stringRedisTemplate.convertAndSend("kf:log:token", json);
+        stringRedisTemplate.opsForStream().add("kf:log:token", param);
         return Map.of();
     }
 
