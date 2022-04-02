@@ -1,5 +1,6 @@
 package com.team.portal.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.team.application.config.QueueConfig;
 import com.team.application.model.vo.FileVO;
@@ -98,6 +99,13 @@ public class SaleController extends BaseController {
     @PostMapping(path = "redisTestGet")
     public Map<String, Object> redisTestGet(@RequestParam("key") String key) {
         return Map.of("value", stringRedisTemplate.opsForValue().get(key));
+    }
+
+    @PostMapping(path = "redisQueuePush")
+    public Map<String, Object> redisQueuePush(@RequestBody Map<String, Object> param) throws JsonProcessingException {
+        String json = objectMapper.writeValueAsString(param);
+        stringRedisTemplate.convertAndSend("kf:log:token", json);
+        return Map.of();
     }
 
 }

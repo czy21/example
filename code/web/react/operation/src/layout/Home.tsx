@@ -9,7 +9,7 @@ import Content from '@/layout/Content'
 
 const Home: React.FC<any> = (props: any) => {
     return (
-        <intl.IntlProvider locale={"en"} messages={props.locale.message && props.locale.message[props.locale.key]} defaultLocale={"en"}>
+        // <intl.IntlProvider locale={"en"} messages={props.locale.message && props.locale.message[props.locale.key]} defaultLocale={"en"}>
             <Layout>
                 <Sider/>
                 <Layout className={"container"}>
@@ -17,7 +17,7 @@ const Home: React.FC<any> = (props: any) => {
                     <Content/>
                 </Layout>
             </Layout>
-        </intl.IntlProvider>
+        // </intl.IntlProvider>
     );
 }
 export default Home
