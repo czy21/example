@@ -1,5 +1,6 @@
 package com.team.fileresolve.configure;
 
+import org.checkerframework.checker.units.qual.K;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,11 +12,9 @@ import org.springframework.data.redis.stream.StreamListener;
 import org.springframework.data.redis.stream.StreamMessageListenerContainer;
 import org.springframework.data.redis.stream.Subscription;
 
-import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.time.Duration;
-import java.util.Collections;
-import java.util.List;
+import java.util.Map;
 
 @ComponentScan(value = "com.team")
 @Configuration
@@ -28,12 +27,11 @@ public class FileResolveConfiguration implements InitializingBean {
     }
 
     @Bean
-    public Subscription subscription(RedisConnectionFactory redisConnectionFactory, StreamListener<String, ObjectRecord<String, Object>> streamListener) throws UnknownHostException {
+    public Subscription subscription(RedisConnectionFactory redisConnectionFactory, StreamListener<String, MapRecord<String, String, String>> streamListener) throws UnknownHostException {
         var options = StreamMessageListenerContainer
                 .StreamMessageListenerContainerOptions
                 .builder()
                 .pollTimeout(Duration.ofMillis(100))
-                .targetType(Object.class)
                 .build();
         var listenerContainer = StreamMessageListenerContainer
                 .create(redisConnectionFactory, options);
