@@ -9,6 +9,7 @@ import com.team.application.service.MaterialService;
 import com.team.application.service.PersistService;
 import com.team.application.service.SaleService;
 import com.team.cooperated.controller.BaseController;
+import com.team.domain.log.ApiLogModel;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.batch.core.Job;
@@ -17,9 +18,15 @@ import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.redis.connection.stream.MapRecord;
+import org.springframework.data.redis.connection.stream.StreamRecords;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.DateFormatter;
+import java.text.DateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Map;
 
@@ -102,9 +109,10 @@ public class SaleController extends BaseController {
     }
 
     @PostMapping(path = "redisQueuePush")
-    public Map<String, Object> redisQueuePush(@RequestBody Map<String, Object> param) throws JsonProcessingException {
-        String json = objectMapper.writeValueAsString(param);
-        stringRedisTemplate.opsForStream().add("kf:log:token", param);
+    public Map<String, Object> redisQueuePush(@RequestBody Map<String, Object> param) {
+        param.put("time", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        var record = StreamRecords.newRecord().in("kf:log:token").ofMap(param);
+        stringRedisTemplate.opsForStream().add(record);
         return Map.of();
     }
 
