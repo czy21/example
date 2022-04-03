@@ -35,7 +35,7 @@ public class FileResolveConfiguration implements InitializingBean {
                 .build();
         var listenerContainer = StreamMessageListenerContainer
                 .create(redisConnectionFactory, options);
-        var subscription = listenerContainer.receiveAutoAck(
+        var subscription = listenerContainer.receive(
                 Consumer.from("kf-log-token-group", "consumer-1"),
                 StreamOffset.create("kf:log:token", ReadOffset.lastConsumed()),
                 streamListener);

@@ -35,6 +35,7 @@ public class RedisReceiver implements StreamListener<String, MapRecord<String, S
     @Override
     public void onMessage(MapRecord<String, String, String> message) {
         jdbcTemplate.update("insert into ent_api_log(args) values (?)", new Object[]{objectMapper.writeValueAsString(message.getValue())});
+        redisTemplate.opsForStream().acknowledge("kf-log-token-group", message);
         redisTemplate.opsForStream().delete(message);
     }
 }
