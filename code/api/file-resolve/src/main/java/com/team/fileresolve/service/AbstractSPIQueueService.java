@@ -17,6 +17,7 @@ import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.TransactionIsolationLevel;
+import org.apache.pulsar.client.api.PulsarClientException;
 
 import java.io.InputStream;
 import java.util.HashMap;
@@ -45,7 +46,7 @@ public abstract class AbstractSPIQueueService implements SPIQueueService {
         this.sqlSessionFactory = sqlSessionFactory;
     }
 
-    public abstract void produceRow(String topic, RowModel rowData);
+    public abstract void produceRow(String topic, RowModel rowData) throws Exception;
 
     @Override
     public void resolveFile(MaterialVO materialVO) throws Exception {

@@ -18,7 +18,7 @@ ext {
     easyExcelVersion = "3.0.5"
     micrometerJVMExtrasVersion = "0.2.2"
     micrometerRegistryPrometheusVersion = "1.8.2"
-    pulsarVersion = "1.0.4"
+    pulsarVersion = "1.1.0"
 }
 
 def gitCommand = ((org.gradle.internal.os.OperatingSystem.current().isWindows() ? "where" : "which") + " git").execute().text.trim()

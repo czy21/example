@@ -11,6 +11,7 @@ import com.team.domain.entity.MaterialEntity;
 import com.team.domain.mongo.entity.FileColumnMappingEntity;
 import com.team.domain.mongo.repository.FileColumnMappingRepository;
 import com.team.fileresolve.service.SPIQueueService;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.MutablePair;
 
@@ -58,6 +59,7 @@ public class FileListener extends AnalysisEventListener<Map<Integer, Object>> {
                                 }))));
     }
 
+    @SneakyThrows
     @Override
     public void invoke(Map<Integer, Object> data, AnalysisContext context) {
         String businessType = context.readSheetHolder().getSheetName();
