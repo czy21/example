@@ -10,13 +10,9 @@ import com.team.application.model.vo.MaterialVO;
 import com.team.domain.entity.MaterialEntity;
 import com.team.domain.mongo.entity.FileColumnMappingEntity;
 import com.team.domain.mongo.repository.FileColumnMappingRepository;
+import com.team.fileresolve.service.SPIQueueService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.tuple.MutablePair;
-import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.data.redis.connection.stream.ObjectRecord;
-import org.springframework.data.redis.connection.stream.StreamRecords;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.hash.Jackson2HashMapper;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -26,22 +22,19 @@ import java.util.stream.Collectors;
 @Slf4j
 public class FileListener extends AnalysisEventListener<Map<Integer, Object>> {
 
-    RabbitTemplate rabbitTemplate;
-    RedisTemplate<String, RowModel> redisTemplate;
+    SPIQueueService SPIQueueService;
     FileColumnMappingRepository fileColumnMappingRepository;
     RowAutoMap rowAutoMap;
     MaterialEntity materialEntity;
     MaterialVO materialVO;
     Map<String, MutablePair<FileColumnMappingEntity, Map<String, FileColumnMappingEntity.Field>>> columnMetadata = new ConcurrentHashMap<>();
 
-    public FileListener(RabbitTemplate rabbitTemplate,
-                        RedisTemplate<String, RowModel> redisTemplate,
+    public FileListener(SPIQueueService SPIQueueService,
                         FileColumnMappingRepository fileColumnMappingRepository,
                         RowAutoMap rowAutoMap,
                         MaterialEntity materialEntity,
                         MaterialVO materialVO) {
-        this.rabbitTemplate = rabbitTemplate;
-        this.redisTemplate = redisTemplate;
+        this.SPIQueueService = SPIQueueService;
         this.fileColumnMappingRepository = fileColumnMappingRepository;
         this.rowAutoMap = rowAutoMap;
         this.materialEntity = materialEntity;
@@ -90,7 +83,7 @@ public class FileListener extends AnalysisEventListener<Map<Integer, Object>> {
                     return col;
                 }).collect(LinkedHashMap::new, (m, t) -> m.put(t.getKey(), t), Map::putAll);
         rowModel.setData(rowData);
-        rabbitTemplate.convertAndSend(QueueConfig.SPI_DATA_TOPIC, rowModel);
+        SPIQueueService.produceRow(QueueConfig.SPI_DATA_TOPIC, rowModel);
     }
 
     @Override
