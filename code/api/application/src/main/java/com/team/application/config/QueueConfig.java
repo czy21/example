@@ -33,12 +33,4 @@ public class QueueConfig {
     public MessageConverter jsonMessageConverter(ObjectMapper objectMapper) {
         return new Jackson2JsonMessageConverter(objectMapper);
     }
-
-    @Bean
-    public ProducerFactory producerFactory() {
-        return new ProducerFactory()
-                .addProducer(DEMO_TOPIC_1, Map.class)
-                .addProducer(SPI_FILE_TOPIC, MaterialVO.class)
-                .addProducer(SPI_DATA_TOPIC, RowModel.class);
-    }
 }
