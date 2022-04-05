@@ -49,8 +49,8 @@ public class QueueController extends BaseController {
     }
 
     @PostMapping(path = "pulsarPush1")
-    public Map<String, Object> pulsarPush1(@RequestBody Map<String, Object> param) {
-        pulsarTemplate.sendAsync(QueueConfig.DEMO_TOPIC_1, param);
+    public Map<String, Object> pulsarPush1(@RequestBody Map<String, Object> param) throws PulsarClientException {
+        pulsarTemplate.send(QueueConfig.DEMO_TOPIC_1, param);
         return Map.of();
     }
 
