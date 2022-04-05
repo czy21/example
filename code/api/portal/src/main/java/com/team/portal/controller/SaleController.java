@@ -109,22 +109,4 @@ public class SaleController extends BaseController {
         return Map.of("value", stringRedisTemplate.opsForValue().get(key));
     }
 
-    @PostMapping(path = "redisQueuePush")
-    public Map<String, Object> redisQueuePush(@RequestBody Map<String, String> param) {
-        param.put("time", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-        int num = Integer.parseInt(param.get("num"));
-        IntStream.range(0, num).forEach(t -> {
-            var record = StreamRecords.newRecord().in("kf:log:token").ofMap(param);
-            stringRedisTemplate.opsForStream().add(record);
-        });
-        return Map.of();
-    }
-
-    @PostMapping(path = "redisQueuePush2")
-    public Map<String, Object> redisQueuePush2(@RequestBody Map<String, Object> param) throws JsonProcessingException {
-        String json = objectMapper.writeValueAsString(param);
-        stringRedisTemplate.opsForList().leftPush("kf:log:token2", json);
-        return Map.of();
-    }
-
 }
