@@ -8,6 +8,7 @@ dependencies {
     api "org.springframework.boot:spring-boot-starter-amqp"
     api "org.springframework.boot:spring-boot-starter-batch"
     api "org.redisson:redisson-spring-boot-starter"
+    api "io.github.majusko:pulsar-java-spring-boot-starter"
     api "ru.yandex.clickhouse:clickhouse-jdbc"
     api "com.fasterxml.jackson.core:jackson-databind"
     api "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
