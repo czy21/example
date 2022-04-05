@@ -33,6 +33,11 @@ public class PulsarSPIReceiver extends AbstractSPIQueueService {
         this.pulsarTemplate = pulsarTemplate;
     }
 
+    @PulsarConsumer(topic = QueueConfig.SPI_FILE_TOPIC, clazz = MaterialVO.class, subscriptionType = {SubscriptionType.Shared, SubscriptionType.Exclusive})
+    public void listenerFile(MaterialVO materialVO) throws Exception {
+        super.resolveFile(materialVO);
+    }
+
     @PulsarConsumer(topic = QueueConfig.SPI_DATA_TOPIC, clazz = RowModel.class, subscriptionType = {SubscriptionType.Shared, SubscriptionType.Exclusive})
     public void listenerRow(RowModel row) {
         super.consumeRow(List.of(row));
