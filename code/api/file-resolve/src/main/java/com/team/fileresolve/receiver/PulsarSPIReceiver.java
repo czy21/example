@@ -11,6 +11,8 @@ import com.team.fileresolve.service.AbstractSPIQueueService;
 import io.github.majusko.pulsar.annotation.PulsarConsumer;
 import io.github.majusko.pulsar.producer.PulsarTemplate;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.pulsar.client.api.PulsarClientException;
+import org.apache.pulsar.client.api.SubscriptionType;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -36,13 +38,13 @@ public class PulsarSPIReceiver extends AbstractSPIQueueService {
         super.resolveFile(materialVO);
     }
 
-    @PulsarConsumer(topic = QueueConfig.SPI_DATA_TOPIC, clazz = RowModel.class)
+    @PulsarConsumer(topic = QueueConfig.SPI_DATA_TOPIC, clazz = RowModel.class, subscriptionType = SubscriptionType.Exclusive)
     public void listenerRow(RowModel row) {
         super.consumeRow(List.of(row));
     }
 
     @Override
-    public void produceRow(String topic, RowModel rowData) {
-        pulsarTemplate.sendAsync(topic, rowData);
+    public void produceRow(String topic, RowModel rowData) throws Exception {
+        pulsarTemplate.send(topic, rowData);
     }
 }
