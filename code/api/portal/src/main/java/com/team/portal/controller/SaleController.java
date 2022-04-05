@@ -65,7 +65,7 @@ public class SaleController extends BaseController {
     public MaterialVO uploadToPulsar(FileVO fileVO, @RequestParam(value = "ds", required = false) String dataSource) throws Exception {
         MaterialVO materialVO = materialService.upload(fileVO, "OSS");
         materialVO.setTargetDataSource(dataSource);
-        pulsarTemplate.sendAsync(QueueConfig.SPI_FILE_TOPIC, materialVO);
+        pulsarTemplate.send(QueueConfig.SPI_FILE_TOPIC, materialVO);
         return materialVO;
     }
 
