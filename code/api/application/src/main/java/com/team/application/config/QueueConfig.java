@@ -1,7 +1,13 @@
 package com.team.application.config;
 
-import com.czy.pulsar.producer.Producer;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.team.application.model.RowModel;
+import com.team.application.model.vo.MaterialVO;
+import org.apache.pulsar.client.api.Producer;
+import org.apache.pulsar.client.api.PulsarClient;
+import org.apache.pulsar.client.api.Schema;
+import org.apache.pulsar.client.api.schema.SchemaDefinition;
+import org.apache.pulsar.client.internal.DefaultImplementation;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
@@ -33,14 +39,18 @@ public class QueueConfig {
     }
 
     @Bean
-    public Producer<Map<String, Object>> demoTopic() {
-        return Producer.builder().topic(DEMO_TOPIC_1).create();
+    public Producer<Map> demoMapProducer(PulsarClient client) throws Exception {
+        return client.newProducer(Schema.JSON(Map.class)).topic(DEMO_TOPIC_1).create();
     }
-//    @Bean
-//    public ProducerFactory producerFactory() {
-//        return new ProducerFactory()
-//                .addProducer(DEMO_TOPIC_1, Map.class)
-//                .addProducer(SPI_FILE_TOPIC, MaterialVO.class)
-//                .addProducer(SPI_DATA_TOPIC, RowModel.class);
-//    }
+
+    @Bean
+    public Producer<MaterialVO> spiFileProducer(PulsarClient client) throws Exception {
+        return client.newProducer(Schema.JSON(MaterialVO.class)).topic(SPI_FILE_TOPIC).create();
+    }
+
+    @Bean
+    public Producer<RowModel> spiDataProducer(PulsarClient client) throws Exception {
+        return client.newProducer(Schema.JSON(RowModel.class)).topic(SPI_DATA_TOPIC).create();
+    }
+
 }

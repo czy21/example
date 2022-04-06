@@ -1,17 +1,13 @@
 package com.czy.pulsar;
 
-import org.apache.pulsar.client.api.*;
-import org.apache.pulsar.client.impl.auth.oauth2.AuthenticationFactoryOAuth2;
-import org.apache.pulsar.shade.com.google.common.base.Strings;
-import org.springframework.beans.factory.ObjectProvider;
+import org.apache.pulsar.client.api.ClientBuilder;
+import org.apache.pulsar.client.api.PulsarClient;
+import org.apache.pulsar.client.api.PulsarClientException;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.net.MalformedURLException;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 @Configuration
@@ -20,8 +16,7 @@ public class PulsarAutoConfiguration {
 
     PulsarProperties pulsarProperties;
 
-    public PulsarAutoConfiguration(PulsarProperties pulsarProperties,
-                                   ObjectProvider<Producer<?>>) {
+    public PulsarAutoConfiguration(PulsarProperties pulsarProperties) {
         this.pulsarProperties = pulsarProperties;
     }
 
