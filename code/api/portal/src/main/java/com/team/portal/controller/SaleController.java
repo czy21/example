@@ -12,6 +12,7 @@ import com.team.cooperated.controller.BaseController;
 import com.team.domain.log.ApiLogModel;
 //import io.github.majusko.pulsar.producer.PulsarTemplate;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.pulsar.client.api.Producer;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
@@ -50,8 +51,8 @@ public class SaleController extends BaseController {
     Job rinseJob;
     @Autowired
     SaleService saleService;
-//    @Autowired
-//    PulsarTemplate<MaterialVO> pulsarTemplate;
+    @Autowired
+    Producer<MaterialVO> materialVOProducer;
 
     @PostMapping(path = "upload")
     public MaterialVO uploadByRabbit(FileVO fileVO, @RequestParam(value = "ds", required = false) String dataSource) throws Exception {
@@ -65,7 +66,7 @@ public class SaleController extends BaseController {
     public MaterialVO uploadToPulsar(FileVO fileVO, @RequestParam(value = "ds", required = false) String dataSource) throws Exception {
         MaterialVO materialVO = materialService.upload(fileVO, "OSS");
         materialVO.setTargetDataSource(dataSource);
-//        pulsarTemplate.send(QueueConfig.SPI_FILE_TOPIC, materialVO);
+        materialVOProducer.send(materialVO);
         return materialVO;
     }
 
