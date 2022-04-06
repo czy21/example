@@ -13,5 +13,5 @@ include("security")
 include("domain")
 include("infrastructure")
 include("external")
-
+include("pulsar-spring-boot-starter")
 include("gateway")

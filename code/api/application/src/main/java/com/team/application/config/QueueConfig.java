@@ -1,9 +1,7 @@
 package com.team.application.config;
 
+import com.czy.pulsar.producer.Producer;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.team.application.model.RowModel;
-import com.team.application.model.vo.MaterialVO;
-import io.github.majusko.pulsar.producer.ProducerFactory;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
@@ -35,10 +33,14 @@ public class QueueConfig {
     }
 
     @Bean
-    public ProducerFactory producerFactory() {
-        return new ProducerFactory()
-                .addProducer(DEMO_TOPIC_1, Map.class)
-                .addProducer(SPI_FILE_TOPIC, MaterialVO.class)
-                .addProducer(SPI_DATA_TOPIC, RowModel.class);
+    public Producer<Map<String, Object>> demoTopic() {
+        return Producer.builder().topic(DEMO_TOPIC_1).create();
     }
+//    @Bean
+//    public ProducerFactory producerFactory() {
+//        return new ProducerFactory()
+//                .addProducer(DEMO_TOPIC_1, Map.class)
+//                .addProducer(SPI_FILE_TOPIC, MaterialVO.class)
+//                .addProducer(SPI_DATA_TOPIC, RowModel.class);
+//    }
 }

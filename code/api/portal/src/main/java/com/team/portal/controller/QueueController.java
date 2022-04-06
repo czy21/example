@@ -1,11 +1,12 @@
 package com.team.portal.controller;
 
+import com.czy.pulsar.core.PulsarTemplate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.team.application.config.QueueConfig;
 import com.team.cooperated.controller.BaseController;
-import io.github.majusko.pulsar.producer.PulsarTemplate;
-import org.apache.pulsar.client.api.PulsarClientException;
+//import io.github.majusko.pulsar.producer.PulsarTemplate;
+//import org.apache.pulsar.client.api.PulsarClientException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.stream.StreamRecords;
 import org.springframework.data.redis.core.StringRedisTemplate;

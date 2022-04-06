@@ -1,0 +1,5 @@
+def pulsarVersion = '2.9.1'
+
+dependencies {
+    implementation group: 'org.apache.pulsar', name: 'pulsar-client', version: pulsarVersion
+}
