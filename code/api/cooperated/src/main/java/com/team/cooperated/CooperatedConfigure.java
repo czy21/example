@@ -2,6 +2,7 @@ package com.team.cooperated;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.team.cooperated.feign.FeignConfigure;
+import com.team.cooperated.interceptor.SimpleInterceptor;
 import io.github.mweirauch.micrometer.jvm.extras.ProcessMemoryMetrics;
 import io.github.mweirauch.micrometer.jvm.extras.ProcessThreadMetrics;
 import io.micrometer.core.instrument.MeterRegistry;
@@ -17,10 +18,7 @@ import org.springframework.util.AntPathMatcher;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.PathMatchConfigurer;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.*;
 
 import java.util.List;
 
@@ -56,6 +54,11 @@ public class CooperatedConfigure implements WebMvcConfigurer {
                 .filter(t -> t instanceof MappingJackson2HttpMessageConverter)
                 .findFirst()
                 .ifPresent(httpMessageConverter -> ((MappingJackson2HttpMessageConverter) httpMessageConverter).setObjectMapper(objectMapper.copy()));
+    }
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new SimpleInterceptor());
     }
 
     /**
