@@ -11,6 +11,7 @@ import com.team.application.service.SaleService;
 import com.team.cooperated.controller.BaseController;
 import com.team.domain.log.ApiLogModel;
 //import io.github.majusko.pulsar.producer.PulsarTemplate;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.pulsar.client.api.Producer;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -120,6 +121,17 @@ public class SaleController extends BaseController {
     @PostMapping(path = "redisTestGet")
     public Map<String, Object> redisTestGet(@RequestParam("key") String key) {
         return Map.of("value", stringRedisTemplate.opsForValue().get(key));
+    }
+
+    @PostMapping(path = "test1")
+    public Map<String, Object> test1(@RequestBody TestModel param) {
+        return Map.of();
+    }
+
+    @Data
+    public static class TestModel {
+        private String name;
+        private Integer age;
     }
 
 }
