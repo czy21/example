@@ -64,10 +64,11 @@ public class SaleController extends BaseController {
 
     @PostMapping(path = "uploadToPulsar")
     public MaterialVO uploadToPulsar(FileVO fileVO, @RequestParam(value = "ds", required = false) String dataSource) throws Exception {
-        MaterialVO materialVO = materialService.upload(fileVO, "OSS");
-        materialVO.setTargetDataSource(dataSource);
-        materialVOProducer.send(materialVO);
-        return materialVO;
+//        MaterialVO materialVO = materialService.upload(fileVO, "OSS");
+//        materialVO.setTargetDataSource(dataSource);
+//        materialVOProducer.send(materialVO);
+
+        return new MaterialVO();
     }
 
     @PostMapping(path = "submitJob")
