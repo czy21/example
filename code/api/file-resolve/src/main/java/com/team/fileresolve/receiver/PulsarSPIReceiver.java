@@ -10,6 +10,7 @@ import com.team.domain.mapper.MaterialMapper;
 import com.team.domain.mongo.repository.FileColumnMappingRepository;
 import com.team.fileresolve.service.AbstractSPIQueueService;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.pulsar.client.api.SubscriptionType;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -23,7 +24,7 @@ public class PulsarSPIReceiver extends AbstractSPIQueueService {
         super(rowAutoMap, fileColumnMappingRepository, materialMapper, materialService, sqlSessionFactory);
     }
 
-    @PulsarListener(topic = QueueConfig.SPI_FILE_TOPIC, clazz = MaterialVO.class)
+    @PulsarListener(topic = QueueConfig.SPI_FILE_TOPIC, clazz = MaterialVO.class,subscriptionType = SubscriptionType.Shared)
     //    @PulsarConsumer(topic = QueueConfig.SPI_FILE_TOPIC, clazz = MaterialVO.class, subscriptionType = {SubscriptionType.Shared})
     public void listenerFile(MaterialVO materialVO) throws Exception {
         super.resolveFile(materialVO);
