@@ -20,7 +20,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-@ComponentScan(value = {"com.team","com.czy"})
+@ComponentScan(value = {"com.team"})
 @Configuration
 public class FileResolveConfiguration implements InitializingBean {
 
