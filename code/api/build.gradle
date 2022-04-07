@@ -18,7 +18,7 @@ ext {
     easyExcelVersion = "3.0.5"
     micrometerJVMExtrasVersion = "0.2.2"
     micrometerRegistryPrometheusVersion = "1.8.2"
-    pulsarVersion = "1.1.0"
+    pulsarVersion = "0.1.0-SNAPSHOT"
 }
 
 def gitCommand = ((org.gradle.internal.os.OperatingSystem.current().isWindows() ? "where" : "which") + " git").execute().text.trim()
@@ -73,7 +73,7 @@ subprojects {
 
             dependency "io.micrometer:micrometer-registry-prometheus:${micrometerRegistryPrometheusVersion}"
             dependency "io.github.mweirauch:micrometer-jvm-extras:${micrometerJVMExtrasVersion}"
-            dependency "io.github.majusko:pulsar-java-spring-boot-starter:${pulsarVersion}"
+            dependency "com.czy:pulsar-spring-boot-starter:${pulsarVersion}"
         }
     }
 

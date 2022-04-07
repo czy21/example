@@ -7,6 +7,7 @@ import io.github.mweirauch.micrometer.jvm.extras.ProcessMemoryMetrics;
 import io.github.mweirauch.micrometer.jvm.extras.ProcessThreadMetrics;
 import io.micrometer.core.instrument.MeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -30,6 +31,9 @@ public class CooperatedConfigure implements WebMvcConfigurer {
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Value("${spring.application.name}")
+    private String applicationName;
 
     @Bean
     public CorsFilter corsFilter() {
@@ -58,7 +62,7 @@ public class CooperatedConfigure implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new SimpleInterceptor());
+        registry.addInterceptor(new SimpleInterceptor(applicationName, objectMapper));
     }
 
     /**
