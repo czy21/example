@@ -21,13 +21,6 @@ ext {
     pulsarVersion = "0.1.0-SNAPSHOT"
 }
 
-def gitCommand = ((org.gradle.internal.os.OperatingSystem.current().isWindows() ? "where" : "which") + " git").execute().text.trim()
-if (gitCommand == "") {
-    logger.warn("git command not exists")
-} else {
-    System.setProperty("GIT_USERNAME", (gitCommand + " config user.name").execute().text.trim())
-}
-
 subprojects {
     apply plugin: 'java-library'
     apply plugin: 'idea'
@@ -106,23 +99,32 @@ subprojects {
         useJUnitPlatform()
     }
 
-
     jar {
-        manifest {
-            attributes(
-                    "Built-By": System.getProperty("GIT_USERNAME", "")
-            )
-        }
-
+        archiveClassifier = ''
         into("META-INF/maven/${project.group}/${project.name}") {
             from { generatePomFileForMavenJavaPublication }
-            rename 'pom-default.xml', 'pom.xml'
+            rename ".*", "pom.xml"
+        }
+
+        afterEvaluate {
+            manifest {
+                attributes 'Implementation-Title': archiveBaseName
+                attributes 'Implementation-Version': archiveVersion
+                attributes 'Built-Gradle': gradle.gradleVersion
+                attributes 'Build-OS': System.getProperty("os.name")
+                attributes 'Built-By': System.getProperty("user.name")
+                attributes 'Build-Jdk': System.getProperty("java.version")
+                attributes 'Build-Time': LocalDateTime.now().format("yyyy-MM-dd HH:mm:ss")
+            }
         }
     }
-
+    java {
+        withSourcesJar()
+    }
     publishing {
         publications {
             mavenJava(MavenPublication) {
+                from components.java
                 versionMapping {
                     usage('java-api') {
                         fromResolutionOf('runtimeClasspath')
@@ -131,7 +133,6 @@ subprojects {
                         fromResolutionResult()
                     }
                 }
-                from components.java
             }
         }
     }
