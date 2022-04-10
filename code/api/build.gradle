@@ -117,12 +117,14 @@ subprojects {
             }
         }
     }
+
     java {
         withSourcesJar()
     }
     publishing {
         publications {
             mavenJava(MavenPublication) {
+                from components.java
                 versionMapping {
                     usage('java-api') {
                         fromResolutionOf('runtimeClasspath')
@@ -131,7 +133,6 @@ subprojects {
                         fromResolutionResult()
                     }
                 }
-                from components.java
             }
         }
     }
