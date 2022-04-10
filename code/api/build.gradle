@@ -29,8 +29,8 @@ subprojects {
     group = 'com.team'
     version = '0.1.0-SNAPSHOT'
 
-    sourceCompatibility = "11"
-    targetCompatibility = "11"
+    sourceCompatibility = "17"
+    targetCompatibility = "17"
 
     tasks.withType(JavaCompile) {
         options.encoding('UTF-8')
@@ -100,7 +100,6 @@ subprojects {
     }
 
     jar {
-        archiveClassifier = ''
         into("META-INF/maven/${project.group}/${project.name}") {
             from { generatePomFileForMavenJavaPublication }
             rename ".*", "pom.xml"
@@ -124,7 +123,6 @@ subprojects {
     publishing {
         publications {
             mavenJava(MavenPublication) {
-                from components.java
                 versionMapping {
                     usage('java-api') {
                         fromResolutionOf('runtimeClasspath')
@@ -133,6 +131,7 @@ subprojects {
                         fromResolutionResult()
                     }
                 }
+                from components.java
             }
         }
     }
