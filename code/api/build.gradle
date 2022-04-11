@@ -23,14 +23,13 @@ ext {
 
 subprojects {
     apply plugin: 'java-library'
-    apply plugin: 'idea'
     apply plugin: 'maven-publish'
     apply plugin: 'io.spring.dependency-management'
     group = 'com.team'
     version = '0.1.0-SNAPSHOT'
 
-    sourceCompatibility = "17"
-    targetCompatibility = "17"
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 
     tasks.withType(JavaCompile) {
         options.encoding('UTF-8')
