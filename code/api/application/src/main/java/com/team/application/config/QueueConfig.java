@@ -23,6 +23,12 @@ public class QueueConfig {
     public static final String SPI_DATA_TOPIC = "spiDataTopic";
     public static final String DEMO_TOPIC_1 = "topic-demo-1";
 
+    PulsarClient pulsarClient;
+
+    public QueueConfig(PulsarClient pulsarClient) {
+        this.pulsarClient = pulsarClient;
+    }
+
     @Bean
     public Queue spiFileTopic() {
         return new Queue(SPI_FILE_TOPIC, true);
@@ -39,18 +45,18 @@ public class QueueConfig {
     }
 
     @Bean
-    public Producer<Map> demoMapProducer(PulsarClient client) throws Exception {
-        return client.newProducer(Schema.JSON(Map.class)).topic(DEMO_TOPIC_1).create();
+    public Producer<Map> demoMapProducer() throws Exception {
+        return pulsarClient.newProducer(Schema.JSON(Map.class)).topic(DEMO_TOPIC_1).create();
     }
 
     @Bean
-    public Producer<MaterialVO> spiFileProducer(PulsarClient client) throws Exception {
-        return client.newProducer(Schema.JSON(MaterialVO.class)).topic(SPI_FILE_TOPIC).create();
+    public Producer<MaterialVO> spiFileProducer() throws Exception {
+        return pulsarClient.newProducer(Schema.JSON(MaterialVO.class)).topic(SPI_FILE_TOPIC).create();
     }
 
     @Bean
-    public Producer<RowModel> spiDataProducer(PulsarClient client) throws Exception {
-        return client.newProducer(Schema.JSON(RowModel.class)).topic(SPI_DATA_TOPIC).create();
+    public Producer<RowModel> spiDataProducer() throws Exception {
+        return pulsarClient.newProducer(Schema.JSON(RowModel.class)).topic(SPI_DATA_TOPIC).create();
     }
 
 }
