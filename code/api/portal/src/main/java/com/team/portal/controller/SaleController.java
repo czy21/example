@@ -1,5 +1,6 @@
 package com.team.portal.controller;
 
+import com.czy.pulsar.core.PulsarTemplate;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.team.application.config.QueueConfig;
@@ -53,7 +54,7 @@ public class SaleController extends BaseController {
     @Autowired
     SaleService saleService;
     @Autowired
-    Producer<MaterialVO> materialVOProducer;
+    PulsarTemplate pulsarTemplate;
 
     @PostMapping(path = "upload")
     public MaterialVO uploadByRabbit(FileVO fileVO, @RequestParam(value = "ds", required = false) String dataSource) throws Exception {
@@ -65,10 +66,9 @@ public class SaleController extends BaseController {
 
     @PostMapping(path = "uploadToPulsar")
     public MaterialVO uploadToPulsar(FileVO fileVO, @RequestParam(value = "ds", required = false) String dataSource) throws Exception {
-//        MaterialVO materialVO = materialService.upload(fileVO, "OSS");
-//        materialVO.setTargetDataSource(dataSource);
-//        materialVOProducer.send(materialVO);
-
+        MaterialVO materialVO = materialService.upload(fileVO, "OSS");
+        materialVO.setTargetDataSource(dataSource);
+        pulsarTemplate.send(QueueConfig.SPI_FILE_TOPIC, materialVO);
         return new MaterialVO();
     }
 
