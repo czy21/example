@@ -1,11 +1,25 @@
 package com.team.portal.configure;
 
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnExpression;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.core.StringRedisTemplate;
 
-@ComponentScan(value = {"com.team"})
+@ConditionalOnExpression(value = "'${spring.redis.cluster.nodes}'!=null")
 @Configuration
-public class PortalConfiguration {
+public class PortalConfiguration implements InitializingBean {
 
+    StringRedisTemplate redisTemplate;
+    @Value("#{'${spring.redis.cluster.nodes}' != null}")
+    boolean isCluster;
+
+    public PortalConfiguration(StringRedisTemplate redisTemplate) {
+        this.redisTemplate = redisTemplate;
+    }
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+
+    }
 }

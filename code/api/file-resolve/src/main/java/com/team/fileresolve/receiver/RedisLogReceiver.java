@@ -10,15 +10,21 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Component
 public class RedisLogReceiver implements StreamListener<String, MapRecord<String, String, String>> {
 
+    public static String KEY = "log-api";
+    public static String GROUP = "log-group";
+
     JdbcTemplate jdbcTemplate;
     StringRedisTemplate redisTemplate;
     ObjectMapper objectMapper;
+    List<MapRecord<String, String, String>> messages = new ArrayList<>();
 
     public RedisLogReceiver(RoutingDataSource dataSource,
                             StringRedisTemplate redisTemplate,
@@ -32,7 +38,10 @@ public class RedisLogReceiver implements StreamListener<String, MapRecord<String
     @SneakyThrows
     @Override
     public void onMessage(MapRecord<String, String, String> message) {
-        jdbcTemplate.update("insert into ent_api_log(args) values (?)", new Object[]{objectMapper.writeValueAsString(message.getValue())});
+//        jdbcTemplate.update("insert into ent_api_log(args) values (?)", new Object[]{objectMapper.writeValueAsString(message.getValue())});
+        messages.add(message);
+        System.out.println(messages);
+        System.out.println(Thread.currentThread());
         redisTemplate.opsForStream().acknowledge("kf-log-token-group", message);
         redisTemplate.opsForStream().delete(message);
     }

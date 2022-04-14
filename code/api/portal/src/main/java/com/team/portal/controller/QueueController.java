@@ -31,12 +31,7 @@ public class QueueController extends BaseController {
 
     @PostMapping(path = "redisPush1")
     public Map<String, Object> redisQueuePush(@RequestBody Map<String, String> param) {
-        param.put("time", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
-        int num = Integer.parseInt(param.get("num"));
-        IntStream.range(0, num).forEach(t -> {
-            var record = StreamRecords.newRecord().in("kf:log:token").ofMap(param);
-            redisTemplate.opsForStream().add(record);
-        });
+        redisTemplate.opsForStream().add(StreamRecords.newRecord().in("log-api").ofMap(param));
         return Map.of();
     }
 
