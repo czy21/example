@@ -23,7 +23,6 @@ public class SimpleInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("domain", applicationName);
-
         return true;
     }
 }

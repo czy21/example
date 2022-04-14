@@ -1,5 +1,6 @@
 package com.team.fileresolve.configure;
 
+import com.team.fileresolve.receiver.RedisLogReceiver;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
@@ -36,13 +37,16 @@ public class FileResolveConfiguration implements InitializingBean {
         var options = StreamMessageListenerContainer
                 .StreamMessageListenerContainerOptions
                 .builder()
-                .pollTimeout(Duration.ofMillis(100))
+                .batchSize(100)
+                .errorHandler((t) -> {
+                })
+                .pollTimeout(Duration.ZERO)
                 .build();
         var listenerContainer = StreamMessageListenerContainer
                 .create(redisConnectionFactory, options);
         var subscription = listenerContainer.receive(
-                Consumer.from("kf-log-token-group", "consumer-1"),
-                StreamOffset.create("kf:log:token", ReadOffset.lastConsumed()),
+                Consumer.from(RedisLogReceiver.GROUP, "consumer-1"),
+                StreamOffset.create(RedisLogReceiver.KEY, ReadOffset.lastConsumed()),
                 streamListener);
         listenerContainer.start();
         return subscription;
@@ -52,7 +56,7 @@ public class FileResolveConfiguration implements InitializingBean {
     @Override
     public void afterPropertiesSet() {
         try {
-            redisTemplate.opsForStream().createGroup("kf:log:token", ReadOffset.from("0-0"), "kf-log-token-group");
+            redisTemplate.opsForStream().createGroup(RedisLogReceiver.KEY, ReadOffset.from("0-0"), RedisLogReceiver.GROUP);
         } catch (Exception e) {
             if (!e.getMessage().startsWith("BUSYGROUP Consumer Group name already exists")) {
                 throw e;

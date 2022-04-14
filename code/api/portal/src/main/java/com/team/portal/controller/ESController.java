@@ -19,10 +19,14 @@ import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilde
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -40,10 +44,10 @@ public class ESController extends BaseController {
 
     @SneakyThrows
     @PostMapping(path = "put")
-    public Map<String, Object> putObj() {
-        IndexRequest request = new IndexRequest("posts");
-        request.id(UUID.randomUUID().toString());
-        String jsonString = objectMapper.writeValueAsString(Map.of("name", "陈昭宇"));
+    public Map<String, Object> putObj(@RequestBody Map<String, Object> param) {
+        IndexRequest request = new IndexRequest("kf-log-token");
+        param.put("time", LocalDateTime.now(ZoneOffset.UTC).toString());
+        String jsonString = objectMapper.writeValueAsString(param);
         request.source(jsonString, XContentType.JSON);
         highLevelClient.index(request, RequestOptions.DEFAULT);
         return Map.of("status", "success");
