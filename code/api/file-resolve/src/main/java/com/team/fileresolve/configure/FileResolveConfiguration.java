@@ -15,6 +15,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.stream.StreamListener;
 import org.springframework.data.redis.stream.StreamMessageListenerContainer;
 import org.springframework.data.redis.stream.Subscription;
+import org.springframework.util.ErrorHandler;
 
 import java.time.Duration;
 import java.util.concurrent.LinkedBlockingDeque;
@@ -38,29 +39,32 @@ public class FileResolveConfiguration implements InitializingBean {
                 .StreamMessageListenerContainerOptions
                 .builder()
                 .batchSize(100)
-                .errorHandler((t) -> {
-                })
                 .pollTimeout(Duration.ZERO)
                 .build();
         var listenerContainer = StreamMessageListenerContainer
                 .create(redisConnectionFactory, options);
-        var subscription = listenerContainer.receive(
-                Consumer.from(RedisLogReceiver.GROUP, "consumer-1"),
-                StreamOffset.create(RedisLogReceiver.KEY, ReadOffset.lastConsumed()),
-                streamListener);
+        StreamMessageListenerContainer.ConsumerStreamReadRequest<String> readOptions = StreamMessageListenerContainer.StreamReadRequest
+                .builder(StreamOffset.create(RedisLogReceiver.KEY, ReadOffset.lastConsumed()))
+                .cancelOnError((ex) -> false)
+                .consumer(Consumer.from(RedisLogReceiver.GROUP, "consumer-1"))
+                .errorHandler(t -> {
+                })
+                .build();
+        var subscription = listenerContainer.register(readOptions, streamListener);
         listenerContainer.start();
         return subscription;
     }
 
+
     // XGROUP CREATE kf:log:token kf-log-token-group 0-0 MKSTREAM
     @Override
     public void afterPropertiesSet() {
-        try {
-            redisTemplate.opsForStream().createGroup(RedisLogReceiver.KEY, ReadOffset.from("0-0"), RedisLogReceiver.GROUP);
-        } catch (Exception e) {
-            if (!e.getMessage().startsWith("BUSYGROUP Consumer Group name already exists")) {
-                throw e;
-            }
-        }
+//        try {
+//            redisTemplate.opsForStream().createGroup(RedisLogReceiver.KEY, ReadOffset.from("0-0"), RedisLogReceiver.GROUP);
+//        } catch (Exception e) {
+//            if (!e.getMessage().startsWith("BUSYGROUP Consumer Group name already exists")) {
+//                throw e;
+//            }
+//        }
     }
 }

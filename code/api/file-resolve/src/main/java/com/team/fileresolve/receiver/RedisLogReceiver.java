@@ -24,7 +24,6 @@ public class RedisLogReceiver implements StreamListener<String, MapRecord<String
     JdbcTemplate jdbcTemplate;
     StringRedisTemplate redisTemplate;
     ObjectMapper objectMapper;
-    List<MapRecord<String, String, String>> messages = new ArrayList<>();
 
     public RedisLogReceiver(RoutingDataSource dataSource,
                             StringRedisTemplate redisTemplate,
@@ -39,9 +38,9 @@ public class RedisLogReceiver implements StreamListener<String, MapRecord<String
     @Override
     public void onMessage(MapRecord<String, String, String> message) {
 //        jdbcTemplate.update("insert into ent_api_log(args) values (?)", new Object[]{objectMapper.writeValueAsString(message.getValue())});
-        messages.add(message);
-        System.out.println(messages);
-        System.out.println(Thread.currentThread());
+        Map<String,String> msgMap= message.getValue();
+        msgMap.put("a","hello");
+        System.out.println(msgMap);
         redisTemplate.opsForStream().acknowledge("kf-log-token-group", message);
         redisTemplate.opsForStream().delete(message);
     }
