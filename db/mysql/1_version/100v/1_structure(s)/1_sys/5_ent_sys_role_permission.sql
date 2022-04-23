@@ -2,7 +2,7 @@ CREATE TABLE `ent_sys_role_permission`  (
   `id` varchar(36)  NOT NULL,
   `role_id` varchar(36)  NOT NULL,
   `permission_key` varchar(100)  NOT NULL,
-  {{ TrackedColumns }},
+  {{ TrackColumn }},
   PRIMARY KEY (`id`) ,
   INDEX `fk_RolePermission_Permission`(`permission_key`) ,
   INDEX `fk_RolePermission_Role`(`role_id`) ,

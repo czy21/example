@@ -14,7 +14,7 @@ CREATE TABLE ent_sale  (
   product_batch_number varchar(100)  NULL DEFAULT NULL ,
   product_price varchar(100) NULL DEFAULT NULL ,
   product_amount varchar(100) NULL DEFAULT NULL ,
-  {{ TrackedColumns }},
+  {{ TrackColumn }},
   PRIMARY KEY (id)
  );
 

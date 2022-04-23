@@ -13,6 +13,6 @@ CREATE TABLE `ent_sale`  (
   `product_batch_number` varchar(100) NULL DEFAULT NULL COMMENT '产品批号',
   `product_price` decimal(19,6) NULL DEFAULT NULL COMMENT '单价',
   `product_amount` decimal(19,6) NULL DEFAULT NULL COMMENT '金额',
-  {{ TrackedColumns }},
+  {{ TrackColumn }},
   PRIMARY KEY (`id`)
 ) COMMENT='库存';
