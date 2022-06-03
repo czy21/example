@@ -39,8 +39,6 @@ subprojects {
 
     dependencies {
         implementation "org.springframework.cloud:spring-cloud-starter-consul-config"
-        implementation "org.springframework.cloud:spring-cloud-starter-openfeign"
-        implementation "io.github.openfeign:feign-jackson"
 
         implementation "org.apache.commons:commons-pool2"
         implementation "org.apache.commons:commons-lang3"
@@ -52,12 +50,6 @@ subprojects {
         annotationProcessor "org.mapstruct:mapstruct-processor", "org.projectlombok:lombok", "org.projectlombok:lombok-mapstruct-binding"
         testImplementation "org.mapstruct:mapstruct", "org.projectlombok:lombok"
         testAnnotationProcessor "org.mapstruct:mapstruct-processor", "org.projectlombok:lombok", "org.projectlombok:lombok-mapstruct-binding"
-
-        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-
-        implementation "org.springframework.boot:spring-boot-starter-actuator"
-        implementation "io.micrometer:micrometer-registry-prometheus"
-        implementation "io.github.mweirauch:micrometer-jvm-extras"
 
         testImplementation "org.springframework.boot:spring-boot-starter-test"
     }
