@@ -2,7 +2,7 @@ package com.team.portal.controller;
 
 import com.czy.pulsar.core.PulsarTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.learning.web.controller.BaseController;
+import com.czy.learning.web.controller.BaseController;
 import com.team.application.config.QueueConfig;
 import com.team.application.model.vo.FileVO;
 import com.team.application.model.vo.MaterialVO;

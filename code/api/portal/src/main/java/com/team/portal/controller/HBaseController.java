@@ -1,6 +1,7 @@
 package com.team.portal.controller;
 
-import com.learning.web.controller.BaseController;
+
+import com.czy.learning.web.controller.BaseController;
 import com.team.application.service.HBaseService;
 import com.team.application.service.TableMetadataService;
 import org.springframework.beans.factory.annotation.Autowired;
