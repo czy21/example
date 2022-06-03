@@ -5,7 +5,7 @@ import com.team.security.session.SessionInterceptor;
 import com.team.security.session.SessionRepositoryAdapter;
 import org.springframework.boot.autoconfigure.session.DefaultCookieSerializerCustomizer;
 import org.springframework.context.annotation.Bean;
-import org.springframework.data.redis.core.StringRedisTemplate;
+
 import org.springframework.session.SessionRepository;
 import org.springframework.session.config.annotation.web.http.EnableSpringHttpSession;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
