@@ -1,7 +1,7 @@
 package com.team.application.option;
 
 import com.team.cooperated.annotation.OptionName;
-import com.team.cooperated.model.simple.SimpleItemModel;
+import com.team.cooperated.model.SimpleItemModel;
 import com.team.cooperated.option.OptionProvider;
 import org.springframework.stereotype.Component;
 

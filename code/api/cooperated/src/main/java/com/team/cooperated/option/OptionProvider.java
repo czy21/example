@@ -1,6 +1,6 @@
 package com.team.cooperated.option;
 
-import com.team.cooperated.model.simple.SimpleItemModel;
+import com.team.cooperated.model.SimpleItemModel;
 
 import java.util.List;
 
