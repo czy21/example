@@ -2,17 +2,11 @@ package com.team.portal.controller;
 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.learning.web.controller.BaseController;
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.dto.UserDTO;
 import com.team.application.model.vo.SearchVO;
-import com.team.application.option.GenderKind;
-import com.team.application.option.SpecialPerson;
-import com.team.application.option.SpecialWoman;
-import com.team.application.option.YesNoKind;
 import com.team.application.service.UserService;
-import com.team.cooperated.annotation.EnumOption;
-import com.team.cooperated.annotation.SpecialOption;
-import com.team.cooperated.controller.BaseController;
 import com.team.portal.model.UserExportDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -51,14 +45,6 @@ public class UserController extends BaseController {
 
 
     @GetMapping(path = "load")
-    @EnumOption(value = {
-            GenderKind.class,
-            YesNoKind.class
-    })
-    @SpecialOption(value = {
-            SpecialPerson.class,
-            SpecialWoman.class
-    })
     public PageDTO<UserDTO> load() {
         return new PageDTO<>();
     }

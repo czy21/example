@@ -1,6 +1,6 @@
 package com.team.portal.controller;
 
-import com.team.application.client.DynamicDemoClient;
+
 import com.team.domain.mongo.repository.InstitutionRepository;
 import feign.Feign;
 import feign.Logger;
@@ -34,24 +34,5 @@ public class DynamicModelController {
 
         return institutionRepository.findByTenantId("");
     }
-
-
-    @Autowired
-    Encoder feignEncoder;
-    @Autowired
-    Decoder feignDecoder;
-
-    @PostMapping(path = "findByClient")
-    public Object findByClient() {
-        var p = Feign.builder()
-                .encoder(feignEncoder)
-                .decoder(feignDecoder)
-                .logger(new Slf4jLogger(DynamicDemoClient.class))
-                .logLevel(Logger.Level.FULL)
-                .target(DynamicDemoClient.class, "http://127.0.0.1:8080/portal/user/search");
-        var ret = p.find(Map.of());
-        return ret;
-    }
-
 
 }

@@ -1,7 +1,6 @@
 package com.team.security.session;
 
 import com.team.cooperated.exception.BusinessErrorKind;
-import com.team.cooperated.exception.BusinessException;
 import com.team.security.annotation.Anonymous;
 import com.team.security.annotation.Login;
 import com.team.security.exception.SessionErrorKind;

@@ -1,20 +1,16 @@
 package com.team.portal.controller;
 
 import com.czy.pulsar.core.PulsarTemplate;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.learning.web.controller.BaseController;
 import com.team.application.config.QueueConfig;
 import com.team.application.model.vo.FileVO;
 import com.team.application.model.vo.MaterialVO;
 import com.team.application.service.MaterialService;
 import com.team.application.service.PersistService;
 import com.team.application.service.SaleService;
-import com.team.cooperated.controller.BaseController;
-import com.team.domain.log.ApiLogModel;
-//import io.github.majusko.pulsar.producer.PulsarTemplate;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.pulsar.client.api.Producer;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
@@ -22,18 +18,11 @@ import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.data.redis.connection.stream.MapRecord;
-import org.springframework.data.redis.connection.stream.StreamRecords;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.DateFormatter;
-import java.text.DateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Map;
-import java.util.stream.IntStream;
 
 @RequestMapping(path = "sale")
 @RestController

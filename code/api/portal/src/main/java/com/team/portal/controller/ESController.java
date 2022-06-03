@@ -1,7 +1,7 @@
 package com.team.portal.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.team.cooperated.controller.BaseController;
+import com.learning.web.controller.BaseController;
 import lombok.SneakyThrows;
 import org.apache.http.util.EntityUtils;
 import org.elasticsearch.action.index.IndexRequest;
@@ -13,7 +13,6 @@ import org.elasticsearch.client.Response;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.xcontent.XContentType;
 import org.elasticsearch.search.aggregations.AggregationBuilders;
-import org.elasticsearch.search.aggregations.bucket.global.GlobalAggregationBuilder;
 import org.elasticsearch.search.aggregations.bucket.terms.ParsedStringTerms;
 import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
@@ -26,10 +25,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
