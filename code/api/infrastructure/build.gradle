@@ -16,5 +16,5 @@ dependencies {
     api "io.minio:minio"
     api "com.squareup.okhttp3:okhttp"
     api "com.czy:pulsar-spring-boot-starter"
-    api "com.learning:spring-db"
+    api "com.learning:learning-spring-db"
 }
