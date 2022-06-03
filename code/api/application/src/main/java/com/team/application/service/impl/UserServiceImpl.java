@@ -3,9 +3,9 @@ package com.team.application.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.learning.db.annotation.DS;
-import com.learning.infranstructure.model.SimpleItemModel;
-import com.learning.web.annotation.Option;
+import com.czy.learning.db.annotation.DS;
+import com.czy.learning.infranstructure.model.SimpleItemModel;
+import com.czy.learning.web.annotation.Option;
 import com.team.application.automap.UserAutoMap;
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.dto.UserDTO;
@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 

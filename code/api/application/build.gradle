@@ -1,5 +1,5 @@
 dependencies {
     api project(':domain')
     api project(':external')
-    api 'com.learning:learning-spring-web'
+    api 'com.czy:learning-spring-web'
 }

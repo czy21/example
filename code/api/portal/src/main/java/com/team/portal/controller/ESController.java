@@ -1,7 +1,7 @@
 package com.team.portal.controller;
 
+import com.czy.learning.web.controller.BaseController;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.learning.web.controller.BaseController;
 import lombok.SneakyThrows;
 import org.apache.http.util.EntityUtils;
 import org.elasticsearch.action.index.IndexRequest;
