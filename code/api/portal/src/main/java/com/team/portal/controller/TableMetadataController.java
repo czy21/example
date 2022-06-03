@@ -1,7 +1,7 @@
 package com.team.portal.controller;
 
+import com.learning.web.controller.BaseController;
 import com.team.application.service.TableMetadataService;
-import com.team.cooperated.controller.BaseController;
 import com.team.domain.mongo.entity.HBaseTableMetadataEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

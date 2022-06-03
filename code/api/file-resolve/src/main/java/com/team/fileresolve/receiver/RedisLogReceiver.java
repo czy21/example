@@ -1,7 +1,7 @@
 package com.team.fileresolve.receiver;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.team.infrastructure.datasource.RoutingDataSource;
+import com.learning.db.datasource.RoutingDataSource;
 import lombok.SneakyThrows;
 import org.springframework.data.redis.connection.stream.MapRecord;
 import org.springframework.data.redis.core.StringRedisTemplate;

@@ -3,6 +3,9 @@ package com.team.application.service.impl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.learning.db.annotation.DS;
+import com.learning.web.annotation.Option;
+import com.learning.web.model.SimpleItemModel;
 import com.team.application.automap.UserAutoMap;
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.dto.UserDTO;
@@ -11,15 +14,21 @@ import com.team.application.model.vo.SearchVO;
 import com.team.application.service.UserService;
 import com.team.domain.entity.UserEntity;
 import com.team.domain.mapper.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> implements UserService {
 
     @Resource
     UserAutoMap userAutoMap;
+    @Autowired
+    UserMapper userMapper;
 
     @Override
     public PageDTO<UserDTO> findByPage(SearchVO<UserDTO> search) {
@@ -28,5 +37,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
         queryWrapper.lambda()
                 .orderByDesc(UserEntity::getCreateTime);
         return userAutoMap.mapToPageTarget(PageModel.of(super.page(page, queryWrapper)));
+    }
+
+    @DS("circer")
+    @Option("option1")
+    public List<SimpleItemModel<String>> option1() {
+        return userMapper.selectList(new QueryWrapper<>()).stream().map(t -> SimpleItemModel.of(t.getUserName(), t.getId())).collect(Collectors.toList());
+    }
+
+    @DS("circer")
+    @Option("option2")
+    public List<SimpleItemModel<String>> option2() {
+        return List.of(SimpleItemModel.of("haha", "hoho"));
     }
 }

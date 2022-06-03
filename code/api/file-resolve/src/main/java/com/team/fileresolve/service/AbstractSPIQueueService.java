@@ -9,7 +9,6 @@ import com.team.domain.entity.MaterialEntity;
 import com.team.domain.mapper.MaterialMapper;
 import com.team.domain.mongo.repository.FileColumnMappingRepository;
 import com.team.fileresolve.listener.FileListener;
-import com.team.infrastructure.datasource.DynamicDataSourceContext;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.commons.lang3.tuple.Pair;
@@ -17,7 +16,6 @@ import org.apache.ibatis.jdbc.SQL;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.TransactionIsolationLevel;
-import org.apache.pulsar.client.api.PulsarClientException;
 
 import java.io.InputStream;
 import java.util.HashMap;

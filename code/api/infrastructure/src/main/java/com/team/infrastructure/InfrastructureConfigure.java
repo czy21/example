@@ -1,8 +1,6 @@
 package com.team.infrastructure;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.team.infrastructure.datasource.DynamicDataSourceConfigure;
-import com.team.infrastructure.json.JacksonConfigure;
 import com.team.infrastructure.metadata.EntityMetadataHandler;
 import com.team.infrastructure.oss.OSSConfigure;
 import org.springframework.context.annotation.Bean;
@@ -18,8 +16,6 @@ import java.util.Optional;
 
 @Configuration
 @Import({
-        JacksonConfigure.class,
-        DynamicDataSourceConfigure.class,
         OSSConfigure.class
 })
 class InfrastructureConfigure {

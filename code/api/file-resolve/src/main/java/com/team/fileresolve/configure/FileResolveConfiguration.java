@@ -24,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 
 @ComponentScan(value = {"com.team"})
 @Configuration
-public class FileResolveConfiguration implements InitializingBean {
+public class FileResolveConfiguration {
 
     StringRedisTemplate redisTemplate;
 
@@ -53,18 +53,5 @@ public class FileResolveConfiguration implements InitializingBean {
         var subscription = listenerContainer.register(readOptions, streamListener);
         listenerContainer.start();
         return subscription;
-    }
-
-
-    // XGROUP CREATE kf:log:token kf-log-token-group 0-0 MKSTREAM
-    @Override
-    public void afterPropertiesSet() {
-//        try {
-//            redisTemplate.opsForStream().createGroup(RedisLogReceiver.KEY, ReadOffset.from("0-0"), RedisLogReceiver.GROUP);
-//        } catch (Exception e) {
-//            if (!e.getMessage().startsWith("BUSYGROUP Consumer Group name already exists")) {
-//                throw e;
-//            }
-//        }
     }
 }

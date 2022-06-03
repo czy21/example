@@ -1,20 +1,14 @@
 package com.team.portal.controller;
 
-import com.team.application.service.TableMetadataService;
+import com.learning.web.controller.BaseController;
 import com.team.application.service.HBaseService;
-import com.team.application.service.impl.HbasePersistServiceImpl;
-import com.team.cooperated.controller.BaseController;
-import com.team.domain.mongo.entity.HBaseTableMetadataEntity;
-import org.apache.commons.lang3.StringUtils;
+import com.team.application.service.TableMetadataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -60,10 +54,10 @@ public class HBaseController extends BaseController {
 //    }
 
     @PostMapping(path = "testp")
-    public Map<String,Object> testP(){
-        var m=new HashMap<String,Object>();
-        m.put("name","sss");
-        m.put("age",null);
+    public Map<String, Object> testP() {
+        var m = new HashMap<String, Object>();
+        m.put("name", "sss");
+        m.put("age", null);
 
         return m;
     }

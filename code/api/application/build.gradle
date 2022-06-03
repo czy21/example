@@ -1,6 +1,5 @@
 dependencies {
     api project(':domain')
     api project(':external')
-    api project(':cooperated')
-//    api project(':security')
+    api 'com.learning:spring-web'
 }
