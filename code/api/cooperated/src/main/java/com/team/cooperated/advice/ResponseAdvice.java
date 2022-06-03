@@ -5,7 +5,7 @@ import com.team.cooperated.annotation.EnumOption;
 import com.team.cooperated.annotation.OptionName;
 import com.team.cooperated.annotation.SpecialOption;
 import com.team.cooperated.controller.BaseController;
-import com.team.cooperated.model.simple.SimpleItemModel;
+import com.team.cooperated.model.SimpleItemModel;
 import com.team.cooperated.option.Option;
 import com.team.cooperated.option.OptionProvider;
 import org.springframework.beans.BeansException;

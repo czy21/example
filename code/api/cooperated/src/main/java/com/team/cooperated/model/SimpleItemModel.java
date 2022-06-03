@@ -1,4 +1,4 @@
-package com.team.cooperated.model.simple;
+package com.team.cooperated.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
