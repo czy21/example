@@ -27,7 +27,7 @@ subprojects {
             enabled = false
         }
         imports {
-            mavenBom "com.learning:spring-bom:0.1.0-SNAPSHOT"
+            mavenBom "com.learning:learning-spring-bom:0.1.0-SNAPSHOT"
         }
 
         dependencies {
