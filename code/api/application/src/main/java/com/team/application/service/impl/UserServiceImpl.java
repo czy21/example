@@ -39,15 +39,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserEntity> impleme
         return userAutoMap.mapToPageTarget(PageModel.of(super.page(page, queryWrapper)));
     }
 
-    @DS("circer")
+    @DS("circler")
     @Option("option1")
     public List<SimpleItemModel<String>> option1() {
         return userMapper.selectList(new QueryWrapper<>()).stream().map(t -> SimpleItemModel.of(t.getUserName(), t.getId())).collect(Collectors.toList());
     }
 
-    @DS("circer")
     @Option("option2")
     public List<SimpleItemModel<String>> option2() {
-        return List.of(SimpleItemModel.of("haha", "hoho"));
+        return userMapper.selectList(new QueryWrapper<>()).stream().map(t -> SimpleItemModel.of(t.getUserName(), t.getId())).collect(Collectors.toList());
     }
 }
