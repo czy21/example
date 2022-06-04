@@ -15,13 +15,13 @@ public class PulsarConsumer {
     @Autowired
     PulsarClient pulsarClient;
 
-    @PulsarListener(topic = "aa")
-    public void a() {
+    @PulsarListener(topic = "topic-a",subscriptionName = "hello")
+    public void topicA() {
         System.out.println("a");
     }
 
-    @PulsarListener(topic = "bb")
-    public void b() {
-        System.out.println("b");
+    @PulsarListener(topic = "topic-b",subscriptionName = "hello")
+    public void topicB() {
+        System.out.println("a");
     }
 }
