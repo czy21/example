@@ -13,13 +13,16 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class QueueConfig {
 
+    public static final String TOPIC_A = "topic-a";
+    public static final String TOPIC_B = "topic-b";
+
     public static final String SPI_FILE_TOPIC = "spiFileTopic";
     public static final String SPI_DATA_TOPIC = "spiDataTopic";
-    public static final String DEMO_TOPIC_1 = "topic-demo-1";
 
     @Bean
     public Queue spiFileTopic() {
@@ -37,17 +40,23 @@ public class QueueConfig {
     }
 
     @Bean
-    public ProducerBuilderWrapper demoMapProducer() throws Exception {
-        return (client) -> client.newProducer(Schema.JSON(Map.class)).topic(DEMO_TOPIC_1);
+    public ProducerBuilderWrapper topicAProducer() {
+        return client -> client.newProducer(Schema.JSON(Map.class)).topic(TOPIC_A);
     }
 
     @Bean
-    public ProducerBuilderWrapper spiFileProducer() throws Exception {
+    public ProducerBuilderWrapper topicBProducer() {
+        return client -> client.newProducer(Schema.JSON(Map.class)).topic(TOPIC_B);
+    }
+
+
+    @Bean
+    public ProducerBuilderWrapper spiFileProducer() {
         return client -> client.newProducer(Schema.JSON(MaterialVO.class)).topic(SPI_FILE_TOPIC);
     }
 
     @Bean
-    public ProducerBuilderWrapper spiDataProducer() throws Exception {
+    public ProducerBuilderWrapper spiDataProducer() {
         return client -> client.newProducer(Schema.JSON(RowModel.class)).topic(SPI_DATA_TOPIC);
     }
 
