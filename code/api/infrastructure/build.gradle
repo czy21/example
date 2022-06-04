@@ -15,6 +15,6 @@ dependencies {
     api "cglib:cglib:3.3.0"
     api "io.minio:minio"
     api "com.squareup.okhttp3:okhttp"
-    api "com.czy:pulsar-spring-boot-starter"
     api "com.czy:learning-spring-db"
+    api "com.czy:learning-spring-pulsar"
 }
