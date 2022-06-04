@@ -1,14 +1,11 @@
 package com.team.application.config;
 
-import com.czy.pulsar.core.ProducerBuilderWrapper;
+
+import com.czy.learning.pulsar.core.ProducerBuilderWrapper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.team.application.model.RowModel;
 import com.team.application.model.vo.MaterialVO;
-import org.apache.pulsar.client.api.Producer;
-import org.apache.pulsar.client.api.PulsarClient;
 import org.apache.pulsar.client.api.Schema;
-import org.apache.pulsar.client.api.schema.SchemaDefinition;
-import org.apache.pulsar.client.internal.DefaultImplementation;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
@@ -46,12 +43,12 @@ public class QueueConfig {
 
     @Bean
     public ProducerBuilderWrapper spiFileProducer() throws Exception {
-        return client->client.newProducer(Schema.JSON(MaterialVO.class)).topic(SPI_FILE_TOPIC);
+        return client -> client.newProducer(Schema.JSON(MaterialVO.class)).topic(SPI_FILE_TOPIC);
     }
 
     @Bean
     public ProducerBuilderWrapper spiDataProducer() throws Exception {
-        return client->client.newProducer(Schema.JSON(RowModel.class)).topic(SPI_DATA_TOPIC);
+        return client -> client.newProducer(Schema.JSON(RowModel.class)).topic(SPI_DATA_TOPIC);
     }
 
 }

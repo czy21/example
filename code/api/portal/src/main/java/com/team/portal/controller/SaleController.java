@@ -1,6 +1,6 @@
 package com.team.portal.controller;
 
-import com.czy.pulsar.core.PulsarTemplate;
+import com.czy.learning.pulsar.core.PulsarTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.czy.learning.web.controller.BaseController;
 import com.team.application.config.QueueConfig;
