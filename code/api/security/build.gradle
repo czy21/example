@@ -1,0 +1,5 @@
+dependencies {
+    api project(":cooperated")
+    api 'org.springframework.session:spring-session-core'
+    api 'com.learning:learning-spring-web'
+}

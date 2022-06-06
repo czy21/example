@@ -2,7 +2,7 @@ package com.team.application;
 
 import lombok.Data;
 import org.apache.commons.lang3.tuple.MutablePair;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -18,7 +18,7 @@ public class BasicTest {
     public void tOne() {
 
         TestEntity t = new TestEntity();
-        t.name = "nishishei";
+        t.name = "shei";
 
         System.out.println("a");
 

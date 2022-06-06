@@ -10,7 +10,7 @@ const store = createStore(rootReducer);
 function App() {
     return (
         <Provider store={store}>
-            <BrowserRouter>
+            <BrowserRouter basename={process.env.REACT_APP_BASE_URL}>
                 <Home/>
             </BrowserRouter>
         </Provider>

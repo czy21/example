@@ -1,9 +1,12 @@
 import eui, {EUI} from '@/helper/eui'
+import util from '@/util'
 
 export interface Helper {
-    eui: EUI
+    eui: EUI,
+    util: any
 }
 
 export default {
-    eui
+    eui,
+    util
 }

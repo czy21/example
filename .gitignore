@@ -1,20 +1,26 @@
-# Idea #
-.idea
-*.iml
+.gradle
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!**/src/main/**/build/
+!**/src/test/**/build/
 *.log
 
-# Gradle #
-.gradle/
-
-# Build #
-build/
-
-# Api #
-target/
+# Idea #
+.idea
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/
 
 # Web #
 node_modules/
 dist/
+deploy_versions/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Output #
 ___output/

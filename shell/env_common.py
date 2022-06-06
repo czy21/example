@@ -1,85 +1,38 @@
 #!/usr/bin/env python3
 
-from script.domain.default import common as default_common, path as default_path
-from script.utility import collection as list_util
+from script.domain.default import path as default_path
 from script.utility import path as path_util
 
 shell_path = path_util.pure_path_join(default_path.root_path, "shell")
 
 param_project_name = "erp"
-param_env_suffix = ""
-param_api_host_port = param_api_container_port = 8080
-param_web_container_name = "nginx"
 
 # api
-param_api_archive_file_name = "api.jar"
-param_api_plugin_file_path = path_util.pure_path_join(default_path.project_plugin, "build.gradle")
-param_api_gradle_init_script_file_path = path_util.pure_path_join(shell_path, "template", "init.gradle")
-
-# extra config
-build_extra_config_name = "build.extra.gradle"
-param_api_extra_config_template_path = path_util.pure_path_join(shell_path, "template", build_extra_config_name)
-param_api_extra_config_output_file_path = path_util.pure_path_join(default_path.output_tmp, build_extra_config_name)
-
-# yml
-application_override_name = "application-override.yml"
-param_api_yml_override_template_path = path_util.pure_path_join(shell_path, "template", application_override_name)
-param_api_yml_output_file_path = path_util.pure_path_join(default_path.output_api_resource, application_override_name)
-
-# compose
-docker_compose_name = "docker-compose-api.yml"
-param_api_compose_template_path = path_util.pure_path_join(shell_path, "template", docker_compose_name)
-param_api_compose_output_file_path = path_util.pure_path_join(default_path.output_api, docker_compose_name)
-
-# dockerfile
-dockerfile_name = "Dockerfile"
-param_api_dockerfile_template_path = path_util.pure_path_join(shell_path, "template", dockerfile_name)
-param_api_dockerfile_output_file_path = path_util.pure_path_join(default_path.output_api, dockerfile_name)
-
-param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api, "portal")
-param_api_docker_gradle_command = list_util.arr_param_to_str(
-    [
-        "sudo docker run --rm --user root",
-        "--volume \"$HOME\":\"$HOME\"",
-        "--volume \"$HOME\"/.gradle:/home/gradle/.gradle",
-        "gradle:jdk11"
-    ])
-
-# network
-param_api_network_containers = ["jenkins", "mysql", "mongo", "neo4j", "redis", "rabbitmq", "nginx", "zookeeper", "broker1"]
-param_api_network_name = "erp_play_default"
+param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api)
 
 # web
-cp_static = "nginx.sh"
-nginx_conf = "nginx.conf"
-param_web_root_project_path = path_util.pure_path_join(default_path.project_code_web, "react/operation")
-param_web_cp_template_path = path_util.pure_path_join(shell_path, "template", cp_static)
-param_web_cp_output_file_path = path_util.pure_path_join(default_path.output_tmp, cp_static)
-param_web_nginx_template_path = path_util.pure_path_join(shell_path, "template", nginx_conf)
+param_web_root_project_path = path_util.pure_path_join(default_path.project_code_web, "react", "operation")
 
-param_web_env_template_path = path_util.pure_path_join(shell_path, "template", "react.app.env")
-param_web_env_path = path_util.pure_path_join(default_path.project_code_web, "react/operation/.env")
+param_main_db_mysql_user = \
+    param_main_db_mongo_user = "admin"
 
-# db
-param_main_redis_host = "redis"
-param_main_rabbit_host = "rabbitmq"
+param_main_db_mssql_user = "sa"
 
-param_main_db_mysql_host = "mysql"
-param_main_db_mongo_host = "mongo"
-param_main_db_neo4j_host = "neo4j"
-param_main_db_mysql_user = param_main_db_mongo_user = "admin"
-param_main_db_mysql_pass = param_main_db_mongo_pass = param_main_db_neo4j_pass = "***REMOVED***"
+param_main_db_mysql_pass = \
+    param_main_db_pgsql_pass = \
+    param_main_db_mssql_pass = \
+    param_main_db_cksql_pass = \
+    param_main_db_mongo_pass = \
+    param_main_db_neo4j_pass = "***REMOVED***"
+
+param_main_db_neo4j_user = "neo4j"
+param_main_db_pgsql_user = "postgres"
+param_main_db_cksql_user = "default"
 
 param_main_db_mysql_file_path = path_util.pure_path_join(default_path.project_db, "mysql", "1_version")
-param_main_db_neo4j_user = "neo4j"
-param_main_db_neo4j_file_path = path_util.pure_path_join(default_path.project_db, "neo4j")
-
-
-def inject(args):
-    qualify_project_env = "_".join([param_project_name, param_env_suffix])
-    param_main_db_name = qualify_project_env
-    param_main_db_bak_name = "_".join([param_main_db_name, "bak"])
-    param_web_nginx_env_file_name = qualify_project_env + ".conf"
-    param_web_nginx_output_file_path = path_util.pure_path_join(default_path.output_tmp, param_web_nginx_env_file_name)
-    for k, v in dict({k: v for k, v in locals().items() if k.startswith("param")}).items():
-        globals()[k] = v
+# param_main_db_mysql_file_path = path_util.pure_path_join("C:/Users/zhaoyu.chen/Desktop/developer/mx-project/v2.7.0/")
+param_main_db_pgsql_file_path = path_util.pure_path_join(default_path.project_db, "pgsql", "1_version")
+param_main_db_mssql_file_path = path_util.pure_path_join(default_path.project_db, "mssql", "1_version")
+param_main_db_cksql_file_path = path_util.pure_path_join(default_path.project_db, "cksql", "1_version")
+param_main_db_mongo_file_path = path_util.pure_path_join(default_path.project_db, "mongo", "1_version")
+param_main_db_neo4j_file_path = path_util.pure_path_join(default_path.project_db, "neo4j", "1_version")
