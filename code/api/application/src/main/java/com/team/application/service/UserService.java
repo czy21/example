@@ -9,5 +9,4 @@ import com.team.domain.entity.UserEntity;
 public interface UserService extends IService<UserEntity> {
 
     PageDTO<UserDTO> findByPage(SearchVO<UserDTO> search);
-
 }

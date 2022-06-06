@@ -1,8 +1,6 @@
+import _ from 'lodash'
 import util from '@/util'
 import {MessageBox} from "element-ui";
-
-let _ = require('lodash')
-
 
 export interface EUI {
     inform(text: string, callback?: Function): void

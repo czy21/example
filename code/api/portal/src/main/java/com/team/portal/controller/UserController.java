@@ -1,51 +1,50 @@
 package com.team.portal.controller;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.czy.learning.web.controller.BaseController;
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.dto.UserDTO;
 import com.team.application.model.vo.SearchVO;
-import com.team.application.pocket.EnumGender;
-import com.team.application.pocket.SpecialPerson;
-import com.team.application.pocket.SpecialWoman;
 import com.team.application.service.UserService;
-import com.team.cooperated.annotation.EnumPocket;
-import com.team.cooperated.annotation.SpecialPocket;
-import com.team.cooperated.controller.BaseController;
-import org.apache.kafka.streams.StreamsBuilder;
+import com.team.portal.model.UserExportDTO;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.batch.core.Job;
+import org.springframework.batch.core.JobParametersBuilder;
+import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.kafka.config.StreamsBuilderFactoryBean;
-import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
-
+@RefreshScope
 @RestController
 @RequestMapping("user")
 public class UserController extends BaseController {
 
-
     @Autowired
     UserService userService;
-
     @Autowired
-    KafkaTemplate<String, String> kafkaTemplate;
-
+    @Qualifier(value = "rinseJob")
+    Job rinseJob;
     @Autowired
-    StreamsBuilderFactoryBean streamsBuilderFactoryBean;
+    JobLauncher jobLauncher;
 
-
-    @Autowired
-    StreamsBuilder streamsBuilder;
 
     @GetMapping(path = "load")
-    @EnumPocket(value = {
-            EnumGender.class,
-    })
-    @SpecialPocket(value = {
-            SpecialPerson.class,
-            SpecialWoman.class
-    })
     public PageDTO<UserDTO> load() {
         return new PageDTO<>();
     }
@@ -56,10 +55,80 @@ public class UserController extends BaseController {
         return userService.findByPage(search);
     }
 
-    @PostMapping(path = "publicMsg")
-    public void publicMsg(@RequestBody Map<String, Object> input) {
-        kafkaTemplate.send(input.get("topic").toString(), input.get("msg").toString());
+    @GetMapping(path = "submitJob")
+    public Map<String, Object> submitJob() throws Exception {
+        JobParametersBuilder parametersBuilder = new JobParametersBuilder();
+        parametersBuilder.addDate("commitDate", new Date());
+        jobLauncher.run(rinseJob, parametersBuilder.toJobParameters());
+        return Map.of();
     }
+
+    @PostMapping(path = "export")
+    public CompletableFuture<ResponseEntity<byte[]>> export() throws Exception {
+        List<UserExportDTO> institutionMappingListExportDTOS = List.of(UserExportDTO.builder().name("你好").build());
+        String filename = URLEncoder.encode("你好", StandardCharsets.UTF_8.toString()) + ".xlsx";
+        return CompletableFuture.supplyAsync(() -> downloadExcel(institutionMappingListExportDTOS, UserExportDTO.class, filename));
+    }
+
+
+    @PostMapping(path = "upload")
+    public CompletableFuture<ResponseEntity<byte[]>> upload(MultipartFile file, Map<String, Object> param) throws Exception {
+        String filename = URLEncoder.encode("模板", StandardCharsets.UTF_8.toString()) + ".xlsx";
+        return CompletableFuture.supplyAsync(() -> downloadExcel(List.of(), UserExportDTO.class, filename));
+    }
+
+
+    @Data
+    @Builder
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static class TestDTO {
+
+        private LocalDateTime t1;
+//        private LocalDateTime t2;
+
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        private LocalDateTime t3;
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        private LocalDateTime t4;
+
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+        private LocalDateTime t5;
+
+        private Date t6;
+        @JsonFormat(pattern = "yyyy-MM-dd HH:mm:s")
+        private Date t7;
+
+    }
+
+    @PostMapping(path = "testTime")
+    public TestDTO testTime(@RequestBody TestDTO param) throws Exception {
+        if (param.getT1() == null) {
+            param.t1 = LocalDateTime.now();
+        }
+//        if (param.getT2() == null) {
+//            param.t2 = LocalDateTime.now();
+//        }
+        if (param.getT3() == null) {
+            param.t3 = LocalDateTime.now();
+        }
+        if (param.getT4() == null) {
+            param.t4 = LocalDateTime.now();
+        }
+        if (param.getT5() == null) {
+            param.t5 = LocalDateTime.now();
+        }
+
+        if (param.getT6() == null) {
+            param.t6 = new Date();
+        }
+
+        if (param.getT7() == null) {
+            param.t7 = new Date();
+        }
+        return param;
+    }
+
 
 }
 

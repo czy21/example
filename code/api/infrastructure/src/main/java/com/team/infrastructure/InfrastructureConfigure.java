@@ -1,40 +1,42 @@
 package com.team.infrastructure;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.team.infrastructure.metadata.EntityMetadataHandler;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import com.team.infrastructure.oss.OSSConfigure;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Configuration
+@Import({
+        OSSConfigure.class
+})
 class InfrastructureConfigure {
+
     @Bean
-    @ConditionalOnMissingBean
     public EntityMetadataHandler entityMetadataHandler() {
         return new EntityMetadataHandler();
     }
 
     @Bean
-    public RedisTemplate<String, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
-        RedisTemplate<String, Object> template = new RedisTemplate<>();
+    public AuditorAware<LocalDateTime> JPAEntityAuditor() {
+        return () -> Optional.of(LocalDateTime.now());
+    }
+
+    @Bean
+    public RedisTemplate<Object, Object> redisTemplate(RedisConnectionFactory redisConnectionFactory, ObjectMapper objectMapper) {
+        RedisTemplate<Object, Object> template = new RedisTemplate<>();
         template.setConnectionFactory(redisConnectionFactory);
+        template.setKeySerializer(new GenericJackson2JsonRedisSerializer(objectMapper));
+        template.setValueSerializer(new GenericJackson2JsonRedisSerializer(objectMapper));
         return template;
     }
-
-    @Component
-    public static class EntityAuditing implements AuditorAware<LocalDateTime> {
-        @Override
-        public Optional<LocalDateTime> getCurrentAuditor() {
-            return Optional.of(LocalDateTime.now());
-        }
-
-    }
-
 }
 

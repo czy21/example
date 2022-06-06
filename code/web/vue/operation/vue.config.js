@@ -10,7 +10,7 @@ module.exports = {
         port: 3000,
         proxy: {
             "/api": {
-                target: 'http://localhost:8075',
+                target: 'http://localhost:8090',
                 changeOrigin: true,
                 ws: true,
                 pathRewrite: {
@@ -19,5 +19,5 @@ module.exports = {
             }
         },
     },
-
+    publicPath: process.env.BASE_URL
 };

@@ -1,0 +1,33 @@
+db.met_hbase_table.update(
+{
+ "namespace": "bg_demo",
+ "tableName": "sale",
+},
+{
+    "namespace": "bg_demo",
+    "tableName": "sale",
+    "columnFamily": {
+        "from": [
+            "fromInstitutionCode",
+            "fromInstitutionName",
+            "fromInstitutionCodeFormat"
+        ],
+        "product": [
+            "productCode",
+            "productName",
+            "productSpec",
+            "productCodeFormat",
+            "productBatch",
+            "producer"
+        ],
+        "to": [
+            "toInstitutionCode",
+            "toInstitutionName",
+            "toInstitutionNameFormat"
+        ]
+    },
+    "_class": "com.team.domain.mongo.entity.TableMetadataEntity"
+},
+{
+   "upsert":true
+})

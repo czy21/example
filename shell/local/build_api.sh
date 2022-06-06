@@ -1,13 +1,14 @@
 #!/bin/bash
 
-cd $(cd "$(dirname "$0")"; pwd)
+dir=$(cd "$(dirname "$0")"; pwd)
+source ${dir}/../env_common.sh
 
-env="local"
-
-python3 ../../shell/run.py \
---env ../../shell/${env}/_env.py \
---log-file build_api.log \
+python3 -B ${run_py} --env ${env_py} \
+--init \
+--log-file ${sh_name}.log \
+--param param_api_module_name=portal \
 --cmd '
-from script.domain.source import java as java_source
+from script.domain.source import base as base_source,java as java_source
 java_source.build_api()
-'
+' \
+$@

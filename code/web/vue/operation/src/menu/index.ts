@@ -16,6 +16,11 @@ const menus: Array<MenuModel> = [
                 path: "user",
                 icon: "el-icon-user"
             },
+            {
+                name: "菜单管理",
+                path: "menu",
+                icon: "el-icon-user"
+            },
         ]
     },
     {

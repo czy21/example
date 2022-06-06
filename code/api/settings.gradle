@@ -1,7 +1,16 @@
+pluginManagement {
+    plugins {
+        id 'org.springframework.boot' version "${springBootVersion}"
+        id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
+    }
+}
 
 include("portal")
+include("file-resolve")
 include("application")
 include("cooperated")
+include("security")
 include("domain")
 include("infrastructure")
 include("external")
+include("gateway")
