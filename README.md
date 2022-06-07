@@ -1,5 +1,10 @@
-# DEMO后台管理系统
+# Demo Project
 
+# prepare
+```bash
+sed "s|http://gitea.cluster.com/czyhome/script.git|https://github.com/czy21/script.git|g" .gitmodules
+git submodule update --recursive --init
+```
 ## 工程结构
 ``` 
 DEMO
