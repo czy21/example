@@ -1,0 +1,3 @@
+[submodule "script"]
+	path = script
+	url = http://gitea.cluster.com/czyhome/script.git
