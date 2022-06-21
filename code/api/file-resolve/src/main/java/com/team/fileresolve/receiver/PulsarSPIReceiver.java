@@ -1,8 +1,8 @@
 package com.team.fileresolve.receiver;
 
-import com.czy.pulsar.annotation.PulsarListener;
-import com.czy.pulsar.core.PulsarFactory;
-import com.czy.pulsar.core.PulsarTemplate;
+
+import com.czy.learning.pulsar.annotation.PulsarListener;
+import com.czy.learning.pulsar.core.PulsarTemplate;
 import com.team.application.automap.RowAutoMap;
 import com.team.application.config.QueueConfig;
 import com.team.application.model.RowModel;
@@ -31,7 +31,7 @@ public class PulsarSPIReceiver extends AbstractSPIQueueService {
         this.pulsarTemplate = pulsarTemplate;
     }
 
-    @PulsarListener(topic = QueueConfig.SPI_FILE_TOPIC, clazz = MaterialVO.class, subscriptionType = SubscriptionType.Shared)
+    @PulsarListener(subscriptionName = "file-resolve-group", topics = QueueConfig.SPI_FILE_TOPIC, clazz = MaterialVO.class, subscriptionType = SubscriptionType.Shared)
     //    @PulsarConsumer(topic = QueueConfig.SPI_FILE_TOPIC, clazz = MaterialVO.class, subscriptionType = {SubscriptionType.Shared})
     public void listenerFile(MaterialVO materialVO) throws Exception {
         super.resolveFile(materialVO);
@@ -41,7 +41,7 @@ public class PulsarSPIReceiver extends AbstractSPIQueueService {
 //    public void listenerRow(RowModel row) {
 //        super.consumeRow(List.of(row));
 //    }
-    @PulsarListener(topic = QueueConfig.SPI_DATA_TOPIC, clazz = RowModel.class, subscriptionType = SubscriptionType.Shared, batch = true)
+    @PulsarListener(subscriptionName = "file-resolve-group", topics = QueueConfig.SPI_DATA_TOPIC, clazz = RowModel.class, subscriptionType = SubscriptionType.Shared, batch = true)
     public void listenerRow(List<RowModel> rows) {
         super.consumeRow(rows);
     }
