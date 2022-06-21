@@ -2,7 +2,7 @@
 
 # prepare
 ```bash
-sed "s|http://gitea.cluster.com/czyhome/script.git|https://github.com/czy21/script.git|g" .gitmodules
+sed -i 's|http://gitea.cluster.com/czyhome|https://github.com/czy21|g' .gitmodules
 git submodule update --recursive --init
 ```
 ## 工程结构
