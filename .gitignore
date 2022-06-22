@@ -27,3 +27,6 @@ ___output/
 
 # Shell #
 __pycache__/
+
+# cicd
+.jenkins
