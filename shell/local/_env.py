@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-from shell import env_common
+
+import env_common
 
 param_env_suffix = "local"
 

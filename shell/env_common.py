@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-from script.domain.default import path as default_path
-from script.utility import path as path_util
+from domain.default import path as default_path
+from utility import path as path_util
 
 shell_path = path_util.pure_path_join(default_path.root_path, "shell")
 
