@@ -3,9 +3,6 @@
 dir=$(cd "$(dirname "$0")"; pwd)
 source ${dir}/../env_common.sh
 
-echo ${run_py}
-echo ${env_py}
-
 python3 -B ${run_py} --env ${env_py} \
 --init \
 --log-file ${sh_name}.log \
