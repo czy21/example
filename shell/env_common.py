@@ -2,10 +2,6 @@
 
 from domain.default import path as default_path
 from utility import path as path_util
-import pathlib
-import sys
-
-sys.path.append(pathlib.Path(__file__).parent.as_posix())
 
 shell_path = path_util.pure_path_join(default_path.root_path, "shell")
 
