@@ -1,6 +1,6 @@
 spring:
   application:
-    name: erp-gateway
+    name: demo-gateway
   config:
     import: optional:consul:consul.cluster.com:80
   cloud:
@@ -9,6 +9,6 @@ spring:
         acl-token: anonymous
         format: YAML
         prefixes:
-          - "dev-erp-gateway"
+          - "dev-demo-gateway"
   profiles:
     active: local

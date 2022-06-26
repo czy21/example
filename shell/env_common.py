@@ -5,7 +5,7 @@ from utility import path as path_util
 
 shell_path = path_util.pure_path_join(default_path.root_path, "shell")
 
-param_project_name = "erp"
+param_project_name = "demo"
 
 # api
 param_api_root_project_path = path_util.pure_path_join(default_path.project_code_api)

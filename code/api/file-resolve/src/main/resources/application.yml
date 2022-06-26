@@ -1,6 +1,6 @@
 spring:
   application:
-    name: erp-file-resolve
+    name: demo-file-resolve
   config:
     import: optional:consul:consul.cluster.com:80
   cloud:
@@ -9,7 +9,7 @@ spring:
         acl-token: anonymous
         format: YAML
         prefixes:
-          - "dev-erp-common"
-          - "dev-erp-file-resolve"
+          - "dev-demo-common"
+          - "dev-demo-file-resolve"
   profiles:
     active: local
