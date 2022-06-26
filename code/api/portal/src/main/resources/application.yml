@@ -1,6 +1,6 @@
 spring:
   application:
-    name: erp-portal
+    name: demo-portal
   config:
     import: optional:consul:consul.cluster.com:80
   cloud:
@@ -8,5 +8,5 @@ spring:
       config:
         format: YAML
         prefixes:
-          - "dev-erp-common"
-          - "dev-erp-portal"
+          - "dev-demo-common"
+          - "dev-demo-portal"
