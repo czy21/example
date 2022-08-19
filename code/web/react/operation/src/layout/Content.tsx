@@ -1,16 +1,19 @@
 import React from "react";
 import {Layout} from "antd";
 import routes from "@/route";
-import {renderRoutes} from "react-router-config";
+import {useRoutes} from "react-router-dom";
 
 const AntdContent = Layout.Content;
 
+function RouteElement() {
+    return useRoutes(routes)
+}
 
 export default class Content extends React.Component<any, any> {
     render() {
         return (
             <AntdContent className="content">
-                {renderRoutes(routes)}
+                <RouteElement/>
             </AntdContent>
         )
     }

@@ -10,9 +10,6 @@
       ],
       "@v/*": [
         "src/view/*"
-      ],
-      "@fra": [
-        "node_modules/share-react"
       ]
     }
   }
