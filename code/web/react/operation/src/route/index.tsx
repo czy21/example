@@ -1,16 +1,15 @@
-import User from "@v/user"
-import Menu from "@v/menu/initMenu"
-import {RouteConfig} from "react-router-config";
+import User from "@/view/user"
+import Menu from "@/view/menu/initMenu"
+import {RouteObject} from "react-router-dom";
 
-const routes: RouteConfig[] = [
+const routes: RouteObject[] = [
     {
         path: "/user",
-        component: User,
+        element: <User/>,
     },
     {
         path: "/menu",
-        component: Menu,
+        element: <Menu/>,
     }
-
 ];
 export default routes
