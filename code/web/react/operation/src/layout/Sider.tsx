@@ -10,7 +10,7 @@ const AntdSider = Layout.Sider;
 const {SubMenu} = Menu;
 
 
-function recuriveMenu(routes: any) {
+function recursiveMenu(routes: any) {
     return routes.map((item:any, index:any) => {
         if (item.children) {
             return (
@@ -23,7 +23,7 @@ function recuriveMenu(routes: any) {
                         </span>
                     }
                 >
-                    {recuriveMenu(item.children)}
+                    {recursiveMenu(item.children)}
                 </SubMenu>
             )
         }
@@ -45,7 +45,7 @@ class Sider extends React.Component<{ collapsed?: boolean }, any> {
         return (
             <AntdSider trigger={null} collapsible collapsed={this.props.collapsed}>
                 <Menu theme="dark" defaultSelectedKeys={["0"]}>
-                    {recuriveMenu(menus)}
+                    {recursiveMenu(menus)}
                 </Menu>
             </AntdSider>
         )
