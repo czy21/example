@@ -66,14 +66,14 @@ public class UserController extends BaseController {
     @PostMapping(path = "export")
     public CompletableFuture<ResponseEntity<byte[]>> export() throws Exception {
         List<UserExportDTO> institutionMappingListExportDTOS = List.of(UserExportDTO.builder().name("你好").build());
-        String filename = URLEncoder.encode("你好", StandardCharsets.UTF_8.toString()) + ".xlsx";
+        String filename = URLEncoder.encode("你好", StandardCharsets.UTF_8) + ".xlsx";
         return CompletableFuture.supplyAsync(() -> downloadExcel(institutionMappingListExportDTOS, UserExportDTO.class, filename));
     }
 
 
     @PostMapping(path = "upload")
     public CompletableFuture<ResponseEntity<byte[]>> upload(MultipartFile file, Map<String, Object> param) throws Exception {
-        String filename = URLEncoder.encode("模板", StandardCharsets.UTF_8.toString()) + ".xlsx";
+        String filename = URLEncoder.encode("模板", StandardCharsets.UTF_8) + ".xlsx";
         return CompletableFuture.supplyAsync(() -> downloadExcel(List.of(), UserExportDTO.class, filename));
     }
 
