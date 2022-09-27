@@ -13,11 +13,10 @@ import com.team.domain.mongo.repository.FileColumnMappingRepository;
 import com.team.fileresolve.service.AbstractSPIQueueService;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.pulsar.client.api.SubscriptionType;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
-@Component
+//@Component
 public class PulsarSPIReceiver extends AbstractSPIQueueService {
 
     PulsarTemplate pulsarTemplate;

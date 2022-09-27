@@ -5,4 +5,5 @@ plugins{
 dependencies {
     api project(':application')
     api "com.czy:learning-spring-pulsar"
+    api "org.springframework.cloud:spring-cloud-starter-stream-rabbit"
 }

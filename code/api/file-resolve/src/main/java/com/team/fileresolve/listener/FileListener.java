@@ -23,19 +23,19 @@ import java.util.stream.Collectors;
 @Slf4j
 public class FileListener extends AnalysisEventListener<Map<Integer, Object>> {
 
-    SPIQueueService SPIQueueService;
+    SPIQueueService spiQueueService;
     FileColumnMappingRepository fileColumnMappingRepository;
     RowAutoMap rowAutoMap;
     MaterialEntity materialEntity;
     MaterialVO materialVO;
     Map<String, MutablePair<FileColumnMappingEntity, Map<String, FileColumnMappingEntity.Field>>> columnMetadata = new ConcurrentHashMap<>();
 
-    public FileListener(SPIQueueService SPIQueueService,
+    public FileListener(SPIQueueService spiQueueService,
                         FileColumnMappingRepository fileColumnMappingRepository,
                         RowAutoMap rowAutoMap,
                         MaterialEntity materialEntity,
                         MaterialVO materialVO) {
-        this.SPIQueueService = SPIQueueService;
+        this.spiQueueService = spiQueueService;
         this.fileColumnMappingRepository = fileColumnMappingRepository;
         this.rowAutoMap = rowAutoMap;
         this.materialEntity = materialEntity;
@@ -85,7 +85,7 @@ public class FileListener extends AnalysisEventListener<Map<Integer, Object>> {
                     return col;
                 }).collect(LinkedHashMap::new, (m, t) -> m.put(t.getKey(), t), Map::putAll);
         rowModel.setData(rowData);
-        SPIQueueService.produceRow(QueueConfig.SPI_DATA_TOPIC, rowModel);
+        spiQueueService.produceRow(QueueConfig.SPI_DATA_TOPIC, rowModel);
     }
 
     @Override
