@@ -8,8 +8,8 @@ import java.util.Map;
 import java.util.stream.IntStream;
 
 @RestController
-@RequestMapping(path = "example1")
-public class Example1Controller {
+@RequestMapping(path = "stream")
+public class StreamController {
 
     @Autowired
     RabbitTemplate rabbitTemplate;
