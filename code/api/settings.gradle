@@ -15,3 +15,6 @@ include("infrastructure")
 include("external")
 include("gateway")
 include("portal-demo")
+include("analyse")
+include('stream')
+
