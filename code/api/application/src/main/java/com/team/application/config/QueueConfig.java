@@ -13,7 +13,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class QueueConfig {
@@ -27,11 +26,6 @@ public class QueueConfig {
     @Bean
     public Queue spiFileTopic() {
         return new Queue(SPI_FILE_TOPIC, true);
-    }
-
-    @Bean
-    public Queue spiDataTopic() {
-        return new Queue(SPI_DATA_TOPIC, true);
     }
 
     @Bean
