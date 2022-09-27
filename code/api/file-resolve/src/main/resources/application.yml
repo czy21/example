@@ -11,3 +11,5 @@ spring:
         prefixes:
           - "dev-demo-common"
           - "dev-demo-file-resolve"
+  profiles:
+    active: local
