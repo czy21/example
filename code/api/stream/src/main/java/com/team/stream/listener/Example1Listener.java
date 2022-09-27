@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.function.Consumer;
 
 @Configuration
-public class Example1 {
+public class Example1Listener {
 
     @Bean
     public Consumer<List<String>> input1() {
