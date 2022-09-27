@@ -6,13 +6,13 @@ spring:
     stream:
       rabbit:
         bindings:
-          input-in-0:
+          input1-in-0:
             consumer:
               enable-batching: true
               batch-size: 5
               receive-timeout: 200
       bindings:
-        input-in-0:
+        input1-in-0:
           group: someGroup
           consumer:
             batch-mode: true
