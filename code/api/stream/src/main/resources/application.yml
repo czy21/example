@@ -1,15 +1,18 @@
+server:
+  port: 8082
 spring:
+  rabbitmq:
+    addresses: admin:***REMOVED***@192.168.2.21:5672
   cloud:
     consul:
-      config:
-        enabled: false
+      enabled: false
     stream:
       rabbit:
         bindings:
           input1-in-0:
             consumer:
               enable-batching: true
-              batch-size: 5
+              batch-size: 1000
               receive-timeout: 200
       bindings:
         input1-in-0:
