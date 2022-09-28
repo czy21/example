@@ -4,5 +4,4 @@ plugins{
 
 dependencies {
     api project(':application')
-    implementation 'org.springframework.cloud:spring-cloud-starter-consul-discovery'
 }
