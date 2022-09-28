@@ -18,7 +18,16 @@ public class StreamController {
     public Map<String, Object> input1(@RequestParam("num") Integer num) {
         IntStream.range(0, num)
                 .forEach(t -> {
-                    rabbitTemplate.convertAndSend(String.join(".", "input1-in-0", "someGroup"), Integer.toString(t));
+                    rabbitTemplate.convertAndSend(String.join(".", "input1Topic", "stream"), Integer.toString(t));
+                });
+        return Map.of();
+    }
+
+    @GetMapping(path = "input2")
+    public Map<String, Object> input2(@RequestParam("num") Integer num) {
+        IntStream.range(0, num)
+                .forEach(t -> {
+                    rabbitTemplate.convertAndSend(String.join(".", "input2Topic", "stream"), Integer.toString(t));
                 });
         return Map.of();
     }
