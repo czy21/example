@@ -12,13 +12,22 @@ spring:
           input1-in-0:
             consumer:
               enable-batching: true
-              batch-size: 1000
+              batch-size: 100
               receive-timeout: 200
+          input2-in-0:
+            consumer:
+              acknowledge-mode: manual
       bindings:
         input1-in-0:
-          group: someGroup
+          destination: input1Topic
+          group: "stream"
           consumer:
             batch-mode: true
+        input2-in-0:
+          destination: input2Topic
+          group: "stream"
+      function:
+        definition: input1;input2
       binders:
         rabbit:
           type: rabbit
