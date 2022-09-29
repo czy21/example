@@ -6,11 +6,13 @@ management:
 server:
   port: 8082
 stream-group-1: "stream"
+kafka-address: 192.168.2.18:9092,192.168.2.18:9093
+rabbit-address: admin:***REMOVED***@192.168.2.21:5672
 spring:
   rabbitmq:
-    addresses: admin:***REMOVED***@192.168.2.21:5672
+    addresses: ${rabbit-address}
   kafka:
-    bootstrap-servers: 192.168.2.18:9092,192.168.2.18:9093
+    bootstrap-servers: ${kafka-address}
     producer:
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
     consumer:
@@ -57,10 +59,10 @@ spring:
           environment:
             spring:
               rabbitmq:
-                addresses: admin:***REMOVED***@192.168.2.21:5672
+                addresses: ${rabbit-address}
         kafka:
           type: kafka
           environment:
             spring:
               kafka:
-                bootstrap-servers: 192.168.2.18:9092,192.168.2.18:9093
+                bootstrap-servers: ${kafka-address}
