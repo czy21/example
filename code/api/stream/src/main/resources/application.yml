@@ -48,7 +48,7 @@ spring:
         bindings:
           input3-in-0:
             consumer:
-              ack-mode: record
+              auto-rebalance-enabled: true
       function:
         definition: input1;input2;input3
       binders:
@@ -62,8 +62,5 @@ spring:
           type: kafka
           environment:
             spring:
-              cloud:
-                stream:
-                  kafka:
-                    binder:
-                      brokers: 192.168.2.18:9092,192.168.2.18:9093
+              kafka:
+                bootstrap-servers: 192.168.2.18:9092,192.168.2.18:9093
