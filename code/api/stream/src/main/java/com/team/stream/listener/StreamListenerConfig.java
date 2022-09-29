@@ -22,7 +22,7 @@ public class StreamListenerConfig {
         return t -> {
             Long deliveryTag = t.getHeaders().get(AmqpHeaders.DELIVERY_TAG, Long.class);
             Channel channel = t.getHeaders().get(AmqpHeaders.CHANNEL, Channel.class);
-            log.info("rabbit {} {}", t, LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")));
+            log.info("rabbit {} {}", t.getPayload(), LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")));
             try {
                 channel.basicAck(deliveryTag, false);
             } catch (IOException e) {
