@@ -25,7 +25,7 @@ public class StreamController {
     /*
       rabbit consumer => ack manual
      */
-    @GetMapping(path = "input1")
+    @GetMapping(path = "input11")
     public Map<String, Object> input1(@RequestParam("num") Integer num) {
         sendBy(String.join(".", "input1Topic", "stream"), num, (t, n) -> rabbitTemplate.convertAndSend(t, n));
         return Map.of();
@@ -34,7 +34,7 @@ public class StreamController {
     /*
         rabbit consumer batch
     */
-    @GetMapping(path = "input2")
+    @GetMapping(path = "input12")
     public Map<String, Object> input2(@RequestParam("num") Integer num) {
         sendBy(String.join(".", "input2Topic", "stream"), num, (t, n) -> rabbitTemplate.convertAndSend(t, n));
         return Map.of();
@@ -43,7 +43,7 @@ public class StreamController {
     /*
        kafka consumer => auto
      */
-    @GetMapping(path = "input3")
+    @GetMapping(path = "input21")
     public Map<String, Object> input3(@RequestParam("num") Integer num) {
         sendBy("input3Topic", num, (t, n) -> kafkaTemplate.send(t, n));
         return Map.of();
