@@ -1,0 +1,9 @@
+plugins{
+    id 'org.springframework.boot'
+}
+
+
+dependencies {
+    api 'com.czy:learning-spring-web'
+    api "org.springframework.kafka:spring-kafka"
+}
