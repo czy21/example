@@ -20,37 +20,37 @@ spring:
       enabled: false
     stream:
       bindings:
-        input1-in-0:
+        rabbitInput11-in-0:
           destination: input1Topic
           group: ${stream-group-1}
           binder: rabbit
-        input2-in-0:
+        rabbitInput12-in-0:
           destination: input2Topic
           group: ${stream-group-1}
           consumer:
             batch-mode: true
           binder: rabbit
-        input3-in-0:
+        kafkaInput21-in-0:
           destination: input3Topic
           group: ${stream-group-1}
           binder: kafka
       rabbit:
         bindings:
-          input1-in-0:
+          rabbitInput11-in-0:
             consumer:
               acknowledge-mode: manual
-          input2-in-0:
+          rabbitInput12-in-0:
             consumer:
               enable-batching: true
               batch-size: 100
               receive-timeout: 200
       kafka:
         bindings:
-          input3-in-0:
+          kafkaInput21-in-0:
             consumer:
               auto-rebalance-enabled: true
       function:
-        definition: input1;input2;input3
+        definition: rabbitInput11;rabbitInput12;kafkaInput21
       binders:
         rabbit:
           type: rabbit
