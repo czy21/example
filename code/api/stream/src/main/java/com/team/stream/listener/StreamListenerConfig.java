@@ -14,14 +14,7 @@ import java.util.function.Consumer;
 public class StreamListenerConfig {
 
     @Bean
-    public Consumer<List<String>> input1() {
-        return list -> {
-            list.forEach(System.out::println);
-        };
-    }
-
-    @Bean
-    public Consumer<Message<String>> input2() {
+    public Consumer<Message<String>> input1() {
         return t -> {
             Long deliveryTag = t.getHeaders().get(AmqpHeaders.DELIVERY_TAG, Long.class);
             Channel channel = t.getHeaders().get(AmqpHeaders.CHANNEL, Channel.class);
@@ -33,4 +26,27 @@ public class StreamListenerConfig {
             }
         };
     }
+
+    @Bean
+    public Consumer<List<String>> input2() {
+        return list -> {
+            list.forEach(System.out::println);
+        };
+    }
+
+    @Bean
+    public Consumer<String> input3() {
+        return t -> {
+            System.out.println(t);
+//            Long deliveryTag = t.getHeaders().get(AmqpHeaders.DELIVERY_TAG, Long.class);
+//            Channel channel = t.getHeaders().get(AmqpHeaders.CHANNEL, Channel.class);
+//            System.out.println(t);
+//            try {
+//                channel.basicAck(deliveryTag, false);
+//            } catch (IOException e) {
+//                throw new RuntimeException(e);
+//            }
+        };
+    }
+
 }

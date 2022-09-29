@@ -5,34 +5,52 @@ management:
         include: "*"
 server:
   port: 8082
+stream-group-1: "stream"
 spring:
   rabbitmq:
     addresses: admin:***REMOVED***@192.168.2.21:5672
+  kafka:
+    bootstrap-servers: 192.168.2.18:9092,192.168.2.18:9093
+    producer:
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+    consumer:
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
   cloud:
     consul:
       enabled: false
     stream:
+      bindings:
+        input1-in-0:
+          destination: input1Topic
+          group: ${stream-group-1}
+          binder: rabbit
+        input2-in-0:
+          destination: input2Topic
+          group: ${stream-group-1}
+          consumer:
+            batch-mode: true
+          binder: rabbit
+        input3-in-0:
+          destination: input3Topic
+          group: ${stream-group-1}
+          binder: kafka
       rabbit:
         bindings:
           input1-in-0:
             consumer:
+              acknowledge-mode: manual
+          input2-in-0:
+            consumer:
               enable-batching: true
               batch-size: 100
               receive-timeout: 200
-          input2-in-0:
+      kafka:
+        bindings:
+          input3-in-0:
             consumer:
-              acknowledge-mode: manual
-      bindings:
-        input1-in-0:
-          destination: input1Topic
-          group: "stream"
-          consumer:
-            batch-mode: true
-        input2-in-0:
-          destination: input2Topic
-          group: "stream"
+              ack-mode: record
       function:
-        definition: input1;input2
+        definition: input1;input2;input3
       binders:
         rabbit:
           type: rabbit
@@ -40,3 +58,12 @@ spring:
             spring:
               rabbitmq:
                 addresses: admin:***REMOVED***@192.168.2.21:5672
+        kafka:
+          type: kafka
+          environment:
+            spring:
+              cloud:
+                stream:
+                  kafka:
+                    binder:
+                      brokers: 192.168.2.18:9092,192.168.2.18:9093
