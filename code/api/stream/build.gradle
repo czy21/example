@@ -5,4 +5,5 @@ plugins{
 dependencies {
     api 'com.czy:learning-spring-web'
     api "org.springframework.cloud:spring-cloud-starter-stream-rabbit"
+    api "org.springframework.cloud:spring-cloud-starter-stream-kafka"
 }
