@@ -49,6 +49,12 @@ public class StreamController {
         return Map.of();
     }
 
+    @GetMapping(path = "input22")
+    public Map<String, Object> input4(@RequestParam("num") Integer num) {
+        sendBy("input4Topic", num, (t, n) -> kafkaTemplate.send(t, n));
+        return Map.of();
+    }
+
     private void sendBy(String topic, Integer num, BiConsumer<String, String> templateConsumer) {
         IntStream.range(0, num).forEach(t -> templateConsumer.accept(topic, Integer.toString(t)));
     }

@@ -45,4 +45,11 @@ public class StreamListenerConfig {
         };
     }
 
+    @Bean
+    public Consumer<String> kafkaInput22() {
+        return t -> {
+            log.info("kafka {} {}", t, LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")));
+        };
+    }
+
 }
