@@ -2,12 +2,17 @@ package com.team.stream.listener;
 
 import com.rabbitmq.client.Channel;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections4.ListUtils;
 import org.springframework.amqp.support.AmqpHeaders;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.BatchPreparedStatementSetter;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.messaging.Message;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
@@ -46,8 +51,22 @@ public class StreamListenerConfig {
     }
 
     @Bean
-    public Consumer<String> kafkaInput22() {
+    public Consumer<List<String>> kafkaInput22(JdbcTemplate jdbcTemplate) {
         return t -> {
+            ListUtils.partition(t, 200)
+                    .forEach(p -> {
+                        jdbcTemplate.batchUpdate("insert kafka_topic(value) values (?)", new BatchPreparedStatementSetter() {
+                            @Override
+                            public void setValues(PreparedStatement ps, int i) throws SQLException {
+                                ps.setString(1, p.get(i));
+                            }
+
+                            @Override
+                            public int getBatchSize() {
+                                return p.size();
+                            }
+                        });
+                    });
             log.info("kafka {} {}", t, LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")));
         };
     }
