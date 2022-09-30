@@ -32,6 +32,8 @@ spring:
           destination: input4Topic
           group: ${stream-group-1}
           binder: kafka
+          consumer:
+            batch-mode: true
       rabbit:
         bindings:
           rabbitInput11-in-0:
