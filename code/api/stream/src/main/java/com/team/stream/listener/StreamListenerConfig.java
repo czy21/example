@@ -54,15 +54,7 @@ public class StreamListenerConfig {
     @Bean
     public Consumer<List<String>> kafkaInput22(JdbcTemplate jdbcTemplate, @Value("${kafka-to-mysql.batch-size}") Integer batchSize) {
         return t -> {
-            if (t.size() > batchSize) {
-                ListUtils.partition(t, batchSize)
-                        .forEach(p -> {
-                            batchInsert(jdbcTemplate, p);
-                        });
-            }
-            else {
-                batchInsert(jdbcTemplate, t);
-            }
+            ListUtils.partition(t, batchSize).forEach(p -> batchInsert(jdbcTemplate, p));
             log.info("kafka {} {} {}", t.size(), t, LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")));
         };
     }
