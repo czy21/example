@@ -1,25 +1,17 @@
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-server:
-  port: 8082
 stream-group-1: "stream"
-kafka-address: 192.168.2.18:9092,192.168.2.18:9093
-rabbit-address: admin:***REMOVED***@192.168.2.21:5672
 spring:
-  rabbitmq:
-    addresses: ${rabbit-address}
-  kafka:
-    bootstrap-servers: ${kafka-address}
-    producer:
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-    consumer:
-      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  profiles:
+    include: local
+  application:
+    name: demo-stream
+  config:
+    import: optional:consul:consul.cluster.com:80
   cloud:
     consul:
-      enabled: false
+      config:
+        format: YAML
+        prefixes:
+          - "dev-demo-common"
     stream:
       bindings:
         rabbitInput11-in-0:
@@ -60,16 +52,16 @@ spring:
               auto-rebalance-enabled: true
       function:
         definition: rabbitInput11;rabbitInput12;kafkaInput21;kafkaInput22
-      binders:
-        rabbit:
-          type: rabbit
-          environment:
-            spring:
-              rabbitmq:
-                addresses: ${rabbit-address}
-        kafka:
-          type: kafka
-          environment:
-            spring:
-              kafka:
-                bootstrap-servers: ${kafka-address}
+#      binders:
+#        rabbit:
+#          type: rabbit
+#          environment:
+#            spring:
+#              rabbitmq:
+#                addresses: ${spring.rabbitmq.addresses}
+#        kafka:
+#          type: kafka
+#          environment:
+#            spring:
+#              kafka:
+#                bootstrap-servers: ${spring.kafka.bootstrap-servers}
