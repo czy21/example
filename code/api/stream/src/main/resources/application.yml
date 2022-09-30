@@ -36,6 +36,10 @@ spring:
           destination: input3Topic
           group: ${stream-group-1}
           binder: kafka
+        kafkaInput22-in-0:
+          destination: input4Topic
+          group: ${stream-group-1}
+          binder: kafka
       rabbit:
         bindings:
           rabbitInput11-in-0:
@@ -51,8 +55,11 @@ spring:
           kafkaInput21-in-0:
             consumer:
               auto-rebalance-enabled: true
+          kafkaInput22-in-0:
+            consumer:
+              auto-rebalance-enabled: true
       function:
-        definition: rabbitInput11;rabbitInput12;kafkaInput21
+        definition: rabbitInput11;rabbitInput12;kafkaInput21;kafkaInput22
       binders:
         rabbit:
           type: rabbit
