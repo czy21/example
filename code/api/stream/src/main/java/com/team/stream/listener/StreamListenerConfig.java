@@ -59,6 +59,13 @@ public class StreamListenerConfig {
         };
     }
 
+    @Bean
+    public Consumer<String> rocketInput31() {
+        return t -> {
+            log.info("rocket {} {}", t, LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS")));
+        };
+    }
+
     private static void batchInsert(JdbcTemplate jdbcTemplate, List<String> p) {
         jdbcTemplate.batchUpdate("insert kafka_topic(value) values (?)", new BatchPreparedStatementSetter() {
             @Override

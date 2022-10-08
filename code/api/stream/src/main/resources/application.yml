@@ -53,7 +53,7 @@ spring:
             consumer:
               auto-rebalance-enabled: true
       function:
-        definition: rabbitInput11;rabbitInput12;kafkaInput21;kafkaInput22
+        definition: rabbitInput11;rabbitInput12;kafkaInput21;kafkaInput22;
 #      binders:
 #        rabbit:
 #          type: rabbit
