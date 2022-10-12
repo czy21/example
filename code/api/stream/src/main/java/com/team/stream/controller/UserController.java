@@ -12,13 +12,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
 
-
     @Autowired
     UserService userService;
 
     @GetMapping(path = "batchAdd")
-    public Integer batchAdd(@RequestParam("size") Integer size) {
-        userService.batchAdd("user_1", size);
+    public Integer batchAdd(@RequestParam("ds") String dataSource, @RequestParam("size") Integer size) {
+        userService.batchAdd(dataSource, "user_1", size);
         return 1;
     }
 }
