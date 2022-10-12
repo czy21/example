@@ -1,11 +1,14 @@
 package com.team.portal.controller;
 
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.czy.learning.web.controller.BaseController;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.dto.UserDTO;
+import com.team.application.model.vo.FileVO;
+import com.team.application.model.vo.MaterialVO;
 import com.team.application.model.vo.SearchVO;
+import com.team.application.service.MaterialService;
 import com.team.application.service.UserService;
 import com.team.portal.model.UserExportDTO;
 import lombok.AllArgsConstructor;
@@ -20,7 +23,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
@@ -37,6 +39,8 @@ public class UserController extends BaseController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    MaterialService materialService;
     @Autowired
     @Qualifier(value = "rinseJob")
     Job rinseJob;
@@ -72,9 +76,8 @@ public class UserController extends BaseController {
 
 
     @PostMapping(path = "upload")
-    public CompletableFuture<ResponseEntity<byte[]>> upload(MultipartFile file, Map<String, Object> param) throws Exception {
-        String filename = URLEncoder.encode("模板", StandardCharsets.UTF_8) + ".xlsx";
-        return CompletableFuture.supplyAsync(() -> downloadExcel(List.of(), UserExportDTO.class, filename));
+    public MaterialVO upload(FileVO fileVO) throws Exception {
+        return materialService.upload(fileVO, "OSS");
     }
 
 
