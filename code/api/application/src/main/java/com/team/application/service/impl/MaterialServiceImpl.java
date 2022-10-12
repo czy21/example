@@ -12,7 +12,6 @@ import com.team.domain.mapper.MaterialMapper;
 import com.team.infrastructure.oss.OSSClient;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.validator.routines.UrlValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,10 +25,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.function.Consumer;
 
 @Service
 public class MaterialServiceImpl implements MaterialService {
@@ -49,6 +49,28 @@ public class MaterialServiceImpl implements MaterialService {
         return singleFileStore(materialDTO, fileVO.getFile().getInputStream(), targetKey);
     }
 
+    private Map<MaterialTargetKind, Consumer<MaterialEntity>> getMaterialTargetFunc(InputStream fileStream) {
+        Map<MaterialTargetKind, Consumer<MaterialEntity>> targetMap = new HashMap<>();
+        targetMap.put(MaterialTargetKind.OSS,
+                t -> {
+                    try {
+                        ossClient.put(t.getPath(), fileStream, t.getMaterialTarget().getRootPath(), Map.of("fileName", t.getName()));
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+        targetMap.put(MaterialTargetKind.LOCAL,
+                t -> {
+                    try {
+                        File f = FileUtils.getFile(t.getMaterialTarget().getRootUrl(), t.getMaterialTarget().getRootPath(), t.getPath());
+                        FileUtils.forceMkdir(f);
+                        FileUtils.copyInputStreamToFile(fileStream, f);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+        return targetMap;
+    }
 
     private MaterialVO singleFileStore(MaterialDTO dto, InputStream fileStream, String targetKey) throws Exception {
         String filePath = FilenameUtils.separatorsToUnix(Path.of(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd")), dto.getPath()).toString());
@@ -61,22 +83,11 @@ public class MaterialServiceImpl implements MaterialService {
         me.setKind(dto.getMediaType());
         me.setMaterialTarget(fileTarget);
         me.setPath(filePath);
-        switch (me.getMaterialTarget().getTargetKind()) {
-            case OSS:
-                try {
-                    ossClient.put(me.getPath(), fileStream, me.getMaterialTarget().getRootPath(), Map.of("fileName", me.getName()));
-                } catch (Exception e) {
-                    throw new RuntimeException(e);
-                }
-                break;
-            case LOCAL:
-                File f = FileUtils.getFile(me.getMaterialTarget().getRootUrl(), me.getMaterialTarget().getRootPath(), me.getPath());
-                FileUtils.forceMkdir(f);
-                FileUtils.copyInputStreamToFile(fileStream, f);
-                break;
-            default:
-                throw new RuntimeException(me.getMaterialTarget().getTargetKind().name() + " no exists");
+        Consumer<MaterialEntity> materialEntityConsumer = getMaterialTargetFunc(fileStream).get(me.getMaterialTarget().getTargetKind());
+        if (materialEntityConsumer == null) {
+            throw new RuntimeException(me.getMaterialTarget().getTargetKind().name() + " no exists");
         }
+        materialEntityConsumer.accept(me);
         materialMapper.insertMaterial(me);
         boolean isUrl = UrlValidator.getInstance().isValid(me.getMaterialTarget().getRootUrl());
         return new MaterialVO(
