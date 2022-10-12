@@ -14,13 +14,13 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserMapper userMapper;
+    ExecutorService executor = Executors.newFixedThreadPool(500);
 
     @Override
-    public void batchAdd(String tableName, Integer size) {
-        ExecutorService executor = Executors.newFixedThreadPool(500);
+    public void batchAdd(String dataSource, String tableName, Integer size) {
         IntStream.range(0, size).forEach(t ->
                 executor.execute(() -> {
-                    DynamicDataSourceContext.put("ds2");
+                    DynamicDataSourceContext.put(dataSource);
                     userMapper.insert(tableName, Integer.toString(t));
                 }));
     }
