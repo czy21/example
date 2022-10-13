@@ -1,4 +1,4 @@
 ```shell
-# 200000 batchSize:200 551s
-# 200000 batchSize:500 359s
+# 500000 batchSize:500 4m22s
+select TIMEDIFF(max(`timestamp`),min(`timestamp`)) from user_1 u
 ```
