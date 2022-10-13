@@ -1,5 +1,7 @@
 package com.team.stream.service;
 
 public interface UserService {
-    void batchAdd(String dataSource,String tableName,Integer size);
+    void syncInsert(String dataSource, String tableName, Integer size);
+
+    void parallelInsert(String dataSource, String tableName, Integer size, Integer batchSize);
 }
