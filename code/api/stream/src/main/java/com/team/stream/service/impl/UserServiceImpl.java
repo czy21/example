@@ -39,10 +39,10 @@ public class UserServiceImpl implements UserService {
             List<CompletableFuture<Void>> futures = t.stream()
                     .map(s -> CompletableFuture.runAsync(
                             () -> {
-                        DynamicDataSourceContext.put(dataSource);
-                        userMapper.insert(tableName, Integer.toString(s));
+                                DynamicDataSourceContext.put(dataSource);
+                                userMapper.insert(tableName, Integer.toString(s));
                             }, executor)).collect(Collectors.toList());
-            CompletableFuture.allOf(futures.toArray(new CompletableFuture[]{}));
+            CompletableFuture.allOf(futures.toArray(new CompletableFuture[]{})).join();
             log.info("parallelInsert: {} {} {} {} finished", dataSource, size, t.size(), i);
         }
     }
