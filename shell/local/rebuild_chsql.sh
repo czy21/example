@@ -7,7 +7,7 @@ python3 -B ${run_py} --env ${env_py} \
 --init \
 --log-file ${sh_name}.log \
 --cmd '
-from domain.source import cksql as db_source
+from domain.source import chsql as db_source
 db_source.assemble()
 db_source.recreate()
 db_source.execute()
