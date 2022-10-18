@@ -33,4 +33,11 @@ public class UserController {
         userService.parallelInsert(ds, Optional.ofNullable(tableName).orElse("user_1"), size, Optional.ofNullable(batchSize).orElse(500));
         return 1;
     }
+
+    @GetMapping(path = "redisSearch1")
+    public Integer redisSearch1() {
+        userService.redisSearch();
+
+        return 1;
+    }
 }

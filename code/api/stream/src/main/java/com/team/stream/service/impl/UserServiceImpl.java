@@ -6,6 +6,7 @@ import com.team.stream.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.ListUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +22,8 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    StringRedisTemplate redisTemplate;
     ExecutorService executor = Executors.newFixedThreadPool(500);
 
     @Override
@@ -45,5 +48,10 @@ public class UserServiceImpl implements UserService {
             CompletableFuture.allOf(futures.toArray(new CompletableFuture[]{})).join();
             log.info("parallelInsert: {} {} {} {} finished", dataSource, size, t.size(), i);
         }
+    }
+
+    @Override
+    public void redisSearch() {
+
     }
 }
