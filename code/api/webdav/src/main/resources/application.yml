@@ -2,3 +2,5 @@ spring:
   cloud:
     consul:
       enabled: false
+dav:
+  data-dir: d:/dav/
