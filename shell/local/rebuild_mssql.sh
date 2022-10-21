@@ -1,4 +1,4 @@
-#!/bin/bash --login
+#!/bin/bash
 
 dir=$(cd "$(dirname "$0")"; pwd)
 source ${dir}/../env_common.sh
