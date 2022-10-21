@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash --login
 
 cd $(cd "$(dirname "$0")"; pwd)
 sh_name="$(basename ${0%.*})"
