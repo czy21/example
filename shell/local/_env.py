@@ -25,9 +25,9 @@ param_main_db_pgsql_port = "5432"
 param_main_db_mssql_host = db_host
 param_main_db_mssql_port = "1433"
 
-# cksql
-param_main_db_cksql_host = "192.168.2.25"
-param_main_db_cksql_port = "9004"
+# chsql
+param_main_db_chsql_host = "192.168.2.18"
+param_main_db_chsql_port = "9004"
 
 # mongo
 param_main_db_mongo_host = db_host
