@@ -1,4 +1,5 @@
 #!/bin/bash
+source ~/.bashrc
 
 sh_name="$(basename ${0%.*})"
 env_py=${dir}/_env.py
