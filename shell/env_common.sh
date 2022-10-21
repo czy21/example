@@ -1,4 +1,5 @@
 #!/bin/bash
+shopt -s expand_aliases
 source ~/.bashrc
 
 sh_name="$(basename ${0%.*})"
