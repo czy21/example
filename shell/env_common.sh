@@ -1,6 +1,6 @@
 #!/bin/bash
 shopt -s expand_aliases
-source ~/.bashrc
+source ~/.bash_aliases
 
 sh_name="$(basename ${0%.*})"
 env_py=${dir}/_env.py
