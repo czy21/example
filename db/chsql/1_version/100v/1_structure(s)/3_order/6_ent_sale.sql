@@ -1,7 +1,7 @@
 create table ent_sale
 (
     id                    String,
-    order_date            String comment '订单日期',
+    order_date            DateTime comment '订单日期',
     from_institution_code Nullable(String) comment '卖家编码',
     from_institution_name Nullable(String) comment '卖家名称',
     to_institution_code   Nullable(String) comment '买家编码',
