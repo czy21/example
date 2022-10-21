@@ -1,5 +1,5 @@
 CREATE TABLE `customer`  (
-  `id` varchar(36) NOT NULL,
+  `id` bigint NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL COMMENT '姓名',
   `gender` TINYINT(1) NULL COMMENT '性别;(0:男,1:女)',
   `id_num` varchar(50) NULL COMMENT '身份证',
