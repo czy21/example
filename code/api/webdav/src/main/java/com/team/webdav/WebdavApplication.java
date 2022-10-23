@@ -7,8 +7,8 @@ import org.springframework.context.annotation.ComponentScan;
 
 @ComponentScan(value = {"com.team"})
 @SpringBootApplication
-public class WebDavApplication {
+public class WebdavApplication {
     public static void main(String[] args) {
-        new SpringApplication(WebDavApplication.class).run(args);
+        new SpringApplication(WebdavApplication.class).run(args);
     }
 }

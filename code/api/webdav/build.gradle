@@ -4,7 +4,7 @@ plugins {
 
 dependencies {
     api("org.springframework.boot:spring-boot-starter-web")
-    api('com.czy:learning-spring-web') {
-        exclude group: "org.springframework.boot", module: "spring-boot-starter-undertow"
-    }
+    implementation 'org.apache.jackrabbit:jackrabbit-jcr-server:2.21.13'
+    implementation 'org.apache.jackrabbit:jackrabbit-jcr-servlet:2.21.13'
+    implementation 'javax.jcr:jcr:2.0'
 }

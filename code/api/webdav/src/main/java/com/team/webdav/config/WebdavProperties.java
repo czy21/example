@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 @ConfigurationProperties(prefix = "dav")
-public class WebDavProperties {
+public class WebdavProperties {
     private String dataDir;
 }

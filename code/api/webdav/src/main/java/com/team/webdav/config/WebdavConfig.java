@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 public class WebdavConfig {
 
     @Autowired
-    WebDavProperties webDavProperties;
+    WebdavProperties webDavProperties;
 
     @Bean
     ServletRegistrationBean<WebdavServlet> webdavServletServletRegistrationBean() {

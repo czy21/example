@@ -3,4 +3,9 @@ spring:
     consul:
       enabled: false
 dav:
-  data-dir: d:/dav/
+  data-dir: c:/Users/bruce/Desktop/dav
+server:
+  port: 5000
+logging:
+  level:
+    org.apache.jackrabbit: debug
