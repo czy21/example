@@ -18,4 +18,5 @@ include("analyse")
 include('stream')
 include('kafka')
 include 'webdav'
+include('mybatis')
 

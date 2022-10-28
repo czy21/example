@@ -1,0 +1,16 @@
+
+
+server:
+  port: 8080
+spring:
+  datasource:
+    dynamic:
+      datasource:
+        master:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          jdbc-url: jdbc:mysql://${db-host}:3306/demo?user=${db-user}&password=${db-pass}&serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false&useUnicode=true&rewriteBatchStatements=true&useCursorFetch=true
+          minimum-idle: 5
+          maximum-pool-size: 20
+          max-lifetime: 1800000
+          connection-test-query: select 1
+          connection-timeout: 30000
