@@ -1,4 +1,6 @@
-
+db-host: 192.168.2.18
+db-user: admin
+db-pass: ***REMOVED***
 
 server:
   port: 8080
@@ -14,3 +16,8 @@ spring:
           max-lifetime: 1800000
           connection-test-query: select 1
           connection-timeout: 30000
+mybatis:
+  mapper-locations: classpath*:mapper/**/**.xml
+logging:
+  level:
+    com.team.mybatis.mapper.UserMapper: debug
