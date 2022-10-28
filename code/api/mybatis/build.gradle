@@ -1,0 +1,10 @@
+plugins{
+    id 'org.springframework.boot'
+}
+
+dependencies {
+    api 'com.czy:learning-spring-web'
+    api 'com.czy:learning-spring-db'
+    api "mysql:mysql-connector-java"
+    api "org.mybatis.spring.boot:mybatis-spring-boot-starter"
+}

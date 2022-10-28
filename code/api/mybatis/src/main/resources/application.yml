@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    include: local
+  application:
+    name: demo-mybatis
+  cloud:
+    consul:
+      enabled: false
