@@ -8,10 +8,11 @@ import java.time.LocalDateTime;
 @Data
 public class UserPO {
     private Long id;
+    @SensitiveField
     private String name;
-
     @SensitiveField
     private String phoneNo;
+    @SensitiveField
     private String idNum;
 
     private LocalDateTime createTime;
