@@ -19,6 +19,9 @@ public interface UserMapper {
     @Select(value = "select * from ent_sys_safe_user where phone_no = #{phoneNo} limit 1")
     UserPO selectOneBy(UserPO query);
 
+    @Select(value = "select * from ent_sys_safe_user where phone_no = #{phoneNo} and name =#{name} limit 1")
+    UserPO selectOneByPhoneNo(@Param("phoneNo") String phoneNo, @Param("name") String name);
+
     @Select(value = "select count(0) from ent_sys_safe_user")
     int count();
 
