@@ -1,16 +1,16 @@
 package com.team.mybatis.entity;
 
-import com.team.mybatis.annotation.SafeField;
+import com.team.mybatis.annotation.SensitiveField;
 import lombok.Data;
 
 import java.time.LocalDateTime;
 
 @Data
 public class UserPO {
-    private String id;
+    private Long id;
     private String name;
 
-    @SafeField
+    @SensitiveField
     private String phoneNo;
     private String idNum;
 
