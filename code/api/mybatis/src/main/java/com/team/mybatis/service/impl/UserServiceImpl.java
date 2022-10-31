@@ -18,9 +18,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserPO> findAll() {
-        UserPO a = userMapper.selectOneBy(new UserPO());
-        UserPO b = userMapper.selectOneById(9999L);
-        int count = userMapper.count();
+//        UserPO aQuery = new UserPO();
+//        aQuery.setPhoneNo("15145033859");
+//        UserPO a = userMapper.selectOneBy(aQuery);
+
+//        UserPO bEntity=new UserPO();
+//        bEntity.setId(1L);
+//        bEntity.setPhoneNo("15145033859");
+//        int b=userMapper.updateBy(bEntity);
+        UserPO cEntity = new UserPO();
+        cEntity.setName("haha");
+        cEntity.setPhoneNo("15145033859");
+        cEntity.setIdNum("2301831111111111");
+        userMapper.insertOne(cEntity);
+//        UserPO b = userMapper.selectOneById(9999L);
+//        int count = userMapper.count();
         return userMapper.selectListBy(new UserPO());
     }
 }
