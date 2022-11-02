@@ -1,7 +1,7 @@
 package com.team.mybatis.mapper;
 
-import com.meditrusthealth.mth.common.security.annotation.SensitiveAction;
-import com.meditrusthealth.mth.common.security.annotation.SensitiveEnum;
+import com.team.mybatis.annotation.SensitiveAction;
+import com.team.mybatis.annotation.SensitiveEnum;
 import com.team.mybatis.entity.UserPO;
 import org.apache.ibatis.annotations.*;
 
