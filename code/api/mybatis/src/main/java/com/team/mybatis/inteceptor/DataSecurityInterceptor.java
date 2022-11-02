@@ -1,9 +1,8 @@
-package com.meditrusthealth.mth.common.security.crypt;
+package com.team.mybatis.inteceptor;
 
-import com.meditrusthealth.mth.common.security.annotation.SensitiveAction;
-import com.meditrusthealth.mth.common.security.annotation.SensitiveEnum;
-import com.meditrusthealth.mth.common.security.annotation.SensitiveField;
-import com.meditrusthealth.mth.common.security.client.DataSecurityClient;
+import com.team.mybatis.annotation.SensitiveAction;
+import com.team.mybatis.annotation.SensitiveEnum;
+import com.team.mybatis.annotation.SensitiveField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -30,15 +29,6 @@ import java.util.*;
 })
 public class DataSecurityInterceptor implements Interceptor {
 
-    DataSecurityClient dataSecurityClient;
-    String applicationName;
-
-    public DataSecurityInterceptor(DataSecurityClient dataSecurityClient,
-                                   String applicationName) {
-        this.dataSecurityClient = dataSecurityClient;
-        this.applicationName = applicationName;
-    }
-
     @Override
     public Object intercept(Invocation invocation) throws Throwable {
         Object[] args = invocation.getArgs();
@@ -51,7 +41,10 @@ public class DataSecurityInterceptor implements Interceptor {
         SensitiveEnum selectParamAction = (SensitiveEnum) SensitiveAction.class.getMethod("selectParam").getDefaultValue();
         SensitiveEnum selectResultAction = (SensitiveEnum) SensitiveAction.class.getMethod("selectResult").getDefaultValue();
         SensitiveEnum updateParamAction = (SensitiveEnum) SensitiveAction.class.getMethod("updateParam").getDefaultValue();
-        Method mapperMethod = Arrays.stream(Class.forName(mapperFullName).getMethods())
+        Method mapperMethod = ms.getConfiguration()
+                .getMapperRegistry().getMappers().stream()
+                .filter(t -> t.getName().equals(mapperFullName))
+                .flatMap(t -> Arrays.stream(t.getMethods()))
                 .filter(t -> t.getName().equals(mapperMethodName))
                 .findFirst().orElse(null);
         SensitiveAction methodSensitiveAction = Optional.ofNullable(mapperMethod)
