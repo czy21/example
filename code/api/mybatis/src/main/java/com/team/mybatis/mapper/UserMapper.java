@@ -1,10 +1,9 @@
 package com.team.mybatis.mapper;
 
+import com.meditrusthealth.mth.common.security.annotation.SensitiveAction;
+import com.meditrusthealth.mth.common.security.annotation.SensitiveEnum;
 import com.team.mybatis.entity.UserPO;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -13,6 +12,8 @@ public interface UserMapper {
     @Insert(value = "insert into ${tableName}(name) values (#{name})")
     int insert(@Param("tableName") String tableName, @Param("name") String name);
 
+    @Options
+    @SensitiveAction(selectParam = SensitiveEnum.ENCRYPT)
     @Select(value = "select * from ent_sys_safe_user")
     List<UserPO> selectListBy(UserPO query);
 
@@ -33,4 +34,6 @@ public interface UserMapper {
 
     @Insert(value = "insert into ent_sys_safe_user(name,phone_no,id_num)values (#{name},#{phoneNo},#{idNum})")
     int insertOne(UserPO entity);
+
+    int batchInsert(@Param("items") List<UserPO> items);
 }

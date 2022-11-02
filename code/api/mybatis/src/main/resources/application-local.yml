@@ -18,6 +18,12 @@ spring:
           connection-timeout: 30000
 mybatis:
   mapper-locations: classpath*:mapper/**/**.xml
+  configuration:
+    map-underscore-to-camel-case: true
 logging:
   level:
     com.team.mybatis.mapper.UserMapper: debug
+
+data:
+  security:
+    url: http://106.15.75.156:37100

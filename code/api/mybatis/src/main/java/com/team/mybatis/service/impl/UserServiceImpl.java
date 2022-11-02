@@ -34,7 +34,24 @@ public class UserServiceImpl implements UserService {
 //        userMapper.insertOne(cEntity);
 //        UserPO b = userMapper.selectOneById(9999L);
 //        int count = userMapper.count();
-        UserPO dEntity = userMapper.selectOneByPhoneNo("15145033859", "haha");
+//        UserPO dEntity = userMapper.selectOneByPhoneNo("15145033859","haha");
+        List<UserPO> users = new ArrayList<>();
+        UserPO u1 = new UserPO();
+        u1.setName("u1");
+        u1.setPhoneNo("p1");
+        u1.setIdNum("idNum1");
+        UserPO u2 = new UserPO();
+        u2.setName("u2");
+        u2.setPhoneNo("p2");
+        u2.setIdNum("idNum2");
+        UserPO u3 = new UserPO();
+        u3.setName("u3");
+        u3.setPhoneNo("p3");
+        u3.setIdNum("idNum3");
+        users.add(u1);
+        users.add(u2);
+        users.add(u3);
+        int rows = userMapper.batchInsert(users);
         return new ArrayList<>();
     }
 }
