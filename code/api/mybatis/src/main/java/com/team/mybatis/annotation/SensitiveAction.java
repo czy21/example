@@ -1,7 +1,12 @@
 package com.team.mybatis.annotation;
 
-import java.lang.annotation.*;
+import com.meditrusthealth.mth.common.security.annotation.SensitiveEnum;
 
+import java.lang.annotation.*;
+/**
+ * @author zhaoyu.chen
+ * @date 2022/10/31 14:05
+ */
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.METHOD})

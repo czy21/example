@@ -1,6 +1,7 @@
 package com.team.mybatis.entity;
 
-import com.team.mybatis.annotation.SensitiveField;
+
+import com.meditrusthealth.mth.common.security.annotation.SensitiveField;
 import lombok.Data;
 
 import java.time.LocalDateTime;
