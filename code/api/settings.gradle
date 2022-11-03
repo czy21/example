@@ -5,18 +5,17 @@ pluginManagement {
     }
 }
 
-include("portal")
-include("file-resolve")
-include("application")
-include("cooperated")
-//include("security")
-include("domain")
-include("infrastructure")
-include("external")
-include("gateway")
-include("analyse")
-include('stream')
-include('kafka')
+include "portal"
+include "file-resolve"
+include "application"
+include "cooperated"
+//include "security"
+include "domain"
+include "infrastructure"
+include "external"
+include "gateway"
+include "analyse"
+include 'stream'
+include 'kafka'
 include 'webdav'
-include('mybatis')
-
+include 'orm'

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team.orm.mapper.UserMapper">
+
+    <insert id="batchInsert">
+        insert into  basic_user(name,phone_no,id_num)
+        values
+        <foreach collection="items" separator="," item="t">
+            (#{t.name},#{t.phoneNo},#{t.idNum})
+        </foreach>
+    </insert>
+</mapper>
