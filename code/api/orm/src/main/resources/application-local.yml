@@ -1,0 +1,31 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:orm
+  sql:
+    init:
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+  h2:
+    console:
+      enabled: true
+      settings:
+        trace: true
+        web-allow-others: true
+      path: /h2-console
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+mybatis:
+  mapper-locations: classpath*:mapper/**/**.xml
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    com.team.orm.mapper: debug
+    org.mybatis: debug
+    org.springframework.data.jpa: debug

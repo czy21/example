@@ -1,0 +1,10 @@
+plugins{
+    id 'org.springframework.boot'
+}
+
+dependencies {
+    implementation 'com.czy:learning-spring-web'
+    implementation "com.h2database:h2"
+    implementation "org.mybatis.spring.boot:mybatis-spring-boot-starter"
+    implementation "org.springframework.boot:spring-boot-starter-data-jpa"
+}
