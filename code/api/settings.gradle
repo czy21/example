@@ -8,7 +8,6 @@ pluginManagement {
 include "portal"
 include "file-resolve"
 include "application"
-include "cooperated"
 //include "security"
 include "domain"
 include "infrastructure"
