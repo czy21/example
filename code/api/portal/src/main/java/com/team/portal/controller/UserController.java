@@ -10,11 +10,16 @@ import com.team.application.model.vo.MaterialVO;
 import com.team.application.model.vo.SearchVO;
 import com.team.application.service.MaterialService;
 import com.team.application.service.UserService;
+import com.team.domain.mapper.RepositoryMapper;
 import com.team.portal.model.UserExportDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.ibatis.cursor.Cursor;
+import org.apache.ibatis.session.ExecutorType;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
@@ -27,6 +32,7 @@ import org.springframework.web.bind.annotation.*;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -132,6 +138,26 @@ public class UserController extends BaseController {
         return param;
     }
 
+    @Autowired
+    RepositoryMapper repositoryMapper;
 
+    @GetMapping(path = "testSelect")
+    public List<Map<String, Object>> testSelect() {
+        return repositoryMapper.selectAll();
+    }
+
+    @Autowired
+    SqlSessionFactory sqlSessionFactory;
+
+    @GetMapping(path = "testCursor")
+    public List<Map<String, Object>> testCursor() {
+        try (SqlSession session = sqlSessionFactory.openSession(ExecutorType.BATCH)) {
+            Cursor<Map<String, Object>> cursor = session.getMapper(RepositoryMapper.class).selectAllTopic();
+            for (Map<String, Object> t : cursor) {
+                System.out.println(t.get("id").toString());
+            }
+        }
+        return new ArrayList<>();
+    }
 }
 
