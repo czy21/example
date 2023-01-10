@@ -3,9 +3,9 @@ package com.team.portal.controller;
 import com.alipay.api.AlipayResponse;
 import com.team.application.model.dto.PayResponse;
 import com.team.application.service.OrderService;
+import jakarta.annotation.Resource;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
 import java.util.Map;
 
 @RestController

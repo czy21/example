@@ -48,9 +48,6 @@ public class UserController extends BaseController {
     @Autowired
     MaterialService materialService;
     @Autowired
-    @Qualifier(value = "rinseJob")
-    Job rinseJob;
-    @Autowired
     JobLauncher jobLauncher;
 
 
@@ -69,7 +66,7 @@ public class UserController extends BaseController {
     public Map<String, Object> submitJob() throws Exception {
         JobParametersBuilder parametersBuilder = new JobParametersBuilder();
         parametersBuilder.addDate("commitDate", new Date());
-        jobLauncher.run(rinseJob, parametersBuilder.toJobParameters());
+//        jobLauncher.run(rinseJob, parametersBuilder.toJobParameters());
         return Map.of();
     }
 

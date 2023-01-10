@@ -14,7 +14,7 @@ dependencies {
     api "com.baomidou:mybatis-plus-boot-starter"
     api "cglib:cglib:3.3.0"
     api "io.minio:minio"
+    api "io.minio:minio"
     api "com.squareup.okhttp3:okhttp"
     api "com.czy:learning-spring-db"
-    api "com.czy:learning-spring-pulsar"
 }

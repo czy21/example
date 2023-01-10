@@ -3,7 +3,6 @@ package com.team.portal.controller;
 import com.czy.learning.web.controller.BaseController;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.apache.pulsar.client.api.PulsarClientException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.connection.stream.ReadOffset;
 import org.springframework.data.redis.connection.stream.StreamInfo;
@@ -51,10 +50,10 @@ public class QueueController extends BaseController {
         return Map.of();
     }
 
-    @PostMapping(path = "pulsarPush1")
-    public Map<String, Object> pulsarPush1(@RequestBody Map<String, Object> param) throws PulsarClientException {
-//        pulsarTemplate.send(QueueConfig.DEMO_TOPIC_1, param);
-        return Map.of();
-    }
+//    @PostMapping(path = "pulsarPush1")
+//    public Map<String, Object> pulsarPush1(@RequestBody Map<String, Object> param) throws PulsarClientException {
+////        pulsarTemplate.send(QueueConfig.DEMO_TOPIC_1, param);
+//        return Map.of();
+//    }
 
 }
