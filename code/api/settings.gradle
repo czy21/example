@@ -19,3 +19,18 @@ include 'stream'
 include 'kafka'
 include 'webdav'
 include 'orm'
+
+//buildCache {
+//    local{
+//        enabled = false
+//    }
+//    remote(HttpBuildCache) {
+//        url = 'http://gbc.cluster.com/cache/'
+//        allowInsecureProtocol = true
+//        push=true
+//        credentials {
+//            username = 'admin'
+//            password = 'Czy20210314.'
+//        }
+//    }
+//}
