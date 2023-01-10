@@ -14,10 +14,10 @@ import com.team.application.model.vo.SearchVO;
 import com.team.application.service.UserService;
 import com.team.domain.entity.UserEntity;
 import com.team.domain.mapper.UserMapper;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 import java.util.stream.Collectors;
 

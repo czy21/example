@@ -1,6 +1,5 @@
 package com.team.portal.controller;
 
-import com.czy.learning.pulsar.core.PulsarTemplate;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.czy.learning.web.controller.BaseController;
 import com.team.application.config.QueueConfig;
@@ -37,13 +36,9 @@ public class SaleController extends BaseController {
     @Autowired
     ObjectMapper objectMapper;
     @Autowired
-    JobLauncher jobLauncher;
-    @Autowired
-    Job rinseJob;
-    @Autowired
     SaleService saleService;
-    @Autowired
-    PulsarTemplate pulsarTemplate;
+//    @Autowired
+//    PulsarTemplate pulsarTemplate;
 
     @PostMapping(path = "upload")
     public MaterialVO uploadByRabbit(FileVO fileVO, @RequestParam(value = "ds", required = false) String dataSource) throws Exception {
@@ -57,15 +52,8 @@ public class SaleController extends BaseController {
     public MaterialVO uploadToPulsar(FileVO fileVO, @RequestParam(value = "ds", required = false) String dataSource) throws Exception {
         MaterialVO materialVO = materialService.upload(fileVO, "OSS");
         materialVO.setTargetDataSource(dataSource);
-        pulsarTemplate.send(QueueConfig.SPI_FILE_TOPIC, materialVO);
+//        pulsarTemplate.send(QueueConfig.SPI_FILE_TOPIC, materialVO);
         return new MaterialVO();
-    }
-
-    @PostMapping(path = "submitJob")
-    public Map<String, Object> submitJob() throws Exception {
-        JobParameters jobParameters = new JobParametersBuilder().addString("tableName", "ent_sfl_inspect_sale").addDate("date", new Date()).toJobParameters();
-        jobLauncher.run(rinseJob, jobParameters);
-        return Map.of();
     }
 
     @Autowired

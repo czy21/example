@@ -1,8 +1,8 @@
 package com.team.domain.mongo.entity;
 
+import jakarta.persistence.Transient;
 import lombok.Data;
 
-import javax.persistence.Transient;
 import java.util.Map;
 
 @Data
