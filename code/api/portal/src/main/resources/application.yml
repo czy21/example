@@ -8,5 +8,5 @@ spring:
       config:
         format: YAML
         prefixes:
-          - "dev-demo-common"
-          - "dev-demo-portal"
+          - "demo-common"
+          - "demo-portal"
