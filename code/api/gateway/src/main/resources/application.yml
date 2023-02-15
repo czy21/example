@@ -9,6 +9,6 @@ spring:
         acl-token: anonymous
         format: YAML
         prefixes:
-          - "dev-demo-gateway"
+          - "demo-gateway"
   profiles:
     active: local

@@ -11,7 +11,7 @@ spring:
       config:
         format: YAML
         prefixes:
-          - "dev-demo-common"
+          - "demo-common"
     stream:
       bindings:
         rabbitInput11-in-0:

@@ -9,7 +9,7 @@ spring:
         acl-token: anonymous
         format: YAML
         prefixes:
-          - "dev-demo-common"
-          - "dev-demo-file-resolve"
+          - "demo-common"
+          - "demo-file-resolve"
   profiles:
     active: local
