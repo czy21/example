@@ -10,8 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class OrmApplication {
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(OrmApplication.class);
-        app.setAllowCircularReferences(true);
-        app.run(args);
+        SpringApplication.run(OrmApplication.class, args);
     }
 }
