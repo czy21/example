@@ -4,7 +4,5 @@ plugins {
 
 dependencies {
     api("org.springframework.boot:spring-boot-starter-web")
-    implementation 'org.apache.jackrabbit:jackrabbit-jcr-server:2.21.13'
-    implementation 'org.apache.jackrabbit:jackrabbit-jcr-servlet:2.21.13'
-    implementation 'javax.jcr:jcr:2.0'
+    api "org.springdoc:springdoc-openapi-ui:1.6.14"
 }
