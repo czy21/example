@@ -1,6 +1,7 @@
 package com.team.portal.controller;
 
 
+import com.czy.learning.infranstructure.exception.BusinessException;
 import com.czy.learning.web.controller.BaseController;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.team.application.model.dto.PageDTO;
@@ -20,11 +21,9 @@ import org.apache.ibatis.cursor.Cursor;
 import org.apache.ibatis.session.ExecutorType;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersBuilder;
 import org.springframework.batch.core.launch.JobLauncher;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -155,6 +154,13 @@ public class UserController extends BaseController {
             }
         }
         return new ArrayList<>();
+    }
+
+
+
+    @GetMapping(path = "testException")
+    public Map<String,Object> testException(){
+        throw new BusinessException((String) null,"haha");
     }
 }
 
