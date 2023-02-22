@@ -4,5 +4,5 @@ plugins{
 
 dependencies {
     api project(':application')
-    api "org.springdoc:springdoc-openapi-starter-webmvc-ui"
+    api "com.github.xiaoymin:knife4j-openapi3-jakarta-spring-boot-starter"
 }
