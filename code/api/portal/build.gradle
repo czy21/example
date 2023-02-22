@@ -4,5 +4,5 @@ plugins{
 
 dependencies {
     api project(':application')
-    api "org.springdoc:springdoc-openapi-ui:1.6.14"
+    api "org.springdoc:springdoc-openapi-starter-webmvc-ui"
 }

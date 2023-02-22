@@ -4,9 +4,15 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: portal
+        - id: demo-portal
           uri: http://127.0.0.1:8080
           predicates:
             - Path=/demo-portal/**
           filters:
             - StripPrefix=1
+springdoc:
+  swagger-ui:
+    use-root-path: true
+    urls:
+      - name: demo-portal
+        url: demo-portal/v3/api-docs

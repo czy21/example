@@ -1,8 +1,8 @@
 spring:
   application:
     name: demo-gateway
-  config:
-    import: optional:consul:consul.cluster.com:80
+#  config:
+#    import: optional:consul:consul.cluster.com:80
   cloud:
     consul:
       config:
@@ -10,5 +10,6 @@ spring:
         format: YAML
         prefixes:
           - "demo-gateway"
+      enabled: false
   profiles:
     active: local
