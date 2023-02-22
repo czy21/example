@@ -16,3 +16,8 @@ spring:
             - Path=/demo-portal/**
           filters:
             - StripPrefix=1
+springdoc:
+  swagger-ui:
+    urls:
+      - name: demo-portal
+        url: /v3/api-docs/demo-portal
