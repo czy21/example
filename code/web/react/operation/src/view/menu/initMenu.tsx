@@ -1,7 +1,7 @@
 import React from "react";
 import stub from "@/init";
 let load = () => {
-    stub.api.post("gw1/demo-portal/user/search", {})
+    stub.api.post("demo-portal/user/search", {})
         .then(data => {
         console.log(data)
     })
