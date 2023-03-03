@@ -13,6 +13,8 @@ import com.team.application.service.MaterialService;
 import com.team.application.service.UserService;
 import com.team.domain.mapper.RepositoryMapper;
 import com.team.portal.model.UserExportDTO;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -156,11 +158,15 @@ public class UserController extends BaseController {
         return new ArrayList<>();
     }
 
-
+    @Data
+    static class ParamObj {
+        @NotNull
+        private String name;
+    }
 
     @GetMapping(path = "testException")
-    public Map<String,Object> testException(){
-        throw new BusinessException((String) null,"haha");
+    public Map<String, Object> testException(@Valid @RequestBody ParamObj obj) {
+        throw new BusinessException((String) null, "haha");
     }
 }
 
