@@ -5,7 +5,7 @@ plugins{
 dependencies {
     api 'com.czy:learning-spring-web'
     api "com.czy:learning-spring-db"
-    api "mysql:mysql-connector-java"
+    api "com.mysql:mysql-connector-j"
     api "org.postgresql:postgresql"
     api "com.clickhouse:clickhouse-jdbc"
     api "org.mybatis.spring.boot:mybatis-spring-boot-starter"
