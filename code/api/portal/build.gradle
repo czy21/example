@@ -4,5 +4,5 @@ plugins{
 
 dependencies {
     api project(':application')
-    api "com.github.xiaoymin:knife4j-openapi3-jakarta-spring-boot-starter"
+    api 'com.czy:learning-spring-doc'
 }
