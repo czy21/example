@@ -10,5 +10,3 @@ spring:
         prefixes:
           - "demo-common"
           - "demo-portal"
-  profiles:
-    active: local
