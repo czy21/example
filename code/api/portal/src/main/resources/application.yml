@@ -11,4 +11,4 @@ spring:
           - "demo-common"
           - "demo-portal"
       discovery:
-        service-name: ${POD_NAME:}
+        instance-id: ${POD_NAME:}
