@@ -1,5 +1,5 @@
-plugins{
-    id 'org.springframework.boot'
+plugins {
+    id 'portal.build'
 }
 
 dependencies {
@@ -12,5 +12,4 @@ dependencies {
     api "org.springframework.cloud:spring-cloud-starter-stream-rabbit"
     api "org.springframework.cloud:spring-cloud-starter-stream-kafka"
     api "org.redisson:redisson-spring-boot-starter"
-    api "com.github.xiaoymin:knife4j-openapi3-jakarta-spring-boot-starter"
 }

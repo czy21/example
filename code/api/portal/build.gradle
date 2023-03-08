@@ -1,8 +1,7 @@
 plugins{
-    id 'org.springframework.boot'
+    id 'portal.build'
 }
 
 dependencies {
     api project(':application')
-    api 'com.czy:learning-spring-doc'
 }
