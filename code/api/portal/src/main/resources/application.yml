@@ -10,3 +10,5 @@ spring:
         prefixes:
           - "demo-common"
           - "demo-portal"
+      discovery:
+        service-name: ${POD_NAME:}
