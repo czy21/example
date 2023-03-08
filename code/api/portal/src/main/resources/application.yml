@@ -4,10 +4,11 @@ spring:
   application:
     name: demo-portal
   config:
-    import: nacos:${spring.application.name}.yml
+    import:
+      - optional:nacos:${spring.application.name}.yml
+      - optional:nacos:demo-common.yml
   cloud:
     nacos:
       server-addr: nacos.cluster.com:8848
       config:
-        file-extension: yml
         namespace: DEMO
