@@ -35,6 +35,9 @@ spring:
           binder: kafka
           consumer:
             batch-mode: true
+        kafkaInput23-in-0:
+          destination: input5Topic
+          binder: kafka
       rabbit:
         bindings:
           rabbitInput11-in-0:
