@@ -64,7 +64,7 @@ public class StreamController {
     public Map<String, Object> input5(@RequestParam("num") Integer num) {
         sendBy("input5Topic", num, (t, n) -> {
             try {
-                kafkaTemplate.send(t, objectMapper.writeValueAsString(Map.of("value", n)));
+                kafkaTemplate.send(t, objectMapper.writeValueAsString(Map.of("value", Integer.parseInt(n))));
             } catch (JsonProcessingException e) {
                 throw new RuntimeException(e);
             }
