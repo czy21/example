@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.stream.IntStream;
@@ -62,12 +65,20 @@ public class StreamController {
 
     @GetMapping(path = "input31")
     public Map<String, Object> input5(@RequestParam("num") Integer num) {
-        sendBy("input5Topic", num, (t, n) -> {
-            try {
-                kafkaTemplate.send(t, objectMapper.writeValueAsString(Map.of("value", Integer.parseInt(n))));
-            } catch (JsonProcessingException e) {
-                throw new RuntimeException(e);
-            }
+        List<Integer> products = List.of(1, 2, 3, 4, 5);
+        products.forEach(p -> {
+            sendBy("input5Topic", num, (t, n) -> {
+                try {
+                    Map<String, Object> payload = Map.of(
+                            "orderNo", p,
+                            "count", 1,
+                            "time", LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+                    );
+                    kafkaTemplate.send(t, objectMapper.writeValueAsString(payload));
+                } catch (JsonProcessingException e) {
+                    throw new RuntimeException(e);
+                }
+            });
         });
         return Map.of();
     }
