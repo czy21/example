@@ -1,6 +1,5 @@
 package com.team.stream.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,20 +65,24 @@ public class StreamController {
     @GetMapping(path = "input31")
     public Map<String, Object> input5(@RequestParam("num") Integer num) {
         List<Integer> products = List.of(1, 2, 3, 4, 5);
-        products.forEach(p -> {
-            sendBy("input5Topic", num, (t, n) -> {
-                try {
+        new Thread(() -> {
+            while (true) {
+                products.forEach(t -> {
                     Map<String, Object> payload = Map.of(
-                            "orderNo", p,
+                            "productId", t,
                             "count", 1,
-                            "time", LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant().toEpochMilli()
+                            "time", LocalDateTime.now().atZone(ZoneId.systemDefault()).toEpochSecond()
                     );
-                    kafkaTemplate.send(t, objectMapper.writeValueAsString(payload));
-                } catch (JsonProcessingException e) {
-                    throw new RuntimeException(e);
-                }
-            });
-        });
+                    try {
+                        kafkaTemplate.send("input5Topic", objectMapper.writeValueAsString(payload));
+                        Thread.sleep(2000);
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                });
+
+            }
+        }).start();
         return Map.of();
     }
 
