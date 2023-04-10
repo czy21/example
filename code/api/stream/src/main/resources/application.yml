@@ -1,17 +1,18 @@
 stream-group-1: "stream"
+server:
+  port: 8080
 spring:
-  profiles:
-    include: local
   application:
     name: demo-stream
   config:
-    import: optional:consul:consul.cluster.com:80
+    import:
+      - optional:nacos:${spring.application.name}.yml
+      - optional:nacos:demo-common.yml
   cloud:
-    consul:
+    nacos:
+      server-addr: nacos.cluster.com:8848
       config:
-        format: YAML
-        prefixes:
-          - "dev-demo-common"
+        namespace: DEMO
     stream:
       bindings:
         rabbitInput11-in-0:
@@ -34,6 +35,9 @@ spring:
           binder: kafka
           consumer:
             batch-mode: true
+        kafkaInput23-in-0:
+          destination: input5Topic
+          binder: kafka
       rabbit:
         bindings:
           rabbitInput11-in-0:

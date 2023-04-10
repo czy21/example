@@ -1,7 +1,6 @@
 package com.team.application.pool;
 
 
-import javax.annotation.PostConstruct;
 import java.math.BigInteger;
 import java.security.SecureRandom;
 import java.util.concurrent.TimeUnit;
@@ -13,8 +12,6 @@ public class CounterImpl implements Counter {
 
     private AtomicInteger ai;
     private String id;
-
-    @PostConstruct
     private void init() {
         Logger.getLogger(CounterImpl.class.getName()).log(Level.INFO, "New bean instance created");
         ai = new AtomicInteger(0);

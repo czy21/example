@@ -1,11 +1,11 @@
-spring:
-  cloud:
-    consul:
-      enabled: false
-dav:
-  data-dir: c:/Users/bruce/Desktop/dav
 server:
-  port: 5000
-logging:
-  level:
-    org.apache.jackrabbit: debug
+  port: 8080
+spring:
+  application:
+    name: demo-webdav
+  cloud:
+    nacos:
+      config:
+        enabled: false
+      discovery:
+        enabled: false

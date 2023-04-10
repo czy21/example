@@ -1,12 +1,14 @@
+server:
+  port: 8080
 spring:
   application:
     name: demo-portal
   config:
-    import: optional:consul:consul.cluster.com:80
+    import:
+      - optional:nacos:${spring.application.name}.yml
+      - optional:nacos:demo-common.yml
   cloud:
-    consul:
+    nacos:
+      server-addr: nacos.cluster.com:8848
       config:
-        format: YAML
-        prefixes:
-          - "dev-demo-common"
-          - "dev-demo-portal"
+        namespace: DEMO

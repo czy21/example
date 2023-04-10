@@ -9,7 +9,7 @@ dependencies {
     api "com.clickhouse:clickhouse-jdbc"
     api "com.fasterxml.jackson.core:jackson-databind"
     api "com.fasterxml.jackson.datatype:jackson-datatype-jsr310"
-    api "mysql:mysql-connector-java"
+    api "com.mysql:mysql-connector-j"
     api "org.postgresql:postgresql"
     api "com.baomidou:mybatis-plus-boot-starter"
     api "cglib:cglib:3.3.0"
