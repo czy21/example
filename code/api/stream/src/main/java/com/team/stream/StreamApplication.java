@@ -9,8 +9,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class StreamApplication {
     public static void main(String[] args) {
-        SpringApplication app = new SpringApplication(StreamApplication.class);
-        app.setAllowCircularReferences(true);
-        app.run(args);
+        SpringApplication.run(StreamApplication.class, args);
     }
 }
