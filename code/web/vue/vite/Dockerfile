@@ -1,2 +1,2 @@
-FROM nginx:1.21.5-alpine
+FROM registry.cluster.com/library/nginx-spa
 COPY ./build/ /usr/share/nginx/web/

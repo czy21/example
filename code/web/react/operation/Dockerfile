@@ -1,3 +1,3 @@
-FROM nginx:1.23.3-alpine
+FROM registry.cluster.com/library/nginx-spa
 
 COPY ./build/ /usr/share/nginx/web/
