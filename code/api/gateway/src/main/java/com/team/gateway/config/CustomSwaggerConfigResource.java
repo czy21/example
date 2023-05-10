@@ -25,7 +25,6 @@ public class CustomSwaggerConfigResource extends SwaggerConfigResource {
     GatewayProperties gatewayProperties;
 
     public CustomSwaggerConfigResource(SwaggerWelcomeCommon swaggerWelcomeCommon,
-                                       SwaggerUiConfigParameters swaggerUiConfigParameters,
                                        GatewayProperties gatewayProperties) {
         super(swaggerWelcomeCommon);
         this.swaggerWelcomeCommon = swaggerWelcomeCommon;
