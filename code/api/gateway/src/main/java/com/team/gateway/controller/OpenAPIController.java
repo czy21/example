@@ -30,7 +30,6 @@ public class OpenAPIController {
         response.put("configUrl", "/v3/api-docs/swagger-config");
         String contextPath = request.getPath().contextPath().value();
         if (!StringUtils.hasLength(contextPath)) {
-            // 从header中获取
             List<String> referer = request.getHeaders().get("Referer");
             if (referer != null && !referer.isEmpty()) {
                 String value = referer.get(0);
