@@ -2,6 +2,8 @@ package com.team.gateway.config;
 
 import com.team.gateway.utils.PathUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.ObjectUtils;
 import org.springdoc.core.properties.AbstractSwaggerUiConfigProperties;
 import org.springdoc.core.properties.SwaggerUiConfigParameters;
 import org.springdoc.webflux.ui.SwaggerConfigResource;
@@ -34,7 +36,10 @@ public class CustomSwaggerConfigResource extends SwaggerConfigResource {
     @Override
     public Map<String, Object> getSwaggerUiConfig(ServerHttpRequest request) {
         Map<String, Object> resp = super.getSwaggerUiConfig(request);
-        LinkedHashSet<SwaggerUrl> urls = (LinkedHashSet<SwaggerUrl>) Optional.ofNullable(resp.get(SwaggerUiConfigParameters.URLS_PROPERTY)).orElse(new LinkedHashSet<>());
+        if (CollectionUtils.isEmpty((Collection<SwaggerUrl>) resp.get(SwaggerUiConfigParameters.URLS_PROPERTY))){
+            resp.put(SwaggerUiConfigParameters.URLS_PROPERTY,new LinkedHashSet<>());
+        }
+        LinkedHashSet<SwaggerUrl> urls = (LinkedHashSet<SwaggerUrl>) resp.get(SwaggerUiConfigParameters.URLS_PROPERTY);
         String contextPath = request.getPath().contextPath().value();
         if (!StringUtils.hasLength(contextPath)) {
             // 从header中获取
@@ -58,7 +63,7 @@ public class CustomSwaggerConfigResource extends SwaggerConfigResource {
                 urls.add(url);
             }
         }
-        resp.put(SwaggerUiConfigParameters.URLS_PROPERTY, urls);
+
         return resp;
     }
 }
