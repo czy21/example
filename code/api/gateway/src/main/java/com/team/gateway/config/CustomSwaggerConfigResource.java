@@ -35,8 +35,8 @@ public class CustomSwaggerConfigResource extends SwaggerConfigResource {
     @Override
     public Map<String, Object> getSwaggerUiConfig(ServerHttpRequest request) {
         Map<String, Object> resp = super.getSwaggerUiConfig(request);
-        if (CollectionUtils.isEmpty((Collection<SwaggerUrl>) resp.get(SwaggerUiConfigParameters.URLS_PROPERTY))){
-            resp.put(SwaggerUiConfigParameters.URLS_PROPERTY,new LinkedHashSet<>());
+        if (CollectionUtils.isEmpty((Collection<SwaggerUrl>) resp.get(SwaggerUiConfigParameters.URLS_PROPERTY))) {
+            resp.put(SwaggerUiConfigParameters.URLS_PROPERTY, new LinkedHashSet<>());
         }
         LinkedHashSet<SwaggerUrl> urls = (LinkedHashSet<SwaggerUrl>) resp.get(SwaggerUiConfigParameters.URLS_PROPERTY);
         String contextPath = request.getPath().contextPath().value();
@@ -56,13 +56,12 @@ public class CustomSwaggerConfigResource extends SwaggerConfigResource {
         for (RouteDefinition r : routes) {
             SwaggerUrl url = new SwaggerUrl();
             url.setName(r.getId());
-            url.setUrl(contextPath + "/" + r.getId() + "/v3/api-docs");
+            url.setUrl(contextPath + "/v3/api-docs" + "/" + r.getId());
             url.setDisplayName(r.getId());
             if (!existsNames.contains(url.getName())) {
                 urls.add(url);
             }
         }
-
         return resp;
     }
 }
