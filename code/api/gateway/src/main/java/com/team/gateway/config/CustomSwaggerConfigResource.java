@@ -58,6 +58,7 @@ public class CustomSwaggerConfigResource extends SwaggerConfigResource {
                 urls.add(url);
             }
         }
+        resp.put(SwaggerUiConfigParameters.URLS_PROPERTY, urls);
         return resp;
     }
 }
