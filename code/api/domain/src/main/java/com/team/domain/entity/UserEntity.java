@@ -1,10 +1,6 @@
 package com.team.domain.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import com.fhs.core.trans.anno.Trans;
-import com.fhs.core.trans.constant.TransType;
-import com.fhs.core.trans.vo.TransPojo;
 import com.team.infrastructure.entity.BaseEntity;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
