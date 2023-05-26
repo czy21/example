@@ -4,7 +4,6 @@ package com.team.portal.controller;
 import com.czy.learning.infranstructure.exception.BusinessException;
 import com.czy.learning.web.controller.BaseController;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fhs.core.trans.anno.TransMethodResult;
 import com.team.application.model.dto.PageDTO;
 import com.team.application.model.dto.UserDTO;
 import com.team.application.model.vo.FileVO;
@@ -12,7 +11,6 @@ import com.team.application.model.vo.MaterialVO;
 import com.team.application.model.vo.SearchVO;
 import com.team.application.service.MaterialService;
 import com.team.application.service.UserService;
-import com.team.domain.entity.UserEntity;
 import com.team.domain.mapper.RepositoryMapper;
 import com.team.portal.model.UserExportDTO;
 import jakarta.validation.Valid;
@@ -59,7 +57,6 @@ public class UserController extends BaseController {
         return new PageDTO<>();
     }
 
-    @TransMethodResult
     @PostMapping(path = "search")
     public PageDTO<UserDTO> search(@RequestBody SearchVO<UserDTO> search) {
         return userService.findByPage(search);
