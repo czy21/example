@@ -1,5 +1,6 @@
 package com.team.edge.config;
 
+import com.team.edge.AlertSocketHandler;
 import org.springframework.amqp.core.ExchangeTypes;
 import org.springframework.amqp.rabbit.annotation.Exchange;
 import org.springframework.amqp.rabbit.annotation.Queue;
@@ -18,10 +19,11 @@ public class EdgeConsumerConfig {
 
     @Autowired
     Environment environment;
+    @Autowired
+    AlertSocketHandler alertSocketHandler;
 
     @RabbitListener(bindings = @QueueBinding(value = @Queue(), exchange = @Exchange(name = GH_DEVICE_ALERT_EXCHANGE, type = ExchangeTypes.FANOUT)), ackMode = "AUTO")
     public void receive(String message) {
-        Integer port = environment.getProperty("server.port", Integer.class);
-        System.out.println(MessageFormat.format("port: {0},msg: {1}", port, message));
+        alertSocketHandler.notifyMessage(message);
     }
 }
