@@ -1,4 +1,4 @@
-package com.team.portal.configure;
+package com.team.edge;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

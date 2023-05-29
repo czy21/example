@@ -1,0 +1,14 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: demo-edge
+  config:
+    import:
+      - optional:nacos:${spring.application.name}.yml
+      - optional:nacos:demo-common.yml
+  cloud:
+    nacos:
+      server-addr: nacos.cluster.com:8848
+      config:
+        namespace: DEMO
