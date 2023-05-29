@@ -8,7 +8,7 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 
 @Configuration
 @EnableWebSocket
-public class WebSocketConfiguration implements WebSocketConfigurer {
+public class WebSocketConfigure implements WebSocketConfigurer {
 
     @Autowired
     AlertSocketHandler alertSocketHandler;
