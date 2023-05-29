@@ -9,7 +9,7 @@ dependencies {
     api "org.postgresql:postgresql"
     api "com.clickhouse:clickhouse-jdbc"
     api "org.mybatis.spring.boot:mybatis-spring-boot-starter"
-    api "org.springframework.cloud:spring-cloud-starter-stream-rabbit"
-    api "org.springframework.cloud:spring-cloud-starter-stream-kafka"
+    api "org.springframework.cloud:spring-cloud-stream-binder-rabbit"
+    api "org.springframework.cloud:spring-cloud-stream-binder-kafka"
     api "org.redisson:redisson-spring-boot-starter"
 }
