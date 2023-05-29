@@ -21,7 +21,7 @@ public class SocketPushHandler extends TextWebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         sessions.put(session.getId(), session);
-        session.sendMessage(new TextMessage(objectMapper.writeValueAsBytes(Map.of("msg", "connect success"))));
+//        session.sendMessage(new TextMessage(objectMapper.writeValueAsBytes(Map.of("msg", "connect success"))));
     }
 
     @Override
