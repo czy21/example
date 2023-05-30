@@ -13,19 +13,19 @@ import java.util.concurrent.ConcurrentHashMap;
 
 @Component
 public class SocketPushHandler extends TextWebSocketHandler {
-    Map<String, WebSocketSession> sessions = new ConcurrentHashMap<>();
+    // <token>_<user_id>
+    private static final Map<String, WebSocketSession> sessions = new ConcurrentHashMap<>();
 
     @Autowired
     ObjectMapper objectMapper;
 
     @Override
-    public void afterConnectionEstablished(WebSocketSession session) throws Exception {
+    public void afterConnectionEstablished(WebSocketSession session) {
         sessions.put(session.getId(), session);
-//        session.sendMessage(new TextMessage(objectMapper.writeValueAsBytes(Map.of("msg", "connect success"))));
     }
 
     @Override
-    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
+    public void afterConnectionClosed(WebSocketSession session, CloseStatus status) {
         sessions.remove(session.getId());
     }
 }
