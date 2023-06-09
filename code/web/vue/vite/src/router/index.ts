@@ -6,18 +6,18 @@ const routes = [
         path: '/',
         name: 'Home',
         component: Home,
-        // children: [
-        //     {
-        //         name: "人员管理",
-        //         path: "user",
-        //         component: () => import('@v/page/user/index.vue')
-        //     },
-        //     {
-        //         name: "菜单管理",
-        //         path: "menu",
-        //         component: () => import('@v/page/menu/index.vue')
-        //     },
-        // ]
+        children: [
+            {
+                name: "用户管理",
+                path: "user",
+                component: () => import('@v/user/index.vue')
+            },
+            {
+                name: "菜单管理",
+                path: "menu",
+                component: () => import('@v/menu/index.vue')
+            },
+        ]
     },
 ]
 const router = createRouter({
