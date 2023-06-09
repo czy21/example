@@ -10,7 +10,9 @@
           <i class="el-icon-menu" style="font-size: 20px;align-self: center"/>
         </div>
       </el-header>
-      <el-main>Content</el-main>
+      <el-main>
+        <router-view/>
+      </el-main>
     </el-container>
   </el-container>
 </template>
