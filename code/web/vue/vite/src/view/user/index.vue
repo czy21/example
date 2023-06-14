@@ -1,8 +1,6 @@
 <template>
-  <div>
-    aaa
-  </div>
+  <div>user</div>
 </template>
-
 <script lang="ts">
+
 </script>

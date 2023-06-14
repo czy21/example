@@ -22,12 +22,9 @@ public class EdgeConsumerConfig {
     Environment environment;
     @Autowired
     AlertSocketHandler alertSocketHandler;
-    @Autowired
-    SimpMessagingTemplate simpMessagingTemplate;
 
     @RabbitListener(bindings = @QueueBinding(value = @Queue(), exchange = @Exchange(name = GH_DEVICE_ALERT_EXCHANGE, type = ExchangeTypes.FANOUT)), ackMode = "AUTO")
     public void receive(String message) {
-        simpMessagingTemplate.convertAndSend("/topic/alert", message);
-//        alertSocketHandler.notifyMessage(message);
+        alertSocketHandler.notifyMessage(message);
     }
 }
