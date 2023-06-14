@@ -29,7 +29,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.time.LocalDateTime;
@@ -166,6 +168,13 @@ public class UserController extends BaseController {
     @GetMapping(path = "testException")
     public Map<String, Object> testException(@Valid @RequestBody ParamObj obj) {
         throw new BusinessException((String) null, "haha");
+    }
+
+
+    @PostMapping(path = "importUser")
+    public Map<String,Object> importUser(MultipartFile file) throws IOException {
+        userService.importUser(file);
+        return Map.of();
     }
 }
 

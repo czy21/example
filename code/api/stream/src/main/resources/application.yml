@@ -48,6 +48,7 @@ spring:
               enable-batching: true
               batch-size: 100
               receive-timeout: 200
+
       kafka:
         bindings:
           kafkaInput21-in-0:
