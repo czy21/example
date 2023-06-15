@@ -24,7 +24,7 @@ include 'edge'
 //        enabled = false
 //    }
 //    remote(HttpBuildCache) {
-//        url = 'http://gbc.cluster.com/cache/'
+//        url = 'http://gbc.czy21-internal.com/cache/'
 //        allowInsecureProtocol = true
 //        push=true
 //        credentials {
