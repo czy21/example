@@ -1,3 +1,3 @@
-FROM registry.czy21.com/library/nginx-spa
+FROM registry.czy21-internal.com/library/nginx-spa
 
 COPY ./build/ /usr/share/nginx/web/
