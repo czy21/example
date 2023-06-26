@@ -9,7 +9,7 @@ GRANT ALL ON *.* TO 'admin'@'%' WITH GRANT OPTION;
 -- 创建xx管理员账号
 CREATE USER IF NOT EXISTS 'xxadmin'@'%' IDENTIFIED BY '<pasword>';
 --- 分配xx管理员账号权限
-GRANT all ON `gh\_%`.* TO 'xxadmin'@'%';
+GRANT all ON `xx\_%`.* TO 'xxadmin'@'%';
 -- 创建xx开发账号
 CREATE USER IF NOT EXISTS 'xxdev'@'%' IDENTIFIED BY '<pasword>';
 --- 分配xx开发账号权限
