@@ -8,7 +8,7 @@ subprojects {
     apply plugin: 'java-library'
     apply plugin: 'maven-publish'
     apply plugin: 'io.spring.dependency-management'
-    group = 'com.team'
+    group = 'com.example'
     version = '0.1.0-SNAPSHOT'
 
     sourceCompatibility = JavaVersion.VERSION_17
@@ -23,7 +23,7 @@ subprojects {
             enabled = false
         }
         imports {
-            mavenBom "com.czy:learning-spring-bom:3.0.0-SNAPSHOT"
+            mavenBom "com.sunny:sunny-framework-bom:3.0.0-SNAPSHOT"
         }
     }
 
