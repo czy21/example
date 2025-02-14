@@ -1,9 +1,9 @@
 drop user if exists 'admin'@'localhost';
 drop user if exists 'admin'@'%';
-CREATE USER IF NOT EXISTS 'admin'@'localhost' IDENTIFIED BY '***REMOVED***';
+CREATE USER IF NOT EXISTS 'admin'@'localhost' IDENTIFIED BY '<pasword>';
 GRANT ALL ON *.* TO 'admin'@'localhost' WITH GRANT OPTION;
 
-CREATE USER IF NOT EXISTS 'admin'@'%' IDENTIFIED BY '***REMOVED***';
+CREATE USER IF NOT EXISTS 'admin'@'%' IDENTIFIED BY '<pasword>';
 GRANT ALL ON *.* TO 'admin'@'%' WITH GRANT OPTION;
 
 -- 创建xx管理员账号
