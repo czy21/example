@@ -1,0 +1,6 @@
+param_main_db_mysql_file_path: "{{ source_db }}/mysql/1_version"
+param_main_db_pgsql_file_path: "{{ source_db }}/pgsql/1_version"
+param_main_db_mssql_file_path: "{{ source_db }}/mssql/1_version"
+param_main_db_chsql_file_path: "{{ source_db }}/chsql/1_version"
+param_main_db_mongo_file_path: "{{ source_db }}/mongo/1_version"
+param_main_db_neo4j_file_path: "{{ source_db }}/neo4j/1_version"

@@ -1,7 +1,10 @@
 #!/bin/bash
 shopt -s expand_aliases
-source ~/.bash_aliases
 
-sh_name="$(basename ${0%.*})"
-env_py=${dir}/_env.py
+if [ -f  "~/.bash_aliases" ];then
+  source ~/.bash_aliases
+fi
+
+sh_file="${0}"
+sh_name="$(basename ${0})"
 run_py=${dir}/../../script/run.py
