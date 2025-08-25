@@ -20,4 +20,6 @@ type python3
 
 sh_file="${0}"
 sh_name="$(basename ${0})"
-run_py=${dir}/../../script/run.py
+run_py=${dir}/../script/run.py
+
+CLI="python3 -B ${run_py} --file ${sh_file}"
