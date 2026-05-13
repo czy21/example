@@ -12,5 +12,4 @@ public interface MongoBaseRepository<T, ID> extends MongoRepository<T, ID> {
 
     T update(ID id, Map<String, Object> updateFieldMap);
 
-
 }
