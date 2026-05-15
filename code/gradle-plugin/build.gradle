@@ -5,17 +5,17 @@ plugins {
 }
 
 group = 'com.team'
-version = '1.0.0'
+version = '1.0.0-SNAPSHOT'
 
-gradlePlugin {
-    plugins {
-        project {
-            id = 'com.team.gradle.project'
-            implementationClass = 'com.team.gradle.ProjectPlugin'
-        }
-        deploy {
-            id = 'com.team.gradle.deploy'
-            implementationClass = 'com.team.gradle.DeployPlugin'
-        }
-    }
-}
+//gradlePlugin {
+//    plugins {
+//        project {
+//            id = 'com.team.gradle.project'
+//            implementationClass = 'com.team.gradle.ProjectPlugin'
+//        }
+//        deploy {
+//            id = 'com.team.gradle.deploy'
+//            implementationClass = 'com.team.gradle.DeployPlugin'
+//        }
+//    }
+//}
